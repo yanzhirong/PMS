@@ -2,3 +2,4 @@ D:\p\yd\PMS\PMS\bin\Debug\Model.dll
 D:\p\yd\PMS\PMS\bin\Debug\Model.pdb
 D:\p\yd\PMS\Model\obj\Debug\Model.dll
 D:\p\yd\PMS\Model\obj\Debug\Model.pdb
+D:\p\yd\PMS\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache

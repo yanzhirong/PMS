@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using Common.Tools;
 
 namespace Common
 {
@@ -23,7 +24,7 @@ namespace Common
         {
             serverIp = ConfigBase.GetAppConfig("ServerIP");
 
-            if(Tools.StringUtils.IsBlank(serverIp)){
+            if(StringUtils.IsBlank(serverIp)){
                 return ;
             }
 
@@ -53,6 +54,16 @@ namespace Common
             {
             }
             
+        }
+
+        public static MySqlConnection getMysqlConn()
+        {
+            if (conn == null)
+            {
+                InitConn();
+            }
+
+            return conn;
         }
 
         public static void CloseConn()
