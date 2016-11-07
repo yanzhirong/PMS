@@ -1,0 +1,4 @@
+D:\p\yd\PMS\PMS\bin\Debug\Dict.dll
+D:\p\yd\PMS\PMS\bin\Debug\Dict.pdb
+D:\p\yd\PMS\DICT\obj\Debug\Dict.dll
+D:\p\yd\PMS\DICT\obj\Debug\Dict.pdb

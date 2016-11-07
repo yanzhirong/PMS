@@ -1,0 +1,10 @@
+D:\p\yd\PMS\PMS\bin\Debug\PMS.exe.config
+D:\p\yd\PMS\PMS\bin\Debug\PMS.exe
+D:\p\yd\PMS\PMS\bin\Debug\PMS.pdb
+D:\p\yd\PMS\PMS\obj\Debug\PMS.csprojResolveAssemblyReference.cache
+D:\p\yd\PMS\PMS\obj\Debug\PMS.login.resources
+D:\p\yd\PMS\PMS\obj\Debug\PMS.Properties.Resources.resources
+D:\p\yd\PMS\PMS\obj\Debug\PMS.csproj.GenerateResource.Cache
+D:\p\yd\PMS\PMS\obj\Debug\PMS.exe
+D:\p\yd\PMS\PMS\obj\Debug\PMS.pdb
+D:\p\yd\PMS\PMS\bin\Debug\Bll.pdb

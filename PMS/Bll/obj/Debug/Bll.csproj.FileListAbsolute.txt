@@ -1,0 +1,5 @@
+D:\p\yd\PMS\PMS\bin\Debug\Bll.dll
+D:\p\yd\PMS\PMS\bin\Debug\Bll.pdb
+D:\p\yd\PMS\BLL\obj\Debug\Bll.csprojResolveAssemblyReference.cache
+D:\p\yd\PMS\BLL\obj\Debug\Bll.dll
+D:\p\yd\PMS\BLL\obj\Debug\Bll.pdb
