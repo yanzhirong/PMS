@@ -1,0 +1,5 @@
+D:\p\yd\PMS\Common\bin\Debug\Common.dll
+D:\p\yd\PMS\Common\bin\Debug\Common.pdb
+D:\p\yd\PMS\Common\obj\Debug\Common.dll
+D:\p\yd\PMS\Common\obj\Debug\Common.pdb
+D:\p\yd\PMS\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
