@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.LoginUserInfo
+namespace Model
 {
-    public static class LoginUser
+    public class ModelItem
     {
+        public object itemKey { set; get; }
+        public string itemValue { set; get; }
     }
 }

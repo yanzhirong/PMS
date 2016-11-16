@@ -28,42 +28,51 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.pnl_main = new System.Windows.Forms.Panel();
-            this.pnl_menu = new System.Windows.Forms.Panel();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.SuspendLayout();
             // 
             // pnl_main
             // 
-            this.pnl_main.Location = new System.Drawing.Point(159, 16);
+            this.pnl_main.BackColor = System.Drawing.Color.Aqua;
+            this.pnl_main.Location = new System.Drawing.Point(0, 25);
             this.pnl_main.Name = "pnl_main";
-            this.pnl_main.Size = new System.Drawing.Size(867, 595);
+            this.pnl_main.Size = new System.Drawing.Size(1024, 600);
             this.pnl_main.TabIndex = 3;
             // 
-            // pnl_menu
+            // menuStrip
             // 
-            this.pnl_menu.Location = new System.Drawing.Point(-13, 16);
-            this.pnl_menu.Name = "pnl_menu";
-            this.pnl_menu.Size = new System.Drawing.Size(166, 595);
-            this.pnl_menu.TabIndex = 2;
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(1024, 24);
+            this.menuStrip.TabIndex = 4;
+            this.menuStrip.Text = "menuStrip";
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1013, 626);
+            this.ClientSize = new System.Drawing.Size(1024, 626);
             this.Controls.Add(this.pnl_main);
-            this.Controls.Add(this.pnl_menu);
+            this.Controls.Add(this.menuStrip);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmMain";
-            this.Text = "FrmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "生产管理系统";
             this.Activated += new System.EventHandler(this.FrmMain_Activated);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Panel pnl_main;
-        private System.Windows.Forms.Panel pnl_menu;
+        private System.Windows.Forms.MenuStrip menuStrip;
     }
 }

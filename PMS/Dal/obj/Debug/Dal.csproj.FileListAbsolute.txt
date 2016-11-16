@@ -3,3 +3,8 @@ D:\p\yd\PMS\PMS\bin\Debug\Dal.pdb
 D:\p\yd\PMS\DAL\obj\Debug\Dal.dll
 D:\p\yd\PMS\DAL\obj\Debug\Dal.pdb
 D:\p\yd\PMS\DAL\obj\Debug\Dal.csprojResolveAssemblyReference.cache
+D:\Git\Git\PMS\PMS\bin\Debug\Dal.dll
+D:\Git\Git\PMS\PMS\bin\Debug\Dal.pdb
+D:\Git\Git\PMS\DAL\obj\Debug\Dal.csprojResolveAssemblyReference.cache
+D:\Git\Git\PMS\DAL\obj\Debug\Dal.dll
+D:\Git\Git\PMS\DAL\obj\Debug\Dal.pdb

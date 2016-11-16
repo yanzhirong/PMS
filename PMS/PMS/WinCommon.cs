@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,34 +9,11 @@ using Model;
 
 namespace PMS
 {
-    public partial class FrmMain : Form
+    public static class WinCommon
     {
-        public FrmMain()
-        {
-            InitializeComponent();
-        }
 
-        private void FrmMain_Load(object sender, EventArgs e)
-        {
-            //this.pnl_main.Controls.Clear();
-            //FrmMenu frmMenu = new FrmMenu();
-            //frmMenu.TopLevel = false;
-            //this.pnl_main.Controls.Add(frmMenu);
-            //frmMenu.Show();
-
-
-            //CreateMenuUtils.CreateMenu(ref menuStrip);
-
-            CreateMenu();
-            LoginUserInfo.LoginUser.mainPanel = this.pnl_main;
-        }
-
-        private void FrmMain_Activated(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CreateMenu()
+        #region 动态生产菜单（已废弃）
+        public static void CreateMenu(ref MenuStrip menuStrip)
         {
             menuStrip.Items.Clear();
 
@@ -47,8 +22,7 @@ namespace PMS
                 foreach (ModelMenu menu in LoginUserInfo.LoginUser.loginMenu)
                 {
                     // 一级菜单
-                    if (menu.parentId == 0)
-                    {
+                    if(menu.parentId == 0){
                         ToolStripMenuItem mi = new ToolStripMenuItem();
                         mi.Text = menu.menuName;
                         CreateMenuItem(mi, menu.menuId);
@@ -57,7 +31,7 @@ namespace PMS
                 }
             }
         }
-        private void CreateMenuItem(ToolStripMenuItem mi, int parentId)
+        public static void CreateMenuItem(ToolStripMenuItem mi, int parentId)
         {
             foreach (ModelMenu menu in LoginUserInfo.LoginUser.loginMenu)
             {
@@ -73,7 +47,7 @@ namespace PMS
             }
         }
 
-        private void BindClickToInstinse(object sender, EventArgs e)
+        public static void BindClickToInstinse(object sender, EventArgs e)
         {
             ToolStripMenuItem mi = sender as ToolStripMenuItem;
             if (mi.HasDropDownItems)//如果有下一级目录就不实例化
@@ -83,13 +57,50 @@ namespace PMS
             string formName = mi.Tag as string;
             try
             {
-                Form form = System.AppDomain.CurrentDomain.CreateInstanceFromAndUnwrap(Application.ExecutablePath, formName) as Form;
-                WinCommon.ShowInMain(ref form);
+                Form f = System.AppDomain.CurrentDomain.CreateInstanceFromAndUnwrap(Application.ExecutablePath, formName) as Form;
+                f.ShowDialog();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        #endregion
+    
+        #region 绑定下拉框
+        public static void BindComboBox(ref ComboBox target, List<ModelItem> listItem) 
+        {
+            if (listItem == null || listItem.Count <= 0)
+            {
+                return;
+            }
+
+            target.Items.Clear();
+            foreach(ModelItem item in listItem)
+            {
+                target.Items.Add(item);
+            }
+            target.DisplayMember = "itemValue";
+            target.ValueMember = "itemKey";
+        }
+        #endregion
+
+        /// <summary>
+        /// 在主窗口中显示子窗口
+        /// </summary>
+        /// <param name="panel"></param>
+        /// <param name="form"></param>
+        public static void ShowInMain(ref Form form)
+        {
+            LoginUserInfo.LoginUser.mainPanel.Controls.Clear();
+            form.TopLevel = false;
+            form.Left = 3;
+            form.Top = 3;
+            form.Width = LoginUserInfo.LoginUser.mainPanel.Width - 6;
+            form.Height = LoginUserInfo.LoginUser.mainPanel.Height - 6;
+            LoginUserInfo.LoginUser.mainPanel.Controls.Add(form);
+            form.Show();
         }
     }
 }

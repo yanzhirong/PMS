@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class ModelBase
+    public class ModelBase
     {
         public int isDelete { get; set; }
         public string createBy { get; set; }

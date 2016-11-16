@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class ModelRole : ModelBase
+    public class ModelRole : ModelBase
     {
         public int roleId { set; get; }
-
         public string roleName { set; get; }
-
     }
 }

@@ -45,6 +45,9 @@ namespace PMS
             Result result = bllLogin.result;
             if (result.resultCode == Common.Enum.EnumResultCode.Success)
             {
+                LoginUserInfo.LoginUser.loginUser = bllLogin.GetLoginUser(txt_name.Text.Trim());
+                LoginUserInfo.LoginUser.loginRole = bllLogin.GetLoginRole(LoginUserInfo.LoginUser.loginUser.roleId);
+                LoginUserInfo.LoginUser.loginMenu = bllLogin.GetLoginMenu(LoginUserInfo.LoginUser.loginUser.roleId);
                 this.Hide();
                 FrmMain frmMain = new FrmMain();
                 frmMain.Show();

@@ -50,6 +50,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmSysUserDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSysUserDetail.Designer.cs">
+      <DependentUpon>FrmSysUserDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinCommon.cs" />
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,12 +69,19 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmMenu.cs">
+    <Compile Include="FrmSysRole.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmMenu.Designer.cs">
-      <DependentUpon>FrmMenu.cs</DependentUpon>
+    <Compile Include="FrmSysRole.Designer.cs">
+      <DependentUpon>FrmSysRole.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSysUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSysUser.Designer.cs">
+      <DependentUpon>FrmSysUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginUserInfo\LoginUser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmLogin.resx">
@@ -76,8 +90,11 @@
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmMenu.resx">
-      <DependentUpon>FrmMenu.cs</DependentUpon>
+    <EmbeddedResource Include="FrmSysUser.resx">
+      <DependentUpon>FrmSysUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSysUserDetail.resx">
+      <DependentUpon>FrmSysUserDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

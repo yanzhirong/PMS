@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace PMS
 {
-    public partial class FrmMenu : Form
+    public partial class FrmSysRole : Form
     {
-        public FrmMenu()
+        public FrmSysRole()
         {
             InitializeComponent();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
