@@ -66,18 +66,22 @@
             // 
             // txt_name
             // 
+            this.txt_name.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_name.Location = new System.Drawing.Point(126, 86);
+            this.txt_name.MaxLength = 20;
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(164, 21);
             this.txt_name.TabIndex = 1;
             // 
             // txt_pwd
             // 
+            this.txt_pwd.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_pwd.Location = new System.Drawing.Point(126, 134);
+            this.txt_pwd.MaxLength = 20;
             this.txt_pwd.Name = "txt_pwd";
             this.txt_pwd.PasswordChar = '*';
             this.txt_pwd.Size = new System.Drawing.Size(164, 21);
-            this.txt_pwd.TabIndex = 3;
+            this.txt_pwd.TabIndex = 2;
             // 
             // label2
             // 
@@ -90,11 +94,13 @@
             // 
             // txt_pwd2
             // 
+            this.txt_pwd2.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_pwd2.Location = new System.Drawing.Point(485, 134);
+            this.txt_pwd2.MaxLength = 20;
             this.txt_pwd2.Name = "txt_pwd2";
             this.txt_pwd2.PasswordChar = '*';
             this.txt_pwd2.Size = new System.Drawing.Size(164, 21);
-            this.txt_pwd2.TabIndex = 5;
+            this.txt_pwd2.TabIndex = 3;
             // 
             // label3
             // 
@@ -116,6 +122,7 @@
             // 
             // cmb_sex
             // 
+            this.cmb_sex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_sex.FormattingEnabled = true;
             this.cmb_sex.Items.AddRange(new object[] {
             "男",
@@ -123,14 +130,16 @@
             this.cmb_sex.Location = new System.Drawing.Point(127, 225);
             this.cmb_sex.Name = "cmb_sex";
             this.cmb_sex.Size = new System.Drawing.Size(163, 20);
-            this.cmb_sex.TabIndex = 7;
+            this.cmb_sex.TabIndex = 5;
             // 
             // txt_position
             // 
+            this.txt_position.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txt_position.Location = new System.Drawing.Point(126, 270);
+            this.txt_position.MaxLength = 20;
             this.txt_position.Name = "txt_position";
             this.txt_position.Size = new System.Drawing.Size(164, 21);
-            this.txt_position.TabIndex = 9;
+            this.txt_position.TabIndex = 6;
             // 
             // label5
             // 
@@ -143,6 +152,7 @@
             // 
             // cmb_role
             // 
+            this.cmb_role.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_role.FormattingEnabled = true;
             this.cmb_role.Items.AddRange(new object[] {
             "男",
@@ -150,7 +160,7 @@
             this.cmb_role.Location = new System.Drawing.Point(126, 181);
             this.cmb_role.Name = "cmb_role";
             this.cmb_role.Size = new System.Drawing.Size(163, 20);
-            this.cmb_role.TabIndex = 11;
+            this.cmb_role.TabIndex = 4;
             // 
             // label6
             // 
@@ -163,10 +173,12 @@
             // 
             // txt_email
             // 
+            this.txt_email.ImeMode = System.Windows.Forms.ImeMode.Close;
             this.txt_email.Location = new System.Drawing.Point(126, 365);
+            this.txt_email.MaxLength = 40;
             this.txt_email.Name = "txt_email";
             this.txt_email.Size = new System.Drawing.Size(164, 21);
-            this.txt_email.TabIndex = 15;
+            this.txt_email.TabIndex = 8;
             // 
             // label7
             // 
@@ -179,10 +191,12 @@
             // 
             // txt_mobile
             // 
+            this.txt_mobile.ImeMode = System.Windows.Forms.ImeMode.Close;
             this.txt_mobile.Location = new System.Drawing.Point(126, 318);
+            this.txt_mobile.MaxLength = 20;
             this.txt_mobile.Name = "txt_mobile";
             this.txt_mobile.Size = new System.Drawing.Size(164, 21);
-            this.txt_mobile.TabIndex = 13;
+            this.txt_mobile.TabIndex = 7;
             // 
             // label8
             // 
@@ -198,18 +212,20 @@
             this.btn_submit.Location = new System.Drawing.Point(245, 495);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(75, 23);
-            this.btn_submit.TabIndex = 16;
+            this.btn_submit.TabIndex = 10;
             this.btn_submit.Text = "确认";
             this.btn_submit.UseVisualStyleBackColor = true;
+            this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
             // 
             // btn_cancel
             // 
             this.btn_cancel.Location = new System.Drawing.Point(485, 495);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_cancel.TabIndex = 17;
+            this.btn_cancel.TabIndex = 11;
             this.btn_cancel.Text = "取消";
             this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // label9
             // 
@@ -225,7 +241,7 @@
             this.dtp_birthday.Location = new System.Drawing.Point(126, 412);
             this.dtp_birthday.Name = "dtp_birthday";
             this.dtp_birthday.Size = new System.Drawing.Size(163, 21);
-            this.dtp_birthday.TabIndex = 19;
+            this.dtp_birthday.TabIndex = 9;
             // 
             // label10
             // 
@@ -276,7 +292,7 @@
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lbl_title.ForeColor = System.Drawing.Color.Black;
-            this.lbl_title.Location = new System.Drawing.Point(371, 23);
+            this.lbl_title.Location = new System.Drawing.Point(412, 21);
             this.lbl_title.Name = "lbl_title";
             this.lbl_title.Size = new System.Drawing.Size(98, 21);
             this.lbl_title.TabIndex = 24;
@@ -286,6 +302,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1008, 562);
             this.Controls.Add(this.lbl_title);
             this.Controls.Add(this.label13);
@@ -315,6 +332,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmSysUserDetail";
             this.Text = "FrmSysUserDetail";
+            this.Load += new System.EventHandler(this.FrmSysUserDetail_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -95,7 +95,7 @@
             this.pic_bg.TabIndex = 0;
             this.pic_bg.TabStop = false;
             // 
-            // login
+            // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -109,9 +109,10 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "login";
+            this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "产销管理系统--登录";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmLogin_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pic_bg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

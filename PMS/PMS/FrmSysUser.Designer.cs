@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_addNew = new System.Windows.Forms.Button();
             this.btn_query = new System.Windows.Forms.Button();
@@ -38,13 +38,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.userId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.roleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.role = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.position = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modify = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -118,30 +121,35 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.userId,
+            this.roleId,
             this.name,
             this.role,
             this.sex,
             this.position,
             this.mobile,
             this.email,
-            this.createTime});
+            this.createTime,
+            this.modify,
+            this.delete});
             this.dataGridView1.Location = new System.Drawing.Point(30, 135);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 35;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(965, 453);
             this.dataGridView1.TabIndex = 8;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // userId
             // 
@@ -150,6 +158,14 @@
             this.userId.Name = "userId";
             this.userId.Visible = false;
             // 
+            // roleId
+            // 
+            this.roleId.DataPropertyName = "roleId";
+            this.roleId.HeaderText = "角色ID";
+            this.roleId.Name = "roleId";
+            this.roleId.ReadOnly = true;
+            this.roleId.Visible = false;
+            // 
             // name
             // 
             this.name.DataPropertyName = "userName";
@@ -157,7 +173,6 @@
             this.name.Name = "name";
             this.name.ReadOnly = true;
             this.name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // role
             // 
@@ -186,7 +201,7 @@
             this.mobile.HeaderText = "手机";
             this.mobile.Name = "mobile";
             this.mobile.ReadOnly = true;
-            this.mobile.Width = 160;
+            this.mobile.Width = 120;
             // 
             // email
             // 
@@ -194,7 +209,7 @@
             this.email.HeaderText = "电子邮箱";
             this.email.Name = "email";
             this.email.ReadOnly = true;
-            this.email.Width = 160;
+            this.email.Width = 120;
             // 
             // createTime
             // 
@@ -202,7 +217,21 @@
             this.createTime.HeaderText = "创建时间";
             this.createTime.Name = "createTime";
             this.createTime.ReadOnly = true;
-            this.createTime.Width = 208;
+            this.createTime.Width = 125;
+            // 
+            // modify
+            // 
+            this.modify.DataPropertyName = "modifyBtn";
+            this.modify.HeaderText = "修改";
+            this.modify.Name = "modify";
+            this.modify.Width = 80;
+            // 
+            // delete
+            // 
+            this.delete.DataPropertyName = "deleteBtn";
+            this.delete.HeaderText = "删除";
+            this.delete.Name = "delete";
+            this.delete.Width = 80;
             // 
             // FrmSysUser
             // 
@@ -233,13 +262,16 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn userId;
-        private System.Windows.Forms.DataGridViewLinkColumn name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roleId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn role;
         private System.Windows.Forms.DataGridViewTextBoxColumn sex;
         private System.Windows.Forms.DataGridViewTextBoxColumn position;
         private System.Windows.Forms.DataGridViewTextBoxColumn mobile;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
         private System.Windows.Forms.DataGridViewTextBoxColumn createTime;
+        private System.Windows.Forms.DataGridViewButtonColumn modify;
+        private System.Windows.Forms.DataGridViewButtonColumn delete;
 
     }
 }

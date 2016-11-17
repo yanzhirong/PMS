@@ -17,6 +17,7 @@ namespace Dal
             try
             {
                 MySqlCommand cmd = DbBase.getMysqlConn().CreateCommand();
+                cmd.CommandType = CommandType.Text;
                 cmd.CommandText = sql;
                 MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
 
@@ -39,5 +40,50 @@ namespace Dal
             }
 
         }
+
+          
+        public static int Excute(string sql)
+        {
+            try
+            {
+                MySqlCommand cmd = DbBase.getMysqlConn().CreateCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = sql;
+                int rtn = cmd.ExecuteNonQuery();
+                return rtn;
+
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
+
+        }
+
+        public static int ExcuteTransaction(List<string> listSql)
+        {
+            MySqlTransaction mySqlTransaction = DbBase.getMysqlConn().BeginTransaction();
+            try
+            {
+                MySqlCommand cmd = DbBase.getMysqlConn().CreateCommand();
+                cmd.Transaction = mySqlTransaction;
+                cmd.CommandType = CommandType.Text;
+                foreach (string sql in listSql)
+                {
+                    cmd.CommandText = sql;
+                    cmd.ExecuteNonQuery();
+                }
+                mySqlTransaction.Commit();
+                return 1;
+
+            }
+            catch (Exception e)
+            {
+                mySqlTransaction.Rollback();
+                return 0;
+            }
+
+        }
     }
+
 }

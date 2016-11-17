@@ -91,5 +91,10 @@ namespace PMS
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            WinCommon.Exit();
+        }
     }
 }

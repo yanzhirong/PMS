@@ -102,5 +102,13 @@ namespace PMS
             LoginUserInfo.LoginUser.mainPanel.Controls.Add(form);
             form.Show();
         }
+
+        /// <summary>
+        /// 退出程序
+        /// </summary>
+        public static void Exit()
+        {
+            System.Environment.Exit(0);
+        }
     }
 }

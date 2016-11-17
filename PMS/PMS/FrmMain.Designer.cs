@@ -64,6 +64,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "生产管理系统";
             this.Activated += new System.EventHandler(this.FrmMain_Activated);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMain_FormClosed);
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

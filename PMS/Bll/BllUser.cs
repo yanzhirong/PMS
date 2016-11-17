@@ -13,11 +13,11 @@ namespace Bll
 {
     public class BllUser : Bll.BllBase
     {
-        private DalUser dalUser = new DalUser();
+        private DalUser m_dalUser = new DalUser();
 
         public List<ModelItem> GetAllRoles()
         {
-            DataTable roles = dalUser.GetAllRoles();
+            DataTable roles = m_dalUser.GetAllRoles();
 
             if(roles != null && roles.Rows.Count > 0){
                 return ModelUtils<ModelItem>.FillModel(roles);
@@ -27,7 +27,7 @@ namespace Bll
 
         public DataTable GetUsers(string _name, int _roleId)
         {
-            DataTable users = dalUser.GetUsers(_name, _roleId);
+            DataTable users = m_dalUser.GetUsers(_name, _roleId);
 
             if (users != null && users.Rows.Count > 0)
             {
@@ -36,7 +36,51 @@ namespace Bll
             return null;
         }
 
+        public ModelUser GetUserById(int _userId)
+        {
+            DataTable user = m_dalUser.GetUserById(_userId);
 
+            if (user != null && user.Rows.Count > 0)
+            {
+                return ModelUtils<ModelUser>.FillModel(user.Rows[0]); ;
+            }
+            return new ModelUser();
+        }
+
+        public ModelUser GetUserByName(string _userName)
+        {
+            DataTable user = m_dalUser.GetUserByName(_userName);
+
+            if (user != null && user.Rows.Count > 0)
+            {
+                return ModelUtils<ModelUser>.FillModel(user.Rows[0]); ;
+            }
+            return new ModelUser();
+        }
+
+        public Boolean AddUser(ModelUser _modelUser)
+        {
+            int rtn = 0;
+            rtn = m_dalUser.AddUser(_modelUser);
+
+            return rtn == 0 ? false : true;
+        }
+
+        public Boolean UpdateUser(ModelUser _modelUser, int _orgRoleId)
+        {
+            int rtn = 0;
+            rtn = m_dalUser.UpdateUser(_modelUser, _orgRoleId);
+
+            return rtn == 0 ? false : true;
+        }
+
+        public Boolean DeleteUser(ModelUser _modelUser)
+        {
+            int rtn = 0;
+            rtn = m_dalUser.DeleteUser(_modelUser);
+
+            return rtn == 0 ? false : true;
+        }
     }
 
 }
