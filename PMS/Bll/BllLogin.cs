@@ -13,11 +13,12 @@ namespace Bll
 {
     public class BllLogin : Bll.BllBase
     {
-        private DalLogin dalLogin = new DalLogin();
+        private DalUser dalUser = new DalUser();
+        private DalRole dalRole = new DalRole();
 
         public void DoLogin(string _name , string _pwd)
         {
-            DataTable user = dalLogin.GetUser(_name);
+            DataTable user = dalUser.GetUser(_name);
 
             this.result = new Result();
 
@@ -44,7 +45,7 @@ namespace Bll
 
         public ModelUser GetLoginUser(string _name)
         {
-            DataTable user = dalLogin.GetUser(_name);
+            DataTable user = dalUser.GetUser(_name);
 
             if (user != null && user.Rows.Count > 0)
             {
@@ -55,7 +56,7 @@ namespace Bll
 
         public ModelRole GetLoginRole(int _roleId)
         {
-            DataTable role = dalLogin.GetRole(_roleId);
+            DataTable role = dalRole.GetRoleById(_roleId);
 
             if (role != null && role.Rows.Count > 0)
             {
@@ -66,7 +67,7 @@ namespace Bll
 
         public List<ModelMenu> GetLoginMenu(int _roleId)
         {
-            DataTable menu = dalLogin.GetMenu(_roleId);
+            DataTable menu = dalRole.GetLoginMenuByRoleId(_roleId);
 
             if (menu != null && menu.Rows.Count > 0)
             {

@@ -15,6 +15,8 @@ namespace PMS
 {
     public partial class FrmLogin : Form
     {
+        BllLogin m_bllLogin = new BllLogin();
+
         public FrmLogin()
         {
             InitializeComponent();
@@ -39,15 +41,14 @@ namespace PMS
                 return;
             }
 
-            BllLogin bllLogin = new BllLogin();
-            bllLogin.DoLogin(txt_name.Text.Trim(), txt_pwd.Text.Trim());
+            m_bllLogin.DoLogin(txt_name.Text.Trim(), txt_pwd.Text.Trim());
 
-            Result result = bllLogin.result;
+            Result result = m_bllLogin.result;
             if (result.resultCode == Common.Enum.EnumResultCode.Success)
             {
-                LoginUserInfo.LoginUser.loginUser = bllLogin.GetLoginUser(txt_name.Text.Trim());
-                LoginUserInfo.LoginUser.loginRole = bllLogin.GetLoginRole(LoginUserInfo.LoginUser.loginUser.roleId);
-                LoginUserInfo.LoginUser.loginMenu = bllLogin.GetLoginMenu(LoginUserInfo.LoginUser.loginUser.roleId);
+                LoginUserInfo.LoginUser.loginUser = m_bllLogin.GetLoginUser(txt_name.Text.Trim());
+                LoginUserInfo.LoginUser.loginRole = m_bllLogin.GetLoginRole(LoginUserInfo.LoginUser.loginUser.roleId);
+                LoginUserInfo.LoginUser.loginMenu = m_bllLogin.GetLoginMenu(LoginUserInfo.LoginUser.loginUser.roleId);
                 this.Hide();
                 FrmMain frmMain = new FrmMain();
                 frmMain.Show();

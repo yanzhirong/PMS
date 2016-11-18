@@ -13,13 +13,13 @@ namespace Dal
         string sql;
         StringBuilder sbSql = new StringBuilder();
 
-        public DataTable GetAllRoles()
+        public DataTable GetUser(string _name)
         {
-            sql = @"select roleId itemKey,
-                           roleName itemValue 
-                      from m_role
-                     where isDelete = 0
-                     order by roleId";
+            sql = @"select * 
+                      from m_user
+                     where userName = '{0}' 
+                       and isDelete = 0";
+            sql = string.Format(sql, _name);
 
             return Dal.DBHelper.Select(sql);
         }

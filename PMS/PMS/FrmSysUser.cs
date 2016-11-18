@@ -15,6 +15,7 @@ namespace PMS
     public partial class FrmSysUser : Form
     {
         private BllUser m_bllUser = new BllUser();
+        private BllRole m_bllRole = new BllRole();
 
         public FrmSysUser()
         {
@@ -24,7 +25,7 @@ namespace PMS
         private void FrmSysUser_Load(object sender, EventArgs e)
         {
             //获取所有角色
-            List<ModelItem> listRole = m_bllUser.GetAllRoles();
+            List<ModelItem> listRole = m_bllRole.GetAllRoles();
 
             //绑定下拉框
             WinCommon.BindComboBox(ref cmb_role, listRole);

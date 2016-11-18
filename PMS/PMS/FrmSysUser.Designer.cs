@@ -71,7 +71,7 @@
             this.btn_addNew.Location = new System.Drawing.Point(155, 57);
             this.btn_addNew.Name = "btn_addNew";
             this.btn_addNew.Size = new System.Drawing.Size(75, 23);
-            this.btn_addNew.TabIndex = 12;
+            this.btn_addNew.TabIndex = 4;
             this.btn_addNew.Text = "新增";
             this.btn_addNew.UseVisualStyleBackColor = true;
             this.btn_addNew.Click += new System.EventHandler(this.btn_addNew_Click);
@@ -81,18 +81,19 @@
             this.btn_query.Location = new System.Drawing.Point(27, 57);
             this.btn_query.Name = "btn_query";
             this.btn_query.Size = new System.Drawing.Size(75, 23);
-            this.btn_query.TabIndex = 11;
+            this.btn_query.TabIndex = 3;
             this.btn_query.Text = "查询";
             this.btn_query.UseVisualStyleBackColor = true;
             this.btn_query.Click += new System.EventHandler(this.btn_query_Click);
             // 
             // cmb_role
             // 
+            this.cmb_role.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_role.FormattingEnabled = true;
             this.cmb_role.Location = new System.Drawing.Point(283, 14);
             this.cmb_role.Name = "cmb_role";
             this.cmb_role.Size = new System.Drawing.Size(121, 20);
-            this.cmb_role.TabIndex = 10;
+            this.cmb_role.TabIndex = 2;
             // 
             // label2
             // 
@@ -106,9 +107,10 @@
             // txt_name
             // 
             this.txt_name.Location = new System.Drawing.Point(84, 14);
+            this.txt_name.MaxLength = 20;
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(100, 21);
-            this.txt_name.TabIndex = 8;
+            this.txt_name.TabIndex = 1;
             // 
             // label1
             // 

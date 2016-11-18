@@ -33,3 +33,4 @@ D:\Git\Git\PMS\PMS\bin\Debug\Model.pdb
 D:\Git\Git\PMS\PMS\bin\Debug\Dal.pdb
 D:\Git\Git\PMS\PMS\obj\Debug\PMS.FrmSysUser.resources
 D:\Git\Git\PMS\PMS\obj\Debug\PMS.FrmSysUserDetail.resources
+D:\Git\Git\PMS\PMS\obj\Debug\PMS.FrmSysRoleDetail.resources

@@ -14,16 +14,7 @@ namespace Bll
     public class BllUser : Bll.BllBase
     {
         private DalUser m_dalUser = new DalUser();
-
-        public List<ModelItem> GetAllRoles()
-        {
-            DataTable roles = m_dalUser.GetAllRoles();
-
-            if(roles != null && roles.Rows.Count > 0){
-                return ModelUtils<ModelItem>.FillModel(roles);
-            }
-            return null;          
-        }
+        private DalRole m_dalRole = new DalRole();
 
         public DataTable GetUsers(string _name, int _roleId)
         {

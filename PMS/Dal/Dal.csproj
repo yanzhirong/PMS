@@ -44,9 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBHelper.cs" />
-    <Compile Include="DalLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DalUser.cs" />
+    <Compile Include="DalRole.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

@@ -23,6 +23,7 @@ namespace PMS
         private int m_orgRoleId;
 
         private BllUser m_bllUser = new BllUser();
+        private BllRole m_bllRole = new BllRole();
 
         public FrmSysUserDetail(int _mode, int _userId)
         {
@@ -69,7 +70,7 @@ namespace PMS
             }
 
             //角色下拉框
-            List<ModelItem> listRole = m_bllUser.GetAllRoles();
+            List<ModelItem> listRole = m_bllRole.GetAllRoles();
             WinCommon.BindComboBox(ref cmb_role, listRole);
             //性别下拉框
             List<ModelItem> listSex = new List<ModelItem>();

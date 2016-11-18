@@ -12,6 +12,8 @@ namespace Model
         public int parentId { set; get; }
         public string menuName { set; get; }
         public string formName { set; get; }
+        public string checkBoxName { set; get; }
+        public int isChecked { set; get; }
 
     }
 }
