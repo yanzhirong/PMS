@@ -62,10 +62,12 @@
             // 
             // txt_name
             // 
+            this.txt_name.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_name.Location = new System.Drawing.Point(459, 230);
+            this.txt_name.MaxLength = 20;
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(152, 21);
-            this.txt_name.TabIndex = 3;
+            this.txt_name.TabIndex = 1;
             // 
             // txt_pwd
             // 
@@ -73,7 +75,7 @@
             this.txt_pwd.Name = "txt_pwd";
             this.txt_pwd.PasswordChar = '*';
             this.txt_pwd.Size = new System.Drawing.Size(152, 21);
-            this.txt_pwd.TabIndex = 4;
+            this.txt_pwd.TabIndex = 2;
             // 
             // btn_login
             // 
@@ -81,7 +83,7 @@
             this.btn_login.Location = new System.Drawing.Point(627, 229);
             this.btn_login.Name = "btn_login";
             this.btn_login.Size = new System.Drawing.Size(113, 53);
-            this.btn_login.TabIndex = 5;
+            this.btn_login.TabIndex = 3;
             this.btn_login.UseVisualStyleBackColor = true;
             this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
             // 

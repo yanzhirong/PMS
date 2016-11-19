@@ -73,15 +73,27 @@ namespace PMS
                 this.chk_sys_company.Checked = false;
                 this.chk_sys_factory.Checked = false;
             }
+            else
+            {
+                this.chk_sys_user.Checked = true;
+                this.chk_sys_role.Checked = true;
+                this.chk_sys_company.Checked = true;
+                this.chk_sys_factory.Checked = true;
+            }
         }
 
         private void chk_product_CheckedChanged(object sender, EventArgs e)
         {
-            this.grb_produce.Enabled = this.chk_produce.Checked;
-            if (this.chk_produce.Checked == false)
+            this.grb_product.Enabled = this.chk_product.Checked;
+            if (this.chk_product.Checked == false)
             {
                 this.chk_product_query.Checked = false;
                 this.chk_product_set.Checked = false;
+            }
+            else
+            {
+                this.chk_product_query.Checked = true;
+                this.chk_product_set.Checked = true;
             }
         }
 
@@ -92,6 +104,11 @@ namespace PMS
             {
                 this.chk_sale_customer.Checked = false;
                 this.chk_sale_order.Checked = false;
+            }
+            else
+            {
+                this.chk_sale_customer.Checked = true;
+                this.chk_sale_order.Checked = true;
             }
         }
 
@@ -106,6 +123,14 @@ namespace PMS
                 this.chk_factory_materials_in.Checked = false;
                 this.chk_factory_materials_out.Checked = false;
             }
+            else
+            {
+                this.chk_factory_product_in.Checked = true;
+                this.chk_factory_product_out.Checked = true;
+                this.chk_factory_product_transfer.Checked = true;
+                this.chk_factory_materials_in.Checked = true;
+                this.chk_factory_materials_out.Checked = true;
+            }
         }
 
         private void chk_produce_CheckedChanged(object sender, EventArgs e)
@@ -114,6 +139,10 @@ namespace PMS
             if (this.chk_produce.Checked == false)
             {
                 this.chk_produce_plan.Checked = false;
+            }
+            else
+            {
+                this.chk_produce_plan.Checked = true;
             }
         }
 
@@ -127,6 +156,13 @@ namespace PMS
                 this.chk_purchase_plan.Checked = false;
                 this.chk_purchase_order.Checked = false;
             }
+            else
+            {
+                this.chk_purchase_materials.Checked = true;
+                this.chk_purchase_provider.Checked = true;
+                this.chk_purchase_plan.Checked = true;
+                this.chk_purchase_order.Checked = true;
+            }
         }
 
         private void chk_finance_CheckedChanged(object sender, EventArgs e)
@@ -139,43 +175,82 @@ namespace PMS
                 this.chk_finance_receive.Checked = false;
                 this.chk_finance_paid.Checked = false;
             }
+            else
+            {
+                this.chk_finance_sale.Checked = true;
+                this.chk_finance_purchase.Checked = true;
+                this.chk_finance_receive.Checked = true;
+                this.chk_finance_paid.Checked = true;
+            }
         }
         #endregion
 
         private void btn_submit_Click(object sender, EventArgs e)
         {
+            int roleId = (int)((ModelItem)this.cmb_role.SelectedItem).itemKey;
+
+            if(roleId <= 0)
+            {
+                MsgUtils.ShowErrorMsg("请选择角色！");
+                cmb_role.Focus();
+                return;
+            }
+
             if (MsgUtils.ShowQustMsg("是否确认修改角色的权限？", MessageBoxDefaultButton.Button1) == DialogResult.Yes)
             {
-                doSubmit();
+                doSubmit(roleId);
             }
         }
         private void btn_cancel_Click(object sender, EventArgs e)
         {
-            //返回用户列表
-            Form frmSysUser = new FrmSysUser();
-            WinCommon.ShowInMain(ref frmSysUser);
+            //返回
+            WinCommon.ReturnMain();
         }
 
-        private void doSubmit()
+        private void doSubmit(int _roleId)
         {
             List<ModelMenu> listMenu = new List<ModelMenu>();
-            foreach (Control control in this.Controls)
+            GetCheckedMenu(this, ref listMenu);
+
+            //更新角色的权限
+            if (m_bllRole.UpdateMenuByRoleId(_roleId, listMenu, LoginUserInfo.LoginUser.loginUser.userId))
             {
-                if(control is CheckBox)
+                MsgUtils.ShowInfoMsg("更新角色权限成功！");
+            }
+            else
+            {
+                MsgUtils.ShowErrorMsg("更新角色权限失败！");
+            }
+            return;
+        }
+
+        private void GetCheckedMenu(Control container, ref List<ModelMenu> listMenu)
+        {
+            if (container.Controls.Count > 0)
+            {
+                foreach (Control control in container.Controls)
                 {
-                    CheckBox chk = (CheckBox) control;
-                    if(chk.Checked)
+                    GetCheckedMenu(control, ref listMenu);
+                }
+            }
+            else
+            {
+                if (container is CheckBox)
+                {
+                    CheckBox chk = (CheckBox)container;
+                    if (chk.Checked)
                     {
                         ModelMenu menu = new ModelMenu();
-                        menu.menuId = m_bllRole.GetMenuIdByCheckBoxName(rchk.Name);
+                        menu.menuId = m_bllRole.GetMenuIdByCheckBoxName(chk.Name);
+                        menu.isDelete = 0;
+                        menu.createBy = LoginUserInfo.LoginUser.loginUser.userName;
+                        menu.createTime = DateTime.Now;
+                        menu.modifyBy = LoginUserInfo.LoginUser.loginUser.userName;
+                        menu.modifyTime = DateTime.Now;
                         listMenu.Add(menu);
                     }
                 }
             }
-            if (m_bllRole.)
-            {
-            }
         }
-
     }
 }

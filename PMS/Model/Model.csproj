@@ -46,6 +46,8 @@
     <Compile Include="ModelRole.cs" />
     <Compile Include="ModelMenu.cs" />
     <Compile Include="ModelItem.cs" />
+    <Compile Include="ModelCompany.cs" />
+    <Compile Include="ModelFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

@@ -127,7 +127,8 @@
             this.grb_finance.Controls.Add(this.chk_finance_receive);
             this.grb_finance.Controls.Add(this.chk_finance_purchase);
             this.grb_finance.Controls.Add(this.chk_finance_sale);
-            this.grb_finance.Location = new System.Drawing.Point(34, 454);
+            this.grb_finance.Enabled = false;
+            this.grb_finance.Location = new System.Drawing.Point(33, 454);
             this.grb_finance.Name = "grb_finance";
             this.grb_finance.Size = new System.Drawing.Size(800, 40);
             this.grb_finance.TabIndex = 13;
@@ -176,7 +177,7 @@
             // chk_finance
             // 
             this.chk_finance.AutoSize = true;
-            this.chk_finance.Location = new System.Drawing.Point(41, 438);
+            this.chk_finance.Location = new System.Drawing.Point(33, 438);
             this.chk_finance.Name = "chk_finance";
             this.chk_finance.Size = new System.Drawing.Size(72, 16);
             this.chk_finance.TabIndex = 26;
@@ -190,6 +191,7 @@
             this.grb_purchase.Controls.Add(this.chk_purchase_plan);
             this.grb_purchase.Controls.Add(this.chk_purchase_materials);
             this.grb_purchase.Controls.Add(this.chk_purchase_provider);
+            this.grb_purchase.Enabled = false;
             this.grb_purchase.Location = new System.Drawing.Point(33, 381);
             this.grb_purchase.Name = "grb_purchase";
             this.grb_purchase.Size = new System.Drawing.Size(800, 40);
@@ -239,7 +241,7 @@
             // chk_purchase
             // 
             this.chk_purchase.AutoSize = true;
-            this.chk_purchase.Location = new System.Drawing.Point(34, 365);
+            this.chk_purchase.Location = new System.Drawing.Point(33, 365);
             this.chk_purchase.Name = "chk_purchase";
             this.chk_purchase.Size = new System.Drawing.Size(72, 16);
             this.chk_purchase.TabIndex = 21;
@@ -250,6 +252,7 @@
             // grb_produce
             // 
             this.grb_produce.Controls.Add(this.chk_produce_plan);
+            this.grb_produce.Enabled = false;
             this.grb_produce.Location = new System.Drawing.Point(33, 311);
             this.grb_produce.Name = "grb_produce";
             this.grb_produce.Size = new System.Drawing.Size(800, 40);
@@ -284,6 +287,7 @@
             this.grb_factory.Controls.Add(this.chk_factory_product_transfer);
             this.grb_factory.Controls.Add(this.chk_factory_product_out);
             this.grb_factory.Controls.Add(this.chk_factory_product_in);
+            this.grb_factory.Enabled = false;
             this.grb_factory.Location = new System.Drawing.Point(33, 237);
             this.grb_factory.Name = "grb_factory";
             this.grb_factory.Size = new System.Drawing.Size(800, 40);
@@ -355,6 +359,7 @@
             // 
             this.grb_sale.Controls.Add(this.chk_sale_order);
             this.grb_sale.Controls.Add(this.chk_sale_customer);
+            this.grb_sale.Enabled = false;
             this.grb_sale.Location = new System.Drawing.Point(34, 169);
             this.grb_sale.Name = "grb_sale";
             this.grb_sale.Size = new System.Drawing.Size(800, 40);
@@ -384,7 +389,7 @@
             // chk_sale
             // 
             this.chk_sale.AutoSize = true;
-            this.chk_sale.Location = new System.Drawing.Point(34, 154);
+            this.chk_sale.Location = new System.Drawing.Point(33, 154);
             this.chk_sale.Name = "chk_sale";
             this.chk_sale.Size = new System.Drawing.Size(72, 16);
             this.chk_sale.TabIndex = 10;
@@ -395,7 +400,7 @@
             // chk_product
             // 
             this.chk_product.AutoSize = true;
-            this.chk_product.Location = new System.Drawing.Point(40, 87);
+            this.chk_product.Location = new System.Drawing.Point(33, 86);
             this.chk_product.Name = "chk_product";
             this.chk_product.Size = new System.Drawing.Size(72, 16);
             this.chk_product.TabIndex = 7;
@@ -407,6 +412,7 @@
             // 
             this.grb_product.Controls.Add(this.chk_product_set);
             this.grb_product.Controls.Add(this.chk_product_query);
+            this.grb_product.Enabled = false;
             this.grb_product.Location = new System.Drawing.Point(33, 102);
             this.grb_product.Name = "grb_product";
             this.grb_product.Size = new System.Drawing.Size(800, 40);
@@ -436,7 +442,7 @@
             // chk_sys
             // 
             this.chk_sys.AutoSize = true;
-            this.chk_sys.Location = new System.Drawing.Point(40, 18);
+            this.chk_sys.Location = new System.Drawing.Point(34, 20);
             this.chk_sys.Name = "chk_sys";
             this.chk_sys.Size = new System.Drawing.Size(72, 16);
             this.chk_sys.TabIndex = 2;
@@ -451,6 +457,7 @@
             this.grb_sys.Controls.Add(this.chk_sys_factory);
             this.grb_sys.Controls.Add(this.chk_sys_company);
             this.grb_sys.Controls.Add(this.chk_sys_user);
+            this.grb_sys.Enabled = false;
             this.grb_sys.Location = new System.Drawing.Point(34, 34);
             this.grb_sys.Name = "grb_sys";
             this.grb_sys.Size = new System.Drawing.Size(800, 40);

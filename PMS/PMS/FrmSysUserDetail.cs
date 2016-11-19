@@ -15,7 +15,7 @@ namespace PMS
 {
     public partial class FrmSysUserDetail : Form
     {
-        //处理模式（0：新建用户；1：修改用户；2：删除用户）
+        //处理模式（0：新建；1：修改；2：删除）
         private int m_mode;
         //用户ID
         private int m_userId;

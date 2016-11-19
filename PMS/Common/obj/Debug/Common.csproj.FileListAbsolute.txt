@@ -8,3 +8,9 @@ D:\Git\Git\PMS\Common\bin\Debug\Common.pdb
 D:\Git\Git\PMS\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
 D:\Git\Git\PMS\Common\obj\Debug\Common.dll
 D:\Git\Git\PMS\Common\obj\Debug\Common.pdb
+D:\git\pms\PMS\Common\bin\Debug\Common.dll
+D:\git\pms\PMS\Common\bin\Debug\Common.pdb
+D:\git\pms\PMS\Common\bin\Debug\MySql.Data.dll
+D:\git\pms\PMS\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+D:\git\pms\PMS\Common\obj\Debug\Common.dll
+D:\git\pms\PMS\Common\obj\Debug\Common.pdb

@@ -51,7 +51,7 @@ namespace Bll
             {
                return ModelUtils<ModelUser>.FillModel(user.Rows[0]);
             }
-            return null;
+            return new ModelUser();
         }
 
         public ModelRole GetLoginRole(int _roleId)

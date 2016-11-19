@@ -20,11 +20,7 @@ namespace Bll
         {
             DataTable users = m_dalUser.GetUsers(_name, _roleId);
 
-            if (users != null && users.Rows.Count > 0)
-            {
-                return users;
-            }
-            return null;
+            return users;
         }
 
         public ModelUser GetUserById(int _userId)

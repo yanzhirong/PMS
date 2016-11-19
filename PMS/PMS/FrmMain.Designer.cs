@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.pnl_main = new System.Windows.Forms.Panel();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.lbl_loginInfo = new System.Windows.Forms.Label();
+            this.lnk_logout = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // pnl_main
@@ -49,11 +51,36 @@
             this.menuStrip.TabIndex = 4;
             this.menuStrip.Text = "menuStrip";
             // 
+            // lbl_loginInfo
+            // 
+            this.lbl_loginInfo.AutoSize = true;
+            this.lbl_loginInfo.Font = new System.Drawing.Font("宋体", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lbl_loginInfo.ForeColor = System.Drawing.Color.Red;
+            this.lbl_loginInfo.Location = new System.Drawing.Point(940, 6);
+            this.lbl_loginInfo.Name = "lbl_loginInfo";
+            this.lbl_loginInfo.Size = new System.Drawing.Size(0, 12);
+            this.lbl_loginInfo.TabIndex = 6;
+            this.lbl_loginInfo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lnk_logout
+            // 
+            this.lnk_logout.AutoSize = true;
+            this.lnk_logout.Font = new System.Drawing.Font("宋体", 9F);
+            this.lnk_logout.Location = new System.Drawing.Point(990, 6);
+            this.lnk_logout.Name = "lnk_logout";
+            this.lnk_logout.Size = new System.Drawing.Size(29, 12);
+            this.lnk_logout.TabIndex = 7;
+            this.lnk_logout.TabStop = true;
+            this.lnk_logout.Text = "退出";
+            this.lnk_logout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnk_logout_LinkClicked);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 626);
+            this.Controls.Add(this.lnk_logout);
+            this.Controls.Add(this.lbl_loginInfo);
             this.Controls.Add(this.pnl_main);
             this.Controls.Add(this.menuStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -75,5 +102,7 @@
 
         private System.Windows.Forms.Panel pnl_main;
         private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.Label lbl_loginInfo;
+        private System.Windows.Forms.LinkLabel lnk_logout;
     }
 }

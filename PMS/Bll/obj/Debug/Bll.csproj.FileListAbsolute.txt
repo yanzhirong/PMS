@@ -8,3 +8,8 @@ D:\Git\Git\PMS\PMS\bin\Debug\Bll.pdb
 D:\Git\Git\PMS\BLL\obj\Debug\Bll.csprojResolveAssemblyReference.cache
 D:\Git\Git\PMS\BLL\obj\Debug\Bll.dll
 D:\Git\Git\PMS\BLL\obj\Debug\Bll.pdb
+D:\git\pms\PMS\PMS\bin\Debug\Bll.dll
+D:\git\pms\PMS\PMS\bin\Debug\Bll.pdb
+D:\git\pms\PMS\BLL\obj\Debug\Bll.csprojResolveAssemblyReference.cache
+D:\git\pms\PMS\BLL\obj\Debug\Bll.dll
+D:\git\pms\PMS\BLL\obj\Debug\Bll.pdb

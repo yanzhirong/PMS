@@ -47,6 +47,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DalUser.cs" />
     <Compile Include="DalRole.cs" />
+    <Compile Include="DalCompany.cs" />
+    <Compile Include="DalFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

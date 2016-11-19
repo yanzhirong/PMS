@@ -20,17 +20,14 @@ namespace PMS
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            //this.pnl_main.Controls.Clear();
-            //FrmMenu frmMenu = new FrmMenu();
-            //frmMenu.TopLevel = false;
-            //this.pnl_main.Controls.Add(frmMenu);
-            //frmMenu.Show();
-
-
-            //CreateMenuUtils.CreateMenu(ref menuStrip);
-
+            //显示登录者信息
+            //lbl_loginInfo.Text = LoginUserInfo.LoginUser.loginUser.userName + "/" + LoginUserInfo.LoginUser.loginRole.roleName;
+            //lbl_loginInfo.Left = btn_logout.Left -  lbl_loginInfo.Width - 10;
+            this.Text = "生产管理系统      (" + LoginUserInfo.LoginUser.loginUser.userName + "/" + LoginUserInfo.LoginUser.loginRole.roleName + ")";
+            //动态生成菜单
             CreateMenu();
             LoginUserInfo.LoginUser.mainPanel = this.pnl_main;
+
         }
 
         private void FrmMain_Activated(object sender, EventArgs e)
@@ -96,5 +93,20 @@ namespace PMS
         {
             WinCommon.Exit();
         }
+
+        private void btn_logout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FrmLogin frmLogin = new FrmLogin();
+            frmLogin.Show();
+        }
+
+        private void lnk_logout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            FrmLogin frmLogin = new FrmLogin();
+            frmLogin.Show();
+        }
+
     }
 }

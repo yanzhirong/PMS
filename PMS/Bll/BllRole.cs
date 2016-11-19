@@ -44,7 +44,7 @@ namespace Bll
             return menuId;
         }
 
-        public Boolean UpdateMenuByRoleId(int _roleId, List<ModelMenu> _listMenu, string _loginUserId)
+        public Boolean UpdateMenuByRoleId(int _roleId, List<ModelMenu> _listMenu, int _loginUserId)
         {
 
             int rtn = 0;

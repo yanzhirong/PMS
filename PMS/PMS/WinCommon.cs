@@ -97,12 +97,31 @@ namespace PMS
             form.TopLevel = false;
             form.Left = 3;
             form.Top = 3;
-            form.Width = LoginUserInfo.LoginUser.mainPanel.Width - 6;
-            form.Height = LoginUserInfo.LoginUser.mainPanel.Height - 6;
+            LoginUserInfo.LoginUser.mainPanel.Parent.Width = form.Width + 22;
+            LoginUserInfo.LoginUser.mainPanel.Width = form.Width + 10;
+            LoginUserInfo.LoginUser.mainPanel.Parent.Height = form.Height + 24 + 46;
+            LoginUserInfo.LoginUser.mainPanel.Height = form.Height + 12 + 46;
+
+            LinkLabel logout = (LinkLabel)LoginUserInfo.LoginUser.mainPanel.Parent.Controls.Find("lnk_logout", false)[0];
+            logout.Left = LoginUserInfo.LoginUser.mainPanel.Parent.Width - logout.Width - 30;
+            //Label lbl = (Label)LoginUserInfo.LoginUser.mainPanel.Parent.Controls.Find("lbl_loginInfo", false)[0];
+            //lbl.Left = btn.Left - lbl.Width - 20;
+            //form.Width = LoginUserInfo.LoginUser.mainPanel.Width - 6;
+            //form.Height = LoginUserInfo.LoginUser.mainPanel.Height - 6;
             LoginUserInfo.LoginUser.mainPanel.Controls.Add(form);
             form.Show();
         }
 
+        /// <summary>
+        /// 主窗口中显示空白
+        /// </summary>
+        /// <param name="panel"></param>
+        /// <param name="form"></param>
+        public static void ReturnMain()
+        {
+            LoginUserInfo.LoginUser.mainPanel.Controls.Clear();
+            LoginUserInfo.LoginUser.mainPanel.Refresh();
+        }
         /// <summary>
         /// 退出程序
         /// </summary>

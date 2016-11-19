@@ -18,7 +18,7 @@ namespace Dal
         {
             sql = @"select * 
                       from m_role
-                     where userName = '{0}' 
+                     where roleId = {0} 
                        and isDelete = 0";
             sql = string.Format(sql, _roleId);
 
@@ -51,7 +51,7 @@ namespace Dal
                 sql = @"select a.* 
                           from m_menu a
                                join r_role_menu b
-                               on a.roleId = b.roleId
+                               on a.menuId = b.menuId
                          where b.roleId = {0} 
                            and b.isDelete = 0
                            and a.isDelete = 0
@@ -79,7 +79,7 @@ namespace Dal
             return Dal.DBHelper.Select(sql);
         }
 
-        public DataTable GetMenuIdByCheckBoxName(string _checkBoxName)
+        public int GetMenuIdByCheckBoxName(string _checkBoxName)
         {
             sql = @"select menuId  
                       from m_menu 
@@ -88,10 +88,19 @@ namespace Dal
 
             sql = string.Format(sql, _checkBoxName);
 
-            return Dal.DBHelper.Select(sql);
+            DataTable dt = Dal.DBHelper.Select(sql);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                return (int)dt.Rows[0][0];
+            }
+            else
+            {
+                return 0;
+            }
         }
 
-        public int UpdateMenuByRoleId(int _roleId, List<ModelMenu> _listMenu, string _loginUserId)
+        public int UpdateMenuByRoleId(int _roleId, List<ModelMenu> _listMenu, int _loginUserId)
         {
             listSql.Clear();
             sql = @"update r_role_menu
@@ -103,14 +112,24 @@ namespace Dal
             sql = string.Format(sql, _loginUserId, DateTime.Now, _roleId);
             listSql.Add(sql);
 
-            sbSql.Clear();
-            sbSql.Append("update m_user ");
-            sbSql.Append("set isDelete = 1,");
-            sbSql.Append("    modifyBy = '" + _modelUser.modifyBy + "',");
-            sbSql.Append("    modifyTime = '" + _modelUser.modifyTime + "' ");
-            sbSql.Append("where userId = " + _modelUser.userId);
+            foreach (ModelMenu menu in _listMenu)
+            {
+                sbSql.Clear();
+                sbSql.Append("insert into r_role_menu ");
+                sbSql.Append("(roleId, menuId, isDelete, createBy, createTime, modifyBy, modifyTime) ");
+                sbSql.Append(" value ( ");
+                sbSql.Append(_roleId + ", ");
+                sbSql.Append(menu.menuId + ", ");
+                sbSql.Append(menu.isDelete + ", ");
+                sbSql.Append("'" + menu.createBy + "', ");
+                sbSql.Append("'" + menu.createTime + "', ");
+                sbSql.Append("'" + menu.modifyBy + "', ");
+                sbSql.Append("'" + menu.modifyTime + "') ");
 
-            return Dal.DBHelper.Excute(sbSql.ToString());
+                listSql.Add(sbSql.ToString());
+            }
+
+            return Dal.DBHelper.ExcuteTransaction(listSql);
         }
     }
 }
