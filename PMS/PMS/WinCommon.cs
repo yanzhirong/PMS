@@ -97,10 +97,13 @@ namespace PMS
             form.TopLevel = false;
             form.Left = 3;
             form.Top = 3;
+
             LoginUserInfo.LoginUser.mainPanel.Parent.Width = form.Width + 22;
             LoginUserInfo.LoginUser.mainPanel.Width = form.Width + 10;
             LoginUserInfo.LoginUser.mainPanel.Parent.Height = form.Height + 24 + 46;
             LoginUserInfo.LoginUser.mainPanel.Height = form.Height + 12 + 46;
+            LoginUserInfo.LoginUser.mainPanel.Parent.Left = Screen.PrimaryScreen.WorkingArea.Width / 2 - LoginUserInfo.LoginUser.mainPanel.Parent.Width / 2;
+            LoginUserInfo.LoginUser.mainPanel.Parent.Top = Screen.PrimaryScreen.WorkingArea.Height / 2 - LoginUserInfo.LoginUser.mainPanel.Parent.Height / 2;
 
             LinkLabel logout = (LinkLabel)LoginUserInfo.LoginUser.mainPanel.Parent.Controls.Find("lnk_logout", false)[0];
             logout.Left = LoginUserInfo.LoginUser.mainPanel.Parent.Width - logout.Width - 30;

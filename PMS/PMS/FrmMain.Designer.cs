@@ -33,6 +33,7 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.lbl_loginInfo = new System.Windows.Forms.Label();
             this.lnk_logout = new System.Windows.Forms.LinkLabel();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.SuspendLayout();
             // 
             // pnl_main
@@ -74,11 +75,20 @@
             this.lnk_logout.Text = "退出";
             this.lnk_logout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnk_logout_LinkClicked);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(0, 604);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1024, 22);
+            this.statusStrip1.TabIndex = 8;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 626);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.lnk_logout);
             this.Controls.Add(this.lbl_loginInfo);
             this.Controls.Add(this.pnl_main);
@@ -104,5 +114,6 @@
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.Label lbl_loginInfo;
         private System.Windows.Forms.LinkLabel lnk_logout;
+        private System.Windows.Forms.StatusStrip statusStrip1;
     }
 }
