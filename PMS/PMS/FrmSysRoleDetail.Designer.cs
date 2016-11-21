@@ -40,7 +40,6 @@
             this.grb_purchase = new System.Windows.Forms.GroupBox();
             this.chk_purchase_order = new System.Windows.Forms.CheckBox();
             this.chk_purchase_plan = new System.Windows.Forms.CheckBox();
-            this.chk_purchase_materials = new System.Windows.Forms.CheckBox();
             this.chk_purchase_provider = new System.Windows.Forms.CheckBox();
             this.chk_purchase = new System.Windows.Forms.CheckBox();
             this.grb_produce = new System.Windows.Forms.GroupBox();
@@ -69,6 +68,8 @@
             this.chk_sys_user = new System.Windows.Forms.CheckBox();
             this.btn_submit = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
+            this.chk_materials_set = new System.Windows.Forms.CheckBox();
+            this.chk_sys_config = new System.Windows.Forms.CheckBox();
             this.grb_role.SuspendLayout();
             this.grb_finance.SuspendLayout();
             this.grb_purchase.SuspendLayout();
@@ -189,7 +190,6 @@
             // 
             this.grb_purchase.Controls.Add(this.chk_purchase_order);
             this.grb_purchase.Controls.Add(this.chk_purchase_plan);
-            this.grb_purchase.Controls.Add(this.chk_purchase_materials);
             this.grb_purchase.Controls.Add(this.chk_purchase_provider);
             this.grb_purchase.Enabled = false;
             this.grb_purchase.Location = new System.Drawing.Point(33, 381);
@@ -217,16 +217,6 @@
             this.chk_purchase_plan.TabIndex = 24;
             this.chk_purchase_plan.Text = "采购计划";
             this.chk_purchase_plan.UseVisualStyleBackColor = true;
-            // 
-            // chk_purchase_materials
-            // 
-            this.chk_purchase_materials.AutoSize = true;
-            this.chk_purchase_materials.Location = new System.Drawing.Point(137, 17);
-            this.chk_purchase_materials.Name = "chk_purchase_materials";
-            this.chk_purchase_materials.Size = new System.Drawing.Size(72, 16);
-            this.chk_purchase_materials.TabIndex = 23;
-            this.chk_purchase_materials.Text = "原料管理";
-            this.chk_purchase_materials.UseVisualStyleBackColor = true;
             // 
             // chk_purchase_provider
             // 
@@ -410,6 +400,7 @@
             // 
             // grb_product
             // 
+            this.grb_product.Controls.Add(this.chk_materials_set);
             this.grb_product.Controls.Add(this.chk_product_set);
             this.grb_product.Controls.Add(this.chk_product_query);
             this.grb_product.Enabled = false;
@@ -424,9 +415,9 @@
             this.chk_product_set.AutoSize = true;
             this.chk_product_set.Location = new System.Drawing.Point(138, 16);
             this.chk_product_set.Name = "chk_product_set";
-            this.chk_product_set.Size = new System.Drawing.Size(96, 16);
+            this.chk_product_set.Size = new System.Drawing.Size(72, 16);
             this.chk_product_set.TabIndex = 9;
-            this.chk_product_set.Text = "设置商品信息";
+            this.chk_product_set.Text = "商品管理";
             this.chk_product_set.UseVisualStyleBackColor = true;
             // 
             // chk_product_query
@@ -434,9 +425,9 @@
             this.chk_product_query.AutoSize = true;
             this.chk_product_query.Location = new System.Drawing.Point(21, 16);
             this.chk_product_query.Name = "chk_product_query";
-            this.chk_product_query.Size = new System.Drawing.Size(96, 16);
+            this.chk_product_query.Size = new System.Drawing.Size(72, 16);
             this.chk_product_query.TabIndex = 8;
-            this.chk_product_query.Text = "查询销售商品";
+            this.chk_product_query.Text = "商品查询";
             this.chk_product_query.UseVisualStyleBackColor = true;
             // 
             // chk_sys
@@ -453,6 +444,7 @@
             // 
             // grb_sys
             // 
+            this.grb_sys.Controls.Add(this.chk_sys_config);
             this.grb_sys.Controls.Add(this.chk_sys_role);
             this.grb_sys.Controls.Add(this.chk_sys_factory);
             this.grb_sys.Controls.Add(this.chk_sys_company);
@@ -525,11 +517,31 @@
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
+            // chk_materials_set
+            // 
+            this.chk_materials_set.AutoSize = true;
+            this.chk_materials_set.Location = new System.Drawing.Point(250, 16);
+            this.chk_materials_set.Name = "chk_materials_set";
+            this.chk_materials_set.Size = new System.Drawing.Size(72, 16);
+            this.chk_materials_set.TabIndex = 10;
+            this.chk_materials_set.Text = "原料管理";
+            this.chk_materials_set.UseVisualStyleBackColor = true;
+            // 
+            // chk_sys_config
+            // 
+            this.chk_sys_config.AutoSize = true;
+            this.chk_sys_config.Location = new System.Drawing.Point(480, 15);
+            this.chk_sys_config.Name = "chk_sys_config";
+            this.chk_sys_config.Size = new System.Drawing.Size(72, 16);
+            this.chk_sys_config.TabIndex = 5;
+            this.chk_sys_config.Text = "系统设置";
+            this.chk_sys_config.UseVisualStyleBackColor = true;
+            // 
             // FrmSysRoleDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 600);
+            this.ClientSize = new System.Drawing.Size(935, 600);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_submit);
             this.Controls.Add(this.grb_role);
@@ -538,6 +550,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmSysRoleDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "角色设置";
             this.Load += new System.EventHandler(this.FrmSysUser_Load);
             this.grb_role.ResumeLayout(false);
             this.grb_role.PerformLayout();
@@ -574,7 +587,6 @@
         private System.Windows.Forms.GroupBox grb_purchase;
         private System.Windows.Forms.CheckBox chk_purchase_order;
         private System.Windows.Forms.CheckBox chk_purchase_plan;
-        private System.Windows.Forms.CheckBox chk_purchase_materials;
         private System.Windows.Forms.CheckBox chk_purchase_provider;
         private System.Windows.Forms.GroupBox grb_produce;
         private System.Windows.Forms.CheckBox chk_produce_plan;
@@ -603,6 +615,8 @@
         private System.Windows.Forms.CheckBox chk_purchase;
         private System.Windows.Forms.Button btn_submit;
         private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.CheckBox chk_materials_set;
+        private System.Windows.Forms.CheckBox chk_sys_config;
 
     }
 }

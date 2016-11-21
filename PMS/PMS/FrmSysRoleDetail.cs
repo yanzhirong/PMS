@@ -32,6 +32,7 @@ namespace PMS
 
             this.cmb_role.Focus();
 
+            this.grb_role.Enabled = false;
             this.btn_submit.Enabled = false;
         }
 
@@ -51,13 +52,17 @@ namespace PMS
                     if (control.Length > 0)
                     {
                         CheckBox checkBox = (CheckBox)control[0];
+                        checkBox.Text = menu.menuName;
                         checkBox.Checked = menu.isChecked > 0 ? true : false;
                     }
                 }
+
+                this.grb_role.Enabled = true;
                 this.btn_submit.Enabled = true;
             }
             else
             {
+                this.grb_role.Enabled = false;
                 this.btn_submit.Enabled = false;
             }
         }
@@ -72,6 +77,7 @@ namespace PMS
                 this.chk_sys_role.Checked = false;
                 this.chk_sys_company.Checked = false;
                 this.chk_sys_factory.Checked = false;
+                this.chk_sys_config.Checked = false;
             }
             else
             {
@@ -79,6 +85,7 @@ namespace PMS
                 this.chk_sys_role.Checked = true;
                 this.chk_sys_company.Checked = true;
                 this.chk_sys_factory.Checked = true;
+                this.chk_sys_config.Checked = true;
             }
         }
 
@@ -89,11 +96,13 @@ namespace PMS
             {
                 this.chk_product_query.Checked = false;
                 this.chk_product_set.Checked = false;
+                this.chk_materials_set.Checked = false;
             }
             else
             {
                 this.chk_product_query.Checked = true;
                 this.chk_product_set.Checked = true;
+                this.chk_materials_set.Checked = true;
             }
         }
 
@@ -151,14 +160,12 @@ namespace PMS
             this.grb_purchase.Enabled = this.chk_purchase.Checked;
             if (this.chk_purchase.Checked == false)
             {
-                this.chk_purchase_materials.Checked = false;
                 this.chk_purchase_provider.Checked = false;
                 this.chk_purchase_plan.Checked = false;
                 this.chk_purchase_order.Checked = false;
             }
             else
             {
-                this.chk_purchase_materials.Checked = true;
                 this.chk_purchase_provider.Checked = true;
                 this.chk_purchase_plan.Checked = true;
                 this.chk_purchase_order.Checked = true;

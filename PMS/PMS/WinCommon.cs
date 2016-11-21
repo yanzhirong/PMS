@@ -111,6 +111,8 @@ namespace PMS
             //lbl.Left = btn.Left - lbl.Width - 20;
             //form.Width = LoginUserInfo.LoginUser.mainPanel.Width - 6;
             //form.Height = LoginUserInfo.LoginUser.mainPanel.Height - 6;
+
+            LoginUserInfo.LoginUser.mainPanel.Parent.Text = "生产管理系统 --> " + form.Text + "     (" + LoginUserInfo.LoginUser.loginUser.userName + "/" + LoginUserInfo.LoginUser.loginRole.roleName + ")";
             LoginUserInfo.LoginUser.mainPanel.Controls.Add(form);
             form.Show();
         }
@@ -122,9 +124,11 @@ namespace PMS
         /// <param name="form"></param>
         public static void ReturnMain()
         {
+            LoginUserInfo.LoginUser.mainPanel.Parent.Text = "生产管理系统" + "     (" + LoginUserInfo.LoginUser.loginUser.userName + "/" + LoginUserInfo.LoginUser.loginRole.roleName + ")";
             LoginUserInfo.LoginUser.mainPanel.Controls.Clear();
             LoginUserInfo.LoginUser.mainPanel.Refresh();
         }
+        
         /// <summary>
         /// 退出程序
         /// </summary>

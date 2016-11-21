@@ -245,6 +245,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmSysUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "用户列表";
             this.Load += new System.EventHandler(this.FrmSysUser_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

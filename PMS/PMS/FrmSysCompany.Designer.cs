@@ -241,6 +241,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmSysCompany";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "公司信息设置";
             this.Load += new System.EventHandler(this.FrmSysUser_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

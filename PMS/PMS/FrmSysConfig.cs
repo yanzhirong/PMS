@@ -1,0 +1,33 @@
+﻿using Bll;
+using Model;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace PMS
+{
+    public partial class FrmSysConfig : Form
+    {
+        private BllUser m_bllUser = new BllUser();
+        private BllRole m_bllRole = new BllRole();
+
+        public FrmSysConfig()
+        {
+            InitializeComponent();
+        }
+
+        private void FrmSysUser_Load(object sender, EventArgs e)
+        {
+        }
+
+  
+
+ 
+    }
+}

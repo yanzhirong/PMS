@@ -102,6 +102,12 @@
     <Compile Include="FrmSysFactoryDetail.Designer.cs">
       <DependentUpon>FrmSysFactoryDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmSysConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSysConfig.Designer.cs">
+      <DependentUpon>FrmSysConfig.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -135,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSysFactoryDetail.resx">
       <DependentUpon>FrmSysFactoryDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSysConfig.resx">
+      <DependentUpon>FrmSysConfig.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

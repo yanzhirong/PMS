@@ -13,3 +13,8 @@ D:\git\pms\PMS\PMS\bin\Debug\Model.pdb
 D:\git\pms\PMS\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 D:\git\pms\PMS\Model\obj\Debug\Model.dll
 D:\git\pms\PMS\Model\obj\Debug\Model.pdb
+D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Model.dll
+D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Model.pdb
+D:\p\yd\PMS\source\PMS\PMS\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\p\yd\PMS\source\PMS\PMS\Model\obj\Debug\Model.dll
+D:\p\yd\PMS\source\PMS\PMS\Model\obj\Debug\Model.pdb

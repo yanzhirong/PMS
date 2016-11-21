@@ -33,6 +33,8 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.lbl_title = new System.Windows.Forms.Label();
             this.grb_factory = new System.Windows.Forms.GroupBox();
+            this.txt_zip = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.txt_fax = new System.Windows.Forms.TextBox();
             this.lbl_fax = new System.Windows.Forms.Label();
             this.txt_telphone = new System.Windows.Forms.TextBox();
@@ -41,8 +43,6 @@
             this.lbl_address = new System.Windows.Forms.Label();
             this.txt_name = new System.Windows.Forms.TextBox();
             this.lbl_name = new System.Windows.Forms.Label();
-            this.txt_zip = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.grb_factory.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,6 +101,23 @@
             this.grb_factory.Size = new System.Drawing.Size(550, 250);
             this.grb_factory.TabIndex = 67;
             this.grb_factory.TabStop = false;
+            // 
+            // txt_zip
+            // 
+            this.txt_zip.Location = new System.Drawing.Point(121, 210);
+            this.txt_zip.MaxLength = 50;
+            this.txt_zip.Name = "txt_zip";
+            this.txt_zip.Size = new System.Drawing.Size(400, 21);
+            this.txt_zip.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(30, 213);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 68;
+            this.label1.Text = "邮    编：";
             // 
             // txt_fax
             // 
@@ -170,23 +187,6 @@
             this.lbl_name.TabIndex = 63;
             this.lbl_name.Text = "仓库名称：";
             // 
-            // txt_zip
-            // 
-            this.txt_zip.Location = new System.Drawing.Point(121, 210);
-            this.txt_zip.MaxLength = 50;
-            this.txt_zip.Name = "txt_zip";
-            this.txt_zip.Size = new System.Drawing.Size(400, 21);
-            this.txt_zip.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 213);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
-            this.label1.TabIndex = 68;
-            this.label1.Text = "邮    编：";
-            // 
             // FrmSysFactoryDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -200,6 +200,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmSysFactoryDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "仓库设置";
             this.Load += new System.EventHandler(this.FrmSysFactoryDetail_Load);
             this.grb_factory.ResumeLayout(false);
             this.grb_factory.PerformLayout();

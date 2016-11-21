@@ -48,6 +48,7 @@
     <Compile Include="ModelItem.cs" />
     <Compile Include="ModelCompany.cs" />
     <Compile Include="ModelFactory.cs" />
+    <Compile Include="ModelCode.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
