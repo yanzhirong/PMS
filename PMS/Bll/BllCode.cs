@@ -14,17 +14,38 @@ namespace Bll
     {
         private DalCode m_dalCode = new DalCode();
 
-        public List<ModelItem> GetCodeItem(string _code)
+        public List<ModelItem> GetAllCodeName()
+        {
+            DataTable dt = m_dalCode.GetAllCodeName();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                return ModelUtils<ModelItem>.FillModel(dt);
+            }
+            return null;
+        }
+
+        public ModelCode GetCodeByName(string _codeName)
+        {
+            DataTable dt = m_dalCode.GetCodeByName(_codeName);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                return ModelUtils<ModelCode>.FillModel(dt.Rows[0]);
+            }
+            return new ModelCode();
+        }
+        
+        public List<ModelItem> GetCodeItem(int _code)
         {
             return GetCodeItem(_code, true , "subCode", "value1");
         }
 
-        public List<ModelItem> GetCodeItem(string _code, Boolean _isAddBlank)
+        public List<ModelItem> GetCodeItem(int _code, Boolean _isAddBlank)
         {
             return GetCodeItem(_code, _isAddBlank, "subCode", "value1");
         }
 
-        public List<ModelItem> GetCodeItem(string _code, Boolean _isAddBlank, string _itemKeyName, string _itemValueName)
+        public List<ModelItem> GetCodeItem(int _code, Boolean _isAddBlank, string _itemKeyName, string _itemValueName)
         {
             List<ModelItem> listItem = new List<ModelItem>();
 
@@ -47,18 +68,14 @@ namespace Bll
             }
             return listItem;
         }
-        public List<ModelCode> GetCodeList(string _code)
+        public DataTable GetCodeList(int _code)
         {
-            DataTable dt = m_dalCode.GetCode(_code, true);
+            DataTable dt = m_dalCode.GetCode(_code, false);
 
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                return ModelUtils<ModelCode>.FillModel(dt);
-            }
-            return null;
+            return dt;
         }
 
-        public ModelCode GetSubCode(string _code, string _subCode)
+        public ModelCode GetSubCode(int _code, int _subCode)
         {
             DataTable dt = m_dalCode.GetSubCode(_code, _subCode);
 
@@ -67,6 +84,18 @@ namespace Bll
                 return ModelUtils<ModelCode>.FillModel(dt.Rows[0]);
             }
             return new ModelCode();
+        }
+
+        public Boolean AddCode(ModelCode _modelCode)
+        {
+            int rtn = m_dalCode.AddCode(_modelCode);
+            return rtn > 0 ? true : false;
+        }
+
+        public Boolean UpdateCode(List<ModelCode> _listCode)
+        {
+            int rtn = m_dalCode.UpdateCode(_listCode);
+            return rtn > 0 ? true : false;
         }
     }
 }

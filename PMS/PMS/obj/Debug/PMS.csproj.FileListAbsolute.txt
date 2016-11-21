@@ -80,3 +80,4 @@ D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.FrmSysCompany.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.FrmSysFactoryDetail.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.csproj.GenerateResource.Cache
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.FrmSysConfig.resources
+D:\git\pms\PMS\PMS\obj\Debug\PMS.FrmSysConfig.resources
