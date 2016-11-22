@@ -11,7 +11,7 @@ using Model;
 using Bll;
 using Common.Tools;
 
-namespace PMS
+namespace PMS.Frm.Sys
 {
     public partial class FrmSysUserDetail : Form
     {
@@ -227,7 +227,7 @@ namespace PMS
                 {
                     MsgUtils.ShowInfoMsg("账号已修改，请重新登录。");
                     this.Parent.Parent.Hide();
-                    FrmLogin frmLogin = new FrmLogin();
+                    Form frmLogin = new Frm.Login.FrmLogin();
                     frmLogin.Show();
                     return;
                 }

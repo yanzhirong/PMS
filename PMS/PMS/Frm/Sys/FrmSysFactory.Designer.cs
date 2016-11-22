@@ -1,4 +1,4 @@
-﻿namespace PMS
+﻿namespace PMS.Frm.Sys
 {
     partial class FrmSysFactory
     {

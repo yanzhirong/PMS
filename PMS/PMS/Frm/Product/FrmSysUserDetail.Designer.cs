@@ -1,6 +1,6 @@
-﻿namespace PMS
+﻿namespace PMS.Frm.Product
 {
-    partial class FrmSysUserDetail
+    partial class FrmProductMaterialsDetail
     {
         /// <summary>
         /// Required designer variable.

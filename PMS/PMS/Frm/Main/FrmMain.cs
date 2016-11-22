@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
 
-namespace PMS
+namespace PMS.Frm.Main
 {
     public partial class FrmMain : Form
     {
@@ -94,17 +94,11 @@ namespace PMS
             WinCommon.Exit();
         }
 
-        private void btn_logout_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            FrmLogin frmLogin = new FrmLogin();
-            frmLogin.Show();
-        }
 
         private void lnk_logout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
-            FrmLogin frmLogin = new FrmLogin();
+            Form frmLogin = new Frm.Login.FrmLogin();
             frmLogin.Show();
         }
 

@@ -50,75 +50,93 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmSysUserDetail.cs">
+    <Compile Include="Frm\Login\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmSysUserDetail.Designer.cs">
-      <DependentUpon>FrmSysUserDetail.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WinCommon.cs" />
-    <Compile Include="FrmLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmLogin.Designer.cs">
+    <Compile Include="Frm\Login\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmMain.cs">
+    <Compile Include="Frm\Product\FrmMaterialsManage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmMain.Designer.cs">
+    <Compile Include="Frm\Product\FrmMaterialsManage.Designer.cs">
+      <DependentUpon>FrmMaterialsManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Product\FrmSysUserDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Product\FrmSysUserDetail.Designer.cs">
+      <DependentUpon>FrmSysUserDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Sys\FrmSysUserDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Sys\FrmSysUserDetail.Designer.cs">
+      <DependentUpon>FrmSysUserDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Main\FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Main\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmSysUser.cs">
+    <Compile Include="WinCommon.cs" />
+    <Compile Include="Frm\Sys\FrmSysUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmSysUser.Designer.cs">
+    <Compile Include="Frm\Sys\FrmSysUser.Designer.cs">
       <DependentUpon>FrmSysUser.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginUserInfo\LoginUser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FrmSysRoleDetail.cs">
+    <Compile Include="Frm\Sys\FrmSysRoleDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmSysRoleDetail.Designer.cs">
+    <Compile Include="Frm\Sys\FrmSysRoleDetail.Designer.cs">
       <DependentUpon>FrmSysRoleDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmSysFactory.cs">
+    <Compile Include="Frm\Sys\FrmSysFactory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmSysFactory.Designer.cs">
+    <Compile Include="Frm\Sys\FrmSysFactory.Designer.cs">
       <DependentUpon>FrmSysFactory.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmSysCompany.cs">
+    <Compile Include="Frm\Sys\FrmSysCompany.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmSysCompany.Designer.cs">
+    <Compile Include="Frm\Sys\FrmSysCompany.Designer.cs">
       <DependentUpon>FrmSysCompany.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmSysFactoryDetail.cs">
+    <Compile Include="Frm\Sys\FrmSysFactoryDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmSysFactoryDetail.Designer.cs">
+    <Compile Include="Frm\Sys\FrmSysFactoryDetail.Designer.cs">
       <DependentUpon>FrmSysFactoryDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmSysConfig.cs">
+    <Compile Include="Frm\Sys\FrmSysConfig.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmSysConfig.Designer.cs">
+    <Compile Include="Frm\Sys\FrmSysConfig.Designer.cs">
       <DependentUpon>FrmSysConfig.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FrmLogin.resx">
+    <EmbeddedResource Include="Frm\Login\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmMain.resx">
-      <DependentUpon>FrmMain.cs</DependentUpon>
+    <EmbeddedResource Include="Frm\Product\FrmMaterialsManage.resx">
+      <DependentUpon>FrmMaterialsManage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmSysUser.resx">
+    <EmbeddedResource Include="Frm\Product\FrmSysUserDetail.resx">
+      <DependentUpon>FrmSysUserDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Sys\FrmSysUser.resx">
       <DependentUpon>FrmSysUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmSysUserDetail.resx">
+    <EmbeddedResource Include="Frm\Sys\FrmSysUserDetail.resx">
       <DependentUpon>FrmSysUserDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Main\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -130,19 +148,19 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="FrmSysRoleDetail.resx">
+    <EmbeddedResource Include="Frm\Sys\FrmSysRoleDetail.resx">
       <DependentUpon>FrmSysRoleDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmSysFactory.resx">
+    <EmbeddedResource Include="Frm\Sys\FrmSysFactory.resx">
       <DependentUpon>FrmSysFactory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmSysCompany.resx">
+    <EmbeddedResource Include="Frm\Sys\FrmSysCompany.resx">
       <DependentUpon>FrmSysCompany.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmSysFactoryDetail.resx">
+    <EmbeddedResource Include="Frm\Sys\FrmSysFactoryDetail.resx">
       <DependentUpon>FrmSysFactoryDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmSysConfig.resx">
+    <EmbeddedResource Include="Frm\Sys\FrmSysConfig.resx">
       <DependentUpon>FrmSysConfig.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -178,6 +196,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="PMS.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Frm\Factory\" />
+    <Folder Include="Frm\Finance\" />
+    <Folder Include="Frm\Produce\" />
+    <Folder Include="Frm\Purchase\" />
+    <Folder Include="Frm\Sale\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -11,7 +11,7 @@ using Common.Tools;
 using Bll;
 using Model;
 
-namespace PMS
+namespace PMS.Frm.Login
 {
     public partial class FrmLogin : Form
     {
@@ -27,6 +27,7 @@ namespace PMS
 
         private void btn_login_Click(object sender, EventArgs e)
         {
+
             if (StringUtils.IsBlank(txt_name.Text))
             {
                 MsgUtils.ShowWarnMsg("请输入用户名！");
@@ -50,7 +51,7 @@ namespace PMS
                 LoginUserInfo.LoginUser.loginRole = m_bllLogin.GetLoginRole(LoginUserInfo.LoginUser.loginUser.roleId);
                 LoginUserInfo.LoginUser.loginMenu = m_bllLogin.GetLoginMenu(LoginUserInfo.LoginUser.loginUser.roleId);
                 this.Hide();
-                FrmMain frmMain = new FrmMain();
+                Form frmMain = new Frm.Main.FrmMain();
                 frmMain.Show();
             }
             else

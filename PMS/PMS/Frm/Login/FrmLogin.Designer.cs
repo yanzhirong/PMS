@@ -1,4 +1,4 @@
-﻿namespace PMS
+﻿namespace PMS.Frm.Login
 {
     partial class FrmLogin
     {

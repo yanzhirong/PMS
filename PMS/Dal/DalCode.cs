@@ -29,11 +29,11 @@ namespace Dal
         {
        
             sql = @"select * 
-                    from m_code
-                    where remark = '{0}'
-                    and ifnull(subCode,0) = 0
-                    and isDelete = 0
-                    order by id desc";
+                      from m_code
+                     where remark = '{0}'
+                       and ifnull(subCode,0) = 0
+                       and isDelete = 0
+                     order by id desc";
 
             sql = string.Format(sql, _codeName);
             
@@ -44,22 +44,34 @@ namespace Dal
         {
             if (_isSearchBlank)
             {
-                sql = @"select * 
-                      from m_code
-                     where code = {0}
-                       and isDelete = 0
-                     order by id";
+                sql = @"select id,
+                               code,
+                               subCode,
+                               value1,
+                               value2,
+                               value3,
+                               remark 
+                          from m_code
+                         where code = {0}
+                           and isDelete = 0
+                         order by id";
 
                 sql = string.Format(sql, _code);
             }
             else
             {
-                sql = @"select * 
-                      from m_code
-                     where code = {0}
-                       and ifnull(subCode, 0) > 0
-                       and isDelete = 0
-                     order by id";
+                sql = @"select id,
+                               code,
+                               subCode,
+                               value1,
+                               value2,
+                               value3,
+                               remark 
+                          from m_code
+                         where code = {0}
+                           and ifnull(subCode, 0) > 0
+                           and isDelete = 0
+                         order by id";
 
                 sql = string.Format(sql, _code);
             }
@@ -114,7 +126,7 @@ namespace Dal
             sbSql.Append("   set isDelete = 1, ");
             sbSql.Append("       modifyBy = '" + _listCode[0].modifyBy + "', ");
             sbSql.Append("       modifyTime = '" + _listCode[0].modifyTime + "' ");
-            sbSql.Append(" where code = " + _listCode[0].code + ", ");
+            sbSql.Append(" where code = " + _listCode[0].code + " ");
             sbSql.Append("   and ifnull(subCode,0) > 0 ");
             sbSql.Append("   and isDelete = 0 ");
 
@@ -133,7 +145,7 @@ namespace Dal
                     sbSql.Append("       isDelete = 0, ");
                     sbSql.Append("       modifyBy = '" + modelCode.modifyBy + "', ");
                     sbSql.Append("       modifyTime = '" + modelCode.modifyTime + "' ");
-                    sbSql.Append(" where id = " + modelCode.id + ", ");
+                    sbSql.Append(" where id = " + modelCode.id + " ");
                 }
                 else
                 {
@@ -162,6 +174,7 @@ namespace Dal
                     sbSql.Append("       '" + modelCode.createTime + "', ");
                     sbSql.Append("       '" + modelCode.modifyTime + "', ");
                     sbSql.Append("       '" + modelCode.modifyTime + "'");
+                    sbSql.Append(" from m_code ");
                 }
 
                 listSql.Add(sbSql.ToString());

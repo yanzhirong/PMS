@@ -49,6 +49,12 @@
     <Compile Include="ModelCompany.cs" />
     <Compile Include="ModelFactory.cs" />
     <Compile Include="ModelCode.cs" />
+    <Compile Include="ModelMaterials.cs" />
+    <Compile Include="ModelMaterialsSearch.cs" />
+    <Compile Include="ModelMaterialsPrice.cs" />
+    <Compile Include="ModelProductPrice.cs" />
+    <Compile Include="ModelProductSearch.cs" />
+    <Compile Include="ModelProduct.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

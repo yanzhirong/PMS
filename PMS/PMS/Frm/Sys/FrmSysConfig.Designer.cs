@@ -1,4 +1,4 @@
-﻿namespace PMS
+﻿namespace PMS.Frm.Sys
 {
     partial class FrmSysConfig
     {
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn_addNew = new System.Windows.Forms.Button();
@@ -73,6 +74,7 @@
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "增加参数";
+            this.groupBox2.Visible = false;
             // 
             // btn_addNew
             // 
@@ -153,6 +155,7 @@
             this.btn_cancel.TabIndex = 53;
             this.btn_cancel.Text = "取消";
             this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // btn_submit
             // 
@@ -162,6 +165,7 @@
             this.btn_submit.TabIndex = 52;
             this.btn_submit.Text = "确定";
             this.btn_submit.UseVisualStyleBackColor = true;
+            this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
             // 
             // id
             // 
@@ -181,8 +185,11 @@
             // subCode
             // 
             this.subCode.DataPropertyName = "subCode";
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.subCode.DefaultCellStyle = dataGridViewCellStyle2;
             this.subCode.HeaderText = "参数代码";
             this.subCode.Name = "subCode";
+            this.subCode.ReadOnly = true;
             // 
             // value1
             // 
@@ -210,7 +217,7 @@
             this.v.DataPropertyName = "remark";
             this.v.HeaderText = "备注";
             this.v.Name = "v";
-            this.v.Width = 250;
+            this.v.Width = 230;
             // 
             // FrmSysConfig
             // 

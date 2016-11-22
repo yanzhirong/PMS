@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common.Tools;
 
-namespace PMS
+namespace PMS.Frm.Sys
 {
     public partial class FrmSysCompany : Form
     {

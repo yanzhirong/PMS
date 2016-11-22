@@ -1,6 +1,6 @@
-﻿namespace PMS
+﻿namespace PMS.Frm.Product
 {
-    partial class FrmSysUser
+    partial class FrmMaterialsManage
     {
         /// <summary>
         /// Required designer variable.
@@ -32,22 +32,18 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_addNew = new System.Windows.Forms.Button();
             this.btn_query = new System.Windows.Forms.Button();
-            this.cmb_role = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.txt_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.userId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.role = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sex = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.position = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modify = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.subName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.packingType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.morphology = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.shelfLife = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.modifyBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.deleteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -56,13 +52,11 @@
             // 
             this.groupBox1.Controls.Add(this.btn_addNew);
             this.groupBox1.Controls.Add(this.btn_query);
-            this.groupBox1.Controls.Add(this.cmb_role);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txt_name);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(30, 21);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(965, 95);
+            this.groupBox1.Size = new System.Drawing.Size(885, 95);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
@@ -86,24 +80,6 @@
             this.btn_query.UseVisualStyleBackColor = true;
             this.btn_query.Click += new System.EventHandler(this.btn_query_Click);
             // 
-            // cmb_role
-            // 
-            this.cmb_role.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_role.FormattingEnabled = true;
-            this.cmb_role.Location = new System.Drawing.Point(283, 14);
-            this.cmb_role.Name = "cmb_role";
-            this.cmb_role.Size = new System.Drawing.Size(121, 20);
-            this.cmb_role.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(236, 17);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "角色：";
-            // 
             // txt_name
             // 
             this.txt_name.Location = new System.Drawing.Point(84, 14);
@@ -119,7 +95,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 7;
-            this.label1.Text = "用户名：";
+            this.label1.Text = "原料名：";
             // 
             // dataGridView1
             // 
@@ -134,116 +110,96 @@
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.userId,
-            this.roleId,
+            this.id,
             this.name,
-            this.role,
-            this.sex,
-            this.position,
-            this.mobile,
-            this.email,
-            this.createTime,
-            this.modify,
-            this.delete});
+            this.subName,
+            this.packingType,
+            this.unitWeight,
+            this.morphology,
+            this.shelfLife,
+            this.modifyBtn,
+            this.deleteBtn});
             this.dataGridView1.Location = new System.Drawing.Point(30, 135);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 35;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(965, 453);
+            this.dataGridView1.Size = new System.Drawing.Size(885, 453);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // userId
+            // id
             // 
-            this.userId.DataPropertyName = "userId";
-            this.userId.HeaderText = "用户ID";
-            this.userId.Name = "userId";
-            this.userId.Visible = false;
-            // 
-            // roleId
-            // 
-            this.roleId.DataPropertyName = "roleId";
-            this.roleId.HeaderText = "角色ID";
-            this.roleId.Name = "roleId";
-            this.roleId.ReadOnly = true;
-            this.roleId.Visible = false;
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.Visible = false;
             // 
             // name
             // 
-            this.name.DataPropertyName = "userName";
-            this.name.HeaderText = "用户名";
+            this.name.DataPropertyName = "name";
+            this.name.HeaderText = "原料名";
             this.name.Name = "name";
             this.name.ReadOnly = true;
             this.name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // role
+            // subName
             // 
-            this.role.DataPropertyName = "roleName";
-            this.role.HeaderText = "角色";
-            this.role.Name = "role";
-            this.role.ReadOnly = true;
+            this.subName.DataPropertyName = "subName";
+            this.subName.HeaderText = "原料略称";
+            this.subName.Name = "subName";
+            this.subName.ReadOnly = true;
             // 
-            // sex
+            // packingType
             // 
-            this.sex.DataPropertyName = "sex";
-            this.sex.HeaderText = "性别";
-            this.sex.Name = "sex";
-            this.sex.ReadOnly = true;
+            this.packingType.DataPropertyName = "packingType";
+            this.packingType.HeaderText = "包装方式";
+            this.packingType.Name = "packingType";
+            this.packingType.ReadOnly = true;
             // 
-            // position
+            // unitWeight
             // 
-            this.position.DataPropertyName = "position";
-            this.position.HeaderText = "职位";
-            this.position.Name = "position";
-            this.position.ReadOnly = true;
+            this.unitWeight.DataPropertyName = "unitWeight";
+            this.unitWeight.HeaderText = "单位重量";
+            this.unitWeight.Name = "unitWeight";
+            this.unitWeight.ReadOnly = true;
             // 
-            // mobile
+            // morphology
             // 
-            this.mobile.DataPropertyName = "mobile";
-            this.mobile.HeaderText = "手机";
-            this.mobile.Name = "mobile";
-            this.mobile.ReadOnly = true;
-            this.mobile.Width = 120;
+            this.morphology.DataPropertyName = "morphology";
+            this.morphology.HeaderText = "产品形态";
+            this.morphology.Name = "morphology";
+            this.morphology.ReadOnly = true;
+            this.morphology.Width = 120;
             // 
-            // email
+            // shelfLife
             // 
-            this.email.DataPropertyName = "email";
-            this.email.HeaderText = "电子邮箱";
-            this.email.Name = "email";
-            this.email.ReadOnly = true;
-            this.email.Width = 120;
+            this.shelfLife.DataPropertyName = "shelfLife";
+            this.shelfLife.HeaderText = "保质期";
+            this.shelfLife.Name = "shelfLife";
+            this.shelfLife.ReadOnly = true;
+            this.shelfLife.Width = 120;
             // 
-            // createTime
+            // modifyBtn
             // 
-            this.createTime.DataPropertyName = "createTime";
-            this.createTime.HeaderText = "创建时间";
-            this.createTime.Name = "createTime";
-            this.createTime.ReadOnly = true;
-            this.createTime.Width = 125;
+            this.modifyBtn.DataPropertyName = "modifyBtn";
+            this.modifyBtn.HeaderText = "修改";
+            this.modifyBtn.Name = "modifyBtn";
             // 
-            // modify
+            // deleteBtn
             // 
-            this.modify.DataPropertyName = "modifyBtn";
-            this.modify.HeaderText = "修改";
-            this.modify.Name = "modify";
-            this.modify.Width = 80;
+            this.deleteBtn.DataPropertyName = "deleteBtn";
+            this.deleteBtn.HeaderText = "删除";
+            this.deleteBtn.Name = "deleteBtn";
             // 
-            // delete
-            // 
-            this.delete.DataPropertyName = "deleteBtn";
-            this.delete.HeaderText = "删除";
-            this.delete.Name = "delete";
-            this.delete.Width = 80;
-            // 
-            // FrmSysUser
+            // FrmMaterialsManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 600);
+            this.ClientSize = new System.Drawing.Size(944, 611);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FrmSysUser";
+            this.Name = "FrmMaterialsManage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "用户列表";
             this.Load += new System.EventHandler(this.FrmSysUser_Load);
@@ -259,22 +215,18 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btn_addNew;
         private System.Windows.Forms.Button btn_query;
-        private System.Windows.Forms.ComboBox cmb_role;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_name;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn userId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roleId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn role;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sex;
-        private System.Windows.Forms.DataGridViewTextBoxColumn position;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mobile;
-        private System.Windows.Forms.DataGridViewTextBoxColumn email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createTime;
-        private System.Windows.Forms.DataGridViewButtonColumn modify;
-        private System.Windows.Forms.DataGridViewButtonColumn delete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn packingType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitWeight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn morphology;
+        private System.Windows.Forms.DataGridViewTextBoxColumn shelfLife;
+        private System.Windows.Forms.DataGridViewButtonColumn modifyBtn;
+        private System.Windows.Forms.DataGridViewButtonColumn deleteBtn;
 
     }
 }
