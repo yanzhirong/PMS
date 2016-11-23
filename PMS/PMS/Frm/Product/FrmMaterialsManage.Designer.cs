@@ -202,7 +202,7 @@
             this.Name = "FrmMaterialsManage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "用户列表";
-            this.Load += new System.EventHandler(this.FrmSysUser_Load);
+            this.Load += new System.EventHandler(this.FrmMaterialsManage_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

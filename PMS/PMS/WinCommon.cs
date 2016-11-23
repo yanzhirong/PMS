@@ -136,5 +136,17 @@ namespace PMS
         {
             System.Environment.Exit(0);
         }
+    
+        public static Boolean IsNumber(char _char)
+        {
+            if (!((_char >= 48 && _char <= 57) || _char == '.' || _char == 8))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

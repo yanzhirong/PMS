@@ -22,7 +22,7 @@ namespace PMS.Frm.Product
             InitializeComponent();
         }
 
-        private void FrmSysUser_Load(object sender, EventArgs e)
+        private void FrmMaterialsManage_Load(object sender, EventArgs e)
         {
 
             this.txt_name.Focus();
@@ -41,7 +41,7 @@ namespace PMS.Frm.Product
 
         private void btn_addNew_Click(object sender, EventArgs e)
         {
-            Form form = new FrmProductMaterialsDetail(0, 0);
+            Form form = new FrmMaterialsDetail(0, 0);
             WinCommon.ShowInMain(ref form);
         }
 
@@ -51,7 +51,7 @@ namespace PMS.Frm.Product
             if (dataGridView1.Columns[e.ColumnIndex].Name == "modify")
             {
                 int userId = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
-                Form form = new FrmProductMaterialsDetail(1, userId);
+                Form form = new FrmMaterialsDetail(1, userId);
                 WinCommon.ShowInMain(ref form);
             }
 
@@ -59,7 +59,7 @@ namespace PMS.Frm.Product
             if (dataGridView1.Columns[e.ColumnIndex].Name == "delete")
             {
                 int userId = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
-                Form form = new FrmProductMaterialsDetail(2, userId);
+                Form form = new FrmMaterialsDetail(2, userId);
                 WinCommon.ShowInMain(ref form);
             }
 

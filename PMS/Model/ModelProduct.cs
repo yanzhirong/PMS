@@ -13,12 +13,12 @@ namespace Model
         public string subName { set; get; }
         public int packingType { set; get; }
         public string packingRemark { set; get; }
-        public decimal unitVolume { set; get; }
-        public decimal unitWeight { set; get; }
-        public string morphology { set; get; }
-        public string shelfLife { set; get; }
-        public string expiredDays { set; get; }
-        public string minStockNum { set; get; }
+        public decimal weight { set; get; }
+        public int weightUnit { set; get; }
+        public int morphology { set; get; }
+        public int shelfLife { set; get; }
+        public int expiredDays { set; get; }
+        public int minStockNum { set; get; }
 
         public ModelProductPrice modelProductPrice { set; get; }
 

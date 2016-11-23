@@ -62,11 +62,11 @@
     <Compile Include="Frm\Product\FrmMaterialsManage.Designer.cs">
       <DependentUpon>FrmMaterialsManage.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm\Product\FrmSysUserDetail.cs">
+    <Compile Include="Frm\Product\FrmMaterialsDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm\Product\FrmSysUserDetail.Designer.cs">
-      <DependentUpon>FrmSysUserDetail.cs</DependentUpon>
+    <Compile Include="Frm\Product\FrmMaterialsDetail.Designer.cs">
+      <DependentUpon>FrmMaterialsDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm\Sys\FrmSysUserDetail.cs">
       <SubType>Form</SubType>
@@ -126,8 +126,8 @@
     <EmbeddedResource Include="Frm\Product\FrmMaterialsManage.resx">
       <DependentUpon>FrmMaterialsManage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm\Product\FrmSysUserDetail.resx">
-      <DependentUpon>FrmSysUserDetail.cs</DependentUpon>
+    <EmbeddedResource Include="Frm\Product\FrmMaterialsDetail.resx">
+      <DependentUpon>FrmMaterialsDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\Sys\FrmSysUser.resx">
       <DependentUpon>FrmSysUser.cs</DependentUpon>
