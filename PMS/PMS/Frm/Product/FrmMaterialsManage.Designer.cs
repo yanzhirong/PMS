@@ -39,7 +39,7 @@
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.packingType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unitWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.weight = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.morphology = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.shelfLife = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifyBtn = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -114,7 +114,7 @@
             this.name,
             this.subName,
             this.packingType,
-            this.unitWeight,
+            this.weight,
             this.morphology,
             this.shelfLife,
             this.modifyBtn,
@@ -156,12 +156,12 @@
             this.packingType.Name = "packingType";
             this.packingType.ReadOnly = true;
             // 
-            // unitWeight
+            // weight
             // 
-            this.unitWeight.DataPropertyName = "unitWeight";
-            this.unitWeight.HeaderText = "单位重量";
-            this.unitWeight.Name = "unitWeight";
-            this.unitWeight.ReadOnly = true;
+            this.weight.DataPropertyName = "weight";
+            this.weight.HeaderText = "重量";
+            this.weight.Name = "weight";
+            this.weight.ReadOnly = true;
             // 
             // morphology
             // 
@@ -222,7 +222,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn subName;
         private System.Windows.Forms.DataGridViewTextBoxColumn packingType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unitWeight;
+        private System.Windows.Forms.DataGridViewTextBoxColumn weight;
         private System.Windows.Forms.DataGridViewTextBoxColumn morphology;
         private System.Windows.Forms.DataGridViewTextBoxColumn shelfLife;
         private System.Windows.Forms.DataGridViewButtonColumn modifyBtn;

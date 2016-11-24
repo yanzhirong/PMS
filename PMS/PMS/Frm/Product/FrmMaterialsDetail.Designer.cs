@@ -63,12 +63,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txt_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.grb_price = new System.Windows.Forms.GroupBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.cmb_priceUnit = new System.Windows.Forms.ComboBox();
+            this.txt_price = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.grb_materials.SuspendLayout();
+            this.grb_price.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_submit
             // 
-            this.btn_submit.Location = new System.Drawing.Point(264, 457);
+            this.btn_submit.Location = new System.Drawing.Point(252, 551);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(75, 23);
             this.btn_submit.TabIndex = 101;
@@ -78,7 +85,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(470, 457);
+            this.btn_cancel.Location = new System.Drawing.Point(412, 551);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 102;
@@ -199,6 +206,7 @@
             this.txt_minStockNum.Name = "txt_minStockNum";
             this.txt_minStockNum.Size = new System.Drawing.Size(164, 21);
             this.txt_minStockNum.TabIndex = 57;
+            this.txt_minStockNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_minStockNum_KeyPress);
             // 
             // label17
             // 
@@ -217,6 +225,7 @@
             this.txt_expiredDays.Name = "txt_expiredDays";
             this.txt_expiredDays.Size = new System.Drawing.Size(164, 21);
             this.txt_expiredDays.TabIndex = 55;
+            this.txt_expiredDays.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_expiredDays_KeyPress);
             // 
             // label16
             // 
@@ -242,9 +251,6 @@
             // 
             this.cmb_weightUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_weightUnit.FormattingEnabled = true;
-            this.cmb_weightUnit.Items.AddRange(new object[] {
-            "男",
-            "女"});
             this.cmb_weightUnit.Location = new System.Drawing.Point(436, 219);
             this.cmb_weightUnit.Name = "cmb_weightUnit";
             this.cmb_weightUnit.Size = new System.Drawing.Size(163, 20);
@@ -337,6 +343,7 @@
             this.txt_shelfLife.Name = "txt_shelfLife";
             this.txt_shelfLife.Size = new System.Drawing.Size(164, 21);
             this.txt_shelfLife.TabIndex = 54;
+            this.txt_shelfLife.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_shelfLife_KeyPress);
             // 
             // label8
             // 
@@ -351,9 +358,6 @@
             // 
             this.cmb_packingType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_packingType.FormattingEnabled = true;
-            this.cmb_packingType.Items.AddRange(new object[] {
-            "男",
-            "女"});
             this.cmb_packingType.Location = new System.Drawing.Point(76, 130);
             this.cmb_packingType.Name = "cmb_packingType";
             this.cmb_packingType.Size = new System.Drawing.Size(163, 20);
@@ -391,9 +395,6 @@
             // 
             this.cmb_morphology.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_morphology.FormattingEnabled = true;
-            this.cmb_morphology.Items.AddRange(new object[] {
-            "男",
-            "女"});
             this.cmb_morphology.Location = new System.Drawing.Point(77, 174);
             this.cmb_morphology.Name = "cmb_morphology";
             this.cmb_morphology.Size = new System.Drawing.Size(163, 20);
@@ -445,12 +446,78 @@
             this.label1.TabIndex = 42;
             this.label1.Text = "原 料 名：";
             // 
+            // grb_price
+            // 
+            this.grb_price.Controls.Add(this.label24);
+            this.grb_price.Controls.Add(this.label23);
+            this.grb_price.Controls.Add(this.cmb_priceUnit);
+            this.grb_price.Controls.Add(this.txt_price);
+            this.grb_price.Controls.Add(this.label21);
+            this.grb_price.Location = new System.Drawing.Point(45, 458);
+            this.grb_price.Name = "grb_price";
+            this.grb_price.Size = new System.Drawing.Size(707, 52);
+            this.grb_price.TabIndex = 104;
+            this.grb_price.TabStop = false;
+            this.grb_price.Text = "价格";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label24.ForeColor = System.Drawing.Color.Red;
+            this.label24.Location = new System.Drawing.Point(269, 21);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(64, 12);
+            this.label24.TabIndex = 74;
+            this.label24.Text = "*（必填）";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label23.ForeColor = System.Drawing.Color.Black;
+            this.label23.Location = new System.Drawing.Point(178, 21);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(12, 12);
+            this.label23.TabIndex = 73;
+            this.label23.Text = "/";
+            // 
+            // cmb_priceUnit
+            // 
+            this.cmb_priceUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_priceUnit.FormattingEnabled = true;
+            this.cmb_priceUnit.Location = new System.Drawing.Point(196, 18);
+            this.cmb_priceUnit.Name = "cmb_priceUnit";
+            this.cmb_priceUnit.Size = new System.Drawing.Size(62, 20);
+            this.cmb_priceUnit.TabIndex = 65;
+            // 
+            // txt_price
+            // 
+            this.txt_price.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_price.Location = new System.Drawing.Point(75, 18);
+            this.txt_price.MaxLength = 20;
+            this.txt_price.Name = "txt_price";
+            this.txt_price.PasswordChar = '*';
+            this.txt_price.Size = new System.Drawing.Size(97, 21);
+            this.txt_price.TabIndex = 60;
+            this.txt_price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_price_KeyPress);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(6, 21);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(65, 12);
+            this.label21.TabIndex = 47;
+            this.label21.Text = "价    格：";
+            // 
             // FrmMaterialsDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(801, 512);
+            this.ClientSize = new System.Drawing.Size(801, 605);
+            this.Controls.Add(this.grb_price);
             this.Controls.Add(this.grb_materials);
             this.Controls.Add(this.lbl_title);
             this.Controls.Add(this.btn_cancel);
@@ -461,6 +528,8 @@
             this.Load += new System.EventHandler(this.FrmMaterialsDetail_Load);
             this.grb_materials.ResumeLayout(false);
             this.grb_materials.PerformLayout();
+            this.grb_price.ResumeLayout(false);
+            this.grb_price.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -503,5 +572,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txt_name;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox grb_price;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ComboBox cmb_priceUnit;
+        private System.Windows.Forms.TextBox txt_price;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label24;
     }
 }

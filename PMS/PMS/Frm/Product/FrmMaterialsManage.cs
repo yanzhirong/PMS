@@ -14,8 +14,7 @@ namespace PMS.Frm.Product
 {
     public partial class FrmMaterialsManage : Form
     {
-        private BllUser m_bllUser = new BllUser();
-        private BllRole m_bllRole = new BllRole();
+        private BllMaterials m_bllMaterials = new BllMaterials();
 
         public FrmMaterialsManage()
         {
@@ -31,11 +30,10 @@ namespace PMS.Frm.Product
         private void btn_query_Click(object sender, EventArgs e)
         {
             string name = this.txt_name.Text.Trim();
-            int roleId = 0;
 
-            DataTable users = m_bllUser.GetUsers(name, roleId);
+            DataTable dt = m_bllMaterials.GetMaterials(name);
 
-            this.dataGridView1.DataSource = users;
+            this.dataGridView1.DataSource = dt;
             this.dataGridView1.Refresh();
         }
 

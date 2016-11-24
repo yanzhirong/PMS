@@ -41,6 +41,38 @@ namespace Common.Tools
             return value;
         }
 
+        public static decimal ConvertToDecimal(object _object)
+        {
+            decimal value = 0;
+
+            if (_object == null)
+            {
+                return 0;
+            }
+
+            if (_object is DBNull)
+            {
+                return 0;
+            }
+
+            if (_object.GetType() == typeof(string))
+            {
+                if (StringUtils.IsBlank(_object.ToString()))
+                {
+                    return 0;
+                }
+            }
+
+            try
+            {
+                value = Convert.ToDecimal(_object);
+            }
+            catch (Exception ex)
+            {
+            }
+
+            return value;
+        }
         public static string ConvertToString(object _object)
         {
             string value = "";

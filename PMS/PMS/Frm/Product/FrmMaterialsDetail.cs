@@ -77,6 +77,8 @@ namespace PMS.Frm.Product
             //重量单位
             listItem = m_bllCode.GetCodeItem(3);
             WinCommon.BindComboBox(ref cmb_weightUnit, listItem);
+            //价格单位
+            WinCommon.BindComboBox(ref cmb_priceUnit, listItem);
 
 
             //初始化(修改或者删除时)
@@ -132,6 +134,18 @@ namespace PMS.Frm.Product
                 this.txt_expiredDays.Text = modelMaterials.expiredDays.ToString();
                 //库存报警数
                 this.txt_minStockNum.Text = modelMaterials.minStockNum.ToString();
+                //价格
+                this.txt_price.Text = modelMaterials.modelMaterialsPrice.price.ToString();
+                //价格单位
+                for (int i = 0; i < this.cmb_priceUnit.Items.Count; i++)
+                {
+                    ModelItem modelItem = (ModelItem)this.cmb_priceUnit.Items[i];
+                    if (modelMaterials.modelMaterialsPrice.priceUnit == (int)modelItem.itemKey)
+                    {
+                        this.cmb_priceUnit.SelectedIndex = i;
+                        break;
+                    }
+                }
             }
 
             //删除时，输入项不能修改
@@ -143,6 +157,9 @@ namespace PMS.Frm.Product
             {
                 grb_materials.Enabled = true;
             }
+
+            //价格相关
+            this.grb_price.Visible = LoginUserInfo.LoginUser.loginRole.isFinance == 1 ? true: false; 
         }
         #endregion
 
@@ -161,86 +178,100 @@ namespace PMS.Frm.Product
                 return ;
             }
 
-            ModelUser modelUser = new ModelUser();
-            modelUser.userId = m_userId;
-            modelUser.userName = this.txt_name.Text;
-            modelUser.pwd = this.txt_searchKey.Text;
-            modelUser.roleId = (int)((ModelItem)this.cmb_packingType.SelectedItem).itemKey;
-            modelUser.sex = ((ModelItem)this.cmb_morphology.SelectedItem).itemValue;
-            modelUser.position = this.txt_weight.Text;
-            modelUser.mobile = this.txt_shelfLife.Text;
-            modelUser.email = this.txt_email.Text;
-            modelUser.birthday = this.dtp_birthday.Value;
-            modelUser.isDelete = 0;
-            modelUser.createBy = LoginUserInfo.LoginUser.loginUser.userName;
-            modelUser.createTime = DateTime.Now;
-            modelUser.modifyBy = LoginUserInfo.LoginUser.loginUser.userName;
-            modelUser.modifyTime = DateTime.Now;
+            ModelMaterials modelMaterials = new ModelMaterials();
+            modelMaterials.id = m_materialsId;
+            modelMaterials.name = this.txt_name.Text.Trim();
+            modelMaterials.subName = this.txt_subName.Text.Trim();
 
-            //新增用户
+            ModelMaterialsSearch modelMaterialsSearch = new ModelMaterialsSearch();
+            modelMaterialsSearch.materialsId = modelMaterials.id;
+            modelMaterialsSearch.materialsName = modelMaterials.name;
+            modelMaterialsSearch.searchKey = this.txt_searchKey.Text.Trim();
+            modelMaterials.modelMaterialsSearch = modelMaterialsSearch;
+
+            modelMaterials.packingType = (int)((ModelItem)this.cmb_packingType.SelectedItem).itemKey;
+            modelMaterials.packingRemark = this.txt_packingRemark.Text.Trim();
+            modelMaterials.morphology = (int)((ModelItem)this.cmb_morphology.SelectedItem).itemKey;
+            modelMaterials.weight = ConvertUtils.ConvertToDecimal(this.txt_weight.Text);
+            modelMaterials.weightUnit = (int)((ModelItem)this.cmb_weightUnit.SelectedItem).itemKey;
+            modelMaterials.shelfLife = ConvertUtils.ConvertToInt(this.txt_shelfLife.Text);
+            modelMaterials.expiredDays = ConvertUtils.ConvertToInt(this.txt_expiredDays.Text);
+            modelMaterials.minStockNum = ConvertUtils.ConvertToInt(this.txt_minStockNum.Text);
+
+            if (LoginUserInfo.LoginUser.loginRole.isFinance == 1)
+            {
+                ModelMaterialsPrice modelMaterialsPrice = new ModelMaterialsPrice();
+                modelMaterialsPrice.materialsId = m_materialsId;
+                modelMaterialsPrice.materialsName = modelMaterials.name;
+                modelMaterialsPrice.price = ConvertUtils.ConvertToDecimal(this.txt_price.Text);
+                modelMaterialsPrice.priceUnit = (int)((ModelItem)this.cmb_priceUnit.SelectedItem).itemKey;
+                modelMaterials.modelMaterialsPrice = modelMaterialsPrice;
+            }
+            else
+            {
+                modelMaterials.modelMaterialsPrice = null;
+            }
+            modelMaterials.isDelete = 0;
+            modelMaterials.createBy = LoginUserInfo.LoginUser.loginUser.userName;
+            modelMaterials.createTime = DateTime.Now;
+            modelMaterials.modifyBy = LoginUserInfo.LoginUser.loginUser.userName;
+            modelMaterials.modifyTime = DateTime.Now;
+
+            //新增
             if (m_mode == 0) 
             {
-                rtn = m_bllUser.AddUser(modelUser);
+                rtn = m_bllMaterials.AddMaterials(modelMaterials);
 
                 if (rtn == false)
                 {
-                    MsgUtils.ShowErrorMsg("新增用户失败！");
+                    MsgUtils.ShowErrorMsg("新增原料失败！");
                     return ;
                 }
                 else
                 {
-                    MsgUtils.ShowInfoMsg("新增用户成功！");
+                    MsgUtils.ShowInfoMsg("新增原料成功！");
                 }
 
                 //处理模式变为修改
                 m_mode = 1;
-                m_userId = m_bllUser.GetUserByName(this.txt_name.Text).userId;
+                m_materialsId = m_bllMaterials.GetMaterialsByName(this.txt_name.Text).id;
 
                 init();
 
                 return;
             }
 
-            //修改用户
+            //修改
             if (m_mode == 1)
             {
-                rtn = m_bllUser.UpdateUser(modelUser, m_orgRoleId);
+                rtn = m_bllMaterials.UpdateMaterials(modelMaterials);
 
                 if (rtn == false)
                 {
-                    MsgUtils.ShowErrorMsg("修改用户失败！");
-                    return;
-                }
-
-                if(LoginUserInfo.LoginUser.loginUser.userId == m_userId)
-                {
-                    MsgUtils.ShowInfoMsg("账号已修改，请重新登录。");
-                    this.Parent.Parent.Hide();
-                    Form frmLogin = new Frm.Login.FrmLogin();
-                    frmLogin.Show();
+                    MsgUtils.ShowErrorMsg("修改原料失败！");
                     return;
                 }
                 else
                 {
-                    MsgUtils.ShowInfoMsg("修改用户成功！");
+                    MsgUtils.ShowInfoMsg("修改原料成功！");
                     init();
                     return;
                 }
             }
 
-            //删除用户
+            //删除
             if(m_mode == 2)
             {
-                rtn = m_bllUser.DeleteUser(modelUser);
+                rtn = m_bllMaterials.DeleteMaterials(modelMaterials);
 
                 if (rtn == false)
                 {
-                    MsgUtils.ShowErrorMsg("删除用户失败！");
+                    MsgUtils.ShowErrorMsg("删除原料失败！");
                     return;
                 }
                 else
                 {
-                    MsgUtils.ShowInfoMsg("删除用户成功！");
+                    MsgUtils.ShowInfoMsg("删除原料成功！");
 
                     //返回用户列表
                     Form form = new FrmMaterialsManage();
@@ -367,7 +398,31 @@ namespace PMS.Frm.Product
         private void txt_weight_KeyPress(object sender, KeyPressEventArgs e)
         {
             //仅限数字
-            e.Handled = WinCommon.IsNumber(e.KeyChar);
+            e.Handled = WinCommon.IsOnlyDouble(e.KeyChar);
+        }
+
+        private void txt_shelfLife_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //仅限数字
+            e.Handled = WinCommon.IsOnlyInt(e.KeyChar);
+        }
+
+        private void txt_expiredDays_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //仅限数字
+            e.Handled = WinCommon.IsOnlyInt(e.KeyChar);
+        }
+
+        private void txt_minStockNum_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //仅限数字
+            e.Handled = WinCommon.IsOnlyInt(e.KeyChar);
+        }
+
+        private void txt_price_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //仅限数字
+            e.Handled = WinCommon.IsOnlyDouble(e.KeyChar);
         }
 
     }
