@@ -40,14 +40,14 @@
             this.pnl_main.BackColor = System.Drawing.Color.Aqua;
             this.pnl_main.Location = new System.Drawing.Point(0, 25);
             this.pnl_main.Name = "pnl_main";
-            this.pnl_main.Size = new System.Drawing.Size(1024, 600);
+            this.pnl_main.Size = new System.Drawing.Size(716, 417);
             this.pnl_main.TabIndex = 3;
             // 
             // menuStrip
             // 
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1024, 24);
+            this.menuStrip.Size = new System.Drawing.Size(717, 24);
             this.menuStrip.TabIndex = 4;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -66,7 +66,7 @@
             // 
             this.lnk_logout.AutoSize = true;
             this.lnk_logout.Font = new System.Drawing.Font("宋体", 9F);
-            this.lnk_logout.Location = new System.Drawing.Point(990, 6);
+            this.lnk_logout.Location = new System.Drawing.Point(687, 6);
             this.lnk_logout.Name = "lnk_logout";
             this.lnk_logout.Size = new System.Drawing.Size(29, 12);
             this.lnk_logout.TabIndex = 7;
@@ -78,7 +78,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 626);
+            this.ClientSize = new System.Drawing.Size(717, 435);
             this.Controls.Add(this.lnk_logout);
             this.Controls.Add(this.lbl_loginInfo);
             this.Controls.Add(this.pnl_main);

@@ -80,7 +80,6 @@ namespace PMS.Frm.Product
             //价格单位
             WinCommon.BindComboBox(ref cmb_priceUnit, listItem);
 
-
             //初始化(修改或者删除时)
             if (m_mode != 0 && m_materialsId > 0)
             {

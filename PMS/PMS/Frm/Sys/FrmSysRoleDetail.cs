@@ -15,36 +15,52 @@ namespace PMS.Frm.Sys
 {
     public partial class FrmSysRoleDetail : Form
     {
+        //处理模式（0：新建；1：修改；2：删除）
+        private int m_mode;
+        //角色ID
+        private int m_roleId;
+        
         private BllRole m_bllRole = new BllRole();
 
-        public FrmSysRoleDetail()
+        public FrmSysRoleDetail(int _mode , int _roleId)
         {
             InitializeComponent();
+            m_mode = _mode;
+            m_roleId = _roleId;
         }
 
         private void FrmSysUser_Load(object sender, EventArgs e)
         {
-            //获取所有角色
-            List<ModelItem> listRole = m_bllRole.GetAllRoles();
+            if (m_mode == 0)
+            {
+                this.txt_name.Focus();
 
-            //绑定下拉框
-            WinCommon.BindComboBox(ref cmb_role, listRole);
+                this.grb_role.Enabled = true;
+                this.btn_submit.Enabled = true;
+            }
+            else
+            {
+                ModelRole modelRole = m_bllRole.GetRoleById(m_roleId);
+                this.chk_isFinance.Checked = modelRole.isFinance == 1 ? true : false;
+                this.txt_name.Text = modelRole.roleName;
 
-            this.cmb_role.Focus();
+                setMenuCheckBox();
 
-            this.grb_role.Enabled = false;
-            this.btn_submit.Enabled = false;
+                if (m_mode == 2)
+                {
+                    this.txt_name.Enabled = false;
+                    this.chk_isFinance.Enabled = false;
+                    this.grb_role.Enabled  = false;
+                }
+            }
         }
 
-        private void cmb_role_SelectedIndexChanged(object sender, EventArgs e)
+        private void setMenuCheckBox()
         {
-            int roleId = 0;
-            roleId = (int)((ModelItem)this.cmb_role.SelectedItem).itemKey;
-
-            if (roleId > 0)
+            if (m_roleId > 0)
             {
                 // 获取角色的权限
-                List<ModelMenu> listMenu = m_bllRole.GetMenuByRoleId(roleId);
+                List<ModelMenu> listMenu = m_bllRole.GetMenuByRoleId(m_roleId);
 
                 foreach (ModelMenu menu in listMenu)
                 {
@@ -56,14 +72,6 @@ namespace PMS.Frm.Sys
                         checkBox.Checked = menu.isChecked > 0 ? true : false;
                     }
                 }
-
-                this.grb_role.Enabled = true;
-                this.btn_submit.Enabled = true;
-            }
-            else
-            {
-                this.grb_role.Enabled = false;
-                this.btn_submit.Enabled = false;
             }
         }
 
@@ -194,40 +202,105 @@ namespace PMS.Frm.Sys
 
         private void btn_submit_Click(object sender, EventArgs e)
         {
-            int roleId = (int)((ModelItem)this.cmb_role.SelectedItem).itemKey;
-
-            if(roleId <= 0)
+            if(StringUtils.IsBlank(this.txt_name.Text))
             {
-                MsgUtils.ShowErrorMsg("请选择角色！");
-                cmb_role.Focus();
+                MsgUtils.ShowErrorMsg("请输入角色名！");
+                this.txt_name.Focus();
                 return;
             }
 
-            if (MsgUtils.ShowQustMsg("是否确认修改角色的权限？", MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            if (m_mode == 0)
             {
-                doSubmit(roleId);
+                ModelRole modelRole = m_bllRole.GetRoleByName(this.txt_name.Text.Trim());
+                if (modelRole.roleId > 0)
+                {
+                    MsgUtils.ShowErrorMsg("角色已经存在，请换一个名字！");
+                    this.txt_name.Focus();
+                    return;
+                }
+            }
+
+            string msg = "";
+            if (m_mode == 0)
+            {
+                msg = "是否确认新增角色？";
+            }
+            else if (m_mode == 1)
+            {
+                msg = "是否确认更新角色？";
+            }
+            else
+            {
+                msg = "是否确认删除角色？";
+            }
+
+            if (MsgUtils.ShowQustMsg(msg, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+            {
+                doSubmit();
             }
         }
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             //返回
-            WinCommon.ReturnMain();
+            Form frm = new FrmSysRole();
+            WinCommon.ShowInMain(ref frm);
         }
 
-        private void doSubmit(int _roleId)
+        private void doSubmit()
         {
+            ModelRole modelRole = new ModelRole();
+            modelRole.roleId = m_roleId;
+            modelRole.roleName = this.txt_name.Text.Trim();
+            modelRole.isFinance = chk_isFinance.Checked == true ? 1 : 0;
+            modelRole.isDelete = 0;
+            modelRole.createBy = LoginUserInfo.LoginUser.loginUser.userName;
+            modelRole.createTime = DateTime.Now;
+            modelRole.modifyBy = LoginUserInfo.LoginUser.loginUser.userName;
+            modelRole.modifyTime = DateTime.Now;
+
+            if (m_mode == 2)
+            {
+                if (m_bllRole.DeleteRole(modelRole))
+                {
+                    MsgUtils.ShowInfoMsg("删除角色成功！");
+                }
+                else
+                {
+                    MsgUtils.ShowErrorMsg("删除角色失败！");
+                }
+                return;
+            }
+
             List<ModelMenu> listMenu = new List<ModelMenu>();
             GetCheckedMenu(this, ref listMenu);
 
-            //更新角色的权限
-            if (m_bllRole.UpdateMenuByRoleId(_roleId, listMenu, LoginUserInfo.LoginUser.loginUser.userId))
+            if (m_mode == 0)
             {
-                MsgUtils.ShowInfoMsg("更新角色权限成功！");
+                //更新角色的权限
+                if (m_bllRole.AddRole(modelRole, listMenu))
+                {
+                    MsgUtils.ShowInfoMsg("新增角色成功！");
+                    Form frm = new FrmSysRole();
+                    WinCommon.ShowInMain(ref frm);
+                }
+                else
+                {
+                    MsgUtils.ShowErrorMsg("新增角色失败！");
+                }
             }
             else
             {
-                MsgUtils.ShowErrorMsg("更新角色权限失败！");
+                //更新角色的权限
+                if (m_bllRole.UpdateRole(modelRole, listMenu))
+                {
+                    MsgUtils.ShowInfoMsg("更新角色成功！");
+                }
+                else
+                {
+                    MsgUtils.ShowErrorMsg("更新角色失败！");
+                }
             }
+
             return;
         }
 

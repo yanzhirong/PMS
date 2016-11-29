@@ -80,6 +80,12 @@
     <Compile Include="Frm\Main\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm\Sys\FrmSysRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Sys\FrmSysRole.Designer.cs">
+      <DependentUpon>FrmSysRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinCommon.cs" />
     <Compile Include="Frm\Sys\FrmSysUser.cs">
       <SubType>Form</SubType>
@@ -137,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\Main\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Sys\FrmSysRole.resx">
+      <DependentUpon>FrmSysRole.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

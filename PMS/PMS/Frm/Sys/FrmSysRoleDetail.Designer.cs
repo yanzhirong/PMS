@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cmb_role = new System.Windows.Forms.ComboBox();
             this.lbl_role = new System.Windows.Forms.Label();
             this.grb_role = new System.Windows.Forms.GroupBox();
             this.grb_finance = new System.Windows.Forms.GroupBox();
@@ -58,18 +57,20 @@
             this.chk_sale = new System.Windows.Forms.CheckBox();
             this.chk_product = new System.Windows.Forms.CheckBox();
             this.grb_product = new System.Windows.Forms.GroupBox();
+            this.chk_materials_set = new System.Windows.Forms.CheckBox();
             this.chk_product_set = new System.Windows.Forms.CheckBox();
             this.chk_product_query = new System.Windows.Forms.CheckBox();
             this.chk_sys = new System.Windows.Forms.CheckBox();
             this.grb_sys = new System.Windows.Forms.GroupBox();
+            this.chk_sys_config = new System.Windows.Forms.CheckBox();
             this.chk_sys_role = new System.Windows.Forms.CheckBox();
             this.chk_sys_factory = new System.Windows.Forms.CheckBox();
             this.chk_sys_company = new System.Windows.Forms.CheckBox();
             this.chk_sys_user = new System.Windows.Forms.CheckBox();
             this.btn_submit = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
-            this.chk_materials_set = new System.Windows.Forms.CheckBox();
-            this.chk_sys_config = new System.Windows.Forms.CheckBox();
+            this.chk_isFinance = new System.Windows.Forms.CheckBox();
+            this.txt_name = new System.Windows.Forms.TextBox();
             this.grb_role.SuspendLayout();
             this.grb_finance.SuspendLayout();
             this.grb_purchase.SuspendLayout();
@@ -79,16 +80,6 @@
             this.grb_product.SuspendLayout();
             this.grb_sys.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // cmb_role
-            // 
-            this.cmb_role.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_role.FormattingEnabled = true;
-            this.cmb_role.Location = new System.Drawing.Point(75, 17);
-            this.cmb_role.Name = "cmb_role";
-            this.cmb_role.Size = new System.Drawing.Size(121, 20);
-            this.cmb_role.TabIndex = 1;
-            this.cmb_role.SelectedIndexChanged += new System.EventHandler(this.cmb_role_SelectedIndexChanged);
             // 
             // lbl_role
             // 
@@ -115,7 +106,7 @@
             this.grb_role.Controls.Add(this.grb_product);
             this.grb_role.Controls.Add(this.chk_sys);
             this.grb_role.Controls.Add(this.grb_sys);
-            this.grb_role.Location = new System.Drawing.Point(30, 52);
+            this.grb_role.Location = new System.Drawing.Point(30, 85);
             this.grb_role.Name = "grb_role";
             this.grb_role.Size = new System.Drawing.Size(867, 500);
             this.grb_role.TabIndex = 12;
@@ -410,6 +401,16 @@
             this.grb_product.TabIndex = 3;
             this.grb_product.TabStop = false;
             // 
+            // chk_materials_set
+            // 
+            this.chk_materials_set.AutoSize = true;
+            this.chk_materials_set.Location = new System.Drawing.Point(250, 16);
+            this.chk_materials_set.Name = "chk_materials_set";
+            this.chk_materials_set.Size = new System.Drawing.Size(72, 16);
+            this.chk_materials_set.TabIndex = 10;
+            this.chk_materials_set.Text = "原料管理";
+            this.chk_materials_set.UseVisualStyleBackColor = true;
+            // 
             // chk_product_set
             // 
             this.chk_product_set.AutoSize = true;
@@ -456,6 +457,16 @@
             this.grb_sys.TabIndex = 1;
             this.grb_sys.TabStop = false;
             // 
+            // chk_sys_config
+            // 
+            this.chk_sys_config.AutoSize = true;
+            this.chk_sys_config.Location = new System.Drawing.Point(480, 15);
+            this.chk_sys_config.Name = "chk_sys_config";
+            this.chk_sys_config.Size = new System.Drawing.Size(72, 16);
+            this.chk_sys_config.TabIndex = 5;
+            this.chk_sys_config.Text = "系统设置";
+            this.chk_sys_config.UseVisualStyleBackColor = true;
+            // 
             // chk_sys_role
             // 
             this.chk_sys_role.AutoSize = true;
@@ -499,7 +510,7 @@
             // 
             // btn_submit
             // 
-            this.btn_submit.Location = new System.Drawing.Point(300, 565);
+            this.btn_submit.Location = new System.Drawing.Point(300, 594);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(75, 23);
             this.btn_submit.TabIndex = 50;
@@ -509,7 +520,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(518, 565);
+            this.btn_cancel.Location = new System.Drawing.Point(525, 594);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 51;
@@ -517,35 +528,34 @@
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
-            // chk_materials_set
+            // chk_isFinance
             // 
-            this.chk_materials_set.AutoSize = true;
-            this.chk_materials_set.Location = new System.Drawing.Point(250, 16);
-            this.chk_materials_set.Name = "chk_materials_set";
-            this.chk_materials_set.Size = new System.Drawing.Size(72, 16);
-            this.chk_materials_set.TabIndex = 10;
-            this.chk_materials_set.Text = "原料管理";
-            this.chk_materials_set.UseVisualStyleBackColor = true;
+            this.chk_isFinance.AutoSize = true;
+            this.chk_isFinance.Location = new System.Drawing.Point(30, 54);
+            this.chk_isFinance.Name = "chk_isFinance";
+            this.chk_isFinance.Size = new System.Drawing.Size(96, 16);
+            this.chk_isFinance.TabIndex = 53;
+            this.chk_isFinance.Tag = "101";
+            this.chk_isFinance.Text = "价格管理权限";
+            this.chk_isFinance.UseVisualStyleBackColor = true;
             // 
-            // chk_sys_config
+            // txt_name
             // 
-            this.chk_sys_config.AutoSize = true;
-            this.chk_sys_config.Location = new System.Drawing.Point(480, 15);
-            this.chk_sys_config.Name = "chk_sys_config";
-            this.chk_sys_config.Size = new System.Drawing.Size(72, 16);
-            this.chk_sys_config.TabIndex = 5;
-            this.chk_sys_config.Text = "系统设置";
-            this.chk_sys_config.UseVisualStyleBackColor = true;
+            this.txt_name.Location = new System.Drawing.Point(75, 17);
+            this.txt_name.Name = "txt_name";
+            this.txt_name.Size = new System.Drawing.Size(111, 21);
+            this.txt_name.TabIndex = 54;
             // 
             // FrmSysRoleDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 600);
+            this.ClientSize = new System.Drawing.Size(935, 633);
+            this.Controls.Add(this.txt_name);
+            this.Controls.Add(this.chk_isFinance);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_submit);
             this.Controls.Add(this.grb_role);
-            this.Controls.Add(this.cmb_role);
             this.Controls.Add(this.lbl_role);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmSysRoleDetail";
@@ -575,7 +585,6 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cmb_role;
         private System.Windows.Forms.Label lbl_role;
         private System.Windows.Forms.GroupBox grb_role;
         private System.Windows.Forms.GroupBox grb_finance;
@@ -617,6 +626,8 @@
         private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.CheckBox chk_materials_set;
         private System.Windows.Forms.CheckBox chk_sys_config;
+        private System.Windows.Forms.CheckBox chk_isFinance;
+        private System.Windows.Forms.TextBox txt_name;
 
     }
 }
