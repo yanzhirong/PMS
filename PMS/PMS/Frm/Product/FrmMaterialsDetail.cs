@@ -32,7 +32,10 @@ namespace PMS.Frm.Product
 
         private void FrmMaterialsDetail_Load(object sender, EventArgs e)
         {
-             //初始化
+            LoginUserInfo.LoginUser.currentFrom = this;
+            WinCommon.CreateMenu(ref this.menuStrip1);
+
+            //初始化
             init();
         }
 
@@ -44,7 +47,8 @@ namespace PMS.Frm.Product
         {
             //返回用户列表
             Form form = new FrmMaterialsManage();
-            WinCommon.ShowInMain(ref form);
+            this.Hide();
+            form.ShowDialog();
         }
 
         #region 初始化
@@ -56,26 +60,26 @@ namespace PMS.Frm.Product
             //标题
             if (m_mode == 0)
             {
-                this.lbl_title.Text = "原料管理-新增";
+                this.lbl_title.Text = "原料信息设定-新增";
             }
             else if (m_mode == 1)
             {
-                this.lbl_title.Text =  "原料管理-修改";
+                this.lbl_title.Text = "原料信息设定-修改";
             }
             else
             {
-                this.lbl_title.Text = "原料管理-删除";
+                this.lbl_title.Text = "原料信息设定-删除";
             }
 
             //下拉框
             //包装类型
-            List<ModelItem> listItem = m_bllCode.GetCodeItem(1);
+            List<ModelItem> listItem = m_bllCode.GetCodeItem(1, false);
             WinCommon.BindComboBox(ref cmb_packingType, listItem);
             //产品形态
-            listItem = m_bllCode.GetCodeItem(2);
+            listItem = m_bllCode.GetCodeItem(2, false);
             WinCommon.BindComboBox(ref cmb_morphology, listItem);
             //重量单位
-            listItem = m_bllCode.GetCodeItem(3);
+            listItem = m_bllCode.GetCodeItem(3, false);
             WinCommon.BindComboBox(ref cmb_weightUnit, listItem);
             //价格单位
             WinCommon.BindComboBox(ref cmb_priceUnit, listItem);
@@ -151,10 +155,12 @@ namespace PMS.Frm.Product
             if (m_mode == 2)
             {
                 grb_materials.Enabled = false;
+                grb_price.Enabled = false;
             }
             else
             {
                 grb_materials.Enabled = true;
+                grb_price.Enabled = false;
             }
 
             //价格相关
@@ -201,7 +207,6 @@ namespace PMS.Frm.Product
             {
                 ModelMaterialsPrice modelMaterialsPrice = new ModelMaterialsPrice();
                 modelMaterialsPrice.materialsId = m_materialsId;
-                modelMaterialsPrice.materialsName = modelMaterials.name;
                 modelMaterialsPrice.price = ConvertUtils.ConvertToDecimal(this.txt_price.Text);
                 modelMaterialsPrice.priceUnit = (int)((ModelItem)this.cmb_priceUnit.SelectedItem).itemKey;
                 modelMaterials.modelMaterialsPrice = modelMaterialsPrice;
@@ -274,7 +279,8 @@ namespace PMS.Frm.Product
 
                     //返回用户列表
                     Form form = new FrmMaterialsManage();
-                    WinCommon.ShowInMain(ref form);
+                    this.Hide();
+                    form.ShowDialog();
                     return;
                 }
             }
@@ -423,6 +429,5 @@ namespace PMS.Frm.Product
             //仅限数字
             e.Handled = WinCommon.IsOnlyDouble(e.KeyChar);
         }
-
     }
 }

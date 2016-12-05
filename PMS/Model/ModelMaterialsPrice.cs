@@ -10,7 +10,6 @@ namespace Model
     {
         public int id { set; get; }
         public int materialsId { set; get; }
-        public string materialsName { set; get; }
         public decimal price { set; get; }
         public int priceUnit { set; get; }
 

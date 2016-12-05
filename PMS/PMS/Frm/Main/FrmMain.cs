@@ -25,7 +25,9 @@ namespace PMS.Frm.Main
             //lbl_loginInfo.Left = btn_logout.Left -  lbl_loginInfo.Width - 10;
             this.Text = "生产管理系统      (" + LoginUserInfo.LoginUser.loginUser.userName + "/" + LoginUserInfo.LoginUser.loginRole.roleName + ")";
             //动态生成菜单
-            CreateMenu();
+            // CreateMenu();
+            LoginUserInfo.LoginUser.currentFrom = this;
+            WinCommon.CreateMenu(ref this.menuStrip1);
             LoginUserInfo.LoginUser.mainPanel = this.pnl_main;
 
         }
@@ -37,7 +39,7 @@ namespace PMS.Frm.Main
 
         private void CreateMenu()
         {
-            menuStrip.Items.Clear();
+            menuStrip1.Items.Clear();
 
             if (LoginUserInfo.LoginUser.loginMenu != null && LoginUserInfo.LoginUser.loginMenu.Count > 0)
             {
@@ -49,7 +51,7 @@ namespace PMS.Frm.Main
                         ToolStripMenuItem mi = new ToolStripMenuItem();
                         mi.Text = menu.menuName;
                         CreateMenuItem(mi, menu.menuId);
-                        menuStrip.Items.Add((ToolStripItem)mi);
+                        menuStrip1.Items.Add((ToolStripItem)mi);
                     }
                 }
             }

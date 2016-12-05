@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSysConfig));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn_addNew = new System.Windows.Forms.Button();
@@ -38,8 +39,6 @@
             this.cmb_code = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btn_cancel = new System.Windows.Forms.Button();
-            this.btn_submit = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +46,10 @@
             this.value2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.value3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.v = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_cancel = new System.Windows.Forms.Button();
+            this.btn_submit = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.lbl_tile = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -57,7 +60,7 @@
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.cmb_code);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(30, 21);
+            this.groupBox1.Location = new System.Drawing.Point(30, 87);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(773, 86);
             this.groupBox1.TabIndex = 7;
@@ -140,32 +143,12 @@
             this.value2,
             this.value3,
             this.v});
-            this.dataGridView1.Location = new System.Drawing.Point(30, 135);
+            this.dataGridView1.Location = new System.Drawing.Point(30, 191);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 35;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(773, 453);
+            this.dataGridView1.Size = new System.Drawing.Size(773, 391);
             this.dataGridView1.TabIndex = 8;
-            // 
-            // btn_cancel
-            // 
-            this.btn_cancel.Location = new System.Drawing.Point(485, 606);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_cancel.TabIndex = 53;
-            this.btn_cancel.Text = "取消";
-            this.btn_cancel.UseVisualStyleBackColor = true;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
-            // 
-            // btn_submit
-            // 
-            this.btn_submit.Location = new System.Drawing.Point(267, 606);
-            this.btn_submit.Name = "btn_submit";
-            this.btn_submit.Size = new System.Drawing.Size(75, 23);
-            this.btn_submit.TabIndex = 52;
-            this.btn_submit.Text = "确定";
-            this.btn_submit.UseVisualStyleBackColor = true;
-            this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
             // 
             // id
             // 
@@ -219,19 +202,63 @@
             this.v.Name = "v";
             this.v.Width = 230;
             // 
+            // btn_cancel
+            // 
+            this.btn_cancel.Location = new System.Drawing.Point(485, 606);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_cancel.TabIndex = 53;
+            this.btn_cancel.Text = "取消";
+            this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            // 
+            // btn_submit
+            // 
+            this.btn_submit.Location = new System.Drawing.Point(267, 606);
+            this.btn_submit.Name = "btn_submit";
+            this.btn_submit.Size = new System.Drawing.Size(75, 23);
+            this.btn_submit.TabIndex = 52;
+            this.btn_submit.Text = "确定";
+            this.btn_submit.UseVisualStyleBackColor = true;
+            this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(836, 24);
+            this.menuStrip1.TabIndex = 54;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // lbl_tile
+            // 
+            this.lbl_tile.AutoSize = true;
+            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
+            this.lbl_tile.Location = new System.Drawing.Point(334, 47);
+            this.lbl_tile.Name = "lbl_tile";
+            this.lbl_tile.Size = new System.Drawing.Size(174, 27);
+            this.lbl_tile.TabIndex = 68;
+            this.lbl_tile.Text = "系统参数设置";
+            // 
             // FrmSysConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(843, 653);
+            this.ClientSize = new System.Drawing.Size(836, 653);
+            this.Controls.Add(this.lbl_tile);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_submit);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmSysConfig";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "系统参数设置";
+            this.Text = "系统参数管理";
             this.Load += new System.EventHandler(this.FrmSysUser_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -239,6 +266,7 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -261,6 +289,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn value2;
         private System.Windows.Forms.DataGridViewTextBoxColumn value3;
         private System.Windows.Forms.DataGridViewTextBoxColumn v;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.Label lbl_tile;
 
     }
 }

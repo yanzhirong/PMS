@@ -34,7 +34,9 @@ namespace PMS.Frm.Sys
 
         private void FrmSysUserDetail_Load(object sender, EventArgs e)
         {
-             //初始化
+            LoginUserInfo.LoginUser.currentFrom = this;
+            WinCommon.CreateMenu(ref this.menuStrip1); 
+            //初始化
             init();
         }
 
@@ -45,8 +47,9 @@ namespace PMS.Frm.Sys
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             //返回用户列表
-            Form frmSysUser = new FrmSysUser();
-            WinCommon.ShowInMain(ref frmSysUser);
+            Form form = new FrmSysUser();
+            this.Hide();
+            form.ShowDialog();
         }
 
         #region 初始化
@@ -58,15 +61,15 @@ namespace PMS.Frm.Sys
             //标题
             if (m_mode == 0)
             {
-                this.lbl_title.Text = "用户管理-新增";
+                this.lbl_title.Text = "用户信息设定-新增";
             }
             else if (m_mode == 1)
             {
-                this.lbl_title.Text =  "用户管理-修改";
+                this.lbl_title.Text = "用户信息设定-修改";
             }
             else
             {
-                this.lbl_title.Text = "用户管理-删除";
+                this.lbl_title.Text = "用户信息设定-删除";
             }
 
             //角色下拉框
@@ -226,9 +229,9 @@ namespace PMS.Frm.Sys
                 if(LoginUserInfo.LoginUser.loginUser.userId == m_userId)
                 {
                     MsgUtils.ShowInfoMsg("账号已修改，请重新登录。");
-                    this.Parent.Parent.Hide();
+                    this.Hide();
                     Form frmLogin = new Frm.Login.FrmLogin();
-                    frmLogin.Show();
+                    frmLogin.ShowDialog();
                     return;
                 }
                 else

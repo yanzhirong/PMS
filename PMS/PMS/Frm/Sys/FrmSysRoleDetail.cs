@@ -31,6 +31,9 @@ namespace PMS.Frm.Sys
 
         private void FrmSysUser_Load(object sender, EventArgs e)
         {
+            LoginUserInfo.LoginUser.currentFrom = this;
+            WinCommon.CreateMenu(ref this.menuStrip1);
+
             if (m_mode == 0)
             {
                 this.txt_name.Focus();
@@ -64,6 +67,11 @@ namespace PMS.Frm.Sys
 
                 foreach (ModelMenu menu in listMenu)
                 {
+                    if(StringUtils.IsBlank(menu.checkBoxName))
+                    {
+                        continue;
+                    }
+
                     Control[] control = this.Controls.Find(menu.checkBoxName, true);
                     if (control.Length > 0)
                     {
@@ -242,8 +250,9 @@ namespace PMS.Frm.Sys
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             //返回
-            Form frm = new FrmSysRole();
-            WinCommon.ShowInMain(ref frm);
+            Form form = new FrmSysRole();
+            this.Hide();
+            form.ShowDialog();
         }
 
         private void doSubmit()
@@ -280,8 +289,9 @@ namespace PMS.Frm.Sys
                 if (m_bllRole.AddRole(modelRole, listMenu))
                 {
                     MsgUtils.ShowInfoMsg("新增角色成功！");
-                    Form frm = new FrmSysRole();
-                    WinCommon.ShowInMain(ref frm);
+                    Form form = new FrmSysRole();
+                    this.Hide();
+                    form.ShowDialog();
                 }
                 else
                 {
@@ -293,6 +303,14 @@ namespace PMS.Frm.Sys
                 //更新角色的权限
                 if (m_bllRole.UpdateRole(modelRole, listMenu))
                 {
+                    if (LoginUserInfo.LoginUser.loginRole.roleId == m_roleId)
+                    {
+                        MsgUtils.ShowInfoMsg("角色已修改，请重新登录。");
+                        this.Hide();
+                        Form frmLogin = new Frm.Login.FrmLogin();
+                        frmLogin.ShowDialog();
+                        return;
+                    }
                     MsgUtils.ShowInfoMsg("更新角色成功！");
                 }
                 else

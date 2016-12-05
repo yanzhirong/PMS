@@ -17,5 +17,7 @@ namespace LoginUserInfo
         public static List<ModelMenu> loginMenu;
 
         public static Panel mainPanel;
+
+        public static Form currentFrom;
     }
 }

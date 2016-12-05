@@ -24,6 +24,9 @@ namespace PMS.Frm.Sys
 
         private void FrmSysUser_Load(object sender, EventArgs e)
         {
+            LoginUserInfo.LoginUser.currentFrom = this;
+            WinCommon.CreateMenu(ref this.menuStrip1);
+
             //获取公司信息
             ModelCompany company = m_bllCompany.GetCompany();
 

@@ -29,27 +29,19 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            this.pnl_main = new System.Windows.Forms.Panel();
-            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.lbl_loginInfo = new System.Windows.Forms.Label();
-            this.lnk_logout = new System.Windows.Forms.LinkLabel();
+            this.pnl_main = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // pnl_main
+            // menuStrip1
             // 
-            this.pnl_main.BackColor = System.Drawing.Color.Aqua;
-            this.pnl_main.Location = new System.Drawing.Point(0, 25);
-            this.pnl_main.Name = "pnl_main";
-            this.pnl_main.Size = new System.Drawing.Size(716, 417);
-            this.pnl_main.TabIndex = 3;
-            // 
-            // menuStrip
-            // 
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(717, 24);
-            this.menuStrip.TabIndex = 4;
-            this.menuStrip.Text = "menuStrip";
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(780, 24);
+            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.Text = "menuStrip";
             // 
             // lbl_loginInfo
             // 
@@ -62,28 +54,25 @@
             this.lbl_loginInfo.TabIndex = 6;
             this.lbl_loginInfo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lnk_logout
+            // pnl_main
             // 
-            this.lnk_logout.AutoSize = true;
-            this.lnk_logout.Font = new System.Drawing.Font("宋体", 9F);
-            this.lnk_logout.Location = new System.Drawing.Point(687, 6);
-            this.lnk_logout.Name = "lnk_logout";
-            this.lnk_logout.Size = new System.Drawing.Size(29, 12);
-            this.lnk_logout.TabIndex = 7;
-            this.lnk_logout.TabStop = true;
-            this.lnk_logout.Text = "退出";
-            this.lnk_logout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnk_logout_LinkClicked);
+            this.pnl_main.BackColor = System.Drawing.SystemColors.Control;
+            this.pnl_main.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_main.BackgroundImage")));
+            this.pnl_main.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnl_main.Location = new System.Drawing.Point(0, 25);
+            this.pnl_main.Name = "pnl_main";
+            this.pnl_main.Size = new System.Drawing.Size(780, 560);
+            this.pnl_main.TabIndex = 3;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(717, 435);
-            this.Controls.Add(this.lnk_logout);
+            this.ClientSize = new System.Drawing.Size(780, 557);
             this.Controls.Add(this.lbl_loginInfo);
             this.Controls.Add(this.pnl_main);
-            this.Controls.Add(this.menuStrip);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -101,8 +90,7 @@
         #endregion
 
         private System.Windows.Forms.Panel pnl_main;
-        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label lbl_loginInfo;
-        private System.Windows.Forms.LinkLabel lnk_logout;
     }
 }

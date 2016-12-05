@@ -31,6 +31,8 @@ namespace PMS.Frm.Sys
 
         private void FrmSysFactoryDetail_Load(object sender, EventArgs e)
         {
+            LoginUserInfo.LoginUser.currentFrom = this;
+            WinCommon.CreateMenu(ref this.menuStrip1);
             init();
         }
 
@@ -121,7 +123,8 @@ namespace PMS.Frm.Sys
         {
             //返回仓库列表
             Form form = new FrmSysFactory();
-            WinCommon.ShowInMain(ref form);
+            this.Hide();
+            form.ShowDialog();
         }
 
         private void init()
@@ -129,15 +132,15 @@ namespace PMS.Frm.Sys
             //标题
             if (m_mode == 0)
             {
-                this.lbl_title.Text = "仓库管理-新增";
+                this.lbl_title.Text = "仓库信息设定-新增";
             }
             else if (m_mode == 1)
             {
-                this.lbl_title.Text = "仓库管理-修改";
+                this.lbl_title.Text = "仓库信息设定-修改";
             }
             else
             {
-                this.lbl_title.Text = "仓库管理-删除";
+                this.lbl_title.Text = "仓库信息设定-删除";
             }
 
             //修改删除时，初始化页面

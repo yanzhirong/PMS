@@ -44,7 +44,7 @@ namespace Bll
                 DataTable dtPrice = m_dalMaterials.GetMaterialsPriceById(_materialsId);
                 if (dtPrice != null && dtPrice.Rows.Count > 0)
                 {
-                    modelMaterials.modelMaterialsPrice = ModelUtils<ModelMaterialsPrice>.FillModel(dtSearch.Rows[0]);
+                    modelMaterials.modelMaterialsPrice = ModelUtils<ModelMaterialsPrice>.FillModel(dtPrice.Rows[0]);
                 }
                 else
                 {

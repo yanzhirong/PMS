@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSysCompany));
             this.lbl_role = new System.Windows.Forms.Label();
             this.btn_submit = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
@@ -47,6 +48,7 @@
             this.lbl_zip = new System.Windows.Forms.Label();
             this.lbl_tile = new System.Windows.Forms.Label();
             this.txt_id = new System.Windows.Forms.TextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.SuspendLayout();
             // 
             // lbl_role
@@ -200,7 +202,7 @@
             // 
             this.lbl_tile.AutoSize = true;
             this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
-            this.lbl_tile.Location = new System.Drawing.Point(237, 30);
+            this.lbl_tile.Location = new System.Drawing.Point(237, 45);
             this.lbl_tile.Name = "lbl_tile";
             this.lbl_tile.Size = new System.Drawing.Size(174, 27);
             this.lbl_tile.TabIndex = 66;
@@ -213,6 +215,14 @@
             this.txt_id.Size = new System.Drawing.Size(100, 21);
             this.txt_id.TabIndex = 67;
             this.txt_id.Visible = false;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(654, 24);
+            this.menuStrip1.TabIndex = 68;
+            this.menuStrip1.Text = "menuStrip1";
             // 
             // FrmSysCompany
             // 
@@ -238,10 +248,15 @@
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_submit);
             this.Controls.Add(this.lbl_role);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmSysCompany";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "公司信息设置";
+            this.Text = "公司信息管理";
             this.Load += new System.EventHandler(this.FrmSysUser_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -269,6 +284,7 @@
         private System.Windows.Forms.Label lbl_zip;
         private System.Windows.Forms.Label lbl_tile;
         private System.Windows.Forms.TextBox txt_id;
+        private System.Windows.Forms.MenuStrip menuStrip1;
 
     }
 }

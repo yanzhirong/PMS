@@ -23,6 +23,8 @@ namespace PMS.Frm.Product
 
         private void FrmMaterialsManage_Load(object sender, EventArgs e)
         {
+            LoginUserInfo.LoginUser.currentFrom = this;
+            WinCommon.CreateMenu(ref this.menuStrip1);
 
             this.txt_name.Focus();
         }
@@ -39,26 +41,30 @@ namespace PMS.Frm.Product
 
         private void btn_addNew_Click(object sender, EventArgs e)
         {
+
             Form form = new FrmMaterialsDetail(0, 0);
-            WinCommon.ShowInMain(ref form);
+            this.Hide();
+            form.ShowDialog();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //修改
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "modify")
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "modifyBtn")
             {
-                int userId = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
-                Form form = new FrmMaterialsDetail(1, userId);
-                WinCommon.ShowInMain(ref form);
+                int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
+                Form form = new FrmMaterialsDetail(1, id);
+                this.Hide();
+                form.ShowDialog();
             }
 
             //删除
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "delete")
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "deleteBtn")
             {
-                int userId = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
-                Form form = new FrmMaterialsDetail(2, userId);
-                WinCommon.ShowInMain(ref form);
+                int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
+                Form form = new FrmMaterialsDetail(2, id);
+                this.Hide();
+                form.ShowDialog();
             }
 
         }

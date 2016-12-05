@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSysFactoryDetail));
             this.lbl_role = new System.Windows.Forms.Label();
             this.btn_submit = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
@@ -43,6 +44,7 @@
             this.lbl_address = new System.Windows.Forms.Label();
             this.txt_name = new System.Windows.Forms.TextBox();
             this.lbl_name = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.grb_factory.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +58,7 @@
             // 
             // btn_submit
             // 
-            this.btn_submit.Location = new System.Drawing.Point(201, 344);
+            this.btn_submit.Location = new System.Drawing.Point(204, 365);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(75, 23);
             this.btn_submit.TabIndex = 6;
@@ -66,7 +68,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(387, 340);
+            this.btn_cancel.Location = new System.Drawing.Point(386, 361);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 27);
             this.btn_cancel.TabIndex = 7;
@@ -78,7 +80,7 @@
             // 
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("宋体", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbl_title.Location = new System.Drawing.Point(216, 20);
+            this.lbl_title.Location = new System.Drawing.Point(237, 47);
             this.lbl_title.Name = "lbl_title";
             this.lbl_title.Size = new System.Drawing.Size(180, 27);
             this.lbl_title.TabIndex = 66;
@@ -96,7 +98,7 @@
             this.grb_factory.Controls.Add(this.lbl_address);
             this.grb_factory.Controls.Add(this.txt_name);
             this.grb_factory.Controls.Add(this.lbl_name);
-            this.grb_factory.Location = new System.Drawing.Point(52, 59);
+            this.grb_factory.Location = new System.Drawing.Point(57, 90);
             this.grb_factory.Name = "grb_factory";
             this.grb_factory.Size = new System.Drawing.Size(550, 250);
             this.grb_factory.TabIndex = 67;
@@ -187,6 +189,14 @@
             this.lbl_name.TabIndex = 63;
             this.lbl_name.Text = "仓库名称：";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(650, 24);
+            this.menuStrip1.TabIndex = 68;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
             // FrmSysFactoryDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -197,10 +207,15 @@
             this.Controls.Add(this.btn_submit);
             this.Controls.Add(this.lbl_role);
             this.Controls.Add(this.grb_factory);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmSysFactoryDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "仓库设置";
+            this.Text = "仓库管理";
             this.Load += new System.EventHandler(this.FrmSysFactoryDetail_Load);
             this.grb_factory.ResumeLayout(false);
             this.grb_factory.PerformLayout();
@@ -226,6 +241,7 @@
         private System.Windows.Forms.Label lbl_name;
         private System.Windows.Forms.TextBox txt_zip;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
 
     }
 }

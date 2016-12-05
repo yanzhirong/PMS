@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMaterialsDetail));
             this.btn_submit = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.lbl_title = new System.Windows.Forms.Label();
@@ -69,6 +70,7 @@
             this.cmb_priceUnit = new System.Windows.Forms.ComboBox();
             this.txt_price = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.grb_materials.SuspendLayout();
             this.grb_price.SuspendLayout();
             this.SuspendLayout();
@@ -98,11 +100,10 @@
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Bold);
             this.lbl_title.ForeColor = System.Drawing.Color.Black;
-            this.lbl_title.Location = new System.Drawing.Point(326, 26);
+            this.lbl_title.Location = new System.Drawing.Point(262, 40);
             this.lbl_title.Name = "lbl_title";
-            this.lbl_title.Size = new System.Drawing.Size(124, 27);
+            this.lbl_title.Size = new System.Drawing.Size(0, 27);
             this.lbl_title.TabIndex = 24;
-            this.lbl_title.Text = "原料管理";
             // 
             // grb_materials
             // 
@@ -271,7 +272,6 @@
             this.txt_packingRemark.Location = new System.Drawing.Point(435, 130);
             this.txt_packingRemark.MaxLength = 20;
             this.txt_packingRemark.Name = "txt_packingRemark";
-            this.txt_packingRemark.PasswordChar = '*';
             this.txt_packingRemark.Size = new System.Drawing.Size(164, 21);
             this.txt_packingRemark.TabIndex = 48;
             // 
@@ -415,7 +415,6 @@
             this.txt_searchKey.Location = new System.Drawing.Point(76, 83);
             this.txt_searchKey.MaxLength = 20;
             this.txt_searchKey.Name = "txt_searchKey";
-            this.txt_searchKey.PasswordChar = '*';
             this.txt_searchKey.Size = new System.Drawing.Size(164, 21);
             this.txt_searchKey.TabIndex = 46;
             // 
@@ -476,19 +475,19 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label23.ForeColor = System.Drawing.Color.Black;
-            this.label23.Location = new System.Drawing.Point(178, 21);
+            this.label23.Location = new System.Drawing.Point(174, 21);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(12, 12);
+            this.label23.Size = new System.Drawing.Size(25, 12);
             this.label23.TabIndex = 73;
-            this.label23.Text = "/";
+            this.label23.Text = "元/";
             // 
             // cmb_priceUnit
             // 
             this.cmb_priceUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_priceUnit.FormattingEnabled = true;
-            this.cmb_priceUnit.Location = new System.Drawing.Point(196, 18);
+            this.cmb_priceUnit.Location = new System.Drawing.Point(200, 18);
             this.cmb_priceUnit.Name = "cmb_priceUnit";
-            this.cmb_priceUnit.Size = new System.Drawing.Size(62, 20);
+            this.cmb_priceUnit.Size = new System.Drawing.Size(49, 20);
             this.cmb_priceUnit.TabIndex = 65;
             // 
             // txt_price
@@ -497,8 +496,7 @@
             this.txt_price.Location = new System.Drawing.Point(75, 18);
             this.txt_price.MaxLength = 20;
             this.txt_price.Name = "txt_price";
-            this.txt_price.PasswordChar = '*';
-            this.txt_price.Size = new System.Drawing.Size(97, 21);
+            this.txt_price.Size = new System.Drawing.Size(98, 21);
             this.txt_price.TabIndex = 60;
             this.txt_price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_price_KeyPress);
             // 
@@ -511,6 +509,14 @@
             this.label21.TabIndex = 47;
             this.label21.Text = "价    格：";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(801, 24);
+            this.menuStrip1.TabIndex = 105;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
             // FrmMaterialsDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -522,9 +528,15 @@
             this.Controls.Add(this.lbl_title);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_submit);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmMaterialsDetail";
-            this.Text = "用户设置";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "原料管理";
             this.Load += new System.EventHandler(this.FrmMaterialsDetail_Load);
             this.grb_materials.ResumeLayout(false);
             this.grb_materials.PerformLayout();
@@ -578,5 +590,6 @@
         private System.Windows.Forms.TextBox txt_price;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.MenuStrip menuStrip1;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSysUserDetail));
             this.label1 = new System.Windows.Forms.Label();
             this.txt_name = new System.Windows.Forms.TextBox();
             this.txt_pwd = new System.Windows.Forms.TextBox();
@@ -53,6 +54,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.lbl_title = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.SuspendLayout();
             // 
             // label1
@@ -209,7 +211,7 @@
             // 
             // btn_submit
             // 
-            this.btn_submit.Location = new System.Drawing.Point(245, 495);
+            this.btn_submit.Location = new System.Drawing.Point(245, 463);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(75, 23);
             this.btn_submit.TabIndex = 10;
@@ -219,7 +221,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(485, 495);
+            this.btn_cancel.Location = new System.Drawing.Point(485, 463);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 11;
@@ -292,18 +294,26 @@
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Bold);
             this.lbl_title.ForeColor = System.Drawing.Color.Black;
-            this.lbl_title.Location = new System.Drawing.Point(326, 26);
+            this.lbl_title.Location = new System.Drawing.Point(276, 40);
             this.lbl_title.Name = "lbl_title";
-            this.lbl_title.Size = new System.Drawing.Size(124, 27);
+            this.lbl_title.Size = new System.Drawing.Size(180, 27);
             this.lbl_title.TabIndex = 24;
-            this.lbl_title.Text = "用户管理";
+            this.lbl_title.Text = "用户信息设置";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(801, 24);
+            this.menuStrip1.TabIndex = 25;
+            this.menuStrip1.Text = "menuStrip1";
             // 
             // FrmSysUserDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(801, 562);
+            this.ClientSize = new System.Drawing.Size(801, 501);
             this.Controls.Add(this.lbl_title);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -329,9 +339,15 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_name);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmSysUserDetail";
-            this.Text = "用户设置";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "用户管理";
             this.Load += new System.EventHandler(this.FrmSysUserDetail_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -365,5 +381,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lbl_title;
+        private System.Windows.Forms.MenuStrip menuStrip1;
     }
 }

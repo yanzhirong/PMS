@@ -12,9 +12,11 @@ namespace PMS
     public static class WinCommon
     {
 
-        #region 动态生产菜单（已废弃）
+        #region 动态生产菜单
         public static void CreateMenu(ref MenuStrip menuStrip)
         {
+            // LoginUserInfo.LoginUser.currentFrom = (Form)currentForm;
+
             menuStrip.Items.Clear();
 
             if (LoginUserInfo.LoginUser.loginMenu != null && LoginUserInfo.LoginUser.loginMenu.Count > 0)
@@ -23,10 +25,15 @@ namespace PMS
                 {
                     // 一级菜单
                     if(menu.parentId == 0){
-                        ToolStripMenuItem mi = new ToolStripMenuItem();
-                        mi.Text = menu.menuName;
-                        CreateMenuItem(mi, menu.menuId);
-                        menuStrip.Items.Add((ToolStripItem)mi);
+                        ToolStripMenuItem mitem = new ToolStripMenuItem();
+                        mitem.Text = menu.menuName;
+                        CreateMenuItem(mitem, menu.menuId);
+                        menuStrip.Items.Add((ToolStripItem)mitem);
+                        if (!Common.Tools.StringUtils.IsBlank(menu.formName))
+                        {
+                            mitem.Tag = menu.formName;
+                            mitem.Click += new EventHandler(BindClickToInstinse);
+                        }
                     }
                 }
             }
@@ -57,8 +64,9 @@ namespace PMS
             string formName = mi.Tag as string;
             try
             {
+                LoginUserInfo.LoginUser.currentFrom.Hide();
                 Form f = System.AppDomain.CurrentDomain.CreateInstanceFromAndUnwrap(Application.ExecutablePath, formName) as Form;
-                f.ShowDialog();
+                f.Show();
             }
             catch (Exception ex)
             {
@@ -93,7 +101,6 @@ namespace PMS
         /// <param name="form"></param>
         public static void ShowInMain(ref Form form)
         {
-            LoginUserInfo.LoginUser.mainPanel.Controls.Clear();
             form.TopLevel = false;
             form.Left = 3;
             form.Top = 3;
@@ -113,8 +120,13 @@ namespace PMS
             //form.Height = LoginUserInfo.LoginUser.mainPanel.Height - 6;
 
             LoginUserInfo.LoginUser.mainPanel.Parent.Text = "生产管理系统 --> " + form.Text + "     (" + LoginUserInfo.LoginUser.loginUser.userName + "/" + LoginUserInfo.LoginUser.loginRole.roleName + ")";
+            LoginUserInfo.LoginUser.mainPanel.Controls.Clear();
             LoginUserInfo.LoginUser.mainPanel.Controls.Add(form);
+
+            // LoginUserInfo.LoginUser.mainPanel.Parent.Hide();
             form.Show();
+            //LoginUserInfo.LoginUser.mainPanel.Parent.Show();
+            //form.Show();
         }
 
         /// <summary>

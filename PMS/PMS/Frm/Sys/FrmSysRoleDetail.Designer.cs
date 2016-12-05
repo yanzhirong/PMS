@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSysRoleDetail));
             this.lbl_role = new System.Windows.Forms.Label();
             this.grb_role = new System.Windows.Forms.GroupBox();
             this.grb_finance = new System.Windows.Forms.GroupBox();
@@ -71,6 +72,8 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.chk_isFinance = new System.Windows.Forms.CheckBox();
             this.txt_name = new System.Windows.Forms.TextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.lbl_tile = new System.Windows.Forms.Label();
             this.grb_role.SuspendLayout();
             this.grb_finance.SuspendLayout();
             this.grb_purchase.SuspendLayout();
@@ -84,7 +87,7 @@
             // lbl_role
             // 
             this.lbl_role.AutoSize = true;
-            this.lbl_role.Location = new System.Drawing.Point(28, 20);
+            this.lbl_role.Location = new System.Drawing.Point(36, 83);
             this.lbl_role.Name = "lbl_role";
             this.lbl_role.Size = new System.Drawing.Size(41, 12);
             this.lbl_role.TabIndex = 11;
@@ -106,7 +109,7 @@
             this.grb_role.Controls.Add(this.grb_product);
             this.grb_role.Controls.Add(this.chk_sys);
             this.grb_role.Controls.Add(this.grb_sys);
-            this.grb_role.Location = new System.Drawing.Point(30, 85);
+            this.grb_role.Location = new System.Drawing.Point(30, 117);
             this.grb_role.Name = "grb_role";
             this.grb_role.Size = new System.Drawing.Size(867, 500);
             this.grb_role.TabIndex = 12;
@@ -510,7 +513,7 @@
             // 
             // btn_submit
             // 
-            this.btn_submit.Location = new System.Drawing.Point(300, 594);
+            this.btn_submit.Location = new System.Drawing.Point(301, 633);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(75, 23);
             this.btn_submit.TabIndex = 50;
@@ -520,7 +523,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(525, 594);
+            this.btn_cancel.Location = new System.Drawing.Point(526, 633);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 51;
@@ -531,7 +534,7 @@
             // chk_isFinance
             // 
             this.chk_isFinance.AutoSize = true;
-            this.chk_isFinance.Location = new System.Drawing.Point(30, 54);
+            this.chk_isFinance.Location = new System.Drawing.Point(218, 83);
             this.chk_isFinance.Name = "chk_isFinance";
             this.chk_isFinance.Size = new System.Drawing.Size(96, 16);
             this.chk_isFinance.TabIndex = 53;
@@ -541,26 +544,50 @@
             // 
             // txt_name
             // 
-            this.txt_name.Location = new System.Drawing.Point(75, 17);
+            this.txt_name.Location = new System.Drawing.Point(83, 80);
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(111, 21);
             this.txt_name.TabIndex = 54;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(935, 24);
+            this.menuStrip1.TabIndex = 55;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // lbl_tile
+            // 
+            this.lbl_tile.AutoSize = true;
+            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
+            this.lbl_tile.Location = new System.Drawing.Point(353, 36);
+            this.lbl_tile.Name = "lbl_tile";
+            this.lbl_tile.Size = new System.Drawing.Size(174, 27);
+            this.lbl_tile.TabIndex = 69;
+            this.lbl_tile.Text = "角色权限设定";
             // 
             // FrmSysRoleDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 633);
+            this.ClientSize = new System.Drawing.Size(935, 667);
+            this.Controls.Add(this.lbl_tile);
             this.Controls.Add(this.txt_name);
             this.Controls.Add(this.chk_isFinance);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_submit);
             this.Controls.Add(this.grb_role);
             this.Controls.Add(this.lbl_role);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmSysRoleDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "角色设置";
+            this.Text = "角色管理";
             this.Load += new System.EventHandler(this.FrmSysUser_Load);
             this.grb_role.ResumeLayout(false);
             this.grb_role.PerformLayout();
@@ -628,6 +655,8 @@
         private System.Windows.Forms.CheckBox chk_sys_config;
         private System.Windows.Forms.CheckBox chk_isFinance;
         private System.Windows.Forms.TextBox txt_name;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.Label lbl_tile;
 
     }
 }

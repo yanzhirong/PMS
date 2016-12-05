@@ -86,3 +86,4 @@ D:\git\pms\PMS\PMS\obj\Debug\PMS.Frm.Sys.FrmSysFactory.resources
 D:\git\pms\PMS\PMS\obj\Debug\PMS.Frm.Sys.FrmSysCompany.resources
 D:\git\pms\PMS\PMS\obj\Debug\PMS.Frm.Sys.FrmSysFactoryDetail.resources
 D:\git\pms\PMS\PMS\obj\Debug\PMS.Frm.Sys.FrmSysConfig.resources
+D:\git\pms\PMS\PMS\obj\Debug\PMS.Frm.Product.FrmProductManage.resources

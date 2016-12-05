@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSysRole));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_addNew = new System.Windows.Forms.Button();
             this.btn_query = new System.Windows.Forms.Button();
@@ -41,6 +42,8 @@
             this.createTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modify = new System.Windows.Forms.DataGridViewButtonColumn();
             this.delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.lbl_tile = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -51,7 +54,7 @@
             this.groupBox1.Controls.Add(this.btn_query);
             this.groupBox1.Controls.Add(this.txt_name);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(30, 21);
+            this.groupBox1.Location = new System.Drawing.Point(30, 62);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(525, 95);
             this.groupBox1.TabIndex = 7;
@@ -113,11 +116,11 @@
             this.createTime,
             this.modify,
             this.delete});
-            this.dataGridView1.Location = new System.Drawing.Point(30, 135);
+            this.dataGridView1.Location = new System.Drawing.Point(30, 174);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 35;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(525, 336);
+            this.dataGridView1.Size = new System.Drawing.Size(525, 335);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -165,22 +168,47 @@
             this.delete.Name = "delete";
             this.delete.Width = 80;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(590, 24);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // lbl_tile
+            // 
+            this.lbl_tile.AutoSize = true;
+            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
+            this.lbl_tile.Location = new System.Drawing.Point(233, 33);
+            this.lbl_tile.Name = "lbl_tile";
+            this.lbl_tile.Size = new System.Drawing.Size(120, 27);
+            this.lbl_tile.TabIndex = 68;
+            this.lbl_tile.Text = "角色列表";
+            // 
             // FrmSysRole
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(590, 512);
+            this.Controls.Add(this.lbl_tile);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmSysRole";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "用户列表";
+            this.Text = "角色管理";
             this.Load += new System.EventHandler(this.FrmSysUser_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -198,6 +226,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn createTime;
         private System.Windows.Forms.DataGridViewButtonColumn modify;
         private System.Windows.Forms.DataGridViewButtonColumn delete;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.Label lbl_tile;
 
     }
 }

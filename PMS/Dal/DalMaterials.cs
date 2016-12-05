@@ -25,7 +25,7 @@ namespace Dal
             sbSql.Append("       a.shelfLife, ");
             sbSql.Append("       '修改' modifyBtn, ");
             sbSql.Append("       '删除' deleteBtn ");
-            sbSql.Append("from m_materials a ");
+            sbSql.Append("from p_materials a ");
             sbSql.Append("left join m_code b ");
             sbSql.Append("  on a.packingType = b.subCode and b.code = 1 ");
             sbSql.Append("left join m_code c ");
@@ -46,7 +46,7 @@ namespace Dal
         public DataTable GetMaterialsById(int _materialsId)
         {
             sql = @"select * 
-                      from m_materials
+                      from p_materials
                      where isDelete = 0
                        and id = {0}";
 
@@ -58,9 +58,8 @@ namespace Dal
         public DataTable GetMaterialsSearchById(int _materialsId)
         {
             sql = @"select * 
-                      from m_materialsSearch
-                     where isDelete = 0
-                       and materialsId = {0}";
+                      from r_materials_search
+                     where materialsId = {0}";
 
             sql = String.Format(sql, _materialsId);
 
@@ -70,7 +69,7 @@ namespace Dal
         public DataTable GetMaterialsPriceById(int _materialsId)
         {
             sql = @"select * 
-                      from m_materialsSearchPrice
+                      from r_materials_price
                      where isDelete = 0
                        and materialsId = {0}";
 
@@ -82,7 +81,7 @@ namespace Dal
         public DataTable GetMaterialsByName(string _name)
         {
             sql = @"select * 
-                      from m_materials
+                      from p_materials
                      where isDelete = 0
                        and name = '{0}'";
 
@@ -97,7 +96,7 @@ namespace Dal
 
             sbSql.Clear();
             sbSql.Append("insert into ");
-            sbSql.Append("       m_materials ( ");
+            sbSql.Append("       r_materials ( ");
             sbSql.Append("       name, ");
             sbSql.Append("       subName, ");
             sbSql.Append("       packingType, ");
@@ -136,14 +135,14 @@ namespace Dal
             {
                 sbSql.Clear();
                 sbSql.Append("insert into ");
-                sbSql.Append("       m_materialsSearch ( ");
+                sbSql.Append("       r_materials_search ( ");
                 sbSql.Append("       materialsId, ");
                 sbSql.Append("       materialsName, ");
                 sbSql.Append("       searchKey) ");
                 sbSql.Append("select id, ");
                 sbSql.Append("       '" + _modelMaterials.modelMaterialsSearch.materialsName + "', ");
                 sbSql.Append("       '" + _modelMaterials.modelMaterialsSearch.searchKey + "' ");
-                sbSql.Append("  from m_materials ");
+                sbSql.Append("  from p_materials ");
                 sbSql.Append(" where name = '" + _modelMaterials.name + "'");
                 sbSql.Append(" order by id desc ");
                 sbSql.Append(" limit 0,1 ");
@@ -155,16 +154,14 @@ namespace Dal
             {
                 sbSql.Clear();
                 sbSql.Append("insert into ");
-                sbSql.Append("       m_materialsPrice ( ");
+                sbSql.Append("       r_materials_price ( ");
                 sbSql.Append("       materialsId, ");
-                sbSql.Append("       materialsName, ");
                 sbSql.Append("       price, ");
                 sbSql.Append("       priceUnit) ");
                 sbSql.Append("select id, ");
-                sbSql.Append("       '" + _modelMaterials.modelMaterialsPrice.materialsName + "', ");
                 sbSql.Append("        " + _modelMaterials.modelMaterialsPrice.price + ", ");
                 sbSql.Append("        " + _modelMaterials.modelMaterialsPrice.priceUnit + " ");
-                sbSql.Append("  from m_materials ");
+                sbSql.Append("  from p_materials ");
                 sbSql.Append(" where name = '" + _modelMaterials.name + "'");
                 sbSql.Append(" order by id desc ");
                 sbSql.Append(" limit 0,1 ");
@@ -179,7 +176,7 @@ namespace Dal
             List<string> listSql = new List<string>();
 
             sbSql.Clear();
-            sbSql.Append("update m_materials ");
+            sbSql.Append("update p_materials ");
             sbSql.Append("set name = '" + _modelMaterials.name + "',");
             sbSql.Append("    subName = '" + _modelMaterials.subName + "',");
             sbSql.Append("    packingType = " + _modelMaterials.packingType + ",");
@@ -199,7 +196,7 @@ namespace Dal
             if (_modelMaterials.modelMaterialsSearch != null)
             {
                 sbSql.Clear();
-                sbSql.Append("update m_materialsSearch ");
+                sbSql.Append("update r_materials_search ");
                 sbSql.Append("set searchKey = '" + _modelMaterials.modelMaterialsSearch.searchKey + "',");
                 sbSql.Append("    materialsName = '" + _modelMaterials.modelMaterialsSearch.materialsName + "' ");
                 sbSql.Append("where materialsId = " + _modelMaterials.modelMaterialsSearch.materialsId);
@@ -210,10 +207,8 @@ namespace Dal
             if (_modelMaterials.modelMaterialsPrice != null)
             {
                 sbSql.Clear();
-                sbSql.Append("update m_materialsPrice ");
-                sbSql.Append("set price = " + _modelMaterials.modelMaterialsPrice.materialsName + ",");
-                sbSql.Append("    priceUnit = " + _modelMaterials.modelMaterialsPrice.priceUnit + ", ");
-                sbSql.Append("    materialsName = '" + _modelMaterials.modelMaterialsPrice.materialsName + "', ");
+                sbSql.Append("update r_materials_price ");
+                sbSql.Append("set priceUnit = " + _modelMaterials.modelMaterialsPrice.priceUnit + ", ");
                 sbSql.Append("    modifyBy = '" + _modelMaterials.modelMaterialsPrice.modifyBy + "',");
                 sbSql.Append("    modifyTime = '" + _modelMaterials.modelMaterialsPrice.modifyTime + "' ");
                 sbSql.Append("where materialsId = " + _modelMaterials.modelMaterialsPrice.materialsId);
@@ -228,7 +223,7 @@ namespace Dal
             List<string> listSql = new List<string>();
 
             sbSql.Clear();
-            sbSql.Append("update m_materials ");
+            sbSql.Append("update p_materials ");
             sbSql.Append("set isDelete = 1,");
             sbSql.Append("    modifyBy = '" + _modelMaterials.modifyBy + "',");
             sbSql.Append("    modifyTime = '" + _modelMaterials.modifyTime + "' ");
@@ -237,13 +232,13 @@ namespace Dal
             listSql.Add(sbSql.ToString());
 
             sbSql.Clear();
-            sbSql.Append("delete from m_materialsSearch ");
+            sbSql.Append("delete from r_materials_search ");
             sbSql.Append("where materialsId = " + _modelMaterials.id);
 
             listSql.Add(sbSql.ToString());
 
             sbSql.Clear();
-            sbSql.Append("update m_materialsPrice ");
+            sbSql.Append("update r_materials_price ");
             sbSql.Append("set isDelete = 1,");
             sbSql.Append("    modifyBy = '" + _modelMaterials.modifyBy + "',");
             sbSql.Append("    modifyTime = '" + _modelMaterials.modifyTime + "' ");

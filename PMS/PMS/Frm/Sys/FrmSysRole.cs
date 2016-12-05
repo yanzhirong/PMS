@@ -23,6 +23,9 @@ namespace PMS.Frm.Sys
 
         private void FrmSysUser_Load(object sender, EventArgs e)
         {
+            LoginUserInfo.LoginUser.currentFrom = this;
+            WinCommon.CreateMenu(ref this.menuStrip1);
+
             this.txt_name.Focus();
         }
 
@@ -39,7 +42,8 @@ namespace PMS.Frm.Sys
         private void btn_addNew_Click(object sender, EventArgs e)
         {
             Form form = new FrmSysRoleDetail(0, 0);
-            WinCommon.ShowInMain(ref form);
+            this.Hide();
+            form.ShowDialog();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -49,7 +53,8 @@ namespace PMS.Frm.Sys
             {
                 int roleId = (int)dataGridView1.Rows[e.RowIndex].Cells["roleId"].Value;
                 Form form = new FrmSysRoleDetail(1, roleId);
-                WinCommon.ShowInMain(ref form);
+                this.Hide();
+                form.ShowDialog();
             }
 
             //删除
@@ -57,7 +62,8 @@ namespace PMS.Frm.Sys
             {
                 int roleId = (int)dataGridView1.Rows[e.RowIndex].Cells["roleID"].Value;
                 Form form = new FrmSysRoleDetail(2, roleId);
-                WinCommon.ShowInMain(ref form);
+                this.Hide();
+                form.ShowDialog();
             }
 
         }
