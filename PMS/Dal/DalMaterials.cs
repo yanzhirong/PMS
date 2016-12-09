@@ -90,13 +90,24 @@ namespace Dal
             return Dal.DBHelper.Select(sql);
         }
 
+        public DataTable GetMaterialsBySearchKey(string _searchKey)
+        {
+            sql = @"select * 
+                      from r_materials_search
+                     where upper(searchKey) like '%{0}%'";
+
+            sql = String.Format(sql, _searchKey);
+
+            return Dal.DBHelper.Select(sql);
+        }
+
         public int AddMaterials(ModelMaterials _modelMaterials)
         {
             List<string> listSql = new List<string>();
 
             sbSql.Clear();
             sbSql.Append("insert into ");
-            sbSql.Append("       r_materials ( ");
+            sbSql.Append("       p_materials ( ");
             sbSql.Append("       name, ");
             sbSql.Append("       subName, ");
             sbSql.Append("       packingType, ");

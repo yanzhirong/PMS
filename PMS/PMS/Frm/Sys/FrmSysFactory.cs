@@ -63,6 +63,11 @@ namespace PMS.Frm.Sys
                 this.Hide();
                 form.ShowDialog();
             }
+        }
+
+        private void FrmSysFactory_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            WinCommon.Exit();
         } 
     }
 }

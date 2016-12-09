@@ -233,6 +233,7 @@
             this.Name = "FrmSysFactory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "仓库管理";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSysFactory_FormClosed);
             this.Load += new System.EventHandler(this.FrmSysFactory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);

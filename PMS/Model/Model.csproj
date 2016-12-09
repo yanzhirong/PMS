@@ -55,6 +55,7 @@
     <Compile Include="ModelProductPrice.cs" />
     <Compile Include="ModelProductSearch.cs" />
     <Compile Include="ModelProduct.cs" />
+    <Compile Include="ModelProductMaterials.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

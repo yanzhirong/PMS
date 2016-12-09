@@ -257,6 +257,7 @@
             this.Name = "FrmSysCompany";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "公司信息管理";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSysCompany_FormClosed);
             this.Load += new System.EventHandler(this.FrmSysUser_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

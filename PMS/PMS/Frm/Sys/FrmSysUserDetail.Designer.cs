@@ -348,6 +348,7 @@
             this.Name = "FrmSysUserDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "用户管理";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSysUserDetail_FormClosed);
             this.Load += new System.EventHandler(this.FrmSysUserDetail_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

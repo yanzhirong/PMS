@@ -329,5 +329,10 @@ namespace PMS.Frm.Sys
         }
         #endregion
 
+        private void FrmSysUserDetail_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            WinCommon.Exit();
+        }
+
     }
 }

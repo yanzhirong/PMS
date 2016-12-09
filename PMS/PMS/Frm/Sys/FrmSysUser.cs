@@ -79,6 +79,11 @@ namespace PMS.Frm.Sys
 
         }
 
+        private void FrmSysUser_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            WinCommon.Exit();
+        }
+
  
     }
 }

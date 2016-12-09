@@ -9,7 +9,7 @@ namespace Model
     public class ModelProduct : ModelBase
     {
         public int id { set; get; }
-        public int name { set; get; }
+        public string name { set; get; }
         public string subName { set; get; }
         public int packingType { set; get; }
         public string packingRemark { set; get; }
@@ -23,5 +23,7 @@ namespace Model
         public ModelProductPrice modelProductPrice { set; get; }
 
         public ModelProductSearch modelProductSearch { set; get; }
+
+        public List<ModelProductMaterials> modelProductMaterials { set; get; }
     }
 }

@@ -350,5 +350,10 @@ namespace PMS.Frm.Sys
                 }
             }
         }
+
+        private void FrmSysRoleDetail_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            WinCommon.Exit();
+        }
     }
 }

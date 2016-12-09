@@ -272,6 +272,7 @@
             this.Name = "FrmSysUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "用户管理";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSysUser_FormClosed);
             this.Load += new System.EventHandler(this.FrmSysUser_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -13,24 +13,25 @@ using Common.Tools;
 
 namespace PMS.Frm.Product
 {
-    public partial class FrmMaterialsDetail : Form
+    public partial class FrmProductDetail : Form
     {
         //处理模式（0：新建；1：修改；2：删除）
         private int m_mode;
         //原来ID
-        private int m_materialsId;
+        private int m_productId;
 
+        private BllProduct m_bllProduct = new BllProduct();
         private BllMaterials m_bllMaterials = new BllMaterials();
         private BllCode m_bllCode = new BllCode();
 
-        public FrmMaterialsDetail(int _mode, int _materialsId)
+        public FrmProductDetail(int _mode, int _productId)
         {
             InitializeComponent();
             m_mode = _mode;
-            m_materialsId = _materialsId;
+            m_productId = _productId;
         }
 
-        private void FrmMaterialsDetail_Load(object sender, EventArgs e)
+        private void FrmProductDetail_Load(object sender, EventArgs e)
         {
             LoginUserInfo.LoginUser.currentFrom = this;
             WinCommon.CreateMenu(ref this.menuStrip1);
@@ -46,7 +47,7 @@ namespace PMS.Frm.Product
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             //返回用户列表
-            Form form = new FrmMaterialsManage();
+            Form form = new FrmProductManage();
             this.Hide();
             form.ShowDialog();
         }
@@ -60,15 +61,15 @@ namespace PMS.Frm.Product
             //标题
             if (m_mode == 0)
             {
-                this.lbl_title.Text = "原料信息设定-新增";
+                this.lbl_title.Text = "商品信息设定-新增";
             }
             else if (m_mode == 1)
             {
-                this.lbl_title.Text = "原料信息设定-修改";
+                this.lbl_title.Text = "商品信息设定-修改";
             }
             else
             {
-                this.lbl_title.Text = "原料信息设定-删除";
+                this.lbl_title.Text = "商品信息设定-删除";
             }
 
             //下拉框
@@ -79,28 +80,31 @@ namespace PMS.Frm.Product
             listItem = m_bllCode.GetCodeItem(2, false);
             WinCommon.BindComboBox(ref cmb_morphology, listItem);
             //重量单位
-            listItem = m_bllCode.GetCodeItem(3, false);
+            listItem = m_bllCode.GetCodeItem(3, false);           
             WinCommon.BindComboBox(ref cmb_weightUnit, listItem);
             //价格单位
             WinCommon.BindComboBox(ref cmb_priceUnit, listItem);
 
-            //初始化(修改或者删除时)
-            if (m_mode != 0 && m_materialsId > 0)
-            {
-                ModelMaterials modelMaterials = m_bllMaterials.GetMaterialsById(m_materialsId);
+            // 设置datagrid
+            SetDataGridViewStyle();
 
-                //原料名
-                this.txt_name.Text = modelMaterials.name;
-                //原料略名
-                this.txt_subName.Text = modelMaterials.subName;
+            //初始化(修改或者删除时)
+            if (m_mode != 0 && m_productId > 0)
+            {
+                ModelProduct modelProduct = m_bllProduct.GetProductById(m_productId);
+
+                //商品名
+                this.txt_name.Text = modelProduct.name;
+                //商品略名
+                this.txt_subName.Text = modelProduct.subName;
                 //检索键
-                this.txt_searchKey.Text = modelMaterials.modelMaterialsSearch.searchKey;
+                this.txt_searchKey.Text = modelProduct.modelProductSearch.searchKey;
 
                 //包装类型
                 for (int i = 0; i < this.cmb_packingType.Items.Count; i++)
                 {
                     ModelItem modelItem = (ModelItem)this.cmb_packingType.Items[i];
-                    if (modelMaterials.packingType == (int)modelItem.itemKey)
+                    if (modelProduct.packingType == (int)modelItem.itemKey)
                     {
                         this.cmb_packingType.SelectedIndex = i;
                         break;
@@ -110,7 +114,7 @@ namespace PMS.Frm.Product
                 for (int i = 0; i < this.cmb_morphology.Items.Count; i++)
                 {
                     ModelItem modelItem = (ModelItem)this.cmb_morphology.Items[i];
-                    if (modelMaterials.morphology == (int)modelItem.itemKey)
+                    if (modelProduct.morphology == (int)modelItem.itemKey)
                     {
                         this.cmb_morphology.SelectedIndex = i;
                         break;
@@ -120,7 +124,7 @@ namespace PMS.Frm.Product
                 for (int i = 0; i < this.cmb_weightUnit.Items.Count; i++)
                 {
                     ModelItem modelItem = (ModelItem)this.cmb_weightUnit.Items[i];
-                    if (modelMaterials.weightUnit == (int)modelItem.itemKey)
+                    if (modelProduct.weightUnit == (int)modelItem.itemKey)
                     {
                         this.cmb_weightUnit.SelectedIndex = i;
                         break;
@@ -128,27 +132,33 @@ namespace PMS.Frm.Product
                 }
 
                 //包装说明
-                this.txt_packingRemark.Text = modelMaterials.packingRemark;
+                this.txt_packingRemark.Text = modelProduct.packingRemark;
                 //重量
-                this.txt_weight.Text = modelMaterials.weight.ToString();
+                this.txt_weight.Text = modelProduct.weight.ToString();
                 //保质期
-                this.txt_shelfLife.Text = modelMaterials.shelfLife.ToString();
+                this.txt_shelfLife.Text = modelProduct.shelfLife.ToString();
                 //过期提醒天数
-                this.txt_expiredDays.Text = modelMaterials.expiredDays.ToString();
+                this.txt_expiredDays.Text = modelProduct.expiredDays.ToString();
                 //库存报警数
-                this.txt_minStockNum.Text = modelMaterials.minStockNum.ToString();
+                this.txt_minStockNum.Text = modelProduct.minStockNum.ToString();
                 //价格
-                this.txt_price.Text = modelMaterials.modelMaterialsPrice.price.ToString();
+                this.txt_minPrice.Text = modelProduct.modelProductPrice.minPrice.ToString();
+                this.txt_advisePrice.Text = modelProduct.modelProductPrice.advisePrice.ToString();
                 //价格单位
                 for (int i = 0; i < this.cmb_priceUnit.Items.Count; i++)
                 {
                     ModelItem modelItem = (ModelItem)this.cmb_priceUnit.Items[i];
-                    if (modelMaterials.modelMaterialsPrice.priceUnit == (int)modelItem.itemKey)
+                    if (modelProduct.modelProductPrice.priceUnit == (int)modelItem.itemKey)
                     {
                         this.cmb_priceUnit.SelectedIndex = i;
                         break;
                     }
                 }
+
+                // 原料构成
+                dataGridView1.DataSource = m_bllProduct.GetProductMaterialsById(m_productId);
+                dataGridView1.Refresh();
+
             }
 
             //删除时，输入项不能修改
@@ -156,15 +166,19 @@ namespace PMS.Frm.Product
             {
                 grb_materials.Enabled = false;
                 grb_price.Enabled = false;
+                dataGridView1.Enabled = false;
             }
             else
             {
                 grb_materials.Enabled = true;
                 grb_price.Enabled = true;
+                dataGridView1.Enabled = true;
             }
 
             //价格相关
             this.grb_price.Visible = LoginUserInfo.LoginUser.loginRole.isFinance == 1 ? true: false; 
+
+           
         }
         #endregion
 
@@ -183,62 +197,84 @@ namespace PMS.Frm.Product
                 return ;
             }
 
-            ModelMaterials modelMaterials = new ModelMaterials();
-            modelMaterials.id = m_materialsId;
-            modelMaterials.name = this.txt_name.Text.Trim();
-            modelMaterials.subName = this.txt_subName.Text.Trim();
+            ModelProduct modelProduct = new ModelProduct();
+            modelProduct.id = m_productId;
+            modelProduct.name = this.txt_name.Text.Trim();
+            modelProduct.subName = this.txt_subName.Text.Trim();
 
-            ModelMaterialsSearch modelMaterialsSearch = new ModelMaterialsSearch();
-            modelMaterialsSearch.materialsId = modelMaterials.id;
-            modelMaterialsSearch.materialsName = modelMaterials.name;
-            modelMaterialsSearch.searchKey = this.txt_searchKey.Text.Trim();
-            modelMaterials.modelMaterialsSearch = modelMaterialsSearch;
+            ModelProductSearch modelProductSearch = new ModelProductSearch();
+            modelProductSearch.productId = modelProduct.id;
+            modelProductSearch.productName = modelProduct.name;
+            modelProductSearch.searchKey = this.txt_searchKey.Text.Trim();
+            modelProduct.modelProductSearch = modelProductSearch;
 
-            modelMaterials.packingType = (int)((ModelItem)this.cmb_packingType.SelectedItem).itemKey;
-            modelMaterials.packingRemark = this.txt_packingRemark.Text.Trim();
-            modelMaterials.morphology = (int)((ModelItem)this.cmb_morphology.SelectedItem).itemKey;
-            modelMaterials.weight = ConvertUtils.ConvertToDecimal(this.txt_weight.Text);
-            modelMaterials.weightUnit = (int)((ModelItem)this.cmb_weightUnit.SelectedItem).itemKey;
-            modelMaterials.shelfLife = ConvertUtils.ConvertToInt(this.txt_shelfLife.Text);
-            modelMaterials.expiredDays = ConvertUtils.ConvertToInt(this.txt_expiredDays.Text);
-            modelMaterials.minStockNum = ConvertUtils.ConvertToInt(this.txt_minStockNum.Text);
+            modelProduct.packingType = (int)((ModelItem)this.cmb_packingType.SelectedItem).itemKey;
+            modelProduct.packingRemark = this.txt_packingRemark.Text.Trim();
+            modelProduct.morphology = (int)((ModelItem)this.cmb_morphology.SelectedItem).itemKey;
+            modelProduct.weight = ConvertUtils.ConvertToDecimal(this.txt_weight.Text);
+            modelProduct.weightUnit = (int)((ModelItem)this.cmb_weightUnit.SelectedItem).itemKey;
+            modelProduct.shelfLife = ConvertUtils.ConvertToInt(this.txt_shelfLife.Text);
+            modelProduct.expiredDays = ConvertUtils.ConvertToInt(this.txt_expiredDays.Text);
+            modelProduct.minStockNum = ConvertUtils.ConvertToInt(this.txt_minStockNum.Text);
 
             if (LoginUserInfo.LoginUser.loginRole.isFinance == 1)
             {
-                ModelMaterialsPrice modelMaterialsPrice = new ModelMaterialsPrice();
-                modelMaterialsPrice.materialsId = m_materialsId;
-                modelMaterialsPrice.price = ConvertUtils.ConvertToDecimal(this.txt_price.Text);
-                modelMaterialsPrice.priceUnit = (int)((ModelItem)this.cmb_priceUnit.SelectedItem).itemKey;
-                modelMaterials.modelMaterialsPrice = modelMaterialsPrice;
+                ModelProductPrice modelProductPrice = new ModelProductPrice();
+                modelProductPrice.productId = modelProduct.id;
+                modelProductPrice.minPrice = ConvertUtils.ConvertToDecimal(this.txt_minPrice.Text);
+                modelProductPrice.advisePrice = ConvertUtils.ConvertToDecimal(this.txt_advisePrice.Text);
+                modelProductPrice.priceUnit = (int)((ModelItem)this.cmb_priceUnit.SelectedItem).itemKey;
+                modelProduct.modelProductPrice = modelProductPrice;
             }
             else
             {
-                modelMaterials.modelMaterialsPrice = null;
+                modelProduct.modelProductPrice = null;
             }
-            modelMaterials.isDelete = 0;
-            modelMaterials.createBy = LoginUserInfo.LoginUser.loginUser.userName;
-            modelMaterials.createTime = DateTime.Now;
-            modelMaterials.modifyBy = LoginUserInfo.LoginUser.loginUser.userName;
-            modelMaterials.modifyTime = DateTime.Now;
+            modelProduct.isDelete = 0;
+            modelProduct.createBy = LoginUserInfo.LoginUser.loginUser.userName;
+            modelProduct.createTime = DateTime.Now;
+            modelProduct.modifyBy = LoginUserInfo.LoginUser.loginUser.userName;
+            modelProduct.modifyTime = DateTime.Now;
+
+            List<ModelProductMaterials> modelProductMaterials = new List<ModelProductMaterials>();
+            for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+            {
+
+                int materialsId = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[2].Value);
+                if (materialsId > 0)
+                {
+                    ModelProductMaterials materials = new ModelProductMaterials();
+                    materials.id = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[0].Value);
+                    materials.productId = modelProduct.id;
+                    materials.materialsId = materialsId;
+                    materials.searchKey = ConvertUtils.ConvertToString(this.dataGridView1.Rows[i].Cells[1].Value);
+                    materials.materialsNum = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[3].Value);
+                    materials.materialsUnit = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[4].Value);
+
+                    modelProductMaterials.Add(materials);
+                }
+
+            }
+            modelProduct.modelProductMaterials = modelProductMaterials;
 
             //新增
             if (m_mode == 0) 
             {
-                rtn = m_bllMaterials.AddMaterials(modelMaterials);
+                rtn = m_bllProduct.AddProduct(modelProduct);
 
                 if (rtn == false)
                 {
-                    MsgUtils.ShowErrorMsg("新增原料失败！");
+                    MsgUtils.ShowErrorMsg("新增商品失败！");
                     return ;
                 }
                 else
                 {
-                    MsgUtils.ShowInfoMsg("新增原料成功！");
+                    MsgUtils.ShowInfoMsg("新增商品成功！");
                 }
 
                 //处理模式变为修改
                 m_mode = 1;
-                m_materialsId = m_bllMaterials.GetMaterialsByName(this.txt_name.Text).id;
+                m_productId = m_bllProduct.GetProductByName(this.txt_name.Text).id;
 
                 init();
 
@@ -248,16 +284,16 @@ namespace PMS.Frm.Product
             //修改
             if (m_mode == 1)
             {
-                rtn = m_bllMaterials.UpdateMaterials(modelMaterials);
+                rtn = m_bllProduct.UpdateProduct(modelProduct);
 
                 if (rtn == false)
                 {
-                    MsgUtils.ShowErrorMsg("修改原料失败！");
+                    MsgUtils.ShowErrorMsg("修改商品失败！");
                     return;
                 }
                 else
                 {
-                    MsgUtils.ShowInfoMsg("修改原料成功！");
+                    MsgUtils.ShowInfoMsg("修改商品成功！");
                     init();
                     return;
                 }
@@ -266,16 +302,16 @@ namespace PMS.Frm.Product
             //删除
             if(m_mode == 2)
             {
-                rtn = m_bllMaterials.DeleteMaterials(modelMaterials);
+                rtn = m_bllProduct.DeleteProduct(modelProduct);
 
                 if (rtn == false)
                 {
-                    MsgUtils.ShowErrorMsg("删除原料失败！");
+                    MsgUtils.ShowErrorMsg("删除商品失败！");
                     return;
                 }
                 else
                 {
-                    MsgUtils.ShowInfoMsg("删除原料成功！");
+                    MsgUtils.ShowInfoMsg("删除商品成功！");
 
                     //返回用户列表
                     Form form = new FrmMaterialsManage();
@@ -302,10 +338,10 @@ namespace PMS.Frm.Product
                     this.txt_name.Focus();
                     return false;
                 }
-                ModelMaterials materials = m_bllMaterials.GetMaterialsByName(this.txt_name.Text);
-                if (materials.id > 0 && materials.id != m_materialsId)
+                ModelProduct product = m_bllProduct.GetProductByName(this.txt_name.Text);
+                if (product.id > 0 && product.id != m_productId)
                 {
-                    MsgUtils.ShowErrorMsg("该原料已存在！");
+                    MsgUtils.ShowErrorMsg("该商品已存在！");
                     this.txt_name.Focus();
                     return false;
                 }
@@ -424,15 +460,124 @@ namespace PMS.Frm.Product
             e.Handled = WinCommon.IsOnlyInt(e.KeyChar);
         }
 
-        private void txt_price_KeyPress(object sender, KeyPressEventArgs e)
+        private void txt_minPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
             //仅限数字
             e.Handled = WinCommon.IsOnlyDouble(e.KeyChar);
         }
 
-        private void FrmMaterialsDetail_FormClosed(object sender, FormClosedEventArgs e)
+        private void txt_advisePrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //仅限数字
+            e.Handled = WinCommon.IsOnlyDouble(e.KeyChar);
+        }
+
+        private void FrmProductDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
             WinCommon.Exit();
         }
+
+        /// <summary>
+        /// 设置DataGridView列
+        /// </summary>
+        private void SetDataGridViewStyle()
+        {
+            this.dataGridView1.Columns.Clear();
+
+            DataGridViewTextBoxColumn columns = new DataGridViewTextBoxColumn();
+            columns.Name = "id";
+            columns.HeaderText = "id";
+            columns.DataPropertyName = "id";
+            columns.Visible = false;
+            this.dataGridView1.Columns.Add(columns);
+
+            columns = new DataGridViewTextBoxColumn();
+            columns.Name = "searchKey";
+            columns.HeaderText = "  ";
+            columns.DataPropertyName = "searchKey";
+            columns.Width = 150;
+            this.dataGridView1.Columns.Add(columns);
+
+            DataGridViewComboBoxColumn column = new DataGridViewComboBoxColumn();
+            column.Name = "materialsId";
+            column.HeaderText = "原料";
+            column.DataPropertyName = "materialsId";
+            column.Width = 150;
+            this.dataGridView1.Columns.Add(column);
+            column.DataSource = m_bllMaterials.GetMaterialsBySearchKey("");
+            column.DisplayMember = "materialsName";
+            column.ValueMember = "materialsId";
+
+            columns = new DataGridViewTextBoxColumn();
+            columns.Name = "materialsNum";
+            columns.HeaderText = "数量";
+            columns.DataPropertyName = "materialsNum";
+            columns.Width = 100;
+            this.dataGridView1.Columns.Add(columns);
+
+            column = new DataGridViewComboBoxColumn();
+            column.Name = "materialsUnit";
+            column.DataPropertyName = "materialsUnit";
+            column.HeaderText = "单位";
+            column.Width = 100;
+            this.dataGridView1.Columns.Add(column);
+            column.DataSource = m_bllCode.GetCodeList(3);      
+            column.DisplayMember = "value1";
+            column.ValueMember = "subCode";
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+           // return;
+
+            if(e.RowIndex < 0 || e.ColumnIndex < 0)
+            {
+                return;
+            }
+
+            // 检索键
+            if (e.ColumnIndex == 1)
+            {
+                string searchKey = ConvertUtils.ConvertToString(this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+                searchKey = searchKey.ToUpper();
+
+                DataGridViewComboBoxCell column = (DataGridViewComboBoxCell)this.dataGridView1.Rows[e.RowIndex].Cells[2];
+
+                column.DataSource = m_bllMaterials.GetMaterialsBySearchKey(searchKey);
+                column.DisplayMember = "materialsName";
+                column.ValueMember = "materialsId";
+
+
+            }
+        }
+
+        //private void dataGridView1_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        //{
+        //    if (this.dataGridView1.CurrentCell.ColumnIndex < 0)
+        //    {
+        //        return;
+        //    }
+
+        //    dataGridView1.CommitEdit(DataGridViewDataErrorContexts.Commit);
+
+        //    // 检索键
+        //    if (this.dataGridView1.CurrentCell.ColumnIndex == 1)
+        //    {
+        //        string searchKey = ConvertUtils.ConvertToString(this.dataGridView1.CurrentCell.Value);
+        //        searchKey = searchKey.ToUpper();
+
+        //        DataGridViewComboBoxCell column = (DataGridViewComboBoxCell)this.dataGridView1.Rows[this.dataGridView1.CurrentCell.RowIndex].Cells[2];
+        //        // column.Items.Clear();
+
+        //        //if (StringUtils.IsNotBlank(searchKey))
+        //        //{
+        //            column.DataSource = m_bllMaterials.GetMaterialsBySearchKey(searchKey);
+        //            column.DisplayMember = "materialsName";
+        //            column.ValueMember = "materialsId";
+        //        //}
+
+        //    }
+        //}
+
     }
 }

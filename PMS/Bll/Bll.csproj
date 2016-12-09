@@ -48,6 +48,7 @@
     <Compile Include="BllFactory.cs" />
     <Compile Include="BllCode.cs" />
     <Compile Include="BllMaterials.cs" />
+    <Compile Include="BllProduct.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

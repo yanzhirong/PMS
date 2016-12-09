@@ -588,6 +588,7 @@
             this.Name = "FrmSysRoleDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "角色管理";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSysRoleDetail_FormClosed);
             this.Load += new System.EventHandler(this.FrmSysUser_Load);
             this.grb_role.ResumeLayout(false);
             this.grb_role.PerformLayout();

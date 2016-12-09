@@ -203,6 +203,7 @@
             this.Name = "FrmSysRole";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "角色管理";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSysRole_FormClosed);
             this.Load += new System.EventHandler(this.FrmSysUser_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

@@ -216,6 +216,7 @@
             this.Name = "FrmSysFactoryDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "仓库管理";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSysFactoryDetail_FormClosed);
             this.Load += new System.EventHandler(this.FrmSysFactoryDetail_Load);
             this.grb_factory.ResumeLayout(false);
             this.grb_factory.PerformLayout();

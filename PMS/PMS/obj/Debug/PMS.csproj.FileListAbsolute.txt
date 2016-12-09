@@ -73,7 +73,6 @@ D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Sys.FrmSysCompany.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Sys.FrmSysFactoryDetail.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Sys.FrmSysConfig.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Product.FrmMaterialsManage.resources
-D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Product.FrmProductMaterialsDetail.resources
 D:\git\pms\PMS\PMS\obj\Debug\PMS.Frm.Login.FrmLogin.resources
 D:\git\pms\PMS\PMS\obj\Debug\PMS.Frm.Product.FrmMaterialsManage.resources
 D:\git\pms\PMS\PMS\obj\Debug\PMS.Frm.Product.FrmMaterialsDetail.resources
@@ -87,3 +86,7 @@ D:\git\pms\PMS\PMS\obj\Debug\PMS.Frm.Sys.FrmSysCompany.resources
 D:\git\pms\PMS\PMS\obj\Debug\PMS.Frm.Sys.FrmSysFactoryDetail.resources
 D:\git\pms\PMS\PMS\obj\Debug\PMS.Frm.Sys.FrmSysConfig.resources
 D:\git\pms\PMS\PMS\obj\Debug\PMS.Frm.Product.FrmProductManage.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Product.FrmMaterialsDetail.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Product.FrmProductManage.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Product.FrmProductDetail.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Sys.FrmSysRole.resources

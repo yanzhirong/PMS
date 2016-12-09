@@ -68,6 +68,11 @@ namespace PMS.Frm.Sys
 
         }
 
+        private void FrmSysRole_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            WinCommon.Exit();
+        }
+
  
     }
 }

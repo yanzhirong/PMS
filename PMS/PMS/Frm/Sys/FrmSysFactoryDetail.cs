@@ -160,5 +160,10 @@ namespace PMS.Frm.Sys
                 grb_factory.Enabled = false;
             }
         }
+
+        private void FrmSysFactoryDetail_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            WinCommon.Exit();
+        }
     }
 }

@@ -22,6 +22,13 @@ namespace Bll
             return dt;
         }
 
+        public DataTable GetMaterialsBySearchKey(string _searchKey)
+        {
+            DataTable dt = m_dalMaterials.GetMaterialsBySearchKey(_searchKey);
+
+            return dt;
+        }
+
         public ModelMaterials GetMaterialsById(int _materialsId)
         {
             DataTable dt = m_dalMaterials.GetMaterialsById(_materialsId);

@@ -80,5 +80,10 @@ namespace PMS.Frm.Sys
             //返回
             WinCommon.ReturnMain();
         }
+
+        private void FrmSysCompany_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            WinCommon.Exit();
+        }
     }
 }

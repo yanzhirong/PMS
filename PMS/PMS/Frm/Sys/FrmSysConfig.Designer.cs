@@ -259,6 +259,7 @@
             this.Name = "FrmSysConfig";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "系统参数管理";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSysConfig_FormClosed);
             this.Load += new System.EventHandler(this.FrmSysUser_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
