@@ -13,8 +13,9 @@ namespace Model
         public int materialsId { set; get; }
         public string searchKey { set; get; }
         public string materialsName { set; get; }
-        public int materialsNum { set; get; }
+        public decimal materialsNum { set; get; }
         public int materialsUnit { set; get; }
+        public string materialsUnitValue { set; get; }
 
     }
 }

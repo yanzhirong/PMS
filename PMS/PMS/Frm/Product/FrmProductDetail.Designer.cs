@@ -78,12 +78,12 @@
             this.label21 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label22 = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materialsName = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.MaterialsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.materialsUnit = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.label22 = new System.Windows.Forms.Label();
+            this.materialsUnitValue = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.grb_materials.SuspendLayout();
             this.grb_price.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -591,7 +591,7 @@
             this.searchKey,
             this.materialsName,
             this.MaterialsNum,
-            this.materialsUnit});
+            this.materialsUnitValue});
             this.dataGridView1.Location = new System.Drawing.Point(43, 435);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 35;
@@ -599,7 +599,18 @@
             this.dataGridView1.Size = new System.Drawing.Size(707, 127);
             this.dataGridView1.TabIndex = 106;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-            //this.dataGridView1.CurrentCellDirtyStateChanged += new System.EventHandler(this.dataGridView1_CurrentCellDirtyStateChanged);
+            this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("宋体", 9F);
+            this.label22.ForeColor = System.Drawing.Color.Black;
+            this.label22.Location = new System.Drawing.Point(46, 417);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(53, 12);
+            this.label22.TabIndex = 107;
+            this.label22.Text = "商品构成";
             // 
             // id
             // 
@@ -627,27 +638,16 @@
             this.MaterialsNum.Name = "MaterialsNum";
             this.MaterialsNum.ReadOnly = true;
             // 
-            // materialsUnit
+            // materialsUnitValue
             // 
-            this.materialsUnit.DataPropertyName = "materialsUnit";
+            this.materialsUnitValue.DataPropertyName = "materialsUnitValue";
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.materialsUnit.DefaultCellStyle = dataGridViewCellStyle2;
-            this.materialsUnit.HeaderText = "单位";
-            this.materialsUnit.Name = "materialsUnit";
-            this.materialsUnit.ReadOnly = true;
-            this.materialsUnit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.materialsUnit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("宋体", 9F);
-            this.label22.ForeColor = System.Drawing.Color.Black;
-            this.label22.Location = new System.Drawing.Point(46, 417);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(53, 12);
-            this.label22.TabIndex = 107;
-            this.label22.Text = "商品构成";
+            this.materialsUnitValue.DefaultCellStyle = dataGridViewCellStyle2;
+            this.materialsUnitValue.HeaderText = "单位";
+            this.materialsUnitValue.Name = "materialsUnitValue";
+            this.materialsUnitValue.ReadOnly = true;
+            this.materialsUnitValue.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.materialsUnitValue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // FrmProductDetail
             // 
@@ -728,15 +728,15 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn searchKey;
-        private System.Windows.Forms.DataGridViewComboBoxColumn materialsName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaterialsNum;
-        private System.Windows.Forms.DataGridViewComboBoxColumn materialsUnit;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox txt_advisePrice;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn searchKey;
+        private System.Windows.Forms.DataGridViewComboBoxColumn materialsName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaterialsNum;
+        private System.Windows.Forms.DataGridViewComboBoxColumn materialsUnitValue;
     }
 }

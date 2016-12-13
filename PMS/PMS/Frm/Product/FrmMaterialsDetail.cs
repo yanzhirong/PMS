@@ -395,6 +395,30 @@ namespace PMS.Frm.Product
                     this.txt_minStockNum.Focus();
                     return false;
                 }
+
+                if (LoginUserInfo.LoginUser.loginRole.isFinance == 1)
+                {
+                    if (StringUtils.IsBlank(this.txt_price.Text))
+                    {
+                        MsgUtils.ShowErrorMsg("请输入最低价格！");
+                        this.txt_price.Focus();
+                        return false;
+                    }
+                    int price = 0;
+                    if (!int.TryParse(this.txt_price.Text.Trim(), out price))
+                    {
+                        MsgUtils.ShowErrorMsg("最低价格仅限数字！");
+                        this.txt_price.Focus();
+                        return false;
+                    }
+
+                    if (this.cmb_priceUnit.SelectedIndex < 0)
+                    {
+                        MsgUtils.ShowErrorMsg("请选择重量价格单位！");
+                        this.cmb_weightUnit.Focus();
+                        return false;
+                    }
+                }
             }
             return true;
         }

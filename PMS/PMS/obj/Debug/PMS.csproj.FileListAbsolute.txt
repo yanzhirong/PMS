@@ -90,3 +90,4 @@ D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Product.FrmMaterialsDetail.reso
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Product.FrmProductManage.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Product.FrmProductDetail.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Sys.FrmSysRole.resources
+D:\git\pms\PMS\PMS\obj\Debug\PMS.Frm.Product.FrmProductDetail.resources

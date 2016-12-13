@@ -19,7 +19,7 @@ namespace PMS.Frm.Product
         private int m_mode;
         //原来ID
         private int m_productId;
-
+        
         private BllProduct m_bllProduct = new BllProduct();
         private BllMaterials m_bllMaterials = new BllMaterials();
         private BllCode m_bllCode = new BllCode();
@@ -38,6 +38,7 @@ namespace PMS.Frm.Product
 
             //初始化
             init();
+
         }
 
         private void btn_submit_Click(object sender, EventArgs e)
@@ -155,7 +156,6 @@ namespace PMS.Frm.Product
                     }
                 }
 
-                // 原料构成
                 dataGridView1.DataSource = m_bllProduct.GetProductMaterialsById(m_productId);
                 dataGridView1.Refresh();
 
@@ -176,9 +176,8 @@ namespace PMS.Frm.Product
             }
 
             //价格相关
-            this.grb_price.Visible = LoginUserInfo.LoginUser.loginRole.isFinance == 1 ? true: false; 
-
-           
+            this.grb_price.Visible = LoginUserInfo.LoginUser.loginRole.isFinance == 1 ? true: false;
+            
         }
         #endregion
 
@@ -248,7 +247,7 @@ namespace PMS.Frm.Product
                     materials.productId = modelProduct.id;
                     materials.materialsId = materialsId;
                     materials.searchKey = ConvertUtils.ConvertToString(this.dataGridView1.Rows[i].Cells[1].Value);
-                    materials.materialsNum = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[3].Value);
+                    materials.materialsNum = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells[3].Value);
                     materials.materialsUnit = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[4].Value);
 
                     modelProductMaterials.Add(materials);
@@ -294,7 +293,6 @@ namespace PMS.Frm.Product
                 else
                 {
                     MsgUtils.ShowInfoMsg("修改商品成功！");
-                    init();
                     return;
                 }
             }
@@ -314,7 +312,7 @@ namespace PMS.Frm.Product
                     MsgUtils.ShowInfoMsg("删除商品成功！");
 
                     //返回用户列表
-                    Form form = new FrmMaterialsManage();
+                    Form form = new FrmProductManage();
                     this.Hide();
                     form.ShowDialog();
                     return;
@@ -431,6 +429,86 @@ namespace PMS.Frm.Product
                     this.txt_minStockNum.Focus();
                     return false;
                 }
+
+                if (this.dataGridView1.Rows.Count <= 1)
+                {
+                    MsgUtils.ShowErrorMsg("请输入原料！");
+                    this.dataGridView1.Focus();
+                    return false;
+                }
+
+                List<int> listMaterialsId = new List<int>();
+                for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                {
+
+                    int materialsId = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[2].Value);
+                    if (materialsId > 0)
+                    {
+                        if (listMaterialsId.Contains(materialsId))
+                        {
+                            MsgUtils.ShowErrorMsg("选择的原料不可重复！");
+                            this.dataGridView1.Focus();
+                            return false;
+                        }
+
+                        decimal materialsNum = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells[3].Value);
+                        if (materialsNum <= 0)
+                        {
+                            MsgUtils.ShowErrorMsg("原料数量不能为空！");
+                            this.dataGridView1.Focus();
+                            return false;
+                        }
+
+                        int materialsUnit = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[4].Value);
+                        if (materialsUnit <= 0)
+                        {
+                            MsgUtils.ShowErrorMsg("原料单位不能为空！");
+                            this.dataGridView1.Focus();
+                            return false;
+                        }
+
+                        listMaterialsId.Add(materialsId);
+                    }
+
+                    if (LoginUserInfo.LoginUser.loginRole.isFinance == 1) 
+                    {
+                        if (StringUtils.IsBlank(this.txt_minPrice.Text))
+                        {
+                            MsgUtils.ShowErrorMsg("请输入最低价格！");
+                            this.txt_minPrice.Focus();
+                            return false;
+                        }
+                        int minPrice = 0;
+                        if (!int.TryParse(this.txt_minPrice.Text.Trim(), out minPrice))
+                        {
+                            MsgUtils.ShowErrorMsg("最低价格仅限数字！");
+                            this.txt_minPrice.Focus();
+                            return false;
+                        }
+
+                        if (StringUtils.IsBlank(this.txt_advisePrice.Text))
+                        {
+                            MsgUtils.ShowErrorMsg("请输入最低价格！");
+                            this.txt_advisePrice.Focus();
+                            return false;
+                        }
+                        int advisePrice = 0;
+                        if (!int.TryParse(this.txt_advisePrice.Text.Trim(), out advisePrice))
+                        {
+                            MsgUtils.ShowErrorMsg("建议销售价格仅限数字！");
+                            this.txt_advisePrice.Focus();
+                            return false;
+                        }
+
+                        if (this.cmb_priceUnit.SelectedIndex < 0)
+                        {
+                            MsgUtils.ShowErrorMsg("请选择重量价格单位！");
+                            this.cmb_weightUnit.Focus();
+                            return false;
+                        }
+                    }
+
+                }
             }
             return true;
         }
@@ -530,7 +608,7 @@ namespace PMS.Frm.Product
         {
            // return;
 
-            if(e.RowIndex < 0 || e.ColumnIndex < 0)
+            if( e.RowIndex < 0 || e.ColumnIndex != 1)
             {
                 return;
             }
@@ -547,37 +625,32 @@ namespace PMS.Frm.Product
                 column.DisplayMember = "materialsName";
                 column.ValueMember = "materialsId";
 
+            }
 
+            if (e.ColumnIndex == 3)
+            {
+                DataGridViewComboBoxCell column = (DataGridViewComboBoxCell)this.dataGridView1.Rows[e.RowIndex].Cells[4];
+
+                column.DataSource = m_bllCode.GetCodeList(3);
+                column.DisplayMember = "value1";
+                column.ValueMember = "subCode";
             }
         }
 
-        //private void dataGridView1_CurrentCellDirtyStateChanged(object sender, EventArgs e)
-        //{
-        //    if (this.dataGridView1.CurrentCell.ColumnIndex < 0)
-        //    {
-        //        return;
-        //    }
+        private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (this.dataGridView1.CurrentCell.ColumnIndex == 3)
+            {
+                TextBox tx = (TextBox)e.Control;
+                tx.KeyPress -= new KeyPressEventHandler(tx_keyPress);
+                tx.KeyPress += new KeyPressEventHandler(tx_keyPress);
+            }
+        }
 
-        //    dataGridView1.CommitEdit(DataGridViewDataErrorContexts.Commit);
-
-        //    // 检索键
-        //    if (this.dataGridView1.CurrentCell.ColumnIndex == 1)
-        //    {
-        //        string searchKey = ConvertUtils.ConvertToString(this.dataGridView1.CurrentCell.Value);
-        //        searchKey = searchKey.ToUpper();
-
-        //        DataGridViewComboBoxCell column = (DataGridViewComboBoxCell)this.dataGridView1.Rows[this.dataGridView1.CurrentCell.RowIndex].Cells[2];
-        //        // column.Items.Clear();
-
-        //        //if (StringUtils.IsNotBlank(searchKey))
-        //        //{
-        //            column.DataSource = m_bllMaterials.GetMaterialsBySearchKey(searchKey);
-        //            column.DisplayMember = "materialsName";
-        //            column.ValueMember = "materialsId";
-        //        //}
-
-        //    }
-        //}
-
+        private void tx_keyPress(object sender, KeyPressEventArgs e)
+        {
+            //仅限数字
+            e.Handled = WinCommon.IsOnlyDouble(e.KeyChar);
+        }
     }
 }

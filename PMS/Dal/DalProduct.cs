@@ -80,10 +80,12 @@ namespace Dal
 
         public DataTable GetProductMaterialsById(int _productId)
         {
-            sql = @"select id,searchKey,materialsId,materialsNum,materialsUnit
-                      from r_product_materials
-                     where isDelete = 0
-                       and productId = {0}";
+            sql = @"select a.id,a.searchKey,a.materialsId,a.materialsNum,a.materialsUnit
+                      from r_product_materials a join m_code b
+                           on a.materialsUnit = b.subcode and b.code = 3
+                           join p_materials c on a.materialsId = c.id and c.isDelete = 0
+                     where a.isDelete = 0
+                       and a.productId = {0}";
 
             sql = String.Format(sql, _productId);
 
@@ -200,7 +202,7 @@ namespace Dal
                     sbSql.Append("       createBy, ");
                     sbSql.Append("       createTime, ");
                     sbSql.Append("       modifyBy, ");
-                    sbSql.Append("       modifyTime ");
+                    sbSql.Append("       modifyTime) ");
                     sbSql.Append("select id, ");
                     sbSql.Append("        " + materials.materialsId + ", ");
                     sbSql.Append("       '" + materials.searchKey + "', ");
@@ -229,7 +231,7 @@ namespace Dal
             List<string> listSql = new List<string>();
 
             sbSql.Clear();
-            sbSql.Append("update p_materials ");
+            sbSql.Append("update p_product ");
             sbSql.Append("set name = '" + _modelProduct.name + "',");
             sbSql.Append("    subName = '" + _modelProduct.subName + "',");
             sbSql.Append("    packingType = " + _modelProduct.packingType + ",");
