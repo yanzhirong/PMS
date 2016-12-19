@@ -66,6 +66,11 @@ namespace Bll
             }
         }
 
+        public DataTable GetProductMaterialsById(int _materialsId)
+        {
+            return m_dalMaterials.GetProductMaterialsById(_materialsId);
+        }
+
         public ModelMaterials GetMaterialsByName(string _name)
         {
             DataTable dt = m_dalMaterials.GetMaterialsByName(_name);

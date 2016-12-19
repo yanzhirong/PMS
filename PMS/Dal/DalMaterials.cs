@@ -101,6 +101,18 @@ namespace Dal
             return Dal.DBHelper.Select(sql);
         }
 
+        public DataTable GetProductMaterialsById(int _materialsId)
+        {
+            sql = @"select a.*
+                      from r_product_materials a 
+                     where a.isDelete = 0
+                       and a.materialsId = {0}";
+
+            sql = String.Format(sql, _materialsId);
+
+            return Dal.DBHelper.Select(sql);
+        }
+
         public int AddMaterials(ModelMaterials _modelMaterials)
         {
             List<string> listSql = new List<string>();

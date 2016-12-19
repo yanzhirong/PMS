@@ -43,6 +43,7 @@ namespace Dal
                 sql = @"select roleId,
                                roleName,
                                case isFinance when 1 then '有' else '无' end isFinance,
+                               case isSaler when 1 then '是' else '否' end isFinance,
                                createTime,
                                '修改' modifyBtn,
                                '删除' deleteBtn
@@ -55,6 +56,7 @@ namespace Dal
                 sql = @"select roleId,
                                roleName,
                                case isFinance when 1 then '有' else '无' end isFinance,
+                               case isSaler when 1 then '是' else '否' end isFinance,
                                createTime,
                                '修改' modifyBtn,
                                '删除' deleteBtn
@@ -151,10 +153,11 @@ namespace Dal
 
             sbSql.Clear();
             sbSql.Append("insert into m_role ");
-            sbSql.Append("(roleName, isFinance, isDelete, createBy, createTime, modifyBy, modifyTime) ");
+            sbSql.Append("(roleName, isFinance, isSaler, isDelete, createBy, createTime, modifyBy, modifyTime) ");
             sbSql.Append(" value ( ");
             sbSql.Append("'" + _modelRole.roleName + "', ");
             sbSql.Append(_modelRole.isFinance + ", ");
+            sbSql.Append(_modelRole.isSaler + ", ");
             sbSql.Append(_modelRole.isDelete + ", ");
             sbSql.Append("'" + _modelRole.createBy + "', ");
             sbSql.Append("'" + _modelRole.createTime + "', ");
@@ -173,6 +176,7 @@ namespace Dal
             sbSql.Clear();
             sbSql.Append("update m_role ");
             sbSql.Append("set isFinance = " + _modelRole.isFinance + ", ");
+            sbSql.Append("    isSaler = " + _modelRole.isSaler + ", ");
             sbSql.Append("    modifyBy = '" + _modelRole.modifyBy + "', ");
             sbSql.Append("    modifyTime = '" + _modelRole.modifyTime + "' ");
             sbSql.Append("where roleId = " + _modelRole.roleId + " ");

@@ -11,26 +11,26 @@ using Model;
 using Bll;
 using Common.Tools;
 
-namespace PMS.Frm.Product
+namespace PMS.Frm.Sale
 {
-    public partial class FrmMaterialsDetail : Form
+    public partial class FrmCustomerDetail : Form
     {
         //处理模式（0：新建；1：修改；2：删除）
         private int m_mode;
         //原来ID
-        private int m_materialsId;
+        private int m_customerId;
 
-        private BllMaterials m_bllMaterials = new BllMaterials();
+        private BllCustomer m_bllCustomer = new BllCustomer();
         private BllCode m_bllCode = new BllCode();
 
-        public FrmMaterialsDetail(int _mode, int _materialsId)
+        public FrmCustomerDetail(int _mode, int _customerId)
         {
             InitializeComponent();
             m_mode = _mode;
-            m_materialsId = _materialsId;
+            m_customerId = _customerId;
         }
 
-        private void FrmMaterialsDetail_Load(object sender, EventArgs e)
+        private void FrmCustomerDetail_Load(object sender, EventArgs e)
         {
             LoginUserInfo.LoginUser.currentFrom = this;
             WinCommon.CreateMenu(ref this.menuStrip1);
@@ -46,7 +46,7 @@ namespace PMS.Frm.Product
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             //返回用户列表
-            Form form = new FrmMaterialsManage();
+            Form form = new FrmCustomerManage();
             this.Hide();
             form.ShowDialog();
         }
@@ -60,15 +60,15 @@ namespace PMS.Frm.Product
             //标题
             if (m_mode == 0)
             {
-                this.lbl_title.Text = "原料信息设定-新增";
+                this.lbl_title.Text = "客户信息设定-新增";
             }
             else if (m_mode == 1)
             {
-                this.lbl_title.Text = "原料信息设定-修改";
+                this.lbl_title.Text = "客户信息设定-修改";
             }
             else
             {
-                this.lbl_title.Text = "原料信息设定-删除";
+                this.lbl_title.Text = "客户信息设定-删除";
             }
 
             //下拉框
@@ -464,7 +464,7 @@ namespace PMS.Frm.Product
             e.Handled = WinCommon.IsOnlyDouble(e.KeyChar);
         }
 
-        private void FrmMaterialsDetail_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmCustomerDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
             WinCommon.Exit();
         }

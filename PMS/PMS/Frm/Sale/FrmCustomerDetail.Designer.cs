@@ -1,6 +1,6 @@
-﻿namespace PMS.Frm.Product
+﻿namespace PMS.Frm.Sale
 {
-    partial class FrmMaterialsDetail
+    partial class FrmCustomerDetail
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMaterialsDetail));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomerDetail));
             this.btn_submit = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.lbl_title = new System.Windows.Forms.Label();
@@ -104,7 +104,7 @@
             this.lbl_title.Name = "lbl_title";
             this.lbl_title.Size = new System.Drawing.Size(180, 27);
             this.lbl_title.TabIndex = 24;
-            this.lbl_title.Text = "原料信息设置";
+            this.lbl_title.Text = "客户信息设置";
             // 
             // grb_materials
             // 
@@ -518,7 +518,7 @@
             this.menuStrip1.TabIndex = 105;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // FrmMaterialsDetail
+            // FrmCustomerDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -535,11 +535,11 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FrmMaterialsDetail";
+            this.Name = "FrmCustomerDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "原料管理";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMaterialsDetail_FormClosed);
-            this.Load += new System.EventHandler(this.FrmMaterialsDetail_Load);
+            this.Text = "客户管理";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmCustomerDetail_FormClosed);
+            this.Load += new System.EventHandler(this.FrmCustomerDetail_Load);
             this.grb_materials.ResumeLayout(false);
             this.grb_materials.PerformLayout();
             this.grb_price.ResumeLayout(false);

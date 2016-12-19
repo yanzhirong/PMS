@@ -91,3 +91,5 @@ D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Product.FrmProductManage.resour
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Product.FrmProductDetail.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Sys.FrmSysRole.resources
 D:\git\pms\PMS\PMS\obj\Debug\PMS.Frm.Product.FrmProductDetail.resources
+D:\git\pms\PMS\PMS\obj\Debug\PMS.Frm.Sale.FrmCustomerDetail.resources
+D:\git\pms\PMS\PMS\obj\Debug\PMS.Frm.Sale.FrmCustomerManage.resources

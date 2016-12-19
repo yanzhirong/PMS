@@ -45,6 +45,7 @@ namespace PMS.Frm.Sys
             {
                 ModelRole modelRole = m_bllRole.GetRoleById(m_roleId);
                 this.chk_isFinance.Checked = modelRole.isFinance == 1 ? true : false;
+                this.chk_isSaler.Checked = modelRole.isSaler == 1 ? true : false;
                 this.txt_name.Text = modelRole.roleName;
 
                 setMenuCheckBox();
@@ -53,7 +54,8 @@ namespace PMS.Frm.Sys
                 {
                     this.txt_name.Enabled = false;
                     this.chk_isFinance.Enabled = false;
-                    this.grb_role.Enabled  = false;
+                    this.chk_isSaler.Enabled = false;
+                    this.grb_role.Enabled = false;
                 }
             }
         }
@@ -260,7 +262,8 @@ namespace PMS.Frm.Sys
             ModelRole modelRole = new ModelRole();
             modelRole.roleId = m_roleId;
             modelRole.roleName = this.txt_name.Text.Trim();
-            modelRole.isFinance = chk_isFinance.Checked == true ? 1 : 0;
+            modelRole.isFinance = this.chk_isFinance.Checked == true ? 1 : 0;
+            modelRole.isSaler = this.chk_isSaler.Checked == true ? 1 : 0;
             modelRole.isDelete = 0;
             modelRole.createBy = LoginUserInfo.LoginUser.loginUser.userName;
             modelRole.createTime = DateTime.Now;

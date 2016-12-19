@@ -74,6 +74,7 @@
             this.txt_name = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.lbl_tile = new System.Windows.Forms.Label();
+            this.chk_isSaler = new System.Windows.Forms.CheckBox();
             this.grb_role.SuspendLayout();
             this.grb_finance.SuspendLayout();
             this.grb_purchase.SuspendLayout();
@@ -567,11 +568,23 @@
             this.lbl_tile.TabIndex = 69;
             this.lbl_tile.Text = "角色权限设定";
             // 
+            // chk_isSaler
+            // 
+            this.chk_isSaler.AutoSize = true;
+            this.chk_isSaler.Location = new System.Drawing.Point(336, 83);
+            this.chk_isSaler.Name = "chk_isSaler";
+            this.chk_isSaler.Size = new System.Drawing.Size(72, 16);
+            this.chk_isSaler.TabIndex = 70;
+            this.chk_isSaler.Tag = "101";
+            this.chk_isSaler.Text = "销售人员";
+            this.chk_isSaler.UseVisualStyleBackColor = true;
+            // 
             // FrmSysRoleDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(935, 667);
+            this.Controls.Add(this.chk_isSaler);
             this.Controls.Add(this.lbl_tile);
             this.Controls.Add(this.txt_name);
             this.Controls.Add(this.chk_isFinance);
@@ -658,6 +671,7 @@
         private System.Windows.Forms.TextBox txt_name;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label lbl_tile;
+        private System.Windows.Forms.CheckBox chk_isSaler;
 
     }
 }
