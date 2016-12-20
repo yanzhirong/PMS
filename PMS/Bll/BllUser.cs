@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dal;
 using System.Data;
-using Common.Enum;
+using Enum;
 using Common.Tools;
 using Model;
 
@@ -43,6 +43,27 @@ namespace Bll
                 return ModelUtils<ModelUser>.FillModel(user.Rows[0]); ;
             }
             return new ModelUser();
+        }
+
+        public List<ModelItem> GetSalers()
+        {
+            List<ModelItem> listSaler = new List<ModelItem>();
+
+            DataTable dt = m_dalUser.GetSalers();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ModelItem item = new ModelItem();
+                    item.itemKey = dr["userId"];
+                    item.itemValue = (String)dr["userName"];
+
+                    listSaler.Add(item);
+                }
+            }
+
+            return listSaler;
         }
 
         public Boolean AddUser(ModelUser _modelUser)

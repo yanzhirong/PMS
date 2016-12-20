@@ -19,3 +19,7 @@ D:\p\yd\PMS\source\PMS\PMS\Common\bin\Debug\Common.pdb
 D:\p\yd\PMS\source\PMS\PMS\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
 D:\p\yd\PMS\source\PMS\PMS\Common\obj\Debug\Common.dll
 D:\p\yd\PMS\source\PMS\PMS\Common\obj\Debug\Common.pdb
+D:\p\yd\PMS\source\PMS\PMS\Common\bin\Debug\Model.dll
+D:\p\yd\PMS\source\PMS\PMS\Common\bin\Debug\Enum.dll
+D:\p\yd\PMS\source\PMS\PMS\Common\bin\Debug\Model.pdb
+D:\p\yd\PMS\source\PMS\PMS\Common\bin\Debug\Enum.pdb

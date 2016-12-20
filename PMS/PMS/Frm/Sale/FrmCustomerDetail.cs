@@ -19,8 +19,11 @@ namespace PMS.Frm.Sale
         private int m_mode;
         //原来ID
         private int m_customerId;
+        //销售ID
+        private int m_salerId;
 
         private BllCustomer m_bllCustomer = new BllCustomer();
+        private BllUser m_bllUser = new BllUser();
         private BllCode m_bllCode = new BllCode();
 
         public FrmCustomerDetail(int _mode, int _customerId)
@@ -35,6 +38,14 @@ namespace PMS.Frm.Sale
             LoginUserInfo.LoginUser.currentFrom = this;
             WinCommon.CreateMenu(ref this.menuStrip1);
 
+            if (LoginUserInfo.LoginUser.loginRole.isSaler == 1)
+            {
+                m_salerId = LoginUserInfo.LoginUser.loginUser.userId;
+            }
+            else
+            {
+                m_salerId = 0;
+            }
             //初始化
             init();
         }
@@ -72,99 +83,122 @@ namespace PMS.Frm.Sale
             }
 
             //下拉框
-            //包装类型
-            List<ModelItem> listItem = m_bllCode.GetCodeItem(1, false);
-            WinCommon.BindComboBox(ref cmb_packingType, listItem);
-            //产品形态
-            listItem = m_bllCode.GetCodeItem(2, false);
-            WinCommon.BindComboBox(ref cmb_morphology, listItem);
-            //重量单位
-            listItem = m_bllCode.GetCodeItem(3, false);
-            WinCommon.BindComboBox(ref cmb_weightUnit, listItem);
-            //价格单位
-            WinCommon.BindComboBox(ref cmb_priceUnit, listItem);
+            //销售
+            List<ModelItem> listItem = m_bllUser.GetSalers();
+            WinCommon.BindComboBox(ref cmb_saler, listItem);
+            //省市区
+            WinCommon.BindComboBox(ref cmb_province, BllArea.GetProvince());
+            WinCommon.BindComboBox(ref cmb_city, null);
+            WinCommon.BindComboBox(ref cmb_district, null);
+
+            if (m_salerId > 0)
+            {
+                if (m_mode == 0)
+                {
+                    for (int i = 0; i < this.cmb_saler.Items.Count - 1; i++)
+                    {
+                        if (m_salerId == (int)((ModelItem)this.cmb_saler.Items[i]).itemKey)
+                        {
+                            this.cmb_saler.SelectedIndex = i;
+                        }
+                    }
+                }
+                this.cmb_saler.Enabled = false;
+            }
+            else
+            {
+                this.cmb_saler.Enabled = true;
+            }
 
             //初始化(修改或者删除时)
-            if (m_mode != 0 && m_materialsId > 0)
+            if (m_mode != 0 && m_customerId > 0)
             {
-                ModelMaterials modelMaterials = m_bllMaterials.GetMaterialsById(m_materialsId);
+                ModelCustomer model = m_bllCustomer.GetCustomerById(m_customerId);
 
-                //原料名
-                this.txt_name.Text = modelMaterials.name;
-                //原料略名
-                this.txt_subName.Text = modelMaterials.subName;
-                //检索键
-                this.txt_searchKey.Text = modelMaterials.modelMaterialsSearch.searchKey;
+                //客户类型
+                this.cmb_type.SelectedIndex = model.type;
 
-                //包装类型
-                for (int i = 0; i < this.cmb_packingType.Items.Count; i++)
+                //销售
+                for (int i = 0; i < this.cmb_saler.Items.Count; i++)
                 {
-                    ModelItem modelItem = (ModelItem)this.cmb_packingType.Items[i];
-                    if (modelMaterials.packingType == (int)modelItem.itemKey)
+                    ModelItem modelItem = (ModelItem)this.cmb_saler.Items[i];
+                    if (model.salerId == (int)modelItem.itemKey)
                     {
-                        this.cmb_packingType.SelectedIndex = i;
-                        break;
-                    }
-                }
-                //产品形态
-                for (int i = 0; i < this.cmb_morphology.Items.Count; i++)
-                {
-                    ModelItem modelItem = (ModelItem)this.cmb_morphology.Items[i];
-                    if (modelMaterials.morphology == (int)modelItem.itemKey)
-                    {
-                        this.cmb_morphology.SelectedIndex = i;
-                        break;
-                    }
-                }
-                //重量单位
-                for (int i = 0; i < this.cmb_weightUnit.Items.Count; i++)
-                {
-                    ModelItem modelItem = (ModelItem)this.cmb_weightUnit.Items[i];
-                    if (modelMaterials.weightUnit == (int)modelItem.itemKey)
-                    {
-                        this.cmb_weightUnit.SelectedIndex = i;
+                        this.cmb_saler.SelectedIndex = i;
                         break;
                     }
                 }
 
-                //包装说明
-                this.txt_packingRemark.Text = modelMaterials.packingRemark;
-                //重量
-                this.txt_weight.Text = modelMaterials.weight.ToString();
-                //保质期
-                this.txt_shelfLife.Text = modelMaterials.shelfLife.ToString();
-                //过期提醒天数
-                this.txt_expiredDays.Text = modelMaterials.expiredDays.ToString();
-                //库存报警数
-                this.txt_minStockNum.Text = modelMaterials.minStockNum.ToString();
-                //价格
-                this.txt_price.Text = modelMaterials.modelMaterialsPrice.price.ToString();
-                //价格单位
-                for (int i = 0; i < this.cmb_priceUnit.Items.Count; i++)
+                //代码
+                this.txt_code.Text = model.code;
+
+                //名称
+                this.txt_name.Text = model.name;
+
+                //省
+                for (int i = 0; i < this.cmb_province.Items.Count; i++)
                 {
-                    ModelItem modelItem = (ModelItem)this.cmb_priceUnit.Items[i];
-                    if (modelMaterials.modelMaterialsPrice.priceUnit == (int)modelItem.itemKey)
+                    ModelItem modelItem = (ModelItem)this.cmb_province.Items[i];
+                    if (model.province == (int)modelItem.itemKey)
                     {
-                        this.cmb_priceUnit.SelectedIndex = i;
+                        this.cmb_province.SelectedIndex = i;
                         break;
                     }
                 }
+
+                //市
+                for (int i = 0; i < this.cmb_city.Items.Count; i++)
+                {
+                    ModelItem modelItem = (ModelItem)this.cmb_city.Items[i];
+                    if (model.city == (int)modelItem.itemKey)
+                    {
+                        this.cmb_city.SelectedIndex = i;
+                        break;
+                    }
+                }
+
+                //区
+                for (int i = 0; i < this.cmb_district.Items.Count; i++)
+                {
+                    ModelItem modelItem = (ModelItem)this.cmb_district.Items[i];
+                    if (model.district == (int)modelItem.itemKey)
+                    {
+                        this.cmb_district.SelectedIndex = i;
+                        break;
+                    }
+                }
+                //地址
+                this.txt_address.Text = model.address;
+                //联系电话
+                this.txt_telephone1.Text = model.telephone1;
+                //备用电话
+                this.txt_telephone2.Text = model.telephone2;
+                //传真
+                this.txt_fax.Text = model.fax;
+                //邮编
+                this.txt_zip.Text = model.zip;
+                //联系人
+                this.txt_manager.Text = model.manager;
+                //职位
+                this.txt_position.Text = model.position;
+                //手机
+                this.txt_mobile.Text = model.mobile;
+                //备注
+                this.txt_remark.Text = model.remark;
+                //信用额度
+                this.txt_creditLimit.Text = model.creditLimit.ToString();
             }
 
             //删除时，输入项不能修改
             if (m_mode == 2)
             {
-                grb_materials.Enabled = false;
-                grb_price.Enabled = false;
+                grb_customer.Enabled = false;
             }
             else
             {
-                grb_materials.Enabled = true;
-                grb_price.Enabled = true;
+                grb_customer.Enabled = true;
             }
 
-            //价格相关
-            this.grb_price.Visible = LoginUserInfo.LoginUser.loginRole.isFinance == 1 ? true: false; 
         }
         #endregion
 
@@ -183,62 +217,57 @@ namespace PMS.Frm.Sale
                 return ;
             }
 
-            ModelMaterials modelMaterials = new ModelMaterials();
-            modelMaterials.id = m_materialsId;
-            modelMaterials.name = this.txt_name.Text.Trim();
-            modelMaterials.subName = this.txt_subName.Text.Trim();
+            ModelCustomer modelCustomer = new ModelCustomer();
+            modelCustomer.id = m_customerId;
+            modelCustomer.code = this.txt_code.Text.Trim();
+            modelCustomer.name = this.txt_name.Text.Trim();
+            modelCustomer.type = this.cmb_type.SelectedIndex;
+            modelCustomer.salerId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_saler.SelectedItem).itemKey);
 
-            ModelMaterialsSearch modelMaterialsSearch = new ModelMaterialsSearch();
-            modelMaterialsSearch.materialsId = modelMaterials.id;
-            modelMaterialsSearch.materialsName = modelMaterials.name;
-            modelMaterialsSearch.searchKey = this.txt_searchKey.Text.Trim();
-            modelMaterials.modelMaterialsSearch = modelMaterialsSearch;
+            modelCustomer.province = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_province.SelectedItem).itemKey);
+            modelCustomer.city = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_city.SelectedItem).itemKey);
+            modelCustomer.district = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_district.SelectedItem).itemKey);
+            modelCustomer.provinceName = ConvertUtils.ConvertToString(((ModelItem)this.cmb_province.SelectedItem).itemValue);
+            modelCustomer.cityName = ConvertUtils.ConvertToString(((ModelItem)this.cmb_city.SelectedItem).itemValue);
+            modelCustomer.districtName = ConvertUtils.ConvertToString(((ModelItem)this.cmb_district.SelectedItem).itemValue);
+            modelCustomer.address = this.txt_address.Text.Trim();
 
-            modelMaterials.packingType = (int)((ModelItem)this.cmb_packingType.SelectedItem).itemKey;
-            modelMaterials.packingRemark = this.txt_packingRemark.Text.Trim();
-            modelMaterials.morphology = (int)((ModelItem)this.cmb_morphology.SelectedItem).itemKey;
-            modelMaterials.weight = ConvertUtils.ConvertToDecimal(this.txt_weight.Text);
-            modelMaterials.weightUnit = (int)((ModelItem)this.cmb_weightUnit.SelectedItem).itemKey;
-            modelMaterials.shelfLife = ConvertUtils.ConvertToInt(this.txt_shelfLife.Text);
-            modelMaterials.expiredDays = ConvertUtils.ConvertToInt(this.txt_expiredDays.Text);
-            modelMaterials.minStockNum = ConvertUtils.ConvertToInt(this.txt_minStockNum.Text);
+            modelCustomer.telephone1 = this.txt_telephone1.Text.Trim();
+            modelCustomer.telephone2 = this.txt_telephone2.Text.Trim();
+            modelCustomer.fax = this.txt_fax.Text.Trim();
+            modelCustomer.zip = this.txt_zip.Text.Trim();
 
-            if (LoginUserInfo.LoginUser.loginRole.isFinance == 1)
-            {
-                ModelMaterialsPrice modelMaterialsPrice = new ModelMaterialsPrice();
-                modelMaterialsPrice.materialsId = m_materialsId;
-                modelMaterialsPrice.price = ConvertUtils.ConvertToDecimal(this.txt_price.Text);
-                modelMaterialsPrice.priceUnit = (int)((ModelItem)this.cmb_priceUnit.SelectedItem).itemKey;
-                modelMaterials.modelMaterialsPrice = modelMaterialsPrice;
-            }
-            else
-            {
-                modelMaterials.modelMaterialsPrice = null;
-            }
-            modelMaterials.isDelete = 0;
-            modelMaterials.createBy = LoginUserInfo.LoginUser.loginUser.userName;
-            modelMaterials.createTime = DateTime.Now;
-            modelMaterials.modifyBy = LoginUserInfo.LoginUser.loginUser.userName;
-            modelMaterials.modifyTime = DateTime.Now;
+            modelCustomer.manager = this.txt_manager.Text.Trim();
+            modelCustomer.position = this.txt_position.Text.Trim();
+            modelCustomer.mobile = this.txt_mobile.Text.Trim();
+
+            modelCustomer.remark = this.txt_remark.Text.Trim();
+            modelCustomer.creditLimit = ConvertUtils.ConvertToDecimal(this.txt_creditLimit.Text.Trim());
+
+            modelCustomer.isDelete = 0;
+            modelCustomer.createBy = LoginUserInfo.LoginUser.loginUser.userName;
+            modelCustomer.createTime = DateTime.Now;
+            modelCustomer.modifyBy = LoginUserInfo.LoginUser.loginUser.userName;
+            modelCustomer.modifyTime = DateTime.Now;
 
             //新增
             if (m_mode == 0) 
             {
-                rtn = m_bllMaterials.AddMaterials(modelMaterials);
+                rtn = m_bllCustomer.AddCustomer(modelCustomer);
 
                 if (rtn == false)
                 {
-                    MsgUtils.ShowErrorMsg("新增原料失败！");
+                    MsgUtils.ShowErrorMsg("新增客户失败！");
                     return ;
                 }
                 else
                 {
-                    MsgUtils.ShowInfoMsg("新增原料成功！");
+                    MsgUtils.ShowInfoMsg("新增客户成功！");
                 }
 
                 //处理模式变为修改
                 m_mode = 1;
-                m_materialsId = m_bllMaterials.GetMaterialsByName(this.txt_name.Text).id;
+                m_customerId = m_bllCustomer.GetCustomerByCode(this.txt_code.Text).id;
 
                 init();
 
@@ -248,16 +277,16 @@ namespace PMS.Frm.Sale
             //修改
             if (m_mode == 1)
             {
-                rtn = m_bllMaterials.UpdateMaterials(modelMaterials);
+                rtn = m_bllCustomer.UpdateCustomer(modelCustomer);
 
                 if (rtn == false)
                 {
-                    MsgUtils.ShowErrorMsg("修改原料失败！");
+                    MsgUtils.ShowErrorMsg("修改客户失败！");
                     return;
                 }
                 else
                 {
-                    MsgUtils.ShowInfoMsg("修改原料成功！");
+                    MsgUtils.ShowInfoMsg("修改客户成功！");
                     init();
                     return;
                 }
@@ -266,19 +295,19 @@ namespace PMS.Frm.Sale
             //删除
             if(m_mode == 2)
             {
-                rtn = m_bllMaterials.DeleteMaterials(modelMaterials);
+                rtn = m_bllCustomer.DeleteCustomer(modelCustomer);
 
                 if (rtn == false)
                 {
-                    MsgUtils.ShowErrorMsg("删除原料失败！");
+                    MsgUtils.ShowErrorMsg("删除客户失败！");
                     return;
                 }
                 else
                 {
-                    MsgUtils.ShowInfoMsg("删除原料成功！");
+                    MsgUtils.ShowInfoMsg("删除客户成功！");
 
                     //返回用户列表
-                    Form form = new FrmMaterialsManage();
+                    Form form = new FrmCustomerManage();
                     this.Hide();
                     form.ShowDialog();
                     return;
@@ -295,137 +324,73 @@ namespace PMS.Frm.Sale
             // 新增或修改
             if (m_mode == 0 || m_mode == 1)
             {
+                //类型
+                if (this.cmb_type.SelectedIndex <= 0)
+                {
+                    MsgUtils.ShowErrorMsg("请选择客户类型！");
+                    this.cmb_type.Focus();
+                    return false;
+                }
+
+                //销售(销售客户时必须)
+                if(this.cmb_type.SelectedIndex == 1)
+                {
+                    if(this.cmb_saler.SelectedIndex <= 0)
+                    {
+                        MsgUtils.ShowErrorMsg("请选择销售！");
+                        this.cmb_saler.Focus();
+                        return false;
+                    }
+                }
+                //代码
+                if (StringUtils.IsBlank(this.txt_code.Text))
+                {
+                    MsgUtils.ShowErrorMsg("请输入客户代码！");
+                    this.txt_code.Focus();
+                    return false;
+                }
+                ModelCustomer  customer = m_bllCustomer.GetCustomerByCode(this.txt_code.Text);
+                if (customer.id > 0 && customer.id != m_customerId)
+                {
+                    MsgUtils.ShowErrorMsg("该客户已存在！");
+                    this.txt_code.Focus();
+                    return false;
+                }
+
                 //名称
                 if (StringUtils.IsBlank(this.txt_name.Text))
                 {
-                    MsgUtils.ShowErrorMsg("请输入原料名！");
-                    this.txt_name.Focus();
-                    return false;
-                }
-                ModelMaterials materials = m_bllMaterials.GetMaterialsByName(this.txt_name.Text);
-                if (materials.id > 0 && materials.id != m_materialsId)
-                {
-                    MsgUtils.ShowErrorMsg("该原料已存在！");
+                    MsgUtils.ShowErrorMsg("请输入客户名称！");
                     this.txt_name.Focus();
                     return false;
                 }
 
-                //检索键
-                if (StringUtils.IsBlank(this.txt_searchKey.Text))
+                //省
+                if (this.cmb_province.SelectedIndex < 0)
                 {
-                    MsgUtils.ShowErrorMsg("请输入检索键！");
-                    this.txt_searchKey.Focus();
+                    MsgUtils.ShowErrorMsg("请选择省！");
+                    this.cmb_province.Focus();
                     return false;
                 }
-
-                //包装类型
-                if (this.cmb_packingType.SelectedIndex < 0)
+                //市
+                if (this.cmb_city.SelectedIndex < 0)
                 {
-                    MsgUtils.ShowErrorMsg("请选择包装类型！");
-                    this.cmb_packingType.Focus();
+                    MsgUtils.ShowErrorMsg("请选择市！");
+                    this.cmb_city.Focus();
                     return false;
                 }
-                //产品形态
-                if (this.cmb_morphology.SelectedIndex < 0)
+                //区
+                if (this.cmb_district.SelectedIndex < 0)
                 {
-                    MsgUtils.ShowErrorMsg("请选择产品形态！");
-                    this.cmb_morphology.Focus();
+                    MsgUtils.ShowErrorMsg("请选择区！");
+                    this.cmb_district.Focus();
                     return false;
                 }
-                //重量
-                if (StringUtils.IsBlank(this.txt_weight.Text))
+                //地址
+                if (StringUtils.IsBlank(this.txt_address.Text))
                 {
-                    MsgUtils.ShowErrorMsg("请输入重量！");
-                    this.txt_weight.Focus();
-                    return false;
-                }
-                decimal weigth = 0;
-                if (!decimal.TryParse(this.txt_weight.Text.Trim(), out weigth))
-                {
-                    MsgUtils.ShowErrorMsg("重量仅限数字！");
-                    this.txt_weight.Focus();
-                    return false;
-                }
-                //重量单位
-                if (this.cmb_weightUnit.SelectedIndex < 0)
-                {
-                    MsgUtils.ShowErrorMsg("请选择重量单位！");
-                    this.cmb_weightUnit.Focus();
-                    return false;
-                }
-                //保质期
-                if (StringUtils.IsBlank(this.txt_shelfLife.Text))
-                {
-                    MsgUtils.ShowErrorMsg("请输入保质期！");
-                    this.txt_shelfLife.Focus();
-                    return false;
-                }
-                int shelfLife = 0;
-                if (!int.TryParse(this.txt_shelfLife.Text.Trim(), out shelfLife))
-                {
-                    MsgUtils.ShowErrorMsg("保质期仅限数字！");
-                    this.txt_shelfLife.Focus();
-                    return false;
-                }
-                //过期报警天数
-                if (StringUtils.IsBlank(this.txt_expiredDays.Text))
-                {
-                    MsgUtils.ShowErrorMsg("请输入过期报警天数！");
-                    this.txt_expiredDays.Focus();
-                    return false;
-                }
-                int expiredDays = 0;
-                if (!int.TryParse(this.txt_expiredDays.Text.Trim(), out expiredDays))
-                {
-                    MsgUtils.ShowErrorMsg("过期报警天数仅限数字！");
-                    this.txt_expiredDays.Focus();
-                    return false;
-                }
-                //库存报警天数
-                if (StringUtils.IsBlank(this.txt_minStockNum.Text))
-                {
-                    MsgUtils.ShowErrorMsg("请输入库存报警天数！");
-                    this.txt_minStockNum.Focus();
-                    return false;
-                }
-                int minStockNum = 0;
-                if (!int.TryParse(this.txt_minStockNum.Text.Trim(), out minStockNum))
-                {
-                    MsgUtils.ShowErrorMsg("库存报警天数仅限数字！");
-                    this.txt_minStockNum.Focus();
-                    return false;
-                }
-
-                if (LoginUserInfo.LoginUser.loginRole.isFinance == 1)
-                {
-                    if (StringUtils.IsBlank(this.txt_price.Text))
-                    {
-                        MsgUtils.ShowErrorMsg("请输入最低价格！");
-                        this.txt_price.Focus();
-                        return false;
-                    }
-                    int price = 0;
-                    if (!int.TryParse(this.txt_price.Text.Trim(), out price))
-                    {
-                        MsgUtils.ShowErrorMsg("最低价格仅限数字！");
-                        this.txt_price.Focus();
-                        return false;
-                    }
-
-                    if (this.cmb_priceUnit.SelectedIndex < 0)
-                    {
-                        MsgUtils.ShowErrorMsg("请选择重量价格单位！");
-                        this.cmb_weightUnit.Focus();
-                        return false;
-                    }
-                }
-            }
-            else
-            {
-                DataTable dt = m_bllMaterials.GetProductMaterialsById(m_materialsId);
-                if(dt != null && dt.Rows.Count > 0)
-                {
-                    MsgUtils.ShowErrorMsg("该原料已被用作生产商品，无法删除！");
+                    MsgUtils.ShowErrorMsg("请输入客户地址！");
+                    this.txt_address.Focus();
                     return false;
                 }
             }
@@ -434,39 +399,44 @@ namespace PMS.Frm.Sale
         }
         #endregion
 
-        private void txt_weight_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //仅限数字
-            e.Handled = WinCommon.IsOnlyDouble(e.KeyChar);
-        }
-
-        private void txt_shelfLife_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //仅限数字
-            e.Handled = WinCommon.IsOnlyInt(e.KeyChar);
-        }
-
-        private void txt_expiredDays_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //仅限数字
-            e.Handled = WinCommon.IsOnlyInt(e.KeyChar);
-        }
-
-        private void txt_minStockNum_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //仅限数字
-            e.Handled = WinCommon.IsOnlyInt(e.KeyChar);
-        }
-
-        private void txt_price_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            //仅限数字
-            e.Handled = WinCommon.IsOnlyDouble(e.KeyChar);
-        }
-
         private void FrmCustomerDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
             WinCommon.Exit();
         }
+
+        private void txt_creditLimit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //仅限数字
+            e.Handled = WinCommon.IsOnlyDouble(e.KeyChar);
+        }
+
+        private void cmb_province_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if(this.cmb_province.SelectedIndex < 0)
+            {
+                WinCommon.BindComboBox(ref this.cmb_city, null);
+                return;
+            }
+
+            int province = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_province.SelectedItem).itemKey);
+
+            WinCommon.BindComboBox(ref this.cmb_city, BllArea.GetCity(province));
+        }
+
+        private void cmb_city_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (this.cmb_city.SelectedIndex < 0)
+            {
+                WinCommon.BindComboBox(ref this.cmb_district, null);
+                return;
+            }
+
+            int city = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_city.SelectedItem).itemKey);
+
+            WinCommon.BindComboBox(ref this.cmb_district, BllArea.GetDistrict(city));
+        }
+
     }
 }

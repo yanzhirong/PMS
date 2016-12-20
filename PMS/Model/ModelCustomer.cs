@@ -12,9 +12,9 @@ namespace Model
         public string code { set; get; }
         public string name { set; get; }
         public string country { set; get; }
-        public string province { set; get; }
-        public string city { set; get; }
-        public string district { set; get; }
+        public int province { set; get; }
+        public int city { set; get; }
+        public int district { set; get; }
         public string provinceName { set; get; }
         public string cityName { set; get; }
         public string districtName { set; get; }

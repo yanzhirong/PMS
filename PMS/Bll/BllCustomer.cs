@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Dal;
 using System.Data;
-using Common.Enum;
 using Common.Tools;
 using Model;
 
@@ -22,48 +21,48 @@ namespace Bll
             return dt;
         }
 
-        public ModelUser GetUserById(int _userId)
+        public ModelCustomer GetCustomerById(int _id)
         {
-            DataTable user = m_dalUser.GetUserById(_userId);
+            DataTable user = m_dalCustomer.GetCustomerById(_id);
 
             if (user != null && user.Rows.Count > 0)
             {
-                return ModelUtils<ModelUser>.FillModel(user.Rows[0]); ;
+                return ModelUtils<ModelCustomer>.FillModel(user.Rows[0]); ;
             }
-            return new ModelUser();
+            return new ModelCustomer();
         }
 
-        public ModelUser GetUserByName(string _userName)
+        public ModelCustomer GetCustomerByCode(string _code)
         {
-            DataTable user = m_dalUser.GetUserByName(_userName);
+            DataTable user = m_dalCustomer.GetCustomerByCode(_code);
 
             if (user != null && user.Rows.Count > 0)
             {
-                return ModelUtils<ModelUser>.FillModel(user.Rows[0]); ;
+                return ModelUtils<ModelCustomer>.FillModel(user.Rows[0]); ;
             }
-            return new ModelUser();
+            return new ModelCustomer();
         }
 
-        public Boolean AddUser(ModelUser _modelUser)
+        public Boolean AddCustomer(ModelCustomer _modelCustomer)
         {
             int rtn = 0;
-            rtn = m_dalUser.AddUser(_modelUser);
+            rtn = m_dalCustomer.AddCustomer(_modelCustomer);
 
             return rtn == 0 ? false : true;
         }
 
-        public Boolean UpdateUser(ModelUser _modelUser, int _orgRoleId)
+        public Boolean UpdateCustomer(ModelCustomer _modelCustomer)
         {
             int rtn = 0;
-            rtn = m_dalUser.UpdateUser(_modelUser, _orgRoleId);
+            rtn = m_dalCustomer.UpdateCustomer(_modelCustomer);
 
             return rtn == 0 ? false : true;
         }
 
-        public Boolean DeleteUser(ModelUser _modelUser)
+        public Boolean DeleteCustomer(ModelCustomer _modelCustomer)
         {
             int rtn = 0;
-            rtn = m_dalUser.DeleteUser(_modelUser);
+            rtn = m_dalCustomer.DeleteCustomer(_modelCustomer);
 
             return rtn == 0 ? false : true;
         }

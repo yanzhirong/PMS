@@ -57,11 +57,12 @@
     <Compile Include="ModelProduct.cs" />
     <Compile Include="ModelProductMaterials.cs" />
     <Compile Include="ModelCustomer.cs" />
+    <Compile Include="ModelArea.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{5ff4cba5-3fe9-4a83-aefd-e69219a8c5c2}</Project>
-      <Name>Common</Name>
+    <ProjectReference Include="..\Enum\Enum.csproj">
+      <Project>{b0ffb4ea-e077-4658-99ae-651c534fa7b0}</Project>
+      <Name>Enum</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

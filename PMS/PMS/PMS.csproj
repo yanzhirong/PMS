@@ -86,11 +86,11 @@
     <Compile Include="Frm\Sale\FrmCustomerDetail.Designer.cs">
       <DependentUpon>FrmCustomerDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm\Sale\FrmsCustomerManage.cs">
+    <Compile Include="Frm\Sale\FrmCustomerManage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm\Sale\FrmsCustomerManage.Designer.cs">
-      <DependentUpon>FrmsCustomerManage.cs</DependentUpon>
+    <Compile Include="Frm\Sale\FrmCustomerManage.Designer.cs">
+      <DependentUpon>FrmCustomerManage.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm\Sys\FrmSysUserDetail.cs">
       <SubType>Form</SubType>
@@ -168,8 +168,8 @@
     <EmbeddedResource Include="Frm\Sale\FrmCustomerDetail.resx">
       <DependentUpon>FrmCustomerDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm\Sale\FrmsCustomerManage.resx">
-      <DependentUpon>FrmsCustomerManage.cs</DependentUpon>
+    <EmbeddedResource Include="Frm\Sale\FrmCustomerManage.resx">
+      <DependentUpon>FrmCustomerManage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\Sys\FrmSysUser.resx">
       <DependentUpon>FrmSysUser.cs</DependentUpon>
@@ -229,6 +229,10 @@
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{5ff4cba5-3fe9-4a83-aefd-e69219a8c5c2}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Enum\Enum.csproj">
+      <Project>{b0ffb4ea-e077-4658-99ae-651c534fa7b0}</Project>
+      <Name>Enum</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{cf3ab88c-448b-466c-ba50-d4476ce0a1b0}</Project>

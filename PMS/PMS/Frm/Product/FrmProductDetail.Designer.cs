@@ -35,25 +35,19 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.lbl_title = new System.Windows.Forms.Label();
             this.grb_materials = new System.Windows.Forms.GroupBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txt_minStockNum = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txt_expiredDays = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.cmb_weightUnit = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txt_packingRemark = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_subName = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.txt_shelfLife = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cmb_packingType = new System.Windows.Forms.ComboBox();
@@ -71,19 +65,18 @@
             this.label25 = new System.Windows.Forms.Label();
             this.txt_advisePrice = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.cmb_priceUnit = new System.Windows.Forms.ComboBox();
             this.txt_minPrice = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label22 = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.searchKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materialsName = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.MaterialsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.materialsUnitValue = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.label22 = new System.Windows.Forms.Label();
             this.grb_materials.SuspendLayout();
             this.grb_price.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -91,7 +84,7 @@
             // 
             // btn_submit
             // 
-            this.btn_submit.Location = new System.Drawing.Point(278, 638);
+            this.btn_submit.Location = new System.Drawing.Point(232, 638);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(75, 23);
             this.btn_submit.TabIndex = 101;
@@ -101,7 +94,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(424, 638);
+            this.btn_cancel.Location = new System.Drawing.Point(357, 638);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 102;
@@ -114,7 +107,7 @@
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Bold);
             this.lbl_title.ForeColor = System.Drawing.Color.Black;
-            this.lbl_title.Location = new System.Drawing.Point(262, 40);
+            this.lbl_title.Location = new System.Drawing.Point(214, 41);
             this.lbl_title.Name = "lbl_title";
             this.lbl_title.Size = new System.Drawing.Size(180, 27);
             this.lbl_title.TabIndex = 24;
@@ -122,25 +115,19 @@
             // 
             // grb_materials
             // 
-            this.grb_materials.Controls.Add(this.label20);
-            this.grb_materials.Controls.Add(this.label19);
-            this.grb_materials.Controls.Add(this.label18);
             this.grb_materials.Controls.Add(this.label9);
             this.grb_materials.Controls.Add(this.label7);
             this.grb_materials.Controls.Add(this.txt_minStockNum);
             this.grb_materials.Controls.Add(this.label17);
             this.grb_materials.Controls.Add(this.txt_expiredDays);
             this.grb_materials.Controls.Add(this.label16);
-            this.grb_materials.Controls.Add(this.label14);
             this.grb_materials.Controls.Add(this.cmb_weightUnit);
             this.grb_materials.Controls.Add(this.label12);
             this.grb_materials.Controls.Add(this.txt_packingRemark);
             this.grb_materials.Controls.Add(this.label3);
             this.grb_materials.Controls.Add(this.txt_subName);
             this.grb_materials.Controls.Add(this.label15);
-            this.grb_materials.Controls.Add(this.label13);
             this.grb_materials.Controls.Add(this.label11);
-            this.grb_materials.Controls.Add(this.label10);
             this.grb_materials.Controls.Add(this.txt_shelfLife);
             this.grb_materials.Controls.Add(this.label8);
             this.grb_materials.Controls.Add(this.cmb_packingType);
@@ -155,69 +142,36 @@
             this.grb_materials.Controls.Add(this.label1);
             this.grb_materials.Location = new System.Drawing.Point(43, 71);
             this.grb_materials.Name = "grb_materials";
-            this.grb_materials.Size = new System.Drawing.Size(707, 335);
+            this.grb_materials.Size = new System.Drawing.Size(582, 335);
             this.grb_materials.TabIndex = 103;
             this.grb_materials.TabStop = false;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label20.ForeColor = System.Drawing.Color.Red;
-            this.label20.Location = new System.Drawing.Point(605, 202);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(64, 12);
-            this.label20.TabIndex = 72;
-            this.label20.Text = "*（必填）";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label19.ForeColor = System.Drawing.Color.Red;
-            this.label19.Location = new System.Drawing.Point(247, 207);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(64, 12);
-            this.label19.TabIndex = 71;
-            this.label19.Text = "*（必填）";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label18.ForeColor = System.Drawing.Color.Red;
-            this.label18.Location = new System.Drawing.Point(246, 157);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(64, 12);
-            this.label18.TabIndex = 70;
-            this.label18.Text = "*（必填）";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(605, 300);
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(247, 286);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(97, 12);
+            this.label9.Size = new System.Drawing.Size(64, 12);
             this.label9.TabIndex = 69;
-            this.label9.Text = "*（必填 件数）";
+            this.label9.Text = "*（件数）";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(247, 300);
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(516, 250);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(97, 12);
+            this.label7.Size = new System.Drawing.Size(64, 12);
             this.label7.TabIndex = 68;
-            this.label7.Text = "*（必填 天数）";
+            this.label7.Text = "*（天数）";
             // 
             // txt_minStockNum
             // 
             this.txt_minStockNum.ImeMode = System.Windows.Forms.ImeMode.Close;
-            this.txt_minStockNum.Location = new System.Drawing.Point(435, 297);
+            this.txt_minStockNum.Location = new System.Drawing.Point(77, 283);
             this.txt_minStockNum.MaxLength = 20;
             this.txt_minStockNum.Name = "txt_minStockNum";
             this.txt_minStockNum.Size = new System.Drawing.Size(164, 21);
@@ -227,7 +181,8 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(365, 300);
+            this.label17.ForeColor = System.Drawing.Color.Red;
+            this.label17.Location = new System.Drawing.Point(5, 286);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(65, 12);
             this.label17.TabIndex = 67;
@@ -236,7 +191,7 @@
             // txt_expiredDays
             // 
             this.txt_expiredDays.ImeMode = System.Windows.Forms.ImeMode.Close;
-            this.txt_expiredDays.Location = new System.Drawing.Point(75, 297);
+            this.txt_expiredDays.Location = new System.Drawing.Point(337, 247);
             this.txt_expiredDays.MaxLength = 20;
             this.txt_expiredDays.Name = "txt_expiredDays";
             this.txt_expiredDays.Size = new System.Drawing.Size(164, 21);
@@ -246,28 +201,18 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(5, 300);
+            this.label16.ForeColor = System.Drawing.Color.Red;
+            this.label16.Location = new System.Drawing.Point(266, 250);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(65, 12);
             this.label16.TabIndex = 66;
             this.label16.Text = "过期报警：";
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(246, 250);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(97, 12);
-            this.label14.TabIndex = 65;
-            this.label14.Text = "*（必填 天数）";
-            // 
             // cmb_weightUnit
             // 
             this.cmb_weightUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_weightUnit.FormattingEnabled = true;
-            this.cmb_weightUnit.Location = new System.Drawing.Point(436, 199);
+            this.cmb_weightUnit.Location = new System.Drawing.Point(337, 199);
             this.cmb_weightUnit.Name = "cmb_weightUnit";
             this.cmb_weightUnit.Size = new System.Drawing.Size(163, 20);
             this.cmb_weightUnit.TabIndex = 53;
@@ -275,7 +220,8 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(364, 202);
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(265, 202);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(65, 12);
             this.label12.TabIndex = 64;
@@ -284,7 +230,7 @@
             // txt_packingRemark
             // 
             this.txt_packingRemark.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txt_packingRemark.Location = new System.Drawing.Point(435, 110);
+            this.txt_packingRemark.Location = new System.Drawing.Point(336, 110);
             this.txt_packingRemark.MaxLength = 20;
             this.txt_packingRemark.Name = "txt_packingRemark";
             this.txt_packingRemark.Size = new System.Drawing.Size(164, 21);
@@ -293,7 +239,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(364, 113);
+            this.label3.Location = new System.Drawing.Point(265, 113);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 63;
@@ -302,7 +248,7 @@
             // txt_subName
             // 
             this.txt_subName.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txt_subName.Location = new System.Drawing.Point(435, 15);
+            this.txt_subName.Location = new System.Drawing.Point(336, 15);
             this.txt_subName.MaxLength = 20;
             this.txt_subName.Name = "txt_subName";
             this.txt_subName.Size = new System.Drawing.Size(164, 21);
@@ -311,44 +257,22 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(364, 18);
+            this.label15.Location = new System.Drawing.Point(265, 18);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(65, 12);
             this.label15.TabIndex = 62;
             this.label15.Text = "商品略名：";
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(247, 113);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(64, 12);
-            this.label13.TabIndex = 61;
-            this.label13.Text = "*（必填）";
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label11.ForeColor = System.Drawing.Color.Red;
+            this.label11.ForeColor = System.Drawing.Color.Black;
             this.label11.Location = new System.Drawing.Point(247, 66);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(162, 12);
+            this.label11.Size = new System.Drawing.Size(129, 12);
             this.label11.TabIndex = 60;
-            this.label11.Text = "*（必填 推荐拼英首字母）";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(247, 18);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(64, 12);
-            this.label10.TabIndex = 59;
-            this.label10.Text = "*（必填）";
+            this.label11.Text = "*（推荐拼英首字母）";
             // 
             // txt_shelfLife
             // 
@@ -363,6 +287,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.Red;
             this.label8.Location = new System.Drawing.Point(5, 250);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 12);
@@ -381,6 +306,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.Red;
             this.label6.Location = new System.Drawing.Point(5, 113);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 12);
@@ -400,6 +326,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Red;
             this.label5.Location = new System.Drawing.Point(5, 202);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
@@ -418,6 +345,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Red;
             this.label4.Location = new System.Drawing.Point(5, 157);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 12);
@@ -436,6 +364,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Red;
             this.label2.Location = new System.Drawing.Point(5, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 12);
@@ -454,6 +383,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(5, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
@@ -466,14 +396,14 @@
             this.grb_price.Controls.Add(this.label25);
             this.grb_price.Controls.Add(this.txt_advisePrice);
             this.grb_price.Controls.Add(this.label26);
-            this.grb_price.Controls.Add(this.label24);
             this.grb_price.Controls.Add(this.label23);
             this.grb_price.Controls.Add(this.cmb_priceUnit);
             this.grb_price.Controls.Add(this.txt_minPrice);
             this.grb_price.Controls.Add(this.label21);
+            this.grb_price.ForeColor = System.Drawing.Color.Red;
             this.grb_price.Location = new System.Drawing.Point(43, 568);
             this.grb_price.Name = "grb_price";
-            this.grb_price.Size = new System.Drawing.Size(707, 52);
+            this.grb_price.Size = new System.Drawing.Size(580, 52);
             this.grb_price.TabIndex = 104;
             this.grb_price.TabStop = false;
             this.grb_price.Text = "价格";
@@ -516,17 +446,6 @@
             this.label26.Size = new System.Drawing.Size(65, 12);
             this.label26.TabIndex = 75;
             this.label26.Text = "最低价格：";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label24.ForeColor = System.Drawing.Color.Red;
-            this.label24.Location = new System.Drawing.Point(535, 21);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(64, 12);
-            this.label24.TabIndex = 74;
-            this.label24.Text = "*（必填）";
             // 
             // label23
             // 
@@ -571,7 +490,7 @@
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(801, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(667, 24);
             this.menuStrip1.TabIndex = 105;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -596,21 +515,10 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 35;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(707, 127);
+            this.dataGridView1.Size = new System.Drawing.Size(582, 127);
             this.dataGridView1.TabIndex = 106;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             this.dataGridView1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.dataGridView1_EditingControlShowing);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("宋体", 9F);
-            this.label22.ForeColor = System.Drawing.Color.Black;
-            this.label22.Location = new System.Drawing.Point(46, 417);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(53, 12);
-            this.label22.TabIndex = 107;
-            this.label22.Text = "商品构成";
             // 
             // id
             // 
@@ -649,12 +557,23 @@
             this.materialsUnitValue.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.materialsUnitValue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("宋体", 9F);
+            this.label22.ForeColor = System.Drawing.Color.Black;
+            this.label22.Location = new System.Drawing.Point(46, 417);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(53, 12);
+            this.label22.TabIndex = 107;
+            this.label22.Text = "商品构成";
+            // 
             // FrmProductDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(801, 670);
+            this.ClientSize = new System.Drawing.Size(667, 670);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.grb_price);
@@ -689,25 +608,19 @@
         private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.Label lbl_title;
         private System.Windows.Forms.GroupBox grb_materials;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txt_minStockNum;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txt_expiredDays;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cmb_weightUnit;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txt_packingRemark;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txt_subName;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txt_shelfLife;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cmb_packingType;
@@ -725,7 +638,6 @@
         private System.Windows.Forms.ComboBox cmb_priceUnit;
         private System.Windows.Forms.TextBox txt_minPrice;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label24;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label22;

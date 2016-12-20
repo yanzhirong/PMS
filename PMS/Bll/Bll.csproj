@@ -50,6 +50,7 @@
     <Compile Include="BllMaterials.cs" />
     <Compile Include="BllProduct.cs" />
     <Compile Include="BllCustomer.cs" />
+    <Compile Include="BllArea.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
@@ -59,6 +60,10 @@
     <ProjectReference Include="..\DAL\Dal.csproj">
       <Project>{0e3eea5a-c3f4-44bc-b548-bbe7c2592d1a}</Project>
       <Name>Dal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Enum\Enum.csproj">
+      <Project>{b0ffb4ea-e077-4658-99ae-651c534fa7b0}</Project>
+      <Name>Enum</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{cf3ab88c-448b-466c-ba50-d4476ce0a1b0}</Project>

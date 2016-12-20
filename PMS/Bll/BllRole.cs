@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Dal;
 using System.Data;
-using Common.Enum;
+using Enum;
 using Common.Tools;
 using Model;
 

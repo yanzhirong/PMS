@@ -54,94 +54,132 @@ namespace Dal
             return Dal.DBHelper.Select(sbSql.ToString());
         }
 
-        public DataTable GetUserById(int _userId)
+        public DataTable GetCustomerById(int _customerId)
         {
             sql = @"select * 
-                      from m_user
+                      from p_customer
                      where isDelete = 0
-                       and userId = {0}";
+                       and id = {0}";
 
-            sql = String.Format(sql, _userId);
+            sql = String.Format(sql, _customerId);
 
             return Dal.DBHelper.Select(sql);
         }
 
-        public DataTable GetUserByName(string _userName)
+        public DataTable GetCustomerByCode(string _code)
         {
             sql = @"select * 
-                      from m_user
+                      from p_customer
                      where isDelete = 0
-                       and userName = '{0}'";
+                       and code = '{0}'";
 
-            sql = String.Format(sql, _userName);
+            sql = String.Format(sql, _code);
 
             return Dal.DBHelper.Select(sql);
         }
 
-        public int AddUser(ModelUser _modelUser)
+        public int AddCustomer(ModelCustomer _model)
         {
             sbSql.Clear();
             sbSql.Append("insert into ");
-            sbSql.Append("       m_user ( ");
-            sbSql.Append("       userName, ");
-            sbSql.Append("       pwd, ");
-            sbSql.Append("       roleId, ");
-            sbSql.Append("       sex, ");
+            sbSql.Append("       p_customer ( ");
+            sbSql.Append("       code, ");
+            sbSql.Append("       name, ");
+            sbSql.Append("       country, ");
+            sbSql.Append("       province, ");
+            sbSql.Append("       provinceName, ");
+            sbSql.Append("       city, ");
+            sbSql.Append("       cityName, ");
+            sbSql.Append("       district, ");
+            sbSql.Append("       districtName, ");
+            sbSql.Append("       address, ");
+            sbSql.Append("       zip, ");
+            sbSql.Append("       fax, ");
+            sbSql.Append("       telephone1, ");
+            sbSql.Append("       telephone2, ");
+            sbSql.Append("       manager, ");
             sbSql.Append("       position, ");
             sbSql.Append("       mobile, ");
-            sbSql.Append("       email, ");
-            sbSql.Append("       birthday, ");
+            sbSql.Append("       type, ");
+            sbSql.Append("       salerId, ");
+            sbSql.Append("       remark, ");
+            sbSql.Append("       creditLimit, ");
             sbSql.Append("       isDelete, ");
             sbSql.Append("       createBy, ");
             sbSql.Append("       createTime, ");
             sbSql.Append("       modifyBy, ");
             sbSql.Append("       modifyTime ");
             sbSql.Append("       ) value ( ");
-            sbSql.Append("      '" + _modelUser.userName + "', ");
-            sbSql.Append("      '" + _modelUser.pwd + "', ");
-            sbSql.Append("       " + _modelUser.roleId + ", ");
-            sbSql.Append("      '" + _modelUser.sex + "', ");
-            sbSql.Append("      '" + _modelUser.position + "', ");
-            sbSql.Append("      '" + _modelUser.mobile + "', ");
-            sbSql.Append("      '" + _modelUser.email + "', ");
-            sbSql.Append("      '" + _modelUser.birthday + "', ");
-            sbSql.Append("       " + _modelUser.isDelete + ", ");
-            sbSql.Append("      '" + _modelUser.createBy + "', ");
-            sbSql.Append("      '" + _modelUser.createTime + "', ");
-            sbSql.Append("      '" + _modelUser.modifyBy + "', ");
-            sbSql.Append("      '" + _modelUser.modifyTime + "')");
+            sbSql.Append("      '" + _model.code + "', ");
+            sbSql.Append("      '" + _model.name + "', ");
+            sbSql.Append("      '" + _model.country + "', ");
+            sbSql.Append("       " + _model.province + ", ");
+            sbSql.Append("      '" + _model.provinceName + "', ");
+            sbSql.Append("       " + _model.city + ", ");
+            sbSql.Append("      '" + _model.cityName + "', ");
+            sbSql.Append("       " + _model.district + ", ");
+            sbSql.Append("      '" + _model.districtName + "', ");
+            sbSql.Append("      '" + _model.address + "', ");
+            sbSql.Append("      '" + _model.zip + "', ");
+            sbSql.Append("      '" + _model.fax + "', ");
+            sbSql.Append("      '" + _model.telephone1 + "', ");
+            sbSql.Append("      '" + _model.telephone2 + "', ");
+            sbSql.Append("      '" + _model.manager + "', ");
+            sbSql.Append("      '" + _model.position + "', ");
+            sbSql.Append("      '" + _model.mobile + "', ");
+            sbSql.Append("       " + _model.type + ", ");
+            sbSql.Append("       " + _model.salerId + ", ");
+            sbSql.Append("      '" + _model.remark + "', ");
+            sbSql.Append("       " + _model.creditLimit + ", ");
+            sbSql.Append("       " + _model.isDelete + ", ");
+            sbSql.Append("      '" + _model.createBy + "', ");
+            sbSql.Append("      '" + _model.createTime + "', ");
+            sbSql.Append("      '" + _model.modifyBy + "', ");
+            sbSql.Append("      '" + _model.modifyTime + "')");
 
             return Dal.DBHelper.Excute(sbSql.ToString());
         }
 
-        public int UpdateUser(ModelUser _modelUser, int _orgRoleId)
+        public int UpdateCustomer(ModelCustomer _model)
         {
-            //用户信息变更
             sbSql.Clear();
-            sbSql.Append("update m_user ");
-            sbSql.Append("set userName = '" + _modelUser.userName + "',");
-            sbSql.Append("    pwd = '" + _modelUser.pwd + "',");
-            sbSql.Append("    roleId = " + _modelUser.roleId + ",");
-            sbSql.Append("    sex = '" + _modelUser.sex + "',");
-            sbSql.Append("    position = '" + _modelUser.position + "',");
-            sbSql.Append("    mobile = '" + _modelUser.mobile + "',");
-            sbSql.Append("    email = '" + _modelUser.email + "',");
-            sbSql.Append("    birthday = '" + _modelUser.birthday + "',");
-            sbSql.Append("    modifyBy = '" + _modelUser.modifyBy + "',");
-            sbSql.Append("    modifyTime = '" + _modelUser.modifyTime + "' ");
-            sbSql.Append("where userId = " + _modelUser.userId);
+            sbSql.Append("update p_customer ");
+            sbSql.Append("set code = '" + _model.code + "',");
+            sbSql.Append("    name = '" + _model.name + "',");
+            sbSql.Append("    country = '" + _model.country + "',");
+            sbSql.Append("    province = " + _model.province + ",");
+            sbSql.Append("    provinceName = '" + _model.provinceName + "',");
+            sbSql.Append("    city = " + _model.city + ",");
+            sbSql.Append("    cityName = '" + _model.cityName + "',");
+            sbSql.Append("    district = " + _model.district + ",");
+            sbSql.Append("    districtName = '" + _model.districtName + "',");
+            sbSql.Append("    address = '" + _model.address + "',");
+            sbSql.Append("    zip = '" + _model.zip + "',");
+            sbSql.Append("    fax = '" + _model.fax + "',");
+            sbSql.Append("    telephone1 = '" + _model.telephone1 + "',");
+            sbSql.Append("    telephone2 = '" + _model.telephone2 + "',");
+            sbSql.Append("    manager = '" + _model.manager + "',");
+            sbSql.Append("    position = '" + _model.position + "',");
+            sbSql.Append("    mobile = '" + _model.mobile + "',");
+            sbSql.Append("    type = " + _model.type + ",");
+            sbSql.Append("    salerId = " + _model.salerId + ",");
+            sbSql.Append("    remark = '" + _model.remark + "',");
+            sbSql.Append("    creditLimit = " + _model.creditLimit + ",");
+            sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
+            sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
+            sbSql.Append("where id = " + _model.id);
 
             return Dal.DBHelper.Excute(sbSql.ToString());
         }
 
-        public int DeleteUser(ModelUser _modelUser)
+        public int DeleteCustomer(ModelCustomer _model)
         {
             sbSql.Clear();
-            sbSql.Append("update m_user ");
+            sbSql.Append("update p_customer ");
             sbSql.Append("set isDelete = 1,");
-            sbSql.Append("    modifyBy = '" + _modelUser.modifyBy + "',");
-            sbSql.Append("    modifyTime = '" + _modelUser.modifyTime + "' ");
-            sbSql.Append("where userId = " + _modelUser.userId);
+            sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
+            sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
+            sbSql.Append("where id = " + _model.id);
 
             return Dal.DBHelper.Excute(sbSql.ToString());
         }

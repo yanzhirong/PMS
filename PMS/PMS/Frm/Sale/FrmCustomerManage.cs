@@ -14,6 +14,9 @@ namespace PMS.Frm.Sale
 {
     public partial class FrmCustomerManage : Form
     {
+        //销售ID
+        private int m_salerId;
+
         private BllCustomer m_bllCustomer = new BllCustomer();
 
         public FrmCustomerManage()
@@ -26,6 +29,16 @@ namespace PMS.Frm.Sale
             LoginUserInfo.LoginUser.currentFrom = this;
             WinCommon.CreateMenu(ref this.menuStrip1);
 
+
+            if (LoginUserInfo.LoginUser.loginRole.isSaler == 1)
+            {
+                m_salerId = LoginUserInfo.LoginUser.loginUser.userId;
+            }
+            else
+            {
+                m_salerId = 0;
+            }
+
             this.txt_code.Focus();
         }
 
@@ -35,13 +48,7 @@ namespace PMS.Frm.Sale
             string name = this.txt_name.Text.Trim();
             int type = this.cmb_type.SelectedIndex;
 
-            int salerId = 0;
-            if (LoginUserInfo.LoginUser.loginRole.isSaler == 1)
-            {
-                salerId = LoginUserInfo.LoginUser.loginUser.userId;
-            }
-
-            DataTable dt = m_bllCustomer.GetCustomers(code, name, type, salerId);
+            DataTable dt = m_bllCustomer.GetCustomers(code, name, type, m_salerId);
 
             this.dataGridView1.DataSource = dt;
             this.dataGridView1.Refresh();

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Common.Tools;
 using Bll;
 using Model;
+using Enum;
 
 namespace PMS.Frm.Login
 {
@@ -45,7 +46,7 @@ namespace PMS.Frm.Login
             m_bllLogin.DoLogin(txt_name.Text.Trim(), txt_pwd.Text.Trim());
 
             Result result = m_bllLogin.result;
-            if (result.resultCode == Common.Enum.EnumResultCode.Success)
+            if (result.resultCode == EnumResultCode.Success)
             {
                 LoginUserInfo.LoginUser.loginUser = m_bllLogin.GetLoginUser(txt_name.Text.Trim());
                 LoginUserInfo.LoginUser.loginRole = m_bllLogin.GetLoginRole(LoginUserInfo.LoginUser.loginUser.roleId);

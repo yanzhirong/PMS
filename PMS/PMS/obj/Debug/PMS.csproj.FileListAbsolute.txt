@@ -55,11 +55,7 @@ D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.pdb
 D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\PMS.exe
 D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\PMS.pdb
 D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Common.dll
-D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Dal.dll
-D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Bll.pdb
 D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Common.pdb
-D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Model.pdb
-D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Dal.pdb
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.csprojResolveAssemblyReference.cache
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Properties.Resources.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.csproj.GenerateResource.Cache
@@ -93,3 +89,7 @@ D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Sys.FrmSysRole.resources
 D:\git\pms\PMS\PMS\obj\Debug\PMS.Frm.Product.FrmProductDetail.resources
 D:\git\pms\PMS\PMS\obj\Debug\PMS.Frm.Sale.FrmCustomerDetail.resources
 D:\git\pms\PMS\PMS\obj\Debug\PMS.Frm.Sale.FrmCustomerManage.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Sale.FrmCustomerDetail.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Sale.FrmCustomerManage.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Enum.dll
+D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Enum.pdb

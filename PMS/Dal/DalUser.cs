@@ -56,6 +56,19 @@ namespace Dal
             return Dal.DBHelper.Select(sbSql.ToString());
         }
 
+        public DataTable GetSalers()
+        {
+            sql = @"select a.userId, a.userName 
+                      from m_user a
+                      join m_role b 
+                        on a.roleId = b.roleId
+                     where a.isDelete = 0
+                       and b.isDelete = 0
+                       and b.isSaler = 1 
+                     order by a.userId ";
+            return Dal.DBHelper.Select(sql);
+        }
+
         public DataTable GetUserById(int _userId)
         {
             sql = @"select * 
