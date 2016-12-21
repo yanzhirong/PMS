@@ -50,7 +50,7 @@ namespace PMS.Frm.Login
             {
                 LoginUserInfo.LoginUser.loginUser = m_bllLogin.GetLoginUser(txt_name.Text.Trim());
                 LoginUserInfo.LoginUser.loginRole = m_bllLogin.GetLoginRole(LoginUserInfo.LoginUser.loginUser.roleId);
-                LoginUserInfo.LoginUser.loginMenu = m_bllLogin.GetLoginMenu(LoginUserInfo.LoginUser.loginUser.roleId);
+                LoginUserInfo.LoginUser.loginMenu = m_bllLogin.GetLoginMenu(LoginUserInfo.LoginUser.loginUser.roleId, LoginUserInfo.LoginUser.loginRole.roleType);
                 this.Hide();
                 Form frmMain = new Frm.Main.FrmMain();
                 frmMain.Show();

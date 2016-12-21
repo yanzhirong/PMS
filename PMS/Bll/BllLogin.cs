@@ -65,9 +65,9 @@ namespace Bll
             return null;
         }
 
-        public List<ModelMenu> GetLoginMenu(int _roleId)
+        public List<ModelMenu> GetLoginMenu(int _roleId, int _roleType)
         {
-            DataTable menu = dalRole.GetLoginMenuByRoleId(_roleId);
+            DataTable menu = dalRole.GetLoginMenuByRoleId(_roleId,_roleType);
 
             if (menu != null && menu.Rows.Count > 0)
             {

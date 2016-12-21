@@ -35,7 +35,7 @@
             this.grb_customer = new System.Windows.Forms.GroupBox();
             this.txt_remark = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
+            this.lbl_saler = new System.Windows.Forms.Label();
             this.cmb_saler = new System.Windows.Forms.ComboBox();
             this.txt_creditLimit = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -110,7 +110,7 @@
             // 
             this.grb_customer.Controls.Add(this.txt_remark);
             this.grb_customer.Controls.Add(this.label17);
-            this.grb_customer.Controls.Add(this.label14);
+            this.grb_customer.Controls.Add(this.lbl_saler);
             this.grb_customer.Controls.Add(this.cmb_saler);
             this.grb_customer.Controls.Add(this.txt_creditLimit);
             this.grb_customer.Controls.Add(this.label12);
@@ -154,15 +154,16 @@
             this.label17.TabIndex = 85;
             this.label17.Text = "备    注：";
             // 
-            // label14
+            // lbl_saler
             // 
-            this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(332, 26);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(65, 12);
-            this.label14.TabIndex = 82;
-            this.label14.Text = "销    售：";
+            this.lbl_saler.AutoSize = true;
+            this.lbl_saler.ForeColor = System.Drawing.Color.Red;
+            this.lbl_saler.Location = new System.Drawing.Point(332, 26);
+            this.lbl_saler.Name = "lbl_saler";
+            this.lbl_saler.Size = new System.Drawing.Size(65, 12);
+            this.lbl_saler.TabIndex = 82;
+            this.lbl_saler.Text = "销    售：";
+            this.lbl_saler.Visible = false;
             // 
             // cmb_saler
             // 
@@ -172,6 +173,7 @@
             this.cmb_saler.Name = "cmb_saler";
             this.cmb_saler.Size = new System.Drawing.Size(222, 20);
             this.cmb_saler.TabIndex = 83;
+            this.cmb_saler.Visible = false;
             // 
             // txt_creditLimit
             // 
@@ -214,6 +216,7 @@
             this.cmb_type.Name = "cmb_type";
             this.cmb_type.Size = new System.Drawing.Size(221, 20);
             this.cmb_type.TabIndex = 78;
+            this.cmb_type.SelectedIndexChanged += new System.EventHandler(this.cmb_type_SelectedIndexChanged);
             // 
             // grb_manager
             // 
@@ -567,7 +570,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txt_remark;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lbl_saler;
         private System.Windows.Forms.ComboBox cmb_saler;
     }
 }

@@ -70,11 +70,11 @@
             this.chk_sys_user = new System.Windows.Forms.CheckBox();
             this.btn_submit = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
-            this.chk_isFinance = new System.Windows.Forms.CheckBox();
             this.txt_name = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.lbl_tile = new System.Windows.Forms.Label();
-            this.chk_isSaler = new System.Windows.Forms.CheckBox();
+            this.cmb_type = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.grb_role.SuspendLayout();
             this.grb_finance.SuspendLayout();
             this.grb_purchase.SuspendLayout();
@@ -90,9 +90,9 @@
             this.lbl_role.AutoSize = true;
             this.lbl_role.Location = new System.Drawing.Point(36, 83);
             this.lbl_role.Name = "lbl_role";
-            this.lbl_role.Size = new System.Drawing.Size(41, 12);
+            this.lbl_role.Size = new System.Drawing.Size(53, 12);
             this.lbl_role.TabIndex = 11;
-            this.lbl_role.Text = "角色：";
+            this.lbl_role.Text = "角色名：";
             // 
             // grb_role
             // 
@@ -196,7 +196,7 @@
             // chk_purchase_order
             // 
             this.chk_purchase_order.AutoSize = true;
-            this.chk_purchase_order.Location = new System.Drawing.Point(368, 17);
+            this.chk_purchase_order.Location = new System.Drawing.Point(250, 17);
             this.chk_purchase_order.Name = "chk_purchase_order";
             this.chk_purchase_order.Size = new System.Drawing.Size(72, 16);
             this.chk_purchase_order.TabIndex = 25;
@@ -206,7 +206,7 @@
             // chk_purchase_plan
             // 
             this.chk_purchase_plan.AutoSize = true;
-            this.chk_purchase_plan.Location = new System.Drawing.Point(250, 17);
+            this.chk_purchase_plan.Location = new System.Drawing.Point(138, 17);
             this.chk_purchase_plan.Name = "chk_purchase_plan";
             this.chk_purchase_plan.Size = new System.Drawing.Size(72, 16);
             this.chk_purchase_plan.TabIndex = 24;
@@ -532,23 +532,12 @@
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
-            // chk_isFinance
-            // 
-            this.chk_isFinance.AutoSize = true;
-            this.chk_isFinance.Location = new System.Drawing.Point(218, 83);
-            this.chk_isFinance.Name = "chk_isFinance";
-            this.chk_isFinance.Size = new System.Drawing.Size(96, 16);
-            this.chk_isFinance.TabIndex = 53;
-            this.chk_isFinance.Tag = "101";
-            this.chk_isFinance.Text = "价格管理权限";
-            this.chk_isFinance.UseVisualStyleBackColor = true;
-            // 
             // txt_name
             // 
-            this.txt_name.Location = new System.Drawing.Point(83, 80);
+            this.txt_name.Location = new System.Drawing.Point(88, 80);
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(111, 21);
-            this.txt_name.TabIndex = 54;
+            this.txt_name.TabIndex = 1;
             // 
             // menuStrip1
             // 
@@ -568,26 +557,32 @@
             this.lbl_tile.TabIndex = 69;
             this.lbl_tile.Text = "角色权限设定";
             // 
-            // chk_isSaler
+            // cmb_type
             // 
-            this.chk_isSaler.AutoSize = true;
-            this.chk_isSaler.Location = new System.Drawing.Point(336, 83);
-            this.chk_isSaler.Name = "chk_isSaler";
-            this.chk_isSaler.Size = new System.Drawing.Size(72, 16);
-            this.chk_isSaler.TabIndex = 70;
-            this.chk_isSaler.Tag = "101";
-            this.chk_isSaler.Text = "销售人员";
-            this.chk_isSaler.UseVisualStyleBackColor = true;
+            this.cmb_type.FormattingEnabled = true;
+            this.cmb_type.Location = new System.Drawing.Point(288, 80);
+            this.cmb_type.Name = "cmb_type";
+            this.cmb_type.Size = new System.Drawing.Size(121, 20);
+            this.cmb_type.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(222, 83);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 72;
+            this.label1.Text = "角色类型：";
             // 
             // FrmSysRoleDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(935, 667);
-            this.Controls.Add(this.chk_isSaler);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cmb_type);
             this.Controls.Add(this.lbl_tile);
             this.Controls.Add(this.txt_name);
-            this.Controls.Add(this.chk_isFinance);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_submit);
             this.Controls.Add(this.grb_role);
@@ -667,11 +662,11 @@
         private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.CheckBox chk_materials_set;
         private System.Windows.Forms.CheckBox chk_sys_config;
-        private System.Windows.Forms.CheckBox chk_isFinance;
         private System.Windows.Forms.TextBox txt_name;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label lbl_tile;
-        private System.Windows.Forms.CheckBox chk_isSaler;
+        private System.Windows.Forms.ComboBox cmb_type;
+        private System.Windows.Forms.Label label1;
 
     }
 }

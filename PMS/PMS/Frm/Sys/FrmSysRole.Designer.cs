@@ -40,8 +40,7 @@
             this.lbl_tile = new System.Windows.Forms.Label();
             this.roleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.role = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isFinance = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isSaler = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roleType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modify = new System.Windows.Forms.DataGridViewButtonColumn();
             this.delete = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -57,7 +56,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(30, 62);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(624, 95);
+            this.groupBox1.Size = new System.Drawing.Size(531, 95);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
@@ -113,8 +112,7 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.roleId,
             this.role,
-            this.isFinance,
-            this.isSaler,
+            this.roleType,
             this.createTime,
             this.modify,
             this.delete});
@@ -122,7 +120,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 35;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(624, 335);
+            this.dataGridView1.Size = new System.Drawing.Size(531, 310);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -130,7 +128,7 @@
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(680, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(589, 24);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -159,18 +157,12 @@
             this.role.Name = "role";
             this.role.ReadOnly = true;
             // 
-            // isFinance
+            // roleType
             // 
-            this.isFinance.DataPropertyName = "isFinance";
-            this.isFinance.HeaderText = "价格权限";
-            this.isFinance.Name = "isFinance";
-            this.isFinance.ReadOnly = true;
-            // 
-            // isSaler
-            // 
-            this.isSaler.HeaderText = "是否是销售";
-            this.isSaler.Name = "isSaler";
-            this.isSaler.ReadOnly = true;
+            this.roleType.DataPropertyName = "roleType";
+            this.roleType.HeaderText = "角色类型";
+            this.roleType.Name = "roleType";
+            this.roleType.ReadOnly = true;
             // 
             // createTime
             // 
@@ -198,7 +190,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(680, 512);
+            this.ClientSize = new System.Drawing.Size(589, 512);
             this.Controls.Add(this.lbl_tile);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
@@ -233,8 +225,7 @@
         private System.Windows.Forms.Label lbl_tile;
         private System.Windows.Forms.DataGridViewTextBoxColumn roleId;
         private System.Windows.Forms.DataGridViewTextBoxColumn role;
-        private System.Windows.Forms.DataGridViewTextBoxColumn isFinance;
-        private System.Windows.Forms.DataGridViewTextBoxColumn isSaler;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roleType;
         private System.Windows.Forms.DataGridViewTextBoxColumn createTime;
         private System.Windows.Forms.DataGridViewButtonColumn modify;
         private System.Windows.Forms.DataGridViewButtonColumn delete;

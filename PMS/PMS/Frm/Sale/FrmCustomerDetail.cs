@@ -19,8 +19,6 @@ namespace PMS.Frm.Sale
         private int m_mode;
         //原来ID
         private int m_customerId;
-        //销售ID
-        private int m_salerId;
 
         private BllCustomer m_bllCustomer = new BllCustomer();
         private BllUser m_bllUser = new BllUser();
@@ -38,14 +36,34 @@ namespace PMS.Frm.Sale
             LoginUserInfo.LoginUser.currentFrom = this;
             WinCommon.CreateMenu(ref this.menuStrip1);
 
-            if (LoginUserInfo.LoginUser.loginRole.isSaler == 1)
+            //登录者是销售
+            if (LoginUserInfo.LoginUser.loginRole.roleType == 1)
             {
-                m_salerId = LoginUserInfo.LoginUser.loginUser.userId;
+                if (m_mode == 0)
+                {
+                    for (int i = 0; i < this.cmb_saler.Items.Count; i++)
+                    {
+                        if (LoginUserInfo.LoginUser.loginUser.userId == (int)((ModelItem)this.cmb_saler.Items[i]).itemKey)
+                        {
+                            this.cmb_saler.SelectedIndex = i;
+                        }
+                    }
+                }
+
+                this.cmb_type.SelectedIndex = 1;
+                this.cmb_type.Enabled = false;
+
+                this.cmb_saler.Enabled = false;
             }
-            else
+            else if (LoginUserInfo.LoginUser.loginRole.roleType == 2)  //登录者是采购
             {
-                m_salerId = 0;
+                this.cmb_type.SelectedIndex = 2;
+                this.cmb_type.Enabled = false;
+
+                this.lbl_saler.Visible = false;
+                this.cmb_saler.Visible = false;
             }
+            
             //初始化
             init();
         }
@@ -90,25 +108,6 @@ namespace PMS.Frm.Sale
             WinCommon.BindComboBox(ref cmb_province, BllArea.GetProvince());
             WinCommon.BindComboBox(ref cmb_city, null);
             WinCommon.BindComboBox(ref cmb_district, null);
-
-            if (m_salerId > 0)
-            {
-                if (m_mode == 0)
-                {
-                    for (int i = 0; i < this.cmb_saler.Items.Count - 1; i++)
-                    {
-                        if (m_salerId == (int)((ModelItem)this.cmb_saler.Items[i]).itemKey)
-                        {
-                            this.cmb_saler.SelectedIndex = i;
-                        }
-                    }
-                }
-                this.cmb_saler.Enabled = false;
-            }
-            else
-            {
-                this.cmb_saler.Enabled = true;
-            }
 
             //初始化(修改或者删除时)
             if (m_mode != 0 && m_customerId > 0)
@@ -335,7 +334,7 @@ namespace PMS.Frm.Sale
                 //销售(销售客户时必须)
                 if(this.cmb_type.SelectedIndex == 1)
                 {
-                    if(this.cmb_saler.SelectedIndex <= 0)
+                    if(this.cmb_saler.SelectedIndex < 0)
                     {
                         MsgUtils.ShowErrorMsg("请选择销售！");
                         this.cmb_saler.Focus();
@@ -413,9 +412,11 @@ namespace PMS.Frm.Sale
         private void cmb_province_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if(this.cmb_province.SelectedIndex < 0)
+            this.cmb_city.Items.Clear();
+            this.cmb_district.Items.Clear();
+            
+            if (this.cmb_province.SelectedIndex < 0)
             {
-                WinCommon.BindComboBox(ref this.cmb_city, null);
                 return;
             }
 
@@ -427,15 +428,31 @@ namespace PMS.Frm.Sale
         private void cmb_city_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+            this.cmb_district.Items.Clear();
+
             if (this.cmb_city.SelectedIndex < 0)
             {
-                WinCommon.BindComboBox(ref this.cmb_district, null);
                 return;
             }
 
             int city = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_city.SelectedItem).itemKey);
 
             WinCommon.BindComboBox(ref this.cmb_district, BllArea.GetDistrict(city));
+        }
+
+        private void cmb_type_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int type = this.cmb_type.SelectedIndex;
+            if (type != 1)
+            {
+                this.lbl_saler.Visible = false;
+                this.cmb_saler.Visible = false;
+            }
+            else
+            {
+                this.lbl_saler.Visible = true;
+                this.cmb_saler.Visible = true;
+            }
         }
 
     }

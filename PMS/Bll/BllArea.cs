@@ -14,7 +14,7 @@ namespace Bll
     {
         private static DalArea m_dalArea = new DalArea();
 
-        private static List<ModelArea> listAllArea = new List<ModelArea>();
+        private static List<ModelArea> listAllArea = GetAllArea();
 
         public static List<ModelArea> GetAllArea()
         {
@@ -35,10 +35,10 @@ namespace Bll
 
             if(dt != null && dt.Rows.Count > 0)
             {
-                ModelItem item = new ModelItem();
-
+ 
                 foreach(DataRow dr in dt.Rows)
                 {
+                    ModelItem item = new ModelItem();
                     item.itemKey = dr["areaId"];
                     item.itemValue = (String)dr["areaName"];
 

@@ -19,8 +19,9 @@ namespace PMS.Frm.Sys
         private int m_mode;
         //角色ID
         private int m_roleId;
-        
+
         private BllRole m_bllRole = new BllRole();
+        private BllCode m_bllCode = new BllCode();
 
         public FrmSysRoleDetail(int _mode , int _roleId)
         {
@@ -34,6 +35,9 @@ namespace PMS.Frm.Sys
             LoginUserInfo.LoginUser.currentFrom = this;
             WinCommon.CreateMenu(ref this.menuStrip1);
 
+            List<ModelItem> listItem = m_bllCode.GetCodeItem(4, false);
+            WinCommon.BindComboBox(ref this.cmb_type, listItem);
+
             if (m_mode == 0)
             {
                 this.txt_name.Focus();
@@ -44,8 +48,16 @@ namespace PMS.Frm.Sys
             else
             {
                 ModelRole modelRole = m_bllRole.GetRoleById(m_roleId);
-                this.chk_isFinance.Checked = modelRole.isFinance == 1 ? true : false;
-                this.chk_isSaler.Checked = modelRole.isSaler == 1 ? true : false;
+
+                for (int i = 0; i < this.cmb_type.Items.Count; i++)
+                {
+                    if(modelRole.roleType == (int)((ModelItem)this.cmb_type.Items[i]).itemKey)
+                    {
+                        this.cmb_type.SelectedIndex = i;
+                        break;
+                    }
+                }
+
                 this.txt_name.Text = modelRole.roleName;
 
                 setMenuCheckBox();
@@ -53,8 +65,7 @@ namespace PMS.Frm.Sys
                 if (m_mode == 2)
                 {
                     this.txt_name.Enabled = false;
-                    this.chk_isFinance.Enabled = false;
-                    this.chk_isSaler.Enabled = false;
+                    this.cmb_type.Enabled = false;
                     this.grb_role.Enabled = false;
                 }
             }
@@ -262,8 +273,7 @@ namespace PMS.Frm.Sys
             ModelRole modelRole = new ModelRole();
             modelRole.roleId = m_roleId;
             modelRole.roleName = this.txt_name.Text.Trim();
-            modelRole.isFinance = this.chk_isFinance.Checked == true ? 1 : 0;
-            modelRole.isSaler = this.chk_isSaler.Checked == true ? 1 : 0;
+            modelRole.roleType = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_type.SelectedItem).itemKey);
             modelRole.isDelete = 0;
             modelRole.createBy = LoginUserInfo.LoginUser.loginUser.userName;
             modelRole.createTime = DateTime.Now;

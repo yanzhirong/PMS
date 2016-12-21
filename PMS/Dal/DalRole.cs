@@ -40,30 +40,36 @@ namespace Dal
         {
             if (Common.Tools.StringUtils.IsBlank(_name))
             {
-                sql = @"select roleId,
-                               roleName,
-                               case isFinance when 1 then '有' else '无' end isFinance,
-                               case isSaler when 1 then '是' else '否' end isFinance,
-                               createTime,
+                sql = @"select a.roleId,
+                               a.roleName,
+                               b.value1 roleType,
+                               a.createTime,
                                '修改' modifyBtn,
                                '删除' deleteBtn
-                          from m_role
-                         where isDelete = 0
-                         order by modifyTime desc";
+                          from m_role a
+                          left join m_code b
+                            on a.roleType = b.subCode
+                           and b.code = 4
+                           and b.isDelete = 0
+                         where a.isDelete = 0
+                         order by a.modifyTime desc";
             }
             else
             {
-                sql = @"select roleId,
-                               roleName,
-                               case isFinance when 1 then '有' else '无' end isFinance,
-                               case isSaler when 1 then '是' else '否' end isFinance,
-                               createTime,
+                sql = @"select a.roleId,
+                               a.roleName,
+                               b.value1 roleType,
+                               a.createTime,
                                '修改' modifyBtn,
                                '删除' deleteBtn
-                          from m_role
-                         where isDelete = 0
-                           and roleName like '%{0}%'
-                         order by modifyTime desc";
+                          from m_role a
+                           left join m_code b
+                            on a.roleType = b.subCode
+                           and b.code = 4
+                           and b.isDelete = 0
+                        where a.isDelete = 0
+                           and a.roleName like '%{0}%'
+                         order by a.modifyTime desc";
 
                 sql = string.Format(sql, _name);
             }
@@ -83,10 +89,10 @@ namespace Dal
             return Dal.DBHelper.Select(sql);
         }
 
-        public DataTable GetLoginMenuByRoleId(int _roleId)
+        public DataTable GetLoginMenuByRoleId(int _roleId, int _roleType)
         {
             //admin
-            if (_roleId == 1)
+            if (_roleType == 99)
             {
                 sql = @"select * 
                           from m_menu a
@@ -95,14 +101,22 @@ namespace Dal
             }
             else
             {
-                sql = @"select a.* 
+                sql = @"select t.*
+                          from (
+                        select a.* 
                           from m_menu a
                                join r_role_menu b
-                               on a.menuId = b.menuId
+                                 on a.menuId = b.menuId
                          where b.roleId = {0} 
                            and b.isDelete = 0
                            and a.isDelete = 0
-                         order by a.sort";
+                         union
+                        select a.* 
+                          from m_menu a             
+                         where ifnull(a.checkBoxName, '') = ''
+                           and a.isDelete = 0
+                               ) t
+                         order by t.sort";
             }
             sql = string.Format(sql, _roleId);
 
@@ -153,11 +167,10 @@ namespace Dal
 
             sbSql.Clear();
             sbSql.Append("insert into m_role ");
-            sbSql.Append("(roleName, isFinance, isSaler, isDelete, createBy, createTime, modifyBy, modifyTime) ");
+            sbSql.Append("(roleName, roleType, isDelete, createBy, createTime, modifyBy, modifyTime) ");
             sbSql.Append(" value ( ");
             sbSql.Append("'" + _modelRole.roleName + "', ");
-            sbSql.Append(_modelRole.isFinance + ", ");
-            sbSql.Append(_modelRole.isSaler + ", ");
+            sbSql.Append(_modelRole.roleType + ", ");
             sbSql.Append(_modelRole.isDelete + ", ");
             sbSql.Append("'" + _modelRole.createBy + "', ");
             sbSql.Append("'" + _modelRole.createTime + "', ");
@@ -175,8 +188,7 @@ namespace Dal
 
             sbSql.Clear();
             sbSql.Append("update m_role ");
-            sbSql.Append("set isFinance = " + _modelRole.isFinance + ", ");
-            sbSql.Append("    isSaler = " + _modelRole.isSaler + ", ");
+            sbSql.Append("set roleType = " + _modelRole.roleType + ", ");
             sbSql.Append("    modifyBy = '" + _modelRole.modifyBy + "', ");
             sbSql.Append("    modifyTime = '" + _modelRole.modifyTime + "' ");
             sbSql.Append("where roleId = " + _modelRole.roleId + " ");

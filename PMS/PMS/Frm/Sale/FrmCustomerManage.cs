@@ -30,7 +30,7 @@ namespace PMS.Frm.Sale
             WinCommon.CreateMenu(ref this.menuStrip1);
 
 
-            if (LoginUserInfo.LoginUser.loginRole.isSaler == 1)
+            if (LoginUserInfo.LoginUser.loginRole.roleType == 1)
             {
                 m_salerId = LoginUserInfo.LoginUser.loginUser.userId;
             }

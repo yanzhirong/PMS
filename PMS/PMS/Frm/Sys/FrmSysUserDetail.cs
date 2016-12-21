@@ -180,7 +180,10 @@ namespace PMS.Frm.Sys
             modelUser.userName = this.txt_name.Text;
             modelUser.pwd = this.txt_pwd.Text;
             modelUser.roleId = (int)((ModelItem)this.cmb_role.SelectedItem).itemKey;
-            modelUser.sex = ((ModelItem)this.cmb_sex.SelectedItem).itemValue;
+            if (this.cmb_sex.SelectedIndex > 0)
+            {
+                modelUser.sex = ((ModelItem)this.cmb_sex.SelectedItem).itemValue;
+            }
             modelUser.position = this.txt_position.Text;
             modelUser.mobile = this.txt_mobile.Text;
             modelUser.email = this.txt_email.Text;

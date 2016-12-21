@@ -10,8 +10,7 @@ namespace Model
     {
         public int roleId { set; get; }
         public string roleName { set; get; }
-        public int isFinance { set; get; }
-        public int isSaler { set; get; }
+        public int roleType { set; get; }
 
     }
 }

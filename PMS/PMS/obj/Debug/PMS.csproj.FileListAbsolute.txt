@@ -93,3 +93,7 @@ D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Sale.FrmCustomerDetail.resource
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Sale.FrmCustomerManage.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Enum.dll
 D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Enum.pdb
+D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Dal.dll
+D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Bll.pdb
+D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Model.pdb
+D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Dal.pdb
