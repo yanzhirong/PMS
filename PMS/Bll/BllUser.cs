@@ -45,11 +45,11 @@ namespace Bll
             return new ModelUser();
         }
 
-        public List<ModelItem> GetSalers()
+        public List<ModelItem> GetUserGroupByRoleType(int _roleType)
         {
             List<ModelItem> listSaler = new List<ModelItem>();
 
-            DataTable dt = m_dalUser.GetSalers();
+            DataTable dt = m_dalUser.GetUserGroupByRoleType(_roleType);
 
             if (dt != null && dt.Rows.Count > 0)
             {

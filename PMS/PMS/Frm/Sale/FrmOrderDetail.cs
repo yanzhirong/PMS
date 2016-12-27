@@ -13,7 +13,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Sale
 {
-    public partial class FrmCustomerDetail : Form
+    public partial class FrmOrderDetail : Form
     {
         //处理模式（0：新建；1：修改；2：删除）
         private int m_mode;
@@ -24,7 +24,7 @@ namespace PMS.Frm.Sale
         private BllUser m_bllUser = new BllUser();
         private BllCode m_bllCode = new BllCode();
 
-        public FrmCustomerDetail(int _mode, int _customerId)
+        public FrmOrderDetail(int _mode, int _customerId)
         {
             InitializeComponent();
             m_mode = _mode;
@@ -398,7 +398,7 @@ namespace PMS.Frm.Sale
         }
         #endregion
 
-        private void FrmCustomerDetail_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmOrderDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
             WinCommon.Exit();
         }

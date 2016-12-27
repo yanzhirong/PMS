@@ -1,0 +1,573 @@
+﻿namespace PMS.Frm.Sale
+{
+    partial class FrmOrderDetail
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmOrderDetail));
+            this.btn_submit = new System.Windows.Forms.Button();
+            this.btn_cancel = new System.Windows.Forms.Button();
+            this.lbl_title = new System.Windows.Forms.Label();
+            this.grb_customer = new System.Windows.Forms.GroupBox();
+            this.txt_remark = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.lbl_saler = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.cmb_type = new System.Windows.Forms.ComboBox();
+            this.grb_address = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmb_province = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmb_city = new System.Windows.Forms.ComboBox();
+            this.txt_address = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmb_district = new System.Windows.Forms.ComboBox();
+            this.txt_code = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.label14 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
+            this.grb_price = new System.Windows.Forms.GroupBox();
+            this.txt_price = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txt_priceRemark = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.searchKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.materialsName = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.MaterialsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grb_customer.SuspendLayout();
+            this.grb_address.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.grb_price.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // btn_submit
+            // 
+            this.btn_submit.Location = new System.Drawing.Point(251, 582);
+            this.btn_submit.Name = "btn_submit";
+            this.btn_submit.Size = new System.Drawing.Size(75, 23);
+            this.btn_submit.TabIndex = 101;
+            this.btn_submit.Text = "确认";
+            this.btn_submit.UseVisualStyleBackColor = true;
+            this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
+            // 
+            // btn_cancel
+            // 
+            this.btn_cancel.Location = new System.Drawing.Point(418, 582);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_cancel.TabIndex = 102;
+            this.btn_cancel.Text = "取消";
+            this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            // 
+            // lbl_title
+            // 
+            this.lbl_title.AutoSize = true;
+            this.lbl_title.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Bold);
+            this.lbl_title.ForeColor = System.Drawing.Color.Black;
+            this.lbl_title.Location = new System.Drawing.Point(218, 41);
+            this.lbl_title.Name = "lbl_title";
+            this.lbl_title.Size = new System.Drawing.Size(180, 27);
+            this.lbl_title.TabIndex = 24;
+            this.lbl_title.Text = "订单信息设置";
+            // 
+            // grb_customer
+            // 
+            this.grb_customer.Controls.Add(this.grb_price);
+            this.grb_customer.Controls.Add(this.label7);
+            this.grb_customer.Controls.Add(this.dataGridView1);
+            this.grb_customer.Controls.Add(this.textBox1);
+            this.grb_customer.Controls.Add(this.label14);
+            this.grb_customer.Controls.Add(this.comboBox1);
+            this.grb_customer.Controls.Add(this.txt_remark);
+            this.grb_customer.Controls.Add(this.label17);
+            this.grb_customer.Controls.Add(this.lbl_saler);
+            this.grb_customer.Controls.Add(this.label10);
+            this.grb_customer.Controls.Add(this.cmb_type);
+            this.grb_customer.Controls.Add(this.grb_address);
+            this.grb_customer.Controls.Add(this.txt_code);
+            this.grb_customer.Controls.Add(this.label1);
+            this.grb_customer.Location = new System.Drawing.Point(31, 84);
+            this.grb_customer.Name = "grb_customer";
+            this.grb_customer.Size = new System.Drawing.Size(641, 483);
+            this.grb_customer.TabIndex = 103;
+            this.grb_customer.TabStop = false;
+            // 
+            // txt_remark
+            // 
+            this.txt_remark.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_remark.Location = new System.Drawing.Point(74, 386);
+            this.txt_remark.MaxLength = 20;
+            this.txt_remark.Name = "txt_remark";
+            this.txt_remark.Size = new System.Drawing.Size(550, 21);
+            this.txt_remark.TabIndex = 84;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(7, 389);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(65, 12);
+            this.label17.TabIndex = 85;
+            this.label17.Text = "备    注：";
+            // 
+            // lbl_saler
+            // 
+            this.lbl_saler.AutoSize = true;
+            this.lbl_saler.ForeColor = System.Drawing.Color.Black;
+            this.lbl_saler.Location = new System.Drawing.Point(332, 26);
+            this.lbl_saler.Name = "lbl_saler";
+            this.lbl_saler.Size = new System.Drawing.Size(65, 12);
+            this.lbl_saler.TabIndex = 82;
+            this.lbl_saler.Text = "订单状态：";
+            this.lbl_saler.Visible = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(6, 63);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(65, 12);
+            this.label10.TabIndex = 79;
+            this.label10.Text = "客    户：";
+            // 
+            // cmb_type
+            // 
+            this.cmb_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_type.FormattingEnabled = true;
+            this.cmb_type.Items.AddRange(new object[] {
+            "",
+            "销售客户",
+            "供应商"});
+            this.cmb_type.Location = new System.Drawing.Point(74, 56);
+            this.cmb_type.Name = "cmb_type";
+            this.cmb_type.Size = new System.Drawing.Size(221, 20);
+            this.cmb_type.TabIndex = 78;
+            this.cmb_type.SelectedIndexChanged += new System.EventHandler(this.cmb_type_SelectedIndexChanged);
+            // 
+            // grb_address
+            // 
+            this.grb_address.Controls.Add(this.textBox2);
+            this.grb_address.Controls.Add(this.label2);
+            this.grb_address.Controls.Add(this.textBox3);
+            this.grb_address.Controls.Add(this.label5);
+            this.grb_address.Controls.Add(this.label13);
+            this.grb_address.Controls.Add(this.label6);
+            this.grb_address.Controls.Add(this.cmb_province);
+            this.grb_address.Controls.Add(this.label4);
+            this.grb_address.Controls.Add(this.cmb_city);
+            this.grb_address.Controls.Add(this.txt_address);
+            this.grb_address.Controls.Add(this.label3);
+            this.grb_address.Controls.Add(this.cmb_district);
+            this.grb_address.ForeColor = System.Drawing.Color.Red;
+            this.grb_address.Location = new System.Drawing.Point(6, 93);
+            this.grb_address.Name = "grb_address";
+            this.grb_address.Size = new System.Drawing.Size(623, 130);
+            this.grb_address.TabIndex = 73;
+            this.grb_address.TabStop = false;
+            this.grb_address.Text = "地  址：";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(408, 28);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(29, 12);
+            this.label13.TabIndex = 64;
+            this.label13.Text = "区：";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(37, 28);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 12);
+            this.label6.TabIndex = 56;
+            this.label6.Text = "省：";
+            // 
+            // cmb_province
+            // 
+            this.cmb_province.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_province.FormattingEnabled = true;
+            this.cmb_province.Location = new System.Drawing.Point(68, 23);
+            this.cmb_province.Name = "cmb_province";
+            this.cmb_province.Size = new System.Drawing.Size(115, 20);
+            this.cmb_province.TabIndex = 47;
+            this.cmb_province.SelectedIndexChanged += new System.EventHandler(this.cmb_province_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(209, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 12);
+            this.label4.TabIndex = 49;
+            this.label4.Text = "市：";
+            // 
+            // cmb_city
+            // 
+            this.cmb_city.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_city.FormattingEnabled = true;
+            this.cmb_city.Location = new System.Drawing.Point(244, 23);
+            this.cmb_city.Name = "cmb_city";
+            this.cmb_city.Size = new System.Drawing.Size(115, 20);
+            this.cmb_city.TabIndex = 50;
+            this.cmb_city.SelectedIndexChanged += new System.EventHandler(this.cmb_city_SelectedIndexChanged);
+            // 
+            // txt_address
+            // 
+            this.txt_address.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_address.Location = new System.Drawing.Point(68, 53);
+            this.txt_address.MaxLength = 20;
+            this.txt_address.Name = "txt_address";
+            this.txt_address.Size = new System.Drawing.Size(550, 21);
+            this.txt_address.TabIndex = 48;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(1, 56);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 12);
+            this.label3.TabIndex = 63;
+            this.label3.Text = "地    址：";
+            // 
+            // cmb_district
+            // 
+            this.cmb_district.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_district.FormattingEnabled = true;
+            this.cmb_district.Location = new System.Drawing.Point(443, 23);
+            this.cmb_district.Name = "cmb_district";
+            this.cmb_district.Size = new System.Drawing.Size(115, 20);
+            this.cmb_district.TabIndex = 53;
+            // 
+            // txt_code
+            // 
+            this.txt_code.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txt_code.Enabled = false;
+            this.txt_code.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_code.Location = new System.Drawing.Point(74, 19);
+            this.txt_code.MaxLength = 20;
+            this.txt_code.Name = "txt_code";
+            this.txt_code.Size = new System.Drawing.Size(222, 21);
+            this.txt_code.TabIndex = 43;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(6, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "订单编码：";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(702, 24);
+            this.menuStrip1.TabIndex = 105;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.Color.Red;
+            this.label14.Location = new System.Drawing.Point(331, 63);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(65, 12);
+            this.label14.TabIndex = 86;
+            this.label14.Text = "销    售：";
+            this.label14.Visible = false;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(402, 57);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(222, 20);
+            this.comboBox1.TabIndex = 87;
+            this.comboBox1.Visible = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.textBox1.Enabled = false;
+            this.textBox1.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.textBox1.Location = new System.Drawing.Point(402, 19);
+            this.textBox1.MaxLength = 20;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(222, 21);
+            this.textBox1.TabIndex = 88;
+            // 
+            // textBox2
+            // 
+            this.textBox2.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.textBox2.Location = new System.Drawing.Point(397, 90);
+            this.textBox2.MaxLength = 20;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(221, 21);
+            this.textBox2.TabIndex = 70;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(326, 93);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 12);
+            this.label2.TabIndex = 71;
+            this.label2.Text = "联系电话：";
+            // 
+            // textBox3
+            // 
+            this.textBox3.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.textBox3.Location = new System.Drawing.Point(68, 90);
+            this.textBox3.MaxLength = 20;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(223, 21);
+            this.textBox3.TabIndex = 68;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1, 93);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 12);
+            this.label5.TabIndex = 69;
+            this.label5.Text = "联 系 人：";
+            // 
+            // dataGridView1
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.searchKey,
+            this.materialsName,
+            this.MaterialsNum,
+            this.remark});
+            this.dataGridView1.Location = new System.Drawing.Point(8, 247);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 20;
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(616, 127);
+            this.dataGridView1.TabIndex = 107;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(7, 232);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 108;
+            this.label7.Text = "产    品：";
+            // 
+            // grb_price
+            // 
+            this.grb_price.Controls.Add(this.txt_priceRemark);
+            this.grb_price.Controls.Add(this.label8);
+            this.grb_price.Controls.Add(this.txt_price);
+            this.grb_price.Controls.Add(this.label9);
+            this.grb_price.Location = new System.Drawing.Point(6, 413);
+            this.grb_price.Name = "grb_price";
+            this.grb_price.Size = new System.Drawing.Size(620, 51);
+            this.grb_price.TabIndex = 111;
+            this.grb_price.TabStop = false;
+            // 
+            // txt_price
+            // 
+            this.txt_price.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_price.Location = new System.Drawing.Point(68, 20);
+            this.txt_price.MaxLength = 20;
+            this.txt_price.Name = "txt_price";
+            this.txt_price.Size = new System.Drawing.Size(95, 21);
+            this.txt_price.TabIndex = 111;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(6, 23);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(65, 12);
+            this.label9.TabIndex = 112;
+            this.label9.Text = "销售价格：";
+            // 
+            // txt_priceRemark
+            // 
+            this.txt_priceRemark.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_priceRemark.Location = new System.Drawing.Point(234, 20);
+            this.txt_priceRemark.MaxLength = 20;
+            this.txt_priceRemark.Name = "txt_priceRemark";
+            this.txt_priceRemark.Size = new System.Drawing.Size(384, 21);
+            this.txt_priceRemark.TabIndex = 113;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.Red;
+            this.label8.Location = new System.Drawing.Point(173, 23);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(65, 12);
+            this.label8.TabIndex = 114;
+            this.label8.Text = "特殊说明：";
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "产品ID";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // searchKey
+            // 
+            this.searchKey.HeaderText = "  ";
+            this.searchKey.Name = "searchKey";
+            this.searchKey.Width = 60;
+            // 
+            // materialsName
+            // 
+            this.materialsName.HeaderText = "产品";
+            this.materialsName.Name = "materialsName";
+            this.materialsName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.materialsName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.materialsName.Width = 250;
+            // 
+            // MaterialsNum
+            // 
+            this.MaterialsNum.DataPropertyName = "MaterialsNum";
+            this.MaterialsNum.HeaderText = "数量";
+            this.MaterialsNum.Name = "MaterialsNum";
+            this.MaterialsNum.ReadOnly = true;
+            this.MaterialsNum.Width = 60;
+            // 
+            // remark
+            // 
+            this.remark.HeaderText = "说明";
+            this.remark.Name = "remark";
+            this.remark.Width = 220;
+            // 
+            // FrmOrderDetail
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(702, 617);
+            this.Controls.Add(this.grb_customer);
+            this.Controls.Add(this.lbl_title);
+            this.Controls.Add(this.btn_cancel);
+            this.Controls.Add(this.btn_submit);
+            this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "FrmOrderDetail";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "订单管理";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmOrderDetail_FormClosed);
+            this.Load += new System.EventHandler(this.FrmCustomerDetail_Load);
+            this.grb_customer.ResumeLayout(false);
+            this.grb_customer.PerformLayout();
+            this.grb_address.ResumeLayout(false);
+            this.grb_address.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.grb_price.ResumeLayout(false);
+            this.grb_price.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Button btn_submit;
+        private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.Label lbl_title;
+        private System.Windows.Forms.GroupBox grb_customer;
+        private System.Windows.Forms.ComboBox cmb_district;
+        private System.Windows.Forms.TextBox txt_address;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cmb_province;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmb_city;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txt_code;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.GroupBox grb_address;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cmb_type;
+        private System.Windows.Forms.TextBox txt_remark;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label lbl_saler;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox grb_price;
+        private System.Windows.Forms.TextBox txt_priceRemark;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txt_price;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn searchKey;
+        private System.Windows.Forms.DataGridViewComboBoxColumn materialsName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaterialsNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn remark;
+    }
+}
