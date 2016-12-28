@@ -31,23 +31,23 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmOrderManage));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmb_status = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dtp_end = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dtp_begin = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
             this.lbl_saler = new System.Windows.Forms.Label();
             this.cmb_saler = new System.Windows.Forms.ComboBox();
             this.txt_name = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_addNew = new System.Windows.Forms.Button();
-            this.btn_query = new System.Windows.Forms.Button();
             this.txt_code = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_addNew = new System.Windows.Forms.Button();
+            this.btn_query = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.lbl_tile = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dtp_begin = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dtp_end = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cmb_status = new System.Windows.Forms.ComboBox();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +57,7 @@
             this.orderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifyBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.deleteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.orderStatusCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -80,6 +81,59 @@
             this.groupBox1.Size = new System.Drawing.Size(994, 83);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
+            // 
+            // cmb_status
+            // 
+            this.cmb_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_status.FormattingEnabled = true;
+            this.cmb_status.Location = new System.Drawing.Point(478, 50);
+            this.cmb_status.Name = "cmb_status";
+            this.cmb_status.Size = new System.Drawing.Size(118, 20);
+            this.cmb_status.TabIndex = 6;
+            this.cmb_status.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(407, 54);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 12);
+            this.label5.TabIndex = 90;
+            this.label5.Text = "订单状态：";
+            this.label5.Visible = false;
+            // 
+            // dtp_end
+            // 
+            this.dtp_end.Location = new System.Drawing.Point(268, 49);
+            this.dtp_end.Name = "dtp_end";
+            this.dtp_end.Size = new System.Drawing.Size(119, 21);
+            this.dtp_end.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(230, 55);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(17, 12);
+            this.label4.TabIndex = 88;
+            this.label4.Text = "：";
+            // 
+            // dtp_begin
+            // 
+            this.dtp_begin.Location = new System.Drawing.Point(83, 49);
+            this.dtp_begin.Name = "dtp_begin";
+            this.dtp_begin.Size = new System.Drawing.Size(119, 21);
+            this.dtp_begin.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(25, 55);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 12);
+            this.label3.TabIndex = 86;
+            this.label3.Text = "订单时间：";
             // 
             // lbl_saler
             // 
@@ -119,6 +173,23 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "客户名称：";
             // 
+            // txt_code
+            // 
+            this.txt_code.Location = new System.Drawing.Point(84, 14);
+            this.txt_code.MaxLength = 20;
+            this.txt_code.Name = "txt_code";
+            this.txt_code.Size = new System.Drawing.Size(118, 21);
+            this.txt_code.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(25, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "客户代码：";
+            // 
             // btn_addNew
             // 
             this.btn_addNew.Location = new System.Drawing.Point(147, 174);
@@ -138,23 +209,6 @@
             this.btn_query.Text = "查询";
             this.btn_query.UseVisualStyleBackColor = true;
             this.btn_query.Click += new System.EventHandler(this.btn_query_Click);
-            // 
-            // txt_code
-            // 
-            this.txt_code.Location = new System.Drawing.Point(84, 14);
-            this.txt_code.MaxLength = 20;
-            this.txt_code.Name = "txt_code";
-            this.txt_code.Size = new System.Drawing.Size(118, 21);
-            this.txt_code.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "客户代码：";
             // 
             // dataGridView1
             // 
@@ -177,7 +231,8 @@
             this.orderDate,
             this.orderStatus,
             this.modifyBtn,
-            this.deleteBtn});
+            this.deleteBtn,
+            this.orderStatusCode});
             this.dataGridView1.Location = new System.Drawing.Point(30, 208);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 20;
@@ -203,59 +258,6 @@
             this.lbl_tile.Size = new System.Drawing.Size(120, 27);
             this.lbl_tile.TabIndex = 67;
             this.lbl_tile.Text = "订单列表";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 55);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 12);
-            this.label3.TabIndex = 86;
-            this.label3.Text = "订单时间：";
-            // 
-            // dtp_begin
-            // 
-            this.dtp_begin.Location = new System.Drawing.Point(83, 49);
-            this.dtp_begin.Name = "dtp_begin";
-            this.dtp_begin.Size = new System.Drawing.Size(119, 21);
-            this.dtp_begin.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(230, 55);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 12);
-            this.label4.TabIndex = 88;
-            this.label4.Text = "：";
-            // 
-            // dtp_end
-            // 
-            this.dtp_end.Location = new System.Drawing.Point(268, 49);
-            this.dtp_end.Name = "dtp_end";
-            this.dtp_end.Size = new System.Drawing.Size(119, 21);
-            this.dtp_end.TabIndex = 5;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(407, 54);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 12);
-            this.label5.TabIndex = 90;
-            this.label5.Text = "订单状态：";
-            this.label5.Visible = false;
-            // 
-            // cmb_status
-            // 
-            this.cmb_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_status.FormattingEnabled = true;
-            this.cmb_status.Location = new System.Drawing.Point(478, 50);
-            this.cmb_status.Name = "cmb_status";
-            this.cmb_status.Size = new System.Drawing.Size(118, 20);
-            this.cmb_status.TabIndex = 6;
-            this.cmb_status.Visible = false;
             // 
             // id
             // 
@@ -324,6 +326,12 @@
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Width = 80;
             // 
+            // orderStatusCode
+            // 
+            this.orderStatusCode.HeaderText = "订单状态";
+            this.orderStatusCode.Name = "orderStatusCode";
+            this.orderStatusCode.Visible = false;
+            // 
             // FrmOrderManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -382,6 +390,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn orderStatus;
         private System.Windows.Forms.DataGridViewButtonColumn modifyBtn;
         private System.Windows.Forms.DataGridViewButtonColumn deleteBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderStatusCode;
 
     }
 }

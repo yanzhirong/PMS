@@ -50,15 +50,15 @@ namespace PMS.Frm.Sale
                     }
                 }
 
-                this.cmb_type.SelectedIndex = 1;
-                this.cmb_type.Enabled = false;
+                this.cmb_customer.SelectedIndex = 1;
+                this.cmb_customer.Enabled = false;
 
                 this.cmb_saler.Enabled = false;
             }
             else if (LoginUserInfo.LoginUser.loginRole.roleType == 2)  //登录者是采购
             {
-                this.cmb_type.SelectedIndex = 2;
-                this.cmb_type.Enabled = false;
+                this.cmb_customer.SelectedIndex = 2;
+                this.cmb_customer.Enabled = false;
 
                 this.lbl_saler.Visible = false;
                 this.cmb_saler.Visible = false;
@@ -115,7 +115,7 @@ namespace PMS.Frm.Sale
                 ModelCustomer model = m_bllCustomer.GetCustomerById(m_customerId);
 
                 //客户类型
-                this.cmb_type.SelectedIndex = model.type;
+                this.cmb_customer.SelectedIndex = model.type;
 
                 //销售
                 for (int i = 0; i < this.cmb_saler.Items.Count; i++)
@@ -129,7 +129,7 @@ namespace PMS.Frm.Sale
                 }
 
                 //代码
-                this.txt_code.Text = model.code;
+                this.txt_orderCode.Text = model.code;
 
                 //名称
                 this.txt_name.Text = model.name;
@@ -218,9 +218,9 @@ namespace PMS.Frm.Sale
 
             ModelCustomer modelCustomer = new ModelCustomer();
             modelCustomer.id = m_customerId;
-            modelCustomer.code = this.txt_code.Text.Trim();
+            modelCustomer.code = this.txt_orderCode.Text.Trim();
             modelCustomer.name = this.txt_name.Text.Trim();
-            modelCustomer.type = this.cmb_type.SelectedIndex;
+            modelCustomer.type = this.cmb_customer.SelectedIndex;
             modelCustomer.salerId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_saler.SelectedItem).itemKey);
 
             modelCustomer.province = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_province.SelectedItem).itemKey);
@@ -266,7 +266,7 @@ namespace PMS.Frm.Sale
 
                 //处理模式变为修改
                 m_mode = 1;
-                m_customerId = m_bllCustomer.GetCustomerByCode(this.txt_code.Text).id;
+                m_customerId = m_bllCustomer.GetCustomerByCode(this.txt_orderCode.Text).id;
 
                 init();
 
@@ -324,15 +324,15 @@ namespace PMS.Frm.Sale
             if (m_mode == 0 || m_mode == 1)
             {
                 //类型
-                if (this.cmb_type.SelectedIndex <= 0)
+                if (this.cmb_customer.SelectedIndex <= 0)
                 {
                     MsgUtils.ShowErrorMsg("请选择客户类型！");
-                    this.cmb_type.Focus();
+                    this.cmb_customer.Focus();
                     return false;
                 }
 
                 //销售(销售客户时必须)
-                if(this.cmb_type.SelectedIndex == 1)
+                if(this.cmb_customer.SelectedIndex == 1)
                 {
                     if(this.cmb_saler.SelectedIndex < 0)
                     {
@@ -342,17 +342,17 @@ namespace PMS.Frm.Sale
                     }
                 }
                 //代码
-                if (StringUtils.IsBlank(this.txt_code.Text))
+                if (StringUtils.IsBlank(this.txt_orderCode.Text))
                 {
                     MsgUtils.ShowErrorMsg("请输入客户代码！");
-                    this.txt_code.Focus();
+                    this.txt_orderCode.Focus();
                     return false;
                 }
-                ModelCustomer  customer = m_bllCustomer.GetCustomerByCode(this.txt_code.Text);
+                ModelCustomer  customer = m_bllCustomer.GetCustomerByCode(this.txt_orderCode.Text);
                 if (customer.id > 0 && customer.id != m_customerId)
                 {
                     MsgUtils.ShowErrorMsg("该客户已存在！");
-                    this.txt_code.Focus();
+                    this.txt_orderCode.Focus();
                     return false;
                 }
 
@@ -442,7 +442,7 @@ namespace PMS.Frm.Sale
 
         private void cmb_type_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int type = this.cmb_type.SelectedIndex;
+            int type = this.cmb_customer.SelectedIndex;
             if (type != 1)
             {
                 this.lbl_saler.Visible = false;
