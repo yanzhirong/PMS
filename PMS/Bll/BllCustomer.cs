@@ -32,6 +32,17 @@ namespace Bll
             return new ModelCustomer();
         }
 
+        public List<ModelItem> GetCustomersBySalerId(int _salerId)
+        {
+            DataTable dt = m_dalCustomer.GetCustomersBySalerId(_salerId);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                return ModelUtils<ModelItem>.FillModel(dt);
+            }
+            return null;
+        }
+
         public ModelCustomer GetCustomerByCode(string _code)
         {
             DataTable user = m_dalCustomer.GetCustomerByCode(_code);

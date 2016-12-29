@@ -73,6 +73,11 @@ namespace Bll
             return m_dalProduct.GetProductMaterialsById(_productId);
         }
 
+        public DataTable GetProductBySearchKey(string _searchKey)
+        {
+            return m_dalProduct.GetProductBySearchKey(_searchKey);
+        }
+
         public ModelProduct GetProductByName(string _name)
         {
             DataTable dt = m_dalProduct.GetProductByName(_name);

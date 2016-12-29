@@ -66,6 +66,23 @@ namespace Dal
             return Dal.DBHelper.Select(sql);
         }
 
+        public DataTable GetCustomersBySalerId(int _salerId)
+        {
+            sbSql.Clear();
+            sbSql.Append("select ");
+            sbSql.Append("       roleId itemKey, ");
+            sbSql.Append("       roleName itemValue ");
+            sbSql.Append("  from p_customer");
+            sbSql.Append(" where isDelete = 0 ");
+            if (_salerId > 0)
+            {
+                sbSql.Append("   and salerId =  ").Append(_salerId).Append(" ");
+            }
+            sbSql.Append(" order by id ");
+
+            return Dal.DBHelper.Select(sbSql.ToString());
+        }
+
         public DataTable GetCustomerByCode(string _code)
         {
             sql = @"select * 

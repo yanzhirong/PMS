@@ -32,6 +32,17 @@ namespace Bll
             return new ModelFactory();
         }
 
+        public List<ModelItem> GetFactoryItem()
+        {
+            DataTable dt = m_dalFactory.GetFactoryItem();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                return ModelUtils<ModelItem>.FillModel(dt);
+            }
+            return null;
+        }
+
         public ModelFactory GetFactoryByName(string _factoryName)
         {
             DataTable factory = m_dalFactory.GetFactoryByName(_factoryName);

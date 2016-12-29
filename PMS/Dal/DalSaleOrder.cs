@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using Model;
+using Enum;
 
 namespace Dal
 {
@@ -13,7 +14,7 @@ namespace Dal
         string sql;
         StringBuilder sbSql = new StringBuilder();
 
-        public DataTable GetSaleOrders(String _code, String _name, int _salerId, int _status, DateTime _beginTime, DateTime _endTime)
+        public DataTable GetSaleOrders(String _code, String _name, int _salerId, int _status, DateTime _beginTime, DateTime _endTime, int _roleType)
         {
             sbSql.Clear();
             sbSql.Append("select a.id, ");
@@ -24,8 +25,16 @@ namespace Dal
             sbSql.Append("       date_format(a.createTime, '%Y-%m-%d') orderDate, ");
             sbSql.Append("       a.orderStatus orderStatus, ");
             sbSql.Append("       d.value1 orderStatusCode, ");
-            sbSql.Append("       '修改' modifyBtn, ");
-            sbSql.Append("       '删除' deleteBtn ");
+            if (_roleType == (int)Enum.EnumRoleType.Finance)
+            {
+                sbSql.Append("       case a.orderStatus when 1 then '确认' else '查看' end modifyBtn, ");
+                sbSql.Append("       '' deleteBtn ");
+            }
+            else
+            {
+                sbSql.Append("       case a.orderStatus when 1 then '修改' else '查看' end modifyBtn, ");
+                sbSql.Append("       case a.orderStatus when 1 then '删除' else '' end deleteBtn ");
+            }
             sbSql.Append("from p_saleOrder a ");
             sbSql.Append("left join m_user b ");
             sbSql.Append("  on a.salerId = b.userId ");
@@ -70,7 +79,19 @@ namespace Dal
             return Dal.DBHelper.Select(sql);
         }
 
-        public DataTable GetSaleOrderDetailByOrderCode(String _orderCode)
+        public DataTable GetSaleOrderByOrderCode(string _orderCode)
+        {
+            sql = @"select * 
+                      from p_saleOrder
+                     where isDelete = 0
+                       and orderCode = {0}";
+
+            sql = String.Format(sql, _orderCode);
+
+            return Dal.DBHelper.Select(sql);
+        }
+
+        public DataTable GetSaleOrderDetailByOrderCode(string _orderCode)
         {
             sql = @"select * 
                       from r_saleOrderDetail
@@ -82,7 +103,7 @@ namespace Dal
             return Dal.DBHelper.Select(sql);
         }
 
-        public DataTable GetSaleOrderPayByOrderCode(String _orderCode)
+        public DataTable GetSaleOrderPayByOrderCode(string _orderCode)
         {
             sql = @"select * 
                       from r_saleOrderPay

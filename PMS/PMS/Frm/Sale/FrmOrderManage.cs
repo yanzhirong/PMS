@@ -34,7 +34,7 @@ namespace PMS.Frm.Sale
             List<ModelItem> listItem = m_bllCode.GetCodeItem(7, true);
             WinCommon.BindComboBox(ref this.cmb_status, listItem);
 
-            if (LoginUserInfo.LoginUser.loginRole.roleType == 1)
+            if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Saler)
             {
                 m_salerId = LoginUserInfo.LoginUser.loginUser.userId;
 
@@ -51,7 +51,7 @@ namespace PMS.Frm.Sale
             {
                 m_salerId = 0;
 
-                listItem = m_bllUser.GetUserGroupByRoleType(1);
+                listItem = m_bllUser.GetUserGroupByRoleType((int)Enum.EnumRoleType.Saler);
                 WinCommon.BindComboBox(ref this.cmb_saler, listItem);
             }
 
@@ -80,8 +80,7 @@ namespace PMS.Frm.Sale
             DateTime endTime = new DateTime(this.dtp_end.Value.Year, this.dtp_end.Value.Month, this.dtp_end.Value.Day);
             endTime = endTime.AddDays(1).AddSeconds(-1);
 
-
-            DataTable dt = m_bllSaleOrder.GetSaleOrders(code, name, salerId, status, beginTime, endTime);
+            DataTable dt = m_bllSaleOrder.GetSaleOrders(code, name, salerId, status, beginTime, endTime, LoginUserInfo.LoginUser.loginRole.roleType);
 
             this.dataGridView1.DataSource = dt;
             this.dataGridView1.Refresh();
@@ -97,24 +96,54 @@ namespace PMS.Frm.Sale
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //修改
             if (dataGridView1.Columns[e.ColumnIndex].Name == "modifyBtn")
             {
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
-                Form form = new FrmCustomerDetail(1, id);
-                this.Hide();
-                form.ShowDialog();
+                int orderStatus = (int)dataGridView1.Rows[e.RowIndex].Cells["orderStatusCode"].Value;
+                if (orderStatus == (int)Enum.EnumSaleOrderStatus.WaitConfirm)
+                {
+                    //财务确认
+                    if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Finance)
+                    {
+                        Form form = new FrmCustomerDetail(4, id);
+                        this.Hide();
+                        form.ShowDialog();
+                    }
+                    //修改
+                    else
+                    {
+                        Form form = new FrmCustomerDetail(1, id);
+                        this.Hide();
+                        form.ShowDialog();
+                    }
+                }
+                //查看
+                else
+                {
+                    Form form = new FrmCustomerDetail(3, id);
+                    this.Hide();
+                    form.ShowDialog();
+                }
             }
 
             //删除
             if (dataGridView1.Columns[e.ColumnIndex].Name == "deleteBtn")
             {
-                int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
-                Form form = new FrmCustomerDetail(2, id);
-                this.Hide();
-                form.ShowDialog();
-            }
+                int orderStatus = (int)dataGridView1.Rows[e.RowIndex].Cells["orderStatusCode"].Value;
+                if (orderStatus == (int)Enum.EnumSaleOrderStatus.WaitConfirm)
+                {
+                    int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
+                    Form form = new FrmCustomerDetail(2, id);
+                    this.Hide();
+                    form.ShowDialog();
+                }
+                else
+                {
+                    Common.Tools.MsgUtils.ShowInfoMsg("已确认订单，不可删除！");
+                    return;
 
+                }
+            }
         }
 
         private void FrmOrderManage_FormClosed(object sender, FormClosedEventArgs e)

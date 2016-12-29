@@ -32,6 +32,19 @@ namespace Dal
             return Dal.DBHelper.Select(sql);
         }
 
+        public DataTable GetFactoryItem()
+        {
+            sbSql.Clear();
+            sbSql.Append("select ");
+            sbSql.Append("       id itemKey, ");
+            sbSql.Append("       name itemValue ");
+            sbSql.Append("  from m_factory");
+            sbSql.Append(" where isDelete = 0 ");
+            sbSql.Append(" order by id ");
+
+            return Dal.DBHelper.Select(sbSql.ToString());
+        }
+
         public DataTable GetFactoryById(int _factoryId)
         {
             sql = @"select *

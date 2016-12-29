@@ -11,6 +11,7 @@ namespace Model
         public int id { set; get; }
         public string orderCode { set; get; }
         public int productId { set; get; }
+        public string searchKey { set; get; }
         public decimal num { set; get; }
         public int unit { set; get; }
         public decimal price { set; get; }

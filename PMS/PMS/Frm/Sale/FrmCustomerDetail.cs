@@ -37,7 +37,7 @@ namespace PMS.Frm.Sale
             WinCommon.CreateMenu(ref this.menuStrip1);
 
             //登录者是销售
-            if (LoginUserInfo.LoginUser.loginRole.roleType == 1)
+            if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Saler)
             {
                 if (m_mode == 0)
                 {
@@ -55,7 +55,7 @@ namespace PMS.Frm.Sale
 
                 this.cmb_saler.Enabled = false;
             }
-            else if (LoginUserInfo.LoginUser.loginRole.roleType == 2)  //登录者是采购
+            else if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Purchase)  //登录者是采购
             {
                 this.cmb_type.SelectedIndex = 2;
                 this.cmb_type.Enabled = false;
@@ -102,7 +102,7 @@ namespace PMS.Frm.Sale
 
             //下拉框
             //销售
-            List<ModelItem> listItem = m_bllUser.GetUserGroupByRoleType(1);
+            List<ModelItem> listItem = m_bllUser.GetUserGroupByRoleType((int)Enum.EnumRoleType.Saler);
             WinCommon.BindComboBox(ref cmb_saler, listItem);
             //省市区
             WinCommon.BindComboBox(ref cmb_province, BllArea.GetProvince());

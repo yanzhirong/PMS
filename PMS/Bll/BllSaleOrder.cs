@@ -14,11 +14,24 @@ namespace Bll
     {
         private DalSaleOrder m_dalSaleOrder = new DalSaleOrder();
 
-        public DataTable GetSaleOrders(String _code, String _name, int _salerId, int _status, DateTime _beginTime, DateTime _endTime)
+        public DataTable GetSaleOrders(String _code, String _name, int _salerId, int _status, DateTime _beginTime, DateTime _endTime, int _roleType)
         {
-            DataTable dt = m_dalSaleOrder.GetSaleOrders(_code, _name, _salerId, _status, _beginTime, _endTime);
+            DataTable dt = m_dalSaleOrder.GetSaleOrders(_code, _name, _salerId, _status, _beginTime, _endTime, _roleType);
 
             return dt;
+        }
+
+        public ModelSaleOrder GetSaleOrderByOrderCode(string _orderCode)
+        {
+            ModelSaleOrder model = new ModelSaleOrder();
+
+            DataTable dt = m_dalSaleOrder.GetSaleOrderByOrderCode(_orderCode);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                model = ModelUtils<ModelSaleOrder>.FillModel(dt.Rows[0]);               
+            }
+            return model;
         }
 
         public ModelSaleOrder GetSaleOrderById(int _id)
@@ -50,15 +63,29 @@ namespace Bll
             return model;
         }
 
+        public DataTable GetSaleOrderDetailByOrderCode(string _orderCode)
+        {
+            return m_dalSaleOrder.GetSaleOrderDetailByOrderCode(_orderCode);
+        }
+
         public Boolean AddSaleOrder(ModelSaleOrder _model)
         {
             int rtn = 0;
+            _model.orderCode = 
             rtn = m_dalSaleOrder.AddSaleOrder(_model);
 
             return rtn == 0 ? false : true;
         }
 
         public Boolean UpdateSaleOrder(ModelSaleOrder _model)
+        {
+            int rtn = 0;
+            rtn = m_dalSaleOrder.UpdateSaleOrder(_model);
+
+            return rtn == 0 ? false : true;
+        }
+
+        public Boolean ConfirmSaleOrder(ModelSaleOrder _model)
         {
             int rtn = 0;
             rtn = m_dalSaleOrder.UpdateSaleOrder(_model);

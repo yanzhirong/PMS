@@ -55,11 +55,16 @@
     <Compile Include="DalCustomer.cs" />
     <Compile Include="DalArea.cs" />
     <Compile Include="DalSaleOrder.cs" />
+    <Compile Include="DalSequence.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{5ff4cba5-3fe9-4a83-aefd-e69219a8c5c2}</Project>
       <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Enum\Enum.csproj">
+      <Project>{b0ffb4ea-e077-4658-99ae-651c534fa7b0}</Project>
+      <Name>Enum</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model\Model.csproj">
       <Project>{cf3ab88c-448b-466c-ba50-d4476ce0a1b0}</Project>

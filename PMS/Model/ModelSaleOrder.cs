@@ -26,7 +26,7 @@ namespace Model
         public string address { set; get; }
         public string manager { set; get; }
         public string telephone { set; get; }
-        public string deliverDate { set; get; }
+        public DateTime deliverDate { set; get; }
         public int orderStatus { set; get; }
         public string remark { set; get; }
 

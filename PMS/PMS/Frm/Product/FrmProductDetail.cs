@@ -176,7 +176,7 @@ namespace PMS.Frm.Product
             }
 
             //价格相关
-            this.grb_price.Visible = LoginUserInfo.LoginUser.loginRole.roleType == 3 ? true: false;
+            this.grb_price.Visible = LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Finance ? true : false;
             
         }
         #endregion
@@ -216,7 +216,7 @@ namespace PMS.Frm.Product
             modelProduct.expiredDays = ConvertUtils.ConvertToInt(this.txt_expiredDays.Text);
             modelProduct.minStockNum = ConvertUtils.ConvertToInt(this.txt_minStockNum.Text);
 
-            if (LoginUserInfo.LoginUser.loginRole.roleType == 3)
+            if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Finance)
             {
                 ModelProductPrice modelProductPrice = new ModelProductPrice();
                 modelProductPrice.productId = modelProduct.id;
@@ -470,7 +470,7 @@ namespace PMS.Frm.Product
                         listMaterialsId.Add(materialsId);
                     }
 
-                    if (LoginUserInfo.LoginUser.loginRole.roleType == 3) 
+                    if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Finance) 
                     {
                         if (StringUtils.IsBlank(this.txt_minPrice.Text))
                         {

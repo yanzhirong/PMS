@@ -104,6 +104,17 @@ namespace Dal
             return Dal.DBHelper.Select(sql);
         }
 
+        public DataTable GetProductBySearchKey(string _searchKey)
+        {
+            sql = @"select * 
+                      from r_product_search
+                     where upper(searchKey) like '%{0}%'";
+
+            sql = String.Format(sql, _searchKey);
+
+            return Dal.DBHelper.Select(sql);
+        }
+
         public int AddProduct(ModelProduct _modelProduct)
         {
             List<string> listSql = new List<string>();
