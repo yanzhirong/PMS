@@ -328,6 +328,7 @@
             // 
             // orderStatusCode
             // 
+            this.orderStatusCode.DataPropertyName = "orderStatusCode";
             this.orderStatusCode.HeaderText = "订单状态";
             this.orderStatusCode.Name = "orderStatusCode";
             this.orderStatusCode.Visible = false;

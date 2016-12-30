@@ -52,7 +52,6 @@
     <Compile Include="Tools\ModelUtils.cs" />
     <Compile Include="Tools\MsgUtils.cs" />
     <Compile Include="Tools\StringUtils.cs" />
-    <Compile Include="Tools\SequenceUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

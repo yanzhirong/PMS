@@ -71,7 +71,10 @@ namespace Bll
         public Boolean AddSaleOrder(ModelSaleOrder _model)
         {
             int rtn = 0;
-            _model.orderCode = 
+            int seq = Bll.BllSeq.GetSeq("saleOrder");
+            string orderCode = ConvertUtils.ConvertToDate(DateTime.Now, "yyyyMMddHHmmss") + "_" + seq;
+            _model.orderCode = orderCode;
+            _model.orderStatus = (int)Enum.EnumSaleOrderStatus.WaitConfirm;
             rtn = m_dalSaleOrder.AddSaleOrder(_model);
 
             return rtn == 0 ? false : true;

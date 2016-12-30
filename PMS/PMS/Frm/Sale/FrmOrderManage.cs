@@ -89,7 +89,7 @@ namespace PMS.Frm.Sale
         private void btn_addNew_Click(object sender, EventArgs e)
         {
 
-            Form form = new FrmCustomerDetail(0, 0);
+            Form form = new FrmOrderDetail(0, 0);
             this.Hide();
             form.ShowDialog();
         }
@@ -105,14 +105,14 @@ namespace PMS.Frm.Sale
                     //财务确认
                     if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Finance)
                     {
-                        Form form = new FrmCustomerDetail(4, id);
+                        Form form = new FrmOrderDetail(4, id);
                         this.Hide();
                         form.ShowDialog();
                     }
                     //修改
                     else
                     {
-                        Form form = new FrmCustomerDetail(1, id);
+                        Form form = new FrmOrderDetail(1, id);
                         this.Hide();
                         form.ShowDialog();
                     }
@@ -120,7 +120,7 @@ namespace PMS.Frm.Sale
                 //查看
                 else
                 {
-                    Form form = new FrmCustomerDetail(3, id);
+                    Form form = new FrmOrderDetail(3, id);
                     this.Hide();
                     form.ShowDialog();
                 }
@@ -133,7 +133,7 @@ namespace PMS.Frm.Sale
                 if (orderStatus == (int)Enum.EnumSaleOrderStatus.WaitConfirm)
                 {
                     int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
-                    Form form = new FrmCustomerDetail(2, id);
+                    Form form = new FrmOrderDetail(2, id);
                     this.Hide();
                     form.ShowDialog();
                 }

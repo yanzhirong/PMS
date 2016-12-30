@@ -97,5 +97,25 @@ namespace Common.Tools
 
             return value;
         }
+
+        public static string ConvertToDate(DateTime _object, string _format)
+        {
+            string value = "";
+
+            if (_object == null)
+            {
+                return "";
+            }
+
+            try
+            {
+                value = _object.ToString(_format);
+            }
+            catch (Exception ex)
+            {
+            }
+
+            return value;
+        }
     }
 }

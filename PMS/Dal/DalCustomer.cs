@@ -70,8 +70,8 @@ namespace Dal
         {
             sbSql.Clear();
             sbSql.Append("select ");
-            sbSql.Append("       roleId itemKey, ");
-            sbSql.Append("       roleName itemValue ");
+            sbSql.Append("       id itemKey, ");
+            sbSql.Append("       name itemValue ");
             sbSql.Append("  from p_customer");
             sbSql.Append(" where isDelete = 0 ");
             if (_salerId > 0)

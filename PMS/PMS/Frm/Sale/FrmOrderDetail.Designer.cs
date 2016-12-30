@@ -34,6 +34,7 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.lbl_title = new System.Windows.Forms.Label();
             this.grb_saleOrder = new System.Windows.Forms.GroupBox();
+            this.txt_orderStatusCode = new System.Windows.Forms.TextBox();
             this.dtp_deliverDate = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -76,7 +77,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.btn_close = new System.Windows.Forms.Button();
-            this.txt_orderStatusCode = new System.Windows.Forms.TextBox();
             this.grb_saleOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.grb_address.SuspendLayout();
@@ -137,6 +137,18 @@
             this.grb_saleOrder.Size = new System.Drawing.Size(641, 426);
             this.grb_saleOrder.TabIndex = 103;
             this.grb_saleOrder.TabStop = false;
+            // 
+            // txt_orderStatusCode
+            // 
+            this.txt_orderStatusCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txt_orderStatusCode.Enabled = false;
+            this.txt_orderStatusCode.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_orderStatusCode.Location = new System.Drawing.Point(606, 20);
+            this.txt_orderStatusCode.MaxLength = 20;
+            this.txt_orderStatusCode.Name = "txt_orderStatusCode";
+            this.txt_orderStatusCode.Size = new System.Drawing.Size(29, 21);
+            this.txt_orderStatusCode.TabIndex = 110;
+            this.txt_orderStatusCode.Visible = false;
             // 
             // dtp_deliverDate
             // 
@@ -263,7 +275,6 @@
             this.cmb_saler.Name = "cmb_saler";
             this.cmb_saler.Size = new System.Drawing.Size(222, 20);
             this.cmb_saler.TabIndex = 2;
-            this.cmb_saler.Visible = false;
             // 
             // txt_remark
             // 
@@ -559,18 +570,6 @@
             this.btn_close.Text = "关闭";
             this.btn_close.UseVisualStyleBackColor = true;
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
-            // 
-            // txt_orderStatusCode
-            // 
-            this.txt_orderStatusCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txt_orderStatusCode.Enabled = false;
-            this.txt_orderStatusCode.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txt_orderStatusCode.Location = new System.Drawing.Point(606, 20);
-            this.txt_orderStatusCode.MaxLength = 20;
-            this.txt_orderStatusCode.Name = "txt_orderStatusCode";
-            this.txt_orderStatusCode.Size = new System.Drawing.Size(29, 21);
-            this.txt_orderStatusCode.TabIndex = 110;
-            this.txt_orderStatusCode.Visible = false;
             // 
             // FrmOrderDetail
             // 

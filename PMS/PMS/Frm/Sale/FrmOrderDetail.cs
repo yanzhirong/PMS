@@ -338,9 +338,12 @@ namespace PMS.Frm.Sale
             modelSaleOrder.deliverDate = this.dtp_deliverDate.Value;
             modelSaleOrder.remark = this.txt_remark.Text.Trim();
 
-            modelSaleOrder.price = ConvertUtils.ConvertToDecimal(this.txt_price.Text.Trim());
-            modelSaleOrder.factoryId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_factory.SelectedItem).itemKey);
-            modelSaleOrder.priceRemark = this.txt_priceRemark.Text.Trim();
+            if (grb_price.Visible == true)
+            {
+                modelSaleOrder.price = ConvertUtils.ConvertToDecimal(this.txt_price.Text.Trim());
+                modelSaleOrder.factoryId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_factory.SelectedItem).itemKey);
+                modelSaleOrder.priceRemark = this.txt_priceRemark.Text.Trim();
+            }
 
             modelSaleOrder.isDelete = 0;
             modelSaleOrder.createBy = LoginUserInfo.LoginUser.loginUser.userName;
@@ -446,7 +449,7 @@ namespace PMS.Frm.Sale
             {
 
                 //客户
-                if (this.cmb_customer.SelectedIndex <= 0)
+                if (this.cmb_customer.SelectedIndex < 0)
                 {
                     MsgUtils.ShowErrorMsg("请选择客户！");
                     this.cmb_customer.Focus();
@@ -488,6 +491,35 @@ namespace PMS.Frm.Sale
                 {
                     MsgUtils.ShowErrorMsg("请输入客户地址！");
                     this.txt_address.Focus();
+                    return false;
+                }
+                bool hasProduct = false; 
+                for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                {
+                    int productId = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[2].Value);
+                    if (productId > 0)
+                    {
+                        if (ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells[3].Value) <= 0)
+                        {
+                            MsgUtils.ShowErrorMsg("请输入销售商品数量！");
+                            this.dataGridView1.Focus();
+                            return false;
+                        }
+
+                        if (ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[4].Value) <= 0)
+                        {
+                            MsgUtils.ShowErrorMsg("请输入销售商品单位！");
+                            this.dataGridView1.Focus();
+                            return false;
+                        } 
+                        
+                        hasProduct = true;
+                    }
+                }
+                if (hasProduct == false)
+                {
+                    MsgUtils.ShowErrorMsg("请选择销售商品！");
+                    this.dataGridView1.Focus();
                     return false;
                 }
 
@@ -574,8 +606,8 @@ namespace PMS.Frm.Sale
             column.Width = 230;
             this.dataGridView1.Columns.Add(column);
             column.DataSource = m_bllProduct.GetProducts("");
-            column.DisplayMember = "id";
-            column.ValueMember = "name";
+            column.DisplayMember = "name";
+            column.ValueMember = "id";
 
             columns = new DataGridViewTextBoxColumn();
             columns.Name = "num";

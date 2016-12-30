@@ -23,8 +23,8 @@ namespace Dal
             sbSql.Append("       c.name customerName, ");
             sbSql.Append("       a.provinceName + a.cityName + a.districtName + a.address orderAddress, ");
             sbSql.Append("       date_format(a.createTime, '%Y-%m-%d') orderDate, ");
-            sbSql.Append("       a.orderStatus orderStatus, ");
-            sbSql.Append("       d.value1 orderStatusCode, ");
+            sbSql.Append("       a.orderStatus orderStatusCode, ");
+            sbSql.Append("       d.value1 orderStatus, ");
             if (_roleType == (int)Enum.EnumRoleType.Finance)
             {
                 sbSql.Append("       case a.orderStatus when 1 then '确认' else '查看' end modifyBtn, ");
@@ -147,26 +147,27 @@ namespace Dal
             sbSql.Append("       createTime, ");
             sbSql.Append("       modifyBy, ");
             sbSql.Append("       modifyTime ");
-            sbSql.Append("       ) value ( ");
+            sbSql.Append("       ) values ( ");
             sbSql.Append("      '" + _model.orderCode + "', ");
-            sbSql.Append("      '" + _model.customerId + "', ");
-            sbSql.Append("      '" + _model.salerId + "', ");
+            sbSql.Append("       " + _model.customerId + ", ");
+            sbSql.Append("       " + _model.salerId + ", ");
             sbSql.Append("       " + _model.price + ", ");
             sbSql.Append("      '" + _model.priceRemark + "', ");
             sbSql.Append("       " + _model.factoryId + ", ");
             sbSql.Append("      '" + _model.payStatus + "', ");
             sbSql.Append("       " + _model.country + ", ");
-            sbSql.Append("      '" + _model.province + "', ");
+            sbSql.Append("       " + _model.province + ", ");
             sbSql.Append("      '" + _model.provinceName + "', ");
-            sbSql.Append("      '" + _model.city + "', ");
+            sbSql.Append("       " + _model.city + ", ");
             sbSql.Append("      '" + _model.cityName + "', ");
-            sbSql.Append("      '" + _model.district + "', ");
+            sbSql.Append("       " + _model.district + ", ");
             sbSql.Append("      '" + _model.districtName + "', ");
             sbSql.Append("      '" + _model.address + "', ");
             sbSql.Append("      '" + _model.manager + "', ");
+            sbSql.Append("      '" + _model.telephone + "', ");
             sbSql.Append("      '" + _model.deliverDate + "', ");
             sbSql.Append("       " + _model.orderStatus + ", ");
-            sbSql.Append("       " + _model.remark + ", ");
+            sbSql.Append("      '" + _model.remark + "', ");
             sbSql.Append("       " + _model.isDelete + ", ");
             sbSql.Append("      '" + _model.createBy + "', ");
             sbSql.Append("      '" + _model.createTime + "', ");
@@ -178,7 +179,7 @@ namespace Dal
             {
                 sbSql.Clear();
                 sbSql.Append("insert into ");
-                sbSql.Append("       r_saleOrderDetail ( ");
+                sbSql.Append("       r_saleOrder_Detail ( ");
                 sbSql.Append("       orderCode, ");
                 sbSql.Append("       productId, ");
                 sbSql.Append("       num, ");
@@ -190,13 +191,13 @@ namespace Dal
                 sbSql.Append("       createTime, ");
                 sbSql.Append("       modifyBy, ");
                 sbSql.Append("       modifyTime ");
-                sbSql.Append("       ) value ( ");
+                sbSql.Append("       ) values ( ");
                 sbSql.Append("      '" + _model.orderCode + "', ");
-                sbSql.Append("      '" + modelDetail.productId + "', ");
-                sbSql.Append("      '" + modelDetail.num + "', ");
+                sbSql.Append("       " + modelDetail.productId + ", ");
+                sbSql.Append("       " + modelDetail.num + ", ");
                 sbSql.Append("       " + modelDetail.price + ", ");
-                sbSql.Append("      '" + modelDetail.unit + "', ");
-                sbSql.Append("       " + modelDetail.remark + ", ");
+                sbSql.Append("       " + modelDetail.unit + ", ");
+                sbSql.Append("      '" + modelDetail.remark + "', ");
                 sbSql.Append("       " + _model.isDelete + ", ");
                 sbSql.Append("      '" + _model.createBy + "', ");
                 sbSql.Append("      '" + _model.createTime + "', ");
@@ -205,7 +206,7 @@ namespace Dal
                 listSql.Add(sbSql.ToString());
 
             }
-            return Dal.DBHelper.Excute(sbSql.ToString());
+            return Dal.DBHelper.ExcuteTransaction(listSql);
         }
 
         public int UpdateSaleOrder(ModelSaleOrder _model)
@@ -239,7 +240,7 @@ namespace Dal
             listSql.Add(sbSql.ToString());
 
             sbSql.Clear();
-            sbSql.Append("update r_saleOrderDetail ");
+            sbSql.Append("update r_saleOrder_Detail ");
             sbSql.Append("set isDelete = 1,");
             sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
             sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
@@ -251,7 +252,7 @@ namespace Dal
             {
                 sbSql.Clear();
                 sbSql.Append("insert into ");
-                sbSql.Append("       r_saleOrderDetail ( ");
+                sbSql.Append("       r_saleOrder_Detail ( ");
                 sbSql.Append("       orderCode, ");
                 sbSql.Append("       productId, ");
                 sbSql.Append("       num, ");
@@ -263,11 +264,11 @@ namespace Dal
                 sbSql.Append("       createTime ");
                 sbSql.Append("       ) value ( ");
                 sbSql.Append("      '" + _model.orderCode + "', ");
-                sbSql.Append("      '" + modelDetail.productId + "', ");
-                sbSql.Append("      '" + modelDetail.num + "', ");
+                sbSql.Append("       " + modelDetail.productId + ", ");
+                sbSql.Append("       " + modelDetail.num + ", ");
                 sbSql.Append("       " + modelDetail.price + ", ");
-                sbSql.Append("      '" + modelDetail.unit + "', ");
-                sbSql.Append("       " + modelDetail.remark + ", ");
+                sbSql.Append("       " + modelDetail.unit + ", ");
+                sbSql.Append("      '" + modelDetail.remark + "', ");
                 sbSql.Append("       " + _model.isDelete + ", ");
                 sbSql.Append("      '" + _model.createBy + "', ");
                 sbSql.Append("      '" + _model.createTime + "'） ");
@@ -290,7 +291,7 @@ namespace Dal
             listSql.Add(sbSql.ToString());
 
             sbSql.Clear();
-            sbSql.Append("update r_saleOrderPay ");
+            sbSql.Append("update r_saleOrder_Pay ");
             sbSql.Append("set isDelete = 1,");
             sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
             sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
@@ -299,7 +300,7 @@ namespace Dal
             listSql.Add(sbSql.ToString());
 
             sbSql.Clear();
-            sbSql.Append("update r_saleOrderDetail ");
+            sbSql.Append("update r_saleOrder_Detail ");
             sbSql.Append("set isDelete = 1,");
             sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
             sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");

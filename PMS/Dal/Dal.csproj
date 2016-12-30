@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DalSeq.cs" />
     <Compile Include="DBHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DalUser.cs" />
@@ -55,7 +56,6 @@
     <Compile Include="DalCustomer.cs" />
     <Compile Include="DalArea.cs" />
     <Compile Include="DalSaleOrder.cs" />
-    <Compile Include="DalSequence.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

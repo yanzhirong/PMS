@@ -84,6 +84,25 @@ namespace Dal
             }
 
         }
+
+        public static void ExcuteProcedure(string _procedurename, List<MySqlParameter> paramValues)
+        {
+            try
+            {
+                MySqlCommand cmd = DbBase.getMysqlConn().CreateCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = _procedurename;
+                foreach (MySqlParameter param in paramValues)
+                {
+                    cmd.Parameters.Add(param);
+                }
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+            }
+
+        }
     }
 
 }
