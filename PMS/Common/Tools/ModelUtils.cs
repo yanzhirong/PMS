@@ -65,9 +65,16 @@ namespace Common.Tools
                 T model = new T();
                 for (int i = 0; i < dr.Table.Columns.Count; i++)
                 {
-                    PropertyInfo propertyInfo = model.GetType().GetProperty(dr.Table.Columns[i].ColumnName);
-                    if (propertyInfo != null && dr[i] != DBNull.Value)
-                        propertyInfo.SetValue(model, dr[i], null);
+                    try
+                    {
+                        PropertyInfo propertyInfo = model.GetType().GetProperty(dr.Table.Columns[i].ColumnName);
+                        if (propertyInfo != null && dr[i] != DBNull.Value)
+                            propertyInfo.SetValue(model, dr[i], null);
+                    }
+                    catch (Exception e)
+                    {
+                        continue;
+                    }
                 }
 
                 modelList.Add(model);
@@ -90,9 +97,16 @@ namespace Common.Tools
 
             for (int i = 0; i < dr.Table.Columns.Count; i++)
             {
-                PropertyInfo propertyInfo = model.GetType().GetProperty(dr.Table.Columns[i].ColumnName);
-                if (propertyInfo != null && dr[i] != DBNull.Value)
-                    propertyInfo.SetValue(model, dr[i], null);
+                try
+                {
+                    PropertyInfo propertyInfo = model.GetType().GetProperty(dr.Table.Columns[i].ColumnName);
+                    if (propertyInfo != null && dr[i] != DBNull.Value)
+                        propertyInfo.SetValue(model, dr[i], null);
+                }
+                catch (Exception e)
+                {
+                    continue;
+                }
             }
             return model;
         }

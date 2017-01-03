@@ -176,7 +176,7 @@ namespace PMS.Frm.Product
             }
 
             //价格相关
-            this.grb_price.Visible = LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Finance ? true : false;
+            this.grb_price.Visible = WinCommon.IsFinance(LoginUserInfo.LoginUser.loginRole.roleType);
             
         }
         #endregion
@@ -216,7 +216,7 @@ namespace PMS.Frm.Product
             modelProduct.expiredDays = ConvertUtils.ConvertToInt(this.txt_expiredDays.Text);
             modelProduct.minStockNum = ConvertUtils.ConvertToInt(this.txt_minStockNum.Text);
 
-            if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Finance)
+            if (WinCommon.IsFinance(LoginUserInfo.LoginUser.loginRole.roleType))
             {
                 ModelProductPrice modelProductPrice = new ModelProductPrice();
                 modelProductPrice.productId = modelProduct.id;
@@ -470,7 +470,7 @@ namespace PMS.Frm.Product
                         listMaterialsId.Add(materialsId);
                     }
 
-                    if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Finance) 
+                    if (WinCommon.IsFinance(LoginUserInfo.LoginUser.loginRole.roleType)) 
                     {
                         if (StringUtils.IsBlank(this.txt_minPrice.Text))
                         {
@@ -617,14 +617,36 @@ namespace PMS.Frm.Product
             if (e.ColumnIndex == 1)
             {
                 string searchKey = ConvertUtils.ConvertToString(this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+                int materialsId = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[e.RowIndex].Cells[2].Value);
                 searchKey = searchKey.ToUpper();
 
                 DataGridViewComboBoxCell column = (DataGridViewComboBoxCell)this.dataGridView1.Rows[e.RowIndex].Cells[2];
 
-                column.DataSource = m_bllMaterials.GetMaterialsBySearchKey(searchKey);
+
+                DataTable dt = m_bllMaterials.GetMaterialsBySearchKey(searchKey);
+                if (dt == null || dt.Rows.Count <= 0)
+                {
+                    MsgUtils.ShowInfoMsg("没有此原料，请重新输入！");
+                    this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
+                    return;
+                }
+                column.DataSource = dt;
                 column.DisplayMember = "materialsName";
                 column.ValueMember = "materialsId";
 
+                bool isFind = false;
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    if (materialsId == ConvertUtils.ConvertToInt(dt.Rows[i][2]))
+                    {
+                        isFind = true;
+                        break;
+                    }
+                }
+                if (!isFind)
+                {
+                    this.dataGridView1.Rows[e.RowIndex].Cells[2].Value = dt.Rows[0]["materialsId"];
+                }
             }
 
             if (e.ColumnIndex == 3)

@@ -12,8 +12,7 @@ namespace Bll
     {
         public static int GetSeq(string _key)
         {
-            int rtn = 0;
-
+   
             if(StringUtils.IsBlank(_key))
             {
                 return 0;

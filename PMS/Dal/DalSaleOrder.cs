@@ -19,22 +19,21 @@ namespace Dal
             sbSql.Clear();
             sbSql.Append("select a.id, ");
             sbSql.Append("       a.orderCode, ");
-            sbSql.Append("       b.userName saleName, ");
+            sbSql.Append("       b.userName salerName, ");
             sbSql.Append("       c.name customerName, ");
-            sbSql.Append("       a.provinceName + a.cityName + a.districtName + a.address orderAddress, ");
+            sbSql.Append("       concat(a.provinceName,a.cityName,a.districtName,a.address) orderAddress, ");
             sbSql.Append("       date_format(a.createTime, '%Y-%m-%d') orderDate, ");
             sbSql.Append("       a.orderStatus orderStatusCode, ");
             sbSql.Append("       d.value1 orderStatus, ");
             if (_roleType == (int)Enum.EnumRoleType.Finance)
             {
                 sbSql.Append("       case a.orderStatus when 1 then '确认' else '查看' end modifyBtn, ");
-                sbSql.Append("       '' deleteBtn ");
             }
             else
             {
                 sbSql.Append("       case a.orderStatus when 1 then '修改' else '查看' end modifyBtn, ");
-                sbSql.Append("       case a.orderStatus when 1 then '删除' else '' end deleteBtn ");
             }
+            sbSql.Append("       '删除' deleteBtn ");
             sbSql.Append("from p_saleOrder a ");
             sbSql.Append("left join m_user b ");
             sbSql.Append("  on a.salerId = b.userId ");
@@ -84,7 +83,7 @@ namespace Dal
             sql = @"select * 
                       from p_saleOrder
                      where isDelete = 0
-                       and orderCode = {0}";
+                       and orderCode = '{0}'";
 
             sql = String.Format(sql, _orderCode);
 
@@ -93,10 +92,10 @@ namespace Dal
 
         public DataTable GetSaleOrderDetailByOrderCode(string _orderCode)
         {
-            sql = @"select * 
-                      from r_saleOrderDetail
+            sql = @"select id,searchKey,productId,num,unit,remark,orderCode,price 
+                      from r_saleOrder_Detail
                      where isDelete = 0
-                       and orderCode = {0}";
+                       and orderCode = '{0}'";
 
             sql = String.Format(sql, _orderCode);
 
@@ -106,9 +105,9 @@ namespace Dal
         public DataTable GetSaleOrderPayByOrderCode(string _orderCode)
         {
             sql = @"select * 
-                      from r_saleOrderPay
+                      from r_saleOrder_Pay
                      where isDelete = 0
-                       and orderCode = {0}";
+                       and orderCode = '{0}'";
 
             sql = String.Format(sql, _orderCode);
 
@@ -181,6 +180,7 @@ namespace Dal
                 sbSql.Append("insert into ");
                 sbSql.Append("       r_saleOrder_Detail ( ");
                 sbSql.Append("       orderCode, ");
+                sbSql.Append("       searchKey, ");
                 sbSql.Append("       productId, ");
                 sbSql.Append("       num, ");
                 sbSql.Append("       price, ");
@@ -193,6 +193,7 @@ namespace Dal
                 sbSql.Append("       modifyTime ");
                 sbSql.Append("       ) values ( ");
                 sbSql.Append("      '" + _model.orderCode + "', ");
+                sbSql.Append("      '" + modelDetail.searchKey + "', ");
                 sbSql.Append("       " + modelDetail.productId + ", ");
                 sbSql.Append("       " + modelDetail.num + ", ");
                 sbSql.Append("       " + modelDetail.price + ", ");
@@ -254,6 +255,7 @@ namespace Dal
                 sbSql.Append("insert into ");
                 sbSql.Append("       r_saleOrder_Detail ( ");
                 sbSql.Append("       orderCode, ");
+                sbSql.Append("       searchKey, ");
                 sbSql.Append("       productId, ");
                 sbSql.Append("       num, ");
                 sbSql.Append("       price, ");
@@ -262,8 +264,9 @@ namespace Dal
                 sbSql.Append("       isDelete, ");
                 sbSql.Append("       createBy, ");
                 sbSql.Append("       createTime ");
-                sbSql.Append("       ) value ( ");
+                sbSql.Append("       ) values ( ");
                 sbSql.Append("      '" + _model.orderCode + "', ");
+                sbSql.Append("      '" + modelDetail.searchKey + "', ");
                 sbSql.Append("       " + modelDetail.productId + ", ");
                 sbSql.Append("       " + modelDetail.num + ", ");
                 sbSql.Append("       " + modelDetail.price + ", ");
@@ -271,9 +274,72 @@ namespace Dal
                 sbSql.Append("      '" + modelDetail.remark + "', ");
                 sbSql.Append("       " + _model.isDelete + ", ");
                 sbSql.Append("      '" + _model.createBy + "', ");
-                sbSql.Append("      '" + _model.createTime + "'） ");
+                sbSql.Append("      '" + _model.createTime + "')");
                 listSql.Add(sbSql.ToString());
 
+            }
+            return Dal.DBHelper.ExcuteTransaction(listSql);
+        }
+
+        public int ConfirmSaleOrder(ModelSaleOrder _modelSaleOrder, ModelProductOutput _modelProductOutput)
+        {
+            List<string> listSql = new List<string>();
+
+            sbSql.Clear();
+            sbSql.Append("update p_saleOrder ");
+            sbSql.Append("set price = " + _modelSaleOrder.price + ",");
+            sbSql.Append("    priceRemark = '" + _modelSaleOrder.priceRemark + "',");
+            sbSql.Append("    factoryId = " + _modelSaleOrder.factoryId + ",");
+            sbSql.Append("    orderStatus = " + _modelSaleOrder.orderStatus + ",");
+            sbSql.Append("    remark = '" + _modelSaleOrder.remark + "',");
+            sbSql.Append("    modifyBy = '" + _modelSaleOrder.modifyBy + "',");
+            sbSql.Append("    modifyTime = '" + _modelSaleOrder.modifyTime + "' ");
+            sbSql.Append("where id = " + _modelSaleOrder.id);
+            listSql.Add(sbSql.ToString());
+
+            sbSql.Clear();
+            sbSql.Append("insert into ");
+            sbSql.Append("       p_product_output ( ");
+            sbSql.Append("       outputCode, ");
+            sbSql.Append("       orderId, ");
+            sbSql.Append("       factoryId, ");
+            sbSql.Append("       delieryDate, ");
+            sbSql.Append("       outputStatus, ");
+            sbSql.Append("       isDelete, ");
+            sbSql.Append("       createBy, ");
+            sbSql.Append("       createTime ");
+            sbSql.Append("       ) values ( ");
+            sbSql.Append("      '" + _modelProductOutput.outputCode + "', ");
+            sbSql.Append("       " + _modelProductOutput.orderId + ", ");
+            sbSql.Append("       " + _modelProductOutput.factoryId + ", ");
+            sbSql.Append("      '" + _modelProductOutput.delieryDate + "', ");
+            sbSql.Append("       " + _modelProductOutput.outputStatus + ", ");
+            sbSql.Append("       " + _modelProductOutput.isDelete + ", ");
+            sbSql.Append("      '" + _modelProductOutput.createBy + "', ");
+            sbSql.Append("      '" + _modelProductOutput.createTime + "')");
+            listSql.Add(sbSql.ToString());
+
+            foreach (ModelProductOutputDetail modelProductOutputDetail in _modelProductOutput.modelProductOutputDetail)
+            {
+                sbSql.Clear();
+                sbSql.Append("insert into ");
+                sbSql.Append("       r_product_output_detail ( ");
+                sbSql.Append("       outputCode, ");
+                sbSql.Append("       productId, ");
+                sbSql.Append("       productNum, ");
+                sbSql.Append("       outputStatus, ");
+                sbSql.Append("       isDelete, ");
+                sbSql.Append("       createBy, ");
+                sbSql.Append("       createTime ");
+                sbSql.Append("       ) values ( ");
+                sbSql.Append("      '" + modelProductOutputDetail.outputCode + "', ");
+                sbSql.Append("       " + modelProductOutputDetail.productId + ", ");
+                sbSql.Append("       " + modelProductOutputDetail.productNum + ", ");
+                sbSql.Append("       " + modelProductOutputDetail.outputStatus + ", ");
+                sbSql.Append("       " + modelProductOutputDetail.isDelete + ", ");
+                sbSql.Append("      '" + modelProductOutputDetail.createBy + "', ");
+                sbSql.Append("      '" + modelProductOutputDetail.createTime + "')");
+                listSql.Add(sbSql.ToString());
             }
             return Dal.DBHelper.ExcuteTransaction(listSql);
         }

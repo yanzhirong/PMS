@@ -104,6 +104,12 @@
     <Compile Include="Frm\Sale\FrmOrderDetail.Designer.cs">
       <DependentUpon>FrmOrderDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm\Store\FrmProductOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Store\FrmProductOut.Designer.cs">
+      <DependentUpon>FrmProductOut.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\Sys\FrmSysUserDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +195,9 @@
     <EmbeddedResource Include="Frm\Sale\FrmOrderDetail.resx">
       <DependentUpon>FrmOrderDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Store\FrmProductOut.resx">
+      <DependentUpon>FrmProductOut.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm\Sys\FrmSysUser.resx">
       <DependentUpon>FrmSysUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -265,7 +274,6 @@
     <Content Include="PMS.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Frm\Factory\" />
     <Folder Include="Frm\Finance\" />
     <Folder Include="Frm\Produce\" />
     <Folder Include="Frm\Purchase\" />

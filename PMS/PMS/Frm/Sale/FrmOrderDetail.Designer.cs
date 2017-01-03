@@ -34,17 +34,10 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.lbl_title = new System.Windows.Forms.Label();
             this.grb_saleOrder = new System.Windows.Forms.GroupBox();
-            this.txt_orderStatusCode = new System.Windows.Forms.TextBox();
             this.dtp_deliverDate = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.searchKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.materialsName = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.MaterialsNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unit = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_orderStatus = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.cmb_saler = new System.Windows.Forms.ComboBox();
@@ -77,6 +70,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.btn_close = new System.Windows.Forms.Button();
+            this.txt_orderStatusCode = new System.Windows.Forms.TextBox();
             this.grb_saleOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.grb_address.SuspendLayout();
@@ -138,18 +132,6 @@
             this.grb_saleOrder.TabIndex = 103;
             this.grb_saleOrder.TabStop = false;
             // 
-            // txt_orderStatusCode
-            // 
-            this.txt_orderStatusCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txt_orderStatusCode.Enabled = false;
-            this.txt_orderStatusCode.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txt_orderStatusCode.Location = new System.Drawing.Point(606, 20);
-            this.txt_orderStatusCode.MaxLength = 20;
-            this.txt_orderStatusCode.Name = "txt_orderStatusCode";
-            this.txt_orderStatusCode.Size = new System.Drawing.Size(29, 21);
-            this.txt_orderStatusCode.TabIndex = 110;
-            this.txt_orderStatusCode.Visible = false;
-            // 
             // dtp_deliverDate
             // 
             this.dtp_deliverDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -189,13 +171,6 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
-            this.searchKey,
-            this.materialsName,
-            this.MaterialsNum,
-            this.unit,
-            this.remark});
             this.dataGridView1.Location = new System.Drawing.Point(8, 247);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 20;
@@ -203,47 +178,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(616, 127);
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "产品ID";
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // searchKey
-            // 
-            this.searchKey.HeaderText = "  ";
-            this.searchKey.Name = "searchKey";
-            this.searchKey.Width = 60;
-            // 
-            // materialsName
-            // 
-            this.materialsName.HeaderText = "产品";
-            this.materialsName.Name = "materialsName";
-            this.materialsName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.materialsName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.materialsName.Width = 230;
-            // 
-            // MaterialsNum
-            // 
-            this.MaterialsNum.DataPropertyName = "MaterialsNum";
-            this.MaterialsNum.HeaderText = "数量";
-            this.MaterialsNum.Name = "MaterialsNum";
-            this.MaterialsNum.ReadOnly = true;
-            this.MaterialsNum.Width = 60;
-            // 
-            // unit
-            // 
-            this.unit.HeaderText = "单位";
-            this.unit.Name = "unit";
-            this.unit.Width = 80;
-            // 
-            // remark
-            // 
-            this.remark.HeaderText = "说明";
-            this.remark.Name = "remark";
-            this.remark.Width = 160;
             // 
             // txt_orderStatus
             // 
@@ -502,7 +436,6 @@
             this.label12.Size = new System.Drawing.Size(65, 12);
             this.label12.TabIndex = 111;
             this.label12.Text = "出货仓库：";
-            this.label12.Visible = false;
             // 
             // txt_priceRemark
             // 
@@ -521,7 +454,6 @@
             this.cmb_factory.Name = "cmb_factory";
             this.cmb_factory.Size = new System.Drawing.Size(222, 20);
             this.cmb_factory.TabIndex = 22;
-            this.cmb_factory.Visible = false;
             // 
             // label8
             // 
@@ -571,6 +503,18 @@
             this.btn_close.UseVisualStyleBackColor = true;
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
+            // txt_orderStatusCode
+            // 
+            this.txt_orderStatusCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txt_orderStatusCode.Enabled = false;
+            this.txt_orderStatusCode.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_orderStatusCode.Location = new System.Drawing.Point(606, 20);
+            this.txt_orderStatusCode.MaxLength = 20;
+            this.txt_orderStatusCode.Name = "txt_orderStatusCode";
+            this.txt_orderStatusCode.Size = new System.Drawing.Size(29, 21);
+            this.txt_orderStatusCode.TabIndex = 110;
+            this.txt_orderStatusCode.Visible = false;
+            // 
             // FrmOrderDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -593,7 +537,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "订单管理";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmOrderDetail_FormClosed);
-            this.Load += new System.EventHandler(this.FrmCustomerDetail_Load);
+            this.Load += new System.EventHandler(this.FrmOrderDetail_Load);
             this.grb_saleOrder.ResumeLayout(false);
             this.grb_saleOrder.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -643,12 +587,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn searchKey;
-        private System.Windows.Forms.DataGridViewComboBoxColumn materialsName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaterialsNum;
-        private System.Windows.Forms.DataGridViewComboBoxColumn unit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn remark;
         private System.Windows.Forms.DateTimePicker dtp_deliverDate;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;

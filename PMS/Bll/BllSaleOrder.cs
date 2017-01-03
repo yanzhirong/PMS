@@ -88,10 +88,43 @@ namespace Bll
             return rtn == 0 ? false : true;
         }
 
-        public Boolean ConfirmSaleOrder(ModelSaleOrder _model)
+        public Boolean ConfirmSaleOrder(ModelSaleOrder _modelSaleOrder)
         {
             int rtn = 0;
-            rtn = m_dalSaleOrder.UpdateSaleOrder(_model);
+
+            //等待出库
+            _modelSaleOrder.orderStatus = (int)Enum.EnumSaleOrderStatus.WaitTransport;
+
+            //出库申请单
+            ModelProductOutput modelProductStoreOut = new ModelProductOutput();
+            int seq = Bll.BllSeq.GetSeq("ProductOutPut");
+            string outputCode = ConvertUtils.ConvertToDate(DateTime.Now, "yyyyMMddHHmmss") + "_" + seq;
+            modelProductStoreOut.outputCode = outputCode;
+            modelProductStoreOut.orderId = _modelSaleOrder.id;
+            modelProductStoreOut.factoryId = _modelSaleOrder.factoryId;
+            modelProductStoreOut.delieryDate = _modelSaleOrder.deliverDate;
+            modelProductStoreOut.outputStatus = 0;
+            modelProductStoreOut.isDelete = 0;
+            modelProductStoreOut.createBy = _modelSaleOrder.modifyBy;
+            modelProductStoreOut.createTime = _modelSaleOrder.modifyTime;
+
+            List<ModelProductOutputDetail> listDetail = new List<ModelProductOutputDetail>();
+            foreach (ModelSaleOrderDetail modelSaleOrderDetail in _modelSaleOrder.modelSaleOrderDetail)
+            {
+                ModelProductOutputDetail modelProductStoreOutDetail = new ModelProductOutputDetail();
+                modelProductStoreOutDetail.outputCode = modelProductStoreOut.outputCode;
+                modelProductStoreOutDetail.productId = modelSaleOrderDetail.productId;
+                modelProductStoreOutDetail.productNum = modelSaleOrderDetail.num;
+                modelProductStoreOutDetail.outputStatus = 0;
+                modelProductStoreOutDetail.isDelete = 0;
+                modelProductStoreOutDetail.createBy = modelProductStoreOut.createBy;
+                modelProductStoreOutDetail.createTime = modelProductStoreOut.createTime;
+                listDetail.Add(modelProductStoreOutDetail);
+            }
+
+            modelProductStoreOut.modelProductOutputDetail = listDetail;
+
+            rtn = m_dalSaleOrder.ConfirmSaleOrder(_modelSaleOrder, modelProductStoreOut);
 
             return rtn == 0 ? false : true;
         }

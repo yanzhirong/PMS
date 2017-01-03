@@ -187,5 +187,22 @@ namespace PMS
             }
         }
         #endregion
+
+        #region 判断是否具有财务权限
+        public static bool IsFinance(int _roleType)
+        {
+            if (_roleType == (int)Enum.EnumRoleType.Finance)
+            {
+                return true;
+            }
+            if (_roleType == (int)Enum.EnumRoleType.Admin)
+            {
+                return true;
+            }
+
+            return false;
+        }
+        #endregion
+
     }
 }

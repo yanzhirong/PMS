@@ -152,22 +152,22 @@ namespace PMS.Frm.Sys
 
         private void chk_factory_CheckedChanged(object sender, EventArgs e)
         {
-            this.grb_factory.Enabled = this.chk_factory.Checked;
-            if (this.chk_factory.Checked == false)
+            this.grb_factory.Enabled = this.chk_store.Checked;
+            if (this.chk_store.Checked == false)
             {
-                this.chk_factory_product_in.Checked = false;
-                this.chk_factory_product_out.Checked = false;
-                this.chk_factory_product_transfer.Checked = false;
-                this.chk_factory_materials_in.Checked = false;
-                this.chk_factory_materials_out.Checked = false;
+                this.chk_store_product_in.Checked = false;
+                this.chk_store_product_out.Checked = false;
+                this.chk_store_product_transfer.Checked = false;
+                this.chk_store_materials_in.Checked = false;
+                this.chk_store_materials_out.Checked = false;
             }
             else
             {
-                this.chk_factory_product_in.Checked = true;
-                this.chk_factory_product_out.Checked = true;
-                this.chk_factory_product_transfer.Checked = true;
-                this.chk_factory_materials_in.Checked = true;
-                this.chk_factory_materials_out.Checked = true;
+                this.chk_store_product_in.Checked = true;
+                this.chk_store_product_out.Checked = true;
+                this.chk_store_product_transfer.Checked = true;
+                this.chk_store_materials_in.Checked = true;
+                this.chk_store_materials_out.Checked = true;
             }
         }
 
@@ -273,7 +273,14 @@ namespace PMS.Frm.Sys
             ModelRole modelRole = new ModelRole();
             modelRole.roleId = m_roleId;
             modelRole.roleName = this.txt_name.Text.Trim();
-            modelRole.roleType = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_type.SelectedItem).itemKey);
+            if (this.cmb_type.SelectedIndex > 0)
+            {
+                modelRole.roleType = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_type.SelectedItem).itemKey);
+            }
+            else
+            {
+                modelRole.roleType = 0;
+            }
             modelRole.isDelete = 0;
             modelRole.createBy = LoginUserInfo.LoginUser.loginUser.userName;
             modelRole.createTime = DateTime.Now;

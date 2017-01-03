@@ -26,7 +26,7 @@ namespace PMS.Frm.Sale
             InitializeComponent();
         }
 
-        private void FrmCustomerManage_Load(object sender, EventArgs e)
+        private void FrmOrderManage_Load(object sender, EventArgs e)
         {
             LoginUserInfo.LoginUser.currentFrom = this;
             WinCommon.CreateMenu(ref this.menuStrip1);
@@ -34,25 +34,41 @@ namespace PMS.Frm.Sale
             List<ModelItem> listItem = m_bllCode.GetCodeItem(7, true);
             WinCommon.BindComboBox(ref this.cmb_status, listItem);
 
+
+            listItem = m_bllUser.GetUserGroupByRoleType((int)Enum.EnumRoleType.Saler);
+            ModelItem item = new ModelItem();
+            item.itemKey = 0;
+            item.itemValue = "";
+            this.cmb_saler.Items.Add(item);
+            foreach (ModelItem modelItem in listItem)
+            {
+                this.cmb_saler.Items.Add(modelItem);
+            }
+            this.cmb_saler.DisplayMember = "itemValue";
+            this.cmb_saler.ValueMember = "itemKey";
+
             if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Saler)
             {
                 m_salerId = LoginUserInfo.LoginUser.loginUser.userId;
 
-                ModelItem item = new ModelItem();
-                item.itemKey = m_salerId;
-                item.itemValue = LoginUserInfo.LoginUser.loginUser.userName;
+                for (int i = 0; i < this.cmb_saler.Items.Count; i++)
+                {
+                    if (LoginUserInfo.LoginUser.loginUser.userId == (int)((ModelItem)this.cmb_saler.Items[i]).itemKey)
+                    {
+                        this.cmb_saler.SelectedIndex = i;
+                    }
+                }
 
-                this.cmb_saler.Items.Clear();
-                this.cmb_saler.Items.Add(item);
-                this.cmb_saler.SelectedIndex = 0;
                 this.cmb_saler.Enabled = false;
             }
             else
             {
                 m_salerId = 0;
 
-                listItem = m_bllUser.GetUserGroupByRoleType((int)Enum.EnumRoleType.Saler);
-                WinCommon.BindComboBox(ref this.cmb_saler, listItem);
+                if (WinCommon.IsFinance(LoginUserInfo.LoginUser.loginRole.roleType))
+                {
+                    this.dataGridView1.Columns["deleteBtn"].Visible = false;
+                }
             }
 
             this.dtp_begin.Value = DateTime.Now.AddMonths(-1);
@@ -66,12 +82,12 @@ namespace PMS.Frm.Sale
             string code = this.txt_code.Text.Trim();
             string name = this.txt_name.Text.Trim();
             int salerId = 0;
-            if (this.cmb_saler.SelectedIndex >= 0)
+            if (this.cmb_saler.SelectedIndex > 0)
             {
                 salerId = (int)((ModelItem)this.cmb_saler.SelectedItem).itemKey;
             }
             int status = 0;
-            if (this.cmb_status.SelectedIndex >= 0)
+            if (this.cmb_status.SelectedIndex > 0)
             {
                 status = (int)((ModelItem)this.cmb_status.SelectedItem).itemKey;
             } 
@@ -103,7 +119,7 @@ namespace PMS.Frm.Sale
                 if (orderStatus == (int)Enum.EnumSaleOrderStatus.WaitConfirm)
                 {
                     //财务确认
-                    if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Finance)
+                    if (WinCommon.IsFinance(LoginUserInfo.LoginUser.loginRole.roleType))
                     {
                         Form form = new FrmOrderDetail(4, id);
                         this.Hide();
@@ -150,6 +166,6 @@ namespace PMS.Frm.Sale
         {
             WinCommon.Exit();
         }
-
+        
     }
 }

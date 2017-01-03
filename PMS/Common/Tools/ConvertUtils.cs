@@ -34,7 +34,7 @@ namespace Common.Tools
             {
                 value = Convert.ToInt32(_object);
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
             }
 
@@ -67,7 +67,7 @@ namespace Common.Tools
             {
                 value = Convert.ToDecimal(_object);
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
             }
 
@@ -91,7 +91,7 @@ namespace Common.Tools
             {
                 value = Convert.ToString(_object);
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
             }
 
@@ -111,7 +111,7 @@ namespace Common.Tools
             {
                 value = _object.ToString(_format);
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
             }
 

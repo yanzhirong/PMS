@@ -34,38 +34,10 @@ namespace PMS.Frm.Sale
             m_saleOrderId = _saleOrderId;
         }
 
-        private void FrmCustomerDetail_Load(object sender, EventArgs e)
+        private void FrmOrderDetail_Load(object sender, EventArgs e)
         {
             LoginUserInfo.LoginUser.currentFrom = this;
             WinCommon.CreateMenu(ref this.menuStrip1);
-
-            //登录者是销售
-            if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Saler)
-            {
-                if (m_mode == 0)
-                {
-                    for (int i = 0; i < this.cmb_saler.Items.Count; i++)
-                    {
-                        if (LoginUserInfo.LoginUser.loginUser.userId == (int)((ModelItem)this.cmb_saler.Items[i]).itemKey)
-                        {
-                            this.cmb_saler.SelectedIndex = i;
-                        }
-                    }
-                }
-
-                this.cmb_saler.Enabled = false;
-            }
-
-            //登录者是财务
-            if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Finance)
-            {
-                this.grb_saleOrder.Enabled = false;
-                this.grb_price.Visible = true;
-            }
-            else
-            {
-                this.grb_price.Visible = false;
-            }
             
             //初始化
             init();
@@ -142,6 +114,34 @@ namespace PMS.Frm.Sale
 
             // 设置datagrid
             SetDataGridViewStyle();
+
+            //登录者是销售
+            if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Saler)
+            {
+                if (m_mode == 0)
+                {
+                    for (int i = 0; i < this.cmb_saler.Items.Count; i++)
+                    {
+                        if (LoginUserInfo.LoginUser.loginUser.userId == (int)((ModelItem)this.cmb_saler.Items[i]).itemKey)
+                        {
+                            this.cmb_saler.SelectedIndex = i;
+                        }
+                    }
+                }
+
+                this.cmb_saler.Enabled = false;
+            }
+
+            //登录者是财务
+            if (WinCommon.IsFinance(LoginUserInfo.LoginUser.loginRole.roleType))
+            {
+                this.grb_saleOrder.Enabled = false;
+                this.grb_price.Visible = true;
+            }
+            else
+            {
+                this.grb_price.Visible = false;
+            }
 
             //初始化数据
             if (m_mode != 0 && m_saleOrderId > 0)
@@ -368,7 +368,7 @@ namespace PMS.Frm.Sale
 
                 //处理模式变为修改
                 m_mode = 1;
-                m_saleOrderId = m_bllSaleOrder.GetSaleOrderByOrderCode(this.txt_orderCode.Text).id;
+                m_saleOrderId = m_bllSaleOrder.GetSaleOrderByOrderCode(modelSaleOrder.orderCode).id;
 
                 init();
 
@@ -496,17 +496,17 @@ namespace PMS.Frm.Sale
                 bool hasProduct = false; 
                 for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
                 {
-                    int productId = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[2].Value);
+                    int productId = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["productId"].Value);
                     if (productId > 0)
                     {
-                        if (ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells[3].Value) <= 0)
+                        if (ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells["num"].Value) <= 0)
                         {
                             MsgUtils.ShowErrorMsg("请输入销售商品数量！");
                             this.dataGridView1.Focus();
                             return false;
                         }
 
-                        if (ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[4].Value) <= 0)
+                        if (ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["unit"].Value) <= 0)
                         {
                             MsgUtils.ShowErrorMsg("请输入销售商品单位！");
                             this.dataGridView1.Focus();
@@ -532,7 +532,7 @@ namespace PMS.Frm.Sale
                     return false;
                 }
 
-                if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Finance)
+                if (WinCommon.IsFinance(LoginUserInfo.LoginUser.loginRole.roleType))
                 {
                     //订单金额
                     decimal price = ConvertUtils.ConvertToDecimal(this.txt_price.Text);
@@ -551,25 +551,25 @@ namespace PMS.Frm.Sale
                         return false;                    
                     }
                 }
+            }
 
-                if (m_mode == 4)
+            if (m_mode == 4)
+            {
+                //订单金额
+                decimal price = ConvertUtils.ConvertToDecimal(this.txt_price.Text);
+                if (price <= 0)
                 {
-                    //订单金额
-                    decimal price = ConvertUtils.ConvertToDecimal(this.txt_price.Text);
-                    if (price <= 0)
-                    {
-                        MsgUtils.ShowErrorMsg("请输入订单金额！");
-                        this.txt_price.Focus();
-                        return false;
-                    }
+                    MsgUtils.ShowErrorMsg("请输入订单金额！");
+                    this.txt_price.Focus();
+                    return false;
+                }
 
-                    //出货仓库
-                    if (this.cmb_factory.SelectedIndex < 0)
-                    {
-                        MsgUtils.ShowErrorMsg("请选择出货仓库！");
-                        this.txt_price.Focus();
-                        return false;
-                    }
+                //出货仓库
+                if (this.cmb_factory.SelectedIndex < 0)
+                {
+                    MsgUtils.ShowErrorMsg("请选择出货仓库！");
+                    this.txt_price.Focus();
+                    return false;
                 }
             }
 
@@ -627,9 +627,9 @@ namespace PMS.Frm.Sale
             column.ValueMember = "subCode";
 
             columns = new DataGridViewTextBoxColumn();
-            columns.Name = "reamrk";
+            columns.Name = "remark";
             columns.HeaderText = "说明";
-            columns.DataPropertyName = "reamrk";
+            columns.DataPropertyName = "remark";
             columns.Width = 160;
             this.dataGridView1.Columns.Add(columns);
 
@@ -691,7 +691,7 @@ namespace PMS.Frm.Sale
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
 
-            if (e.RowIndex < 0 || e.ColumnIndex != 1)
+            if (e.RowIndex < 0 || e.ColumnIndex < 1)
             {
                 return;
             }
@@ -700,19 +700,42 @@ namespace PMS.Frm.Sale
             if (e.ColumnIndex == 1)
             {
                 string searchKey = ConvertUtils.ConvertToString(this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+                int productId = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[e.RowIndex].Cells["productId"].Value);
+
                 searchKey = searchKey.ToUpper();
 
-                DataGridViewComboBoxCell column = (DataGridViewComboBoxCell)this.dataGridView1.Rows[e.RowIndex].Cells[2];
+                DataGridViewComboBoxCell column = (DataGridViewComboBoxCell)this.dataGridView1.Rows[e.RowIndex].Cells["productId"];
 
-                column.DataSource = m_bllProduct.GetProductBySearchKey(searchKey);
+                DataTable dt = m_bllProduct.GetProductBySearchKey(searchKey);
+                if (dt == null || dt.Rows.Count <= 0)
+                {
+                    MsgUtils.ShowInfoMsg("没有此商品，请重新输入！");
+                    this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
+                    return;
+                }
+
+                column.DataSource = dt;
                 column.DisplayMember = "productName";
                 column.ValueMember = "productId";
 
+                bool isFind = false;
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    if (productId == ConvertUtils.ConvertToInt(dt.Rows[i]["productId"]))
+                    {
+                        isFind = true;
+                        break;
+                    }
+                }
+                if (!isFind)
+                {
+                    this.dataGridView1.Rows[e.RowIndex].Cells["productId"].Value = dt.Rows[0]["productId"];
+                }
             }
 
             if (e.ColumnIndex == 3)
             {
-                DataGridViewComboBoxCell column = (DataGridViewComboBoxCell)this.dataGridView1.Rows[e.RowIndex].Cells[4];
+                DataGridViewComboBoxCell column = (DataGridViewComboBoxCell)this.dataGridView1.Rows[e.RowIndex].Cells["unit"];
 
                 column.DataSource = m_bllCode.GetCodeList(3);
                 column.DisplayMember = "value1";

@@ -59,7 +59,7 @@ namespace Bll
 
             foreach (ModelArea area in listAllArea)
             {
-                if (area.parentId != null && area.parentId == _provinceId)
+                if (area.parentId == _provinceId)
                 {
                     ModelItem item = new ModelItem();
                     item.itemKey = area.areaId;
@@ -84,7 +84,7 @@ namespace Bll
 
             foreach (ModelArea area in listAllArea)
             {
-                if (area.parentId != null && area.parentId == _cityId)
+                if (area.parentId == _cityId)
                 {
                     ModelItem item = new ModelItem();
                     item.itemKey = area.areaId;

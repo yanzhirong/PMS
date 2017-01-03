@@ -1,6 +1,6 @@
-﻿namespace PMS.Frm.Sale
+﻿namespace PMS.Frm.Store
 {
-    partial class FrmOrderManage
+    partial class FrmProductOut
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmOrderManage));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProductOut));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmb_status = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -39,12 +39,11 @@
             this.dtp_begin = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.lbl_saler = new System.Windows.Forms.Label();
-            this.cmb_saler = new System.Windows.Forms.ComboBox();
-            this.txt_name = new System.Windows.Forms.TextBox();
+            this.cmb_factory = new System.Windows.Forms.ComboBox();
+            this.txt_customerName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txt_code = new System.Windows.Forms.TextBox();
+            this.txt_productName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_addNew = new System.Windows.Forms.Button();
             this.btn_query = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -54,10 +53,9 @@
             this.salerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.modifyBtn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.deleteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.deliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.outputStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.detailBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.orderStatusCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -72,10 +70,10 @@
             this.groupBox1.Controls.Add(this.dtp_begin);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.lbl_saler);
-            this.groupBox1.Controls.Add(this.cmb_saler);
-            this.groupBox1.Controls.Add(this.txt_name);
+            this.groupBox1.Controls.Add(this.cmb_factory);
+            this.groupBox1.Controls.Add(this.txt_customerName);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txt_code);
+            this.groupBox1.Controls.Add(this.txt_productName);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(30, 79);
             this.groupBox1.Name = "groupBox1";
@@ -100,7 +98,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 90;
-            this.label5.Text = "订单状态：";
+            this.label5.Text = "状    态：";
             // 
             // dtp_end
             // 
@@ -132,7 +130,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 86;
-            this.label3.Text = "订单时间：";
+            this.label3.Text = "交货日期：";
             // 
             // lbl_saler
             // 
@@ -142,24 +140,24 @@
             this.lbl_saler.Name = "lbl_saler";
             this.lbl_saler.Size = new System.Drawing.Size(65, 12);
             this.lbl_saler.TabIndex = 84;
-            this.lbl_saler.Text = "销    售：";
+            this.lbl_saler.Text = "仓    库：";
             // 
-            // cmb_saler
+            // cmb_factory
             // 
-            this.cmb_saler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_saler.FormattingEnabled = true;
-            this.cmb_saler.Location = new System.Drawing.Point(478, 14);
-            this.cmb_saler.Name = "cmb_saler";
-            this.cmb_saler.Size = new System.Drawing.Size(118, 20);
-            this.cmb_saler.TabIndex = 3;
+            this.cmb_factory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_factory.FormattingEnabled = true;
+            this.cmb_factory.Location = new System.Drawing.Point(478, 14);
+            this.cmb_factory.Name = "cmb_factory";
+            this.cmb_factory.Size = new System.Drawing.Size(118, 20);
+            this.cmb_factory.TabIndex = 3;
             // 
-            // txt_name
+            // txt_customerName
             // 
-            this.txt_name.Location = new System.Drawing.Point(268, 14);
-            this.txt_name.MaxLength = 20;
-            this.txt_name.Name = "txt_name";
-            this.txt_name.Size = new System.Drawing.Size(118, 21);
-            this.txt_name.TabIndex = 2;
+            this.txt_customerName.Location = new System.Drawing.Point(268, 14);
+            this.txt_customerName.MaxLength = 20;
+            this.txt_customerName.Name = "txt_customerName";
+            this.txt_customerName.Size = new System.Drawing.Size(118, 21);
+            this.txt_customerName.TabIndex = 2;
             // 
             // label2
             // 
@@ -170,13 +168,13 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "客户名称：";
             // 
-            // txt_code
+            // txt_productName
             // 
-            this.txt_code.Location = new System.Drawing.Point(84, 14);
-            this.txt_code.MaxLength = 20;
-            this.txt_code.Name = "txt_code";
-            this.txt_code.Size = new System.Drawing.Size(118, 21);
-            this.txt_code.TabIndex = 1;
+            this.txt_productName.Location = new System.Drawing.Point(84, 14);
+            this.txt_productName.MaxLength = 20;
+            this.txt_productName.Name = "txt_productName";
+            this.txt_productName.Size = new System.Drawing.Size(118, 21);
+            this.txt_productName.TabIndex = 1;
             // 
             // label1
             // 
@@ -185,17 +183,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 7;
-            this.label1.Text = "客户代码：";
-            // 
-            // btn_addNew
-            // 
-            this.btn_addNew.Location = new System.Drawing.Point(147, 174);
-            this.btn_addNew.Name = "btn_addNew";
-            this.btn_addNew.Size = new System.Drawing.Size(75, 23);
-            this.btn_addNew.TabIndex = 4;
-            this.btn_addNew.Text = "新增";
-            this.btn_addNew.UseVisualStyleBackColor = true;
-            this.btn_addNew.Click += new System.EventHandler(this.btn_addNew_Click);
+            this.label1.Text = "商品名称：";
             // 
             // btn_query
             // 
@@ -225,10 +213,9 @@
             this.salerName,
             this.customerName,
             this.orderAddress,
-            this.orderDate,
-            this.orderStatus,
-            this.modifyBtn,
-            this.deleteBtn,
+            this.deliveryDate,
+            this.outputStatus,
+            this.detailBtn,
             this.orderStatusCode});
             this.dataGridView1.Location = new System.Drawing.Point(30, 208);
             this.dataGridView1.Name = "dataGridView1";
@@ -254,7 +241,7 @@
             this.lbl_tile.Name = "lbl_tile";
             this.lbl_tile.Size = new System.Drawing.Size(120, 27);
             this.lbl_tile.TabIndex = 67;
-            this.lbl_tile.Text = "订单列表";
+            this.lbl_tile.Text = "出库列表";
             // 
             // id
             // 
@@ -295,45 +282,37 @@
             this.orderAddress.ReadOnly = true;
             this.orderAddress.Width = 250;
             // 
-            // orderDate
+            // deliveryDate
             // 
-            this.orderDate.DataPropertyName = "orderDate";
-            this.orderDate.HeaderText = "订单日期";
-            this.orderDate.Name = "orderDate";
-            this.orderDate.ReadOnly = true;
+            this.deliveryDate.DataPropertyName = "deliveryDate";
+            this.deliveryDate.HeaderText = "交货日期";
+            this.deliveryDate.Name = "deliveryDate";
+            this.deliveryDate.ReadOnly = true;
             // 
-            // orderStatus
+            // outputStatus
             // 
-            this.orderStatus.DataPropertyName = "orderStatus";
+            this.outputStatus.DataPropertyName = "outputStatus";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.orderStatus.DefaultCellStyle = dataGridViewCellStyle2;
-            this.orderStatus.HeaderText = "订单状态";
-            this.orderStatus.Name = "orderStatus";
-            this.orderStatus.ReadOnly = true;
-            this.orderStatus.Width = 80;
+            this.outputStatus.DefaultCellStyle = dataGridViewCellStyle2;
+            this.outputStatus.HeaderText = "出库单状态";
+            this.outputStatus.Name = "outputStatus";
+            this.outputStatus.ReadOnly = true;
             // 
-            // modifyBtn
+            // detailBtn
             // 
-            this.modifyBtn.DataPropertyName = "modifyBtn";
-            this.modifyBtn.HeaderText = "修改";
-            this.modifyBtn.Name = "modifyBtn";
-            this.modifyBtn.Width = 80;
-            // 
-            // deleteBtn
-            // 
-            this.deleteBtn.DataPropertyName = "deleteBtn";
-            this.deleteBtn.HeaderText = "删除";
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Width = 80;
+            this.detailBtn.DataPropertyName = "detailBtn";
+            this.detailBtn.HeaderText = "详细";
+            this.detailBtn.Name = "detailBtn";
+            this.detailBtn.Width = 80;
             // 
             // orderStatusCode
             // 
             this.orderStatusCode.DataPropertyName = "orderStatusCode";
-            this.orderStatusCode.HeaderText = "订单状态";
+            this.orderStatusCode.HeaderText = "出库单状态";
             this.orderStatusCode.Name = "orderStatusCode";
             this.orderStatusCode.Visible = false;
             // 
-            // FrmOrderManage
+            // FrmProductOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -342,18 +321,17 @@
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.btn_addNew);
             this.Controls.Add(this.btn_query);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FrmOrderManage";
+            this.Name = "FrmProductOut";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "订单管理";
+            this.Text = "商品出库管理";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmOrderManage_FormClosed);
-            this.Load += new System.EventHandler(this.FrmOrderManage_Load);
+            this.Load += new System.EventHandler(this.FrmProductOut_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -365,17 +343,16 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btn_addNew;
         private System.Windows.Forms.Button btn_query;
-        private System.Windows.Forms.TextBox txt_code;
+        private System.Windows.Forms.TextBox txt_productName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label lbl_tile;
-        private System.Windows.Forms.TextBox txt_name;
+        private System.Windows.Forms.TextBox txt_customerName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbl_saler;
-        private System.Windows.Forms.ComboBox cmb_saler;
+        private System.Windows.Forms.ComboBox cmb_factory;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtp_begin;
         private System.Windows.Forms.Label label3;
@@ -387,10 +364,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn salerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderAddress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn orderDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn orderStatus;
-        private System.Windows.Forms.DataGridViewButtonColumn modifyBtn;
-        private System.Windows.Forms.DataGridViewButtonColumn deleteBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deliveryDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn outputStatus;
+        private System.Windows.Forms.DataGridViewButtonColumn detailBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderStatusCode;
 
     }
