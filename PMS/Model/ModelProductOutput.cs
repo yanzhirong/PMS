@@ -15,6 +15,8 @@ namespace Model
         public DateTime delieryDate { set; get; }
         public int outputStatus { set; get; }
         public DateTime outputDate { set; get; }
+        public int outputType { set; get; }
+        public int applyMemberId { set; get; }
         public List<ModelProductOutputDetail> modelProductOutputDetail { set; get; }
     }
 }

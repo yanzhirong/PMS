@@ -46,8 +46,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_query = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.lbl_tile = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,12 +55,20 @@
             this.outputStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detailBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.orderStatusCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.lbl_tile = new System.Windows.Forms.Label();
+            this.cmb_outputType = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btn_addNew = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmb_factory);
+            this.groupBox1.Controls.Add(this.cmb_outputType);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.cmb_status);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.dtp_end);
@@ -70,7 +76,6 @@
             this.groupBox1.Controls.Add(this.dtp_begin);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.lbl_saler);
-            this.groupBox1.Controls.Add(this.cmb_factory);
             this.groupBox1.Controls.Add(this.txt_customerName);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txt_productName);
@@ -85,7 +90,7 @@
             // 
             this.cmb_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_status.FormattingEnabled = true;
-            this.cmb_status.Location = new System.Drawing.Point(478, 50);
+            this.cmb_status.Location = new System.Drawing.Point(267, 49);
             this.cmb_status.Name = "cmb_status";
             this.cmb_status.Size = new System.Drawing.Size(118, 20);
             this.cmb_status.TabIndex = 6;
@@ -94,7 +99,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(407, 54);
+            this.label5.Location = new System.Drawing.Point(208, 52);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 90;
@@ -102,7 +107,7 @@
             // 
             // dtp_end
             // 
-            this.dtp_end.Location = new System.Drawing.Point(268, 49);
+            this.dtp_end.Location = new System.Drawing.Point(616, 14);
             this.dtp_end.Name = "dtp_end";
             this.dtp_end.Size = new System.Drawing.Size(119, 21);
             this.dtp_end.TabIndex = 5;
@@ -110,7 +115,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(230, 55);
+            this.label4.Location = new System.Drawing.Point(602, 19);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(17, 12);
             this.label4.TabIndex = 88;
@@ -118,7 +123,7 @@
             // 
             // dtp_begin
             // 
-            this.dtp_begin.Location = new System.Drawing.Point(83, 49);
+            this.dtp_begin.Location = new System.Drawing.Point(451, 14);
             this.dtp_begin.Name = "dtp_begin";
             this.dtp_begin.Size = new System.Drawing.Size(119, 21);
             this.dtp_begin.TabIndex = 4;
@@ -126,7 +131,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 55);
+            this.label3.Location = new System.Drawing.Point(391, 17);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 86;
@@ -136,7 +141,7 @@
             // 
             this.lbl_saler.AutoSize = true;
             this.lbl_saler.ForeColor = System.Drawing.Color.Black;
-            this.lbl_saler.Location = new System.Drawing.Point(407, 19);
+            this.lbl_saler.Location = new System.Drawing.Point(25, 52);
             this.lbl_saler.Name = "lbl_saler";
             this.lbl_saler.Size = new System.Drawing.Size(65, 12);
             this.lbl_saler.TabIndex = 84;
@@ -146,7 +151,7 @@
             // 
             this.cmb_factory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_factory.FormattingEnabled = true;
-            this.cmb_factory.Location = new System.Drawing.Point(478, 14);
+            this.cmb_factory.Location = new System.Drawing.Point(84, 49);
             this.cmb_factory.Name = "cmb_factory";
             this.cmb_factory.Size = new System.Drawing.Size(118, 20);
             this.cmb_factory.TabIndex = 3;
@@ -225,24 +230,6 @@
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1051, 24);
-            this.menuStrip1.TabIndex = 9;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // lbl_tile
-            // 
-            this.lbl_tile.AutoSize = true;
-            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
-            this.lbl_tile.Location = new System.Drawing.Point(458, 40);
-            this.lbl_tile.Name = "lbl_tile";
-            this.lbl_tile.Size = new System.Drawing.Size(120, 27);
-            this.lbl_tile.TabIndex = 67;
-            this.lbl_tile.Text = "出库列表";
-            // 
             // id
             // 
             this.id.DataPropertyName = "id";
@@ -312,11 +299,62 @@
             this.orderStatusCode.Name = "orderStatusCode";
             this.orderStatusCode.Visible = false;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1051, 24);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // lbl_tile
+            // 
+            this.lbl_tile.AutoSize = true;
+            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
+            this.lbl_tile.Location = new System.Drawing.Point(458, 40);
+            this.lbl_tile.Name = "lbl_tile";
+            this.lbl_tile.Size = new System.Drawing.Size(120, 27);
+            this.lbl_tile.TabIndex = 67;
+            this.lbl_tile.Text = "出库列表";
+            // 
+            // cmb_outputType
+            // 
+            this.cmb_outputType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_outputType.FormattingEnabled = true;
+            this.cmb_outputType.Items.AddRange(new object[] {
+            "",
+            "销售订单出库",
+            "特殊申请出库"});
+            this.cmb_outputType.Location = new System.Drawing.Point(451, 49);
+            this.cmb_outputType.Name = "cmb_outputType";
+            this.cmb_outputType.Size = new System.Drawing.Size(118, 20);
+            this.cmb_outputType.TabIndex = 91;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(391, 52);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(65, 12);
+            this.label6.TabIndex = 92;
+            this.label6.Text = "类    别：";
+            // 
+            // btn_addNew
+            // 
+            this.btn_addNew.Location = new System.Drawing.Point(141, 174);
+            this.btn_addNew.Name = "btn_addNew";
+            this.btn_addNew.Size = new System.Drawing.Size(75, 23);
+            this.btn_addNew.TabIndex = 68;
+            this.btn_addNew.Text = "新增";
+            this.btn_addNew.UseVisualStyleBackColor = true;
+            // 
             // FrmProductOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1051, 611);
+            this.Controls.Add(this.btn_addNew);
             this.Controls.Add(this.lbl_tile);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
@@ -368,6 +406,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn outputStatus;
         private System.Windows.Forms.DataGridViewButtonColumn detailBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderStatusCode;
+        private System.Windows.Forms.ComboBox cmb_outputType;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btn_addNew;
 
     }
 }

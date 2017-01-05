@@ -104,6 +104,8 @@ namespace Bll
             modelProductStoreOut.factoryId = _modelSaleOrder.factoryId;
             modelProductStoreOut.delieryDate = _modelSaleOrder.deliverDate;
             modelProductStoreOut.outputStatus = 0;
+            modelProductStoreOut.outputType = 0;
+            modelProductStoreOut.applyMemberId = _modelSaleOrder.salerId;
             modelProductStoreOut.isDelete = 0;
             modelProductStoreOut.createBy = _modelSaleOrder.modifyBy;
             modelProductStoreOut.createTime = _modelSaleOrder.modifyTime;

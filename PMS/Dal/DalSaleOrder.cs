@@ -305,6 +305,8 @@ namespace Dal
             sbSql.Append("       factoryId, ");
             sbSql.Append("       delieryDate, ");
             sbSql.Append("       outputStatus, ");
+            sbSql.Append("       outputType, ");
+            sbSql.Append("       applyMemberId, ");
             sbSql.Append("       isDelete, ");
             sbSql.Append("       createBy, ");
             sbSql.Append("       createTime ");
@@ -314,6 +316,8 @@ namespace Dal
             sbSql.Append("       " + _modelProductOutput.factoryId + ", ");
             sbSql.Append("      '" + _modelProductOutput.delieryDate + "', ");
             sbSql.Append("       " + _modelProductOutput.outputStatus + ", ");
+            sbSql.Append("       " + _modelProductOutput.outputType + ", ");
+            sbSql.Append("       " + _modelProductOutput.applyMemberId + ", ");
             sbSql.Append("       " + _modelProductOutput.isDelete + ", ");
             sbSql.Append("      '" + _modelProductOutput.createBy + "', ");
             sbSql.Append("      '" + _modelProductOutput.createTime + "')");
