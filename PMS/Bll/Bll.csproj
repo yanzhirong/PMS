@@ -53,6 +53,8 @@
     <Compile Include="BllCustomer.cs" />
     <Compile Include="BllArea.cs" />
     <Compile Include="BllSaleOrder.cs" />
+    <Compile Include="BllStore.cs" />
+    <Compile Include="BllProduce.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

@@ -97,5 +97,19 @@ namespace Bll
             int rtn = m_dalCode.UpdateCode(_listCode);
             return rtn > 0 ? true : false;
         }
+
+        public decimal GetWeightUnit(int _unit)
+        {
+            DataTable dt = m_dalCode.GetWeightUnit(_unit);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                return ConvertUtils.ConvertToDecimal(dt.Rows[0][0]);
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }

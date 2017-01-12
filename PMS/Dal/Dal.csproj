@@ -56,6 +56,8 @@
     <Compile Include="DalCustomer.cs" />
     <Compile Include="DalArea.cs" />
     <Compile Include="DalSaleOrder.cs" />
+    <Compile Include="DalStore.cs" />
+    <Compile Include="DalProduce.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

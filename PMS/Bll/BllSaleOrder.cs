@@ -13,7 +13,11 @@ namespace Bll
     public class BllSaleOrder : Bll.BllBase
     {
         private DalSaleOrder m_dalSaleOrder = new DalSaleOrder();
-
+        private BllCode m_bllCode = new BllCode();
+        private BllStroe m_bllStore = new BllStroe();
+        private BllProduct m_bllProduct = new BllProduct();
+        private BllProduce m_bllProduce = new BllProduce();
+        
         public DataTable GetSaleOrders(String _code, String _name, int _salerId, int _status, DateTime _beginTime, DateTime _endTime, int _roleType)
         {
             DataTable dt = m_dalSaleOrder.GetSaleOrders(_code, _name, _salerId, _status, _beginTime, _endTime, _roleType);
@@ -131,6 +135,75 @@ namespace Bll
             return rtn == 0 ? false : true;
         }
 
+        public string CheckStore(ModelSaleOrder _model)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            List<ModelSaleOrderDetail> listSaleProduct = _model.modelSaleOrderDetail;
+            foreach (ModelSaleOrderDetail saleProduct in listSaleProduct)
+            {
+                //销售商品的数量（单位:克）
+                decimal saleNum = ConvertUtils.ConvertToDecimal(saleProduct.num) * m_bllCode.GetWeightUnit(saleProduct.unit);
+
+                //查询商品库存（单位:克）
+                decimal storeNum = m_bllStore.GetStoreProductNum(_model.factoryId, saleProduct.productId, _model.deliverDate);
+
+                if (saleNum > storeNum)
+                {
+                    ModelProduct modelProduct = m_bllProduct.GetProductById(saleProduct.productId);
+                    sb.Append(modelProduct.name).Append(",");
+                }
+            }
+
+            string rtn = sb.ToString();
+
+            if (StringUtils.IsNotBlank(rtn))
+            {
+                rtn = rtn.Substring(0, rtn.Length - 1);
+            }
+            return rtn;
+        }
+
+        public Boolean AddProduceApply(ModelSaleOrder _model)
+        {
+
+            List<ModelProduceApply> listProduceApply = new List<ModelProduceApply>();
+
+            foreach (ModelSaleOrderDetail saleProduct in _model.modelSaleOrderDetail)
+            {
+                //销售商品的数量（单位:克）
+                decimal saleNum = ConvertUtils.ConvertToDecimal(saleProduct.num) * m_bllCode.GetWeightUnit(saleProduct.unit);
+
+                //查询商品库存（单位:克）
+                decimal storeNum = m_bllStore.GetStoreProductNum(_model.factoryId, saleProduct.productId, _model.deliverDate);
+
+                if (saleNum > storeNum)
+                {
+                    ModelProduceApply modelProduceApply = new ModelProduceApply();
+                    modelProduceApply.factoryId = _model.factoryId;
+                    modelProduceApply.productId = saleProduct.productId;
+                    modelProduceApply.num = ConvertUtils.ConvertToDecimal((saleNum - storeNum) / m_bllCode.GetWeightUnit(saleProduct.unit));
+                    modelProduceApply.unit = saleProduct.unit;
+                    modelProduceApply.saleOrderId = _model.id;
+                    modelProduceApply.deliverDate = _model.deliverDate;
+                    modelProduceApply.applyType = 0;
+                    modelProduceApply.applyBy = _model.modifyBy;
+                    modelProduceApply.applyDate = DateTime.Now;
+                    modelProduceApply.status = 0;
+                    modelProduceApply.isDelete = 0;
+                    modelProduceApply.createBy = _model.modifyBy;
+                    modelProduceApply.createTime = DateTime.Now;
+
+                    listProduceApply.Add(modelProduceApply);
+                }
+            }
+
+            if (listProduceApply.Count > 0)
+            {
+                return m_bllProduce.AddProduceApply(listProduceApply);
+            }
+            return true;
+        }
         public Boolean DeleteSaleOrder(ModelSaleOrder _model)
         {
             int rtn = 0;

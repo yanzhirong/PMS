@@ -66,6 +66,7 @@ namespace Common.Tools
             try
             {
                 value = Convert.ToDecimal(_object);
+                value = Decimal.Round(value, 2);    //保留2位小数
             }
             catch (Exception e)
             {

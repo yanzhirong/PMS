@@ -429,6 +429,18 @@ namespace PMS.Frm.Sale
                 {
                     MsgUtils.ShowInfoMsg("确认订单成功！");
 
+                    // 查看库存
+                    string productName = m_bllSaleOrder.CheckStore(modelSaleOrder);
+
+                    if (StringUtils.IsNotBlank(productName))
+                    {
+                        if (MsgUtils.ShowQustMsg("商品【" + productName + "】库存不足，是否生成生产计划单？", MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                        {
+                            // 生成生产申请单
+                            rtn = m_bllSaleOrder.AddProduceApply(modelSaleOrder);
+                        }
+         
+                    }
                     //返回列表
                     Form form = new FrmOrderManage();
                     this.Hide();

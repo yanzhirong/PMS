@@ -182,5 +182,16 @@ namespace Dal
             return DBHelper.ExcuteTransaction(listSql);
         }
 
+        public DataTable GetWeightUnit(int _unit)
+        {
+            sql = @"select value2 
+                      from m_code
+                     where code = 3
+                       and subCode = {0}";
+
+            sql = string.Format(sql, _unit);
+
+            return Dal.DBHelper.Select(sql);
+        }
     }
 }
