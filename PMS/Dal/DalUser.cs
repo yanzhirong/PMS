@@ -70,6 +70,15 @@ namespace Dal
             return Dal.DBHelper.Select(sql);
         }
 
+        public DataTable GetUsersWithItem()
+        {
+            sql = @"select * 
+                      from m_user
+                     where isDelete = 0";
+
+            return Dal.DBHelper.Select(sql);
+        }
+
         public DataTable GetUserById(int _userId)
         {
             sql = @"select * 

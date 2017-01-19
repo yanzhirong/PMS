@@ -47,7 +47,7 @@ namespace Bll
 
         public List<ModelItem> GetUserGroupByRoleType(int _roleType)
         {
-            List<ModelItem> listSaler = new List<ModelItem>();
+            List<ModelItem> listUser = new List<ModelItem>();
 
             DataTable dt = m_dalUser.GetUserGroupByRoleType(_roleType);
 
@@ -59,11 +59,31 @@ namespace Bll
                     item.itemKey = dr["userId"];
                     item.itemValue = (String)dr["userName"];
 
-                    listSaler.Add(item);
+                    listUser.Add(item);
                 }
             }
 
-            return listSaler;
+            return listUser;
+        }
+
+        public List<ModelItem> GetUsersWithItem()
+        {
+            List<ModelItem> listUser = new List<ModelItem>();
+
+            DataTable dt = m_dalUser.GetUsersWithItem();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ModelItem item = new ModelItem();
+                    item.itemKey = dr["userId"];
+                    item.itemValue = (String)dr["userName"];
+
+                    listUser.Add(item);
+                }
+            }
+            return listUser;
         }
 
         public Boolean AddUser(ModelUser _modelUser)

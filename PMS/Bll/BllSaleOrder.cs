@@ -100,37 +100,50 @@ namespace Bll
             _modelSaleOrder.orderStatus = (int)Enum.EnumSaleOrderStatus.WaitTransport;
 
             //出库申请单
-            ModelProductOutput modelProductStoreOut = new ModelProductOutput();
+            ModelProductOutput modelProductOutput = new ModelProductOutput();
             int seq = Bll.BllSeq.GetSeq("ProductOutPut");
             string outputCode = ConvertUtils.ConvertToDate(DateTime.Now, "yyyyMMddHHmmss") + "_" + seq;
-            modelProductStoreOut.outputCode = outputCode;
-            modelProductStoreOut.orderId = _modelSaleOrder.id;
-            modelProductStoreOut.factoryId = _modelSaleOrder.factoryId;
-            modelProductStoreOut.delieryDate = _modelSaleOrder.deliverDate;
-            modelProductStoreOut.outputStatus = 0;
-            modelProductStoreOut.outputType = 0;
-            modelProductStoreOut.applyMemberId = _modelSaleOrder.salerId;
-            modelProductStoreOut.isDelete = 0;
-            modelProductStoreOut.createBy = _modelSaleOrder.modifyBy;
-            modelProductStoreOut.createTime = _modelSaleOrder.modifyTime;
+            modelProductOutput.outputCode = outputCode;
+            modelProductOutput.orderCode = _modelSaleOrder.orderCode;
+            modelProductOutput.factoryId = _modelSaleOrder.factoryId;
+            modelProductOutput.customerId = _modelSaleOrder.customerId;
+            modelProductOutput.salerId = _modelSaleOrder.salerId;
+            modelProductOutput.country = _modelSaleOrder.country;
+            modelProductOutput.province = _modelSaleOrder.province;
+            modelProductOutput.provinceName = _modelSaleOrder.provinceName;
+            modelProductOutput.city = _modelSaleOrder.city;
+            modelProductOutput.cityName = _modelSaleOrder.cityName;
+            modelProductOutput.district = _modelSaleOrder.district;
+            modelProductOutput.districtName = _modelSaleOrder.districtName;
+            modelProductOutput.address = _modelSaleOrder.address;
+            modelProductOutput.manager = _modelSaleOrder.manager;
+            modelProductOutput.telephone = _modelSaleOrder.telephone;
+            modelProductOutput.deliveryDate = _modelSaleOrder.deliveryDate;
+            modelProductOutput.outputStatus = 0;
+            modelProductOutput.outputType = 0;
+            modelProductOutput.applyMemberId = _modelSaleOrder.salerId;
+            modelProductOutput.isDelete = 0;
+            modelProductOutput.createBy = _modelSaleOrder.modifyBy;
+            modelProductOutput.createTime = _modelSaleOrder.modifyTime;
 
             List<ModelProductOutputDetail> listDetail = new List<ModelProductOutputDetail>();
             foreach (ModelSaleOrderDetail modelSaleOrderDetail in _modelSaleOrder.modelSaleOrderDetail)
             {
                 ModelProductOutputDetail modelProductStoreOutDetail = new ModelProductOutputDetail();
-                modelProductStoreOutDetail.outputCode = modelProductStoreOut.outputCode;
+                modelProductStoreOutDetail.outputCode = modelProductOutput.outputCode;
                 modelProductStoreOutDetail.productId = modelSaleOrderDetail.productId;
                 modelProductStoreOutDetail.productNum = modelSaleOrderDetail.num;
+                modelProductStoreOutDetail.productUnit = modelSaleOrderDetail.unit;
                 modelProductStoreOutDetail.outputStatus = 0;
                 modelProductStoreOutDetail.isDelete = 0;
-                modelProductStoreOutDetail.createBy = modelProductStoreOut.createBy;
-                modelProductStoreOutDetail.createTime = modelProductStoreOut.createTime;
+                modelProductStoreOutDetail.createBy = modelProductOutput.createBy;
+                modelProductStoreOutDetail.createTime = modelProductOutput.createTime;
                 listDetail.Add(modelProductStoreOutDetail);
             }
 
-            modelProductStoreOut.modelProductOutputDetail = listDetail;
+            modelProductOutput.modelProductOutputDetail = listDetail;
 
-            rtn = m_dalSaleOrder.ConfirmSaleOrder(_modelSaleOrder, modelProductStoreOut);
+            rtn = m_dalSaleOrder.ConfirmSaleOrder(_modelSaleOrder, modelProductOutput);
 
             return rtn == 0 ? false : true;
         }
@@ -146,7 +159,7 @@ namespace Bll
                 decimal saleNum = ConvertUtils.ConvertToDecimal(saleProduct.num) * m_bllCode.GetWeightUnit(saleProduct.unit);
 
                 //查询商品库存（单位:克）
-                decimal storeNum = m_bllStore.GetStoreProductNum(_model.factoryId, saleProduct.productId, _model.deliverDate);
+                decimal storeNum = m_bllStore.GetStoreProductNum(_model.factoryId, saleProduct.productId, _model.deliveryDate);
 
                 if (saleNum > storeNum)
                 {
@@ -175,7 +188,7 @@ namespace Bll
                 decimal saleNum = ConvertUtils.ConvertToDecimal(saleProduct.num) * m_bllCode.GetWeightUnit(saleProduct.unit);
 
                 //查询商品库存（单位:克）
-                decimal storeNum = m_bllStore.GetStoreProductNum(_model.factoryId, saleProduct.productId, _model.deliverDate);
+                decimal storeNum = m_bllStore.GetStoreProductNum(_model.factoryId, saleProduct.productId, _model.deliveryDate);
 
                 if (saleNum > storeNum)
                 {
@@ -185,7 +198,7 @@ namespace Bll
                     modelProduceApply.num = ConvertUtils.ConvertToDecimal((saleNum - storeNum) / m_bllCode.GetWeightUnit(saleProduct.unit));
                     modelProduceApply.unit = saleProduct.unit;
                     modelProduceApply.saleOrderId = _model.id;
-                    modelProduceApply.deliverDate = _model.deliverDate;
+                    modelProduceApply.deliveryDate = _model.deliveryDate;
                     modelProduceApply.applyType = 0;
                     modelProduceApply.applyBy = _model.modifyBy;
                     modelProduceApply.applyDate = DateTime.Now;
@@ -204,6 +217,7 @@ namespace Bll
             }
             return true;
         }
+
         public Boolean DeleteSaleOrder(ModelSaleOrder _model)
         {
             int rtn = 0;

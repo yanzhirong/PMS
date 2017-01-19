@@ -224,7 +224,7 @@ namespace PMS.Frm.Sale
                 dataGridView1.Refresh();
 
                 //交货日期
-                this.dtp_deliverDate.Value = model.deliverDate;
+                this.dtp_deliveryDate.Value = model.deliveryDate;
 
                 //备注
                 this.txt_remark.Text = model.remark;
@@ -260,7 +260,7 @@ namespace PMS.Frm.Sale
 
 
             //新增时
-            if (m_mode == 1)
+            if (m_mode <= 1)
             {
                 grb_saleOrder.Enabled = true;
                 grb_price.Enabled = true;
@@ -277,7 +277,6 @@ namespace PMS.Frm.Sale
                 grb_saleOrder.Enabled = false;
                 grb_price.Enabled = true;
             }
-
 
         }
         #endregion
@@ -335,7 +334,7 @@ namespace PMS.Frm.Sale
             }
             modelSaleOrder.modelSaleOrderDetail = modelSaleOrderDetail;
 
-            modelSaleOrder.deliverDate = this.dtp_deliverDate.Value;
+            modelSaleOrder.deliveryDate = this.dtp_deliveryDate.Value;
             modelSaleOrder.remark = this.txt_remark.Text.Trim();
 
             if (grb_price.Visible == true)
@@ -536,7 +535,7 @@ namespace PMS.Frm.Sale
                 }
 
                 //交货日期
-                DateTime deliverDate = this.dtp_deliverDate.Value;
+                DateTime deliverDate = this.dtp_deliveryDate.Value;
                 if (deliverDate <= DateTime.Now)
                 {
                     MsgUtils.ShowErrorMsg("请选择合适的交货日期！");
@@ -550,7 +549,7 @@ namespace PMS.Frm.Sale
                     decimal price = ConvertUtils.ConvertToDecimal(this.txt_price.Text);
                     if (price <= 0)
                     {
-                        MsgUtils.ShowErrorMsg("请输入订单金额！");
+                        MsgUtils.ShowErrorMsg("请输入销售金额！");
                         this.txt_price.Focus();
                         return false;
                     }
@@ -571,7 +570,7 @@ namespace PMS.Frm.Sale
                 decimal price = ConvertUtils.ConvertToDecimal(this.txt_price.Text);
                 if (price <= 0)
                 {
-                    MsgUtils.ShowErrorMsg("请输入订单金额！");
+                    MsgUtils.ShowErrorMsg("请输入销售金额！");
                     this.txt_price.Focus();
                     return false;
                 }

@@ -14,7 +14,7 @@ namespace Model
         public decimal num { set; get; }
         public int unit { set; get; }
         public int saleOrderId { set; get; }
-        public DateTime deliverDate { set; get; }
+        public DateTime deliveryDate { set; get; }
         public int applyType { set; get; }
         public string applyBy { set; get; }
         public DateTime applyDate { set; get; }

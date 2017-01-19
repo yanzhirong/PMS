@@ -32,44 +32,51 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProductOut));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmb_status = new System.Windows.Forms.ComboBox();
+            this.cmb_factory = new System.Windows.Forms.ComboBox();
+            this.cmb_outputType = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmb_orderStatus = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dtp_end = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.dtp_begin = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.lbl_saler = new System.Windows.Forms.Label();
-            this.cmb_factory = new System.Windows.Forms.ComboBox();
             this.txt_customerName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_productName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_query = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.lbl_tile = new System.Windows.Forms.Label();
+            this.btn_addNew = new System.Windows.Forms.Button();
+            this.cmb_outputStatus = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.outputStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.detailBtn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.orderStatusCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.lbl_tile = new System.Windows.Forms.Label();
-            this.cmb_outputType = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.btn_addNew = new System.Windows.Forms.Button();
+            this.modifyBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.deleteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.outputStatusCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.outputType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmb_outputStatus);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.cmb_factory);
             this.groupBox1.Controls.Add(this.cmb_outputType);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.cmb_status);
+            this.groupBox1.Controls.Add(this.cmb_orderStatus);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.dtp_end);
             this.groupBox1.Controls.Add(this.label4);
@@ -86,14 +93,46 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
-            // cmb_status
+            // cmb_factory
             // 
-            this.cmb_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_status.FormattingEnabled = true;
-            this.cmb_status.Location = new System.Drawing.Point(267, 49);
-            this.cmb_status.Name = "cmb_status";
-            this.cmb_status.Size = new System.Drawing.Size(118, 20);
-            this.cmb_status.TabIndex = 6;
+            this.cmb_factory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_factory.FormattingEnabled = true;
+            this.cmb_factory.Location = new System.Drawing.Point(84, 49);
+            this.cmb_factory.Name = "cmb_factory";
+            this.cmb_factory.Size = new System.Drawing.Size(118, 20);
+            this.cmb_factory.TabIndex = 3;
+            // 
+            // cmb_outputType
+            // 
+            this.cmb_outputType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_outputType.FormattingEnabled = true;
+            this.cmb_outputType.Items.AddRange(new object[] {
+            "",
+            "销售订单出库",
+            "特殊申请出库"});
+            this.cmb_outputType.Location = new System.Drawing.Point(451, 49);
+            this.cmb_outputType.Name = "cmb_outputType";
+            this.cmb_outputType.Size = new System.Drawing.Size(118, 20);
+            this.cmb_outputType.TabIndex = 91;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(391, 52);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(65, 12);
+            this.label6.TabIndex = 92;
+            this.label6.Text = "出库类别：";
+            // 
+            // cmb_orderStatus
+            // 
+            this.cmb_orderStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_orderStatus.FormattingEnabled = true;
+            this.cmb_orderStatus.Location = new System.Drawing.Point(267, 49);
+            this.cmb_orderStatus.Name = "cmb_orderStatus";
+            this.cmb_orderStatus.Size = new System.Drawing.Size(118, 20);
+            this.cmb_orderStatus.TabIndex = 6;
             // 
             // label5
             // 
@@ -103,11 +142,11 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 90;
-            this.label5.Text = "状    态：";
+            this.label5.Text = "订单状态：";
             // 
             // dtp_end
             // 
-            this.dtp_end.Location = new System.Drawing.Point(616, 14);
+            this.dtp_end.Location = new System.Drawing.Point(638, 14);
             this.dtp_end.Name = "dtp_end";
             this.dtp_end.Size = new System.Drawing.Size(119, 21);
             this.dtp_end.TabIndex = 5;
@@ -146,15 +185,6 @@
             this.lbl_saler.Size = new System.Drawing.Size(65, 12);
             this.lbl_saler.TabIndex = 84;
             this.lbl_saler.Text = "仓    库：";
-            // 
-            // cmb_factory
-            // 
-            this.cmb_factory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_factory.FormattingEnabled = true;
-            this.cmb_factory.Location = new System.Drawing.Point(84, 49);
-            this.cmb_factory.Name = "cmb_factory";
-            this.cmb_factory.Size = new System.Drawing.Size(118, 20);
-            this.cmb_factory.TabIndex = 3;
             // 
             // txt_customerName
             // 
@@ -219,9 +249,12 @@
             this.customerName,
             this.orderAddress,
             this.deliveryDate,
+            this.orderStatus,
             this.outputStatus,
-            this.detailBtn,
-            this.orderStatusCode});
+            this.modifyBtn,
+            this.deleteBtn,
+            this.outputStatusCode,
+            this.outputType});
             this.dataGridView1.Location = new System.Drawing.Point(30, 208);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 20;
@@ -229,6 +262,57 @@
             this.dataGridView1.Size = new System.Drawing.Size(994, 380);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1051, 24);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // lbl_tile
+            // 
+            this.lbl_tile.AutoSize = true;
+            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
+            this.lbl_tile.Location = new System.Drawing.Point(458, 40);
+            this.lbl_tile.Name = "lbl_tile";
+            this.lbl_tile.Size = new System.Drawing.Size(120, 27);
+            this.lbl_tile.TabIndex = 67;
+            this.lbl_tile.Text = "出库列表";
+            // 
+            // btn_addNew
+            // 
+            this.btn_addNew.Location = new System.Drawing.Point(141, 174);
+            this.btn_addNew.Name = "btn_addNew";
+            this.btn_addNew.Size = new System.Drawing.Size(75, 23);
+            this.btn_addNew.TabIndex = 68;
+            this.btn_addNew.Text = "新增";
+            this.btn_addNew.UseVisualStyleBackColor = true;
+            this.btn_addNew.Click += new System.EventHandler(this.btn_addNew_Click);
+            // 
+            // cmb_outputStatus
+            // 
+            this.cmb_outputStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_outputStatus.FormattingEnabled = true;
+            this.cmb_outputStatus.Items.AddRange(new object[] {
+            "",
+            "请求出库",
+            "完成出库"});
+            this.cmb_outputStatus.Location = new System.Drawing.Point(638, 49);
+            this.cmb_outputStatus.Name = "cmb_outputStatus";
+            this.cmb_outputStatus.Size = new System.Drawing.Size(118, 20);
+            this.cmb_outputStatus.TabIndex = 93;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(578, 52);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 94;
+            this.label7.Text = "出库状态：";
             // 
             // id
             // 
@@ -259,7 +343,7 @@
             this.customerName.HeaderText = "客户名称";
             this.customerName.Name = "customerName";
             this.customerName.ReadOnly = true;
-            this.customerName.Width = 190;
+            this.customerName.Width = 120;
             // 
             // orderAddress
             // 
@@ -267,7 +351,7 @@
             this.orderAddress.HeaderText = "订单地址";
             this.orderAddress.Name = "orderAddress";
             this.orderAddress.ReadOnly = true;
-            this.orderAddress.Width = 250;
+            this.orderAddress.Width = 200;
             // 
             // deliveryDate
             // 
@@ -275,6 +359,13 @@
             this.deliveryDate.HeaderText = "交货日期";
             this.deliveryDate.Name = "deliveryDate";
             this.deliveryDate.ReadOnly = true;
+            // 
+            // orderStatus
+            // 
+            this.orderStatus.DataPropertyName = "orderStatus";
+            this.orderStatus.HeaderText = "订单状态";
+            this.orderStatus.Name = "orderStatus";
+            this.orderStatus.ReadOnly = true;
             // 
             // outputStatus
             // 
@@ -285,69 +376,32 @@
             this.outputStatus.Name = "outputStatus";
             this.outputStatus.ReadOnly = true;
             // 
-            // detailBtn
+            // modifyBtn
             // 
-            this.detailBtn.DataPropertyName = "detailBtn";
-            this.detailBtn.HeaderText = "详细";
-            this.detailBtn.Name = "detailBtn";
-            this.detailBtn.Width = 80;
+            this.modifyBtn.DataPropertyName = "modifyBtn";
+            this.modifyBtn.HeaderText = "编辑";
+            this.modifyBtn.Name = "modifyBtn";
+            this.modifyBtn.Width = 80;
             // 
-            // orderStatusCode
+            // deleteBtn
             // 
-            this.orderStatusCode.DataPropertyName = "orderStatusCode";
-            this.orderStatusCode.HeaderText = "出库单状态";
-            this.orderStatusCode.Name = "orderStatusCode";
-            this.orderStatusCode.Visible = false;
+            this.deleteBtn.HeaderText = "删除";
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Width = 80;
             // 
-            // menuStrip1
+            // outputStatusCode
             // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1051, 24);
-            this.menuStrip1.TabIndex = 9;
-            this.menuStrip1.Text = "menuStrip1";
+            this.outputStatusCode.DataPropertyName = "outputStatusCode";
+            this.outputStatusCode.HeaderText = "出库单状态";
+            this.outputStatusCode.Name = "outputStatusCode";
+            this.outputStatusCode.Visible = false;
             // 
-            // lbl_tile
+            // outputType
             // 
-            this.lbl_tile.AutoSize = true;
-            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
-            this.lbl_tile.Location = new System.Drawing.Point(458, 40);
-            this.lbl_tile.Name = "lbl_tile";
-            this.lbl_tile.Size = new System.Drawing.Size(120, 27);
-            this.lbl_tile.TabIndex = 67;
-            this.lbl_tile.Text = "出库列表";
-            // 
-            // cmb_outputType
-            // 
-            this.cmb_outputType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_outputType.FormattingEnabled = true;
-            this.cmb_outputType.Items.AddRange(new object[] {
-            "",
-            "销售订单出库",
-            "特殊申请出库"});
-            this.cmb_outputType.Location = new System.Drawing.Point(451, 49);
-            this.cmb_outputType.Name = "cmb_outputType";
-            this.cmb_outputType.Size = new System.Drawing.Size(118, 20);
-            this.cmb_outputType.TabIndex = 91;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(391, 52);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(65, 12);
-            this.label6.TabIndex = 92;
-            this.label6.Text = "类    别：";
-            // 
-            // btn_addNew
-            // 
-            this.btn_addNew.Location = new System.Drawing.Point(141, 174);
-            this.btn_addNew.Name = "btn_addNew";
-            this.btn_addNew.Size = new System.Drawing.Size(75, 23);
-            this.btn_addNew.TabIndex = 68;
-            this.btn_addNew.Text = "新增";
-            this.btn_addNew.UseVisualStyleBackColor = true;
+            this.outputType.DataPropertyName = "outputType";
+            this.outputType.HeaderText = "出库单类型";
+            this.outputType.Name = "outputType";
+            this.outputType.Visible = false;
             // 
             // FrmProductOut
             // 
@@ -394,21 +448,26 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtp_begin;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cmb_status;
+        private System.Windows.Forms.ComboBox cmb_orderStatus;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dtp_end;
+        private System.Windows.Forms.ComboBox cmb_outputType;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btn_addNew;
+        private System.Windows.Forms.ComboBox cmb_outputStatus;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn salerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn deliveryDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn outputStatus;
-        private System.Windows.Forms.DataGridViewButtonColumn detailBtn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn orderStatusCode;
-        private System.Windows.Forms.ComboBox cmb_outputType;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btn_addNew;
+        private System.Windows.Forms.DataGridViewButtonColumn modifyBtn;
+        private System.Windows.Forms.DataGridViewButtonColumn deleteBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn outputStatusCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn outputType;
 
     }
 }

@@ -28,7 +28,7 @@ namespace Dal
                 sbSql.Append("       num, ");
                 sbSql.Append("       unit, ");
                 sbSql.Append("       saleOrderId, ");
-                sbSql.Append("       deliverDate, ");
+                sbSql.Append("       deliveryDate, ");
                 sbSql.Append("       applyType, ");
                 sbSql.Append("       applyBy, ");
                 sbSql.Append("       applyDate, ");
@@ -45,7 +45,7 @@ namespace Dal
                 sbSql.Append("       " + produceApply.num + ", ");
                 sbSql.Append("      '" + produceApply.unit + "', ");
                 sbSql.Append("       " + produceApply.saleOrderId + ", ");
-                sbSql.Append("      '" + produceApply.deliverDate + "', ");
+                sbSql.Append("      '" + produceApply.deliveryDate + "', ");
                 sbSql.Append("       " + produceApply.applyType + ", ");
                 sbSql.Append("      '" + produceApply.applyBy + "', ");
                 sbSql.Append("      '" + produceApply.applyDate + "', ");
@@ -59,6 +59,13 @@ namespace Dal
 
                 listSql.Add(sbSql.ToString());
             }
+
+            sbSql.Clear();
+            sbSql.Append("update p_saleOrder ");
+            sbSql.Append("set orderStatus = " + (int)Enum.EnumSaleOrderStatus.Producing + " ");
+            sbSql.Append("where id = " + _listProduceApply[0].saleOrderId);
+            listSql.Add(sbSql.ToString());
+
             return Dal.DBHelper.ExcuteTransaction(listSql);
         }
 
