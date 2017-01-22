@@ -186,10 +186,10 @@ namespace Dal
         {
             sql = @"select value2 
                       from m_code
-                     where code = 3
-                       and subCode = {0}";
+                     where code = {0}
+                       and subCode = {1}";
 
-            sql = string.Format(sql, _unit);
+            sql = string.Format(sql, (int)Enum.EnumCode.WeightUnit, _unit);
 
             return Dal.DBHelper.Select(sql);
         }

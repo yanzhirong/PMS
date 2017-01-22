@@ -35,7 +35,8 @@ namespace PMS.Frm.Sys
             LoginUserInfo.LoginUser.currentFrom = this;
             WinCommon.CreateMenu(ref this.menuStrip1);
 
-            List<ModelItem> listItem = m_bllCode.GetCodeItem(4, false);
+            //角色类型
+            List<ModelItem> listItem = m_bllCode.GetCodeItem((int)Enum.EnumCode.RoleType, false);
             WinCommon.BindComboBox(ref this.cmb_type, listItem);
 
             if (m_mode == 0)

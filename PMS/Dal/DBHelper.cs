@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using Common;
+using Common.Tools;
 
 namespace Dal
 {
@@ -36,6 +37,8 @@ namespace Dal
             }
             catch (Exception e)
             {
+
+                MsgUtils.ShowErrorMsg(sql + "\n" + e.ToString());
                 return null;
             }
 
@@ -55,6 +58,7 @@ namespace Dal
             }
             catch (Exception e)
             {
+                MsgUtils.ShowErrorMsg(sql + "\n" + e.ToString());
                 return 0;
             }
 
@@ -80,6 +84,7 @@ namespace Dal
             catch (Exception e)
             {
                 mySqlTransaction.Rollback();
+                MsgUtils.ShowErrorMsg(e.ToString());
                 return 0;
             }
 
@@ -100,6 +105,7 @@ namespace Dal
             }
             catch (Exception e)
             {
+                MsgUtils.ShowErrorMsg(e.ToString());
             }
 
         }

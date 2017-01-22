@@ -224,9 +224,9 @@
             // 
             // txt_remark
             // 
-            this.txt_remark.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_remark.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txt_remark.Location = new System.Drawing.Point(238, 390);
-            this.txt_remark.MaxLength = 20;
+            this.txt_remark.MaxLength = 100;
             this.txt_remark.Name = "txt_remark";
             this.txt_remark.Size = new System.Drawing.Size(386, 21);
             this.txt_remark.TabIndex = 11;
@@ -313,9 +313,9 @@
             // 
             // txt_manager
             // 
-            this.txt_manager.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_manager.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txt_manager.Location = new System.Drawing.Point(68, 90);
-            this.txt_manager.MaxLength = 20;
+            this.txt_manager.MaxLength = 10;
             this.txt_manager.Name = "txt_manager";
             this.txt_manager.Size = new System.Drawing.Size(223, 21);
             this.txt_manager.TabIndex = 7;
@@ -379,9 +379,8 @@
             // 
             // txt_address
             // 
-            this.txt_address.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_address.Location = new System.Drawing.Point(68, 53);
-            this.txt_address.MaxLength = 20;
+            this.txt_address.MaxLength = 100;
             this.txt_address.Name = "txt_address";
             this.txt_address.Size = new System.Drawing.Size(550, 21);
             this.txt_address.TabIndex = 6;
@@ -451,9 +450,9 @@
             // 
             // txt_priceRemark
             // 
-            this.txt_priceRemark.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_priceRemark.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txt_priceRemark.Location = new System.Drawing.Point(68, 56);
-            this.txt_priceRemark.MaxLength = 20;
+            this.txt_priceRemark.MaxLength = 100;
             this.txt_priceRemark.Name = "txt_priceRemark";
             this.txt_priceRemark.Size = new System.Drawing.Size(556, 21);
             this.txt_priceRemark.TabIndex = 23;
@@ -481,7 +480,7 @@
             // 
             this.txt_price.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_price.Location = new System.Drawing.Point(68, 20);
-            this.txt_price.MaxLength = 20;
+            this.txt_price.MaxLength = 10;
             this.txt_price.Name = "txt_price";
             this.txt_price.Size = new System.Drawing.Size(95, 21);
             this.txt_price.TabIndex = 21;

@@ -27,7 +27,8 @@ namespace Dal
                 sbSql.Append("       productId, ");
                 sbSql.Append("       num, ");
                 sbSql.Append("       unit, ");
-                sbSql.Append("       saleOrderId, ");
+                sbSql.Append("       saleOrderCode, ");
+                sbSql.Append("       outputCode, ");
                 sbSql.Append("       deliveryDate, ");
                 sbSql.Append("       applyType, ");
                 sbSql.Append("       applyBy, ");
@@ -36,15 +37,14 @@ namespace Dal
                 sbSql.Append("       remark, ");
                 sbSql.Append("       isDelete, ");
                 sbSql.Append("       createBy, ");
-                sbSql.Append("       createTime, ");
-                sbSql.Append("       modifyBy, ");
-                sbSql.Append("       modifyTime ");
+                sbSql.Append("       createTime");
                 sbSql.Append("       ) value ( ");
-                sbSql.Append("      '" + produceApply.factoryId + "', ");
-                sbSql.Append("      '" + produceApply.productId + "', ");
+                sbSql.Append("       " + produceApply.factoryId + ", ");
+                sbSql.Append("       " + produceApply.productId + ", ");
                 sbSql.Append("       " + produceApply.num + ", ");
-                sbSql.Append("      '" + produceApply.unit + "', ");
-                sbSql.Append("       " + produceApply.saleOrderId + ", ");
+                sbSql.Append("       " + produceApply.unit + ", ");
+                sbSql.Append("      '" + produceApply.saleOrderCode + "', ");
+                sbSql.Append("      '" + produceApply.outputCode + "', ");
                 sbSql.Append("      '" + produceApply.deliveryDate + "', ");
                 sbSql.Append("       " + produceApply.applyType + ", ");
                 sbSql.Append("      '" + produceApply.applyBy + "', ");
@@ -53,9 +53,7 @@ namespace Dal
                 sbSql.Append("      '" + produceApply.remark + "', ");
                 sbSql.Append("       " + produceApply.isDelete + ", ");
                 sbSql.Append("      '" + produceApply.createBy + "', ");
-                sbSql.Append("      '" + produceApply.createTime + "', ");
-                sbSql.Append("      '" + produceApply.modifyBy + "', ");
-                sbSql.Append("      '" + produceApply.modifyTime + "')");
+                sbSql.Append("      '" + produceApply.createTime + "')");
 
                 listSql.Add(sbSql.ToString());
             }
@@ -63,10 +61,24 @@ namespace Dal
             sbSql.Clear();
             sbSql.Append("update p_saleOrder ");
             sbSql.Append("set orderStatus = " + (int)Enum.EnumSaleOrderStatus.Producing + " ");
-            sbSql.Append("where id = " + _listProduceApply[0].saleOrderId);
+            sbSql.Append("where orderCode = '" + _listProduceApply[0].saleOrderCode).Append("'");
             listSql.Add(sbSql.ToString());
 
             return Dal.DBHelper.ExcuteTransaction(listSql);
+        }
+
+        public DataTable GetProduceApplyByOutputCodeAndProductId(string _outputCode, int _productId)
+        {
+
+            sbSql.Clear();
+            sbSql.Append("select * ");
+            sbSql.Append("  from p_produce_apply ");
+            sbSql.Append(" where isDelete = 0 ");
+            sbSql.Append("   and outputCode = '").Append(_outputCode).Append("' ");
+            sbSql.Append("   and productId = ").Append(_productId).Append(" ");
+
+            return Dal.DBHelper.Select(sbSql.ToString());
+
         }
 
     }

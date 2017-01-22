@@ -19,7 +19,7 @@ namespace Dal
             sbSql.Clear();
             sbSql.Append("select a.num, ");
             sbSql.Append("       b.value2 unit ");
-            sbSql.Append("from store a ");
+            sbSql.Append("from p_product_in a ");
             sbSql.Append("left join m_code b ");
             sbSql.Append("  on a.unit = d.subCode ");
             sbSql.Append(" and d.code = 3 ");
@@ -27,7 +27,6 @@ namespace Dal
             sbSql.Append("  and a.factoryId = ").Append(_factoryId).Append(" ");
             sbSql.Append("  and a.productId = ").Append(_productId).Append(" ");
             sbSql.Append("  and a.expiresDate >= '").Append(_expiresDate).Append("' ");
-            sbSql.Append("  and a.goodsType = 0 ");
             sbSql.Append("  and a.status = 0 ");
 
             return Dal.DBHelper.Select(sbSql.ToString());

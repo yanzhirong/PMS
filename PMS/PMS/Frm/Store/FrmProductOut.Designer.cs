@@ -32,6 +32,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProductOut));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmb_outputStatus = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.cmb_factory = new System.Windows.Forms.ComboBox();
             this.cmb_outputType = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -51,9 +53,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.lbl_tile = new System.Windows.Forms.Label();
             this.btn_addNew = new System.Windows.Forms.Button();
-            this.cmb_outputStatus = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.factoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -89,9 +90,32 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(30, 79);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(994, 83);
+            this.groupBox1.Size = new System.Drawing.Size(1095, 83);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
+            // 
+            // cmb_outputStatus
+            // 
+            this.cmb_outputStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_outputStatus.FormattingEnabled = true;
+            this.cmb_outputStatus.Items.AddRange(new object[] {
+            "",
+            "请求出库",
+            "完成出库"});
+            this.cmb_outputStatus.Location = new System.Drawing.Point(638, 49);
+            this.cmb_outputStatus.Name = "cmb_outputStatus";
+            this.cmb_outputStatus.Size = new System.Drawing.Size(118, 20);
+            this.cmb_outputStatus.TabIndex = 93;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(578, 52);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 94;
+            this.label7.Text = "出库状态：";
             // 
             // cmb_factory
             // 
@@ -244,6 +268,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
+            this.factoryName,
             this.orderCode,
             this.salerName,
             this.customerName,
@@ -259,7 +284,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(994, 380);
+            this.dataGridView1.Size = new System.Drawing.Size(1095, 380);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -267,7 +292,7 @@
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1051, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1153, 24);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -291,35 +316,19 @@
             this.btn_addNew.UseVisualStyleBackColor = true;
             this.btn_addNew.Click += new System.EventHandler(this.btn_addNew_Click);
             // 
-            // cmb_outputStatus
-            // 
-            this.cmb_outputStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_outputStatus.FormattingEnabled = true;
-            this.cmb_outputStatus.Items.AddRange(new object[] {
-            "",
-            "请求出库",
-            "完成出库"});
-            this.cmb_outputStatus.Location = new System.Drawing.Point(638, 49);
-            this.cmb_outputStatus.Name = "cmb_outputStatus";
-            this.cmb_outputStatus.Size = new System.Drawing.Size(118, 20);
-            this.cmb_outputStatus.TabIndex = 93;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(578, 52);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 12);
-            this.label7.TabIndex = 94;
-            this.label7.Text = "出库状态：";
-            // 
             // id
             // 
             this.id.DataPropertyName = "id";
             this.id.HeaderText = "id";
             this.id.Name = "id";
             this.id.Visible = false;
+            // 
+            // factoryName
+            // 
+            this.factoryName.DataPropertyName = "factoryName";
+            this.factoryName.HeaderText = "仓库";
+            this.factoryName.Name = "factoryName";
+            this.factoryName.ReadOnly = true;
             // 
             // orderCode
             // 
@@ -385,6 +394,7 @@
             // 
             // deleteBtn
             // 
+            this.deleteBtn.DataPropertyName = "deleteBtn";
             this.deleteBtn.HeaderText = "删除";
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Width = 80;
@@ -407,7 +417,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1051, 611);
+            this.ClientSize = new System.Drawing.Size(1153, 616);
             this.Controls.Add(this.btn_addNew);
             this.Controls.Add(this.lbl_tile);
             this.Controls.Add(this.dataGridView1);
@@ -457,6 +467,7 @@
         private System.Windows.Forms.ComboBox cmb_outputStatus;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn factoryName;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn salerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerName;

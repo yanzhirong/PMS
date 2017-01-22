@@ -73,13 +73,13 @@ namespace PMS.Frm.Product
 
             //下拉框
             //包装类型
-            List<ModelItem> listItem = m_bllCode.GetCodeItem(1, false);
+            List<ModelItem> listItem = m_bllCode.GetCodeItem((int)Enum.EnumCode.PackagingType, false);
             WinCommon.BindComboBox(ref cmb_packingType, listItem);
             //产品形态
-            listItem = m_bllCode.GetCodeItem(2, false);
+            listItem = m_bllCode.GetCodeItem((int)Enum.EnumCode.ProductForm, false);
             WinCommon.BindComboBox(ref cmb_morphology, listItem);
             //重量单位
-            listItem = m_bllCode.GetCodeItem(3, false);
+            listItem = m_bllCode.GetCodeItem((int)Enum.EnumCode.WeightUnit, false);
             WinCommon.BindComboBox(ref cmb_weightUnit, listItem);
             //价格单位
             WinCommon.BindComboBox(ref cmb_priceUnit, listItem);

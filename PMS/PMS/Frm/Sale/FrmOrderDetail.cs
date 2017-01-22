@@ -327,6 +327,7 @@ namespace PMS.Frm.Sale
                     model.searchKey = ConvertUtils.ConvertToString(this.dataGridView1.Rows[i].Cells[1].Value);
                     model.num = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells[3].Value);
                     model.unit = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[4].Value);
+                    model.remark = ConvertUtils.ConvertToString(this.dataGridView1.Rows[i].Cells[5].Value);
 
                     modelSaleOrderDetail.Add(model);
                 }

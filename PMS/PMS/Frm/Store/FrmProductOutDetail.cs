@@ -17,7 +17,6 @@ namespace PMS.Frm.Store
     {
         //处理模式（0：新建；1：修改；2：删除；3：查看）
         private int m_mode;
-        //原来ID
         private int m_productOutId;
 
         private BllCustomer m_bllCustomer = new BllCustomer();
@@ -50,7 +49,7 @@ namespace PMS.Frm.Store
 
         private void btn_submit_Click(object sender, EventArgs e)
         {
-            doSubmit();
+            doSubmit(true);
         }
         private void btn_cancel_Click(object sender, EventArgs e)
         {
@@ -93,7 +92,7 @@ namespace PMS.Frm.Store
             WinCommon.BindComboBox(ref cmb_customer, listItem);
             //申请者
             listItem = m_bllUser.GetUsersWithItem();
-            WinCommon.BindComboBox(ref cmb_customer, listItem);
+            WinCommon.BindComboBox(ref cmb_apply, listItem);
             //仓库
             listItem = m_bllFactory.GetFactoryItem();
             WinCommon.BindComboBox(ref cmb_factory, listItem);
@@ -106,11 +105,9 @@ namespace PMS.Frm.Store
             //新增时
             if (m_mode == 0)
             {
-                cmb_outputType.SelectedIndex = 1;
+                this.cmb_outputType.SelectedIndex = 1;
+                this.cmb_outputStatus.SelectedIndex = 0;
             }
-
-            // 设置datagrid
-            SetDataGridViewStyle();
 
             //初始化数据
             if (m_mode != 0 && m_productOutId > 0)
@@ -201,11 +198,11 @@ namespace PMS.Frm.Store
                 //联系人
                 this.txt_manager.Text = model.manager;
 
-                //职位
+                //电话
                 this.txt_telephone.Text = model.telephone;
 
-                //出库日期
-                this.dtp_outputDate.Value = model.outputDate;
+                //交货日期
+                this.dtp_deliveryDate.Value = model.deliveryDate;
 
                 //仓库
                 for (int i = 0; i < this.cmb_factory.Items.Count; i++)
@@ -218,9 +215,17 @@ namespace PMS.Frm.Store
                     }
                 }
 
+                // 设置datagrid
+                SetDataGridViewStyle();
+
                 //明细
                 dataGridView1.DataSource = m_bllProductOut.GetProductOutDetailByOutputCode(model.outputCode);
                 dataGridView1.Refresh();
+            }
+            else
+            {
+                // 设置datagrid
+                SetDataGridViewStyle();
             }
 
             //按钮处理
@@ -249,7 +254,10 @@ namespace PMS.Frm.Store
 
             //出库单类型不可修改
             cmb_outputType.Enabled = false;
-            //cmb_outputStatus.Enabled = false;
+            if (cmb_outputType.SelectedIndex == 0)
+            {
+                this.cmb_apply.Enabled = false;
+            }
 
         }
         #endregion
@@ -259,14 +267,14 @@ namespace PMS.Frm.Store
         /// 提交
         /// </summary>
         /// <returns></returns>
-        private void doSubmit()
+        private Boolean doSubmit(bool showMsg)
         {
             Boolean rtn = false;
 
             //检查
             if (doCheck() == false)
             {
-                return ;
+                return false;
             }
 
             ModelProductOutput modelProductOutput = new ModelProductOutput();
@@ -292,8 +300,8 @@ namespace PMS.Frm.Store
             modelProductOutput.address = this.txt_address.Text.Trim();
             modelProductOutput.manager = this.txt_manager.Text.Trim();
             modelProductOutput.telephone = this.txt_telephone.Text.Trim();
-            modelProductOutput.outputDate = this.dtp_outputDate.Value;
             modelProductOutput.factoryId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_factory.SelectedItem).itemKey);
+            modelProductOutput.deliveryDate = this.dtp_deliveryDate.Value;
 
             //List<ModelProductOutputDetail> listProductOutputDetail = new List<ModelProductOutputDetail>();
             //for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
@@ -339,12 +347,19 @@ namespace PMS.Frm.Store
 
                 if (rtn == false)
                 {
-                    MsgUtils.ShowErrorMsg("新增出库单失败！");
-                    return ;
+                    if (showMsg == true)
+                    {
+                        MsgUtils.ShowErrorMsg("新增出库单失败！");
+                    }
+                    return false;
                 }
                 else
                 {
-                    MsgUtils.ShowInfoMsg("新增出库单成功！");
+                    if (showMsg == true)
+                    {
+                        MsgUtils.ShowInfoMsg("新增出库单成功！");
+                    }
+                    return true;
                 }
 
                 //处理模式变为修改
@@ -352,9 +367,8 @@ namespace PMS.Frm.Store
                 ModelProductOutput newProductOutput = m_bllProductOut.GetProductOutrByOutputCode(modelProductOutput.outputCode);
                 m_productOutId = newProductOutput.id;
                 this.txt_outputCode.Text = newProductOutput.outputCode;
-                //init();
 
-                return;
+                return true;
             }
 
             //修改
@@ -364,14 +378,19 @@ namespace PMS.Frm.Store
 
                 if (rtn == false)
                 {
-                    MsgUtils.ShowErrorMsg("修改出库单失败！");
-                    return;
+                    if (showMsg == true)
+                    {
+                        MsgUtils.ShowErrorMsg("修改出库单失败！");
+                    }
+                    return false;
                 }
                 else
                 {
-                    MsgUtils.ShowInfoMsg("修改出库单成功！");
-                    init();
-                    return;
+                    if (showMsg == true)
+                    {
+                        MsgUtils.ShowInfoMsg("修改出库单成功！");
+                    }
+                    return true;
                 }
             }
 
@@ -382,21 +401,27 @@ namespace PMS.Frm.Store
 
                 if (rtn == false)
                 {
-                    MsgUtils.ShowErrorMsg("删除出库单失败！");
-                    return;
+                    if (showMsg == true)
+                    {
+                        MsgUtils.ShowErrorMsg("删除出库单失败！");
+                    }
+                    return false;
                 }
                 else
                 {
-                    MsgUtils.ShowInfoMsg("删除出库单成功！");
-
+                    if (showMsg == true)
+                    {
+                        MsgUtils.ShowInfoMsg("删除出库单成功！");
+                    }
                     //返回列表
                     Form form = new FrmProductOut();
                     this.Hide();
                     form.ShowDialog();
-                    return;
+                    return true;
                 }
             }
 
+            return true;
         }
 
         /// <summary>
@@ -542,7 +567,7 @@ namespace PMS.Frm.Store
             cmbColumn.Name = "productId";
             cmbColumn.HeaderText = "商品";
             cmbColumn.DataPropertyName = "productId";
-            cmbColumn.Width = 230;
+            cmbColumn.Width = 150;
             if (this.cmb_outputType.SelectedIndex == 1)
             {
                 cmbColumn.ReadOnly = false;
@@ -582,7 +607,7 @@ namespace PMS.Frm.Store
             textColumn.HeaderText = "出库日期";
             textColumn.DataPropertyName = "outputDate";
             textColumn.ReadOnly = true;
-            textColumn.Width = 120;
+            textColumn.Width = 100;
             this.dataGridView1.Columns.Add(textColumn);
 
             textColumn = new DataGridViewTextBoxColumn();
@@ -590,12 +615,14 @@ namespace PMS.Frm.Store
             textColumn.HeaderText = "备注";
             textColumn.DataPropertyName = "remark";
             textColumn.ReadOnly = true;
-            textColumn.Width = 200;
+            textColumn.Width = 100;
             this.dataGridView1.Columns.Add(textColumn);
 
             DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
-            buttonColumn.Name = "output";
+            buttonColumn.Name = "outputBtn";
+            buttonColumn.Text = "出库";
             buttonColumn.HeaderText = "出库";
+            textColumn.DataPropertyName = "outputBtn";
             buttonColumn.Width = 120;
             this.dataGridView1.Columns.Add(buttonColumn);
 
@@ -642,32 +669,7 @@ namespace PMS.Frm.Store
             {
                 return;
             }
-            
-            //出库按钮
-            if (this.dataGridView1.Columns[e.ColumnIndex].Name == "output")
-            {
-                int outputDetailId = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[e.RowIndex].Cells["id"].Value);
 
-                int productId = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[e.RowIndex].Cells["productId"].Value);
-                if (productId <= 0)
-                {
-                    MsgUtils.ShowInfoMsg("请选择出库商品！");
-                    return;
-                }
-                
-                //状态
-                int outputStatus = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[e.RowIndex].Cells["outputStatus"].Value);
-                //已完成出库
-                if (outputStatus > 0)
-                {
-                    MsgUtils.ShowInfoMsg("已完成出库！");
-                    return;
-                }
-
-                int factoryId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_factory.SelectedItem).itemKey);
-                Form form = new FrmProductOutSelect(this.txt_outputCode.Text, outputDetailId, productId, factoryId);
-                form.ShowDialog();
-            }
         }
 
         private void btn_close_Click(object sender, EventArgs e)
@@ -677,5 +679,103 @@ namespace PMS.Frm.Store
             this.Hide();
             form.ShowDialog();
         }
+
+        private void cmb_customer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.cmb_customer.SelectedIndex >= 0)
+            {
+                int customerId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_customer.SelectedItem).itemKey);
+                ModelCustomer modelCustomer = m_bllCustomer.GetCustomerById(customerId);
+
+                //省
+                for (int i = 0; i < this.cmb_province.Items.Count; i++)
+                {
+                    ModelItem modelItem = (ModelItem)this.cmb_province.Items[i];
+                    if (modelCustomer.province == (int)modelItem.itemKey)
+                    {
+                        this.cmb_province.SelectedIndex = i;
+                        break;
+                    }
+                }
+
+                //市
+                for (int i = 0; i < this.cmb_city.Items.Count; i++)
+                {
+                    ModelItem modelItem = (ModelItem)this.cmb_city.Items[i];
+                    if (modelCustomer.city == (int)modelItem.itemKey)
+                    {
+                        this.cmb_city.SelectedIndex = i;
+                        break;
+                    }
+                }
+
+                //区
+                for (int i = 0; i < this.cmb_district.Items.Count; i++)
+                {
+                    ModelItem modelItem = (ModelItem)this.cmb_district.Items[i];
+                    if (modelCustomer.district == (int)modelItem.itemKey)
+                    {
+                        this.cmb_district.SelectedIndex = i;
+                        break;
+                    }
+                }
+
+                //地址
+                this.txt_address.Text = modelCustomer.address;
+
+                //联系人
+                this.txt_manager.Text = modelCustomer.manager;
+
+                //电话
+                this.txt_telephone.Text = modelCustomer.telephone1;
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //出库按钮
+            if (this.dataGridView1.Columns[e.ColumnIndex].Name == "outputBtn")
+            {
+                int outputDetailId = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[e.RowIndex].Cells["id"].Value);
+
+                int productId = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[e.RowIndex].Cells["productId"].Value);
+                if (productId <= 0)
+                {
+                    MsgUtils.ShowInfoMsg("请选择出库商品！");
+                    return;
+                }
+
+                //状态
+                int outputStatus = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[e.RowIndex].Cells["outputStatus"].Value);
+                //已完成出库
+                if (outputStatus > 0)
+                {
+                    MsgUtils.ShowInfoMsg("已完成出库！");
+                    return;
+                }
+
+                //保存数据
+                if (doSubmit(false) == true)
+                {
+                    int factoryId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_factory.SelectedItem).itemKey);
+                    Form form = new FrmProductOutSelect(this.txt_outputCode.Text, outputDetailId, productId, factoryId);
+                    form.ShowDialog();
+                }
+            }
+        }
+
+        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            //this.dataGridView1.Rows[e.RowIndex].Cells["outputBtn"].Value = "出库";
+        }
+
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == 5)
+            {
+                this.dataGridView1.Rows[e.RowIndex].Cells["outputBtn"].Value = "出库";
+            }
+        }
+
     }
 }

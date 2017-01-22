@@ -35,34 +35,6 @@ namespace PMS.Frm.Sale
         {
             LoginUserInfo.LoginUser.currentFrom = this;
             WinCommon.CreateMenu(ref this.menuStrip1);
-
-            //登录者是销售
-            if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Saler)
-            {
-                if (m_mode == 0)
-                {
-                    for (int i = 0; i < this.cmb_saler.Items.Count; i++)
-                    {
-                        if (LoginUserInfo.LoginUser.loginUser.userId == (int)((ModelItem)this.cmb_saler.Items[i]).itemKey)
-                        {
-                            this.cmb_saler.SelectedIndex = i;
-                        }
-                    }
-                }
-
-                this.cmb_type.SelectedIndex = 1;
-                this.cmb_type.Enabled = false;
-
-                this.cmb_saler.Enabled = false;
-            }
-            else if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Purchase)  //登录者是采购
-            {
-                this.cmb_type.SelectedIndex = 2;
-                this.cmb_type.Enabled = false;
-
-                this.lbl_saler.Visible = false;
-                this.cmb_saler.Visible = false;
-            }
             
             //初始化
             init();
@@ -108,6 +80,34 @@ namespace PMS.Frm.Sale
             WinCommon.BindComboBox(ref cmb_province, BllArea.GetProvince());
             WinCommon.BindComboBox(ref cmb_city, null);
             WinCommon.BindComboBox(ref cmb_district, null);
+
+            //登录者是销售
+            if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Saler)
+            {
+                if (m_mode == 0)
+                {
+                    for (int i = 0; i < this.cmb_saler.Items.Count; i++)
+                    {
+                        if (LoginUserInfo.LoginUser.loginUser.userId == (int)((ModelItem)this.cmb_saler.Items[i]).itemKey)
+                        {
+                            this.cmb_saler.SelectedIndex = i;
+                        }
+                    }
+                }
+
+                this.cmb_type.SelectedIndex = 1;
+                this.cmb_type.Enabled = false;
+
+                this.cmb_saler.Enabled = false;
+            }
+            else if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Purchase)  //登录者是采购
+            {
+                this.cmb_type.SelectedIndex = 2;
+                this.cmb_type.Enabled = false;
+
+                this.lbl_saler.Visible = false;
+                this.cmb_saler.Visible = false;
+            }
 
             //初始化(修改或者删除时)
             if (m_mode != 0 && m_customerId > 0)

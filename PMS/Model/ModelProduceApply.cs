@@ -13,7 +13,8 @@ namespace Model
         public int productId { set; get; }
         public decimal num { set; get; }
         public int unit { set; get; }
-        public int saleOrderId { set; get; }
+        public string saleOrderCode { set; get; }
+        public string outputCode { set; get; }
         public DateTime deliveryDate { set; get; }
         public int applyType { set; get; }
         public string applyBy { set; get; }

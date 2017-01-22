@@ -14,9 +14,9 @@ namespace Bll
     {
         private DalProductOut m_dalProductOut = new DalProductOut();
 
-        public DataTable GetProductOut(String _productName, String _customerName, DateTime _beginTime, DateTime _endTime, int _orderStatus, int _outputStatus, int _outputType)
+        public DataTable GetProductOut(String _productName, String _customerName, int _factoryId, DateTime _beginTime, DateTime _endTime, int _orderStatus, int _outputType, int _outputStatus)
         {
-            DataTable dt = m_dalProductOut.GetProductOut(_productName, _customerName, _beginTime, _endTime, _orderStatus, _outputStatus, _outputType);
+            DataTable dt = m_dalProductOut.GetProductOut(_productName, _customerName, _factoryId, _beginTime, _endTime, _orderStatus, _outputType, _outputStatus);
 
             return dt;
         }
@@ -52,6 +52,19 @@ namespace Bll
             ModelProductOutput model = new ModelProductOutput();
 
             DataTable dt = m_dalProductOut.GetProductOutrByOutputCode(_outputCode);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                model = ModelUtils<ModelProductOutput>.FillModel(dt.Rows[0]);
+            }
+            return model;
+        }
+
+        public ModelProductOutput GetProductOutrByOrderCode(string _orderCode)
+        {
+            ModelProductOutput model = new ModelProductOutput();
+
+            DataTable dt = m_dalProductOut.GetProductOutrByOrderCode(_orderCode);
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -109,6 +122,21 @@ namespace Bll
             }
 
             return true;
+        }
+
+        public DataTable GetProductOutSelect(int _factoryId, int _productId)
+        {
+            DataTable dt = m_dalProductOut.GetProductOutSelect(_factoryId, _productId);
+
+            return dt;
+
+        }
+
+        public Boolean doOutPut(string _outputCode, int _outputDetailId, int _factoryId, int _productId, decimal _outputAllNum, List<Dictionary<string, object>> listOutput, string userName)
+        {
+            int rtn = m_dalProductOut.doOutPut(_outputCode, _outputDetailId, _factoryId, _productId, _outputAllNum,listOutput, userName);
+
+            return rtn > 0 ? true : false;
         }
     }
 }

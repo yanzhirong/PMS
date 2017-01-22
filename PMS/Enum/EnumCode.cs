@@ -15,5 +15,7 @@ namespace Enum
         PayType = 5,
         PayStatus = 6,
         SaleOrderStatus = 7,
+        OutputType = 8,
+        InputType = 9,
     }
 }

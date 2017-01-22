@@ -16,6 +16,7 @@ namespace Bll
         private BllCode m_bllCode = new BllCode();
         private BllStroe m_bllStore = new BllStroe();
         private BllProduct m_bllProduct = new BllProduct();
+        private BllProductOut m_bllProductOut = new BllProductOut();
         private BllProduce m_bllProduce = new BllProduce();
         
         public DataTable GetSaleOrders(String _code, String _name, int _salerId, int _status, DateTime _beginTime, DateTime _endTime, int _roleType)
@@ -179,7 +180,6 @@ namespace Bll
 
         public Boolean AddProduceApply(ModelSaleOrder _model)
         {
-
             List<ModelProduceApply> listProduceApply = new List<ModelProduceApply>();
 
             foreach (ModelSaleOrderDetail saleProduct in _model.modelSaleOrderDetail)
@@ -197,7 +197,8 @@ namespace Bll
                     modelProduceApply.productId = saleProduct.productId;
                     modelProduceApply.num = ConvertUtils.ConvertToDecimal((saleNum - storeNum) / m_bllCode.GetWeightUnit(saleProduct.unit));
                     modelProduceApply.unit = saleProduct.unit;
-                    modelProduceApply.saleOrderId = _model.id;
+                    modelProduceApply.saleOrderCode =_model.orderCode;
+                    modelProduceApply.outputCode = m_bllProductOut.GetProductOutrByOrderCode(_model.orderCode).outputCode;
                     modelProduceApply.deliveryDate = _model.deliveryDate;
                     modelProduceApply.applyType = 0;
                     modelProduceApply.applyBy = _model.modifyBy;

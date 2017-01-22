@@ -17,6 +17,7 @@ namespace PMS.Frm.Store
     {
 
         private BllCode m_bllCode = new BllCode();
+        private BllFactory m_bllFactory = new BllFactory();
         private BllProductOut m_bllProductOut = new BllProductOut();
 
         public FrmProductOut()
@@ -29,13 +30,15 @@ namespace PMS.Frm.Store
             LoginUserInfo.LoginUser.currentFrom = this;
             WinCommon.CreateMenu(ref this.menuStrip1);
 
-            List<ModelItem> listItem = m_bllCode.GetCodeItem(7, true);
+            //订单状态
+            List<ModelItem> listItem = m_bllCode.GetCodeItem((int)Enum.EnumCode.SaleOrderStatus, true);
             WinCommon.BindComboBox(ref this.cmb_orderStatus, listItem);
 
             ModelItem item = new ModelItem();
             item.itemKey = 0;
             item.itemValue = "";
             this.cmb_factory.Items.Add(item);
+            listItem = m_bllFactory.GetFactoryItem();
             foreach (ModelItem modelItem in listItem)
             {
                 this.cmb_factory.Items.Add(modelItem);
@@ -64,21 +67,21 @@ namespace PMS.Frm.Store
                 orderStatus = (int)((ModelItem)this.cmb_orderStatus.SelectedItem).itemKey;
             }
             int outputType = -1;
-            if (this.cmb_outputType.SelectedIndex >= 0)
+            if (this.cmb_outputType.SelectedIndex > 0)
             {
-                outputType = this.cmb_outputType.SelectedIndex;
+                outputType = this.cmb_outputType.SelectedIndex - 1;
             }
             int outputStatus = -1;
-            if (this.cmb_outputStatus.SelectedIndex >= 0)
+            if (this.cmb_outputStatus.SelectedIndex > 0)
             {
-                outputStatus = this.cmb_outputStatus.SelectedIndex;
+                outputStatus = this.cmb_outputStatus.SelectedIndex - 1;
             } 
             DateTime beginTime = new DateTime(this.dtp_begin.Value.Year, this.dtp_begin.Value.Month, this.dtp_begin.Value.Day);
 
             DateTime endTime = new DateTime(this.dtp_end.Value.Year, this.dtp_end.Value.Month, this.dtp_end.Value.Day);
             endTime = endTime.AddDays(1).AddSeconds(-1);
 
-            DataTable dt = m_bllProductOut.GetProductOut(productName, customerName, beginTime, endTime, orderStatus, outputType, outputStatus);
+            DataTable dt = m_bllProductOut.GetProductOut(productName, customerName, factoryId, beginTime, endTime, orderStatus, outputType, outputStatus);
 
             this.dataGridView1.DataSource = dt;
             this.dataGridView1.Refresh();

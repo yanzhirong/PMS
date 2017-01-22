@@ -31,7 +31,8 @@ namespace PMS.Frm.Sale
             LoginUserInfo.LoginUser.currentFrom = this;
             WinCommon.CreateMenu(ref this.menuStrip1);
 
-            List<ModelItem> listItem = m_bllCode.GetCodeItem(7, true);
+            //订单状态
+            List<ModelItem> listItem = m_bllCode.GetCodeItem((int)Enum.EnumCode.SaleOrderStatus, true);
             WinCommon.BindComboBox(ref this.cmb_status, listItem);
 
 

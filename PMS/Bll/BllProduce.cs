@@ -22,5 +22,15 @@ namespace Bll
             return rtn == 0 ? false : true;
         }
 
+        public ModelProduceApply GetProduceApplyByOutputCodeAndProductId(string _outputCode, int _productId)
+        {
+            DataTable dt = m_dalProduce.GetProduceApplyByOutputCodeAndProductId(_outputCode, _productId);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                return ModelUtils<ModelProduceApply>.FillModel(dt.Rows[0]);
+            }
+
+            return new ModelProduceApply();
+        }
     }
 }
