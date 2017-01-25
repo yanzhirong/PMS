@@ -75,6 +75,7 @@
             this.lbl_tile = new System.Windows.Forms.Label();
             this.cmb_type = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.chk_produce_manage = new System.Windows.Forms.CheckBox();
             this.grb_role.SuspendLayout();
             this.grb_finance.SuspendLayout();
             this.grb_purchase.SuspendLayout();
@@ -236,6 +237,7 @@
             // 
             // grb_produce
             // 
+            this.grb_produce.Controls.Add(this.chk_produce_manage);
             this.grb_produce.Controls.Add(this.chk_produce_plan);
             this.grb_produce.Enabled = false;
             this.grb_produce.Location = new System.Drawing.Point(33, 311);
@@ -574,6 +576,16 @@
             this.label1.TabIndex = 72;
             this.label1.Text = "角色类型：";
             // 
+            // chk_produce_manage
+            // 
+            this.chk_produce_manage.AutoSize = true;
+            this.chk_produce_manage.Location = new System.Drawing.Point(137, 15);
+            this.chk_produce_manage.Name = "chk_produce_manage";
+            this.chk_produce_manage.Size = new System.Drawing.Size(72, 16);
+            this.chk_produce_manage.TabIndex = 21;
+            this.chk_produce_manage.Text = "生产管理";
+            this.chk_produce_manage.UseVisualStyleBackColor = true;
+            // 
             // FrmSysRoleDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -667,6 +679,7 @@
         private System.Windows.Forms.Label lbl_tile;
         private System.Windows.Forms.ComboBox cmb_type;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox chk_produce_manage;
 
     }
 }

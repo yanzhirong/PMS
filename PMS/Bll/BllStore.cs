@@ -12,6 +12,7 @@ namespace Bll
 {
     public class BllStroe : Bll.BllBase
     {
+        private BllCode m_bllCode = new BllCode();
         private DalStore m_dalStore = new DalStore();
 
         public decimal GetStoreProductNum(int _factoryId, int _productId, DateTime _expiresDate)
@@ -23,12 +24,27 @@ namespace Bll
                 decimal storeNum = 0;
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    storeNum = storeNum + ConvertUtils.ConvertToDecimal(dt.Rows[0]["num"]) * ConvertUtils.ConvertToDecimal(dt.Rows[0]["unit"]);
+                    storeNum = storeNum + ConvertUtils.ConvertToDecimal(dt.Rows[0]["num"]) * m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(dt.Rows[0]["unit"]));
                 }
                 return storeNum;
             }
             return 0;
         }
 
+        public decimal GetStoreMaterialsNum(int _factoryId, int _materialsId, DateTime _expiresDate)
+        {
+            DataTable dt = m_dalStore.GetStoreMaterialsNum(_factoryId, _materialsId, _expiresDate);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                decimal storeNum = 0;
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    storeNum = storeNum + ConvertUtils.ConvertToDecimal(dt.Rows[0]["num"]) * m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(dt.Rows[0]["unit"]));
+                }
+                return storeNum;
+            }
+            return 0;
+        }
     }
 }

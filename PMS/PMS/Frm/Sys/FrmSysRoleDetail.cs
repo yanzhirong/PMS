@@ -178,10 +178,12 @@ namespace PMS.Frm.Sys
             if (this.chk_produce.Checked == false)
             {
                 this.chk_produce_plan.Checked = false;
+                this.chk_produce_manage.Checked = false;
             }
             else
             {
                 this.chk_produce_plan.Checked = true;
+                this.chk_produce_manage.Checked = true;
             }
         }
 

@@ -77,7 +77,7 @@ namespace PMS
         #endregion
     
         #region 绑定下拉框
-        public static void BindComboBox(ref ComboBox target, List<ModelItem> listItem) 
+        public static void BindComboBox(ref ComboBox target, List<ModelItem> listItem, bool AddBlank = false) 
         {
             if (listItem == null || listItem.Count <= 0)
             {
@@ -85,6 +85,12 @@ namespace PMS
             }
 
             target.Items.Clear();
+
+            if (AddBlank == true)
+            {
+                ModelItem blankItem = new ModelItem();
+                target.Items.Add(blankItem);
+            }
             foreach(ModelItem item in listItem)
             {
                 target.Items.Add(item);

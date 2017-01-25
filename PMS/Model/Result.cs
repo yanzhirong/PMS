@@ -15,5 +15,8 @@ namespace Model
         // 返回信息
         public string resultMsg { get; set; }
 
+        // 返回信息
+        public object resultObj { get; set; }
+
     }
 }

@@ -269,6 +269,7 @@
             this.cmb_customer.Name = "cmb_customer";
             this.cmb_customer.Size = new System.Drawing.Size(221, 20);
             this.cmb_customer.TabIndex = 1;
+            this.cmb_customer.SelectedIndexChanged += new System.EventHandler(this.cmb_customer_SelectedIndexChanged);
             // 
             // grb_address
             // 

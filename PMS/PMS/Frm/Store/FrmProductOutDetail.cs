@@ -66,22 +66,22 @@ namespace PMS.Frm.Store
         private void init()
         {           
             //标题
-            if (m_mode == 0)
-            {
-                this.lbl_title.Text = "出库单信息设定-新增";
-            }
-            else if (m_mode == 1)
-            {
-                this.lbl_title.Text = "出库单信息设定-修改";
-            }
-            else if (m_mode == 2)
-            {
-                this.lbl_title.Text = "出库单息设定-删除";
-            }
-            else if (m_mode == 3)
-            {
-                this.lbl_title.Text = "出库单信息设定-查看";
-            }
+            //if (m_mode == 0)
+            //{
+            //    this.lbl_title.Text = "出库单信息设定-新增";
+            //}
+            //else if (m_mode == 1)
+            //{
+            //    this.lbl_title.Text = "出库单信息设定-修改";
+            //}
+            //else if (m_mode == 2)
+            //{
+            //    this.lbl_title.Text = "出库单息设定-删除";
+            //}
+            //else if (m_mode == 3)
+            //{
+            //    this.lbl_title.Text = "出库单信息设定-查看";
+            //}
 
             //下拉框
             //销售
@@ -359,7 +359,6 @@ namespace PMS.Frm.Store
                     {
                         MsgUtils.ShowInfoMsg("新增出库单成功！");
                     }
-                    return true;
                 }
 
                 //处理模式变为修改
@@ -611,9 +610,9 @@ namespace PMS.Frm.Store
             this.dataGridView1.Columns.Add(textColumn);
 
             textColumn = new DataGridViewTextBoxColumn();
-            textColumn.Name = "remark";
-            textColumn.HeaderText = "备注";
-            textColumn.DataPropertyName = "remark";
+            textColumn.Name = "outputNum";
+            textColumn.HeaderText = "出库数量";
+            textColumn.DataPropertyName = "outputNum";
             textColumn.ReadOnly = true;
             textColumn.Width = 100;
             this.dataGridView1.Columns.Add(textColumn);
@@ -622,7 +621,7 @@ namespace PMS.Frm.Store
             buttonColumn.Name = "outputBtn";
             buttonColumn.Text = "出库";
             buttonColumn.HeaderText = "出库";
-            textColumn.DataPropertyName = "outputBtn";
+            buttonColumn.DataPropertyName = "outputBtn";
             buttonColumn.Width = 120;
             this.dataGridView1.Columns.Add(buttonColumn);
 
@@ -664,11 +663,6 @@ namespace PMS.Frm.Store
         
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-
-            if (e.RowIndex < 0 || e.ColumnIndex < 1)
-            {
-                return;
-            }
 
         }
 
@@ -750,7 +744,7 @@ namespace PMS.Frm.Store
                 //已完成出库
                 if (outputStatus > 0)
                 {
-                    MsgUtils.ShowInfoMsg("已完成出库！");
+                    MsgUtils.ShowInfoMsg("已完成出库，不可再出库！");
                     return;
                 }
 
@@ -760,6 +754,10 @@ namespace PMS.Frm.Store
                     int factoryId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_factory.SelectedItem).itemKey);
                     Form form = new FrmProductOutSelect(this.txt_outputCode.Text, outputDetailId, productId, factoryId);
                     form.ShowDialog();
+
+                    dataGridView1.DataSource = m_bllProductOut.GetProductOutDetailByOutputCode(this.txt_outputCode.Text);
+                    dataGridView1.Refresh();
+
                 }
             }
         }
@@ -775,6 +773,36 @@ namespace PMS.Frm.Store
             {
                 this.dataGridView1.Rows[e.RowIndex].Cells["outputBtn"].Value = "出库";
             }
+        }
+
+        private void dataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 1)
+            {
+                return;
+            }
+
+            //商品
+            if (this.dataGridView1.Columns[e.ColumnIndex].Name == "productId")
+            {
+                //状态
+                int outputStatus = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[e.RowIndex].Cells["outputStatus"].Value);
+                //已完成出库
+                if (outputStatus > 0)
+                {
+                    MsgUtils.ShowInfoMsg("已完成出库，不可变换商品！");
+                    e.Cancel = true;
+                    return;
+                }
+            }
+
+        }
+
+        private void btn_close_Click_1(object sender, EventArgs e)
+        {
+            Form form = new FrmProductOut();
+            this.Hide();
+            form.ShowDialog();
         }
 
     }

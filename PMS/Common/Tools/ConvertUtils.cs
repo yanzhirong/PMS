@@ -99,7 +99,27 @@ namespace Common.Tools
             return value;
         }
 
-        public static string ConvertToDate(DateTime _object, string _format)
+        public static DateTime ConvertToDate(object _object, string _format)
+        {
+            DateTime value = new DateTime();
+
+            if (_object == null)
+            {
+                return DateTime.Now;
+            }
+
+            try
+            {
+                value = DateTime.ParseExact(ConvertToString(_object), _format, System.Globalization.CultureInfo.CurrentCulture);
+            }
+            catch (Exception e)
+            {
+            }
+
+            return value;
+        }
+
+        public static string ConvertToDateString(DateTime _object, string _format)
         {
             string value = "";
 
@@ -110,7 +130,7 @@ namespace Common.Tools
 
             try
             {
-                value = _object.ToString(_format);
+                                value = _object.ToString(_format);
             }
             catch (Exception e)
             {

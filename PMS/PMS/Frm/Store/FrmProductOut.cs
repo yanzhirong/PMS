@@ -34,17 +34,9 @@ namespace PMS.Frm.Store
             List<ModelItem> listItem = m_bllCode.GetCodeItem((int)Enum.EnumCode.SaleOrderStatus, true);
             WinCommon.BindComboBox(ref this.cmb_orderStatus, listItem);
 
-            ModelItem item = new ModelItem();
-            item.itemKey = 0;
-            item.itemValue = "";
-            this.cmb_factory.Items.Add(item);
+            //仓库
             listItem = m_bllFactory.GetFactoryItem();
-            foreach (ModelItem modelItem in listItem)
-            {
-                this.cmb_factory.Items.Add(modelItem);
-            }
-            this.cmb_factory.DisplayMember = "itemValue";
-            this.cmb_factory.ValueMember = "itemKey";
+            WinCommon.BindComboBox(ref this.cmb_orderStatus, listItem, true);
             
             this.dtp_begin.Value = DateTime.Now.AddMonths(-1);
             this.dtp_end.Value = DateTime.Now;

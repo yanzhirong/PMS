@@ -116,6 +116,10 @@ namespace PMS.Frm.Product
                         break;
                     }
                 }
+
+                //原料类型
+                this.cmb_materialsType.SelectedIndex = modelMaterials.type;
+
                 //重量单位
                 for (int i = 0; i < this.cmb_weightUnit.Items.Count; i++)
                 {
@@ -197,18 +201,22 @@ namespace PMS.Frm.Product
             modelMaterials.packingType = (int)((ModelItem)this.cmb_packingType.SelectedItem).itemKey;
             modelMaterials.packingRemark = this.txt_packingRemark.Text.Trim();
             modelMaterials.morphology = (int)((ModelItem)this.cmb_morphology.SelectedItem).itemKey;
-            modelMaterials.weight = ConvertUtils.ConvertToDecimal(this.txt_weight.Text);
-            modelMaterials.weightUnit = (int)((ModelItem)this.cmb_weightUnit.SelectedItem).itemKey;
+            //modelMaterials.weight = ConvertUtils.ConvertToDecimal(this.txt_weight.Text);
+            //modelMaterials.weightUnit = (int)((ModelItem)this.cmb_weightUnit.SelectedItem).itemKey;
             modelMaterials.shelfLife = ConvertUtils.ConvertToInt(this.txt_shelfLife.Text);
             modelMaterials.expiredDays = ConvertUtils.ConvertToInt(this.txt_expiredDays.Text);
             modelMaterials.minStockNum = ConvertUtils.ConvertToInt(this.txt_minStockNum.Text);
+            modelMaterials.type = this.cmb_materialsType.SelectedIndex;
 
             if (WinCommon.IsFinance(LoginUserInfo.LoginUser.loginRole.roleType))
             {
                 ModelMaterialsPrice modelMaterialsPrice = new ModelMaterialsPrice();
                 modelMaterialsPrice.materialsId = m_materialsId;
                 modelMaterialsPrice.price = ConvertUtils.ConvertToDecimal(this.txt_price.Text);
-                modelMaterialsPrice.priceUnit = (int)((ModelItem)this.cmb_priceUnit.SelectedItem).itemKey;
+                if (this.cmb_priceUnit.SelectedIndex >= 0)
+                {
+                    modelMaterialsPrice.priceUnit = (int)((ModelItem)this.cmb_priceUnit.SelectedItem).itemKey;
+                }
                 modelMaterials.modelMaterialsPrice = modelMaterialsPrice;
             }
             else
@@ -332,27 +340,34 @@ namespace PMS.Frm.Product
                     this.cmb_morphology.Focus();
                     return false;
                 }
-                //重量
-                if (StringUtils.IsBlank(this.txt_weight.Text))
+                //原料类型
+                if (this.cmb_materialsType.SelectedIndex < 0)
                 {
-                    MsgUtils.ShowErrorMsg("请输入重量！");
-                    this.txt_weight.Focus();
+                    MsgUtils.ShowErrorMsg("请选择原料类型！");
+                    this.cmb_materialsType.Focus();
                     return false;
                 }
-                decimal weigth = 0;
-                if (!decimal.TryParse(this.txt_weight.Text.Trim(), out weigth))
-                {
-                    MsgUtils.ShowErrorMsg("重量仅限数字！");
-                    this.txt_weight.Focus();
-                    return false;
-                }
-                //重量单位
-                if (this.cmb_weightUnit.SelectedIndex < 0)
-                {
-                    MsgUtils.ShowErrorMsg("请选择重量单位！");
-                    this.cmb_weightUnit.Focus();
-                    return false;
-                }
+                ////重量
+                //if (StringUtils.IsBlank(this.txt_weight.Text))
+                //{
+                //    MsgUtils.ShowErrorMsg("请输入重量！");
+                //    this.txt_weight.Focus();
+                //    return false;
+                //}
+                //decimal weigth = 0;
+                //if (!decimal.TryParse(this.txt_weight.Text.Trim(), out weigth))
+                //{
+                //    MsgUtils.ShowErrorMsg("重量仅限数字！");
+                //    this.txt_weight.Focus();
+                //    return false;
+                //}
+                ////重量单位
+                //if (this.cmb_weightUnit.SelectedIndex < 0)
+                //{
+                //    MsgUtils.ShowErrorMsg("请选择重量单位！");
+                //    this.cmb_weightUnit.Focus();
+                //    return false;
+                //}
                 //保质期
                 if (StringUtils.IsBlank(this.txt_shelfLife.Text))
                 {
@@ -412,7 +427,8 @@ namespace PMS.Frm.Product
                         return false;
                     }
 
-                    if (this.cmb_priceUnit.SelectedIndex < 0)
+                    //其它原料可不选单位
+                    if (this.cmb_materialsType.SelectedIndex != 2 && this.cmb_priceUnit.SelectedIndex < 0)
                     {
                         MsgUtils.ShowErrorMsg("请选择重量价格单位！");
                         this.cmb_weightUnit.Focus();
@@ -467,6 +483,18 @@ namespace PMS.Frm.Product
         private void FrmMaterialsDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
             WinCommon.Exit();
+        }
+
+        private void cmb_materialsType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.cmb_materialsType.SelectedIndex == 2)
+            {
+                this.cmb_priceUnit.Visible = false;
+            }
+            else
+            {
+                this.cmb_priceUnit.Visible = true;
+            }
         }
     }
 }

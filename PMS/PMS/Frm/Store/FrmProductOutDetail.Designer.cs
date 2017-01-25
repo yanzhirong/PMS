@@ -98,11 +98,11 @@
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Bold);
             this.lbl_title.ForeColor = System.Drawing.Color.Black;
-            this.lbl_title.Location = new System.Drawing.Point(218, 41);
+            this.lbl_title.Location = new System.Drawing.Point(255, 42);
             this.lbl_title.Name = "lbl_title";
-            this.lbl_title.Size = new System.Drawing.Size(180, 27);
+            this.lbl_title.Size = new System.Drawing.Size(152, 27);
             this.lbl_title.TabIndex = 24;
-            this.lbl_title.Text = "出库信息设置";
+            this.lbl_title.Text = "出库单设定";
             // 
             // grb_productOut
             // 
@@ -269,6 +269,7 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(616, 158);
             this.dataGridView1.TabIndex = 9;
+            this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
@@ -487,6 +488,7 @@
             this.btn_close.TabIndex = 106;
             this.btn_close.Text = "关闭";
             this.btn_close.UseVisualStyleBackColor = true;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click_1);
             // 
             // FrmProductOutDetail
             // 

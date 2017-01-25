@@ -80,10 +80,8 @@ namespace Dal
 
         public DataTable GetProductMaterialsById(int _productId)
         {
-            sql = @"select a.id,a.searchKey,a.materialsId,a.materialsNum,a.materialsUnit
-                      from r_product_materials a join m_code b
-                           on a.materialsUnit = b.subcode and b.code = 3
-                           join p_materials c on a.materialsId = c.id and c.isDelete = 0
+            sql = @"select a.id,a.searchKey,a.materialsId,a.percent
+                      from r_product_materials a
                      where a.isDelete = 0
                        and a.productId = {0}";
 
@@ -207,8 +205,7 @@ namespace Dal
                     sbSql.Append("       materialsId, ");
                     sbSql.Append("       searchKey, ");
                     sbSql.Append("       materialsName, ");
-                    sbSql.Append("       materialsNum, ");
-                    sbSql.Append("       materialsUnit, ");
+                    sbSql.Append("       percent, ");
                     sbSql.Append("       isDelete, ");
                     sbSql.Append("       createBy, ");
                     sbSql.Append("       createTime, ");
@@ -218,8 +215,7 @@ namespace Dal
                     sbSql.Append("        " + materials.materialsId + ", ");
                     sbSql.Append("       '" + materials.searchKey + "', ");
                     sbSql.Append("       '" + materials.materialsName + "', ");
-                    sbSql.Append("        " + materials.materialsNum + ", ");
-                    sbSql.Append("        " + materials.materialsUnit + ", ");
+                    sbSql.Append("        " + materials.percent + ", ");
                     sbSql.Append("        " + _modelProduct.isDelete + ", ");
                     sbSql.Append("       '" + _modelProduct.createBy + "', ");
                     sbSql.Append("       '" + _modelProduct.createTime + "', ");
@@ -301,8 +297,7 @@ namespace Dal
                     sbSql.Append("       materialsId, ");
                     sbSql.Append("       searchKey, ");
                     sbSql.Append("       materialsName, ");
-                    sbSql.Append("       materialsNum, ");
-                    sbSql.Append("       materialsUnit, ");
+                    sbSql.Append("       percent, ");
                     sbSql.Append("       isDelete, ");
                     sbSql.Append("       createBy, ");
                     sbSql.Append("       createTime, ");
@@ -313,8 +308,7 @@ namespace Dal
                     sbSql.Append("        " + materials.materialsId + ", ");
                     sbSql.Append("       '" + materials.searchKey + "', ");
                     sbSql.Append("       '" + materials.materialsName + "', ");
-                    sbSql.Append("        " + materials.materialsNum + ", ");
-                    sbSql.Append("        " + materials.materialsUnit + ", ");
+                    sbSql.Append("        " + materials.percent + ", ");
                     sbSql.Append("        " + _modelProduct.isDelete + ", ");
                     sbSql.Append("       '" + _modelProduct.createBy + "', ");
                     sbSql.Append("       '" + _modelProduct.createTime + "', ");

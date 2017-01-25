@@ -19,6 +19,7 @@ namespace Model
         public int shelfLife { set; get; }
         public int expiredDays { set; get; }
         public int minStockNum { set; get; }
+        public int type { set; get; }
 
         public ModelMaterialsPrice modelMaterialsPrice { set; get; }
 

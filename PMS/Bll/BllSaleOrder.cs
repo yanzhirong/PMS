@@ -76,8 +76,7 @@ namespace Bll
         public Boolean AddSaleOrder(ModelSaleOrder _model)
         {
             int rtn = 0;
-            int seq = Bll.BllSeq.GetSeq("saleOrder");
-            string orderCode = ConvertUtils.ConvertToDate(DateTime.Now, "yyyyMMddHHmmss") + "_" + seq;
+            string orderCode = BllSeq.GetCode("saleOrderCode");
             _model.orderCode = orderCode;
             _model.orderStatus = (int)Enum.EnumSaleOrderStatus.WaitConfirm;
             rtn = m_dalSaleOrder.AddSaleOrder(_model);
@@ -102,8 +101,7 @@ namespace Bll
 
             //出库申请单
             ModelProductOutput modelProductOutput = new ModelProductOutput();
-            int seq = Bll.BllSeq.GetSeq("ProductOutPut");
-            string outputCode = ConvertUtils.ConvertToDate(DateTime.Now, "yyyyMMddHHmmss") + "_" + seq;
+            string outputCode = BllSeq.GetCode("productOutCode");
             modelProductOutput.outputCode = outputCode;
             modelProductOutput.orderCode = _modelSaleOrder.orderCode;
             modelProductOutput.factoryId = _modelSaleOrder.factoryId;

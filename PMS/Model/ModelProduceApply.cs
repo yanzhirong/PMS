@@ -21,5 +21,6 @@ namespace Model
         public DateTime applyDate { set; get; }
         public int status { set; get; }
         public string remark { set; get; }
+        public string produceCode { set; get; }
     }
 }

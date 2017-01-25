@@ -14,9 +14,9 @@ namespace Bll
     {
         private DalMaterials m_dalMaterials = new DalMaterials();
 
-        public DataTable GetMaterials(string _name)
+        public DataTable GetMaterials(string _name, int _type)
         {
-            DataTable dt = m_dalMaterials.GetMaterials(_name);
+            DataTable dt = m_dalMaterials.GetMaterials(_name, _type);
 
             return dt;
         }

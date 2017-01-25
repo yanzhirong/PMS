@@ -32,8 +32,12 @@ namespace PMS.Frm.Product
         private void btn_query_Click(object sender, EventArgs e)
         {
             string name = this.txt_name.Text.Trim();
-
-            DataTable dt = m_bllMaterials.GetMaterials(name);
+            int type = -1;
+            if (this.cmb_materialsType.SelectedIndex > 0)
+            {
+                type = this.cmb_materialsType.SelectedIndex - 1;
+            }
+            DataTable dt = m_bllMaterials.GetMaterials(name, type);
 
             this.dataGridView1.DataSource = dt;
             this.dataGridView1.Refresh();

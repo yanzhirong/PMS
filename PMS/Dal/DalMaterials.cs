@@ -13,7 +13,7 @@ namespace Dal
         string sql;
         StringBuilder sbSql = new StringBuilder();
 
-        public DataTable GetMaterials(string _name)
+        public DataTable GetMaterials(string _name, int _type)
         {
             sbSql.Clear();
             sbSql.Append("select a.id, ");
@@ -23,6 +23,7 @@ namespace Dal
             sbSql.Append("       a.weight + c.value1 weight, ");
             sbSql.Append("       b.value1 morphology, ");
             sbSql.Append("       a.shelfLife, ");
+            sbSql.Append("       case a.type when 0 then '一般原料' when 1 then '自制原料' else '其它' end type, ");
             sbSql.Append("       '修改' modifyBtn, ");
             sbSql.Append("       '删除' deleteBtn ");
             sbSql.Append("from p_materials a ");
@@ -33,11 +34,14 @@ namespace Dal
             sbSql.Append("left join m_code d ");
             sbSql.Append("  on a.morphology = d.subCode and d.code = 2 ");
             sbSql.Append("where a.isDelete = 0 ");
-            if(Common.Tools.StringUtils.IsNotBlank(_name))
+            if (Common.Tools.StringUtils.IsNotBlank(_name))
             {
                 sbSql.Append("  and a.name like '%").Append(_name).Append("%' ");
             }
-
+            if (_type >= 0)
+            {
+                sbSql.Append("  and a.type = ").Append(_type).Append(" ");
+            }
             sbSql.Append("order by a.modifyTime desc");
 
             return Dal.DBHelper.Select(sbSql.ToString());
@@ -130,6 +134,7 @@ namespace Dal
             sbSql.Append("       shelfLife, ");
             sbSql.Append("       expiredDays, ");
             sbSql.Append("       minStockNum, ");
+            sbSql.Append("       type, ");
             sbSql.Append("       isDelete, ");
             sbSql.Append("       createBy, ");
             sbSql.Append("       createTime, ");
@@ -146,6 +151,7 @@ namespace Dal
             sbSql.Append("       " + _modelMaterials.shelfLife + ", ");
             sbSql.Append("       " + _modelMaterials.expiredDays + ", ");
             sbSql.Append("       " + _modelMaterials.minStockNum + ", ");
+            sbSql.Append("       " + _modelMaterials.type + ", ");
             sbSql.Append("       " + _modelMaterials.isDelete + ", ");
             sbSql.Append("      '" + _modelMaterials.createBy + "', ");
             sbSql.Append("      '" + _modelMaterials.createTime + "', ");
@@ -210,6 +216,7 @@ namespace Dal
             sbSql.Append("    shelfLife = " + _modelMaterials.shelfLife + ",");
             sbSql.Append("    expiredDays = " + _modelMaterials.expiredDays + ",");
             sbSql.Append("    minStockNum = " + _modelMaterials.minStockNum + ",");
+            sbSql.Append("    type = " + _modelMaterials.type + ",");
             sbSql.Append("    modifyBy = '" + _modelMaterials.modifyBy + "',");
             sbSql.Append("    modifyTime = '" + _modelMaterials.modifyTime + "' ");
             sbSql.Append("where id = " + _modelMaterials.id);

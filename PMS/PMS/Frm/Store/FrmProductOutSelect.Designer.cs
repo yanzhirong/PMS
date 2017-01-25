@@ -41,7 +41,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btn_applyProduce = new System.Windows.Forms.Button();
             this.txt_unitCode = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_select = new System.Windows.Forms.Button();
             this.txt_unit = new System.Windows.Forms.TextBox();
             this.txt_factory = new System.Windows.Forms.TextBox();
             this.txt_num = new System.Windows.Forms.TextBox();
@@ -82,7 +82,7 @@
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Bold);
             this.lbl_title.ForeColor = System.Drawing.Color.Black;
-            this.lbl_title.Location = new System.Drawing.Point(276, 25);
+            this.lbl_title.Location = new System.Drawing.Point(282, 23);
             this.lbl_title.Name = "lbl_title";
             this.lbl_title.Size = new System.Drawing.Size(124, 27);
             this.lbl_title.TabIndex = 24;
@@ -92,7 +92,7 @@
             // 
             this.grb_productOut.Controls.Add(this.grb_applyProduce);
             this.grb_productOut.Controls.Add(this.txt_unitCode);
-            this.grb_productOut.Controls.Add(this.button1);
+            this.grb_productOut.Controls.Add(this.btn_select);
             this.grb_productOut.Controls.Add(this.txt_unit);
             this.grb_productOut.Controls.Add(this.txt_factory);
             this.grb_productOut.Controls.Add(this.txt_num);
@@ -105,7 +105,7 @@
             this.grb_productOut.Controls.Add(this.lbl_orderCode);
             this.grb_productOut.Location = new System.Drawing.Point(33, 66);
             this.grb_productOut.Name = "grb_productOut";
-            this.grb_productOut.Size = new System.Drawing.Size(632, 474);
+            this.grb_productOut.Size = new System.Drawing.Size(641, 474);
             this.grb_productOut.TabIndex = 103;
             this.grb_productOut.TabStop = false;
             // 
@@ -179,14 +179,15 @@
             this.txt_unitCode.TabIndex = 129;
             this.txt_unitCode.Visible = false;
             // 
-            // button1
+            // btn_select
             // 
-            this.button1.Location = new System.Drawing.Point(18, 99);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 128;
-            this.button1.Text = "刷新库存";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_select.Location = new System.Drawing.Point(18, 99);
+            this.btn_select.Name = "btn_select";
+            this.btn_select.Size = new System.Drawing.Size(75, 23);
+            this.btn_select.TabIndex = 128;
+            this.btn_select.Text = "刷新库存";
+            this.btn_select.UseVisualStyleBackColor = true;
+            this.btn_select.Click += new System.EventHandler(this.btn_select_Click);
             // 
             // txt_unit
             // 
@@ -279,9 +280,10 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(594, 230);
+            this.dataGridView1.Size = new System.Drawing.Size(600, 311);
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 
             // txt_outputCode
             // 
@@ -309,7 +311,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(693, 610);
+            this.ClientSize = new System.Drawing.Size(711, 632);
             this.Controls.Add(this.grb_productOut);
             this.Controls.Add(this.lbl_title);
             this.Controls.Add(this.btn_cancel);
@@ -349,7 +351,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txt_product;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_select;
         private System.Windows.Forms.TextBox txt_unitCode;
         private System.Windows.Forms.Button btn_applyProduce;
         private System.Windows.Forms.GroupBox grb_applyProduce;

@@ -64,6 +64,8 @@
             this.txt_price = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.cmb_materialsType = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.grb_materials.SuspendLayout();
             this.grb_price.SuspendLayout();
             this.SuspendLayout();
@@ -101,6 +103,8 @@
             // 
             // grb_materials
             // 
+            this.grb_materials.Controls.Add(this.cmb_materialsType);
+            this.grb_materials.Controls.Add(this.label7);
             this.grb_materials.Controls.Add(this.label9);
             this.grb_materials.Controls.Add(this.txt_minStockNum);
             this.grb_materials.Controls.Add(this.label17);
@@ -128,7 +132,7 @@
             this.grb_materials.Controls.Add(this.label1);
             this.grb_materials.Location = new System.Drawing.Point(45, 73);
             this.grb_materials.Name = "grb_materials";
-            this.grb_materials.Size = new System.Drawing.Size(585, 378);
+            this.grb_materials.Size = new System.Drawing.Size(585, 366);
             this.grb_materials.TabIndex = 103;
             this.grb_materials.TabStop = false;
             // 
@@ -137,7 +141,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(273, 320);
+            this.label9.Location = new System.Drawing.Point(273, 272);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(64, 12);
             this.label9.TabIndex = 69;
@@ -146,7 +150,7 @@
             // txt_minStockNum
             // 
             this.txt_minStockNum.ImeMode = System.Windows.Forms.ImeMode.Close;
-            this.txt_minStockNum.Location = new System.Drawing.Point(75, 317);
+            this.txt_minStockNum.Location = new System.Drawing.Point(75, 269);
             this.txt_minStockNum.MaxLength = 20;
             this.txt_minStockNum.Name = "txt_minStockNum";
             this.txt_minStockNum.Size = new System.Drawing.Size(164, 21);
@@ -157,7 +161,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.ForeColor = System.Drawing.Color.Red;
-            this.label17.Location = new System.Drawing.Point(5, 320);
+            this.label17.Location = new System.Drawing.Point(5, 272);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(65, 12);
             this.label17.TabIndex = 67;
@@ -166,7 +170,7 @@
             // txt_expiredDays
             // 
             this.txt_expiredDays.ImeMode = System.Windows.Forms.ImeMode.Close;
-            this.txt_expiredDays.Location = new System.Drawing.Point(345, 264);
+            this.txt_expiredDays.Location = new System.Drawing.Point(345, 218);
             this.txt_expiredDays.MaxLength = 20;
             this.txt_expiredDays.Name = "txt_expiredDays";
             this.txt_expiredDays.Size = new System.Drawing.Size(164, 21);
@@ -177,7 +181,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.Color.Red;
-            this.label16.Location = new System.Drawing.Point(273, 267);
+            this.label16.Location = new System.Drawing.Point(273, 221);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(65, 12);
             this.label16.TabIndex = 66;
@@ -188,7 +192,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(513, 267);
+            this.label14.Location = new System.Drawing.Point(513, 221);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(64, 12);
             this.label14.TabIndex = 65;
@@ -198,20 +202,22 @@
             // 
             this.cmb_weightUnit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_weightUnit.FormattingEnabled = true;
-            this.cmb_weightUnit.Location = new System.Drawing.Point(345, 219);
+            this.cmb_weightUnit.Location = new System.Drawing.Point(345, 315);
             this.cmb_weightUnit.Name = "cmb_weightUnit";
             this.cmb_weightUnit.Size = new System.Drawing.Size(163, 20);
             this.cmb_weightUnit.TabIndex = 53;
+            this.cmb_weightUnit.Visible = false;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.Color.Red;
-            this.label12.Location = new System.Drawing.Point(273, 222);
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(273, 318);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(65, 12);
             this.label12.TabIndex = 64;
             this.label12.Text = "重量单位：";
+            this.label12.Visible = false;
             // 
             // txt_packingRemark
             // 
@@ -263,7 +269,7 @@
             // txt_shelfLife
             // 
             this.txt_shelfLife.ImeMode = System.Windows.Forms.ImeMode.Close;
-            this.txt_shelfLife.Location = new System.Drawing.Point(76, 267);
+            this.txt_shelfLife.Location = new System.Drawing.Point(76, 221);
             this.txt_shelfLife.MaxLength = 20;
             this.txt_shelfLife.Name = "txt_shelfLife";
             this.txt_shelfLife.Size = new System.Drawing.Size(164, 21);
@@ -274,7 +280,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(5, 270);
+            this.label8.Location = new System.Drawing.Point(5, 224);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 12);
             this.label8.TabIndex = 58;
@@ -302,22 +308,24 @@
             // txt_weight
             // 
             this.txt_weight.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txt_weight.Location = new System.Drawing.Point(76, 219);
+            this.txt_weight.Location = new System.Drawing.Point(76, 315);
             this.txt_weight.MaxLength = 20;
             this.txt_weight.Name = "txt_weight";
             this.txt_weight.Size = new System.Drawing.Size(164, 21);
             this.txt_weight.TabIndex = 51;
+            this.txt_weight.Visible = false;
             this.txt_weight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_weight_KeyPress);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(5, 222);
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(5, 318);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 52;
             this.label5.Text = "重    量：";
+            this.label5.Visible = false;
             // 
             // cmb_morphology
             // 
@@ -397,9 +405,9 @@
             this.label23.ForeColor = System.Drawing.Color.Black;
             this.label23.Location = new System.Drawing.Point(174, 21);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(25, 12);
+            this.label23.Size = new System.Drawing.Size(18, 12);
             this.label23.TabIndex = 73;
-            this.label23.Text = "元/";
+            this.label23.Text = "元";
             // 
             // cmb_priceUnit
             // 
@@ -436,6 +444,30 @@
             this.menuStrip1.Size = new System.Drawing.Size(668, 24);
             this.menuStrip1.TabIndex = 105;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // cmb_materialsType
+            // 
+            this.cmb_materialsType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_materialsType.FormattingEnabled = true;
+            this.cmb_materialsType.Items.AddRange(new object[] {
+            "一般原料",
+            "自制原料",
+            "其它"});
+            this.cmb_materialsType.Location = new System.Drawing.Point(344, 174);
+            this.cmb_materialsType.Name = "cmb_materialsType";
+            this.cmb_materialsType.Size = new System.Drawing.Size(163, 20);
+            this.cmb_materialsType.TabIndex = 71;
+            this.cmb_materialsType.SelectedIndexChanged += new System.EventHandler(this.cmb_materialsType_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(272, 177);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 70;
+            this.label7.Text = "原料类型：";
             // 
             // FrmMaterialsDetail
             // 
@@ -505,5 +537,7 @@
         private System.Windows.Forms.TextBox txt_price;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ComboBox cmb_materialsType;
+        private System.Windows.Forms.Label label7;
     }
 }

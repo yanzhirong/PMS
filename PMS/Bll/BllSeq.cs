@@ -20,5 +20,14 @@ namespace Bll
                 return DalSeq.GetSeq(_key);
             }
         }
+
+        public static string GetCode(string _key)
+        {
+            string code = "";
+
+            int seq = GetSeq(_key);
+            code = ConvertUtils.ConvertToDateString(DateTime.Now, "yyyyMMddHHmmss") + "_" + seq;
+            return code;
+        }
     }
 }

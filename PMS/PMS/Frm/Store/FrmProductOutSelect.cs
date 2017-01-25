@@ -47,7 +47,7 @@ namespace PMS.Frm.Store
 
         private void FrmProductOutSelect_FormClosed(object sender, FormClosedEventArgs e)
         {
-            WinCommon.Exit();
+            this.Hide();
         }
 
         private void btn_submit_Click(object sender, EventArgs e)
@@ -56,7 +56,7 @@ namespace PMS.Frm.Store
         }
         private void btn_cancel_Click(object sender, EventArgs e)
         {
-            WinCommon.Exit();
+            this.Hide();
         }
                 
         #region 初始化
@@ -132,14 +132,15 @@ namespace PMS.Frm.Store
                 return ;
             }
 
-            //输入的出库数合计（克）
+            //输入的出库数合计
             decimal selectedAllOutputNum = 0;
+            int selectedUnit = 0;
 
             List<Dictionary<string, object>> listOutput = new List<Dictionary<string, object>>();
             for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
             {
                 //选择的行
-                if (ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["selected"].Value) == 1)
+                if (this.dataGridView1.Rows[i].Cells["selected"].EditedFormattedValue.ToString() == "True")
                 {
                     Dictionary<string, object> dc = new Dictionary<string, object>();
                     dc.Add("inputId", ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["id"].Value));
@@ -154,12 +155,18 @@ namespace PMS.Frm.Store
                     //出库数（克）
                     curOutPutNum = curOutPutNum * m_bllCode.GetWeightUnit(outputUnit);
 
+                    //选中的第一行的单位
+                    if (selectedUnit == 0)
+                    {
+                        selectedUnit = outputUnit;
+                    }
+
                     //出库后剩余出库数
                     decimal stockNum = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells["num"].Value);
                     //转为克
-                    stockNum = stockNum * m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["unitCode"].Value));
+                    stockNum = stockNum * m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["unit"].Value));
                     stockNum = stockNum - curOutPutNum;
-                    stockNum = stockNum / ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["unitCode"].Value);
+                    stockNum = stockNum / m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["unit"].Value));
                     dc.Add("stockNum", stockNum);
 
                     listOutput.Add(dc);
@@ -167,7 +174,10 @@ namespace PMS.Frm.Store
                     selectedAllOutputNum = selectedAllOutputNum + curOutPutNum;
                 }
             }
-            rtn = m_bllProductOut.doOutPut(m_outputCode, m_outputDetailId, m_factoryId, m_productId, selectedAllOutputNum, listOutput, LoginUserInfo.LoginUser.loginUser.userName);
+
+            selectedAllOutputNum = selectedAllOutputNum / m_bllCode.GetWeightUnit(selectedUnit);
+
+            rtn = m_bllProductOut.doOutPut(m_outputCode, m_outputDetailId, m_factoryId, m_productId, selectedAllOutputNum, selectedUnit, listOutput, LoginUserInfo.LoginUser.loginUser.userName);
 
             if (rtn == true)
             {
@@ -195,7 +205,7 @@ namespace PMS.Frm.Store
             for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
             {
                 //选择的行
-                if (ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["selected"].Value) == 1)
+                if (this.dataGridView1.Rows[i].Cells["selected"].EditedFormattedValue.ToString() == "True")
                 {
 
                     //输入的出库数（克）
@@ -211,11 +221,11 @@ namespace PMS.Frm.Store
                         MsgUtils.ShowErrorMsg("请出库出库单位！");
                         return false;
                     }
-                    curOutPutNum = curOutPutNum * outputUnit;
+                    curOutPutNum = curOutPutNum * m_bllCode.GetWeightUnit(outputUnit);
 
                     //库存数量（克）
                     decimal curStockNum = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells["num"].Value);
-                    curStockNum = curStockNum * m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["unitCode"].Value));
+                    curStockNum = curStockNum * m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["unit"].Value));
 
                     if (curOutPutNum > curStockNum)
                     {
@@ -255,79 +265,76 @@ namespace PMS.Frm.Store
         {
             this.dataGridView1.Columns.Clear();
 
-            DataGridViewTextBoxColumn textColumn = new DataGridViewTextBoxColumn();
-            textColumn.Name = "id";
-            textColumn.HeaderText = "id";
-            textColumn.DataPropertyName = "id";
-            textColumn.Visible = false;
-            this.dataGridView1.Columns.Add(textColumn);
+            DataGridViewTextBoxColumn colId = new DataGridViewTextBoxColumn();
+            colId.Name = "id";
+            colId.HeaderText = "id";
+            colId.DataPropertyName = "id";
+            colId.Visible = false;
+            this.dataGridView1.Columns.Add(colId);
 
-            textColumn = new DataGridViewTextBoxColumn();
-            textColumn.Name = "inputCode";
-            textColumn.HeaderText = "inputCode";
-            textColumn.DataPropertyName = "inputCode";
-            textColumn.Visible = false;
-            this.dataGridView1.Columns.Add(textColumn);
+            DataGridViewTextBoxColumn colInputId = new DataGridViewTextBoxColumn();
+            colInputId.Name = "inputCode";
+            colInputId.HeaderText = "inputCode";
+            colInputId.DataPropertyName = "inputCode";
+            colInputId.Visible = false;
+            this.dataGridView1.Columns.Add(colInputId);
 
-            DataGridViewCheckBoxColumn chkColumn = new DataGridViewCheckBoxColumn();
-            chkColumn.Name = "selected";
-            chkColumn.HeaderText = "选择";
-            textColumn.Width = 40;
-            this.dataGridView1.Columns.Add(chkColumn);
+            DataGridViewCheckBoxColumn colSelect = new DataGridViewCheckBoxColumn();
+            colSelect.Name = "selected";
+            colSelect.HeaderText = "选择";
+            colSelect.Width = 40;
+            this.dataGridView1.Columns.Add(colSelect);
 
-            textColumn = new DataGridViewTextBoxColumn();
-            textColumn.Name = "productName";
-            textColumn.HeaderText = "商品";
-            textColumn.DataPropertyName = "productName";
-            textColumn.Width = 160;
-            textColumn.ReadOnly = true;
-            this.dataGridView1.Columns.Add(textColumn);
+            DataGridViewTextBoxColumn colProduct = new DataGridViewTextBoxColumn();
+            colProduct.Name = "productName";
+            colProduct.HeaderText = "商品";
+            colProduct.DataPropertyName = "productName";
+            colProduct.Width = 160;
+            colProduct.ReadOnly = true;
+            this.dataGridView1.Columns.Add(colProduct);
 
-            textColumn = new DataGridViewTextBoxColumn();
-            textColumn.Name = "num";
-            textColumn.HeaderText = "库存数量";
-            textColumn.DataPropertyName = "num";
-            textColumn.Width = 100;
-            textColumn.ReadOnly = true;
-            this.dataGridView1.Columns.Add(textColumn);
+            DataGridViewTextBoxColumn colExpiresDate = new DataGridViewTextBoxColumn();
+            colExpiresDate.Name = "expiresDate";
+            colExpiresDate.HeaderText = "过期日";
+            colExpiresDate.DataPropertyName = "expiresDate";
+            colExpiresDate.Width = 100;
+            colExpiresDate.ReadOnly = true;
+            this.dataGridView1.Columns.Add(colExpiresDate);
 
-            textColumn = new DataGridViewTextBoxColumn();
-            textColumn.Name = "unit";
-            textColumn.HeaderText = "库存单位";
-            textColumn.DataPropertyName = "unit";
-            textColumn.Width = 80;
-            textColumn.ReadOnly = true;
-            this.dataGridView1.Columns.Add(textColumn);
+            DataGridViewTextBoxColumn colNumDisplay = new DataGridViewTextBoxColumn();
+            colNumDisplay.Name = "numDisplay";
+            colNumDisplay.HeaderText = "库存数量";
+            colNumDisplay.DataPropertyName = "numDisplay";
+            colNumDisplay.Width = 80;
+            colNumDisplay.ReadOnly = true;
+            this.dataGridView1.Columns.Add(colNumDisplay);
 
-            textColumn = new DataGridViewTextBoxColumn();
-            textColumn.Name = "unitCode";
-            textColumn.HeaderText = "库存单位";
-            textColumn.DataPropertyName = "unitCode";
-            textColumn.Visible = false;
-            this.dataGridView1.Columns.Add(textColumn);
+            DataGridViewTextBoxColumn colNum = new DataGridViewTextBoxColumn();
+            colNum.Name = "num";
+            colNum.HeaderText = "库存数量";
+            colNum.DataPropertyName = "num";
+            colNum.Visible = false;
+            this.dataGridView1.Columns.Add(colNum);
 
-            textColumn = new DataGridViewTextBoxColumn();
-            textColumn.Name = "expiresDate";
-            textColumn.HeaderText = "过期日";
-            textColumn.DataPropertyName = "expiresDate";
-            textColumn.Width = 100;
-            textColumn.ReadOnly = true;
-            this.dataGridView1.Columns.Add(textColumn);
+            DataGridViewTextBoxColumn colUnit = new DataGridViewTextBoxColumn();
+            colUnit.Name = "unit";
+            colUnit.HeaderText = "库存单位";
+            colUnit.DataPropertyName = "unit";
+            colUnit.Visible = false;
+            this.dataGridView1.Columns.Add(colUnit);
 
-            textColumn = new DataGridViewTextBoxColumn();
-            textColumn.Name = "outputNum";
-            textColumn.HeaderText = "出库数量";
-            textColumn.DataPropertyName = "outputNum";
-            textColumn.Width = 100;
-            textColumn.ReadOnly = false;
-            this.dataGridView1.Columns.Add(textColumn);
+            DataGridViewTextBoxColumn colOutputNum = new DataGridViewTextBoxColumn();
+            colOutputNum.Name = "outputNum";
+            colOutputNum.HeaderText = "出库数量";
+            colOutputNum.Width = 80;
+            colOutputNum.ReadOnly = false;
+            this.dataGridView1.Columns.Add(colOutputNum);
 
             DataGridViewComboBoxColumn cmbColumn = new DataGridViewComboBoxColumn();
             cmbColumn.Name = "outputUnit";
-            cmbColumn.DataPropertyName = "outputUnit";
             cmbColumn.HeaderText = "出库单位";
             cmbColumn.Width = 80;
-            textColumn.ReadOnly = false;
+            cmbColumn.ReadOnly = false;
             this.dataGridView1.Columns.Add(cmbColumn);
             cmbColumn.DataSource = m_bllCode.GetCodeList(3);
             cmbColumn.DisplayMember = "value1";
@@ -335,16 +342,6 @@ namespace PMS.Frm.Store
 
         }
         #endregion
-
-        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-
-            if (e.RowIndex < 0 || e.ColumnIndex < 1)
-            {
-                return;
-            }
-
-        }
 
         private void btn_applyProduce_Click(object sender, EventArgs e)
         {
@@ -387,7 +384,14 @@ namespace PMS.Frm.Store
             newProduceApply.saleOrderCode = modelProductOutput.orderCode;
             newProduceApply.outputCode = m_outputCode;
             newProduceApply.deliveryDate = modelProductOutput.deliveryDate;
-            newProduceApply.applyType = 1;
+            if (Common.Tools.StringUtils.IsBlank(newProduceApply.saleOrderCode))
+            {
+                newProduceApply.applyType = 1;
+            }
+            else
+            {
+                newProduceApply.applyType = 0;
+            }
             newProduceApply.applyBy = LoginUserInfo.LoginUser.loginUser.userName;
             newProduceApply.applyDate = DateTime.Now;
             newProduceApply.status = 0;
@@ -408,6 +412,33 @@ namespace PMS.Frm.Store
             {
                 MsgUtils.ShowInfoMsg("申请生产失败！");
                 return;
+            }
+        }
+
+        private void btn_select_Click(object sender, EventArgs e)
+        {
+            doSelect();
+        }
+
+        private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //仅限数字
+            e.Handled = WinCommon.IsOnlyDouble(e.KeyChar);
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 )
+            {
+                return;
+            }
+            if (this.dataGridView1.Columns[e.ColumnIndex].Name == "outputNum")
+            {
+                DataGridViewComboBoxCell column = (DataGridViewComboBoxCell)this.dataGridView1.Rows[e.RowIndex].Cells["outputUnit"];
+
+                column.DataSource = m_bllCode.GetCodeList(3);
+                column.DisplayMember = "value1";
+                column.ValueMember = "subCode";
             }
         }
 

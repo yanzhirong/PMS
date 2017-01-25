@@ -56,6 +56,12 @@
     <Compile Include="Frm\Login\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm\Produce\FrmProducePlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Produce\FrmProducePlan.Designer.cs">
+      <DependentUpon>FrmProducePlan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\Product\FrmMaterialsManage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     <EmbeddedResource Include="Frm\Login\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Produce\FrmProducePlan.resx">
+      <DependentUpon>FrmProducePlan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm\Product\FrmMaterialsManage.resx">
       <DependentUpon>FrmMaterialsManage.cs</DependentUpon>
     </EmbeddedResource>
@@ -293,7 +302,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Frm\Finance\" />
-    <Folder Include="Frm\Produce\" />
     <Folder Include="Frm\Purchase\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

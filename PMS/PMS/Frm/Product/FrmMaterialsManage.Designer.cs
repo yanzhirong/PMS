@@ -36,6 +36,10 @@
             this.txt_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.lbl_tile = new System.Windows.Forms.Label();
+            this.cmb_materialsType = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,29 +47,28 @@
             this.weight = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.morphology = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.shelfLife = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifyBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.deleteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.lbl_tile = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btn_addNew);
-            this.groupBox1.Controls.Add(this.btn_query);
+            this.groupBox1.Controls.Add(this.cmb_materialsType);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.txt_name);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(30, 79);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(885, 95);
+            this.groupBox1.Size = new System.Drawing.Size(885, 42);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
             // btn_addNew
             // 
-            this.btn_addNew.Location = new System.Drawing.Point(155, 57);
+            this.btn_addNew.Location = new System.Drawing.Point(127, 138);
             this.btn_addNew.Name = "btn_addNew";
             this.btn_addNew.Size = new System.Drawing.Size(75, 23);
             this.btn_addNew.TabIndex = 4;
@@ -75,7 +78,7 @@
             // 
             // btn_query
             // 
-            this.btn_query.Location = new System.Drawing.Point(27, 57);
+            this.btn_query.Location = new System.Drawing.Point(33, 138);
             this.btn_query.Name = "btn_query";
             this.btn_query.Size = new System.Drawing.Size(75, 23);
             this.btn_query.TabIndex = 3;
@@ -120,15 +123,58 @@
             this.weight,
             this.morphology,
             this.shelfLife,
+            this.type,
             this.modifyBtn,
             this.deleteBtn});
-            this.dataGridView1.Location = new System.Drawing.Point(30, 188);
+            this.dataGridView1.Location = new System.Drawing.Point(30, 181);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 35;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(885, 400);
+            this.dataGridView1.Size = new System.Drawing.Size(962, 407);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1018, 24);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // lbl_tile
+            // 
+            this.lbl_tile.AutoSize = true;
+            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
+            this.lbl_tile.Location = new System.Drawing.Point(431, 34);
+            this.lbl_tile.Name = "lbl_tile";
+            this.lbl_tile.Size = new System.Drawing.Size(120, 27);
+            this.lbl_tile.TabIndex = 67;
+            this.lbl_tile.Text = "原料列表";
+            // 
+            // cmb_materialsType
+            // 
+            this.cmb_materialsType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_materialsType.FormattingEnabled = true;
+            this.cmb_materialsType.Items.AddRange(new object[] {
+            "",
+            "一般原料",
+            "自制原料",
+            "其它"});
+            this.cmb_materialsType.Location = new System.Drawing.Point(272, 14);
+            this.cmb_materialsType.Name = "cmb_materialsType";
+            this.cmb_materialsType.Size = new System.Drawing.Size(129, 20);
+            this.cmb_materialsType.TabIndex = 73;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(200, 17);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 72;
+            this.label7.Text = "原料类型：";
             // 
             // id
             // 
@@ -182,6 +228,14 @@
             this.shelfLife.ReadOnly = true;
             this.shelfLife.Width = 120;
             // 
+            // type
+            // 
+            this.type.DataPropertyName = "type";
+            this.type.HeaderText = "原料类型";
+            this.type.Name = "type";
+            this.type.ReadOnly = true;
+            this.type.Width = 80;
+            // 
             // modifyBtn
             // 
             this.modifyBtn.DataPropertyName = "modifyBtn";
@@ -194,32 +248,16 @@
             this.deleteBtn.HeaderText = "删除";
             this.deleteBtn.Name = "deleteBtn";
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(944, 24);
-            this.menuStrip1.TabIndex = 9;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // lbl_tile
-            // 
-            this.lbl_tile.AutoSize = true;
-            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
-            this.lbl_tile.Location = new System.Drawing.Point(431, 34);
-            this.lbl_tile.Name = "lbl_tile";
-            this.lbl_tile.Size = new System.Drawing.Size(120, 27);
-            this.lbl_tile.TabIndex = 67;
-            this.lbl_tile.Text = "原料列表";
-            // 
             // FrmMaterialsManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(944, 611);
+            this.ClientSize = new System.Drawing.Size(1018, 611);
             this.Controls.Add(this.lbl_tile);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.btn_addNew);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btn_query);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -247,6 +285,10 @@
         private System.Windows.Forms.TextBox txt_name;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.Label lbl_tile;
+        private System.Windows.Forms.ComboBox cmb_materialsType;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn subName;
@@ -254,10 +296,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn weight;
         private System.Windows.Forms.DataGridViewTextBoxColumn morphology;
         private System.Windows.Forms.DataGridViewTextBoxColumn shelfLife;
+        private System.Windows.Forms.DataGridViewTextBoxColumn type;
         private System.Windows.Forms.DataGridViewButtonColumn modifyBtn;
         private System.Windows.Forms.DataGridViewButtonColumn deleteBtn;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.Label lbl_tile;
 
     }
 }

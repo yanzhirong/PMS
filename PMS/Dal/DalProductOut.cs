@@ -131,8 +131,12 @@ namespace Dal
             sbSql.Append("select a.id, ");
             sbSql.Append("       a.productId, ");
             sbSql.Append("       a.outputStatus, ");
-            sbSql.Append("       a.outputDate ");
+            sbSql.Append("       date_format(a.outputDate, '%Y-%m-%d') outputDate, ");
+            sbSql.Append("       concat(a.productNum, b.value1) outputNum ");
             sbSql.Append("from r_product_output_detail a ");
+            sbSql.Append("join m_code b ");
+            sbSql.Append("  on a.productUnit = b.subCode ");
+            sbSql.Append(" and b.code = 3 ");
             sbSql.Append("where a.isDelete = 0 ");
             sbSql.Append("  and a.outputCode = '").Append(_outputCode).Append("'");
 
@@ -292,11 +296,13 @@ namespace Dal
 
         public DataTable GetProductOutSelect(int _factoryId, int _productId)
         {
+            sbSql.Clear();
             sbSql.Append("select a.id, ");
+            sbSql.Append("       a.inputCode, ");
             sbSql.Append("       b.name productName, ");
+            sbSql.Append("       concat(a.num, c.value1) numDisplay, ");
             sbSql.Append("       a.num, ");
-            sbSql.Append("       a.unit unitCode, ");
-            sbSql.Append("       c.value1 unit, ");
+            sbSql.Append("       a.unit, ");
             sbSql.Append("       date_format(a.expiresDate, '%Y-%m-%d') expiresDate ");
             sbSql.Append("from p_product_in a ");
             sbSql.Append("join p_product b ");
@@ -315,7 +321,7 @@ namespace Dal
 
         }
 
-        public int doOutPut(string _outputCode, int _outputDetailId, int _factoryId, int _productId, decimal _outputAllNum, List<Dictionary<string, object>> listOutput, string userName)
+        public int doOutPut(string _outputCode, int _outputDetailId, int _factoryId, int _productId, decimal _outputNum, int _outputUnit, List<Dictionary<string, object>> listOutput, string userName)
         {
             List<string> listSql = new List<string>();
 
@@ -388,8 +394,8 @@ namespace Dal
                 sbSql.Append("       ) values ( ");
                 sbSql.Append("      '" + _outputCode + "', ");
                 sbSql.Append("       " + _productId + ", ");
-                sbSql.Append("       " + _outputAllNum + ", ");
-                sbSql.Append("       " + (int)EnumUnit.Gram + ", ");
+                sbSql.Append("       " + _outputNum + ", ");
+                sbSql.Append("       " + _outputUnit + ", ");
                 sbSql.Append("       1, ");
                 sbSql.Append("      '" + DateTime.Now + "', ");
                 sbSql.Append("       0, ");

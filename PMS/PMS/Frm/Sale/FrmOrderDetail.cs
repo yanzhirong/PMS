@@ -434,13 +434,22 @@ namespace PMS.Frm.Sale
 
                     if (StringUtils.IsNotBlank(productName))
                     {
-                        if (MsgUtils.ShowQustMsg("商品【" + productName + "】库存不足，是否生成生产计划单？", MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                        if (MsgUtils.ShowQustMsg("商品【" + productName + "】库存不足，是否生成生产申请单？", MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                         {
                             // 生成生产申请单
                             rtn = m_bllSaleOrder.AddProduceApply(modelSaleOrder);
-                        }
-         
+
+                            if (rtn == true)
+                            {
+                                MsgUtils.ShowInfoMsg("生产申请单生成成功！");
+                            }
+                            else
+                            {
+                                MsgUtils.ShowErrorMsg("生产申请单生成失败！");
+                            }
+                        }         
                     }
+
                     //返回列表
                     Form form = new FrmOrderManage();
                     this.Hide();
@@ -752,6 +761,58 @@ namespace PMS.Frm.Sale
                 column.DataSource = m_bllCode.GetCodeList(3);
                 column.DisplayMember = "value1";
                 column.ValueMember = "subCode";
+            }
+        }
+
+        private void cmb_customer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.cmb_customer.SelectedIndex >= 0)
+            {
+                int customerId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_customer.SelectedItem).itemKey);
+
+                ModelCustomer modelCustomer = m_bllCustomer.GetCustomerById(customerId);
+
+                //省
+                for (int i = 0; i < this.cmb_province.Items.Count; i++)
+                {
+                    ModelItem modelItem = (ModelItem)this.cmb_province.Items[i];
+                    if (modelCustomer.province == (int)modelItem.itemKey)
+                    {
+                        this.cmb_province.SelectedIndex = i;
+                        break;
+                    }
+                }
+
+                //市
+                for (int i = 0; i < this.cmb_city.Items.Count; i++)
+                {
+                    ModelItem modelItem = (ModelItem)this.cmb_city.Items[i];
+                    if (modelCustomer.city == (int)modelItem.itemKey)
+                    {
+                        this.cmb_city.SelectedIndex = i;
+                        break;
+                    }
+                }
+
+                //区
+                for (int i = 0; i < this.cmb_district.Items.Count; i++)
+                {
+                    ModelItem modelItem = (ModelItem)this.cmb_district.Items[i];
+                    if (modelCustomer.district == (int)modelItem.itemKey)
+                    {
+                        this.cmb_district.SelectedIndex = i;
+                        break;
+                    }
+                }
+
+                //地址
+                this.txt_address.Text = modelCustomer.address;
+
+                //联系人
+                this.txt_manager.Text = modelCustomer.manager;
+
+                //职位
+                this.txt_telephone.Text = modelCustomer.telephone1;
             }
         }
     }

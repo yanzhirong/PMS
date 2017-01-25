@@ -247,8 +247,7 @@ namespace PMS.Frm.Product
                     materials.productId = modelProduct.id;
                     materials.materialsId = materialsId;
                     materials.searchKey = ConvertUtils.ConvertToString(this.dataGridView1.Rows[i].Cells[1].Value);
-                    materials.materialsNum = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells[3].Value);
-                    materials.materialsUnit = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[4].Value);
+                    materials.percent = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells[3].Value);
 
                     modelProductMaterials.Add(materials);
                 }
@@ -438,6 +437,8 @@ namespace PMS.Frm.Product
                 }
 
                 List<int> listMaterialsId = new List<int>();
+                decimal allMaterialPercent = 0;
+
                 for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
                 {
 
@@ -451,63 +452,65 @@ namespace PMS.Frm.Product
                             return false;
                         }
 
-                        decimal materialsNum = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells[3].Value);
-                        if (materialsNum <= 0)
+                        decimal materialPercent = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells[3].Value);
+                        if (materialPercent <= 0)
                         {
-                            MsgUtils.ShowErrorMsg("原料数量不能为空！");
+                            MsgUtils.ShowErrorMsg("请输入合适的原料百分比！");
                             this.dataGridView1.Focus();
                             return false;
                         }
-
-                        int materialsUnit = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[4].Value);
-                        if (materialsUnit <= 0)
+                        else
                         {
-                            MsgUtils.ShowErrorMsg("原料单位不能为空！");
-                            this.dataGridView1.Focus();
-                            return false;
+                            allMaterialPercent = allMaterialPercent + materialPercent;
                         }
-
+                        
                         listMaterialsId.Add(materialsId);
                     }
+                }
 
-                    if (WinCommon.IsFinance(LoginUserInfo.LoginUser.loginRole.roleType)) 
+                if (allMaterialPercent != 100)
+                {
+                    MsgUtils.ShowErrorMsg("原料百分比总和必须是100%！");
+                    this.dataGridView1.Focus();
+                    return false;
+                }
+
+                if (WinCommon.IsFinance(LoginUserInfo.LoginUser.loginRole.roleType)) 
+                {
+                    if (StringUtils.IsBlank(this.txt_minPrice.Text))
                     {
-                        if (StringUtils.IsBlank(this.txt_minPrice.Text))
-                        {
-                            MsgUtils.ShowErrorMsg("请输入最低价格！");
-                            this.txt_minPrice.Focus();
-                            return false;
-                        }
-                        int minPrice = 0;
-                        if (!int.TryParse(this.txt_minPrice.Text.Trim(), out minPrice))
-                        {
-                            MsgUtils.ShowErrorMsg("最低价格仅限数字！");
-                            this.txt_minPrice.Focus();
-                            return false;
-                        }
-
-                        if (StringUtils.IsBlank(this.txt_advisePrice.Text))
-                        {
-                            MsgUtils.ShowErrorMsg("请输入最低价格！");
-                            this.txt_advisePrice.Focus();
-                            return false;
-                        }
-                        int advisePrice = 0;
-                        if (!int.TryParse(this.txt_advisePrice.Text.Trim(), out advisePrice))
-                        {
-                            MsgUtils.ShowErrorMsg("建议销售价格仅限数字！");
-                            this.txt_advisePrice.Focus();
-                            return false;
-                        }
-
-                        if (this.cmb_priceUnit.SelectedIndex < 0)
-                        {
-                            MsgUtils.ShowErrorMsg("请选择重量价格单位！");
-                            this.cmb_weightUnit.Focus();
-                            return false;
-                        }
+                        MsgUtils.ShowErrorMsg("请输入最低价格！");
+                        this.txt_minPrice.Focus();
+                        return false;
+                    }
+                    int minPrice = 0;
+                    if (!int.TryParse(this.txt_minPrice.Text.Trim(), out minPrice))
+                    {
+                        MsgUtils.ShowErrorMsg("最低价格仅限数字！");
+                        this.txt_minPrice.Focus();
+                        return false;
                     }
 
+                    if (StringUtils.IsBlank(this.txt_advisePrice.Text))
+                    {
+                        MsgUtils.ShowErrorMsg("请输入最低价格！");
+                        this.txt_advisePrice.Focus();
+                        return false;
+                    }
+                    int advisePrice = 0;
+                    if (!int.TryParse(this.txt_advisePrice.Text.Trim(), out advisePrice))
+                    {
+                        MsgUtils.ShowErrorMsg("建议销售价格仅限数字！");
+                        this.txt_advisePrice.Focus();
+                        return false;
+                    }
+
+                    if (this.cmb_priceUnit.SelectedIndex < 0)
+                    {
+                        MsgUtils.ShowErrorMsg("请选择重量价格单位！");
+                        this.cmb_weightUnit.Focus();
+                        return false;
+                    }
                 }
             }
             return true;
@@ -587,27 +590,16 @@ namespace PMS.Frm.Product
             column.ValueMember = "materialsId";
 
             columns = new DataGridViewTextBoxColumn();
-            columns.Name = "materialsNum";
-            columns.HeaderText = "数量";
-            columns.DataPropertyName = "materialsNum";
+            columns.Name = "percent";
+            columns.HeaderText = "百分比";
+            columns.DataPropertyName = "percent";
             columns.Width = 100;
             this.dataGridView1.Columns.Add(columns);
 
-            column = new DataGridViewComboBoxColumn();
-            column.Name = "materialsUnit";
-            column.DataPropertyName = "materialsUnit";
-            column.HeaderText = "单位";
-            column.Width = 100;
-            this.dataGridView1.Columns.Add(column);
-            column.DataSource = m_bllCode.GetCodeList(3);      
-            column.DisplayMember = "value1";
-            column.ValueMember = "subCode";
         }
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-           // return;
-
             if( e.RowIndex < 0 || e.ColumnIndex != 1)
             {
                 return;
@@ -649,14 +641,6 @@ namespace PMS.Frm.Product
                 }
             }
 
-            if (e.ColumnIndex == 3)
-            {
-                DataGridViewComboBoxCell column = (DataGridViewComboBoxCell)this.dataGridView1.Rows[e.RowIndex].Cells[4];
-
-                column.DataSource = m_bllCode.GetCodeList(3);
-                column.DisplayMember = "value1";
-                column.ValueMember = "subCode";
-            }
         }
 
         private void dataGridView1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -667,6 +651,11 @@ namespace PMS.Frm.Product
                 tx.KeyPress -= new KeyPressEventHandler(tx_keyPress);
                 tx.KeyPress += new KeyPressEventHandler(tx_keyPress);
             }
+            if (this.dataGridView1.CurrentCell.ColumnIndex == 1)
+            {
+                TextBox tx = (TextBox)e.Control;
+                tx.KeyPress -= new KeyPressEventHandler(tx_keyPress);
+            }
         }
 
         private void tx_keyPress(object sender, KeyPressEventArgs e)
@@ -674,5 +663,6 @@ namespace PMS.Frm.Product
             //仅限数字
             e.Handled = WinCommon.IsOnlyDouble(e.KeyChar);
         }
+
     }
 }

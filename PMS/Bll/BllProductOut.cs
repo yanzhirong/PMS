@@ -81,8 +81,7 @@ namespace Bll
         public Boolean AddProductOut(ModelProductOutput _model)
         {
             int rtn = 0;
-            int seq = Bll.BllSeq.GetSeq("productOut");
-            string outputCode = ConvertUtils.ConvertToDate(DateTime.Now, "yyyyMMddHHmmss") + "_" + seq;
+            string outputCode = BllSeq.GetCode("productOutCode");
             _model.outputCode = outputCode;
             _model.outputStatus = 0;
             rtn = m_dalProductOut.AddProductOut(_model);
@@ -132,9 +131,9 @@ namespace Bll
 
         }
 
-        public Boolean doOutPut(string _outputCode, int _outputDetailId, int _factoryId, int _productId, decimal _outputAllNum, List<Dictionary<string, object>> listOutput, string userName)
+        public Boolean doOutPut(string _outputCode, int _outputDetailId, int _factoryId, int _productId, decimal _outputNum, int _outputUnit, List<Dictionary<string, object>> listOutput, string userName)
         {
-            int rtn = m_dalProductOut.doOutPut(_outputCode, _outputDetailId, _factoryId, _productId, _outputAllNum,listOutput, userName);
+            int rtn = m_dalProductOut.doOutPut(_outputCode, _outputDetailId, _factoryId, _productId, _outputNum, _outputUnit, listOutput, userName);
 
             return rtn > 0 ? true : false;
         }
