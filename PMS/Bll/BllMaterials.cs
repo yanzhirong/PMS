@@ -28,6 +28,26 @@ namespace Bll
             return dt;
         }
 
+        public List<ModelItem> GetMaterialsItem(string _searchKey)
+        {
+            List<ModelItem> listItem = new List<ModelItem>();
+
+            DataTable dt = m_dalMaterials.GetMaterialsBySearchKey(_searchKey);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ModelItem modelItem = new ModelItem();
+                    modelItem.itemKey = ConvertUtils.ConvertToInt(dr["materialsId"]);
+                    modelItem.itemValue = ConvertUtils.ConvertToString(dr["materialsName"]);
+
+                    listItem.Add(modelItem);
+                }
+            }
+            return listItem;
+        }
+
         public ModelMaterials GetMaterialsById(int _materialsId)
         {
             DataTable dt = m_dalMaterials.GetMaterialsById(_materialsId);

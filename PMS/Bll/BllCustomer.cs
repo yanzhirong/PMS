@@ -43,6 +43,17 @@ namespace Bll
             return null;
         }
 
+        public List<ModelItem> GetSupplier()
+        {
+            DataTable dt = m_dalCustomer.GetSupplier();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                return ModelUtils<ModelItem>.FillModel(dt);
+            }
+            return null;
+        }
+
         public ModelCustomer GetCustomerByCode(string _code)
         {
             DataTable user = m_dalCustomer.GetCustomerByCode(_code);
@@ -74,6 +85,33 @@ namespace Bll
         {
             int rtn = 0;
             rtn = m_dalCustomer.DeleteCustomer(_modelCustomer);
+
+            return rtn == 0 ? false : true;
+        }
+        
+        public ModelCustomerPaid GetCustomerPaidById(int _id)
+        {
+            DataTable user = m_dalCustomer.GetCustomerPaidById(_id);
+
+            if (user != null && user.Rows.Count > 0)
+            {
+                return ModelUtils<ModelCustomerPaid>.FillModel(user.Rows[0]); ;
+            }
+            return new ModelCustomerPaid();
+        }
+
+        public Boolean AddUpdateCustomerPaid(ModelCustomerPaid _model)
+        {
+            int rtn = 0;
+            rtn = m_dalCustomer.AddUpdateCustomerPaid(_model);
+
+            return rtn == 0 ? false : true;
+        }
+
+        public Boolean DeleteCustomerPaid(ModelCustomerPaid _model)
+        {
+            int rtn = 0;
+            rtn = m_dalCustomer.DeleteCustomerPaid(_model);
 
             return rtn == 0 ? false : true;
         }

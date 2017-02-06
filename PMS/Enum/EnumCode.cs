@@ -18,5 +18,7 @@ namespace Enum
         OutputType = 8,
         ProductInputType = 9,
         MaterialsInputType = 10,
+        ProduceStatus = 11,
+        PurchaseStatus = 12,
     }
 }

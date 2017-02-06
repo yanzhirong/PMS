@@ -374,7 +374,7 @@ namespace PMS.Frm.Store
                     return;
                 }
             }
-            ModelProductOutput modelProductOutput = m_bllProductOut.GetProductOutrByOutputCode(m_outputCode);
+            ModelProductOutput modelProductOutput = m_bllProductOut.GetProductOutByOutputCode(m_outputCode);
             List<ModelProduceApply> listProduceApply = new List<ModelProduceApply>();
             ModelProduceApply newProduceApply = new ModelProduceApply();
             newProduceApply.factoryId = m_factoryId;

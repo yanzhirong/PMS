@@ -71,6 +71,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label22 = new System.Windows.Forms.Label();
+            this.btn_close = new System.Windows.Forms.Button();
             this.grb_materials.SuspendLayout();
             this.grb_price.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -519,12 +520,23 @@
             this.label22.TabIndex = 107;
             this.label22.Text = "商品构成";
             // 
+            // btn_close
+            // 
+            this.btn_close.Location = new System.Drawing.Point(550, 638);
+            this.btn_close.Name = "btn_close";
+            this.btn_close.Size = new System.Drawing.Size(75, 23);
+            this.btn_close.TabIndex = 108;
+            this.btn_close.Text = "关闭";
+            this.btn_close.UseVisualStyleBackColor = true;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
+            // 
             // FrmProductDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(667, 670);
+            this.Controls.Add(this.btn_close);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.grb_price);
@@ -596,5 +608,6 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox txt_advisePrice;
         private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Button btn_close;
     }
 }

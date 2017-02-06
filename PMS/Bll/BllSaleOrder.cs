@@ -14,7 +14,7 @@ namespace Bll
     {
         private DalSaleOrder m_dalSaleOrder = new DalSaleOrder();
         private BllCode m_bllCode = new BllCode();
-        private BllStroe m_bllStore = new BllStroe();
+        private BllStore m_bllStore = new BllStore();
         private BllProduct m_bllProduct = new BllProduct();
         private BllProductOut m_bllProductOut = new BllProductOut();
         private BllProduce m_bllProduce = new BllProduce();
@@ -76,7 +76,7 @@ namespace Bll
         public Boolean AddSaleOrder(ModelSaleOrder _model)
         {
             int rtn = 0;
-            string orderCode = BllSeq.GetCode("saleOrderCode");
+            string orderCode = BllSeq.GetCode("saleCode");
             _model.orderCode = orderCode;
             _model.orderStatus = (int)Enum.EnumSaleOrderStatus.WaitConfirm;
             rtn = m_dalSaleOrder.AddSaleOrder(_model);
@@ -196,7 +196,7 @@ namespace Bll
                     modelProduceApply.num = ConvertUtils.ConvertToDecimal((saleNum - storeNum) / m_bllCode.GetWeightUnit(saleProduct.unit));
                     modelProduceApply.unit = saleProduct.unit;
                     modelProduceApply.saleOrderCode =_model.orderCode;
-                    modelProduceApply.outputCode = m_bllProductOut.GetProductOutrByOrderCode(_model.orderCode).outputCode;
+                    modelProduceApply.outputCode = m_bllProductOut.GetProductOutByOrderCode(_model.orderCode).outputCode;
                     modelProduceApply.deliveryDate = _model.deliveryDate;
                     modelProduceApply.applyType = 0;
                     modelProduceApply.applyBy = _model.modifyBy;

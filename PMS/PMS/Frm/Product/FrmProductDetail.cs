@@ -15,7 +15,7 @@ namespace PMS.Frm.Product
 {
     public partial class FrmProductDetail : Form
     {
-        //处理模式（0：新建；1：修改；2：删除）
+        //处理模式（0：新建；1：修改；2：删除；3：查看）
         private int m_mode;
         //原来ID
         private int m_productId;
@@ -68,9 +68,13 @@ namespace PMS.Frm.Product
             {
                 this.lbl_title.Text = "商品信息设定-修改";
             }
-            else
+            else if (m_mode == 2)
             {
                 this.lbl_title.Text = "商品信息设定-删除";
+            }
+            else
+            {
+                this.lbl_title.Text = "商品信息设定-查看";
             }
 
             //下拉框
@@ -161,8 +165,8 @@ namespace PMS.Frm.Product
 
             }
 
-            //删除时，输入项不能修改
-            if (m_mode == 2)
+            //查看/删除时，输入项不能修改
+            if (m_mode == 2 || m_mode == 3)
             {
                 grb_materials.Enabled = false;
                 grb_price.Enabled = false;
@@ -173,6 +177,21 @@ namespace PMS.Frm.Product
                 grb_materials.Enabled = true;
                 grb_price.Enabled = true;
                 dataGridView1.Enabled = true;
+            }
+
+            if (m_mode == 3)
+            {
+                this.menuStrip1.Visible = false;
+                this.btn_submit.Visible = false;
+                this.btn_cancel.Visible = false;
+                this.btn_close.Visible = true;
+            }
+            else
+            {
+                this.menuStrip1.Visible = true;
+                this.btn_submit.Visible = true;
+                this.btn_cancel.Visible = true;
+                this.btn_close.Visible = false;
             }
 
             //价格相关
@@ -662,6 +681,11 @@ namespace PMS.Frm.Product
         {
             //仅限数字
             e.Handled = WinCommon.IsOnlyDouble(e.KeyChar);
+        }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
 
     }

@@ -103,7 +103,7 @@ namespace Dal
             return Dal.DBHelper.Select(sbSql.ToString());
         }
 
-        public DataTable GetProductOutrByOutputCode(string _outputCode)
+        public DataTable GetProductOutByOutputCode(string _outputCode)
         {
             sbSql.Clear();
             sbSql.Append("select a.* ");
@@ -114,7 +114,7 @@ namespace Dal
             return Dal.DBHelper.Select(sbSql.ToString());
         }
 
-        public DataTable GetProductOutrByOrderCode(string _orderCode)
+        public DataTable GetProductOutByOrderCode(string _orderCode)
         {
             sbSql.Clear();
             sbSql.Append("select a.* ");

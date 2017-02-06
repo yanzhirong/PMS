@@ -35,8 +35,8 @@ namespace PMS.Frm.Produce
 
             this.cmb_applyStatus.SelectedIndex = 0;
 
-            this.dtp_begin.Value = DateTime.Now.AddMonths(-1);
-            this.dtp_end.Value = DateTime.Now;
+            this.dtp_begin.Value = DateTime.Now;
+            this.dtp_end.Value = DateTime.Now.AddMonths(1);
 
             this.txt_product.Focus();
         }
@@ -83,7 +83,7 @@ namespace PMS.Frm.Produce
             }
             else
             {
-                this.dataGridView1.Columns["selected"].Visible = true;
+                this.dataGridView1.Columns["selected"].Visible = false;
             }
 
             this.dataGridView1.DataSource = dt;
@@ -106,6 +106,8 @@ namespace PMS.Frm.Produce
                     dc.Add("num", ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells["num"].Value));
                     dc.Add("unit", ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["unit"].Value));
                     dc.Add("deliveryDate", ConvertUtils.ConvertToString(this.dataGridView1.Rows[i].Cells["deliveryDate"].Value));
+                    dc.Add("applyBy", ConvertUtils.ConvertToString(this.dataGridView1.Rows[i].Cells["applyMember"].Value));
+                    dc.Add("applyDate", ConvertUtils.ConvertToString(this.dataGridView1.Rows[i].Cells["applyDate"].Value));
 
                     listApply.Add(dc);
                 }
@@ -159,6 +161,73 @@ namespace PMS.Frm.Produce
             {
                 MsgUtils.ShowErrorMsg("确认生产失败！");
                 return;
+            }
+        }
+
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            List<ModelProduceApply> listCancelApply = new List<ModelProduceApply>();
+
+            for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+            {
+                //选择的行
+                if (this.dataGridView1.Rows[i].Cells["selected"].EditedFormattedValue.ToString() == "True")
+                {
+                    ModelProduceApply modelProduceApply = new ModelProduceApply();
+                    modelProduceApply.id = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["id"].Value);
+                    modelProduceApply.modifyBy = LoginUserInfo.LoginUser.loginUser.userName;
+                    modelProduceApply.modifyTime = DateTime.Now;
+                    listCancelApply.Add(modelProduceApply);
+                }
+            }
+
+            if (listCancelApply.Count <= 0)
+            {
+                MsgUtils.ShowErrorMsg("请至少选择一行！");
+                return;
+            }
+
+            if (MsgUtils.ShowQustMsg("是否确认取消生产申请？", MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                bool rtn = m_bllProduce.CancelProduceApply(listCancelApply);
+                if (rtn == true)
+                {
+                    MsgUtils.ShowInfoMsg("取消生产申请已成功！");
+                    doSelect();
+                }
+                else
+                {
+                    MsgUtils.ShowErrorMsg("取消生产申请失败！");
+                    return;
+                }
+
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+            {
+                return;
+            }
+
+            //查看商品
+            if (this.dataGridView1.Columns[e.ColumnIndex].Name == "productName")
+            {
+                int productId = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[e.RowIndex].Cells["productId"].Value);
+
+                Form form = new Product.FrmProductDetail(3, productId);
+                form.ShowDialog();
+
+            }
+            //查看库存
+            if (this.dataGridView1.Columns[e.ColumnIndex].Name == "queryStore")
+            {
+                int factoryId = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[e.RowIndex].Cells["factoryId"].Value);
+                string productName = ConvertUtils.ConvertToString(this.dataGridView1.Rows[e.RowIndex].Cells["productName"].Value);
+
+                Form form = new Store.FrmProductQueryStore(productName, factoryId);
+                form.ShowDialog();
             }
         }
     }

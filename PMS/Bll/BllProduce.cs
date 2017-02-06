@@ -15,7 +15,7 @@ namespace Bll
         private BllCode m_bllCode = new BllCode();
         private BllProduct m_bllProduct = new BllProduct();
         private BllMaterials m_bllMaterials = new BllMaterials();
-        private BllStroe m_bllStore = new BllStroe();
+        private BllStore m_bllStore = new BllStore();
         private DalProduce m_dalProduce = new DalProduce();
 
         public Boolean AddProduceApply(List<ModelProduceApply> _listProduceApply)
@@ -60,6 +60,8 @@ namespace Bll
                 decimal applyNum = ConvertUtils.ConvertToDecimal(apply["num"]);
                 int applyUnit = ConvertUtils.ConvertToInt(apply["unit"]);
                 DateTime deliveryDate = ConvertUtils.ConvertToDate(apply["deliveryDate"], "yyyy-MM-dd");
+                string applyBy = ConvertUtils.ConvertToString(apply["applyBy"]);
+                DateTime applyDate = ConvertUtils.ConvertToDate(apply["applyDate"], "yyyy-MM-dd");
 
                 //商品信息（key：商品ID；value：生产信息【生产单号，生产数量，数量单位】)
                 Dictionary<int, object> dcProduct;
@@ -98,7 +100,9 @@ namespace Bll
                         modelProduce.produceCode = produceCode;
                         modelProduce.num = applyNum;
                         modelProduce.unit = applyUnit;
-                        modelProduce.status = 0;
+                        modelProduce.status = (int)Enum.EnumProduceOrderStatus.Producing;
+                        modelProduce.applyBy = applyBy;
+                        modelProduce.applyDate = applyDate;
                         modelProduce.deliveryDate = deliveryDate;
                         modelProduce.isDelete = 0;
                         modelProduce.createBy = _loginName;
@@ -121,6 +125,8 @@ namespace Bll
                     modelProduce.num = applyNum;
                     modelProduce.unit = applyUnit;
                     modelProduce.status = (int)Enum.EnumProduceOrderStatus.Producing;
+                    modelProduce.applyBy = applyBy;
+                    modelProduce.applyDate = applyDate;
                     modelProduce.deliveryDate = deliveryDate;
                     modelProduce.isDelete = 0;
                     modelProduce.createBy = _loginName;
@@ -153,7 +159,7 @@ namespace Bll
                     modelMaterialsOutput.outputStatus = 0;
                     modelMaterialsOutput.outputType = 0;
                     modelMaterialsOutput.outputDate = DateTime.Now;
-                    modelMaterialsOutput.applyBy = _loginName;
+                    modelMaterialsOutput.applyBy = modelProduce.applyBy;
                     modelMaterialsOutput.remark = "";
                     modelMaterialsOutput.isDelete = 0;
                     modelMaterialsOutput.createBy = _loginName;
@@ -272,6 +278,13 @@ namespace Bll
                 }
             }
             return listPurchaseApply;
+        }
+
+        public Boolean CancelProduceApply(List<ModelProduceApply> _listCancelApply)
+        {
+            int rtn = m_dalProduce.CancelProduceApply(_listCancelApply);
+
+            return rtn > 0 ? true : false;
         }
 
     }

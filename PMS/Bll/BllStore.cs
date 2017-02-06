@@ -10,7 +10,7 @@ using Model;
 
 namespace Bll
 {
-    public class BllStroe : Bll.BllBase
+    public class BllStore : Bll.BllBase
     {
         private BllCode m_bllCode = new BllCode();
         private DalStore m_dalStore = new DalStore();
@@ -45,6 +45,16 @@ namespace Bll
                 return storeNum;
             }
             return 0;
+        }
+
+        public DataTable GetProductStore(string _productName, int _factoryId)
+        {
+            return m_dalStore.GetProductStore(_productName, _factoryId);
+        }
+        
+        public DataTable GetMaterialsStore(string _materialsName, int _factoryId)
+        {
+            return m_dalStore.GetMaterialsStore(_materialsName, _factoryId);
         }
     }
 }

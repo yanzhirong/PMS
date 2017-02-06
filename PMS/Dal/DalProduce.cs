@@ -96,6 +96,8 @@ namespace Dal
             sbSql.Append("       case a.status when 0 then '未确认' else '已确认' end applyStatus, ");
             sbSql.Append("       case a.applyType when 0 then '销售订单申请' else '特殊申请' end applyType, ");
             sbSql.Append("       a.applyBy applyMember, ");
+            sbSql.Append("       date_format(a.applyDate, '%Y-%m-%d') applyDate, ");
+            sbSql.Append("       '查看' queryStore, ");
             sbSql.Append("       a.num, ");
             sbSql.Append("       a.unit ");
             sbSql.Append("  from p_produce_apply a ");
@@ -157,6 +159,8 @@ namespace Dal
                     sbSql.Append("       unit, ");
                     sbSql.Append("       deliveryDate, ");
                     sbSql.Append("       status, ");
+                    sbSql.Append("       applyBy, ");
+                    sbSql.Append("       applyDate, ");
                     sbSql.Append("       remark, ");
                     sbSql.Append("       isDelete, ");
                     sbSql.Append("       createBy, ");
@@ -169,6 +173,8 @@ namespace Dal
                     sbSql.Append("       " + modelProduce.unit + ", ");
                     sbSql.Append("      '" + modelProduce.deliveryDate + "', ");
                     sbSql.Append("       " + modelProduce.status + ", ");
+                    sbSql.Append("      '" + modelProduce.applyBy + "', ");
+                    sbSql.Append("      '" + modelProduce.applyDate + "', ");
                     sbSql.Append("      '" + modelProduce.remark + "', ");
                     sbSql.Append("       " + modelProduce.isDelete + ", ");
                     sbSql.Append("      '" + modelProduce.createBy + "', ");
@@ -263,5 +269,23 @@ namespace Dal
 
         }
 
+        public int CancelProduceApply(List<ModelProduceApply> _listCancelApply)
+        {
+            List<string> listSql = new List<string>();
+
+            foreach (ModelProduceApply modelProduceApply in _listCancelApply)
+            {
+                sbSql.Clear();
+                sbSql.Append("update p_produce_apply ");
+                sbSql.Append("set status = 2,");
+                sbSql.Append("    modifyBy = '" + modelProduceApply.modifyBy + "',");
+                sbSql.Append("    modifyTime = '" + modelProduceApply.modifyTime + "' ");
+                sbSql.Append("where id = " + modelProduceApply.id + " ");
+                sbSql.Append("  and isDelete = 0 ");
+                listSql.Add(sbSql.ToString());
+            }
+
+            return Dal.DBHelper.ExcuteTransaction(listSql);
+        }
     }
 }

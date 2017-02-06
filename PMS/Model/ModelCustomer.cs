@@ -29,6 +29,5 @@ namespace Model
         public int type { set; get; }
         public int salerId { set; get; }
         public string remark { set; get; }
-        public decimal creditLimit { set; get; }
     }
 }

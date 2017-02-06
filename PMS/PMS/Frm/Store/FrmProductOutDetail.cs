@@ -363,7 +363,7 @@ namespace PMS.Frm.Store
 
                 //处理模式变为修改
                 m_mode = 1;
-                ModelProductOutput newProductOutput = m_bllProductOut.GetProductOutrByOutputCode(modelProductOutput.outputCode);
+                ModelProductOutput newProductOutput = m_bllProductOut.GetProductOutByOutputCode(modelProductOutput.outputCode);
                 m_productOutId = newProductOutput.id;
                 this.txt_outputCode.Text = newProductOutput.outputCode;
 

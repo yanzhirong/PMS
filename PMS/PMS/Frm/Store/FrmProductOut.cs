@@ -38,8 +38,8 @@ namespace PMS.Frm.Store
             listItem = m_bllFactory.GetFactoryItem();
             WinCommon.BindComboBox(ref this.cmb_orderStatus, listItem, true);
             
-            this.dtp_begin.Value = DateTime.Now.AddMonths(-1);
-            this.dtp_end.Value = DateTime.Now;
+            this.dtp_begin.Value = DateTime.Now;
+            this.dtp_end.Value = DateTime.Now.AddMonths(1);
 
             this.txt_productName.Focus();
         }

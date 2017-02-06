@@ -42,7 +42,7 @@ namespace PMS.Frm.Sale
 
         private void btn_submit_Click(object sender, EventArgs e)
         {
-            doSubmit();
+            doSubmit(true);
         }
         private void btn_cancel_Click(object sender, EventArgs e)
         {
@@ -184,8 +184,6 @@ namespace PMS.Frm.Sale
                 this.txt_mobile.Text = model.mobile;
                 //备注
                 this.txt_remark.Text = model.remark;
-                //信用额度
-                this.txt_creditLimit.Text = model.creditLimit.ToString();
             }
 
             //删除时，输入项不能修改
@@ -206,7 +204,7 @@ namespace PMS.Frm.Sale
         /// 提交
         /// </summary>
         /// <returns></returns>
-        private void doSubmit()
+        private void doSubmit(bool _showMsg)
         {
             Boolean rtn = false;
 
@@ -221,7 +219,10 @@ namespace PMS.Frm.Sale
             modelCustomer.code = this.txt_code.Text.Trim();
             modelCustomer.name = this.txt_name.Text.Trim();
             modelCustomer.type = this.cmb_type.SelectedIndex;
-            modelCustomer.salerId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_saler.SelectedItem).itemKey);
+            if (this.cmb_saler.SelectedIndex > -1)
+            {
+                modelCustomer.salerId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_saler.SelectedItem).itemKey);
+            }
 
             modelCustomer.province = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_province.SelectedItem).itemKey);
             modelCustomer.city = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_city.SelectedItem).itemKey);
@@ -241,7 +242,6 @@ namespace PMS.Frm.Sale
             modelCustomer.mobile = this.txt_mobile.Text.Trim();
 
             modelCustomer.remark = this.txt_remark.Text.Trim();
-            modelCustomer.creditLimit = ConvertUtils.ConvertToDecimal(this.txt_creditLimit.Text.Trim());
 
             modelCustomer.isDelete = 0;
             modelCustomer.createBy = LoginUserInfo.LoginUser.loginUser.userName;
@@ -256,12 +256,18 @@ namespace PMS.Frm.Sale
 
                 if (rtn == false)
                 {
-                    MsgUtils.ShowErrorMsg("新增客户失败！");
+                    if (_showMsg == true)
+                    {
+                        MsgUtils.ShowErrorMsg("新增客户失败！");
+                    }
                     return ;
                 }
                 else
                 {
-                    MsgUtils.ShowInfoMsg("新增客户成功！");
+                    if (_showMsg == true)
+                    {
+                        MsgUtils.ShowInfoMsg("新增客户成功！");
+                    }
                 }
 
                 //处理模式变为修改
@@ -280,12 +286,18 @@ namespace PMS.Frm.Sale
 
                 if (rtn == false)
                 {
-                    MsgUtils.ShowErrorMsg("修改客户失败！");
+                    if (_showMsg == true)
+                    {
+                        MsgUtils.ShowErrorMsg("修改客户失败！");
+                    }
                     return;
                 }
                 else
                 {
-                    MsgUtils.ShowInfoMsg("修改客户成功！");
+                    if (_showMsg == true)
+                    {
+                        MsgUtils.ShowInfoMsg("修改客户成功！");
+                    }
                     init();
                     return;
                 }
@@ -298,12 +310,18 @@ namespace PMS.Frm.Sale
 
                 if (rtn == false)
                 {
-                    MsgUtils.ShowErrorMsg("删除客户失败！");
+                    if (_showMsg == true)
+                    {
+                        MsgUtils.ShowErrorMsg("删除客户失败！");
+                    }
                     return;
                 }
                 else
                 {
-                    MsgUtils.ShowInfoMsg("删除客户成功！");
+                    if (_showMsg == true)
+                    {
+                        MsgUtils.ShowInfoMsg("删除客户成功！");
+                    }
 
                     //返回用户列表
                     Form form = new FrmCustomerManage();
@@ -453,6 +471,15 @@ namespace PMS.Frm.Sale
                 this.lbl_saler.Visible = true;
                 this.cmb_saler.Visible = true;
             }
+        }
+
+        private void btn_paid_Click(object sender, EventArgs e)
+        {
+            // 保存数据
+            doSubmit(false);
+
+            Form form = new FrmCustomerPaid(m_customerId, this.txt_name.Text.Trim());
+            form.ShowDialog();
         }
 
     }

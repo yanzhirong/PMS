@@ -49,16 +49,19 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.lbl_tile = new System.Windows.Forms.Label();
             this.btn_submit = new System.Windows.Forms.Button();
+            this.btn_cancel = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.selected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.factoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productName = new System.Windows.Forms.DataGridViewLinkColumn();
             this.numDisplay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.applyStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.applyType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.applyMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.applyDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.queryStore = new System.Windows.Forms.DataGridViewButtonColumn();
             this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.factoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -125,7 +128,8 @@
             this.cmb_applyStatus.FormattingEnabled = true;
             this.cmb_applyStatus.Items.AddRange(new object[] {
             "未确认",
-            "已确认"});
+            "已确认",
+            "已取消"});
             this.cmb_applyStatus.Location = new System.Drawing.Point(650, 14);
             this.cmb_applyStatus.Name = "cmb_applyStatus";
             this.cmb_applyStatus.Size = new System.Drawing.Size(118, 20);
@@ -233,6 +237,8 @@
             this.applyStatus,
             this.applyType,
             this.applyMember,
+            this.applyDate,
+            this.queryStore,
             this.num,
             this.unit,
             this.factoryId,
@@ -241,14 +247,15 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(924, 448);
+            this.dataGridView1.Size = new System.Drawing.Size(1124, 448);
             this.dataGridView1.TabIndex = 8;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // menuStrip1
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(989, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1180, 24);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -256,7 +263,7 @@
             // 
             this.lbl_tile.AutoSize = true;
             this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
-            this.lbl_tile.Location = new System.Drawing.Point(367, 44);
+            this.lbl_tile.Location = new System.Drawing.Point(492, 45);
             this.lbl_tile.Name = "lbl_tile";
             this.lbl_tile.Size = new System.Drawing.Size(174, 27);
             this.lbl_tile.TabIndex = 67;
@@ -272,6 +279,16 @@
             this.btn_submit.UseVisualStyleBackColor = true;
             this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
             // 
+            // btn_cancel
+            // 
+            this.btn_cancel.Location = new System.Drawing.Point(135, 673);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_cancel.TabIndex = 69;
+            this.btn_cancel.Text = "取消申请";
+            this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            // 
             // id
             // 
             this.id.DataPropertyName = "id";
@@ -281,6 +298,7 @@
             // 
             // selected
             // 
+            this.selected.DataPropertyName = "selected";
             this.selected.HeaderText = "选择";
             this.selected.Name = "selected";
             this.selected.Width = 40;
@@ -299,6 +317,8 @@
             this.productName.HeaderText = "商品";
             this.productName.Name = "productName";
             this.productName.ReadOnly = true;
+            this.productName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.productName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.productName.Width = 160;
             // 
             // numDisplay
@@ -348,6 +368,20 @@
             this.applyMember.Name = "applyMember";
             this.applyMember.Width = 80;
             // 
+            // applyDate
+            // 
+            this.applyDate.DataPropertyName = "applyDate";
+            this.applyDate.HeaderText = "申请日期";
+            this.applyDate.Name = "applyDate";
+            this.applyDate.ReadOnly = true;
+            // 
+            // queryStore
+            // 
+            this.queryStore.DataPropertyName = "queryStore";
+            this.queryStore.HeaderText = "库存";
+            this.queryStore.Name = "queryStore";
+            this.queryStore.ReadOnly = true;
+            // 
             // num
             // 
             this.num.DataPropertyName = "num";
@@ -380,7 +414,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(989, 718);
+            this.ClientSize = new System.Drawing.Size(1180, 718);
+            this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_submit);
             this.Controls.Add(this.lbl_tile);
             this.Controls.Add(this.dataGridView1);
@@ -425,16 +460,19 @@
         private System.Windows.Forms.ComboBox cmb_applyType;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_submit;
+        private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewCheckBoxColumn selected;
         private System.Windows.Forms.DataGridViewTextBoxColumn factoryName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productName;
+        private System.Windows.Forms.DataGridViewLinkColumn productName;
         private System.Windows.Forms.DataGridViewTextBoxColumn numDisplay;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn deliveryDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn applyStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn applyType;
         private System.Windows.Forms.DataGridViewTextBoxColumn applyMember;
+        private System.Windows.Forms.DataGridViewTextBoxColumn applyDate;
+        private System.Windows.Forms.DataGridViewButtonColumn queryStore;
         private System.Windows.Forms.DataGridViewTextBoxColumn num;
         private System.Windows.Forms.DataGridViewTextBoxColumn unit;
         private System.Windows.Forms.DataGridViewTextBoxColumn factoryId;

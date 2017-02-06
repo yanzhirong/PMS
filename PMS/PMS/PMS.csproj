@@ -86,6 +86,24 @@
     <Compile Include="Frm\Product\FrmProductDetail.Designer.cs">
       <DependentUpon>FrmProductDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm\Purchase\FrmPurchaseDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Purchase\FrmPurchaseDetail.Designer.cs">
+      <DependentUpon>FrmPurchaseDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Purchase\FrmPurchaseManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Purchase\FrmPurchaseManage.Designer.cs">
+      <DependentUpon>FrmPurchaseManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Purchase\FrmPurchasePlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Purchase\FrmPurchasePlan.Designer.cs">
+      <DependentUpon>FrmPurchasePlan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\Sale\FrmCustomerDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +128,12 @@
     <Compile Include="Frm\Sale\FrmOrderDetail.Designer.cs">
       <DependentUpon>FrmOrderDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm\Sale\FrmCustomerPaid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Sale\FrmCustomerPaid.Designer.cs">
+      <DependentUpon>FrmCustomerPaid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\Store\FrmProductOutDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +151,18 @@
     </Compile>
     <Compile Include="Frm\Store\FrmProductOutSelect.Designer.cs">
       <DependentUpon>FrmProductOutSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Store\FrmProductQueryStore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Store\FrmProductQueryStore.Designer.cs">
+      <DependentUpon>FrmProductQueryStore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Store\FrmMaterialsQueryStore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Store\FrmMaterialsQueryStore.Designer.cs">
+      <DependentUpon>FrmMaterialsQueryStore.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm\Sys\FrmSysUserDetail.cs">
       <SubType>Form</SubType>
@@ -204,6 +240,15 @@
     <EmbeddedResource Include="Frm\Product\FrmProductDetail.resx">
       <DependentUpon>FrmProductDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Purchase\FrmPurchaseDetail.resx">
+      <DependentUpon>FrmPurchaseDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Purchase\FrmPurchaseManage.resx">
+      <DependentUpon>FrmPurchaseManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Purchase\FrmPurchasePlan.resx">
+      <DependentUpon>FrmPurchasePlan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm\Sale\FrmCustomerDetail.resx">
       <DependentUpon>FrmCustomerDetail.cs</DependentUpon>
     </EmbeddedResource>
@@ -216,6 +261,9 @@
     <EmbeddedResource Include="Frm\Sale\FrmOrderDetail.resx">
       <DependentUpon>FrmOrderDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Sale\FrmCustomerPaid.resx">
+      <DependentUpon>FrmCustomerPaid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm\Store\FrmProductOutDetail.resx">
       <DependentUpon>FrmProductOutDetail.cs</DependentUpon>
     </EmbeddedResource>
@@ -224,6 +272,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\Store\FrmProductOutSelect.resx">
       <DependentUpon>FrmProductOutSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Store\FrmProductQueryStore.resx">
+      <DependentUpon>FrmProductQueryStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Store\FrmMaterialsQueryStore.resx">
+      <DependentUpon>FrmMaterialsQueryStore.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\Sys\FrmSysUser.resx">
       <DependentUpon>FrmSysUser.cs</DependentUpon>
@@ -302,7 +356,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Frm\Finance\" />
-    <Folder Include="Frm\Purchase\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

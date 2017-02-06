@@ -74,10 +74,25 @@ namespace Dal
             sbSql.Append("       name itemValue ");
             sbSql.Append("  from p_customer");
             sbSql.Append(" where isDelete = 0 ");
+            sbSql.Append("   and type = 1 ");
             if (_salerId > 0)
             {
                 sbSql.Append("   and salerId =  ").Append(_salerId).Append(" ");
             }
+            sbSql.Append(" order by id ");
+
+            return Dal.DBHelper.Select(sbSql.ToString());
+        }
+
+        public DataTable GetSupplier()
+        {
+            sbSql.Clear();
+            sbSql.Append("select ");
+            sbSql.Append("       id itemKey, ");
+            sbSql.Append("       name itemValue ");
+            sbSql.Append("  from p_customer");
+            sbSql.Append(" where isDelete = 0 ");
+            sbSql.Append("   and type = 2 ");
             sbSql.Append(" order by id ");
 
             return Dal.DBHelper.Select(sbSql.ToString());
@@ -120,7 +135,6 @@ namespace Dal
             sbSql.Append("       type, ");
             sbSql.Append("       salerId, ");
             sbSql.Append("       remark, ");
-            sbSql.Append("       creditLimit, ");
             sbSql.Append("       isDelete, ");
             sbSql.Append("       createBy, ");
             sbSql.Append("       createTime, ");
@@ -147,7 +161,6 @@ namespace Dal
             sbSql.Append("       " + _model.type + ", ");
             sbSql.Append("       " + _model.salerId + ", ");
             sbSql.Append("      '" + _model.remark + "', ");
-            sbSql.Append("       " + _model.creditLimit + ", ");
             sbSql.Append("       " + _model.isDelete + ", ");
             sbSql.Append("      '" + _model.createBy + "', ");
             sbSql.Append("      '" + _model.createTime + "', ");
@@ -181,7 +194,6 @@ namespace Dal
             sbSql.Append("    type = " + _model.type + ",");
             sbSql.Append("    salerId = " + _model.salerId + ",");
             sbSql.Append("    remark = '" + _model.remark + "',");
-            sbSql.Append("    creditLimit = " + _model.creditLimit + ",");
             sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
             sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
             sbSql.Append("where id = " + _model.id);
@@ -200,5 +212,81 @@ namespace Dal
 
             return Dal.DBHelper.Excute(sbSql.ToString());
         }
+
+        public DataTable GetCustomerPaidById(int _customerId)
+        {
+            sql = @"select * 
+                      from r_customer_paid
+                     where isDelete = 0
+                       and customerId = {0}";
+
+            sql = String.Format(sql, _customerId);
+
+            return Dal.DBHelper.Select(sql);
+        }
+
+        public int AddUpdateCustomerPaid(ModelCustomerPaid _model)
+        {
+            List<string> listSql = new List<string>();
+
+            sbSql.Clear();
+            sbSql.Append("update r_customer_paid ");
+            sbSql.Append("set isDelete = 1,");
+            sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
+            sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
+            sbSql.Append("where customerId = " + _model.customerId);
+            sbSql.Append("  and isDelete = 0");
+            listSql.Add(sbSql.ToString());
+
+            sbSql.Clear();
+            sbSql.Append("insert into ");
+            sbSql.Append("       r_customer_paid ( ");
+            sbSql.Append("       customerId, ");
+            sbSql.Append("       bank, ");
+            sbSql.Append("       subBank, ");
+            sbSql.Append("       bankAccount, ");
+            sbSql.Append("       bankAccountName, ");
+            sbSql.Append("       bankAccountMobile, ");
+            sbSql.Append("       alipayName, ");
+            sbSql.Append("       alipayAccount, ");
+            sbSql.Append("       alipayMobile, ");
+            sbSql.Append("       creditLimit, ");
+            sbSql.Append("       remark, ");
+            sbSql.Append("       isDelete, ");
+            sbSql.Append("       createBy, ");
+            sbSql.Append("       createTime ");
+            sbSql.Append("       ) value ( ");
+            sbSql.Append("       " + _model.customerId + ", ");
+            sbSql.Append("      '" + _model.bank + "', ");
+            sbSql.Append("      '" + _model.subBank + "', ");
+            sbSql.Append("      '" + _model.bankAccount + "', ");
+            sbSql.Append("      '" + _model.bankAccountName + "', ");
+            sbSql.Append("      '" + _model.bankAccountMobile + "', ");
+            sbSql.Append("      '" + _model.alipayName + "', ");
+            sbSql.Append("      '" + _model.alipayAccount + "', ");
+            sbSql.Append("      '" + _model.alipayMobile + "', ");
+            sbSql.Append("       " + _model.creditLimit + ", ");
+            sbSql.Append("      '" + _model.remark + "', ");
+            sbSql.Append("       " + _model.isDelete + ", ");
+            sbSql.Append("      '" + _model.createBy + "', ");
+            sbSql.Append("      '" + _model.createTime + "')");
+            listSql.Add(sbSql.ToString());
+
+            return Dal.DBHelper.ExcuteTransaction(listSql);
+        }
+
+        public int DeleteCustomerPaid(ModelCustomerPaid _model)
+        {
+            sbSql.Clear();
+            sbSql.Append("update r_customer_paid ");
+            sbSql.Append("set isDelete = 1,");
+            sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
+            sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
+            sbSql.Append("where customerId = " + _model.customerId);
+            sbSql.Append("  and isDelete = 0");
+
+            return Dal.DBHelper.Excute(sbSql.ToString());
+        }
+
     }
 }

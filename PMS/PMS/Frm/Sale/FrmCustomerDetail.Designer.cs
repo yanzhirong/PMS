@@ -37,8 +37,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.lbl_saler = new System.Windows.Forms.Label();
             this.cmb_saler = new System.Windows.Forms.ComboBox();
-            this.txt_creditLimit = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.cmb_type = new System.Windows.Forms.ComboBox();
             this.grb_manager = new System.Windows.Forms.GroupBox();
@@ -70,6 +68,7 @@
             this.txt_code = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.btn_paid = new System.Windows.Forms.Button();
             this.grb_customer.SuspendLayout();
             this.grb_manager.SuspendLayout();
             this.grb_address.SuspendLayout();
@@ -108,12 +107,11 @@
             // 
             // grb_customer
             // 
+            this.grb_customer.Controls.Add(this.btn_paid);
             this.grb_customer.Controls.Add(this.txt_remark);
             this.grb_customer.Controls.Add(this.label17);
             this.grb_customer.Controls.Add(this.lbl_saler);
             this.grb_customer.Controls.Add(this.cmb_saler);
-            this.grb_customer.Controls.Add(this.txt_creditLimit);
-            this.grb_customer.Controls.Add(this.label12);
             this.grb_customer.Controls.Add(this.label10);
             this.grb_customer.Controls.Add(this.cmb_type);
             this.grb_customer.Controls.Add(this.grb_manager);
@@ -174,25 +172,6 @@
             this.cmb_saler.Size = new System.Drawing.Size(222, 20);
             this.cmb_saler.TabIndex = 83;
             this.cmb_saler.Visible = false;
-            // 
-            // txt_creditLimit
-            // 
-            this.txt_creditLimit.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txt_creditLimit.Location = new System.Drawing.Point(69, 398);
-            this.txt_creditLimit.MaxLength = 20;
-            this.txt_creditLimit.Name = "txt_creditLimit";
-            this.txt_creditLimit.Size = new System.Drawing.Size(135, 21);
-            this.txt_creditLimit.TabIndex = 80;
-            this.txt_creditLimit.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_creditLimit_KeyPress);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 401);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(65, 12);
-            this.label12.TabIndex = 81;
-            this.label12.Text = "信用额度：";
             // 
             // label10
             // 
@@ -497,6 +476,16 @@
             this.menuStrip1.TabIndex = 105;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // btn_paid
+            // 
+            this.btn_paid.Location = new System.Drawing.Point(8, 397);
+            this.btn_paid.Name = "btn_paid";
+            this.btn_paid.Size = new System.Drawing.Size(96, 23);
+            this.btn_paid.TabIndex = 102;
+            this.btn_paid.Text = "设定支付信息";
+            this.btn_paid.UseVisualStyleBackColor = true;
+            this.btn_paid.Click += new System.EventHandler(this.btn_paid_Click);
+            // 
             // FrmCustomerDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -566,11 +555,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txt_telephone2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txt_creditLimit;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txt_remark;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label lbl_saler;
         private System.Windows.Forms.ComboBox cmb_saler;
+        private System.Windows.Forms.Button btn_paid;
     }
 }

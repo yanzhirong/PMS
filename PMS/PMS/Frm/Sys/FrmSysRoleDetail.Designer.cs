@@ -38,11 +38,12 @@
             this.chk_finance_sale = new System.Windows.Forms.CheckBox();
             this.chk_finance = new System.Windows.Forms.CheckBox();
             this.grb_purchase = new System.Windows.Forms.GroupBox();
-            this.chk_purchase_order = new System.Windows.Forms.CheckBox();
+            this.chk_purchase_manage = new System.Windows.Forms.CheckBox();
             this.chk_purchase_plan = new System.Windows.Forms.CheckBox();
             this.chk_purchase_provider = new System.Windows.Forms.CheckBox();
             this.chk_purchase = new System.Windows.Forms.CheckBox();
             this.grb_produce = new System.Windows.Forms.GroupBox();
+            this.chk_produce_manage = new System.Windows.Forms.CheckBox();
             this.chk_produce_plan = new System.Windows.Forms.CheckBox();
             this.chk_produce = new System.Windows.Forms.CheckBox();
             this.grb_factory = new System.Windows.Forms.GroupBox();
@@ -75,7 +76,6 @@
             this.lbl_tile = new System.Windows.Forms.Label();
             this.cmb_type = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.chk_produce_manage = new System.Windows.Forms.CheckBox();
             this.grb_role.SuspendLayout();
             this.grb_finance.SuspendLayout();
             this.grb_purchase.SuspendLayout();
@@ -184,7 +184,7 @@
             // 
             // grb_purchase
             // 
-            this.grb_purchase.Controls.Add(this.chk_purchase_order);
+            this.grb_purchase.Controls.Add(this.chk_purchase_manage);
             this.grb_purchase.Controls.Add(this.chk_purchase_plan);
             this.grb_purchase.Controls.Add(this.chk_purchase_provider);
             this.grb_purchase.Enabled = false;
@@ -194,20 +194,20 @@
             this.grb_purchase.TabIndex = 11;
             this.grb_purchase.TabStop = false;
             // 
-            // chk_purchase_order
+            // chk_purchase_manage
             // 
-            this.chk_purchase_order.AutoSize = true;
-            this.chk_purchase_order.Location = new System.Drawing.Point(250, 17);
-            this.chk_purchase_order.Name = "chk_purchase_order";
-            this.chk_purchase_order.Size = new System.Drawing.Size(72, 16);
-            this.chk_purchase_order.TabIndex = 25;
-            this.chk_purchase_order.Text = "采购订单";
-            this.chk_purchase_order.UseVisualStyleBackColor = true;
+            this.chk_purchase_manage.AutoSize = true;
+            this.chk_purchase_manage.Location = new System.Drawing.Point(137, 17);
+            this.chk_purchase_manage.Name = "chk_purchase_manage";
+            this.chk_purchase_manage.Size = new System.Drawing.Size(72, 16);
+            this.chk_purchase_manage.TabIndex = 25;
+            this.chk_purchase_manage.Text = "采购管理";
+            this.chk_purchase_manage.UseVisualStyleBackColor = true;
             // 
             // chk_purchase_plan
             // 
             this.chk_purchase_plan.AutoSize = true;
-            this.chk_purchase_plan.Location = new System.Drawing.Point(138, 17);
+            this.chk_purchase_plan.Location = new System.Drawing.Point(20, 17);
             this.chk_purchase_plan.Name = "chk_purchase_plan";
             this.chk_purchase_plan.Size = new System.Drawing.Size(72, 16);
             this.chk_purchase_plan.TabIndex = 24;
@@ -217,7 +217,7 @@
             // chk_purchase_provider
             // 
             this.chk_purchase_provider.AutoSize = true;
-            this.chk_purchase_provider.Location = new System.Drawing.Point(20, 17);
+            this.chk_purchase_provider.Location = new System.Drawing.Point(250, 17);
             this.chk_purchase_provider.Name = "chk_purchase_provider";
             this.chk_purchase_provider.Size = new System.Drawing.Size(84, 16);
             this.chk_purchase_provider.TabIndex = 22;
@@ -245,6 +245,16 @@
             this.grb_produce.Size = new System.Drawing.Size(800, 40);
             this.grb_produce.TabIndex = 9;
             this.grb_produce.TabStop = false;
+            // 
+            // chk_produce_manage
+            // 
+            this.chk_produce_manage.AutoSize = true;
+            this.chk_produce_manage.Location = new System.Drawing.Point(137, 15);
+            this.chk_produce_manage.Name = "chk_produce_manage";
+            this.chk_produce_manage.Size = new System.Drawing.Size(72, 16);
+            this.chk_produce_manage.TabIndex = 21;
+            this.chk_produce_manage.Text = "生产管理";
+            this.chk_produce_manage.UseVisualStyleBackColor = true;
             // 
             // chk_produce_plan
             // 
@@ -576,16 +586,6 @@
             this.label1.TabIndex = 72;
             this.label1.Text = "角色类型：";
             // 
-            // chk_produce_manage
-            // 
-            this.chk_produce_manage.AutoSize = true;
-            this.chk_produce_manage.Location = new System.Drawing.Point(137, 15);
-            this.chk_produce_manage.Name = "chk_produce_manage";
-            this.chk_produce_manage.Size = new System.Drawing.Size(72, 16);
-            this.chk_produce_manage.TabIndex = 21;
-            this.chk_produce_manage.Text = "生产管理";
-            this.chk_produce_manage.UseVisualStyleBackColor = true;
-            // 
             // FrmSysRoleDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -642,7 +642,7 @@
         private System.Windows.Forms.CheckBox chk_finance_sale;
         private System.Windows.Forms.CheckBox chk_finance;
         private System.Windows.Forms.GroupBox grb_purchase;
-        private System.Windows.Forms.CheckBox chk_purchase_order;
+        private System.Windows.Forms.CheckBox chk_purchase_manage;
         private System.Windows.Forms.CheckBox chk_purchase_plan;
         private System.Windows.Forms.CheckBox chk_purchase_provider;
         private System.Windows.Forms.GroupBox grb_produce;

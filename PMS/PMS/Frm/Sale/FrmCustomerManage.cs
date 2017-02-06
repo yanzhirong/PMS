@@ -29,14 +29,21 @@ namespace PMS.Frm.Sale
             LoginUserInfo.LoginUser.currentFrom = this;
             WinCommon.CreateMenu(ref this.menuStrip1);
 
-
             if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Saler)
             {
                 m_salerId = LoginUserInfo.LoginUser.loginUser.userId;
+                this.cmb_type.SelectedIndex = 1;
+                this.cmb_type.Enabled = false;
             }
             else
             {
                 m_salerId = 0;
+            }
+
+            if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Purchase)
+            {
+                this.cmb_type.SelectedIndex = 2;
+                this.cmb_type.Enabled = false;
             }
 
             this.txt_code.Focus();

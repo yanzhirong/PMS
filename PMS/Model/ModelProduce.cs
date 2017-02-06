@@ -16,6 +16,8 @@ namespace Model
         public int unit { set; get; }
         public DateTime deliveryDate { set; get; }
         public int status { set; get; }
+        public string applyBy { set; get; }
+        public DateTime applyDate { set; get; }
         public string remark { set; get; }
     }
 }

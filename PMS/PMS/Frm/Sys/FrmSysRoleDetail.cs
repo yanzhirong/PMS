@@ -194,13 +194,13 @@ namespace PMS.Frm.Sys
             {
                 this.chk_purchase_provider.Checked = false;
                 this.chk_purchase_plan.Checked = false;
-                this.chk_purchase_order.Checked = false;
+                this.chk_purchase_manage.Checked = false;
             }
             else
             {
                 this.chk_purchase_provider.Checked = true;
                 this.chk_purchase_plan.Checked = true;
-                this.chk_purchase_order.Checked = true;
+                this.chk_purchase_manage.Checked = true;
             }
         }
 

@@ -96,10 +96,12 @@ D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Enum.pdb
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Sale.FrmOrderManage.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Sale.FrmOrderDetail.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Store.FrmProductOut.resources
-D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Dal.dll
-D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Bll.pdb
-D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Model.pdb
-D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Dal.pdb
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Store.FrmProductOutDetail.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Store.FrmProductOutSelect.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Produce.FrmProducePlan.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Purchase.FrmPurchasePlan.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Store.FrmProductQueryStore.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Store.FrmMaterialsQueryStore.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Purchase.FrmPurchaseDetail.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Purchase.FrmPurchaseManage.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Sale.FrmCustomerPaid.resources

@@ -47,11 +47,11 @@ namespace Bll
 
         }
 
-        public ModelProductOutput GetProductOutrByOutputCode(string _outputCode)
+        public ModelProductOutput GetProductOutByOutputCode(string _outputCode)
         {
             ModelProductOutput model = new ModelProductOutput();
 
-            DataTable dt = m_dalProductOut.GetProductOutrByOutputCode(_outputCode);
+            DataTable dt = m_dalProductOut.GetProductOutByOutputCode(_outputCode);
 
             if (dt != null && dt.Rows.Count > 0)
             {
@@ -60,11 +60,11 @@ namespace Bll
             return model;
         }
 
-        public ModelProductOutput GetProductOutrByOrderCode(string _orderCode)
+        public ModelProductOutput GetProductOutByOrderCode(string _orderCode)
         {
             ModelProductOutput model = new ModelProductOutput();
 
-            DataTable dt = m_dalProductOut.GetProductOutrByOrderCode(_orderCode);
+            DataTable dt = m_dalProductOut.GetProductOutByOrderCode(_orderCode);
 
             if (dt != null && dt.Rows.Count > 0)
             {
