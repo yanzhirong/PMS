@@ -29,7 +29,7 @@ namespace PMS.Frm.Produce
             LoginUserInfo.LoginUser.currentFrom = this;
             WinCommon.CreateMenu(ref this.menuStrip1);
 
-            //仓库
+            //工厂
             List<ModelItem> listItem = m_bllFactory.GetFactoryItem();
             WinCommon.BindComboBox(ref this.cmb_factory, listItem, true);
 
@@ -45,8 +45,8 @@ namespace PMS.Frm.Produce
         {
             doSelect();
         }
-        
-        private void FrmOrderManage_FormClosed(object sender, FormClosedEventArgs e)
+
+        private void FrmProducePlan_FormClosed(object sender, FormClosedEventArgs e)
         {
             WinCommon.Exit();
         }
@@ -106,8 +106,9 @@ namespace PMS.Frm.Produce
                     dc.Add("num", ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells["num"].Value));
                     dc.Add("unit", ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["unit"].Value));
                     dc.Add("deliveryDate", ConvertUtils.ConvertToString(this.dataGridView1.Rows[i].Cells["deliveryDate"].Value));
-                    dc.Add("applyBy", ConvertUtils.ConvertToString(this.dataGridView1.Rows[i].Cells["applyMember"].Value));
-                    dc.Add("applyDate", ConvertUtils.ConvertToString(this.dataGridView1.Rows[i].Cells["applyDate"].Value));
+                    dc.Add("applyBy", LoginUserInfo.LoginUser.loginUser.userName);
+                    dc.Add("applyMemberId", LoginUserInfo.LoginUser.loginUser.userId);
+                    dc.Add("applyDate", DateTime.Now);
 
                     listApply.Add(dc);
                 }
@@ -126,7 +127,7 @@ namespace PMS.Frm.Produce
                 MsgUtils.ShowInfoMsg("确认生产已成功！");
                 doSelect();
 
-                //检查原料库存
+                //检查物料库存
                 List<ModelPurchaseApply> listPurchaseApply = m_bllProduce.CheckProduceMaterial((Dictionary<int, object>)rtnResult.resultObj, LoginUserInfo.LoginUser.loginUser.userName);
                 if (listPurchaseApply.Count > 0)
                 {
@@ -141,17 +142,17 @@ namespace PMS.Frm.Produce
                     //string materialName = sb.ToString();
                     //sb.ToString().Substring(0, sb.ToString().Length - 1);
 
-                    if (MsgUtils.ShowQustMsg("原料【" + sb.ToString().Substring(0, sb.ToString().Length - 1) + "】不足，是否生成购买订单？", MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                    if (MsgUtils.ShowQustMsg("物料【" + sb.ToString().Substring(0, sb.ToString().Length - 1) + "】不足，是否生成购买订单？", MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                     {
-                        //生成原料购买订单
+                        //生成物料购买订单
                         if (m_bllPurchase.AddPurchaseApply(listPurchaseApply) == true)
                         {
-                            MsgUtils.ShowInfoMsg("原料购买订单已成功生成！");
+                            MsgUtils.ShowInfoMsg("物料购买订单已成功生成！");
                             return;
                         }
                         else
                         {
-                            MsgUtils.ShowErrorMsg("原料购买订单生成失败！");
+                            MsgUtils.ShowErrorMsg("物料购买订单生成失败！");
                             return;
                         }
                     }

@@ -220,7 +220,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.ForeColor = System.Drawing.Color.Black;
             this.label12.Location = new System.Drawing.Point(24, 401);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(65, 12);
@@ -373,7 +373,7 @@
             this.Name = "FrmCustomerPaid";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "客户管理";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmCustomerDetail_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmCustomerPaid_FormClosed);
             this.Load += new System.EventHandler(this.FrmCustomerPaid_Load);
             this.grb_customer.ResumeLayout(false);
             this.grb_customer.PerformLayout();

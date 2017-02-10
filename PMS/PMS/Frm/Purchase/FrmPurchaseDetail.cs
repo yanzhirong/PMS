@@ -44,7 +44,7 @@ namespace PMS.Frm.Purchase
             init();
         }
 
-        private void FrmOrderDetail_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmPurchaseDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
             WinCommon.Exit();
         }
@@ -77,10 +77,10 @@ namespace PMS.Frm.Purchase
             //申请者
             listItem = m_bllUser.GetUsersWithItem();
             WinCommon.BindComboBox(ref cmb_applyBy, listItem);
-            //原料
+            //物料
             listItem = m_bllMaterials.GetMaterialsItem("");
             WinCommon.BindComboBox(ref this.cmb_materials, listItem);
-            //仓库
+            //工厂
             listItem = m_bllFactory.GetFactoryItem();
             WinCommon.BindComboBox(ref this.cmb_factory, listItem);
             //单位
@@ -107,12 +107,12 @@ namespace PMS.Frm.Purchase
                 {
                     if (m_mode == 1)
                     {
-                        MsgUtils.ShowErrorMsg("原料已入库，不可修改！");
+                        MsgUtils.ShowErrorMsg("物料已入库，不可修改！");
                         m_mode = 3;
                     }
                     else
                     {
-                        MsgUtils.ShowErrorMsg("原料已入库，不可修改！");
+                        MsgUtils.ShowErrorMsg("物料已入库，不可修改！");
                         m_mode = 3;
                     }
                 }
@@ -202,7 +202,7 @@ namespace PMS.Frm.Purchase
                 //申请日期
                 this.dtp_applyDate.Value = model.applyDate;
 
-                //采购原料
+                //采购物料
                 for (int i = 0; i < this.cmb_materials.Items.Count; i++)
                 {
                     ModelItem modelItem = (ModelItem)this.cmb_materials.Items[i];
@@ -213,7 +213,7 @@ namespace PMS.Frm.Purchase
                     }
                 }
 
-                //仓库
+                //工厂
                 for (int i = 0; i < this.cmb_factory.Items.Count; i++)
                 {
                     ModelItem modelItem = (ModelItem)this.cmb_factory.Items[i];
@@ -500,12 +500,12 @@ namespace PMS.Frm.Purchase
                 {
                     if (m_mode == 1)
                     {
-                        MsgUtils.ShowErrorMsg("原料已入库，不可修改！");
+                        MsgUtils.ShowErrorMsg("物料已入库，不可修改！");
                         return false;
                     }
                     else
                     {
-                        MsgUtils.ShowErrorMsg("原料已入库，不可修改！");
+                        MsgUtils.ShowErrorMsg("物料已入库，不可修改！");
                         return false;
                     }
                 }
@@ -540,18 +540,18 @@ namespace PMS.Frm.Purchase
                     }
                 }
 
-                //采购原料
+                //采购物料
                 if (this.cmb_materials.SelectedIndex < 0)
                 {
-                    MsgUtils.ShowErrorMsg("请选择采购原料！");
+                    MsgUtils.ShowErrorMsg("请选择采购物料！");
                     this.cmb_materials.Focus();
                     return false;
                 }
 
-                //仓库
+                //工厂
                 if (this.cmb_factory.SelectedIndex < 0)
                 {
-                    MsgUtils.ShowErrorMsg("请选择仓库！");
+                    MsgUtils.ShowErrorMsg("请选择工厂！");
                     this.cmb_factory.Focus();
                     return false;
                 }
@@ -573,14 +573,14 @@ namespace PMS.Frm.Purchase
                     return false;
                 }
 
-                //交货日期
-                DateTime deliverDate = this.dtp_deliveryDate.Value;
-                if (deliverDate <= DateTime.Now)
-                {
-                    MsgUtils.ShowErrorMsg("请选择合适的交货日期！");
-                    this.txt_address.Focus();
-                    return false;
-                }
+                ////交货日期
+                //DateTime deliverDate = this.dtp_deliveryDate.Value;
+                //if (deliverDate <= DateTime.Now)
+                //{
+                //    MsgUtils.ShowErrorMsg("请选择合适的交货日期！");
+                //    this.txt_address.Focus();
+                //    return false;
+                //}
 
                 //供应商
                 if (this.cmb_supplier.SelectedIndex < 0)

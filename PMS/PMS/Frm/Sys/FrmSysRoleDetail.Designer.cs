@@ -308,7 +308,7 @@
             this.chk_store_materials_in.Name = "chk_store_materials_in";
             this.chk_store_materials_in.Size = new System.Drawing.Size(72, 16);
             this.chk_store_materials_in.TabIndex = 17;
-            this.chk_store_materials_in.Text = "原料入库";
+            this.chk_store_materials_in.Text = "物料入库";
             this.chk_store_materials_in.UseVisualStyleBackColor = true;
             // 
             // chk_store_product_transfer
@@ -424,7 +424,7 @@
             this.chk_materials_set.Name = "chk_materials_set";
             this.chk_materials_set.Size = new System.Drawing.Size(72, 16);
             this.chk_materials_set.TabIndex = 10;
-            this.chk_materials_set.Text = "原料管理";
+            this.chk_materials_set.Text = "物料管理";
             this.chk_materials_set.UseVisualStyleBackColor = true;
             // 
             // chk_product_set

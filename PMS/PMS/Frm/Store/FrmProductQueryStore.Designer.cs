@@ -95,7 +95,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 130;
-            this.label2.Text = "仓    库：";
+            this.label2.Text = "工    厂：";
             // 
             // cmb_factory
             // 
@@ -161,7 +161,7 @@
             this.Name = "FrmProductQueryStore";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "库存管理";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmProductOutSelect_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmProductQueryStore_FormClosed);
             this.Load += new System.EventHandler(this.FrmProductQueryStore_Load);
             this.grb_productOut.ResumeLayout(false);
             this.grb_productOut.PerformLayout();

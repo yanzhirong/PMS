@@ -103,7 +103,7 @@ namespace PMS.Frm.Sale
             //客户
             listItem = m_bllCustomer.GetCustomersBySalerId(0);
             WinCommon.BindComboBox(ref cmb_customer, listItem);
-            //仓库
+            //工厂
             listItem = m_bllFactory.GetFactoryItem();
             WinCommon.BindComboBox(ref cmb_factory, listItem);
             
@@ -235,7 +235,7 @@ namespace PMS.Frm.Sale
                 //订单金额说明
                 this.txt_priceRemark.Text = model.priceRemark;
 
-                //仓库
+                //工厂
                 for (int i = 0; i < this.cmb_factory.Items.Count; i++)
                 {
                     ModelItem modelItem = (ModelItem)this.cmb_factory.Items[i];
@@ -564,10 +564,10 @@ namespace PMS.Frm.Sale
                         return false;
                     }
 
-                    //出货仓库
+                    //出货工厂
                     if(this.cmb_factory.SelectedIndex < 0)
                     {
-                        MsgUtils.ShowErrorMsg("请选择出货仓库！");
+                        MsgUtils.ShowErrorMsg("请选择出货工厂！");
                         this.txt_price.Focus();
                         return false;                    
                     }
@@ -585,10 +585,10 @@ namespace PMS.Frm.Sale
                     return false;
                 }
 
-                //出货仓库
+                //出货工厂
                 if (this.cmb_factory.SelectedIndex < 0)
                 {
-                    MsgUtils.ShowErrorMsg("请选择出货仓库！");
+                    MsgUtils.ShowErrorMsg("请选择出货工厂！");
                     this.txt_price.Focus();
                     return false;
                 }

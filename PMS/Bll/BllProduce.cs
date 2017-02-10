@@ -49,7 +49,7 @@ namespace Bll
 
             //更新生产申请表用（key：申请ID；value：生产单号）
             Dictionary<int, string> dcApply = new Dictionary<int, string>();
-            //新建生产用（key：仓库ID；value：商品信息）
+            //新建生产用（key：工厂ID；value：商品信息）
             Dictionary<int, object> dcFactory = new Dictionary<int, object>();
 
             foreach (Dictionary<string, object> apply in _listApply)
@@ -61,6 +61,7 @@ namespace Bll
                 int applyUnit = ConvertUtils.ConvertToInt(apply["unit"]);
                 DateTime deliveryDate = ConvertUtils.ConvertToDate(apply["deliveryDate"], "yyyy-MM-dd");
                 string applyBy = ConvertUtils.ConvertToString(apply["applyBy"]);
+                int applyMemberId = ConvertUtils.ConvertToInt(apply["applyMemberId"]);
                 DateTime applyDate = ConvertUtils.ConvertToDate(apply["applyDate"], "yyyy-MM-dd");
 
                 //商品信息（key：商品ID；value：生产信息【生产单号，生产数量，数量单位】)
@@ -101,6 +102,7 @@ namespace Bll
                         modelProduce.num = applyNum;
                         modelProduce.unit = applyUnit;
                         modelProduce.status = (int)Enum.EnumProduceOrderStatus.Producing;
+                        modelProduce.applyMemberId = applyMemberId;
                         modelProduce.applyBy = applyBy;
                         modelProduce.applyDate = applyDate;
                         modelProduce.deliveryDate = deliveryDate;
@@ -125,6 +127,7 @@ namespace Bll
                     modelProduce.num = applyNum;
                     modelProduce.unit = applyUnit;
                     modelProduce.status = (int)Enum.EnumProduceOrderStatus.Producing;
+                    modelProduce.applyMemberId = applyMemberId;
                     modelProduce.applyBy = applyBy;
                     modelProduce.applyDate = applyDate;
                     modelProduce.deliveryDate = deliveryDate;
@@ -138,10 +141,13 @@ namespace Bll
                 }
             }
 
-            //生成原料出库申请单
-            List<ModelMaterialsOutput> listMaterialsOutput = new List<ModelMaterialsOutput>();
-            foreach (KeyValuePair<int, object> kvp_factory in dcFactory)
-            {
+            //生成物料出库申请单
+            Dictionary<int, object> dcFactoryOutput = new Dictionary<int, object>();
+            //List<ModelMaterialsOutput> listMaterialsOutput = new List<ModelMaterialsOutput>();
+            foreach (KeyValuePair<int, object> kvp_factory in dcFactory)            {
+
+                int factoryId = kvp_factory.Key;
+
                 Dictionary<int, object> dcProduct = (Dictionary<int, object>)kvp_factory.Value;
 
                 foreach (KeyValuePair<int, object> kvp_product in dcProduct)
@@ -150,51 +156,121 @@ namespace Bll
                     //商品ID
                     int productId = modelProduce.productId;
                     
-                    ModelMaterialsOutput modelMaterialsOutput = new ModelMaterialsOutput();
-                    modelMaterialsOutput.outputCode = BllSeq.GetCode("materialsOutputCode");
-                    modelMaterialsOutput.produceCode = modelProduce.produceCode;
-                    modelMaterialsOutput.factoryId = kvp_factory.Key;
-                    modelMaterialsOutput.productId = kvp_product.Key;
-                    modelMaterialsOutput.deliveryDate = modelProduce.deliveryDate;
-                    modelMaterialsOutput.outputStatus = 0;
-                    modelMaterialsOutput.outputType = 0;
-                    modelMaterialsOutput.outputDate = DateTime.Now;
-                    modelMaterialsOutput.applyBy = modelProduce.applyBy;
-                    modelMaterialsOutput.remark = "";
-                    modelMaterialsOutput.isDelete = 0;
-                    modelMaterialsOutput.createBy = _loginName;
-                    modelMaterialsOutput.createTime = DateTime.Now;
+                    //ModelMaterialsOutput modelMaterialsOutput = new ModelMaterialsOutput();
+                    //modelMaterialsOutput.outputCode = BllSeq.GetCode("materialsOutputCode");
+                    //modelMaterialsOutput.produceCode = modelProduce.produceCode;
+                    //modelMaterialsOutput.factoryId = kvp_factory.Key;
+                    //modelMaterialsOutput.materialsId = kvp_product.Key;
+                    //modelMaterialsOutput.deliveryDate = modelProduce.deliveryDate;
+                    //modelMaterialsOutput.outputStatus = 0;
+                    //modelMaterialsOutput.outputType = 0;
+                    //modelMaterialsOutput.outputDate = DateTime.Now;
+                    //modelMaterialsOutput.applyBy = modelProduce.applyBy;
+                    //modelMaterialsOutput.remark = "";
+                    //modelMaterialsOutput.isDelete = 0;
+                    //modelMaterialsOutput.createBy = _loginName;
+                    //modelMaterialsOutput.createTime = DateTime.Now;
 
-                    List<ModelMaterialsOutputDetail> listMaterialsOutputDetail = new List<ModelMaterialsOutputDetail>();
+                    //List<ModelMaterialsOutputDetail> listMaterialsOutputDetail = new List<ModelMaterialsOutputDetail>();
                     DataTable dtMaterials = m_bllProduct.GetProductMaterialsById(productId);
 
                     if (dtMaterials != null && dtMaterials.Rows.Count > 0)
                     {
                         foreach (DataRow dr in dtMaterials.Rows)
                         {
-                            ModelMaterialsOutputDetail modelMaterialsOutputDetail = new ModelMaterialsOutputDetail();
+                            int materialsId = ConvertUtils.ConvertToInt(dr["materialsId"]);
 
-                            modelMaterialsOutputDetail.outputCode = modelMaterialsOutput.outputCode;
-                            modelMaterialsOutputDetail.materialstId = ConvertUtils.ConvertToInt(dr["materialsId"]);
-                            modelMaterialsOutputDetail.materialsNum = modelProduce.num * ConvertUtils.ConvertToDecimal(dr["percent"]) / 100;
-                            modelMaterialsOutputDetail.materialsUnit = modelProduce.unit;
-                            modelMaterialsOutputDetail.outputStatus = 0;
-                            modelMaterialsOutputDetail.outputDate = DateTime.Now;
-                            modelMaterialsOutputDetail.remark = "";
-                            modelMaterialsOutputDetail.isDelete = 0;
-                            modelMaterialsOutputDetail.createBy = _loginName;
-                            modelMaterialsOutputDetail.createTime = DateTime.Now;
+                            ModelMaterialsOutput modelMaterialsOutput;
+                            Dictionary<int, ModelMaterialsOutput> dcMaterialsOutput;
 
-                            listMaterialsOutputDetail.Add(modelMaterialsOutputDetail);
+                            if (dcFactoryOutput.ContainsKey(factoryId))
+                            {
+                                dcMaterialsOutput = (Dictionary<int, ModelMaterialsOutput>)dcFactoryOutput[factoryId];
+
+                                if (dcMaterialsOutput.ContainsKey(materialsId))
+                                {
+                                    modelMaterialsOutput = (ModelMaterialsOutput)dcMaterialsOutput[materialsId];
+
+                                    decimal outputNum = modelMaterialsOutput.outputNum;
+                                    outputNum = outputNum * m_bllCode.GetWeightUnit(modelMaterialsOutput.outputUnit);
+
+                                    decimal AddOutputNum = modelProduce.num * ConvertUtils.ConvertToDecimal(dr["percent"]) / 100;
+                                    AddOutputNum = AddOutputNum * m_bllCode.GetWeightUnit(modelProduce.unit);
+
+                                    outputNum = outputNum + AddOutputNum;
+                                    outputNum = outputNum / m_bllCode.GetWeightUnit(modelMaterialsOutput.outputUnit);
+
+                                    modelMaterialsOutput.outputNum = outputNum;
+
+                                }
+                                else
+                                {
+                                    modelMaterialsOutput = new ModelMaterialsOutput();
+                                    modelMaterialsOutput.outputCode = BllSeq.GetCode("materialsOutputCode");
+                                    modelMaterialsOutput.produceCode = modelProduce.produceCode;
+                                    modelMaterialsOutput.factoryId = kvp_factory.Key;
+                                    modelMaterialsOutput.materialsId = ConvertUtils.ConvertToInt(dr["materialsId"]);
+                                    modelMaterialsOutput.outputNum = modelProduce.num * ConvertUtils.ConvertToDecimal(dr["percent"]) / 100;
+                                    modelMaterialsOutput.outputUnit = modelProduce.unit;
+                                    modelMaterialsOutput.outputStatus = 0;
+                                    modelMaterialsOutput.outputType = 0;
+                                    modelMaterialsOutput.applyMemberId = modelProduce.applyMemberId;
+                                    modelMaterialsOutput.applyDate = DateTime.Now;
+                                    modelMaterialsOutput.remark = "";
+                                    modelMaterialsOutput.isDelete = 0;
+                                    modelMaterialsOutput.createBy = _loginName;
+                                    modelMaterialsOutput.createTime = DateTime.Now;
+
+                                    dcMaterialsOutput.Add(materialsId, modelMaterialsOutput);
+                                }
+                            }
+                            else
+                            {
+                                dcMaterialsOutput = new Dictionary<int, ModelMaterialsOutput>();
+
+                                modelMaterialsOutput = new ModelMaterialsOutput();
+                                modelMaterialsOutput.outputCode = BllSeq.GetCode("materialsOutputCode");
+                                modelMaterialsOutput.produceCode = modelProduce.produceCode;
+                                modelMaterialsOutput.factoryId = kvp_factory.Key;
+                                modelMaterialsOutput.materialsId = ConvertUtils.ConvertToInt(dr["materialsId"]);
+                                modelMaterialsOutput.outputNum = modelProduce.num * ConvertUtils.ConvertToDecimal(dr["percent"]) / 100;
+                                modelMaterialsOutput.outputUnit = modelProduce.unit;
+                                modelMaterialsOutput.outputStatus = 0;
+                                modelMaterialsOutput.outputType = 0;
+                                modelMaterialsOutput.applyMemberId = modelProduce.applyMemberId;
+                                modelMaterialsOutput.applyDate = DateTime.Now;
+                                modelMaterialsOutput.remark = "";
+                                modelMaterialsOutput.isDelete = 0;
+                                modelMaterialsOutput.createBy = _loginName;
+                                modelMaterialsOutput.createTime = DateTime.Now;
+
+                                dcMaterialsOutput.Add(materialsId, modelMaterialsOutput);
+                                dcFactoryOutput.Add(factoryId, dcMaterialsOutput);
+                            }                            
+
+                            //ModelMaterialsOutputDetail modelMaterialsOutputDetail = new ModelMaterialsOutputDetail();
+
+                            //modelMaterialsOutputDetail.outputCode = modelMaterialsOutput.outputCode;
+                            //modelMaterialsOutputDetail.materialstId = ConvertUtils.ConvertToInt(dr["materialsId"]);
+                            //modelMaterialsOutputDetail.materialsNum = modelProduce.num * ConvertUtils.ConvertToDecimal(dr["percent"]) / 100;
+                            //modelMaterialsOutputDetail.materialsUnit = modelProduce.unit;
+                            //modelMaterialsOutputDetail.outputStatus = 0;
+                            //modelMaterialsOutputDetail.outputDate = DateTime.Now;
+                            //modelMaterialsOutputDetail.remark = "";
+                            //modelMaterialsOutputDetail.isDelete = 0;
+                            //modelMaterialsOutputDetail.createBy = _loginName;
+                            //modelMaterialsOutputDetail.createTime = DateTime.Now;
+
+                            //listMaterialsOutputDetail.Add(modelMaterialsOutputDetail);
                         }
                     }
 
-                    modelMaterialsOutput.modelMaterialsOutputDetail = listMaterialsOutputDetail;
-                    listMaterialsOutput.Add(modelMaterialsOutput);
+                    //modelMaterialsOutput.modelMaterialsOutputDetail = listMaterialsOutputDetail;
+                    //listMaterialsOutput.Add(modelMaterialsOutput);
                 }
             }
 
-            int rtn = m_dalProduce.SubmitProduceApply(dcApply, dcFactory, listMaterialsOutput);
+            int rtn = m_dalProduce.SubmitProduceApply(dcApply, dcFactory, dcFactoryOutput);
 
             if (rtn > 0)
             {
@@ -229,7 +305,7 @@ namespace Bll
                     //交货日
                     DateTime deliveryDate = modelProduce.deliveryDate;
 
-                    //仓库ID
+                    //工厂ID
                     int factoryId = modelProduce.factoryId;
 
                     DataTable dtMaterial = m_bllProduct.GetProductMaterialsById(productId);
@@ -237,17 +313,17 @@ namespace Bll
                     {
                         foreach (DataRow dr in dtMaterial.Rows)
                         {
-                            //原料ID
+                            //物料ID
                             int materialsId = ConvertUtils.ConvertToInt(dr["materialsId"]);
 
                             ModelMaterials modelMaterials = m_bllMaterials.GetMaterialsById(materialsId);
-                            //原料类型为自制原料的无需采购
+                            //物料类型为自制物料的无需采购
                             if(modelMaterials.type == 1)
                             {
                                 continue;
                             }
 
-                            //原料需求量（克）
+                            //物料需求量（克）
                             decimal materialsNum = num * ConvertUtils.ConvertToDecimal(dr["percent"]) / 100;
 
                             //查询库存（克）

@@ -248,7 +248,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 12);
             this.label7.TabIndex = 123;
-            this.label7.Text = "存储仓库：";
+            this.label7.Text = "存储工厂：";
             // 
             // dtp_deliveryDate
             // 
@@ -276,7 +276,7 @@
             this.cmb_status.Items.AddRange(new object[] {
             "财务未确认",
             "财务已确认",
-            "原料已入库"});
+            "物料已入库"});
             this.cmb_status.Location = new System.Drawing.Point(384, 25);
             this.cmb_status.Name = "cmb_status";
             this.cmb_status.Size = new System.Drawing.Size(222, 20);
@@ -488,7 +488,7 @@
             this.lbl_orderCode.Name = "lbl_orderCode";
             this.lbl_orderCode.Size = new System.Drawing.Size(65, 12);
             this.lbl_orderCode.TabIndex = 42;
-            this.lbl_orderCode.Text = "采购原料：";
+            this.lbl_orderCode.Text = "采购物料：";
             // 
             // menuStrip1
             // 
@@ -569,7 +569,7 @@
             this.Name = "FrmPurchaseDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "采购管理";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmOrderDetail_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPurchaseDetail_FormClosed);
             this.Load += new System.EventHandler(this.FrmPurchaseDetail_Load);
             this.grb_purchase.ResumeLayout(false);
             this.grb_purchase.PerformLayout();

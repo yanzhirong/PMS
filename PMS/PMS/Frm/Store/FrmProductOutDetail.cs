@@ -42,7 +42,7 @@ namespace PMS.Frm.Store
             init();
         }
 
-        private void FrmOrderDetail_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmProductOutDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
             WinCommon.Exit();
         }
@@ -93,7 +93,7 @@ namespace PMS.Frm.Store
             //申请者
             listItem = m_bllUser.GetUsersWithItem();
             WinCommon.BindComboBox(ref cmb_apply, listItem);
-            //仓库
+            //工厂
             listItem = m_bllFactory.GetFactoryItem();
             WinCommon.BindComboBox(ref cmb_factory, listItem);
 
@@ -204,7 +204,7 @@ namespace PMS.Frm.Store
                 //交货日期
                 this.dtp_deliveryDate.Value = model.deliveryDate;
 
-                //仓库
+                //工厂
                 for (int i = 0; i < this.cmb_factory.Items.Count; i++)
                 {
                     ModelItem modelItem = (ModelItem)this.cmb_factory.Items[i];
@@ -284,10 +284,7 @@ namespace PMS.Frm.Store
             modelProductOutput.outputStatus = this.cmb_outputStatus.SelectedIndex;
 
             modelProductOutput.orderCode = this.txt_orderCode.Text.Trim();
-            if (this.cmb_apply.SelectedIndex >= 0)
-            {
-                modelProductOutput.applyMemberId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_apply.SelectedItem).itemKey);
-            }
+            modelProductOutput.applyMemberId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_apply.SelectedItem).itemKey);
             modelProductOutput.customerId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_customer.SelectedItem).itemKey);
             modelProductOutput.salerId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_saler.SelectedItem).itemKey);
 
@@ -440,15 +437,12 @@ namespace PMS.Frm.Store
                     return false;
                 }
 
-                // 特殊出库单
-                if (this.cmb_outputType.SelectedIndex == 1)
+                // 申请人
+                if (this.cmb_apply.SelectedIndex < 0)
                 {
-                    if (this.cmb_apply.SelectedIndex < 0)
-                    {
-                        MsgUtils.ShowErrorMsg("请选择出库申请人！");
-                        this.cmb_apply.Focus();
-                        return false;
-                    }
+                    MsgUtils.ShowErrorMsg("请选择出库申请人！");
+                    this.cmb_apply.Focus();
+                    return false;
                 }
 
                 //客户
@@ -497,10 +491,10 @@ namespace PMS.Frm.Store
                     return false;
                 }
 
-                //仓库
+                //工厂
                 if (this.cmb_factory.SelectedIndex < 0)
                 {
-                    MsgUtils.ShowErrorMsg("请选择仓库！");
+                    MsgUtils.ShowErrorMsg("请选择工厂！");
                     this.cmb_factory.Focus();
                     return false;
                 }
@@ -752,7 +746,7 @@ namespace PMS.Frm.Store
                 if (doSubmit(false) == true)
                 {
                     int factoryId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_factory.SelectedItem).itemKey);
-                    Form form = new FrmProductOutSelect(this.txt_outputCode.Text, outputDetailId, productId, factoryId);
+                    Form form = new FrmProductOutSelect(this.txt_outputCode.Text, outputDetailId, productId, factoryId, ConvertUtils.ConvertToInt(((ModelItem)this.cmb_apply.SelectedItem).itemKey));
                     form.ShowDialog();
 
                     dataGridView1.DataSource = m_bllProductOut.GetProductOutDetailByOutputCode(this.txt_outputCode.Text);

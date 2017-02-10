@@ -253,7 +253,6 @@ namespace Dal
             sbSql.Append("update p_product_output ");
             sbSql.Append("set outputCode = '" + _model.outputCode + "',");
             sbSql.Append("    orderCode = '" + _model.orderCode + "',");
-            sbSql.Append("    factoryId = " + _model.factoryId + ",");
             sbSql.Append("    customerId = " + _model.customerId + ",");
             sbSql.Append("    factoryId = " + _model.factoryId + ",");
             sbSql.Append("    salerId = " + _model.salerId + ",");
@@ -321,7 +320,7 @@ namespace Dal
 
         }
 
-        public int doOutPut(string _outputCode, int _outputDetailId, int _factoryId, int _productId, decimal _outputNum, int _outputUnit, List<Dictionary<string, object>> listOutput, string userName)
+        public int doOutPut(string _outputCode, int _outputDetailId, int _factoryId, int _productId, int _applyMemberId, decimal _outputNum, int _outputUnit, List<Dictionary<string, object>> listOutput, string userName)
         {
             List<string> listSql = new List<string>();
 
@@ -335,8 +334,9 @@ namespace Dal
                 sbSql.Append("       inputCode, ");
                 sbSql.Append("       factoryId, ");
                 sbSql.Append("       productId, ");
-                sbSql.Append("       num, ");
-                sbSql.Append("       unit, ");
+                sbSql.Append("       applyMemberId, ");
+                sbSql.Append("       outputNum, ");
+                sbSql.Append("       outputUnit, ");
                 sbSql.Append("       outputDate, ");
                 sbSql.Append("       isDelete, ");
                 sbSql.Append("       createBy, ");
@@ -346,6 +346,7 @@ namespace Dal
                 sbSql.Append("      '" + ConvertUtils.ConvertToString(dc["inputCode"]) + "', ");
                 sbSql.Append("       " + _factoryId + ", ");
                 sbSql.Append("       " + _productId + ", ");
+                sbSql.Append("       " + _applyMemberId + ", ");
                 sbSql.Append("       " + ConvertUtils.ConvertToDecimal(dc["outputNum"]) + ", ");
                 sbSql.Append("       " + ConvertUtils.ConvertToInt(dc["outputUnit"]) + ", ");
                 sbSql.Append("      '" + DateTime.Now + "', ");

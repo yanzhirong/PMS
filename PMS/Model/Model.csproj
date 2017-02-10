@@ -68,9 +68,11 @@
     <Compile Include="ModelProduce.cs" />
     <Compile Include="ModelPurchaseApply.cs" />
     <Compile Include="ModelMaterialsOutput.cs" />
-    <Compile Include="ModelMaterialsOutputDetail.cs" />
     <Compile Include="ModelPurchase.cs" />
     <Compile Include="ModelCustomerPaid.cs" />
+    <Compile Include="ModelMaterialsIn.cs" />
+    <Compile Include="ModelMaterialsOutputLog.cs" />
+    <Compile Include="ModelProductOutputLog.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Enum\Enum.csproj">

@@ -23,7 +23,7 @@ namespace Dal
             sbSql.Append("       a.weight + c.value1 weight, ");
             sbSql.Append("       b.value1 morphology, ");
             sbSql.Append("       a.shelfLife, ");
-            sbSql.Append("       case a.type when 0 then '一般原料' when 1 then '自制原料' else '其它' end type, ");
+            sbSql.Append("       case a.type when 0 then '一般物料' when 1 then '自制物料' else '其它' end type, ");
             sbSql.Append("       '修改' modifyBtn, ");
             sbSql.Append("       '删除' deleteBtn ");
             sbSql.Append("from p_materials a ");

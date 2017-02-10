@@ -147,20 +147,26 @@ namespace PMS.Frm.Sale
         /// <returns></returns>
         private Boolean doCheck()
         {
-            //信用额度
-            decimal creditLimit = ConvertUtils.ConvertToDecimal(this.txt_creditLimit.Text.Trim());
-            if (creditLimit <= 0)
+            ModelCustomer model = m_bllCustomer.GetCustomerById(m_customerId);
+
+            //销售客户
+            if (model.type == 1)
             {
-                MsgUtils.ShowErrorMsg("请输入信用额度！");
-                this.txt_creditLimit.Focus();
-                return false;
+                //信用额度
+                decimal creditLimit = ConvertUtils.ConvertToDecimal(this.txt_creditLimit.Text.Trim());
+                if (creditLimit <= 0)
+                {
+                    MsgUtils.ShowErrorMsg("请输入信用额度！");
+                    this.txt_creditLimit.Focus();
+                    return false;
+                }
             }
 
             return true;
         }
         #endregion
 
-        private void FrmCustomerDetail_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmCustomerPaid_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
         }

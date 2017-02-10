@@ -60,6 +60,8 @@
     <Compile Include="DalProduce.cs" />
     <Compile Include="DalProductOut.cs" />
     <Compile Include="DalPurchase.cs" />
+    <Compile Include="DalMaterialsIn.cs" />
+    <Compile Include="DalMaterialsOut.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">

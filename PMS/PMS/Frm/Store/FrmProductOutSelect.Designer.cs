@@ -261,7 +261,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 121;
-            this.label1.Text = "仓    库：";
+            this.label1.Text = "工    厂：";
             this.label1.Visible = false;
             // 
             // dataGridView1

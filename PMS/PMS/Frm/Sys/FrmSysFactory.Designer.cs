@@ -83,14 +83,14 @@
             // id
             // 
             this.id.DataPropertyName = "id";
-            this.id.HeaderText = "仓库ID";
+            this.id.HeaderText = "工厂ID";
             this.id.Name = "id";
             this.id.Visible = false;
             // 
             // name
             // 
             this.name.DataPropertyName = "name";
-            this.name.HeaderText = "仓库名";
+            this.name.HeaderText = "工厂名";
             this.name.Name = "name";
             this.name.ReadOnly = true;
             this.name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -183,7 +183,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 7;
-            this.label1.Text = "仓库名：";
+            this.label1.Text = "工厂名：";
             // 
             // groupBox1
             // 
@@ -214,7 +214,7 @@
             this.lbl_tile.Name = "lbl_tile";
             this.lbl_tile.Size = new System.Drawing.Size(120, 27);
             this.lbl_tile.TabIndex = 67;
-            this.lbl_tile.Text = "仓库列表";
+            this.lbl_tile.Text = "工厂列表";
             // 
             // FrmSysFactory
             // 
@@ -232,7 +232,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmSysFactory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "仓库管理";
+            this.Text = "工厂管理";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSysFactory_FormClosed);
             this.Load += new System.EventHandler(this.FrmSysFactory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

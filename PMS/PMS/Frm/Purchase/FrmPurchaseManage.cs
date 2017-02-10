@@ -29,7 +29,7 @@ namespace PMS.Frm.Purchase
             LoginUserInfo.LoginUser.currentFrom = this;
             WinCommon.CreateMenu(ref this.menuStrip1);
 
-            //仓库
+            //工厂
             List<ModelItem> listItem = m_bllFactory.GetFactoryItem();
             WinCommon.BindComboBox(ref this.cmb_factory, listItem, true);
             
@@ -113,7 +113,7 @@ namespace PMS.Frm.Purchase
             }
         }
 
-        private void FrmOrderManage_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmPurchaseManage_FormClosed(object sender, FormClosedEventArgs e)
         {
             WinCommon.Exit();
         }

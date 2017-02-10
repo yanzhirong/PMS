@@ -105,3 +105,9 @@ D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Store.FrmMaterialsQueryStore.re
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Purchase.FrmPurchaseDetail.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Purchase.FrmPurchaseManage.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Sale.FrmCustomerPaid.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Store.FrmMaterialsIn.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Store.FrmMaterialsInDetail.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Dal.dll
+D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Bll.pdb
+D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Model.pdb
+D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Dal.pdb

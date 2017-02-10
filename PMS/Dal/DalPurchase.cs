@@ -295,9 +295,9 @@ namespace Dal
         {
             sbSql.Clear();
             sbSql.Append("select a.* ");
-            sbSql.Append("  from p_materials_in a ");
+            sbSql.Append("  from p_materials_input a ");
             sbSql.Append(" where a.isDelete = 0 ");
-            sbSql.Append("   and a.status = 1 ");
+            sbSql.Append("   and a.inputStatus = 1 ");
             sbSql.Append("   and a.purchaseCode = '").Append(_purchaseCode).Append("' ");
 
             return Dal.DBHelper.Select(sbSql.ToString());
@@ -383,28 +383,38 @@ namespace Dal
             {
                 sbSql.Clear();
                 sbSql.Append("insert into ");
-                sbSql.Append("       p_materials_in ( ");
+                sbSql.Append("       p_materials_input ( ");
                 sbSql.Append("       purchaseCode, ");
+                sbSql.Append("       purchaseBy, ");
+                sbSql.Append("       purchaseDate, ");
+                sbSql.Append("       purchaseNum, ");
+                sbSql.Append("       purchaseUnit, ");
                 sbSql.Append("       factoryId, ");
                 sbSql.Append("       materialsId, ");
-                sbSql.Append("       num, ");
-                sbSql.Append("       unit, ");
-                sbSql.Append("       produceCode, ");
-                sbSql.Append("       status, ");
+                sbSql.Append("       inputNum, ");
+                sbSql.Append("       inputUnit, ");
+                sbSql.Append("       inputType, ");
+                sbSql.Append("       customerId, ");
+                sbSql.Append("       inputStatus, ");
                 sbSql.Append("       isDelete, ");
                 sbSql.Append("       createBy, ");
                 sbSql.Append("       createTime");
                 sbSql.Append("       ) value ( ");
                 sbSql.Append("      '" + _model.purchaseCode + "', ");
+                sbSql.Append("      '" + _model.modifyBy + "', ");
+                sbSql.Append("      '" + _model.modifyTime + "', ");
+                sbSql.Append("       " + _model.num + ", ");
+                sbSql.Append("       " + _model.unit + ", ");
                 sbSql.Append("       " + _model.factoryId + ", ");
                 sbSql.Append("       " + _model.materialsId + ", ");
                 sbSql.Append("       " + _model.num + ", ");
                 sbSql.Append("       " + _model.unit + ", ");
-                sbSql.Append("      '" + _model.produceCode + "', ");
+                sbSql.Append("       " + (int)Enum.EnumMaterialsInType.Purchase + ", ");
+                sbSql.Append("      '" + _model.customerId + "', ");
                 sbSql.Append("       0, ");
                 sbSql.Append("       " + _model.isDelete + ", ");
-                sbSql.Append("      '" + _model.createBy + "', ");
-                sbSql.Append("      '" + _model.createTime + "')");
+                sbSql.Append("      '" + _model.modifyBy + "', ");
+                sbSql.Append("      '" + _model.modifyTime + "')");
                 listSql.Add(sbSql.ToString());
 
                 sbSql.Clear();
@@ -474,12 +484,12 @@ namespace Dal
             listSql.Add(sbSql.ToString());
 
             sbSql.Clear();
-            sbSql.Append("update p_materials_in ");
+            sbSql.Append("update p_materials_input ");
             sbSql.Append("set isDelete = 1,");
             sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
             sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
             sbSql.Append("where isDelete = 0");
-            sbSql.Append("  and status = 0 ");
+            sbSql.Append("  and inputStatus = 0 ");
             sbSql.Append("  and purchaseCode = '").Append(_model.purchaseCode).Append("' ");
             listSql.Add(sbSql.ToString());
 
@@ -497,28 +507,38 @@ namespace Dal
             {
                 sbSql.Clear();
                 sbSql.Append("insert into ");
-                sbSql.Append("       p_materials_in ( ");
+                sbSql.Append("       p_materials_input ( ");
                 sbSql.Append("       purchaseCode, ");
+                sbSql.Append("       purchaseBy, ");
+                sbSql.Append("       purchaseDate, ");
+                sbSql.Append("       purchaseNum, ");
+                sbSql.Append("       purchaseUnit, ");
                 sbSql.Append("       factoryId, ");
                 sbSql.Append("       materialsId, ");
-                sbSql.Append("       num, ");
-                sbSql.Append("       unit, ");
-                sbSql.Append("       produceCode, ");
-                sbSql.Append("       status, ");
+                sbSql.Append("       inputNum, ");
+                sbSql.Append("       inputUnit, ");
+                sbSql.Append("       inputType, ");
+                sbSql.Append("       customerId, ");
+                sbSql.Append("       inputStatus, ");
                 sbSql.Append("       isDelete, ");
                 sbSql.Append("       createBy, ");
                 sbSql.Append("       createTime");
                 sbSql.Append("       ) value ( ");
                 sbSql.Append("      '" + _model.purchaseCode + "', ");
+                sbSql.Append("      '" + _model.modifyBy + "', ");
+                sbSql.Append("      '" + _model.modifyTime + "', ");
+                sbSql.Append("       " + _model.num + ", ");
+                sbSql.Append("       " + _model.unit + ", ");
                 sbSql.Append("       " + _model.factoryId + ", ");
                 sbSql.Append("       " + _model.materialsId + ", ");
                 sbSql.Append("       " + _model.num + ", ");
                 sbSql.Append("       " + _model.unit + ", ");
-                sbSql.Append("      '" + _model.produceCode + "', ");
+                sbSql.Append("       " + (int)Enum.EnumMaterialsInType.Purchase + ", ");
+                sbSql.Append("      '" + _model.customerId + "', ");
                 sbSql.Append("       0, ");
                 sbSql.Append("       " + _model.isDelete + ", ");
-                sbSql.Append("      '" + _model.createBy + "', ");
-                sbSql.Append("      '" + _model.createTime + "')");
+                sbSql.Append("      '" + _model.modifyBy + "', ");
+                sbSql.Append("      '" + _model.modifyTime + "')");
                 listSql.Add(sbSql.ToString());
 
                 sbSql.Clear();
@@ -568,12 +588,12 @@ namespace Dal
             listSql.Add(sbSql.ToString());
 
             sbSql.Clear();
-            sbSql.Append("update p_materials_in ");
+            sbSql.Append("update p_materials_input ");
             sbSql.Append("set isDelete = 1,");
             sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
             sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
             sbSql.Append("where isDelete = 0");
-            sbSql.Append("  and status = 0 ");
+            sbSql.Append("  and inputStatus = 0 ");
             sbSql.Append("  and purchaseCode = '").Append(_model.purchaseCode).Append("' ");
             listSql.Add(sbSql.ToString());
 

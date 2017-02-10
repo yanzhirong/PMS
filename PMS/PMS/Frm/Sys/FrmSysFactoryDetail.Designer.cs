@@ -80,11 +80,11 @@
             // 
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("宋体", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbl_title.Location = new System.Drawing.Point(237, 47);
+            this.lbl_title.Location = new System.Drawing.Point(199, 41);
             this.lbl_title.Name = "lbl_title";
             this.lbl_title.Size = new System.Drawing.Size(180, 27);
             this.lbl_title.TabIndex = 66;
-            this.lbl_title.Text = "仓库信息管理";
+            this.lbl_title.Text = "工厂信息管理";
             // 
             // grb_factory
             // 
@@ -170,7 +170,7 @@
             this.lbl_address.Name = "lbl_address";
             this.lbl_address.Size = new System.Drawing.Size(65, 12);
             this.lbl_address.TabIndex = 64;
-            this.lbl_address.Text = "仓库地址：";
+            this.lbl_address.Text = "工厂地址：";
             // 
             // txt_name
             // 
@@ -187,7 +187,7 @@
             this.lbl_name.Name = "lbl_name";
             this.lbl_name.Size = new System.Drawing.Size(65, 12);
             this.lbl_name.TabIndex = 63;
-            this.lbl_name.Text = "仓库名称：";
+            this.lbl_name.Text = "工厂名称：";
             // 
             // menuStrip1
             // 
@@ -215,7 +215,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmSysFactoryDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "仓库管理";
+            this.Text = "工厂管理";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmSysFactoryDetail_FormClosed);
             this.Load += new System.EventHandler(this.FrmSysFactoryDetail_Load);
             this.grb_factory.ResumeLayout(false);

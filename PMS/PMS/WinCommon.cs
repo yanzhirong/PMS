@@ -119,8 +119,8 @@ namespace PMS
             LoginUserInfo.LoginUser.mainPanel.Parent.Left = Screen.PrimaryScreen.WorkingArea.Width / 2 - LoginUserInfo.LoginUser.mainPanel.Parent.Width / 2;
             LoginUserInfo.LoginUser.mainPanel.Parent.Top = Screen.PrimaryScreen.WorkingArea.Height / 2 - LoginUserInfo.LoginUser.mainPanel.Parent.Height / 2;
 
-            LinkLabel logout = (LinkLabel)LoginUserInfo.LoginUser.mainPanel.Parent.Controls.Find("lnk_logout", false)[0];
-            logout.Left = LoginUserInfo.LoginUser.mainPanel.Parent.Width - logout.Width - 30;
+            //LinkLabel logout = (LinkLabel)LoginUserInfo.LoginUser.mainPanel.Parent.Controls.Find("lnk_logout", false)[0];
+            //logout.Left = LoginUserInfo.LoginUser.mainPanel.Parent.Width - logout.Width - 30;
             //Label lbl = (Label)LoginUserInfo.LoginUser.mainPanel.Parent.Controls.Find("lbl_loginInfo", false)[0];
             //lbl.Left = btn.Left - lbl.Width - 20;
             //form.Width = LoginUserInfo.LoginUser.mainPanel.Width - 6;

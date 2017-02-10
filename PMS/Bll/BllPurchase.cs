@@ -41,7 +41,7 @@ namespace Bll
 
             //更新采购申请表用（key：申请ID；value：生产单号）
             Dictionary<int, string> dcApply = new Dictionary<int, string>();
-            //新建采购用（key：仓库ID；value：采购信息）
+            //新建采购用（key：工厂ID；value：采购信息）
             Dictionary<int, object> dcFactory = new Dictionary<int, object>();
 
             foreach (Dictionary<string, object> apply in _listApply)
@@ -56,7 +56,7 @@ namespace Bll
                 DateTime applyDate = ConvertUtils.ConvertToDate(apply["applyDate"], "yyyy-MM-dd");
                 string produceCode = ConvertUtils.ConvertToString(apply["produceCode"]);
 
-                //采购信息（key：原料ID；value：采购信息【生产单号，采购数量，采购单位】)
+                //采购信息（key：物料ID；value：采购信息【生产单号，采购数量，采购单位】)
                 Dictionary<int, object> dcPurchase;
                 if (dcFactory.ContainsKey(factoryId))
                 {

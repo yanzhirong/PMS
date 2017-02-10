@@ -261,7 +261,8 @@ namespace PMS.Frm.Sys
 
                     //返回用户列表
                     Form frmSysUser = new FrmSysUser();
-                    WinCommon.ShowInMain(ref frmSysUser);
+                    this.Hide();
+                    frmSysUser.ShowDialog();
                     return;
                 }
             }

@@ -43,7 +43,7 @@ namespace PMS.Frm.Sys
             {
                 if (StringUtils.IsBlank(this.txt_name.Text))
                 {
-                    MsgUtils.ShowErrorMsg("请输入仓库名称！");
+                    MsgUtils.ShowErrorMsg("请输入工厂名称！");
                     this.txt_name.Focus();
                     return;
                 }
@@ -52,7 +52,7 @@ namespace PMS.Frm.Sys
                 {
                     if (m_bllFactory.GetFactoryByName(this.txt_name.Text.Trim()).id > 0)
                     {
-                        MsgUtils.ShowErrorMsg("仓库已存在，请换个名称！");
+                        MsgUtils.ShowErrorMsg("工厂已存在，请换个名称！");
                         this.txt_name.Focus();
                         return;
                     }
@@ -76,7 +76,7 @@ namespace PMS.Frm.Sys
             {
                 if (m_bllFactory.AddFactory(factory) == true)
                 {
-                    MsgUtils.ShowInfoMsg("创建仓库成功！");
+                    MsgUtils.ShowInfoMsg("创建工厂成功！");
                     m_mode = 1;
                     m_factoryId = m_bllFactory.GetFactoryByName(this.txt_name.Text.Trim()).id;
                     init();
@@ -84,7 +84,7 @@ namespace PMS.Frm.Sys
                 }
                 else
                 {
-                    MsgUtils.ShowErrorMsg("创建仓库失败！");
+                    MsgUtils.ShowErrorMsg("创建工厂失败！");
                     return;
 
                 }
@@ -93,12 +93,12 @@ namespace PMS.Frm.Sys
             {
                 if (m_bllFactory.UpdateFactory(factory) == true)
                 {
-                    MsgUtils.ShowInfoMsg("修改仓库成功！");
+                    MsgUtils.ShowInfoMsg("修改工厂成功！");
                     return;
                 }
                 else
                 {
-                    MsgUtils.ShowErrorMsg("修改仓库失败！");
+                    MsgUtils.ShowErrorMsg("修改工厂失败！");
                     return;
                 }
             }
@@ -106,14 +106,15 @@ namespace PMS.Frm.Sys
             {
                 if (m_bllFactory.DeleteFactory(factory) == true)
                 {
-                    MsgUtils.ShowInfoMsg("删除仓库成功！");
+                    MsgUtils.ShowInfoMsg("删除工厂成功！");
                     Form form = new FrmSysFactory();
-                    WinCommon.ShowInMain(ref form);
+                    this.Hide();
+                    form.ShowDialog();
                     return;
                 }
                 else
                 {
-                    MsgUtils.ShowErrorMsg("删除仓库失败！");
+                    MsgUtils.ShowErrorMsg("删除工厂失败！");
                     return;
                 }
             }
@@ -121,7 +122,7 @@ namespace PMS.Frm.Sys
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
-            //返回仓库列表
+            //返回工厂列表
             Form form = new FrmSysFactory();
             this.Hide();
             form.ShowDialog();
@@ -132,15 +133,15 @@ namespace PMS.Frm.Sys
             //标题
             if (m_mode == 0)
             {
-                this.lbl_title.Text = "仓库信息设定-新增";
+                this.lbl_title.Text = "工厂信息设定-新增";
             }
             else if (m_mode == 1)
             {
-                this.lbl_title.Text = "仓库信息设定-修改";
+                this.lbl_title.Text = "工厂信息设定-修改";
             }
             else
             {
-                this.lbl_title.Text = "仓库信息设定-删除";
+                this.lbl_title.Text = "工厂信息设定-删除";
             }
 
             //修改删除时，初始化页面

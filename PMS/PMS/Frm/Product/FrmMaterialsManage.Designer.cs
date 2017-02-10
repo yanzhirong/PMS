@@ -101,7 +101,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 7;
-            this.label1.Text = "原料名：";
+            this.label1.Text = "物料名：";
             // 
             // dataGridView1
             // 
@@ -150,7 +150,7 @@
             this.lbl_tile.Name = "lbl_tile";
             this.lbl_tile.Size = new System.Drawing.Size(120, 27);
             this.lbl_tile.TabIndex = 67;
-            this.lbl_tile.Text = "原料列表";
+            this.lbl_tile.Text = "物料列表";
             // 
             // cmb_materialsType
             // 
@@ -158,8 +158,8 @@
             this.cmb_materialsType.FormattingEnabled = true;
             this.cmb_materialsType.Items.AddRange(new object[] {
             "",
-            "一般原料",
-            "自制原料",
+            "一般物料",
+            "自制物料",
             "其它"});
             this.cmb_materialsType.Location = new System.Drawing.Point(272, 14);
             this.cmb_materialsType.Name = "cmb_materialsType";
@@ -174,7 +174,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 12);
             this.label7.TabIndex = 72;
-            this.label7.Text = "原料类型：";
+            this.label7.Text = "物料类型：";
             // 
             // id
             // 
@@ -186,7 +186,7 @@
             // name
             // 
             this.name.DataPropertyName = "name";
-            this.name.HeaderText = "原料名";
+            this.name.HeaderText = "物料名";
             this.name.Name = "name";
             this.name.ReadOnly = true;
             this.name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -194,7 +194,7 @@
             // subName
             // 
             this.subName.DataPropertyName = "subName";
-            this.subName.HeaderText = "原料略称";
+            this.subName.HeaderText = "物料略称";
             this.subName.Name = "subName";
             this.subName.ReadOnly = true;
             // 
@@ -231,7 +231,7 @@
             // type
             // 
             this.type.DataPropertyName = "type";
-            this.type.HeaderText = "原料类型";
+            this.type.HeaderText = "物料类型";
             this.type.Name = "type";
             this.type.ReadOnly = true;
             this.type.Width = 80;
@@ -266,7 +266,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmMaterialsManage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "原料管理";
+            this.Text = "物料管理";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMaterialsManage_FormClosed);
             this.Load += new System.EventHandler(this.FrmMaterialsManage_Load);
             this.groupBox1.ResumeLayout(false);

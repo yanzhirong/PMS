@@ -136,7 +136,7 @@ namespace Dal
             return Dal.DBHelper.Select(sbSql.ToString());
         }
 
-        public int SubmitProduceApply(Dictionary<int, string> _dcApply, Dictionary<int, object> _dcFactory, List<ModelMaterialsOutput> _listMaterialsOutput)
+        public int SubmitProduceApply(Dictionary<int, string> _dcApply, Dictionary<int, object> _dcFactory, Dictionary<int, object> _dcFactoryOutput)
         {
             List<string> listSql = new List<string>();
             string modifyBy = "";
@@ -201,69 +201,112 @@ namespace Dal
                 listSql.Add(sbSql.ToString());
             }
 
-            foreach (ModelMaterialsOutput modelMaterialsOutput in _listMaterialsOutput)
+            foreach (KeyValuePair<int, object> kvp_factoryOutput in _dcFactoryOutput)
             {
-                sbSql.Clear();
-                sbSql.Append("insert into ");
-                sbSql.Append("       p_materials_output ( ");
-                sbSql.Append("       outputCode, ");
-                sbSql.Append("       produceCode, ");
-                sbSql.Append("       factoryId, ");
-                sbSql.Append("       productId, ");
-                sbSql.Append("       deliveryDate, ");
-                sbSql.Append("       outputStatus, ");
-                sbSql.Append("       outputDate, ");
-                sbSql.Append("       outputType, ");
-                sbSql.Append("       applyBy, ");
-                sbSql.Append("       remark, ");
-                sbSql.Append("       isDelete, ");
-                sbSql.Append("       createBy, ");
-                sbSql.Append("       createTime ");
-                sbSql.Append("       ) values ( ");
-                sbSql.Append("      '" + modelMaterialsOutput.outputCode + "', ");
-                sbSql.Append("      '" + modelMaterialsOutput.produceCode + "', ");
-                sbSql.Append("       " + modelMaterialsOutput.factoryId + ", ");
-                sbSql.Append("       " + modelMaterialsOutput.productId + ", ");
-                sbSql.Append("      '" + modelMaterialsOutput.deliveryDate + "', ");
-                sbSql.Append("       " + modelMaterialsOutput.outputStatus + ", ");
-                sbSql.Append("      '" + modelMaterialsOutput.outputDate + "', ");
-                sbSql.Append("       " + modelMaterialsOutput.outputType + ", ");
-                sbSql.Append("      '" + modelMaterialsOutput.applyBy + "', ");
-                sbSql.Append("      '" + modelMaterialsOutput.remark + "', ");
-                sbSql.Append("       " + modelMaterialsOutput.isDelete + ", ");
-                sbSql.Append("      '" + modelMaterialsOutput.createBy + "', ");
-                sbSql.Append("      '" + modelMaterialsOutput.createTime + "')");
-                listSql.Add(sbSql.ToString());
+                Dictionary<int, ModelMaterialsOutput> dcMaterialsOutput = (Dictionary<int, ModelMaterialsOutput>)kvp_factoryOutput.Value;
 
-                foreach (ModelMaterialsOutputDetail modelMaterialsOutputDetail in modelMaterialsOutput.modelMaterialsOutputDetail)
+                foreach (KeyValuePair<int, ModelMaterialsOutput> kvp_materialsOutput in dcMaterialsOutput)
                 {
+                    ModelMaterialsOutput modelMaterialsOutput = (ModelMaterialsOutput)kvp_materialsOutput.Value;
+
                     sbSql.Clear();
                     sbSql.Append("insert into ");
-                    sbSql.Append("       r_materials_output_detail ( ");
+                    sbSql.Append("       p_materials_output ( ");
                     sbSql.Append("       outputCode, ");
-                    sbSql.Append("       materialstId, ");
-                    sbSql.Append("       materialsNum, ");
-                    sbSql.Append("       materialsUnit, ");
+                    sbSql.Append("       produceCode, ");
+                    sbSql.Append("       factoryId, ");
+                    sbSql.Append("       materialsId, ");
+                    sbSql.Append("       outputNum, ");
+                    sbSql.Append("       outputUnit, ");
                     sbSql.Append("       outputStatus, ");
-                    sbSql.Append("       outputDate, ");
+                    sbSql.Append("       outputType, ");
+                    sbSql.Append("       applyMemberId, ");
+                    sbSql.Append("       applyDate, ");
                     sbSql.Append("       remark, ");
                     sbSql.Append("       isDelete, ");
                     sbSql.Append("       createBy, ");
                     sbSql.Append("       createTime ");
                     sbSql.Append("       ) values ( ");
-                    sbSql.Append("      '" + modelMaterialsOutputDetail.outputCode + "', ");
-                    sbSql.Append("       " + modelMaterialsOutputDetail.materialstId + ", ");
-                    sbSql.Append("       " + modelMaterialsOutputDetail.materialsNum + ", ");
-                    sbSql.Append("      '" + modelMaterialsOutputDetail.materialsUnit + "', ");
-                    sbSql.Append("       " + modelMaterialsOutputDetail.outputStatus + ", ");
-                    sbSql.Append("      '" + modelMaterialsOutputDetail.outputDate + "', ");
-                    sbSql.Append("      '" + modelMaterialsOutputDetail.remark + "', ");
-                    sbSql.Append("       " + modelMaterialsOutputDetail.isDelete + ", ");
-                    sbSql.Append("      '" + modelMaterialsOutputDetail.createBy + "', ");
-                    sbSql.Append("      '" + modelMaterialsOutputDetail.createTime + "')");
+                    sbSql.Append("      '" + modelMaterialsOutput.outputCode + "', ");
+                    sbSql.Append("      '" + modelMaterialsOutput.produceCode + "', ");
+                    sbSql.Append("       " + modelMaterialsOutput.factoryId + ", ");
+                    sbSql.Append("       " + modelMaterialsOutput.materialsId + ", ");
+                    sbSql.Append("       " + modelMaterialsOutput.outputNum + ", ");
+                    sbSql.Append("       " + modelMaterialsOutput.outputUnit + ", ");
+                    sbSql.Append("       " + modelMaterialsOutput.outputStatus + ", ");
+                    sbSql.Append("       " + modelMaterialsOutput.outputType + ", ");
+                    sbSql.Append("      '" + modelMaterialsOutput.applyMemberId + "', ");
+                    sbSql.Append("      '" + modelMaterialsOutput.applyDate + "', ");
+                    sbSql.Append("      '" + modelMaterialsOutput.remark + "', ");
+                    sbSql.Append("       " + modelMaterialsOutput.isDelete + ", ");
+                    sbSql.Append("      '" + modelMaterialsOutput.createBy + "', ");
+                    sbSql.Append("      '" + modelMaterialsOutput.createTime + "')");
                     listSql.Add(sbSql.ToString());
                 }
             }
+            //foreach (ModelMaterialsOutput modelMaterialsOutput in _listMaterialsOutput)
+            //{
+            //    sbSql.Clear();
+            //    sbSql.Append("insert into ");
+            //    sbSql.Append("       p_materials_output ( ");
+            //    sbSql.Append("       outputCode, ");
+            //    sbSql.Append("       produceCode, ");
+            //    sbSql.Append("       factoryId, ");
+            //    sbSql.Append("       productId, ");
+            //    sbSql.Append("       deliveryDate, ");
+            //    sbSql.Append("       outputStatus, ");
+            //    sbSql.Append("       outputDate, ");
+            //    sbSql.Append("       outputType, ");
+            //    sbSql.Append("       applyBy, ");
+            //    sbSql.Append("       remark, ");
+            //    sbSql.Append("       isDelete, ");
+            //    sbSql.Append("       createBy, ");
+            //    sbSql.Append("       createTime ");
+            //    sbSql.Append("       ) values ( ");
+            //    sbSql.Append("      '" + modelMaterialsOutput.outputCode + "', ");
+            //    sbSql.Append("      '" + modelMaterialsOutput.produceCode + "', ");
+            //    sbSql.Append("       " + modelMaterialsOutput.factoryId + ", ");
+            //    sbSql.Append("       " + modelMaterialsOutput.productId + ", ");
+            //    sbSql.Append("      '" + modelMaterialsOutput.deliveryDate + "', ");
+            //    sbSql.Append("       " + modelMaterialsOutput.outputStatus + ", ");
+            //    sbSql.Append("      '" + modelMaterialsOutput.outputDate + "', ");
+            //    sbSql.Append("       " + modelMaterialsOutput.outputType + ", ");
+            //    sbSql.Append("      '" + modelMaterialsOutput.applyBy + "', ");
+            //    sbSql.Append("      '" + modelMaterialsOutput.remark + "', ");
+            //    sbSql.Append("       " + modelMaterialsOutput.isDelete + ", ");
+            //    sbSql.Append("      '" + modelMaterialsOutput.createBy + "', ");
+            //    sbSql.Append("      '" + modelMaterialsOutput.createTime + "')");
+            //    listSql.Add(sbSql.ToString());
+
+            //    foreach (ModelMaterialsOutputDetail modelMaterialsOutputDetail in modelMaterialsOutput.modelMaterialsOutputDetail)
+            //    {
+            //        sbSql.Clear();
+            //        sbSql.Append("insert into ");
+            //        sbSql.Append("       r_materials_output_detail ( ");
+            //        sbSql.Append("       outputCode, ");
+            //        sbSql.Append("       materialstId, ");
+            //        sbSql.Append("       materialsNum, ");
+            //        sbSql.Append("       materialsUnit, ");
+            //        sbSql.Append("       outputStatus, ");
+            //        sbSql.Append("       outputDate, ");
+            //        sbSql.Append("       remark, ");
+            //        sbSql.Append("       isDelete, ");
+            //        sbSql.Append("       createBy, ");
+            //        sbSql.Append("       createTime ");
+            //        sbSql.Append("       ) values ( ");
+            //        sbSql.Append("      '" + modelMaterialsOutputDetail.outputCode + "', ");
+            //        sbSql.Append("       " + modelMaterialsOutputDetail.materialstId + ", ");
+            //        sbSql.Append("       " + modelMaterialsOutputDetail.materialsNum + ", ");
+            //        sbSql.Append("      '" + modelMaterialsOutputDetail.materialsUnit + "', ");
+            //        sbSql.Append("       " + modelMaterialsOutputDetail.outputStatus + ", ");
+            //        sbSql.Append("      '" + modelMaterialsOutputDetail.outputDate + "', ");
+            //        sbSql.Append("      '" + modelMaterialsOutputDetail.remark + "', ");
+            //        sbSql.Append("       " + modelMaterialsOutputDetail.isDelete + ", ");
+            //        sbSql.Append("      '" + modelMaterialsOutputDetail.createBy + "', ");
+            //        sbSql.Append("      '" + modelMaterialsOutputDetail.createTime + "')");
+            //        listSql.Add(sbSql.ToString());
+            //    }
+            //}
 
             return Dal.DBHelper.ExcuteTransaction(listSql);
 

@@ -95,7 +95,7 @@
             "",
             "财务未确认",
             "财务已确认",
-            "原料已入库"});
+            "物料已入库"});
             this.cmb_status.Location = new System.Drawing.Point(475, 51);
             this.cmb_status.Name = "cmb_status";
             this.cmb_status.Size = new System.Drawing.Size(118, 20);
@@ -183,7 +183,7 @@
             this.lbl_saler.Name = "lbl_saler";
             this.lbl_saler.Size = new System.Drawing.Size(65, 12);
             this.lbl_saler.TabIndex = 84;
-            this.lbl_saler.Text = "仓    库：";
+            this.lbl_saler.Text = "工    厂：";
             // 
             // txt_materialsName
             // 
@@ -200,7 +200,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 7;
-            this.label1.Text = "原料名称：";
+            this.label1.Text = "物料名称：";
             // 
             // btn_query
             // 
@@ -285,18 +285,18 @@
             // factoryName
             // 
             this.factoryName.DataPropertyName = "factoryName";
-            this.factoryName.HeaderText = "仓库";
+            this.factoryName.HeaderText = "工厂";
             this.factoryName.Name = "factoryName";
             this.factoryName.ReadOnly = true;
-            this.factoryName.Width = 120;
+            this.factoryName.Width = 110;
             // 
             // materialsName
             // 
             this.materialsName.DataPropertyName = "materialsName";
-            this.materialsName.HeaderText = "原料";
+            this.materialsName.HeaderText = "物料";
             this.materialsName.Name = "materialsName";
             this.materialsName.ReadOnly = true;
-            this.materialsName.Width = 160;
+            this.materialsName.Width = 140;
             // 
             // numDisplay
             // 
@@ -304,6 +304,7 @@
             this.numDisplay.HeaderText = "数量";
             this.numDisplay.Name = "numDisplay";
             this.numDisplay.ReadOnly = true;
+            this.numDisplay.Width = 80;
             // 
             // produceCode
             // 
@@ -311,7 +312,7 @@
             this.produceCode.HeaderText = "生产单号";
             this.produceCode.Name = "produceCode";
             this.produceCode.ReadOnly = true;
-            this.produceCode.Width = 150;
+            this.produceCode.Width = 200;
             // 
             // deliveryDate
             // 
@@ -399,7 +400,7 @@
             this.Name = "FrmPurchaseManage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "采购管理";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmOrderManage_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPurchaseManage_FormClosed);
             this.Load += new System.EventHandler(this.FrmPurchaseManage_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

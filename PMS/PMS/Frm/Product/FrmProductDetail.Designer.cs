@@ -552,7 +552,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmProductDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "原料管理";
+            this.Text = "物料管理";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmProductDetail_FormClosed);
             this.Load += new System.EventHandler(this.FrmProductDetail_Load);
             this.grb_materials.ResumeLayout(false);

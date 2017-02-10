@@ -98,7 +98,7 @@
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Bold);
             this.lbl_title.ForeColor = System.Drawing.Color.Black;
-            this.lbl_title.Location = new System.Drawing.Point(255, 42);
+            this.lbl_title.Location = new System.Drawing.Point(247, 45);
             this.lbl_title.Name = "lbl_title";
             this.lbl_title.Size = new System.Drawing.Size(152, 27);
             this.lbl_title.TabIndex = 24;
@@ -139,7 +139,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 121;
-            this.label1.Text = "仓    库：";
+            this.label1.Text = "工    厂：";
             this.label1.Visible = false;
             // 
             // cmb_factory
@@ -226,7 +226,7 @@
             // lbl_applyMember
             // 
             this.lbl_applyMember.AutoSize = true;
-            this.lbl_applyMember.ForeColor = System.Drawing.Color.Black;
+            this.lbl_applyMember.ForeColor = System.Drawing.Color.Red;
             this.lbl_applyMember.Location = new System.Drawing.Point(320, 59);
             this.lbl_applyMember.Name = "lbl_applyMember";
             this.lbl_applyMember.Size = new System.Drawing.Size(65, 12);
@@ -510,7 +510,7 @@
             this.Name = "FrmProductOutDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "出库管理";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmOrderDetail_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmProductOutDetail_FormClosed);
             this.Load += new System.EventHandler(this.FrmProductOutDetail_Load);
             this.grb_productOut.ResumeLayout(false);
             this.grb_productOut.PerformLayout();

@@ -114,6 +114,7 @@ namespace Common.Tools
             }
             catch (Exception e)
             {
+                value = DateTime.Now;
             }
 
             return value;
@@ -130,13 +131,41 @@ namespace Common.Tools
 
             try
             {
-                                value = _object.ToString(_format);
+                value = _object.ToString(_format);
             }
             catch (Exception e)
             {
             }
 
             return value;
+        }
+
+        public static Boolean isDate(object _object)
+        {
+             if (_object == null)
+            {
+                return false;
+            }
+
+            if (_object is DBNull)
+            {
+                return false;
+            }
+
+            try
+            {
+                _object = Convert.ToDateTime(_object);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public static Boolean isNotDate(object _object)
+        {
+            return !isDate(_object);
         }
     }
 }

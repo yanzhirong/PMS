@@ -164,6 +164,36 @@
     <Compile Include="Frm\Store\FrmMaterialsQueryStore.Designer.cs">
       <DependentUpon>FrmMaterialsQueryStore.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm\Store\FrmMaterialsIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Store\FrmMaterialsIn.Designer.cs">
+      <DependentUpon>FrmMaterialsIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Store\FrmMaterialsInDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Store\FrmMaterialsInDetail.Designer.cs">
+      <DependentUpon>FrmMaterialsInDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Store\FrmMaterialsOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Store\FrmMaterialsOut.Designer.cs">
+      <DependentUpon>FrmMaterialsOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Store\FrmMaterialsOutDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Store\FrmMaterialsOutDetail.Designer.cs">
+      <DependentUpon>FrmMaterialsOutDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Store\FrmMaterialsOutSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Store\FrmMaterialsOutSelect.Designer.cs">
+      <DependentUpon>FrmMaterialsOutSelect.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\Sys\FrmSysUserDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -278,6 +308,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\Store\FrmMaterialsQueryStore.resx">
       <DependentUpon>FrmMaterialsQueryStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Store\FrmMaterialsIn.resx">
+      <DependentUpon>FrmMaterialsIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Store\FrmMaterialsInDetail.resx">
+      <DependentUpon>FrmMaterialsInDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Store\FrmMaterialsOut.resx">
+      <DependentUpon>FrmMaterialsOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Store\FrmMaterialsOutDetail.resx">
+      <DependentUpon>FrmMaterialsOutDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Store\FrmMaterialsOutSelect.resx">
+      <DependentUpon>FrmMaterialsOutSelect.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\Sys\FrmSysUser.resx">
       <DependentUpon>FrmSysUser.cs</DependentUpon>

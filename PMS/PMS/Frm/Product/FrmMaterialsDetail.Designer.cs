@@ -99,7 +99,7 @@
             this.lbl_title.Name = "lbl_title";
             this.lbl_title.Size = new System.Drawing.Size(180, 27);
             this.lbl_title.TabIndex = 24;
-            this.lbl_title.Text = "原料信息设置";
+            this.lbl_title.Text = "物料信息设置";
             // 
             // grb_materials
             // 
@@ -382,7 +382,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 42;
-            this.label1.Text = "原 料 名：";
+            this.label1.Text = "物 料 名：";
             // 
             // grb_price
             // 
@@ -450,8 +450,8 @@
             this.cmb_materialsType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_materialsType.FormattingEnabled = true;
             this.cmb_materialsType.Items.AddRange(new object[] {
-            "一般原料",
-            "自制原料",
+            "一般物料",
+            "自制物料",
             "其它"});
             this.cmb_materialsType.Location = new System.Drawing.Point(344, 174);
             this.cmb_materialsType.Name = "cmb_materialsType";
@@ -467,7 +467,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 12);
             this.label7.TabIndex = 70;
-            this.label7.Text = "原料类型：";
+            this.label7.Text = "物料类型：";
             // 
             // FrmMaterialsDetail
             // 
@@ -488,7 +488,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmMaterialsDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "原料管理";
+            this.Text = "物料管理";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmMaterialsDetail_FormClosed);
             this.Load += new System.EventHandler(this.FrmMaterialsDetail_Load);
             this.grb_materials.ResumeLayout(false);

@@ -36,7 +36,7 @@ namespace PMS.Frm.Store
             init();
         }
 
-        private void FrmProductOutSelect_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmMaterialsQueryStore_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
         }
@@ -47,13 +47,13 @@ namespace PMS.Frm.Store
         /// </summary>
         private void init()
         {
-            //仓库下拉框
+            //工厂下拉框
             List<ModelItem> listItem = m_bllFactory.GetFactoryItem();
             WinCommon.BindComboBox(ref this.cmb_factory, listItem);
 
             //出库单号
             this.txt_materialsName.Text = m_materialsName;
-            //仓库
+            //工厂
             for (int i = 0; i < this.cmb_factory.Items.Count; i++)
             {
                 ModelItem modelItem = (ModelItem)this.cmb_factory.Items[i];
@@ -93,7 +93,7 @@ namespace PMS.Frm.Store
 
             DataGridViewTextBoxColumn colProduct = new DataGridViewTextBoxColumn();
             colProduct.Name = "materialsName";
-            colProduct.HeaderText = "原料";
+            colProduct.HeaderText = "物料";
             colProduct.DataPropertyName = "materialsName";
             colProduct.Width = 160;
             colProduct.ReadOnly = true;
@@ -101,7 +101,7 @@ namespace PMS.Frm.Store
 
             DataGridViewTextBoxColumn colFactory = new DataGridViewTextBoxColumn();
             colFactory.Name = "factoryName";
-            colFactory.HeaderText = "仓库";
+            colFactory.HeaderText = "工厂";
             colFactory.DataPropertyName = "factoryName";
             colFactory.Width = 160;
             colFactory.ReadOnly = true;

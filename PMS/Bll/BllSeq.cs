@@ -26,7 +26,10 @@ namespace Bll
             string code = "";
 
             int seq = GetSeq(_key);
-            code = ConvertUtils.ConvertToDateString(DateTime.Now, "yyyyMMddHHmmss") + "_" + seq;
+
+            string strSeq = "0000000000" + seq;
+            strSeq = strSeq.Substring(strSeq.Length - 10);
+            code = ConvertUtils.ConvertToDateString(DateTime.Now, "yyyyMMddHHmmss") + "_" + strSeq;
             return code;
         }
     }

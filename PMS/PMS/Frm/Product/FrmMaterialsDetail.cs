@@ -60,15 +60,15 @@ namespace PMS.Frm.Product
             //标题
             if (m_mode == 0)
             {
-                this.lbl_title.Text = "原料信息设定-新增";
+                this.lbl_title.Text = "物料信息设定-新增";
             }
             else if (m_mode == 1)
             {
-                this.lbl_title.Text = "原料信息设定-修改";
+                this.lbl_title.Text = "物料信息设定-修改";
             }
             else
             {
-                this.lbl_title.Text = "原料信息设定-删除";
+                this.lbl_title.Text = "物料信息设定-删除";
             }
 
             //下拉框
@@ -89,9 +89,9 @@ namespace PMS.Frm.Product
             {
                 ModelMaterials modelMaterials = m_bllMaterials.GetMaterialsById(m_materialsId);
 
-                //原料名
+                //物料名
                 this.txt_name.Text = modelMaterials.name;
-                //原料略名
+                //物料略名
                 this.txt_subName.Text = modelMaterials.subName;
                 //检索键
                 this.txt_searchKey.Text = modelMaterials.modelMaterialsSearch.searchKey;
@@ -117,7 +117,7 @@ namespace PMS.Frm.Product
                     }
                 }
 
-                //原料类型
+                //物料类型
                 this.cmb_materialsType.SelectedIndex = modelMaterials.type;
 
                 //重量单位
@@ -236,12 +236,12 @@ namespace PMS.Frm.Product
 
                 if (rtn == false)
                 {
-                    MsgUtils.ShowErrorMsg("新增原料失败！");
+                    MsgUtils.ShowErrorMsg("新增物料失败！");
                     return ;
                 }
                 else
                 {
-                    MsgUtils.ShowInfoMsg("新增原料成功！");
+                    MsgUtils.ShowInfoMsg("新增物料成功！");
                 }
 
                 //处理模式变为修改
@@ -260,12 +260,12 @@ namespace PMS.Frm.Product
 
                 if (rtn == false)
                 {
-                    MsgUtils.ShowErrorMsg("修改原料失败！");
+                    MsgUtils.ShowErrorMsg("修改物料失败！");
                     return;
                 }
                 else
                 {
-                    MsgUtils.ShowInfoMsg("修改原料成功！");
+                    MsgUtils.ShowInfoMsg("修改物料成功！");
                     init();
                     return;
                 }
@@ -278,12 +278,12 @@ namespace PMS.Frm.Product
 
                 if (rtn == false)
                 {
-                    MsgUtils.ShowErrorMsg("删除原料失败！");
+                    MsgUtils.ShowErrorMsg("删除物料失败！");
                     return;
                 }
                 else
                 {
-                    MsgUtils.ShowInfoMsg("删除原料成功！");
+                    MsgUtils.ShowInfoMsg("删除物料成功！");
 
                     //返回用户列表
                     Form form = new FrmMaterialsManage();
@@ -306,14 +306,14 @@ namespace PMS.Frm.Product
                 //名称
                 if (StringUtils.IsBlank(this.txt_name.Text))
                 {
-                    MsgUtils.ShowErrorMsg("请输入原料名！");
+                    MsgUtils.ShowErrorMsg("请输入物料名！");
                     this.txt_name.Focus();
                     return false;
                 }
                 ModelMaterials materials = m_bllMaterials.GetMaterialsByName(this.txt_name.Text);
                 if (materials.id > 0 && materials.id != m_materialsId)
                 {
-                    MsgUtils.ShowErrorMsg("该原料已存在！");
+                    MsgUtils.ShowErrorMsg("该物料已存在！");
                     this.txt_name.Focus();
                     return false;
                 }
@@ -340,10 +340,10 @@ namespace PMS.Frm.Product
                     this.cmb_morphology.Focus();
                     return false;
                 }
-                //原料类型
+                //物料类型
                 if (this.cmb_materialsType.SelectedIndex < 0)
                 {
-                    MsgUtils.ShowErrorMsg("请选择原料类型！");
+                    MsgUtils.ShowErrorMsg("请选择物料类型！");
                     this.cmb_materialsType.Focus();
                     return false;
                 }
@@ -427,7 +427,7 @@ namespace PMS.Frm.Product
                         return false;
                     }
 
-                    //其它原料可不选单位
+                    //其它物料可不选单位
                     if (this.cmb_materialsType.SelectedIndex != 2 && this.cmb_priceUnit.SelectedIndex < 0)
                     {
                         MsgUtils.ShowErrorMsg("请选择重量价格单位！");
@@ -441,7 +441,7 @@ namespace PMS.Frm.Product
                 DataTable dt = m_bllMaterials.GetProductMaterialsById(m_materialsId);
                 if(dt != null && dt.Rows.Count > 0)
                 {
-                    MsgUtils.ShowErrorMsg("该原料已被用作生产商品，无法删除！");
+                    MsgUtils.ShowErrorMsg("该物料已被用作生产，无法删除！");
                     return false;
                 }
             }

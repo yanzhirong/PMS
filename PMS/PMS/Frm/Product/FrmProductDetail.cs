@@ -350,7 +350,7 @@ namespace PMS.Frm.Product
                 //名称
                 if (StringUtils.IsBlank(this.txt_name.Text))
                 {
-                    MsgUtils.ShowErrorMsg("请输入原料名！");
+                    MsgUtils.ShowErrorMsg("请输入物料名！");
                     this.txt_name.Focus();
                     return false;
                 }
@@ -450,7 +450,7 @@ namespace PMS.Frm.Product
 
                 if (this.dataGridView1.Rows.Count <= 1)
                 {
-                    MsgUtils.ShowErrorMsg("请输入原料！");
+                    MsgUtils.ShowErrorMsg("请输入物料！");
                     this.dataGridView1.Focus();
                     return false;
                 }
@@ -466,7 +466,7 @@ namespace PMS.Frm.Product
                     {
                         if (listMaterialsId.Contains(materialsId))
                         {
-                            MsgUtils.ShowErrorMsg("选择的原料不可重复！");
+                            MsgUtils.ShowErrorMsg("选择的物料不可重复！");
                             this.dataGridView1.Focus();
                             return false;
                         }
@@ -474,7 +474,7 @@ namespace PMS.Frm.Product
                         decimal materialPercent = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells[3].Value);
                         if (materialPercent <= 0)
                         {
-                            MsgUtils.ShowErrorMsg("请输入合适的原料百分比！");
+                            MsgUtils.ShowErrorMsg("请输入合适的物料百分比！");
                             this.dataGridView1.Focus();
                             return false;
                         }
@@ -489,7 +489,7 @@ namespace PMS.Frm.Product
 
                 if (allMaterialPercent != 100)
                 {
-                    MsgUtils.ShowErrorMsg("原料百分比总和必须是100%！");
+                    MsgUtils.ShowErrorMsg("物料百分比总和必须是100%！");
                     this.dataGridView1.Focus();
                     return false;
                 }
@@ -600,7 +600,7 @@ namespace PMS.Frm.Product
 
             DataGridViewComboBoxColumn column = new DataGridViewComboBoxColumn();
             column.Name = "materialsId";
-            column.HeaderText = "原料";
+            column.HeaderText = "物料";
             column.DataPropertyName = "materialsId";
             column.Width = 150;
             this.dataGridView1.Columns.Add(column);
@@ -637,7 +637,7 @@ namespace PMS.Frm.Product
                 DataTable dt = m_bllMaterials.GetMaterialsBySearchKey(searchKey);
                 if (dt == null || dt.Rows.Count <= 0)
                 {
-                    MsgUtils.ShowInfoMsg("没有此原料，请重新输入！");
+                    MsgUtils.ShowInfoMsg("没有此物料，请重新输入！");
                     this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
                     return;
                 }

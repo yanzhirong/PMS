@@ -101,7 +101,16 @@ namespace Common.Tools
                 {
                     PropertyInfo propertyInfo = model.GetType().GetProperty(dr.Table.Columns[i].ColumnName);
                     if (propertyInfo != null && dr[i] != DBNull.Value)
-                        propertyInfo.SetValue(model, dr[i], null);
+                    {
+                        //if (propertyInfo.ToString().Contains("DateTime") && ConvertUtils.isNotDate(dr[i]))
+                        //{
+                        //    propertyInfo.SetValue(model, null, null);
+                        //}
+                        //else
+                        //{
+                            propertyInfo.SetValue(model, dr[i], null);
+                        //}
+                    }
                 }
                 catch (Exception e)
                 {

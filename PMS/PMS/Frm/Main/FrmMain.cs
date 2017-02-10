@@ -84,6 +84,7 @@ namespace PMS.Frm.Main
             {
                 Form form = System.AppDomain.CurrentDomain.CreateInstanceFromAndUnwrap(Application.ExecutablePath, formName) as Form;
                 WinCommon.ShowInMain(ref form);
+                form.ShowDialog();
             }
             catch (Exception ex)
             {

@@ -447,7 +447,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(65, 12);
             this.label12.TabIndex = 111;
-            this.label12.Text = "出货仓库：";
+            this.label12.Text = "出货工厂：";
             // 
             // txt_priceRemark
             // 

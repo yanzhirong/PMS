@@ -52,7 +52,8 @@ namespace PMS.Frm.Sys
             {
                 int factoryId = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
                 Form form = new FrmSysFactoryDetail(1, factoryId);
-                WinCommon.ShowInMain(ref form);
+                this.Hide();
+                form.ShowDialog();
             }
 
             //删除

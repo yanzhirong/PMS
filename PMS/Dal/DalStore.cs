@@ -36,18 +36,18 @@ namespace Dal
         public DataTable GetStoreMaterialsNum(int _factoryId, int _materialsId, DateTime _expiresDate)
         {
             sbSql.Clear();
-            sbSql.Append("select a.num, ");
+            sbSql.Append("select a.inputNum, ");
             sbSql.Append("       b.value2 unit ");
-            sbSql.Append("from p_materials_in a ");
+            sbSql.Append("from p_materials_input a ");
             sbSql.Append("left join m_code b ");
-            sbSql.Append("  on a.unit = b.subCode ");
+            sbSql.Append("  on a.inputUnit = b.subCode ");
             sbSql.Append(" and b.code = 3 ");
             sbSql.Append("where a.isDelete = 0 ");
             sbSql.Append("  and a.factoryId = ").Append(_factoryId).Append(" ");
             sbSql.Append("  and a.materialsId = ").Append(_materialsId).Append(" ");
             sbSql.Append("  and a.expiresDate >= '").Append(_expiresDate).Append("' ");
-            sbSql.Append("  and a.status = 1 ");
-            sbSql.Append("  and a.num > 0 ");
+            sbSql.Append("  and a.inputStatus = 1 ");
+            sbSql.Append("  and a.inputNum > 0 ");
 
             return Dal.DBHelper.Select(sbSql.ToString());
         }
@@ -89,7 +89,7 @@ namespace Dal
             sbSql.Append("       d.name factoryName, ");
             sbSql.Append("       date_format(a.expiresDate, '%Y-%m-%d') expiresDate, ");
             sbSql.Append("       concat(a.num, b.value1) numDisplay ");
-            sbSql.Append("from p_materials_in a ");
+            sbSql.Append("from p_materials_input a ");
             sbSql.Append("left join m_code b ");
             sbSql.Append("  on a.unit = b.subCode ");
             sbSql.Append(" and b.code = 3 ");
@@ -106,8 +106,32 @@ namespace Dal
                 sbSql.Append("                       from r_materials_search ");
                 sbSql.Append("                      where materialsName like '%").Append(_materialsName).Append("%' or upper(searchKey) like '%").Append(_materialsName.ToUpper()).Append("%') ");
             }
-            sbSql.Append("  and a.status = 1 ");
-            sbSql.Append("  and a.num > 0 ");
+            sbSql.Append("  and a.inputStatus = 1 ");
+            sbSql.Append("  and a.inputNum > 0 ");
+
+            return Dal.DBHelper.Select(sbSql.ToString());
+        }
+
+        public DataTable GetMaterialsOutputLogByInputCode(string _inputCode)
+        {
+            sbSql.Clear();
+            sbSql.Append("select * ");
+            sbSql.Append("  from h_materials_output_log ");
+            sbSql.Append(" where isDelete = 0 ");
+            sbSql.Append("   and inputCode = '").Append(_inputCode).Append("' ");
+            sbSql.Append(" order by id ");
+
+            return Dal.DBHelper.Select(sbSql.ToString());
+        }
+
+        public DataTable GetMaterialsOutputLogByOutputCode(string _outputCode)
+        {
+            sbSql.Clear();
+            sbSql.Append("select * ");
+            sbSql.Append("  from h_materials_output_log ");
+            sbSql.Append(" where isDelete = 0 ");
+            sbSql.Append("   and outputCode = '").Append(_outputCode).Append("' ");
+            sbSql.Append(" order by id ");
 
             return Dal.DBHelper.Select(sbSql.ToString());
         }

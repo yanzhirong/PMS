@@ -19,6 +19,7 @@ namespace PMS.Frm.Store
         private int m_outputDetailId;
         private int m_productId;
         private int m_factoryId;
+        private int m_applyMemberId;
 
         private BllCustomer m_bllCustomer = new BllCustomer();
         private BllProduct m_bllProduct = new BllProduct();
@@ -28,13 +29,14 @@ namespace PMS.Frm.Store
         private BllUser m_bllUser = new BllUser();
         private BllCode m_bllCode = new BllCode();
 
-        public FrmProductOutSelect(string _outputCode, int _outputDetailId, int _productId, int _factoryId)
+        public FrmProductOutSelect(string _outputCode, int _outputDetailId, int _productId, int _factoryId, int _applyMemberId)
         {
             InitializeComponent();
             m_outputCode = _outputCode;
             m_outputDetailId = _outputDetailId;
             m_productId = _productId;
             m_factoryId = _factoryId;
+            m_applyMemberId = _applyMemberId;
         }
 
         private void FrmOrderDetail_Load(object sender, EventArgs e)
@@ -71,7 +73,7 @@ namespace PMS.Frm.Store
 
             //出库单号
             this.txt_outputCode.Text = m_outputCode;
-            //仓库
+            //工厂
             this.txt_factory.Text = m_bllFactory.GetFactoryById(m_factoryId).name;
             //出库商品
             this.txt_product.Text = m_bllProduct.GetProductById(m_productId).name;
@@ -161,7 +163,7 @@ namespace PMS.Frm.Store
                         selectedUnit = outputUnit;
                     }
 
-                    //出库后剩余出库数
+                    //出库后剩余在库数
                     decimal stockNum = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells["num"].Value);
                     //转为克
                     stockNum = stockNum * m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["unit"].Value));
@@ -177,7 +179,7 @@ namespace PMS.Frm.Store
 
             selectedAllOutputNum = selectedAllOutputNum / m_bllCode.GetWeightUnit(selectedUnit);
 
-            rtn = m_bllProductOut.doOutPut(m_outputCode, m_outputDetailId, m_factoryId, m_productId, selectedAllOutputNum, selectedUnit, listOutput, LoginUserInfo.LoginUser.loginUser.userName);
+            rtn = m_bllProductOut.doOutPut(m_outputCode, m_outputDetailId, m_factoryId, m_productId, m_applyMemberId, selectedAllOutputNum, selectedUnit, listOutput, LoginUserInfo.LoginUser.loginUser.userName);
 
             if (rtn == true)
             {

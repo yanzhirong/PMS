@@ -34,7 +34,7 @@ namespace PMS.Frm.Store
             List<ModelItem> listItem = m_bllCode.GetCodeItem((int)Enum.EnumCode.SaleOrderStatus, true);
             WinCommon.BindComboBox(ref this.cmb_orderStatus, listItem);
 
-            //仓库
+            //工厂
             listItem = m_bllFactory.GetFactoryItem();
             WinCommon.BindComboBox(ref this.cmb_orderStatus, listItem, true);
             
@@ -116,7 +116,7 @@ namespace PMS.Frm.Store
             }
         }
 
-        private void FrmOrderManage_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmProductOut_FormClosed(object sender, FormClosedEventArgs e)
         {
             WinCommon.Exit();
         }

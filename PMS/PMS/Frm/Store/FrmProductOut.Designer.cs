@@ -208,7 +208,7 @@
             this.lbl_saler.Name = "lbl_saler";
             this.lbl_saler.Size = new System.Drawing.Size(65, 12);
             this.lbl_saler.TabIndex = 84;
-            this.lbl_saler.Text = "仓    库：";
+            this.lbl_saler.Text = "工    厂：";
             // 
             // txt_customerName
             // 
@@ -326,7 +326,7 @@
             // factoryName
             // 
             this.factoryName.DataPropertyName = "factoryName";
-            this.factoryName.HeaderText = "仓库";
+            this.factoryName.HeaderText = "工厂";
             this.factoryName.Name = "factoryName";
             this.factoryName.ReadOnly = true;
             // 
@@ -432,7 +432,7 @@
             this.Name = "FrmProductOut";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "商品出库管理";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmOrderManage_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmProductOut_FormClosed);
             this.Load += new System.EventHandler(this.FrmProductOut_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
