@@ -139,6 +139,7 @@ namespace PMS.Frm.Sale
                 this.Hide();
             }
 
+            return;
         }
 
         /// <summary>

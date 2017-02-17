@@ -93,7 +93,7 @@ namespace PMS.Frm.Store
 
             DataGridViewTextBoxColumn colProduct = new DataGridViewTextBoxColumn();
             colProduct.Name = "productName";
-            colProduct.HeaderText = "商品";
+            colProduct.HeaderText = "产品";
             colProduct.DataPropertyName = "productName";
             colProduct.Width = 160;
             colProduct.ReadOnly = true;
@@ -116,9 +116,9 @@ namespace PMS.Frm.Store
             this.dataGridView1.Columns.Add(colExpiresDate);
 
             DataGridViewTextBoxColumn colNumDisplay = new DataGridViewTextBoxColumn();
-            colNumDisplay.Name = "numDisplay";
+            colNumDisplay.Name = "num";
             colNumDisplay.HeaderText = "库存数量";
-            colNumDisplay.DataPropertyName = "numDisplay";
+            colNumDisplay.DataPropertyName = "num";
             colNumDisplay.Width = 80;
             colNumDisplay.ReadOnly = true;
             this.dataGridView1.Columns.Add(colNumDisplay);

@@ -39,13 +39,13 @@ namespace Dal
             sbSql.Append("left join m_user d ");
             sbSql.Append("  on a.applyMemberId = d.userId ");
             sbSql.Append("left join m_code e ");
-            sbSql.Append("  on d.outputUnit = e.subCode ");
+            sbSql.Append("  on a.outputUnit = e.subCode ");
             sbSql.Append(" and e.code = 3 ");
-            sbSql.Append("left join (select count(*) cnt,inputCode ");
+            sbSql.Append("left join (select count(*) cnt,outputCode ");
             sbSql.Append("             from h_materials_output_log ");
             sbSql.Append("            where isDelete = 0 ");
-            sbSql.Append("            group by inputCode) f ");
-            sbSql.Append("  on a.inputCode = f.inputCode ");
+            sbSql.Append("            group by outputCode) f ");
+            sbSql.Append("  on a.outputCode = f.outputCode ");
             sbSql.Append("where a.isDelete = 0 ");
             if (Common.Tools.StringUtils.IsNotBlank(_materialsName))
             {
@@ -67,8 +67,8 @@ namespace Dal
                 sbSql.Append("  and a.outputStatus = ").Append(_outputStatus).Append(" ");
             }
             sbSql.Append("  and (a.outputStatus = 0 or ( a.outputStatus = 1 ");
-            sbSql.Append("  and a.outputStatus >= '").Append(_beginTime).Append("' ");
-            sbSql.Append("  and a.outputStatus <= '").Append(_endTime).Append("')) ");
+            sbSql.Append("  and a.outputDate >= '").Append(_beginTime).Append("' ");
+            sbSql.Append("  and a.outputDate <= '").Append(_endTime).Append("')) ");
             sbSql.Append("order by a.modifyTime desc");
 
             return Dal.DBHelper.Select(sbSql.ToString());
@@ -191,35 +191,34 @@ namespace Dal
             return Dal.DBHelper.ExcuteTransaction(listSql);
         }
 
-        //TODO
         public DataTable GetMaterialsOutSelect(int _factoryId, int _materialsId)
         {
             sbSql.Clear();
             sbSql.Append("select a.id, ");
             sbSql.Append("       a.inputCode, ");
-            sbSql.Append("       b.name productName, ");
-            sbSql.Append("       concat(a.num, c.value1) numDisplay, ");
-            sbSql.Append("       a.num, ");
-            sbSql.Append("       a.unit, ");
+            sbSql.Append("       b.name materialsName, ");
+            sbSql.Append("       concat(a.inputNum, c.value1) numDisplay, ");
+            sbSql.Append("       a.inputNum, ");
+            sbSql.Append("       a.inputUnit, ");
             sbSql.Append("       date_format(a.expiresDate, '%Y-%m-%d') expiresDate ");
-            sbSql.Append("from p_materials_in a ");
-            sbSql.Append("join p_product b ");
-            sbSql.Append("  on a.productId = b.id ");
+            sbSql.Append("from p_materials_input a ");
+            sbSql.Append("join p_materials b ");
+            sbSql.Append("  on a.materialsId = b.id ");
             sbSql.Append("join m_code c ");
-            sbSql.Append("  on a.unit = c.subCode ");
+            sbSql.Append("  on a.inputUnit = c.subCode ");
             sbSql.Append(" and c.code = 3 ");
             sbSql.Append("where a.isDelete = 0 ");
             sbSql.Append("  and a.factoryId = ").Append(_factoryId).Append(" ");
-            sbSql.Append("  and a.materials = ").Append(_materialsId).Append(" ");
-            sbSql.Append("  and a.num > 0 ");
-            sbSql.Append("  and a.status = 0 ");
+            sbSql.Append("  and a.materialsId = ").Append(_materialsId).Append(" ");
+            sbSql.Append("  and a.inputNum > 0 ");
+            sbSql.Append("  and a.inputStatus = 1 ");
             sbSql.Append("order by a.expiresDate ");
 
             return Dal.DBHelper.Select(sbSql.ToString());
 
         }
 
-        public int doOutPut(string _outputCode, int _outputDetailId, int _factoryId, int _productId, int _applyMemberId, decimal _outputNum, int _outputUnit, List<Dictionary<string, object>> listOutput, string userName)
+        public int doOutPut(string _outputCode, int _factoryId, int _materialsId, decimal _outputNum, int _applyMemberId, List<Dictionary<string, object>> listOutput, string userName)
         {
             List<string> listSql = new List<string>();
 
@@ -228,11 +227,11 @@ namespace Dal
                 //出库记录
                 sbSql.Clear();
                 sbSql.Append("insert into ");
-                sbSql.Append("       h_product_output_log ( ");
+                sbSql.Append("       h_materials_output_log ( ");
                 sbSql.Append("       outputCode, ");
                 sbSql.Append("       inputCode, ");
                 sbSql.Append("       factoryId, ");
-                sbSql.Append("       productId, ");
+                sbSql.Append("       materialsId, ");
                 sbSql.Append("       applyMemberId, ");
                 sbSql.Append("       outputNum, ");
                 sbSql.Append("       outputUnit, ");
@@ -244,7 +243,7 @@ namespace Dal
                 sbSql.Append("      '" + _outputCode + "', ");
                 sbSql.Append("      '" + ConvertUtils.ConvertToString(dc["inputCode"]) + "', ");
                 sbSql.Append("       " + _factoryId + ", ");
-                sbSql.Append("       " + _productId + ", ");
+                sbSql.Append("       " + _materialsId + ", ");
                 sbSql.Append("       " + _applyMemberId + ", ");
                 sbSql.Append("       " + ConvertUtils.ConvertToDecimal(dc["outputNum"]) + ", ");
                 sbSql.Append("       " + ConvertUtils.ConvertToInt(dc["outputUnit"]) + ", ");
@@ -256,8 +255,8 @@ namespace Dal
 
                 //减少库存
                 sbSql.Clear();
-                sbSql.Append("update p_product_in ");
-                sbSql.Append("set num = ").Append(ConvertUtils.ConvertToDecimal(dc["stockNum"])).Append(",");
+                sbSql.Append("update p_materials_input ");
+                sbSql.Append("set inputNum = ").Append(ConvertUtils.ConvertToDecimal(dc["stockNum"])).Append(",");
                 sbSql.Append("    modifyBy = '" + userName + "',");
                 sbSql.Append("    modifyTime = '" + DateTime.Now + "' ");
                 sbSql.Append("where id = " + ConvertUtils.ConvertToInt(dc["inputId"]));
@@ -265,44 +264,25 @@ namespace Dal
 
             }
 
-            if (_outputDetailId > 0)
-            {
+            sbSql.Clear();
+            sbSql.Append("update p_materials_output ");
+            sbSql.Append("   set realityOutputNum = ifnull(realityOutputNum,0) + " + _outputNum + ", ");
+            sbSql.Append("       outputDate = '" + DateTime.Now + "', ");
+            sbSql.Append("       modifyBy = '" + userName + "',");
+            sbSql.Append("       modifyTime = '" + DateTime.Now + "' ");
+            sbSql.Append(" where outputCode = '").Append(_outputCode).Append("'");
+            sbSql.Append("   and isDelete = 0 ");
+            listSql.Add(sbSql.ToString());
 
-                sbSql.Clear();
-                sbSql.Append("update r_product_output_detail ");
-                sbSql.Append("set outputStatus = 1,");
-                sbSql.Append("    outputDate = '" + DateTime.Now + "', ");
-                sbSql.Append("    modifyBy = '" + userName + "',");
-                sbSql.Append("    modifyTime = '" + DateTime.Now + "' ");
-                sbSql.Append("where id = ").Append(_outputDetailId);
-                listSql.Add(sbSql.ToString());
-            }
-            else
-            {
-                sbSql.Clear();
-                sbSql.Append("insert into ");
-                sbSql.Append("       r_product_output_detail ( ");
-                sbSql.Append("       outputCode, ");
-                sbSql.Append("       productId, ");
-                sbSql.Append("       productNum, ");
-                sbSql.Append("       productUnit, ");
-                sbSql.Append("       outputStatus, ");
-                sbSql.Append("       outputDate, ");
-                sbSql.Append("       isDelete, ");
-                sbSql.Append("       createBy, ");
-                sbSql.Append("       createTime ");
-                sbSql.Append("       ) values ( ");
-                sbSql.Append("      '" + _outputCode + "', ");
-                sbSql.Append("       " + _productId + ", ");
-                sbSql.Append("       " + _outputNum + ", ");
-                sbSql.Append("       " + _outputUnit + ", ");
-                sbSql.Append("       1, ");
-                sbSql.Append("      '" + DateTime.Now + "', ");
-                sbSql.Append("       0, ");
-                sbSql.Append("      '" + userName + "', ");
-                sbSql.Append("      '" + DateTime.Now + "')");
-                listSql.Add(sbSql.ToString());
-            }
+            sbSql.Clear();
+            sbSql.Append("update p_materials_output ");
+            sbSql.Append("   set outputStatus = 1, ");
+            sbSql.Append("       modifyBy = '" + userName + "',");
+            sbSql.Append("       modifyTime = '" + DateTime.Now + "' ");
+            sbSql.Append(" where outputCode = '").Append(_outputCode).Append("'");
+            sbSql.Append("   and isDelete = 0 ");
+            sbSql.Append("   and (realityOutputNum >= outputNum or ifnull(outputNum, 0) <= 0) ");
+            listSql.Add(sbSql.ToString());
             return Dal.DBHelper.ExcuteTransaction(listSql);
 
         }

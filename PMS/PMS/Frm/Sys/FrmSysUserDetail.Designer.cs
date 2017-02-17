@@ -50,7 +50,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.dtp_birthday = new System.Windows.Forms.DateTimePicker();
             this.lbl_title = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.SuspendLayout();
             // 
             // label1
@@ -250,19 +249,11 @@
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Bold);
             this.lbl_title.ForeColor = System.Drawing.Color.Black;
-            this.lbl_title.Location = new System.Drawing.Point(190, 39);
+            this.lbl_title.Location = new System.Drawing.Point(253, 33);
             this.lbl_title.Name = "lbl_title";
-            this.lbl_title.Size = new System.Drawing.Size(180, 27);
+            this.lbl_title.Size = new System.Drawing.Size(124, 27);
             this.lbl_title.TabIndex = 24;
-            this.lbl_title.Text = "用户信息设置";
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(621, 24);
-            this.menuStrip1.TabIndex = 25;
-            this.menuStrip1.Text = "menuStrip1";
+            this.lbl_title.Text = "用户信息";
             // 
             // FrmSysUserDetail
             // 
@@ -291,10 +282,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_name);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmSysUserDetail";
@@ -330,6 +319,5 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DateTimePicker dtp_birthday;
         private System.Windows.Forms.Label lbl_title;
-        private System.Windows.Forms.MenuStrip menuStrip1;
     }
 }

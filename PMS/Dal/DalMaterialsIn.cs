@@ -149,6 +149,41 @@ namespace Dal
             sbSql.Append("      '" + _model.createTime + "')");
             listSql.Add(sbSql.ToString());
             
+            if (StringUtils.IsNotBlank(_model.purchaseCode))
+            {
+                // 更新采购单状态
+                sbSql.Clear();
+                sbSql.Append("update p_purchase ");
+                sbSql.Append("   set status = " + (int)Enum.EnumPurchaseOrderStatus.Complete + ",");
+                sbSql.Append("       modifyBy = '" + _model.modifyBy + "',");
+                sbSql.Append("       modifyTime = '" + _model.modifyTime + "' ");
+                sbSql.Append(" where purchaseCode = '" + _model.purchaseCode + "' ");
+                sbSql.Append("   and isDelete = 0 ");
+                sbSql.Append("   and (select min(inputStatus) ");
+                sbSql.Append("          from p_materials_input ");
+                sbSql.Append("         where purchaseCode = '" + _model.purchaseCode + "' ");
+                sbSql.Append("           and isDelete = 0) > 0");
+                listSql.Add(sbSql.ToString());
+
+                // 更新生产单状态
+                sbSql.Clear();
+                sbSql.Append("update p_produce ");
+                sbSql.Append("   set status = " + (int)Enum.EnumProduceOrderStatus.Producing + ",");
+                sbSql.Append("       modifyBy = '" + _model.modifyBy + "',");
+                sbSql.Append("       modifyTime = '" + _model.modifyTime + "' ");
+                sbSql.Append(" where isDelete = 0 ");
+                sbSql.Append("   and (select min(status) ");
+                sbSql.Append("          from p_purchase ");
+                sbSql.Append("         where isDelete = 0 ");
+                sbSql.Append("           and produceCode = (select min(produceCode) ");
+                sbSql.Append("                                from p_purchase ");
+                sbSql.Append("                               where purchaseCode = '" + _model.purchaseCode + "' ");
+                sbSql.Append("                                 and isDelete = 0 ");
+                sbSql.Append("                                 and ifnull(produceCode,'') != '') ");
+                sbSql.Append("       ) = " + (int)Enum.EnumPurchaseOrderStatus.Complete);
+                listSql.Add(sbSql.ToString());
+            }
+
             return Dal.DBHelper.ExcuteTransaction(listSql);
         }
 
@@ -180,6 +215,41 @@ namespace Dal
             sbSql.Append("where id = " + _model.id);
             listSql.Add(sbSql.ToString());
 
+            if (StringUtils.IsNotBlank(_model.purchaseCode))
+            {
+                // 更新采购单状态
+                sbSql.Clear();
+                sbSql.Append("update p_purchase ");
+                sbSql.Append("   set status = " + (int)Enum.EnumPurchaseOrderStatus.Complete + ",");
+                sbSql.Append("       modifyBy = '" + _model.modifyBy + "',");
+                sbSql.Append("       modifyTime = '" + _model.modifyTime + "' ");
+                sbSql.Append(" where purchaseCode = '" + _model.purchaseCode + "' ");
+                sbSql.Append("   and isDelete = 0 ");
+                sbSql.Append("   and (select min(inputStatus) ");
+                sbSql.Append("          from p_materials_input ");
+                sbSql.Append("         where purchaseCode = '" + _model.purchaseCode + "' ");
+                sbSql.Append("           and isDelete = 0) > 0");
+                listSql.Add(sbSql.ToString());
+
+                // 更新生产单状态
+                sbSql.Clear();
+                sbSql.Append("update p_produce ");
+                sbSql.Append("   set status = " + (int)Enum.EnumProduceOrderStatus.Producing + ",");
+                sbSql.Append("       modifyBy = '" + _model.modifyBy + "',");
+                sbSql.Append("       modifyTime = '" + _model.modifyTime + "' ");
+                sbSql.Append(" where isDelete = 0 ");
+                sbSql.Append("   and (select min(status) ");
+                sbSql.Append("          from p_purchase ");
+                sbSql.Append("         where isDelete = 0 ");
+                sbSql.Append("           and produceCode = (select min(produceCode) ");
+                sbSql.Append("                                from p_purchase ");
+                sbSql.Append("                               where purchaseCode = '" + _model.purchaseCode + "' ");
+                sbSql.Append("                                 and isDelete = 0 ");
+                sbSql.Append("                                 and ifnull(produceCode,'') != '') ");
+                sbSql.Append("       ) = " + (int)Enum.EnumPurchaseOrderStatus.Complete);
+                listSql.Add(sbSql.ToString());
+            } 
+            
             return Dal.DBHelper.ExcuteTransaction(listSql);
         }
 

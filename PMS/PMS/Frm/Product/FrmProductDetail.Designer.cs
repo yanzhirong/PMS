@@ -68,7 +68,6 @@
             this.cmb_priceUnit = new System.Windows.Forms.ComboBox();
             this.txt_minPrice = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label22 = new System.Windows.Forms.Label();
             this.btn_close = new System.Windows.Forms.Button();
@@ -102,11 +101,11 @@
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Bold);
             this.lbl_title.ForeColor = System.Drawing.Color.Black;
-            this.lbl_title.Location = new System.Drawing.Point(214, 41);
+            this.lbl_title.Location = new System.Drawing.Point(249, 33);
             this.lbl_title.Name = "lbl_title";
-            this.lbl_title.Size = new System.Drawing.Size(180, 27);
+            this.lbl_title.Size = new System.Drawing.Size(124, 27);
             this.lbl_title.TabIndex = 24;
-            this.lbl_title.Text = "商品信息设置";
+            this.lbl_title.Text = "产品信息";
             // 
             // grb_materials
             // 
@@ -256,7 +255,7 @@
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(65, 12);
             this.label15.TabIndex = 62;
-            this.label15.Text = "商品略名：";
+            this.label15.Text = "产品略名：";
             // 
             // label11
             // 
@@ -383,7 +382,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 42;
-            this.label1.Text = "商 品 名：";
+            this.label1.Text = "产 品 名：";
             // 
             // grb_price
             // 
@@ -481,14 +480,6 @@
             this.label21.TabIndex = 47;
             this.label21.Text = "最低价格：";
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(667, 24);
-            this.menuStrip1.TabIndex = 105;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
             // dataGridView1
             // 
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -518,7 +509,7 @@
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(53, 12);
             this.label22.TabIndex = 107;
-            this.label22.Text = "商品构成";
+            this.label22.Text = "产品构成";
             // 
             // btn_close
             // 
@@ -544,10 +535,8 @@
             this.Controls.Add(this.lbl_title);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_submit);
-            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmProductDetail";
@@ -601,7 +590,6 @@
         private System.Windows.Forms.ComboBox cmb_priceUnit;
         private System.Windows.Forms.TextBox txt_minPrice;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label27;

@@ -72,7 +72,6 @@
             this.btn_submit = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.txt_name = new System.Windows.Forms.TextBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.lbl_tile = new System.Windows.Forms.Label();
             this.cmb_type = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -318,7 +317,7 @@
             this.chk_store_product_transfer.Name = "chk_store_product_transfer";
             this.chk_store_product_transfer.Size = new System.Drawing.Size(72, 16);
             this.chk_store_product_transfer.TabIndex = 16;
-            this.chk_store_product_transfer.Text = "商品调拨";
+            this.chk_store_product_transfer.Text = "产品调拨";
             this.chk_store_product_transfer.UseVisualStyleBackColor = true;
             // 
             // chk_store_product_out
@@ -328,7 +327,7 @@
             this.chk_store_product_out.Name = "chk_store_product_out";
             this.chk_store_product_out.Size = new System.Drawing.Size(72, 16);
             this.chk_store_product_out.TabIndex = 15;
-            this.chk_store_product_out.Text = "商品出库";
+            this.chk_store_product_out.Text = "产品出库";
             this.chk_store_product_out.UseVisualStyleBackColor = true;
             // 
             // chk_store_product_in
@@ -338,7 +337,7 @@
             this.chk_store_product_in.Name = "chk_store_product_in";
             this.chk_store_product_in.Size = new System.Drawing.Size(72, 16);
             this.chk_store_product_in.TabIndex = 14;
-            this.chk_store_product_in.Text = "商品入库";
+            this.chk_store_product_in.Text = "产品入库";
             this.chk_store_product_in.UseVisualStyleBackColor = true;
             // 
             // chk_store
@@ -401,7 +400,7 @@
             this.chk_product.Name = "chk_product";
             this.chk_product.Size = new System.Drawing.Size(72, 16);
             this.chk_product.TabIndex = 7;
-            this.chk_product.Text = "商品管理";
+            this.chk_product.Text = "产品管理";
             this.chk_product.UseVisualStyleBackColor = true;
             this.chk_product.CheckedChanged += new System.EventHandler(this.chk_product_CheckedChanged);
             // 
@@ -434,7 +433,7 @@
             this.chk_product_set.Name = "chk_product_set";
             this.chk_product_set.Size = new System.Drawing.Size(72, 16);
             this.chk_product_set.TabIndex = 9;
-            this.chk_product_set.Text = "商品管理";
+            this.chk_product_set.Text = "产品管理";
             this.chk_product_set.UseVisualStyleBackColor = true;
             // 
             // chk_product_query
@@ -444,7 +443,7 @@
             this.chk_product_query.Name = "chk_product_query";
             this.chk_product_query.Size = new System.Drawing.Size(72, 16);
             this.chk_product_query.TabIndex = 8;
-            this.chk_product_query.Text = "商品查询";
+            this.chk_product_query.Text = "产品查询";
             this.chk_product_query.UseVisualStyleBackColor = true;
             // 
             // chk_sys
@@ -551,19 +550,11 @@
             this.txt_name.Size = new System.Drawing.Size(111, 21);
             this.txt_name.TabIndex = 1;
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(935, 24);
-            this.menuStrip1.TabIndex = 55;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
             // lbl_tile
             // 
             this.lbl_tile.AutoSize = true;
             this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
-            this.lbl_tile.Location = new System.Drawing.Point(353, 36);
+            this.lbl_tile.Location = new System.Drawing.Point(367, 26);
             this.lbl_tile.Name = "lbl_tile";
             this.lbl_tile.Size = new System.Drawing.Size(174, 27);
             this.lbl_tile.TabIndex = 69;
@@ -599,10 +590,8 @@
             this.Controls.Add(this.btn_submit);
             this.Controls.Add(this.grb_role);
             this.Controls.Add(this.lbl_role);
-            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmSysRoleDetail";
@@ -675,7 +664,6 @@
         private System.Windows.Forms.CheckBox chk_materials_set;
         private System.Windows.Forms.CheckBox chk_sys_config;
         private System.Windows.Forms.TextBox txt_name;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label lbl_tile;
         private System.Windows.Forms.ComboBox cmb_type;
         private System.Windows.Forms.Label label1;

@@ -31,8 +31,6 @@ namespace PMS.Frm.Sys
 
         private void FrmSysFactoryDetail_Load(object sender, EventArgs e)
         {
-            LoginUserInfo.LoginUser.currentFrom = this;
-            WinCommon.CreateMenu(ref this.menuStrip1);
             init();
         }
 
@@ -79,7 +77,7 @@ namespace PMS.Frm.Sys
                     MsgUtils.ShowInfoMsg("创建工厂成功！");
                     m_mode = 1;
                     m_factoryId = m_bllFactory.GetFactoryByName(this.txt_name.Text.Trim()).id;
-                    init();
+                    this.Hide();
                     return;
                 }
                 else
@@ -94,6 +92,7 @@ namespace PMS.Frm.Sys
                 if (m_bllFactory.UpdateFactory(factory) == true)
                 {
                     MsgUtils.ShowInfoMsg("修改工厂成功！");
+                    this.Hide();
                     return;
                 }
                 else
@@ -107,9 +106,7 @@ namespace PMS.Frm.Sys
                 if (m_bllFactory.DeleteFactory(factory) == true)
                 {
                     MsgUtils.ShowInfoMsg("删除工厂成功！");
-                    Form form = new FrmSysFactory();
                     this.Hide();
-                    form.ShowDialog();
                     return;
                 }
                 else
@@ -123,9 +120,7 @@ namespace PMS.Frm.Sys
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             //返回工厂列表
-            Form form = new FrmSysFactory();
             this.Hide();
-            form.ShowDialog();
         }
 
         private void init()

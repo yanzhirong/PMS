@@ -269,7 +269,7 @@
             this.orderCode.HeaderText = "订单编号";
             this.orderCode.Name = "orderCode";
             this.orderCode.ReadOnly = true;
-            this.orderCode.Width = 120;
+            this.orderCode.Width = 160;
             // 
             // salerName
             // 
@@ -277,7 +277,7 @@
             this.salerName.HeaderText = "销售";
             this.salerName.Name = "salerName";
             this.salerName.ReadOnly = true;
-            this.salerName.Width = 70;
+            this.salerName.Width = 60;
             // 
             // customerName
             // 
@@ -285,7 +285,7 @@
             this.customerName.HeaderText = "客户名称";
             this.customerName.Name = "customerName";
             this.customerName.ReadOnly = true;
-            this.customerName.Width = 190;
+            this.customerName.Width = 160;
             // 
             // orderAddress
             // 

@@ -44,7 +44,6 @@
             this.lbl_address = new System.Windows.Forms.Label();
             this.txt_name = new System.Windows.Forms.TextBox();
             this.lbl_name = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.grb_factory.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,11 +79,11 @@
             // 
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("宋体", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lbl_title.Location = new System.Drawing.Point(199, 41);
+            this.lbl_title.Location = new System.Drawing.Point(259, 41);
             this.lbl_title.Name = "lbl_title";
-            this.lbl_title.Size = new System.Drawing.Size(180, 27);
+            this.lbl_title.Size = new System.Drawing.Size(124, 27);
             this.lbl_title.TabIndex = 66;
-            this.lbl_title.Text = "工厂信息管理";
+            this.lbl_title.Text = "工厂信息";
             // 
             // grb_factory
             // 
@@ -189,14 +188,6 @@
             this.lbl_name.TabIndex = 63;
             this.lbl_name.Text = "工厂名称：";
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(650, 24);
-            this.menuStrip1.TabIndex = 68;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
             // FrmSysFactoryDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -207,10 +198,8 @@
             this.Controls.Add(this.btn_submit);
             this.Controls.Add(this.lbl_role);
             this.Controls.Add(this.grb_factory);
-            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmSysFactoryDetail";
@@ -242,7 +231,6 @@
         private System.Windows.Forms.Label lbl_name;
         private System.Windows.Forms.TextBox txt_zip;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
 
     }
 }

@@ -121,6 +121,19 @@ namespace Dal
             return Dal.DBHelper.Select(sbSql.ToString());
         }
 
+        public DataTable GetPurchaseApplyByProcudeCodeAndMaterialsId(string _produceCode, int _materialsId)
+        {
+            sbSql.Clear();
+            sbSql.Append("select a.* ");
+            sbSql.Append("  from p_purchase_apply a ");
+            sbSql.Append(" where a.isDelete = 0 ");
+            sbSql.Append("   and a.produceCode = '").Append(_produceCode).Append("' ");
+            sbSql.Append("   and a.materialsId = ").Append(_materialsId).Append(" ");
+
+            return Dal.DBHelper.Select(sbSql.ToString());
+        }
+
+
         public DataTable GetPurchase(string _materialsName, int _factoryId, DateTime _beginTime, DateTime _endTime, int _status, int _type)
         {
             sbSql.Clear();

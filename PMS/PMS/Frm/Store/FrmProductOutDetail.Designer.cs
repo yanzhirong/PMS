@@ -66,7 +66,6 @@
             this.cmb_district = new System.Windows.Forms.ComboBox();
             this.txt_orderCode = new System.Windows.Forms.TextBox();
             this.lbl_orderCode = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.btn_close = new System.Windows.Forms.Button();
             this.grb_productOut.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -98,11 +97,11 @@
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Bold);
             this.lbl_title.ForeColor = System.Drawing.Color.Black;
-            this.lbl_title.Location = new System.Drawing.Point(247, 45);
+            this.lbl_title.Location = new System.Drawing.Point(274, 45);
             this.lbl_title.Name = "lbl_title";
             this.lbl_title.Size = new System.Drawing.Size(152, 27);
             this.lbl_title.TabIndex = 24;
-            this.lbl_title.Text = "出库单设定";
+            this.lbl_title.Text = "产品出库单";
             // 
             // grb_productOut
             // 
@@ -250,7 +249,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 12);
             this.label7.TabIndex = 108;
-            this.label7.Text = "出库商品：";
+            this.label7.Text = "出库产品：";
             // 
             // dataGridView1
             // 
@@ -272,8 +271,6 @@
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
-            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-            this.dataGridView1.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dataGridView1_RowsAdded);
             // 
             // lbl_saler
             // 
@@ -472,14 +469,6 @@
             this.lbl_orderCode.TabIndex = 42;
             this.lbl_orderCode.Text = "订单编号：";
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(702, 24);
-            this.menuStrip1.TabIndex = 105;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
             // btn_close
             // 
             this.btn_close.Location = new System.Drawing.Point(321, 577);
@@ -501,15 +490,13 @@
             this.Controls.Add(this.lbl_title);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_submit);
-            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmProductOutDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "出库管理";
+            this.Text = "产品出库管理";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmProductOutDetail_FormClosed);
             this.Load += new System.EventHandler(this.FrmProductOutDetail_Load);
             this.grb_productOut.ResumeLayout(false);
@@ -537,7 +524,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txt_orderCode;
         private System.Windows.Forms.Label lbl_orderCode;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.GroupBox grb_address;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label10;

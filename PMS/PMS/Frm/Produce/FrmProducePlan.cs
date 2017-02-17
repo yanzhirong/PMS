@@ -103,8 +103,7 @@ namespace PMS.Frm.Produce
                     dc.Add("applyId", ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["id"].Value));
                     dc.Add("factoryId", ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["factoryId"].Value));
                     dc.Add("productId", ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["productId"].Value));
-                    dc.Add("num", ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells["num"].Value));
-                    dc.Add("unit", ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["unit"].Value));
+                    dc.Add("num", ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["num"].Value));
                     dc.Add("deliveryDate", ConvertUtils.ConvertToString(this.dataGridView1.Rows[i].Cells["deliveryDate"].Value));
                     dc.Add("applyBy", LoginUserInfo.LoginUser.loginUser.userName);
                     dc.Add("applyMemberId", LoginUserInfo.LoginUser.loginUser.userId);
@@ -212,7 +211,7 @@ namespace PMS.Frm.Produce
                 return;
             }
 
-            //查看商品
+            //查看产品
             if (this.dataGridView1.Columns[e.ColumnIndex].Name == "productName")
             {
                 int productId = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[e.RowIndex].Cells["productId"].Value);

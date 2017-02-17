@@ -35,10 +35,7 @@ namespace PMS.Frm.Sale
         }
 
         private void FrmOrderDetail_Load(object sender, EventArgs e)
-        {
-            LoginUserInfo.LoginUser.currentFrom = this;
-            WinCommon.CreateMenu(ref this.menuStrip1);
-            
+        {           
             //初始化
             init();
         }
@@ -55,17 +52,13 @@ namespace PMS.Frm.Sale
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             //返回用户列表
-            Form form = new FrmOrderManage();
             this.Hide();
-            form.ShowDialog();
         }
 
         private void btn_close_Click(object sender, EventArgs e)
         {
             //返回用户列表
-            Form form = new FrmOrderManage();
             this.Hide();
-            form.ShowDialog();
         }
         
         #region 初始化
@@ -74,34 +67,41 @@ namespace PMS.Frm.Sale
         /// </summary>
         private void init()
         {           
-            //标题
-            if (m_mode == 0)
-            {
-                this.lbl_title.Text = "订单信息设定-新增";
-            }
-            else if (m_mode == 1)
-            {
-                this.lbl_title.Text = "订单信息设定-修改";
-            }
-            else if (m_mode == 2)
-            {
-                this.lbl_title.Text = "订单信息设定-删除";
-            }
-            else if (m_mode == 3)
-            {
-                this.lbl_title.Text = "订单信息设定-查看";
-            }
-            else
-            {
-                this.lbl_title.Text = "订单信息设定-确认";
-            }
+        //    //标题
+        //    if (m_mode == 0)
+        //    {
+        //        this.lbl_title.Text = "订单信息设定-新增";
+        //    }
+        //    else if (m_mode == 1)
+        //    {
+        //        this.lbl_title.Text = "订单信息设定-修改";
+        //    }
+        //    else if (m_mode == 2)
+        //    {
+        //        this.lbl_title.Text = "订单信息设定-删除";
+        //    }
+        //    else if (m_mode == 3)
+        //    {
+        //        this.lbl_title.Text = "订单信息设定-查看";
+        //    }
+        //    else
+        //    {
+        //        this.lbl_title.Text = "订单信息设定-确认";
+        //    }
 
             //下拉框
             //销售
             List<ModelItem> listItem = m_bllUser.GetUserGroupByRoleType((int)Enum.EnumRoleType.Saler);
             WinCommon.BindComboBox(ref cmb_saler, listItem);
             //客户
-            listItem = m_bllCustomer.GetCustomersBySalerId(0);
+            if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Saler)
+            {
+                listItem = m_bllCustomer.GetCustomersBySalerId(LoginUserInfo.LoginUser.loginUser.userId);
+            }
+            else
+            {
+                listItem = m_bllCustomer.GetCustomersBySalerId(0);
+            }
             WinCommon.BindComboBox(ref cmb_customer, listItem);
             //工厂
             listItem = m_bllFactory.GetFactoryItem();
@@ -325,8 +325,8 @@ namespace PMS.Frm.Sale
                     model.orderCode = modelSaleOrder.orderCode;
                     model.productId = productId;
                     model.searchKey = ConvertUtils.ConvertToString(this.dataGridView1.Rows[i].Cells[1].Value);
-                    model.num = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells[3].Value);
-                    model.unit = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[4].Value);
+                    model.num = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[3].Value);
+                    //model.unit = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[4].Value);
                     model.remark = ConvertUtils.ConvertToString(this.dataGridView1.Rows[i].Cells[5].Value);
 
                     modelSaleOrderDetail.Add(model);
@@ -369,8 +369,8 @@ namespace PMS.Frm.Sale
                 //处理模式变为修改
                 m_mode = 1;
                 m_saleOrderId = m_bllSaleOrder.GetSaleOrderByOrderCode(modelSaleOrder.orderCode).id;
-
-                init();
+                this.Hide();
+                //init();
 
                 return;
             }
@@ -388,7 +388,8 @@ namespace PMS.Frm.Sale
                 else
                 {
                     MsgUtils.ShowInfoMsg("修改订单成功！");
-                    init();
+                    //init();
+                    this.Hide();
                     return;
                 }
             }
@@ -408,9 +409,7 @@ namespace PMS.Frm.Sale
                     MsgUtils.ShowInfoMsg("删除订单成功！");
 
                     //返回列表
-                    Form form = new FrmOrderManage();
                     this.Hide();
-                    form.ShowDialog();
                     return;
                 }
             }
@@ -418,7 +417,7 @@ namespace PMS.Frm.Sale
             //财务确认
             if (m_mode == 4)
             {
-                rtn = m_bllSaleOrder.ConfirmSaleOrder(modelSaleOrder);
+                rtn = m_bllSaleOrder.ConfirmSaleOrder(modelSaleOrder, LoginUserInfo.LoginUser.loginUser.userId);
 
                 if (rtn == false)
                 {
@@ -434,7 +433,7 @@ namespace PMS.Frm.Sale
 
                     if (StringUtils.IsNotBlank(productName))
                     {
-                        if (MsgUtils.ShowQustMsg("商品【" + productName + "】库存不足，是否生成生产申请单？", MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                        if (MsgUtils.ShowQustMsg("产品【" + productName + "】库存不足，是否生成生产申请单？", MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                         {
                             // 生成生产申请单
                             rtn = m_bllSaleOrder.AddProduceApply(modelSaleOrder);
@@ -451,9 +450,7 @@ namespace PMS.Frm.Sale
                     }
 
                     //返回列表
-                    Form form = new FrmOrderManage();
                     this.Hide();
-                    form.ShowDialog();
                     return;
                 }
             }
@@ -522,24 +519,17 @@ namespace PMS.Frm.Sale
                     {
                         if (ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells["num"].Value) <= 0)
                         {
-                            MsgUtils.ShowErrorMsg("请输入销售商品数量！");
+                            MsgUtils.ShowErrorMsg("请输入销售产品数量！");
                             this.dataGridView1.Focus();
                             return false;
                         }
-
-                        if (ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["unit"].Value) <= 0)
-                        {
-                            MsgUtils.ShowErrorMsg("请输入销售商品单位！");
-                            this.dataGridView1.Focus();
-                            return false;
-                        } 
-                        
+                                                
                         hasProduct = true;
                     }
                 }
                 if (hasProduct == false)
                 {
-                    MsgUtils.ShowErrorMsg("请选择销售商品！");
+                    MsgUtils.ShowErrorMsg("请选择销售产品！");
                     this.dataGridView1.Focus();
                     return false;
                 }
@@ -622,9 +612,9 @@ namespace PMS.Frm.Sale
 
             DataGridViewComboBoxColumn column = new DataGridViewComboBoxColumn();
             column.Name = "productId";
-            column.HeaderText = "商品";
+            column.HeaderText = "产品";
             column.DataPropertyName = "productId";
-            column.Width = 230;
+            column.Width = 300;
             this.dataGridView1.Columns.Add(column);
             column.DataSource = m_bllProduct.GetProducts("");
             column.DisplayMember = "name";
@@ -637,15 +627,15 @@ namespace PMS.Frm.Sale
             columns.Width = 60;
             this.dataGridView1.Columns.Add(columns);
 
-            column = new DataGridViewComboBoxColumn();
-            column.Name = "unit";
-            column.DataPropertyName = "unit";
-            column.HeaderText = "单位";
-            column.Width = 80;
-            this.dataGridView1.Columns.Add(column);
-            column.DataSource = m_bllCode.GetCodeList(3);
-            column.DisplayMember = "value1";
-            column.ValueMember = "subCode";
+            //column = new DataGridViewComboBoxColumn();
+            //column.Name = "unit";
+            //column.DataPropertyName = "unit";
+            //column.HeaderText = "单位";
+            //column.Width = 80;
+            //this.dataGridView1.Columns.Add(column);
+            //column.DataSource = m_bllCode.GetCodeList(3);
+            //column.DisplayMember = "value1";
+            //column.ValueMember = "subCode";
 
             columns = new DataGridViewTextBoxColumn();
             columns.Name = "remark";
@@ -730,7 +720,7 @@ namespace PMS.Frm.Sale
                 DataTable dt = m_bllProduct.GetProductBySearchKey(searchKey);
                 if (dt == null || dt.Rows.Count <= 0)
                 {
-                    MsgUtils.ShowInfoMsg("没有此商品，请重新输入！");
+                    MsgUtils.ShowInfoMsg("没有此产品，请重新输入！");
                     this.dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "";
                     return;
                 }
@@ -754,14 +744,14 @@ namespace PMS.Frm.Sale
                 }
             }
 
-            if (e.ColumnIndex == 3)
-            {
-                DataGridViewComboBoxCell column = (DataGridViewComboBoxCell)this.dataGridView1.Rows[e.RowIndex].Cells["unit"];
+            //if (e.ColumnIndex == 3)
+            //{
+            //    DataGridViewComboBoxCell column = (DataGridViewComboBoxCell)this.dataGridView1.Rows[e.RowIndex].Cells["unit"];
 
-                column.DataSource = m_bllCode.GetCodeList(3);
-                column.DisplayMember = "value1";
-                column.ValueMember = "subCode";
-            }
+            //    column.DataSource = m_bllCode.GetCodeList(3);
+            //    column.DisplayMember = "value1";
+            //    column.ValueMember = "subCode";
+            //}
         }
 
         private void cmb_customer_SelectedIndexChanged(object sender, EventArgs e)

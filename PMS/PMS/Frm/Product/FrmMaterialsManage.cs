@@ -27,9 +27,16 @@ namespace PMS.Frm.Product
             WinCommon.CreateMenu(ref this.menuStrip1);
 
             this.txt_name.Focus();
+
+            doSelect();
         }
 
         private void btn_query_Click(object sender, EventArgs e)
+        {
+            doSelect();
+        }
+
+        private void doSelect()
         {
             string name = this.txt_name.Text.Trim();
             int type = -1;
@@ -58,8 +65,8 @@ namespace PMS.Frm.Product
             {
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
                 Form form = new FrmMaterialsDetail(1, id);
-                this.Hide();
                 form.ShowDialog();
+                doSelect();
             }
 
             //删除
@@ -67,8 +74,8 @@ namespace PMS.Frm.Product
             {
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
                 Form form = new FrmMaterialsDetail(2, id);
-                this.Hide();
                 form.ShowDialog();
+                doSelect();
             }
 
         }

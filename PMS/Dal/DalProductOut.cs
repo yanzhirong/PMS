@@ -132,11 +132,8 @@ namespace Dal
             sbSql.Append("       a.productId, ");
             sbSql.Append("       a.outputStatus, ");
             sbSql.Append("       date_format(a.outputDate, '%Y-%m-%d') outputDate, ");
-            sbSql.Append("       concat(a.productNum, b.value1) outputNum ");
+            sbSql.Append("       a.productNum outputNum ");
             sbSql.Append("from r_product_output_detail a ");
-            sbSql.Append("join m_code b ");
-            sbSql.Append("  on a.productUnit = b.subCode ");
-            sbSql.Append(" and b.code = 3 ");
             sbSql.Append("where a.isDelete = 0 ");
             sbSql.Append("  and a.outputCode = '").Append(_outputCode).Append("'");
 
@@ -299,28 +296,23 @@ namespace Dal
             sbSql.Append("select a.id, ");
             sbSql.Append("       a.inputCode, ");
             sbSql.Append("       b.name productName, ");
-            sbSql.Append("       concat(a.num, c.value1) numDisplay, ");
             sbSql.Append("       a.num, ");
-            sbSql.Append("       a.unit, ");
             sbSql.Append("       date_format(a.expiresDate, '%Y-%m-%d') expiresDate ");
-            sbSql.Append("from p_product_in a ");
+            sbSql.Append("from p_product_input a ");
             sbSql.Append("join p_product b ");
             sbSql.Append("  on a.productId = b.id ");
-            sbSql.Append("join m_code c ");
-            sbSql.Append("  on a.unit = c.subCode ");
-            sbSql.Append(" and c.code = 3 ");
             sbSql.Append("where a.isDelete = 0 ");
             sbSql.Append("  and a.factoryId = ").Append(_factoryId).Append(" ");
             sbSql.Append("  and a.productId = ").Append(_productId).Append(" ");
             sbSql.Append("  and a.num > 0 ");
-            sbSql.Append("  and a.status = 0 ");
+            sbSql.Append("  and a.status = 1 ");
             sbSql.Append("order by a.expiresDate ");
 
             return Dal.DBHelper.Select(sbSql.ToString());
 
         }
 
-        public int doOutPut(string _outputCode, int _outputDetailId, int _factoryId, int _productId, int _applyMemberId, decimal _outputNum, int _outputUnit, List<Dictionary<string, object>> listOutput, string userName)
+        public int doOutPut(string _outputCode, int _outputDetailId, int _factoryId, int _productId, int _applyMemberId, int _outputNum, List<Dictionary<string, object>> listOutput, string userName)
         {
             List<string> listSql = new List<string>();
 
@@ -336,7 +328,6 @@ namespace Dal
                 sbSql.Append("       productId, ");
                 sbSql.Append("       applyMemberId, ");
                 sbSql.Append("       outputNum, ");
-                sbSql.Append("       outputUnit, ");
                 sbSql.Append("       outputDate, ");
                 sbSql.Append("       isDelete, ");
                 sbSql.Append("       createBy, ");
@@ -348,7 +339,6 @@ namespace Dal
                 sbSql.Append("       " + _productId + ", ");
                 sbSql.Append("       " + _applyMemberId + ", ");
                 sbSql.Append("       " + ConvertUtils.ConvertToDecimal(dc["outputNum"]) + ", ");
-                sbSql.Append("       " + ConvertUtils.ConvertToInt(dc["outputUnit"]) + ", ");
                 sbSql.Append("      '" + DateTime.Now + "', ");
                 sbSql.Append("       0, ");
                 sbSql.Append("      '" + userName + "', ");
@@ -357,13 +347,37 @@ namespace Dal
 
                 //减少库存
                 sbSql.Clear();
-                sbSql.Append("update p_product_in ");
+                sbSql.Append("update p_product_input ");
                 sbSql.Append("set num = ").Append(ConvertUtils.ConvertToDecimal(dc["stockNum"])).Append(",");
                 sbSql.Append("    modifyBy = '" + userName + "',");
                 sbSql.Append("    modifyTime = '" + DateTime.Now + "' ");
                 sbSql.Append("where id = " + ConvertUtils.ConvertToInt(dc["inputId"]));
                 listSql.Add(sbSql.ToString());
 
+                sbSql.Clear();
+                sbSql.Append("update r_product_output_detail ");
+                sbSql.Append("   set realityOutputNum = ifnull(realityOutputNum,0) + " + _outputNum + ", ");
+                sbSql.Append("       outputDate = '" + DateTime.Now + "', ");
+                sbSql.Append("       modifyBy = '" + userName + "',");
+                sbSql.Append("       modifyTime = '" + DateTime.Now + "' ");
+                sbSql.Append(" where outputCode = '").Append(_outputCode).Append("'");
+                sbSql.Append("   and isDelete = 0 ");
+                listSql.Add(sbSql.ToString());
+
+                sbSql.Clear();
+                sbSql.Append("update p_product_output ");
+                sbSql.Append("   set outputStatus = 1, ");
+                sbSql.Append("       outputDate = '" + DateTime.Now + "', ");
+                sbSql.Append("       modifyBy = '" + userName + "',");
+                sbSql.Append("       modifyTime = '" + DateTime.Now + "' ");
+                sbSql.Append(" where outputCode = '").Append(_outputCode).Append("'");
+                sbSql.Append("   and isDelete = 0 ");
+                sbSql.Append("   and (select count(*) cnt ");
+                sbSql.Append("          from r_product_output_detail ");
+                sbSql.Append("         where isDelete = 0 ");
+                sbSql.Append("           and outputCode = '" + _outputCode + "' ");
+                sbSql.Append("           and realityOutputNum < ifnull(outputNum, 0)) <= 0  ");
+                listSql.Add(sbSql.ToString());
             }
 
             if (_outputDetailId > 0)
@@ -386,7 +400,6 @@ namespace Dal
                 sbSql.Append("       outputCode, ");
                 sbSql.Append("       productId, ");
                 sbSql.Append("       productNum, ");
-                sbSql.Append("       productUnit, ");
                 sbSql.Append("       outputStatus, ");
                 sbSql.Append("       outputDate, ");
                 sbSql.Append("       isDelete, ");
@@ -396,7 +409,6 @@ namespace Dal
                 sbSql.Append("      '" + _outputCode + "', ");
                 sbSql.Append("       " + _productId + ", ");
                 sbSql.Append("       " + _outputNum + ", ");
-                sbSql.Append("       " + _outputUnit + ", ");
                 sbSql.Append("       1, ");
                 sbSql.Append("      '" + DateTime.Now + "', ");
                 sbSql.Append("       0, ");

@@ -10,7 +10,7 @@ namespace Enum
     {
         Producing = 1,
         MaterialsPurchasing = 2,
-        WaitTransport = 3,
+        Produced = 3,
         Complete = 4,
     }
 }

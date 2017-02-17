@@ -27,21 +27,24 @@ namespace PMS.Frm.Sys
             LoginUserInfo.LoginUser.currentFrom = this;
             WinCommon.CreateMenu(ref this.menuStrip1);
 
-            this.dataGridView1.DataSource = null;
-            this.dataGridView1.Refresh();
+            doSelect();
         }
 
         private void btn_query_Click(object sender, EventArgs e)
         {
+            doSelect();
+        }
+
+        private void doSelect()
+        {
             DataTable dt = m_bllFactory.GetFactory(this.txt_name.Text.Trim());
             this.dataGridView1.DataSource = dt;
-            this.dataGridView1.Refresh();          
+            this.dataGridView1.Refresh();
         }
 
         private void btn_addNew_Click(object sender, EventArgs e)
         {
             Form form = new FrmSysFactoryDetail(0, 0);
-            this.Hide();
             form.ShowDialog();
         }
 
@@ -52,8 +55,8 @@ namespace PMS.Frm.Sys
             {
                 int factoryId = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
                 Form form = new FrmSysFactoryDetail(1, factoryId);
-                this.Hide();
                 form.ShowDialog();
+                doSelect();
             }
 
             //删除
@@ -61,8 +64,8 @@ namespace PMS.Frm.Sys
             {
                 int factoryId = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
                 Form form = new FrmSysFactoryDetail(2, factoryId);
-                this.Hide();
                 form.ShowDialog();
+                doSelect();
             }
         }
 

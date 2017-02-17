@@ -32,8 +32,6 @@ namespace PMS.Frm.Sys
 
         private void FrmSysUser_Load(object sender, EventArgs e)
         {
-            LoginUserInfo.LoginUser.currentFrom = this;
-            WinCommon.CreateMenu(ref this.menuStrip1);
 
             //角色类型
             List<ModelItem> listItem = m_bllCode.GetCodeItem((int)Enum.EnumCode.RoleType, false);
@@ -266,9 +264,7 @@ namespace PMS.Frm.Sys
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             //返回
-            Form form = new FrmSysRole();
             this.Hide();
-            form.ShowDialog();
         }
 
         private void doSubmit()
@@ -295,6 +291,8 @@ namespace PMS.Frm.Sys
                 if (m_bllRole.DeleteRole(modelRole))
                 {
                     MsgUtils.ShowInfoMsg("删除角色成功！");
+                    this.Hide();
+                    return;
                 }
                 else
                 {
@@ -312,9 +310,8 @@ namespace PMS.Frm.Sys
                 if (m_bllRole.AddRole(modelRole, listMenu))
                 {
                     MsgUtils.ShowInfoMsg("新增角色成功！");
-                    Form form = new FrmSysRole();
                     this.Hide();
-                    form.ShowDialog();
+                    return;
                 }
                 else
                 {
@@ -330,8 +327,6 @@ namespace PMS.Frm.Sys
                     {
                         MsgUtils.ShowInfoMsg("角色已修改，请重新登录。");
                         this.Hide();
-                        Form frmLogin = new Frm.Login.FrmLogin();
-                        frmLogin.ShowDialog();
                         return;
                     }
                     MsgUtils.ShowInfoMsg("更新角色成功！");

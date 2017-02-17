@@ -11,8 +11,7 @@ namespace Model
         public int id { set; get; }
         public int factoryId { set; get; }
         public int productId { set; get; }
-        public decimal num { set; get; }
-        public int unit { set; get; }
+        public int num { set; get; }
         public string saleOrderCode { set; get; }
         public string outputCode { set; get; }
         public DateTime deliveryDate { set; get; }

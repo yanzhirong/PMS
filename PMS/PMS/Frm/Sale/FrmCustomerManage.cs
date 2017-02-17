@@ -47,9 +47,16 @@ namespace PMS.Frm.Sale
             }
 
             this.txt_code.Focus();
+
+            doSelect();
         }
 
         private void btn_query_Click(object sender, EventArgs e)
+        {
+            doSelect();
+        }
+
+        private void doSelect()
         {
             string code = this.txt_code.Text.Trim();
             string name = this.txt_name.Text.Trim();
@@ -60,13 +67,11 @@ namespace PMS.Frm.Sale
             this.dataGridView1.DataSource = dt;
             this.dataGridView1.Refresh();
         }
-
         private void btn_addNew_Click(object sender, EventArgs e)
         {
-
             Form form = new FrmCustomerDetail(0, 0);
-            this.Hide();
             form.ShowDialog();
+            doSelect();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -76,8 +81,8 @@ namespace PMS.Frm.Sale
             {
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
                 Form form = new FrmCustomerDetail(1, id);
-                this.Hide();
                 form.ShowDialog();
+                doSelect();
             }
 
             //删除
@@ -85,8 +90,9 @@ namespace PMS.Frm.Sale
             {
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
                 Form form = new FrmCustomerDetail(2, id);
-                this.Hide();
                 form.ShowDialog();
+                doSelect();
+
             }
 
         }

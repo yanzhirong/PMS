@@ -41,10 +41,18 @@ namespace PMS.Frm.Store
             this.dtp_begin.Value = DateTime.Now;
             this.dtp_end.Value = DateTime.Now.AddMonths(1);
 
+            this.cmb_outputStatus.SelectedIndex = 1;
             this.txt_productName.Focus();
+
+            doSelect();
         }
 
         private void btn_query_Click(object sender, EventArgs e)
+        {
+            doSelect();
+        }
+
+        private void doSelect()
         {
             string productName = this.txt_productName.Text.Trim();
             string customerName = this.txt_customerName.Text.Trim();
@@ -67,7 +75,7 @@ namespace PMS.Frm.Store
             if (this.cmb_outputStatus.SelectedIndex > 0)
             {
                 outputStatus = this.cmb_outputStatus.SelectedIndex - 1;
-            } 
+            }
             DateTime beginTime = new DateTime(this.dtp_begin.Value.Year, this.dtp_begin.Value.Month, this.dtp_begin.Value.Day);
 
             DateTime endTime = new DateTime(this.dtp_end.Value.Year, this.dtp_end.Value.Month, this.dtp_end.Value.Day);
@@ -77,6 +85,7 @@ namespace PMS.Frm.Store
 
             this.dataGridView1.DataSource = dt;
             this.dataGridView1.Refresh();
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -95,8 +104,8 @@ namespace PMS.Frm.Store
                 {
                     form = new FrmProductOutDetail(1, id);
                 }
-                this.Hide();
                 form.ShowDialog();
+                doSelect();
             }
 
             //删除
@@ -111,8 +120,8 @@ namespace PMS.Frm.Store
 
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
                 Form form = new FrmProductOutDetail(2, id);
-                this.Hide();
                 form.ShowDialog();
+                doSelect();
             }
         }
 
@@ -124,8 +133,8 @@ namespace PMS.Frm.Store
         private void btn_addNew_Click(object sender, EventArgs e)
         {
             Form form = new FrmProductOutDetail(0, 0);
-            this.Hide();
             form.ShowDialog();
+            doSelect();
         }
         
     }

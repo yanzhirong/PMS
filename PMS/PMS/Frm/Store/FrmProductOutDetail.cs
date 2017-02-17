@@ -35,9 +35,7 @@ namespace PMS.Frm.Store
 
         private void FrmProductOutDetail_Load(object sender, EventArgs e)
         {
-            LoginUserInfo.LoginUser.currentFrom = this;
-            WinCommon.CreateMenu(ref this.menuStrip1);
-            
+           
             //初始化
             init();
         }
@@ -54,9 +52,7 @@ namespace PMS.Frm.Store
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             //返回列表
-            Form form = new FrmProductOut();
             this.Hide();
-            form.ShowDialog();
         }
                 
         #region 初始化
@@ -363,7 +359,7 @@ namespace PMS.Frm.Store
                 ModelProductOutput newProductOutput = m_bllProductOut.GetProductOutByOutputCode(modelProductOutput.outputCode);
                 m_productOutId = newProductOutput.id;
                 this.txt_outputCode.Text = newProductOutput.outputCode;
-
+                this.Hide();
                 return true;
             }
 
@@ -386,6 +382,7 @@ namespace PMS.Frm.Store
                     {
                         MsgUtils.ShowInfoMsg("修改出库单成功！");
                     }
+                    this.Hide();
                     return true;
                 }
             }
@@ -410,9 +407,7 @@ namespace PMS.Frm.Store
                         MsgUtils.ShowInfoMsg("删除出库单成功！");
                     }
                     //返回列表
-                    Form form = new FrmProductOut();
                     this.Hide();
-                    form.ShowDialog();
                     return true;
                 }
             }
@@ -426,6 +421,29 @@ namespace PMS.Frm.Store
         /// <returns></returns>
         private Boolean doCheck()
         {
+            if (StringUtils.IsNotBlank(this.txt_outputCode.Text))
+            {
+                //修改
+                if (m_mode == 1)
+                {
+                    if (m_bllProductOut.CheckUpdateDelete(this.txt_outputCode.Text) == false)
+                    {
+                        MsgUtils.ShowErrorMsg("已有部分产品出库，不可修改！");
+                        return false;
+                    }
+                }
+
+                //删除
+                if (m_mode == 2)
+                {
+                    if (m_bllProductOut.CheckUpdateDelete(this.txt_outputCode.Text) == false)
+                    {
+                        MsgUtils.ShowErrorMsg("已有部分产品出库，不可删除！");
+                        return false;
+                    }
+                }
+            }
+            
             // 新增或修改
             if (m_mode == 0 || m_mode == 1)
             {
@@ -511,23 +529,13 @@ namespace PMS.Frm.Store
                 }
                 if (hasProduct == false)
                 {
-                    MsgUtils.ShowErrorMsg("请选择出库商品！");
+                    MsgUtils.ShowErrorMsg("请选择出库产品！");
                     this.dataGridView1.Focus();
                     return false;
                 }
 
             }
-            
-            //删除
-            if(m_mode == 2)
-            {
-                if (m_bllProductOut.CheckDelete(this.txt_outputCode.Text) == false)
-                {
-                    MsgUtils.ShowErrorMsg("已有部分商品出库，不可删除！");
-                    this.dataGridView1.Focus();
-                    return false;
-                }
-            }
+
             return true;
         }
         #endregion
@@ -558,9 +566,9 @@ namespace PMS.Frm.Store
 
             DataGridViewComboBoxColumn cmbColumn = new DataGridViewComboBoxColumn();
             cmbColumn.Name = "productId";
-            cmbColumn.HeaderText = "商品";
+            cmbColumn.HeaderText = "产品";
             cmbColumn.DataPropertyName = "productId";
-            cmbColumn.Width = 150;
+            cmbColumn.Width = 200;
             if (this.cmb_outputType.SelectedIndex == 1)
             {
                 cmbColumn.ReadOnly = false;
@@ -616,7 +624,7 @@ namespace PMS.Frm.Store
             buttonColumn.Text = "出库";
             buttonColumn.HeaderText = "出库";
             buttonColumn.DataPropertyName = "outputBtn";
-            buttonColumn.Width = 120;
+            buttonColumn.Width = 100;
             this.dataGridView1.Columns.Add(buttonColumn);
 
         }
@@ -655,11 +663,6 @@ namespace PMS.Frm.Store
         }
         #endregion
         
-        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btn_close_Click(object sender, EventArgs e)
         {
             //返回列表
@@ -729,7 +732,7 @@ namespace PMS.Frm.Store
                 int productId = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[e.RowIndex].Cells["productId"].Value);
                 if (productId <= 0)
                 {
-                    MsgUtils.ShowInfoMsg("请选择出库商品！");
+                    MsgUtils.ShowInfoMsg("请选择出库产品！");
                     return;
                 }
 
@@ -756,11 +759,6 @@ namespace PMS.Frm.Store
             }
         }
 
-        private void dataGridView1_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            //this.dataGridView1.Rows[e.RowIndex].Cells["outputBtn"].Value = "出库";
-        }
-
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == 5)
@@ -776,7 +774,7 @@ namespace PMS.Frm.Store
                 return;
             }
 
-            //商品
+            //产品
             if (this.dataGridView1.Columns[e.ColumnIndex].Name == "productId")
             {
                 //状态
@@ -784,7 +782,7 @@ namespace PMS.Frm.Store
                 //已完成出库
                 if (outputStatus > 0)
                 {
-                    MsgUtils.ShowInfoMsg("已完成出库，不可变换商品！");
+                    MsgUtils.ShowInfoMsg("已完成出库，不可变换产品！");
                     e.Cancel = true;
                     return;
                 }
@@ -794,9 +792,7 @@ namespace PMS.Frm.Store
 
         private void btn_close_Click_1(object sender, EventArgs e)
         {
-            Form form = new FrmProductOut();
             this.Hide();
-            form.ShowDialog();
         }
 
     }

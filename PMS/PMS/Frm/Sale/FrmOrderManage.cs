@@ -76,9 +76,16 @@ namespace PMS.Frm.Sale
             this.dtp_end.Value = DateTime.Now;
 
             this.txt_code.Focus();
+
+            doSelect();
         }
 
         private void btn_query_Click(object sender, EventArgs e)
+        {
+            doSelect();
+        }
+
+        private void doSelect()
         {
             string code = this.txt_code.Text.Trim();
             string name = this.txt_name.Text.Trim();
@@ -91,7 +98,7 @@ namespace PMS.Frm.Sale
             if (this.cmb_status.SelectedIndex > 0)
             {
                 status = (int)((ModelItem)this.cmb_status.SelectedItem).itemKey;
-            } 
+            }
             DateTime beginTime = new DateTime(this.dtp_begin.Value.Year, this.dtp_begin.Value.Month, this.dtp_begin.Value.Day);
 
             DateTime endTime = new DateTime(this.dtp_end.Value.Year, this.dtp_end.Value.Month, this.dtp_end.Value.Day);
@@ -105,10 +112,9 @@ namespace PMS.Frm.Sale
 
         private void btn_addNew_Click(object sender, EventArgs e)
         {
-
             Form form = new FrmOrderDetail(0, 0);
-            this.Hide();
             form.ShowDialog();
+            doSelect();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -123,23 +129,23 @@ namespace PMS.Frm.Sale
                     if (WinCommon.IsFinance(LoginUserInfo.LoginUser.loginRole.roleType))
                     {
                         Form form = new FrmOrderDetail(4, id);
-                        this.Hide();
                         form.ShowDialog();
+                        doSelect();
                     }
                     //修改
                     else
                     {
                         Form form = new FrmOrderDetail(1, id);
-                        this.Hide();
                         form.ShowDialog();
+                        doSelect();
                     }
                 }
                 //查看
                 else
                 {
                     Form form = new FrmOrderDetail(3, id);
-                    this.Hide();
                     form.ShowDialog();
+                    doSelect();
                 }
             }
 
@@ -151,8 +157,8 @@ namespace PMS.Frm.Sale
                 {
                     int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
                     Form form = new FrmOrderDetail(2, id);
-                    this.Hide();
                     form.ShowDialog();
+                    doSelect();
                 }
                 else
                 {

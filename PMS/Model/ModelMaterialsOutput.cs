@@ -15,6 +15,7 @@ namespace Model
         public int materialsId { set; get; }
         public DateTime applyDate { set; get; }
         public decimal outputNum { set; get; }
+        public decimal realityOutputNum { set; get; }
         public int outputUnit { set; get; }
         public int outputStatus { set; get; }
         public DateTime outputDate { set; get; }

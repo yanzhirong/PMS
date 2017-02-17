@@ -33,6 +33,7 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.lbl_title = new System.Windows.Forms.Label();
             this.grb_customer = new System.Windows.Forms.GroupBox();
+            this.btn_paid = new System.Windows.Forms.Button();
             this.txt_remark = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.lbl_saler = new System.Windows.Forms.Label();
@@ -67,8 +68,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txt_code = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.btn_paid = new System.Windows.Forms.Button();
             this.grb_customer.SuspendLayout();
             this.grb_manager.SuspendLayout();
             this.grb_address.SuspendLayout();
@@ -99,11 +98,11 @@
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Bold);
             this.lbl_title.ForeColor = System.Drawing.Color.Black;
-            this.lbl_title.Location = new System.Drawing.Point(218, 41);
+            this.lbl_title.Location = new System.Drawing.Point(275, 41);
             this.lbl_title.Name = "lbl_title";
-            this.lbl_title.Size = new System.Drawing.Size(180, 27);
+            this.lbl_title.Size = new System.Drawing.Size(124, 27);
             this.lbl_title.TabIndex = 24;
-            this.lbl_title.Text = "客户信息设置";
+            this.lbl_title.Text = "客户信息";
             // 
             // grb_customer
             // 
@@ -133,6 +132,16 @@
             this.grb_customer.Size = new System.Drawing.Size(641, 470);
             this.grb_customer.TabIndex = 103;
             this.grb_customer.TabStop = false;
+            // 
+            // btn_paid
+            // 
+            this.btn_paid.Location = new System.Drawing.Point(8, 397);
+            this.btn_paid.Name = "btn_paid";
+            this.btn_paid.Size = new System.Drawing.Size(96, 23);
+            this.btn_paid.TabIndex = 102;
+            this.btn_paid.Text = "设定支付信息";
+            this.btn_paid.UseVisualStyleBackColor = true;
+            this.btn_paid.Click += new System.EventHandler(this.btn_paid_Click);
             // 
             // txt_remark
             // 
@@ -468,24 +477,6 @@
             this.label1.TabIndex = 42;
             this.label1.Text = "客户代码：";
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(701, 24);
-            this.menuStrip1.TabIndex = 105;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // btn_paid
-            // 
-            this.btn_paid.Location = new System.Drawing.Point(8, 397);
-            this.btn_paid.Name = "btn_paid";
-            this.btn_paid.Size = new System.Drawing.Size(96, 23);
-            this.btn_paid.TabIndex = 102;
-            this.btn_paid.Text = "设定支付信息";
-            this.btn_paid.UseVisualStyleBackColor = true;
-            this.btn_paid.Click += new System.EventHandler(this.btn_paid_Click);
-            // 
             // FrmCustomerDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -496,10 +487,8 @@
             this.Controls.Add(this.lbl_title);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_submit);
-            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCustomerDetail";
@@ -539,7 +528,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txt_code;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.GroupBox grb_address;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label10;

@@ -28,17 +28,27 @@ namespace PMS.Frm.Login
 
         private void btn_login_Click(object sender, EventArgs e)
         {
+            doLogin(true);
+        }
 
+        private void doLogin(bool showMsg)
+        {
             if (StringUtils.IsBlank(txt_name.Text))
             {
-                MsgUtils.ShowWarnMsg("请输入用户名！");
+                if (showMsg)
+                {
+                    MsgUtils.ShowWarnMsg("请输入用户名！");
+                }
                 txt_name.Focus();
                 return;
             }
 
             if (StringUtils.IsBlank(txt_pwd.Text))
             {
-                MsgUtils.ShowWarnMsg("请输入密码！");
+                if (showMsg)
+                {
+                    MsgUtils.ShowWarnMsg("请输入密码！");
+                }
                 txt_pwd.Focus();
                 return;
             }
@@ -61,12 +71,27 @@ namespace PMS.Frm.Login
                 txt_pwd.Text = "";
                 return;
             }
-
         }
 
         private void FrmLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             WinCommon.Exit();
+        }
+
+        private void txt_name_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                doLogin(false);
+            }
+        }
+
+        private void txt_pwd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                doLogin(false);
+            }
         }
     }
 }

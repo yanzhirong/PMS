@@ -34,10 +34,7 @@ namespace PMS.Frm.Store
         }
 
         private void FrmMaterialsOutDetail_Load(object sender, EventArgs e)
-        {
-            LoginUserInfo.LoginUser.currentFrom = this;
-            WinCommon.CreateMenu(ref this.menuStrip1);
-            
+        {           
             //初始化
             init();
         }
@@ -54,9 +51,7 @@ namespace PMS.Frm.Store
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             //返回列表
-            Form form = new FrmMaterialsOut();
             this.Hide();
-            form.ShowDialog();
         }
                 
         #region 初始化
@@ -254,7 +249,7 @@ namespace PMS.Frm.Store
                 ModelMaterialsOutput newMaterialsOutput = m_bllMaterialsOut.GetMaterialsOutByOutputCode(modelMaterialsOutput.outputCode);
                 m_materialsOutId = newMaterialsOutput.id;
                 m_outputCode = modelMaterialsOutput.outputCode;
-
+                this.Hide();
                 return true;
             }
 
@@ -277,6 +272,7 @@ namespace PMS.Frm.Store
                     {
                         MsgUtils.ShowInfoMsg("修改出库单成功！");
                         m_outputCode = modelMaterialsOutput.outputCode;
+                        this.Hide();
                     }
                     return true;
                 }
@@ -302,9 +298,7 @@ namespace PMS.Frm.Store
                         MsgUtils.ShowInfoMsg("删除出库单成功！");
                     }
                     //返回列表
-                    Form form = new FrmMaterialsOut();
                     this.Hide();
-                    form.ShowDialog();
                     return true;
                 }
             }
@@ -318,26 +312,29 @@ namespace PMS.Frm.Store
         /// <returns></returns>
         private Boolean doCheck()
         {
-            //修改
-            if (m_mode == 1)
+            if (StringUtils.IsNotBlank(m_outputCode))
             {
-                if (m_bllMaterialsOut.CheckUpdateDelete(m_outputCode) == false)
+                //修改
+                if (m_mode == 1)
                 {
-                    MsgUtils.ShowErrorMsg("已出库，不可修改！");
-                    return false;
+                    if (m_bllMaterialsOut.CheckUpdateDelete(m_outputCode) == false)
+                    {
+                        MsgUtils.ShowErrorMsg("已出库，不可修改！");
+                        return false;
+                    }
+                }
+
+                //删除
+                if (m_mode == 2)
+                {
+                    if (m_bllMaterialsOut.CheckUpdateDelete(m_outputCode) == false)
+                    {
+                        MsgUtils.ShowErrorMsg("已出库，不可删除！");
+                        return false;
+                    }
                 }
             }
 
-            //删除
-            if (m_mode == 2)
-            {
-                if (m_bllMaterialsOut.CheckUpdateDelete(m_outputCode) == false)
-                {
-                    MsgUtils.ShowErrorMsg("已出库，不可删除！");
-                    return false;
-                }
-            }
-            
             // 新增或修改
             if (m_mode == 0 || m_mode == 1)
             {
@@ -404,11 +401,26 @@ namespace PMS.Frm.Store
         }
         #endregion
         
-        private void btn_close_Click_1(object sender, EventArgs e)
+        private void btn_close_Click(object sender, EventArgs e)
         {
-            Form form = new FrmMaterialsOut();
             this.Hide();
+        }
+
+        private void btn_output_Click(object sender, EventArgs e)
+        {
+            //保存数据
+            if (doSubmit(false) == false)
+            {
+                return;
+            }
+
+            int factoryId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_factory.SelectedItem).itemKey);
+            int materialsId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_materials.SelectedItem).itemKey);
+
+            Form form = new FrmMaterialsOutSelect(m_outputCode, factoryId, materialsId, ConvertUtils.ConvertToInt(((ModelItem)this.cmb_applyBy.SelectedItem).itemKey));
             form.ShowDialog();
+
+            init();
         }
 
     }

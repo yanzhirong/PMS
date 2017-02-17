@@ -92,7 +92,7 @@ namespace Bll
             return rtn == 0 ? false : true;
         }
 
-        public Boolean ConfirmSaleOrder(ModelSaleOrder _modelSaleOrder)
+        public Boolean ConfirmSaleOrder(ModelSaleOrder _modelSaleOrder, int _loginId)
         {
             int rtn = 0;
 
@@ -132,7 +132,6 @@ namespace Bll
                 modelProductStoreOutDetail.outputCode = modelProductOutput.outputCode;
                 modelProductStoreOutDetail.productId = modelSaleOrderDetail.productId;
                 modelProductStoreOutDetail.productNum = modelSaleOrderDetail.num;
-                modelProductStoreOutDetail.productUnit = modelSaleOrderDetail.unit;
                 modelProductStoreOutDetail.outputStatus = 0;
                 modelProductStoreOutDetail.isDelete = 0;
                 modelProductStoreOutDetail.createBy = modelProductOutput.createBy;
@@ -142,7 +141,21 @@ namespace Bll
 
             modelProductOutput.modelProductOutputDetail = listDetail;
 
-            rtn = m_dalSaleOrder.ConfirmSaleOrder(_modelSaleOrder, modelProductOutput);
+            // 应收
+            ModelFinanceReceive modelFinanceReceive = new ModelFinanceReceive();
+            modelFinanceReceive.customerId = _modelSaleOrder.customerId;
+            modelFinanceReceive.factoryId = _modelSaleOrder.factoryId;
+            modelFinanceReceive.orderCode = _modelSaleOrder.orderCode;
+            modelFinanceReceive.orderPrice = _modelSaleOrder.price;
+            modelFinanceReceive.salerId = _modelSaleOrder.salerId;
+            modelFinanceReceive.financeId = _loginId;
+            modelFinanceReceive.deliveryDate = _modelSaleOrder.deliveryDate;
+            modelFinanceReceive.remark = "";
+            modelFinanceReceive.isDelete = 0;
+            modelFinanceReceive.createBy = _modelSaleOrder.modifyBy;
+            modelFinanceReceive.createTime = _modelSaleOrder.modifyTime;
+
+            rtn = m_dalSaleOrder.ConfirmSaleOrder(_modelSaleOrder, modelProductOutput, modelFinanceReceive);
 
             return rtn == 0 ? false : true;
         }
@@ -154,13 +167,12 @@ namespace Bll
             List<ModelSaleOrderDetail> listSaleProduct = _model.modelSaleOrderDetail;
             foreach (ModelSaleOrderDetail saleProduct in listSaleProduct)
             {
-                //销售商品的数量（单位:克）
-                decimal saleNum = ConvertUtils.ConvertToDecimal(saleProduct.num) * m_bllCode.GetWeightUnit(saleProduct.unit);
 
-                //查询商品库存（单位:克）
-                decimal storeNum = m_bllStore.GetStoreProductNum(_model.factoryId, saleProduct.productId, _model.deliveryDate);
+                //查询产品库存（单位:克）
+                int storeNum = m_bllStore.GetStoreProductNum(_model.factoryId, saleProduct.productId, _model.deliveryDate);
 
-                if (saleNum > storeNum)
+                //销售产品的数量 > 产品库存
+                if (saleProduct.num > storeNum)
                 {
                     ModelProduct modelProduct = m_bllProduct.GetProductById(saleProduct.productId);
                     sb.Append(modelProduct.name).Append(",");
@@ -182,19 +194,16 @@ namespace Bll
 
             foreach (ModelSaleOrderDetail saleProduct in _model.modelSaleOrderDetail)
             {
-                //销售商品的数量（单位:克）
-                decimal saleNum = ConvertUtils.ConvertToDecimal(saleProduct.num) * m_bllCode.GetWeightUnit(saleProduct.unit);
+                //查询产品库存数量
+                int storeNum = m_bllStore.GetStoreProductNum(_model.factoryId, saleProduct.productId, _model.deliveryDate);
 
-                //查询商品库存（单位:克）
-                decimal storeNum = m_bllStore.GetStoreProductNum(_model.factoryId, saleProduct.productId, _model.deliveryDate);
-
-                if (saleNum > storeNum)
+                // 订单中的销售数>库存数
+                if (saleProduct.num > storeNum)
                 {
                     ModelProduceApply modelProduceApply = new ModelProduceApply();
                     modelProduceApply.factoryId = _model.factoryId;
                     modelProduceApply.productId = saleProduct.productId;
-                    modelProduceApply.num = ConvertUtils.ConvertToDecimal((saleNum - storeNum) / m_bllCode.GetWeightUnit(saleProduct.unit));
-                    modelProduceApply.unit = saleProduct.unit;
+                    modelProduceApply.num = saleProduct.num - storeNum;
                     modelProduceApply.saleOrderCode =_model.orderCode;
                     modelProduceApply.outputCode = m_bllProductOut.GetProductOutByOrderCode(_model.orderCode).outputCode;
                     modelProduceApply.deliveryDate = _model.deliveryDate;

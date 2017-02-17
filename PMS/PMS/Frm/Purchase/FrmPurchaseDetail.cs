@@ -37,9 +37,6 @@ namespace PMS.Frm.Purchase
 
         private void FrmPurchaseDetail_Load(object sender, EventArgs e)
         {
-            LoginUserInfo.LoginUser.currentFrom = this;
-            WinCommon.CreateMenu(ref this.menuStrip1);
-            
             //初始化
             init();
         }
@@ -56,9 +53,7 @@ namespace PMS.Frm.Purchase
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             //返回列表
-            Form form = new FrmPurchaseManage();
             this.Hide();
-            form.ShowDialog();
         }
                 
         #region 初始化
@@ -300,6 +295,8 @@ namespace PMS.Frm.Purchase
                 //采购价格
                 this.txt_price.Text = model.price.ToString();
 
+                // 备注
+                this.txt_remark.Text = model.remark;
             }
 
             //按钮处理
@@ -426,8 +423,8 @@ namespace PMS.Frm.Purchase
                 m_mode = 1;
                 ModelPurchase newPurchase = m_bllPurchase.GetPurchaseByPurchaseCode(modelPurchase.purchaseCode);
                 m_purchaseId = modelPurchase.id;
-                this.lbl_title.Text = "采购单-修改";
-
+                //this.lbl_title.Text = "采购单-修改";
+                this.Hide();
                 return true;
             }
 
@@ -449,7 +446,7 @@ namespace PMS.Frm.Purchase
                     if (showMsg == true)
                     {
                         MsgUtils.ShowInfoMsg("修改采购单成功！");
-                        init();
+                        this.Hide();
                     }
                     return true;
                 }
@@ -475,9 +472,7 @@ namespace PMS.Frm.Purchase
                         MsgUtils.ShowInfoMsg("删除采购单成功！");
                     }
                     //返回列表
-                    Form form = new FrmPurchaseManage();
                     this.Hide();
-                    form.ShowDialog();
                     return true;
                 }
             }
@@ -675,9 +670,7 @@ namespace PMS.Frm.Purchase
         private void btn_close_Click(object sender, EventArgs e)
         {
             //返回列表
-            Form form = new FrmPurchaseManage();
             this.Hide();
-            form.ShowDialog();
         }
 
         private void cmb_supplier_SelectedIndexChanged(object sender, EventArgs e)
@@ -729,13 +722,6 @@ namespace PMS.Frm.Purchase
                 //电话
                 this.txt_telephone.Text = modelCustomer.telephone1;
             }
-        }
-        
-        private void btn_close_Click_1(object sender, EventArgs e)
-        {
-            Form form = new FrmPurchaseManage();
-            this.Hide();
-            form.ShowDialog();
         }
 
         private void cmb_type_SelectedIndexChanged(object sender, EventArgs e)

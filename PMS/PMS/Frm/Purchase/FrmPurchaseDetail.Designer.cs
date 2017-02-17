@@ -67,12 +67,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmb_district = new System.Windows.Forms.ComboBox();
             this.lbl_orderCode = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.btn_close = new System.Windows.Forms.Button();
             this.grb_finance = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.txt_price = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.grb_purchase.SuspendLayout();
             this.grb_address.SuspendLayout();
             this.grb_finance.SuspendLayout();
@@ -490,14 +489,6 @@
             this.lbl_orderCode.TabIndex = 42;
             this.lbl_orderCode.Text = "采购物料：";
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(702, 24);
-            this.menuStrip1.TabIndex = 105;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
             // btn_close
             // 
             this.btn_close.Location = new System.Drawing.Point(562, 512);
@@ -506,7 +497,7 @@
             this.btn_close.TabIndex = 106;
             this.btn_close.Text = "关闭";
             this.btn_close.UseVisualStyleBackColor = true;
-            this.btn_close.Click += new System.EventHandler(this.btn_close_Click_1);
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
             // grb_finance
             // 
@@ -518,6 +509,16 @@
             this.grb_finance.Size = new System.Drawing.Size(634, 53);
             this.grb_finance.TabIndex = 115;
             this.grb_finance.TabStop = false;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(177, 23);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(23, 12);
+            this.label14.TabIndex = 117;
+            this.label14.Text = "RMB";
             // 
             // txt_price
             // 
@@ -538,16 +539,6 @@
             this.label12.TabIndex = 116;
             this.label12.Text = "采购价格：";
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(177, 23);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(23, 12);
-            this.label14.TabIndex = 117;
-            this.label14.Text = "RMB";
-            // 
             // FrmPurchaseDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -560,10 +551,8 @@
             this.Controls.Add(this.lbl_title);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_submit);
-            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmPurchaseDetail";
@@ -596,7 +585,6 @@
         private System.Windows.Forms.ComboBox cmb_city;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lbl_orderCode;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.GroupBox grb_address;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label10;

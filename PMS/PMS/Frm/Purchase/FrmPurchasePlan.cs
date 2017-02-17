@@ -120,8 +120,10 @@ namespace PMS.Frm.Purchase
             if (rtnResult.resultCode == Enum.EnumResultCode.Success)
             {
                 MsgUtils.ShowInfoMsg("确认采购已成功！");
-                doSelect();
-
+                //doSelect();
+                this.Hide();
+                Form form = new FrmPurchaseManage();
+                form.ShowDialog();
             }
             else
             {

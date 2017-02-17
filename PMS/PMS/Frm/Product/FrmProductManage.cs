@@ -24,9 +24,17 @@ namespace PMS.Frm.Product
         {
             LoginUserInfo.LoginUser.currentFrom = this;
             WinCommon.CreateMenu(ref this.menuStrip1);
+
+            doSelect();
+
         }
 
         private void btn_query_Click(object sender, EventArgs e)
+        {
+            doSelect();
+        }
+
+        private void doSelect()
         {
             string name = this.txt_name.Text.Trim();
 
@@ -38,9 +46,7 @@ namespace PMS.Frm.Product
 
         private void btn_addNew_Click(object sender, EventArgs e)
         {
-            Form form = new FrmProductDetail(0, 0);
             this.Hide();
-            form.ShowDialog();
         }
 
         private void FrmProductManage_FormClosed(object sender, FormClosedEventArgs e)
@@ -55,8 +61,8 @@ namespace PMS.Frm.Product
             {
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
                 Form form = new FrmProductDetail(1, id);
-                this.Hide();
                 form.ShowDialog();
+                doSelect();
             }
 
             //删除
@@ -64,8 +70,8 @@ namespace PMS.Frm.Product
             {
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
                 Form form = new FrmProductDetail(2, id);
-                this.Hide();
                 form.ShowDialog();
+                doSelect();
             }
         }
     }

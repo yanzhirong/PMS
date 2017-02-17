@@ -29,14 +29,10 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProductManage));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.lbl_tile = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_addNew = new System.Windows.Forms.Button();
-            this.btn_query = new System.Windows.Forms.Button();
-            this.txt_name = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +42,11 @@
             this.shelfLife = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifyBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.deleteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_addNew = new System.Windows.Forms.Button();
+            this.btn_query = new System.Windows.Forms.Button();
+            this.txt_name = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +67,7 @@
             this.lbl_tile.Name = "lbl_tile";
             this.lbl_tile.Size = new System.Drawing.Size(120, 27);
             this.lbl_tile.TabIndex = 70;
-            this.lbl_tile.Text = "商品列表";
+            this.lbl_tile.Text = "产品列表";
             // 
             // dataGridView1
             // 
@@ -97,6 +98,70 @@
             this.dataGridView1.Size = new System.Drawing.Size(885, 346);
             this.dataGridView1.TabIndex = 69;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // name
+            // 
+            this.name.DataPropertyName = "name";
+            this.name.HeaderText = "产品名";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // subName
+            // 
+            this.subName.DataPropertyName = "subName";
+            this.subName.HeaderText = "产品略称";
+            this.subName.Name = "subName";
+            this.subName.ReadOnly = true;
+            // 
+            // packingType
+            // 
+            this.packingType.DataPropertyName = "packingType";
+            this.packingType.HeaderText = "包装方式";
+            this.packingType.Name = "packingType";
+            this.packingType.ReadOnly = true;
+            // 
+            // weight
+            // 
+            this.weight.DataPropertyName = "weight";
+            this.weight.HeaderText = "重量";
+            this.weight.Name = "weight";
+            this.weight.ReadOnly = true;
+            // 
+            // morphology
+            // 
+            this.morphology.DataPropertyName = "morphology";
+            this.morphology.HeaderText = "产品形态";
+            this.morphology.Name = "morphology";
+            this.morphology.ReadOnly = true;
+            this.morphology.Width = 120;
+            // 
+            // shelfLife
+            // 
+            this.shelfLife.DataPropertyName = "shelfLife";
+            this.shelfLife.HeaderText = "保质期";
+            this.shelfLife.Name = "shelfLife";
+            this.shelfLife.ReadOnly = true;
+            this.shelfLife.Width = 120;
+            // 
+            // modifyBtn
+            // 
+            this.modifyBtn.DataPropertyName = "modifyBtn";
+            this.modifyBtn.HeaderText = "修改";
+            this.modifyBtn.Name = "modifyBtn";
+            // 
+            // deleteBtn
+            // 
+            this.deleteBtn.DataPropertyName = "deleteBtn";
+            this.deleteBtn.HeaderText = "删除";
+            this.deleteBtn.Name = "deleteBtn";
             // 
             // groupBox1
             // 
@@ -145,71 +210,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 7;
-            this.label1.Text = "商品名：";
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "id";
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // name
-            // 
-            this.name.DataPropertyName = "name";
-            this.name.HeaderText = "商品名";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // subName
-            // 
-            this.subName.DataPropertyName = "subName";
-            this.subName.HeaderText = "商品略称";
-            this.subName.Name = "subName";
-            this.subName.ReadOnly = true;
-            // 
-            // packingType
-            // 
-            this.packingType.DataPropertyName = "packingType";
-            this.packingType.HeaderText = "包装方式";
-            this.packingType.Name = "packingType";
-            this.packingType.ReadOnly = true;
-            // 
-            // weight
-            // 
-            this.weight.DataPropertyName = "weight";
-            this.weight.HeaderText = "重量";
-            this.weight.Name = "weight";
-            this.weight.ReadOnly = true;
-            // 
-            // morphology
-            // 
-            this.morphology.DataPropertyName = "morphology";
-            this.morphology.HeaderText = "产品形态";
-            this.morphology.Name = "morphology";
-            this.morphology.ReadOnly = true;
-            this.morphology.Width = 120;
-            // 
-            // shelfLife
-            // 
-            this.shelfLife.DataPropertyName = "shelfLife";
-            this.shelfLife.HeaderText = "保质期";
-            this.shelfLife.Name = "shelfLife";
-            this.shelfLife.ReadOnly = true;
-            this.shelfLife.Width = 120;
-            // 
-            // modifyBtn
-            // 
-            this.modifyBtn.DataPropertyName = "modifyBtn";
-            this.modifyBtn.HeaderText = "修改";
-            this.modifyBtn.Name = "modifyBtn";
-            // 
-            // deleteBtn
-            // 
-            this.deleteBtn.DataPropertyName = "deleteBtn";
-            this.deleteBtn.HeaderText = "删除";
-            this.deleteBtn.Name = "deleteBtn";
+            this.label1.Text = "产品名：";
             // 
             // FrmProductManage
             // 
@@ -221,12 +222,13 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmProductManage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "商品管理";
+            this.Text = "产品管理";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmProductManage_FormClosed);
             this.Load += new System.EventHandler(this.FrmProductManage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

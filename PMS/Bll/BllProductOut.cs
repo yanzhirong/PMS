@@ -105,7 +105,7 @@ namespace Bll
             return rtn == 0 ? false : true;
         }
 
-        public Boolean CheckDelete(string _outputCode)
+        public Boolean CheckUpdateDelete(string _outputCode)
         {
             DataTable dt = m_dalProductOut.GetProductOutDetailByOutputCode(_outputCode);
 
@@ -131,9 +131,9 @@ namespace Bll
 
         }
 
-        public Boolean doOutPut(string _outputCode, int _outputDetailId, int _factoryId, int _productId, int _applyMemberId, decimal _outputNum, int _outputUnit, List<Dictionary<string, object>> listOutput, string userName)
+        public Boolean doOutPut(string _outputCode, int _outputDetailId, int _factoryId, int _productId, int _applyMemberId, int _outputNum, List<Dictionary<string, object>> listOutput, string userName)
         {
-            int rtn = m_dalProductOut.doOutPut(_outputCode, _outputDetailId, _factoryId, _productId, _applyMemberId, _outputNum, _outputUnit, listOutput, userName);
+            int rtn = m_dalProductOut.doOutPut(_outputCode, _outputDetailId, _factoryId, _productId, _applyMemberId, _outputNum, listOutput, userName);
 
             return rtn > 0 ? true : false;
         }

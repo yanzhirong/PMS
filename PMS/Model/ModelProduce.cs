@@ -12,8 +12,7 @@ namespace Model
         public string produceCode { set; get; }
         public int factoryId { set; get; }
         public int productId { set; get; }
-        public decimal num { set; get; }
-        public int unit { set; get; }
+        public int num { set; get; }
         public DateTime deliveryDate { set; get; }
         public int status { set; get; }
         public int applyMemberId { set; get; }

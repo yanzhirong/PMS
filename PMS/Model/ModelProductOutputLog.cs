@@ -13,8 +13,7 @@ namespace Model
         public string inputCode { set; get; }
         public int factoryId { set; get; }
         public int productId { set; get; }
-        public decimal outputNum { set; get; }
-        public int outputUnit { set; get; }
+        public int outputNum { set; get; }
         public int applyMemberId { set; get; }
         public DateTime outputDate { set; get; }
     }

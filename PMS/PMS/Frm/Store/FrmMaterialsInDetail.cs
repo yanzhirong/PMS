@@ -35,10 +35,7 @@ namespace PMS.Frm.Store
         }
 
         private void FrmMaterialsInDetail_Load(object sender, EventArgs e)
-        {
-            LoginUserInfo.LoginUser.currentFrom = this;
-            WinCommon.CreateMenu(ref this.menuStrip1);
-            
+        {           
             //初始化
             init();
         }
@@ -55,9 +52,7 @@ namespace PMS.Frm.Store
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             //返回列表
-            Form form = new FrmMaterialsIn();
             this.Hide();
-            form.ShowDialog();
         }
                 
         #region 初始化
@@ -313,6 +308,8 @@ namespace PMS.Frm.Store
                 ModelMaterialsIn newMaterialsIn = m_bllMaterialsIn.GetMaterialsInByInputCode(modelMaterialsIn.inputCode);
                 m_materialsInId = newMaterialsIn.id;
                 m_inputCode = modelMaterialsIn.inputCode;
+                //返回列表
+                this.Hide();
 
                 return true;
             }
@@ -336,6 +333,8 @@ namespace PMS.Frm.Store
                     {
                         MsgUtils.ShowInfoMsg("修改入库单成功！");
                         m_inputCode = modelMaterialsIn.inputCode;
+                        //返回列表
+                        this.Hide();
                     }
                     return true;
                 }
@@ -361,9 +360,9 @@ namespace PMS.Frm.Store
                         MsgUtils.ShowInfoMsg("删除入库单成功！");
                     }
                     //返回列表
-                    Form form = new FrmMaterialsIn();
+                    //Form form = new FrmMaterialsIn();
                     this.Hide();
-                    form.ShowDialog();
+                    //form.ShowDialog();
                     return true;
                 }
             }
@@ -377,23 +376,26 @@ namespace PMS.Frm.Store
         /// <returns></returns>
         private Boolean doCheck()
         {
-            //修改
-            if (m_mode == 1)
+            if(StringUtils.IsNotBlank(m_inputCode))
             {
-                if (m_bllMaterialsIn.CheckUpdateDelete(m_inputCode) == false)
+                //修改
+                if (m_mode == 1)
                 {
-                    MsgUtils.ShowErrorMsg("已有部分物料出库，不可修改！");
-                    return false;
+                    if (m_bllMaterialsIn.CheckUpdateDelete(m_inputCode) == false)
+                    {
+                        MsgUtils.ShowErrorMsg("已有部分物料出库，不可修改！");
+                        return false;
+                    }
                 }
-            }
 
-            //删除
-            if (m_mode == 2)
-            {
-                if (m_bllMaterialsIn.CheckUpdateDelete(m_inputCode) == false)
+                //删除
+                if (m_mode == 2)
                 {
-                    MsgUtils.ShowErrorMsg("已有部分物料出库，不可删除！");
-                    return false;
+                    if (m_bllMaterialsIn.CheckUpdateDelete(m_inputCode) == false)
+                    {
+                        MsgUtils.ShowErrorMsg("已有部分物料出库，不可删除！");
+                        return false;
+                    }
                 }
             }
             
@@ -456,11 +458,9 @@ namespace PMS.Frm.Store
         }
         #endregion
         
-        private void btn_close_Click_1(object sender, EventArgs e)
+        private void btn_close_Click(object sender, EventArgs e)
         {
-            Form form = new FrmMaterialsIn();
             this.Hide();
-            form.ShowDialog();
         }
 
     }

@@ -78,6 +78,25 @@ namespace Bll
             return m_dalProduct.GetProductBySearchKey(_searchKey);
         }
 
+        public List<ModelItem> GetProductItem(string _searchKey)
+        {
+            List<ModelItem> listItem = new List<ModelItem>();
+
+            DataTable dt = m_dalProduct.GetProductBySearchKey(_searchKey);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                foreach (DataRow dr in dt.Rows)
+                {
+                    ModelItem modelItem = new ModelItem();
+                    modelItem.itemKey = ConvertUtils.ConvertToInt(dr["productId"]);
+                    modelItem.itemValue = ConvertUtils.ConvertToString(dr["productName"]);
+
+                    listItem.Add(modelItem);
+                }
+            }
+            return listItem;
+        }
         public ModelProduct GetProductByName(string _name)
         {
             DataTable dt = m_dalProduct.GetProductByName(_name);

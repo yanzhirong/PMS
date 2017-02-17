@@ -54,7 +54,7 @@
             this.selected = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.factoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productName = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.numDisplay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.applyStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,8 +62,6 @@
             this.applyMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.applyDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.queryStore = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.factoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
@@ -202,7 +200,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 7;
-            this.label1.Text = "商品名称：";
+            this.label1.Text = "产品名称：";
             // 
             // btn_query
             // 
@@ -231,7 +229,7 @@
             this.selected,
             this.factoryName,
             this.productName,
-            this.numDisplay,
+            this.num,
             this.customerName,
             this.deliveryDate,
             this.applyStatus,
@@ -239,8 +237,6 @@
             this.applyMember,
             this.applyDate,
             this.queryStore,
-            this.num,
-            this.unit,
             this.factoryId,
             this.productId});
             this.dataGridView1.Location = new System.Drawing.Point(30, 208);
@@ -314,19 +310,19 @@
             // productName
             // 
             this.productName.DataPropertyName = "productName";
-            this.productName.HeaderText = "商品";
+            this.productName.HeaderText = "产品";
             this.productName.Name = "productName";
             this.productName.ReadOnly = true;
             this.productName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.productName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.productName.Width = 160;
             // 
-            // numDisplay
+            // num
             // 
-            this.numDisplay.DataPropertyName = "numDisplay";
-            this.numDisplay.HeaderText = "数量";
-            this.numDisplay.Name = "numDisplay";
-            this.numDisplay.ReadOnly = true;
+            this.num.DataPropertyName = "num";
+            this.num.HeaderText = "数量";
+            this.num.Name = "num";
+            this.num.ReadOnly = true;
             // 
             // customerName
             // 
@@ -381,20 +377,6 @@
             this.queryStore.HeaderText = "库存";
             this.queryStore.Name = "queryStore";
             this.queryStore.ReadOnly = true;
-            // 
-            // num
-            // 
-            this.num.DataPropertyName = "num";
-            this.num.HeaderText = "num";
-            this.num.Name = "num";
-            this.num.Visible = false;
-            // 
-            // unit
-            // 
-            this.unit.DataPropertyName = "unit";
-            this.unit.HeaderText = "unit";
-            this.unit.Name = "unit";
-            this.unit.Visible = false;
             // 
             // factoryId
             // 
@@ -465,7 +447,7 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn selected;
         private System.Windows.Forms.DataGridViewTextBoxColumn factoryName;
         private System.Windows.Forms.DataGridViewLinkColumn productName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numDisplay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn num;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn deliveryDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn applyStatus;
@@ -473,8 +455,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn applyMember;
         private System.Windows.Forms.DataGridViewTextBoxColumn applyDate;
         private System.Windows.Forms.DataGridViewButtonColumn queryStore;
-        private System.Windows.Forms.DataGridViewTextBoxColumn num;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unit;
         private System.Windows.Forms.DataGridViewTextBoxColumn factoryId;
         private System.Windows.Forms.DataGridViewTextBoxColumn productId;
 

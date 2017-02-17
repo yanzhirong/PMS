@@ -33,9 +33,6 @@ namespace PMS.Frm.Product
 
         private void FrmProductDetail_Load(object sender, EventArgs e)
         {
-            LoginUserInfo.LoginUser.currentFrom = this;
-            WinCommon.CreateMenu(ref this.menuStrip1);
-
             //初始化
             init();
 
@@ -48,9 +45,7 @@ namespace PMS.Frm.Product
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             //返回用户列表
-            Form form = new FrmProductManage();
             this.Hide();
-            form.ShowDialog();
         }
 
         #region 初始化
@@ -59,23 +54,23 @@ namespace PMS.Frm.Product
         /// </summary>
         private void init()
         {           
-            //标题
-            if (m_mode == 0)
-            {
-                this.lbl_title.Text = "商品信息设定-新增";
-            }
-            else if (m_mode == 1)
-            {
-                this.lbl_title.Text = "商品信息设定-修改";
-            }
-            else if (m_mode == 2)
-            {
-                this.lbl_title.Text = "商品信息设定-删除";
-            }
-            else
-            {
-                this.lbl_title.Text = "商品信息设定-查看";
-            }
+            ////标题
+            //if (m_mode == 0)
+            //{
+            //    this.lbl_title.Text = "产品信息设定-新增";
+            //}
+            //else if (m_mode == 1)
+            //{
+            //    this.lbl_title.Text = "产品信息设定-修改";
+            //}
+            //else if (m_mode == 2)
+            //{
+            //    this.lbl_title.Text = "产品信息设定-删除";
+            //}
+            //else
+            //{
+            //    this.lbl_title.Text = "产品信息设定-查看";
+            //}
 
             //下拉框
             //包装类型
@@ -98,9 +93,9 @@ namespace PMS.Frm.Product
             {
                 ModelProduct modelProduct = m_bllProduct.GetProductById(m_productId);
 
-                //商品名
+                //产品名
                 this.txt_name.Text = modelProduct.name;
-                //商品略名
+                //产品略名
                 this.txt_subName.Text = modelProduct.subName;
                 //检索键
                 this.txt_searchKey.Text = modelProduct.modelProductSearch.searchKey;
@@ -181,14 +176,12 @@ namespace PMS.Frm.Product
 
             if (m_mode == 3)
             {
-                this.menuStrip1.Visible = false;
                 this.btn_submit.Visible = false;
                 this.btn_cancel.Visible = false;
                 this.btn_close.Visible = true;
             }
             else
             {
-                this.menuStrip1.Visible = true;
                 this.btn_submit.Visible = true;
                 this.btn_cancel.Visible = true;
                 this.btn_close.Visible = false;
@@ -281,20 +274,20 @@ namespace PMS.Frm.Product
 
                 if (rtn == false)
                 {
-                    MsgUtils.ShowErrorMsg("新增商品失败！");
+                    MsgUtils.ShowErrorMsg("新增产品失败！");
                     return ;
                 }
                 else
                 {
-                    MsgUtils.ShowInfoMsg("新增商品成功！");
+                    MsgUtils.ShowInfoMsg("新增产品成功！");
                 }
 
                 //处理模式变为修改
                 m_mode = 1;
                 m_productId = m_bllProduct.GetProductByName(this.txt_name.Text).id;
 
-                init();
-
+                //init();
+                this.Hide();
                 return;
             }
 
@@ -305,12 +298,13 @@ namespace PMS.Frm.Product
 
                 if (rtn == false)
                 {
-                    MsgUtils.ShowErrorMsg("修改商品失败！");
+                    MsgUtils.ShowErrorMsg("修改产品失败！");
                     return;
                 }
                 else
                 {
-                    MsgUtils.ShowInfoMsg("修改商品成功！");
+                    MsgUtils.ShowInfoMsg("修改产品成功！");
+                    this.Hide();
                     return;
                 }
             }
@@ -322,17 +316,15 @@ namespace PMS.Frm.Product
 
                 if (rtn == false)
                 {
-                    MsgUtils.ShowErrorMsg("删除商品失败！");
+                    MsgUtils.ShowErrorMsg("删除产品失败！");
                     return;
                 }
                 else
                 {
-                    MsgUtils.ShowInfoMsg("删除商品成功！");
+                    MsgUtils.ShowInfoMsg("删除产品成功！");
 
                     //返回用户列表
-                    Form form = new FrmProductManage();
                     this.Hide();
-                    form.ShowDialog();
                     return;
                 }
             }
@@ -357,7 +349,7 @@ namespace PMS.Frm.Product
                 ModelProduct product = m_bllProduct.GetProductByName(this.txt_name.Text);
                 if (product.id > 0 && product.id != m_productId)
                 {
-                    MsgUtils.ShowErrorMsg("该商品已存在！");
+                    MsgUtils.ShowErrorMsg("该产品已存在！");
                     this.txt_name.Focus();
                     return false;
                 }

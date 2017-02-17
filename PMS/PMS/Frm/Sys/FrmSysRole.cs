@@ -27,9 +27,16 @@ namespace PMS.Frm.Sys
             WinCommon.CreateMenu(ref this.menuStrip1);
 
             this.txt_name.Focus();
+
+            doSelect();
         }
 
         private void btn_query_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void doSelect()
         {
             string name = this.txt_name.Text.Trim();
 
@@ -42,7 +49,6 @@ namespace PMS.Frm.Sys
         private void btn_addNew_Click(object sender, EventArgs e)
         {
             Form form = new FrmSysRoleDetail(0, 0);
-            this.Hide();
             form.ShowDialog();
         }
 
@@ -53,8 +59,8 @@ namespace PMS.Frm.Sys
             {
                 int roleId = (int)dataGridView1.Rows[e.RowIndex].Cells["roleId"].Value;
                 Form form = new FrmSysRoleDetail(1, roleId);
-                this.Hide();
                 form.ShowDialog();
+                doSelect();
             }
 
             //删除
@@ -62,8 +68,8 @@ namespace PMS.Frm.Sys
             {
                 int roleId = (int)dataGridView1.Rows[e.RowIndex].Cells["roleID"].Value;
                 Form form = new FrmSysRoleDetail(2, roleId);
-                this.Hide();
                 form.ShowDialog();
+                doSelect();
             }
 
         }

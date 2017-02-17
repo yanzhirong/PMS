@@ -20,10 +20,12 @@ namespace PMS.Frm.Store
         private int m_productId;
         private int m_factoryId;
         private int m_applyMemberId;
+        private int m_realityOutputNum;
 
         private BllCustomer m_bllCustomer = new BllCustomer();
         private BllProduct m_bllProduct = new BllProduct();
         private BllProductOut m_bllProductOut = new BllProductOut();
+        private BllStore m_bllStore = new BllStore();
         private BllProduce m_bllProduce = new BllProduce();
         private BllFactory m_bllFactory = new BllFactory();
         private BllUser m_bllUser = new BllUser();
@@ -67,15 +69,11 @@ namespace PMS.Frm.Store
         /// </summary>
         private void init()
         {
-            //单位下拉框
-            List<ModelItem> listItem = m_bllCode.GetCodeItem((int)Enum.EnumCode.WeightUnit, false);
-            WinCommon.BindComboBox(ref this.cmb_produceUint, listItem);
-
             //出库单号
             this.txt_outputCode.Text = m_outputCode;
             //工厂
             this.txt_factory.Text = m_bllFactory.GetFactoryById(m_factoryId).name;
-            //出库商品
+            //出库产品
             this.txt_product.Text = m_bllProduct.GetProductById(m_productId).name;
 
             if (m_outputDetailId > 0)
@@ -83,24 +81,31 @@ namespace PMS.Frm.Store
                 ModelProductOutputDetail modelProductOutputDetail = m_bllProductOut.GetProductOutDetailById(m_outputDetailId);
                 //出库数量
                 this.txt_num.Text = modelProductOutputDetail.productNum.ToString();
-                //单位
-                this.txt_unitCode.Text = modelProductOutputDetail.productUnit.ToString();
-                this.txt_unit.Text = m_bllCode.GetSubCode((int)Enum.EnumCode.WeightUnit, modelProductOutputDetail.productUnit).value1;
 
+                //生产申请数
                 this.txt_produceNum.Text = modelProductOutputDetail.productNum.ToString();
-                for (int i = 0; i < this.cmb_produceUint.Items.Count; i++)
-                {
-                    ModelItem modelItem = (ModelItem)this.cmb_produceUint.Items[i];
-                    if (modelProductOutputDetail.productUnit == (int)modelItem.itemKey)
-                    {
-                        this.cmb_produceUint.SelectedIndex = i;
-                        break;
-                    }
-                }
-            }
-            else
-            {
 
+                //实际已出库数
+                m_realityOutputNum = modelProductOutputDetail.realityOutputNum;
+
+                if (modelProductOutputDetail.outputStatus == 1)
+                {
+                    this.grb_productOut.Enabled = false;
+                    this.lbl_selectOutput.Visible = false;
+                    this.dataGridView1.Visible = false;
+                    this.btn_submit.Visible = false;
+                    this.btn_cancel.Visible = false;
+                    this.btn_close.Visible = true;
+                }
+                else
+                {
+                    this.grb_productOut.Enabled = true;
+                    this.lbl_selectOutput.Visible = true;
+                    this.dataGridView1.Visible = true;
+                    this.btn_submit.Visible = true;
+                    this.btn_cancel.Visible = true;
+                    this.btn_close.Visible = false;
+                }
             }
 
             //设置列表信息
@@ -115,6 +120,9 @@ namespace PMS.Frm.Store
         {
             this.dataGridView1.DataSource = m_bllProductOut.GetProductOutSelect(m_factoryId, m_productId);
             this.dataGridView1.Refresh();
+
+            this.dataGridView2.DataSource = m_bllStore.GetProductOutputLogByOutputCode(m_outputCode);
+            this.dataGridView2.Refresh();
         }
 
         #endregion
@@ -135,8 +143,7 @@ namespace PMS.Frm.Store
             }
 
             //输入的出库数合计
-            decimal selectedAllOutputNum = 0;
-            int selectedUnit = 0;
+            int selectedAllOutputNum = 0;
 
             List<Dictionary<string, object>> listOutput = new List<Dictionary<string, object>>();
             for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
@@ -149,26 +156,12 @@ namespace PMS.Frm.Store
                     dc.Add("inputCode", ConvertUtils.ConvertToString(this.dataGridView1.Rows[i].Cells["inputCode"].Value));
 
                     //出库数
-                    decimal curOutPutNum = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells["outputNum"].Value);
+                    int curOutPutNum = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["outputNum"].Value);
                     dc.Add("outputNum", curOutPutNum);
-                    //出库单位
-                    int outputUnit = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["outputUnit"].Value);
-                    dc.Add("outputUnit", outputUnit);
-                    //出库数（克）
-                    curOutPutNum = curOutPutNum * m_bllCode.GetWeightUnit(outputUnit);
-
-                    //选中的第一行的单位
-                    if (selectedUnit == 0)
-                    {
-                        selectedUnit = outputUnit;
-                    }
 
                     //出库后剩余在库数
-                    decimal stockNum = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells["num"].Value);
-                    //转为克
-                    stockNum = stockNum * m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["unit"].Value));
+                    int stockNum = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["num"].Value);
                     stockNum = stockNum - curOutPutNum;
-                    stockNum = stockNum / m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["unit"].Value));
                     dc.Add("stockNum", stockNum);
 
                     listOutput.Add(dc);
@@ -177,9 +170,7 @@ namespace PMS.Frm.Store
                 }
             }
 
-            selectedAllOutputNum = selectedAllOutputNum / m_bllCode.GetWeightUnit(selectedUnit);
-
-            rtn = m_bllProductOut.doOutPut(m_outputCode, m_outputDetailId, m_factoryId, m_productId, m_applyMemberId, selectedAllOutputNum, selectedUnit, listOutput, LoginUserInfo.LoginUser.loginUser.userName);
+            rtn = m_bllProductOut.doOutPut(m_outputCode, m_outputDetailId, m_factoryId, m_productId, m_applyMemberId, selectedAllOutputNum, listOutput, LoginUserInfo.LoginUser.loginUser.userName);
 
             if (rtn == true)
             {
@@ -210,28 +201,20 @@ namespace PMS.Frm.Store
                 if (this.dataGridView1.Rows[i].Cells["selected"].EditedFormattedValue.ToString() == "True")
                 {
 
-                    //输入的出库数（克）
-                    decimal curOutPutNum = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells["outputNum"].Value);
+                    //输入的出库数
+                    int curOutPutNum = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["outputNum"].Value);
                     if (curOutPutNum <= 0)
                     {
                         MsgUtils.ShowErrorMsg("请输入出库数量！");
                         return false;
                     }
-                    int outputUnit = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["outputUnit"].Value);
-                    if (outputUnit <= 0)
-                    {
-                        MsgUtils.ShowErrorMsg("请出库出库单位！");
-                        return false;
-                    }
-                    curOutPutNum = curOutPutNum * m_bllCode.GetWeightUnit(outputUnit);
 
-                    //库存数量（克）
-                    decimal curStockNum = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells["num"].Value);
-                    curStockNum = curStockNum * m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["unit"].Value));
+                    //库存数量
+                    int curStockNum = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["num"].Value);
 
                     if (curOutPutNum > curStockNum)
                     {
-                        MsgUtils.ShowErrorMsg("请输入适当的出库数！");
+                        MsgUtils.ShowErrorMsg("出库数量大于在库数量，请输入适当的出库数！");
                         return false;
                     }
 
@@ -245,14 +228,15 @@ namespace PMS.Frm.Store
                 return false;
             }
 
-            //要求的出库数（克）
-            decimal requestOutputNum = ConvertUtils.ConvertToDecimal(this.txt_num.Text.Trim());
-            requestOutputNum = requestOutputNum * m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(this.txt_unitCode.Text));
+            //要求的出库数
+            int requestOutputNum = ConvertUtils.ConvertToInt(this.txt_num.Text.Trim());
 
-            if (requestOutputNum > 0 && selectedAllOutputNum < requestOutputNum)
+            if (requestOutputNum > 0 && (selectedAllOutputNum + m_realityOutputNum) < requestOutputNum)
             {
-                MsgUtils.ShowErrorMsg("出库数量不足！");
-                return false;
+                if (MsgUtils.ShowQustMsg("出库数量低于申请数量，确认出库么？", MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                {
+                    return false;
+                }
             }
 
             return true;
@@ -289,7 +273,7 @@ namespace PMS.Frm.Store
 
             DataGridViewTextBoxColumn colProduct = new DataGridViewTextBoxColumn();
             colProduct.Name = "productName";
-            colProduct.HeaderText = "商品";
+            colProduct.HeaderText = "产品";
             colProduct.DataPropertyName = "productName";
             colProduct.Width = 160;
             colProduct.ReadOnly = true;
@@ -304,26 +288,12 @@ namespace PMS.Frm.Store
             this.dataGridView1.Columns.Add(colExpiresDate);
 
             DataGridViewTextBoxColumn colNumDisplay = new DataGridViewTextBoxColumn();
-            colNumDisplay.Name = "numDisplay";
+            colNumDisplay.Name = "num";
             colNumDisplay.HeaderText = "库存数量";
-            colNumDisplay.DataPropertyName = "numDisplay";
+            colNumDisplay.DataPropertyName = "num";
             colNumDisplay.Width = 80;
             colNumDisplay.ReadOnly = true;
             this.dataGridView1.Columns.Add(colNumDisplay);
-
-            DataGridViewTextBoxColumn colNum = new DataGridViewTextBoxColumn();
-            colNum.Name = "num";
-            colNum.HeaderText = "库存数量";
-            colNum.DataPropertyName = "num";
-            colNum.Visible = false;
-            this.dataGridView1.Columns.Add(colNum);
-
-            DataGridViewTextBoxColumn colUnit = new DataGridViewTextBoxColumn();
-            colUnit.Name = "unit";
-            colUnit.HeaderText = "库存单位";
-            colUnit.DataPropertyName = "unit";
-            colUnit.Visible = false;
-            this.dataGridView1.Columns.Add(colUnit);
 
             DataGridViewTextBoxColumn colOutputNum = new DataGridViewTextBoxColumn();
             colOutputNum.Name = "outputNum";
@@ -331,16 +301,6 @@ namespace PMS.Frm.Store
             colOutputNum.Width = 80;
             colOutputNum.ReadOnly = false;
             this.dataGridView1.Columns.Add(colOutputNum);
-
-            DataGridViewComboBoxColumn cmbColumn = new DataGridViewComboBoxColumn();
-            cmbColumn.Name = "outputUnit";
-            cmbColumn.HeaderText = "出库单位";
-            cmbColumn.Width = 80;
-            cmbColumn.ReadOnly = false;
-            this.dataGridView1.Columns.Add(cmbColumn);
-            cmbColumn.DataSource = m_bllCode.GetCodeList(3);
-            cmbColumn.DisplayMember = "value1";
-            cmbColumn.ValueMember = "subCode";
 
         }
         #endregion
@@ -354,24 +314,18 @@ namespace PMS.Frm.Store
                 this.txt_produceNum.Focus();
                 return;
             }
-            if (this.cmb_produceUint.SelectedIndex < 0)
-            {
-                MsgUtils.ShowErrorMsg("请选择单位！");
-                this.cmb_produceUint.Focus();
-                return;
-            }
 
             ModelProduceApply modelProduceApply = m_bllProduce.GetProduceApplyByOutputCodeAndProductId(m_outputCode, m_productId);
             if (modelProduceApply.id > 0)
             {
-                if (MsgUtils.ShowQustMsg("商品【" + this.txt_product.Text + "】已经申请生产，是否再次申请？", MessageBoxDefaultButton.Button2) == DialogResult.No)
+                if (MsgUtils.ShowQustMsg("产品【" + this.txt_product.Text + "】已经申请生产，是否再次申请？", MessageBoxDefaultButton.Button2) == DialogResult.No)
                 {
                     return;
                 }
             }
             else
             {
-                if (MsgUtils.ShowQustMsg("是否确认申请生产商品【" + this.txt_product.Text + "】？", MessageBoxDefaultButton.Button1) == DialogResult.No)
+                if (MsgUtils.ShowQustMsg("是否确认申请生产产品【" + this.txt_product.Text + "】？", MessageBoxDefaultButton.Button1) == DialogResult.No)
                 {
                     return;
                 }
@@ -381,8 +335,7 @@ namespace PMS.Frm.Store
             ModelProduceApply newProduceApply = new ModelProduceApply();
             newProduceApply.factoryId = m_factoryId;
             newProduceApply.productId = m_productId;
-            newProduceApply.num = ConvertUtils.ConvertToDecimal(this.txt_produceNum.Text.Trim());
-            newProduceApply.unit = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_produceUint.SelectedItem).itemKey);
+            newProduceApply.num = ConvertUtils.ConvertToInt(this.txt_produceNum.Text.Trim());
             newProduceApply.saleOrderCode = modelProductOutput.orderCode;
             newProduceApply.outputCode = m_outputCode;
             newProduceApply.deliveryDate = modelProductOutput.deliveryDate;

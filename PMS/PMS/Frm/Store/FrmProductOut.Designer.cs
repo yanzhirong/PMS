@@ -242,7 +242,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 7;
-            this.label1.Text = "商品名称：";
+            this.label1.Text = "产品名称：";
             // 
             // btn_query
             // 
@@ -302,9 +302,9 @@
             this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
             this.lbl_tile.Location = new System.Drawing.Point(458, 40);
             this.lbl_tile.Name = "lbl_tile";
-            this.lbl_tile.Size = new System.Drawing.Size(120, 27);
+            this.lbl_tile.Size = new System.Drawing.Size(174, 27);
             this.lbl_tile.TabIndex = 67;
-            this.lbl_tile.Text = "出库列表";
+            this.lbl_tile.Text = "产品出库列表";
             // 
             // btn_addNew
             // 
@@ -336,7 +336,7 @@
             this.orderCode.HeaderText = "订单编号";
             this.orderCode.Name = "orderCode";
             this.orderCode.ReadOnly = true;
-            this.orderCode.Width = 120;
+            this.orderCode.Width = 160;
             // 
             // salerName
             // 
@@ -352,7 +352,6 @@
             this.customerName.HeaderText = "客户名称";
             this.customerName.Name = "customerName";
             this.customerName.ReadOnly = true;
-            this.customerName.Width = 120;
             // 
             // orderAddress
             // 
@@ -381,9 +380,10 @@
             this.outputStatus.DataPropertyName = "outputStatus";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.outputStatus.DefaultCellStyle = dataGridViewCellStyle2;
-            this.outputStatus.HeaderText = "出库单状态";
+            this.outputStatus.HeaderText = "出库状态";
             this.outputStatus.Name = "outputStatus";
             this.outputStatus.ReadOnly = true;
+            this.outputStatus.Width = 80;
             // 
             // modifyBtn
             // 
@@ -431,7 +431,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmProductOut";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "商品出库管理";
+            this.Text = "产品出库管理";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmProductOut_FormClosed);
             this.Load += new System.EventHandler(this.FrmProductOut_Load);
             this.groupBox1.ResumeLayout(false);

@@ -33,6 +33,8 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.lbl_title = new System.Windows.Forms.Label();
             this.grb_materials = new System.Windows.Forms.GroupBox();
+            this.cmb_materialsType = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.txt_minStockNum = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -63,9 +65,6 @@
             this.cmb_priceUnit = new System.Windows.Forms.ComboBox();
             this.txt_price = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.cmb_materialsType = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.grb_materials.SuspendLayout();
             this.grb_price.SuspendLayout();
             this.SuspendLayout();
@@ -95,11 +94,11 @@
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Bold);
             this.lbl_title.ForeColor = System.Drawing.Color.Black;
-            this.lbl_title.Location = new System.Drawing.Point(216, 43);
+            this.lbl_title.Location = new System.Drawing.Point(269, 32);
             this.lbl_title.Name = "lbl_title";
-            this.lbl_title.Size = new System.Drawing.Size(180, 27);
+            this.lbl_title.Size = new System.Drawing.Size(124, 27);
             this.lbl_title.TabIndex = 24;
-            this.lbl_title.Text = "物料信息设置";
+            this.lbl_title.Text = "物料信息";
             // 
             // grb_materials
             // 
@@ -135,6 +134,30 @@
             this.grb_materials.Size = new System.Drawing.Size(585, 366);
             this.grb_materials.TabIndex = 103;
             this.grb_materials.TabStop = false;
+            // 
+            // cmb_materialsType
+            // 
+            this.cmb_materialsType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_materialsType.FormattingEnabled = true;
+            this.cmb_materialsType.Items.AddRange(new object[] {
+            "一般物料",
+            "自制物料",
+            "其它"});
+            this.cmb_materialsType.Location = new System.Drawing.Point(344, 174);
+            this.cmb_materialsType.Name = "cmb_materialsType";
+            this.cmb_materialsType.Size = new System.Drawing.Size(163, 20);
+            this.cmb_materialsType.TabIndex = 71;
+            this.cmb_materialsType.SelectedIndexChanged += new System.EventHandler(this.cmb_materialsType_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(272, 177);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 70;
+            this.label7.Text = "物料类型：";
             // 
             // label9
             // 
@@ -437,53 +460,19 @@
             this.label21.TabIndex = 47;
             this.label21.Text = "价    格：";
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(668, 24);
-            this.menuStrip1.TabIndex = 105;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // cmb_materialsType
-            // 
-            this.cmb_materialsType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_materialsType.FormattingEnabled = true;
-            this.cmb_materialsType.Items.AddRange(new object[] {
-            "一般物料",
-            "自制物料",
-            "其它"});
-            this.cmb_materialsType.Location = new System.Drawing.Point(344, 174);
-            this.cmb_materialsType.Name = "cmb_materialsType";
-            this.cmb_materialsType.Size = new System.Drawing.Size(163, 20);
-            this.cmb_materialsType.TabIndex = 71;
-            this.cmb_materialsType.SelectedIndexChanged += new System.EventHandler(this.cmb_materialsType_SelectedIndexChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(272, 177);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 12);
-            this.label7.TabIndex = 70;
-            this.label7.Text = "物料类型：";
-            // 
             // FrmMaterialsDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(668, 605);
+            this.ClientSize = new System.Drawing.Size(668, 586);
             this.Controls.Add(this.grb_price);
             this.Controls.Add(this.grb_materials);
             this.Controls.Add(this.lbl_title);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_submit);
-            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmMaterialsDetail";
@@ -536,7 +525,6 @@
         private System.Windows.Forms.ComboBox cmb_priceUnit;
         private System.Windows.Forms.TextBox txt_price;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ComboBox cmb_materialsType;
         private System.Windows.Forms.Label label7;
     }

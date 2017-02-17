@@ -62,7 +62,7 @@
             this.lbl_title.Name = "lbl_title";
             this.lbl_title.Size = new System.Drawing.Size(180, 27);
             this.lbl_title.TabIndex = 24;
-            this.lbl_title.Text = "商品库存查询";
+            this.lbl_title.Text = "产品库存查询";
             // 
             // grb_productOut
             // 
@@ -124,7 +124,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 121;
-            this.label1.Text = "商    品：";
+            this.label1.Text = "产    品：";
             // 
             // dataGridView1
             // 

@@ -91,11 +91,6 @@
             // 
             this.cmb_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_status.FormattingEnabled = true;
-            this.cmb_status.Items.AddRange(new object[] {
-            "",
-            "财务未确认",
-            "财务已确认",
-            "物料已入库"});
             this.cmb_status.Location = new System.Drawing.Point(475, 51);
             this.cmb_status.Name = "cmb_status";
             this.cmb_status.Size = new System.Drawing.Size(118, 20);

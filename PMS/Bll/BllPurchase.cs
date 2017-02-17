@@ -29,6 +29,19 @@ namespace Bll
             return m_dalPurchase.GetPurchaseApply(_materialsName, _factoryId, _applyStatus, _beginTime, _endTime);
         }
 
+        public ModelPurchaseApply GetPurchaseApplyByProcudeCodeAndMaterialsId(string _produceCode, int _materialsId)
+        {
+            ModelPurchaseApply model = new ModelPurchaseApply();
+
+            DataTable dt = m_dalPurchase.GetPurchaseApplyByProcudeCodeAndMaterialsId(_produceCode, _materialsId);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                model = ModelUtils<ModelPurchaseApply>.FillModel(dt.Rows[0]);
+            }
+            return model;
+        }
+
         public DataTable GetPurchase(string _materialsName, int _factoryId, DateTime _beginTime, DateTime _endTime, int _status, int _type)
         {
             return m_dalPurchase.GetPurchase(_materialsName, _factoryId, _beginTime, _endTime, _status, _type);

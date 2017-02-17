@@ -34,9 +34,15 @@ namespace PMS.Frm.Sys
             WinCommon.BindComboBox(ref cmb_role, listRole);
 
             this.txt_name.Focus();
+            doSelect();
         }
 
         private void btn_query_Click(object sender, EventArgs e)
+        {
+            doSelect();
+        }
+
+        private void doSelect()
         {
             string name = this.txt_name.Text.Trim();
             int roleId = 0;
@@ -53,7 +59,6 @@ namespace PMS.Frm.Sys
         private void btn_addNew_Click(object sender, EventArgs e)
         {
             Form form = new FrmSysUserDetail(0, 0);
-            this.Hide();
             form.ShowDialog();
         }
 
@@ -64,8 +69,8 @@ namespace PMS.Frm.Sys
             {
                 int userId = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
                 Form form = new FrmSysUserDetail(1, userId);
-                this.Hide();
                 form.ShowDialog();
+                doSelect();
             }
 
             //删除
@@ -73,8 +78,8 @@ namespace PMS.Frm.Sys
             {
                 int userId = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
                 Form form = new FrmSysUserDetail(2, userId);
-                this.Hide();
                 form.ShowDialog();
+                doSelect();
             }
 
         }

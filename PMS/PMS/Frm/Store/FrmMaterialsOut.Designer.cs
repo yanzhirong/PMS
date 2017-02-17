@@ -286,6 +286,7 @@
             this.outputCode.HeaderText = "出库单号";
             this.outputCode.Name = "outputCode";
             this.outputCode.ReadOnly = true;
+            this.outputCode.Width = 160;
             // 
             // materialsName
             // 
@@ -308,7 +309,7 @@
             this.produceCode.HeaderText = "生产单号";
             this.produceCode.Name = "produceCode";
             this.produceCode.ReadOnly = true;
-            this.produceCode.Width = 120;
+            this.produceCode.Width = 160;
             // 
             // numDisplay
             // 
@@ -316,6 +317,7 @@
             this.numDisplay.HeaderText = "申请数量";
             this.numDisplay.Name = "numDisplay";
             this.numDisplay.ReadOnly = true;
+            this.numDisplay.Width = 90;
             // 
             // applyDate
             // 

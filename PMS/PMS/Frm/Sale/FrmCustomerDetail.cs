@@ -32,10 +32,7 @@ namespace PMS.Frm.Sale
         }
 
         private void FrmCustomerDetail_Load(object sender, EventArgs e)
-        {
-            LoginUserInfo.LoginUser.currentFrom = this;
-            WinCommon.CreateMenu(ref this.menuStrip1);
-            
+        {           
             //初始化
             init();
         }
@@ -47,9 +44,7 @@ namespace PMS.Frm.Sale
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             //返回用户列表
-            Form form = new FrmCustomerManage();
             this.Hide();
-            form.ShowDialog();
         }
 
         #region 初始化
@@ -58,19 +53,19 @@ namespace PMS.Frm.Sale
         /// </summary>
         private void init()
         {           
-            //标题
-            if (m_mode == 0)
-            {
-                this.lbl_title.Text = "客户信息设定-新增";
-            }
-            else if (m_mode == 1)
-            {
-                this.lbl_title.Text = "客户信息设定-修改";
-            }
-            else
-            {
-                this.lbl_title.Text = "客户信息设定-删除";
-            }
+            ////标题
+            //if (m_mode == 0)
+            //{
+            //    this.lbl_title.Text = "客户信息设定-新增";
+            //}
+            //else if (m_mode == 1)
+            //{
+            //    this.lbl_title.Text = "客户信息设定-修改";
+            //}
+            //else
+            //{
+            //    this.lbl_title.Text = "客户信息设定-删除";
+            //}
 
             //下拉框
             //销售
@@ -267,14 +262,10 @@ namespace PMS.Frm.Sale
                     if (_showMsg == true)
                     {
                         MsgUtils.ShowInfoMsg("新增客户成功！");
+                        this.Hide();
                     }
                 }
 
-                //处理模式变为修改
-                m_mode = 1;
-                m_customerId = m_bllCustomer.GetCustomerByCode(this.txt_code.Text).id;
-
-                init();
 
                 return;
             }
@@ -297,8 +288,9 @@ namespace PMS.Frm.Sale
                     if (_showMsg == true)
                     {
                         MsgUtils.ShowInfoMsg("修改客户成功！");
+                        this.Hide();
                     }
-                    init();
+
                     return;
                 }
             }
@@ -321,12 +313,9 @@ namespace PMS.Frm.Sale
                     if (_showMsg == true)
                     {
                         MsgUtils.ShowInfoMsg("删除客户成功！");
+                        this.Hide();
                     }
 
-                    //返回用户列表
-                    Form form = new FrmCustomerManage();
-                    this.Hide();
-                    form.ShowDialog();
                     return;
                 }
             }
@@ -480,6 +469,8 @@ namespace PMS.Frm.Sale
 
             Form form = new FrmCustomerPaid(m_customerId, this.txt_name.Text.Trim());
             form.ShowDialog();
+
+            return;
         }
 
     }

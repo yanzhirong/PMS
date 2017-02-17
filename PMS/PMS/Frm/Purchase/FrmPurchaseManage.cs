@@ -16,6 +16,7 @@ namespace PMS.Frm.Purchase
     public partial class FrmPurchaseManage : Form
     {
 
+        private BllCode m_bllCode = new BllCode();
         private BllFactory m_bllFactory = new BllFactory();
         private BllPurchase m_bllPurchase = new BllPurchase();
 
@@ -33,13 +34,25 @@ namespace PMS.Frm.Purchase
             List<ModelItem> listItem = m_bllFactory.GetFactoryItem();
             WinCommon.BindComboBox(ref this.cmb_factory, listItem, true);
             
+            //状态
+            listItem = m_bllCode.GetCodeItem((int)Enum.EnumCode.PurchaseStatus, false);
+            WinCommon.BindComboBox(ref this.cmb_status, listItem, true);
+
             this.dtp_begin.Value = DateTime.Now;
             this.dtp_end.Value = DateTime.Now.AddMonths(1);
 
+            this.cmb_status.SelectedIndex = 1;
             this.txt_materialsName.Focus();
+
+            doSelect();
         }
 
         private void btn_query_Click(object sender, EventArgs e)
+        {
+            doSelect();
+        }
+
+        private void doSelect()
         {
             string materialsName = this.txt_materialsName.Text.Trim();
             int factoryId = 0;
@@ -50,7 +63,7 @@ namespace PMS.Frm.Purchase
             int status = -1;
             if (this.cmb_status.SelectedIndex > 0)
             {
-                status = this.cmb_status.SelectedIndex - 1;
+                status = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_status.SelectedItem).itemKey);
             }
             int type = -1;
             if (this.cmb_type.SelectedIndex > 0)
@@ -83,8 +96,8 @@ namespace PMS.Frm.Purchase
                 {
                     form = new FrmPurchaseDetail(3, id);
                 }
-                this.Hide();
                 form.ShowDialog();
+                doSelect();
             }
 
             //删除
@@ -98,8 +111,8 @@ namespace PMS.Frm.Purchase
                 }
 
                 Form form = new FrmPurchaseDetail(2, id);
-                this.Hide();
                 form.ShowDialog();
+                doSelect();
             }
 
             //查看库存
@@ -121,7 +134,6 @@ namespace PMS.Frm.Purchase
         private void btn_addNew_Click(object sender, EventArgs e)
         {
             Form form = new FrmPurchaseDetail(0, 0);
-            this.Hide();
             form.ShowDialog();
         }
         

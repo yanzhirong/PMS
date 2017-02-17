@@ -34,8 +34,6 @@ namespace PMS.Frm.Sys
 
         private void FrmSysUserDetail_Load(object sender, EventArgs e)
         {
-            LoginUserInfo.LoginUser.currentFrom = this;
-            WinCommon.CreateMenu(ref this.menuStrip1); 
             //初始化
             init();
         }
@@ -47,9 +45,7 @@ namespace PMS.Frm.Sys
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             //返回用户列表
-            Form form = new FrmSysUser();
             this.Hide();
-            form.ShowDialog();
         }
 
         #region 初始化
@@ -58,19 +54,19 @@ namespace PMS.Frm.Sys
         /// </summary>
         private void init()
         {           
-            //标题
-            if (m_mode == 0)
-            {
-                this.lbl_title.Text = "用户信息设定-新增";
-            }
-            else if (m_mode == 1)
-            {
-                this.lbl_title.Text = "用户信息设定-修改";
-            }
-            else
-            {
-                this.lbl_title.Text = "用户信息设定-删除";
-            }
+            ////标题
+            //if (m_mode == 0)
+            //{
+            //    this.lbl_title.Text = "用户信息设定-新增";
+            //}
+            //else if (m_mode == 1)
+            //{
+            //    this.lbl_title.Text = "用户信息设定-修改";
+            //}
+            //else
+            //{
+            //    this.lbl_title.Text = "用户信息设定-删除";
+            //}
 
             //角色下拉框
             List<ModelItem> listRole = m_bllRole.GetAllRoles();
@@ -202,6 +198,7 @@ namespace PMS.Frm.Sys
                 if (rtn == false)
                 {
                     MsgUtils.ShowErrorMsg("新增用户失败！");
+                    this.Hide();
                     return ;
                 }
                 else
@@ -213,7 +210,7 @@ namespace PMS.Frm.Sys
                 m_mode = 1;
                 m_userId = m_bllUser.GetUserByName(this.txt_name.Text).userId;
 
-                init();
+                this.Hide();
 
                 return;
             }
@@ -233,6 +230,7 @@ namespace PMS.Frm.Sys
                 {
                     MsgUtils.ShowInfoMsg("账号已修改，请重新登录。");
                     this.Hide();
+                    LoginUserInfo.LoginUser.currentFrom.Hide();
                     Form frmLogin = new Frm.Login.FrmLogin();
                     frmLogin.ShowDialog();
                     return;
@@ -240,7 +238,7 @@ namespace PMS.Frm.Sys
                 else
                 {
                     MsgUtils.ShowInfoMsg("修改用户成功！");
-                    init();
+                    this.Hide();
                     return;
                 }
             }
@@ -260,9 +258,7 @@ namespace PMS.Frm.Sys
                     MsgUtils.ShowInfoMsg("删除用户成功！");
 
                     //返回用户列表
-                    Form frmSysUser = new FrmSysUser();
                     this.Hide();
-                    frmSysUser.ShowDialog();
                     return;
                 }
             }

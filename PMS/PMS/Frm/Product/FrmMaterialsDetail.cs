@@ -32,9 +32,6 @@ namespace PMS.Frm.Product
 
         private void FrmMaterialsDetail_Load(object sender, EventArgs e)
         {
-            LoginUserInfo.LoginUser.currentFrom = this;
-            WinCommon.CreateMenu(ref this.menuStrip1);
-
             //初始化
             init();
         }
@@ -46,9 +43,7 @@ namespace PMS.Frm.Product
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             //返回用户列表
-            Form form = new FrmMaterialsManage();
             this.Hide();
-            form.ShowDialog();
         }
 
         #region 初始化
@@ -57,19 +52,19 @@ namespace PMS.Frm.Product
         /// </summary>
         private void init()
         {           
-            //标题
-            if (m_mode == 0)
-            {
-                this.lbl_title.Text = "物料信息设定-新增";
-            }
-            else if (m_mode == 1)
-            {
-                this.lbl_title.Text = "物料信息设定-修改";
-            }
-            else
-            {
-                this.lbl_title.Text = "物料信息设定-删除";
-            }
+            ////标题
+            //if (m_mode == 0)
+            //{
+            //    this.lbl_title.Text = "物料信息设定-新增";
+            //}
+            //else if (m_mode == 1)
+            //{
+            //    this.lbl_title.Text = "物料信息设定-修改";
+            //}
+            //else
+            //{
+            //    this.lbl_title.Text = "物料信息设定-删除";
+            //}
 
             //下拉框
             //包装类型
@@ -247,8 +242,7 @@ namespace PMS.Frm.Product
                 //处理模式变为修改
                 m_mode = 1;
                 m_materialsId = m_bllMaterials.GetMaterialsByName(this.txt_name.Text).id;
-
-                init();
+                this.Hide();
 
                 return;
             }
@@ -266,7 +260,7 @@ namespace PMS.Frm.Product
                 else
                 {
                     MsgUtils.ShowInfoMsg("修改物料成功！");
-                    init();
+                    this.Hide();
                     return;
                 }
             }
@@ -286,9 +280,7 @@ namespace PMS.Frm.Product
                     MsgUtils.ShowInfoMsg("删除物料成功！");
 
                     //返回用户列表
-                    Form form = new FrmMaterialsManage();
                     this.Hide();
-                    form.ShowDialog();
                     return;
                 }
             }
