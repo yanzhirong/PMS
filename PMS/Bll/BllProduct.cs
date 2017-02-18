@@ -21,7 +21,12 @@ namespace Bll
 
             return dt;
         }
+        public DataTable GetProductsQuery(string _name)
+        {
+            DataTable dt = m_dalProduct.GetProductsQuery(_name);
 
+            return dt;
+        }       
         public ModelProduct GetProductById(int _productId)
         {
             DataTable dt = m_dalProduct.GetProductById(_productId);

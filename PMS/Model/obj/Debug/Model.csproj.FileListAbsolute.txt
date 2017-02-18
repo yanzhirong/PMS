@@ -18,3 +18,8 @@ D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Model.pdb
 D:\p\yd\PMS\source\PMS\PMS\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 D:\p\yd\PMS\source\PMS\PMS\Model\obj\Debug\Model.dll
 D:\p\yd\PMS\source\PMS\PMS\Model\obj\Debug\Model.pdb
+C:\Work\project\NET\PMS\PMS\PMS\bin\Debug\Model.dll
+C:\Work\project\NET\PMS\PMS\PMS\bin\Debug\Model.pdb
+C:\Work\project\NET\PMS\PMS\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+C:\Work\project\NET\PMS\PMS\Model\obj\Debug\Model.dll
+C:\Work\project\NET\PMS\PMS\Model\obj\Debug\Model.pdb

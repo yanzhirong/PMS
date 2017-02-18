@@ -10,22 +10,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common;
+using Common.Tools;
 
 namespace PMS.Frm.Store
 {
-    public partial class FrmProductOut : Form
+    public partial class FrmTransfer : Form
     {
-
-        private BllCode m_bllCode = new BllCode();
         private BllFactory m_bllFactory = new BllFactory();
-        private BllProductOut m_bllProductOut = new BllProductOut();
+        private BllProductIn m_bllProductIn = new BllProductIn();
 
-        public FrmProductOut()
+        public FrmTransfer()
         {
             InitializeComponent();
         }
 
-        private void FrmProductOut_Load(object sender, EventArgs e)
+        private void FrmTransfer_Load(object sender, EventArgs e)
         {
             LoginUserInfo.LoginUser.currentFrom = this;
             WinCommon.CreateMenu(ref this.menuStrip1);
@@ -37,10 +36,11 @@ namespace PMS.Frm.Store
             this.dtp_begin.Value = DateTime.Now;
             this.dtp_end.Value = DateTime.Now.AddMonths(1);
 
-            this.cmb_outputStatus.SelectedIndex = 1;
-            this.txt_productName.Focus();
+            this.cmb_type.SelectedIndex = 1;
+            this.txt_name.Focus();
 
             doSelect();
+
         }
 
         private void btn_query_Click(object sender, EventArgs e)
@@ -50,33 +50,26 @@ namespace PMS.Frm.Store
 
         private void doSelect()
         {
-            string productName = this.txt_productName.Text.Trim();
-            string customerName = this.txt_customerName.Text.Trim();
+            string productName = this.txt_name.Text.Trim();
             int factoryId = 0;
             if (this.cmb_factory.SelectedIndex > 0)
             {
                 factoryId = (int)((ModelItem)this.cmb_factory.SelectedItem).itemKey;
             }
-            int outputType = -1;
-            if (this.cmb_outputType.SelectedIndex > 0)
+            int inputStatus = -1;
+            if (this.cmb_type.SelectedIndex > -1)
             {
-                outputType = this.cmb_outputType.SelectedIndex - 1;
-            }
-            int outputStatus = -1;
-            if (this.cmb_outputStatus.SelectedIndex > 0)
-            {
-                outputStatus = this.cmb_outputStatus.SelectedIndex - 1;
+                inputStatus = this.cmb_type.SelectedIndex - 1;
             }
             DateTime beginTime = new DateTime(this.dtp_begin.Value.Year, this.dtp_begin.Value.Month, this.dtp_begin.Value.Day);
 
             DateTime endTime = new DateTime(this.dtp_end.Value.Year, this.dtp_end.Value.Month, this.dtp_end.Value.Day);
             endTime = endTime.AddDays(1).AddSeconds(-1);
 
-            DataTable dt = m_bllProductOut.GetProductOut(productName, customerName, factoryId, beginTime, endTime, outputType, outputStatus);
+            DataTable dt = m_bllProductIn.GetProductIn(productName, factoryId, beginTime, endTime, inputStatus);
 
             this.dataGridView1.DataSource = dt;
             this.dataGridView1.Refresh();
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -84,48 +77,57 @@ namespace PMS.Frm.Store
             //修改
             if (dataGridView1.Columns[e.ColumnIndex].Name == "modifyBtn")
             {
+
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
+                int outputCnt = ConvertUtils.ConvertToInt(dataGridView1.Rows[e.RowIndex].Cells["outputCnt"].Value);
                 Form form;
-                int outputStatus = (int)dataGridView1.Rows[e.RowIndex].Cells["outputStatusCode"].Value;
-                if (outputStatus > 0)
+                
+                if (outputCnt == 0)
                 {
-                    form = new FrmProductOutDetail(3, id);
+                    form = new FrmProductInDetail(1, id);
                 }
                 else
                 {
-                    form = new FrmProductOutDetail(1, id);
+                    form = new FrmProductInDetail(3, id);
                 }
+                //this.Hide();
                 form.ShowDialog();
                 doSelect();
+
             }
 
             //删除
             if (dataGridView1.Columns[e.ColumnIndex].Name == "deleteBtn")
             {
-                int outputStatus = (int)dataGridView1.Rows[e.RowIndex].Cells["outputStatusCode"].Value;
-                if (outputStatus > 0)
+                int outputCnt = ConvertUtils.ConvertToInt(dataGridView1.Rows[e.RowIndex].Cells["outputCnt"].Value);
+
+                if (outputCnt > 0)
                 {
-                    Common.Tools.MsgUtils.ShowInfoMsg("已完成出库，不可删除！");
+                    Common.Tools.MsgUtils.ShowInfoMsg("此产品已出库，不可删除！");
                     return;
                 }
 
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
-                Form form = new FrmProductOutDetail(2, id);
+                Form form = new FrmProductInDetail(2, id);
+                //this.Hide();
                 form.ShowDialog();
                 doSelect();
+
             }
         }
 
-        private void FrmProductOut_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmTransfer_FormClosed(object sender, FormClosedEventArgs e)
         {
             WinCommon.Exit();
         }
 
         private void btn_addNew_Click(object sender, EventArgs e)
         {
-            Form form = new FrmProductOutDetail(0, 0);
+            Form form = new FrmProductInDetail(0, 0);
+            //this.Hide();
             form.ShowDialog();
             doSelect();
+
         }
         
     }

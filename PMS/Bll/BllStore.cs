@@ -62,9 +62,9 @@ namespace Bll
             return m_dalStore.GetMaterialsOutputLogByOutputCode(_outputCode);
         }
 
-        public DataTable GetProductOutputLogByOutputCode(string _outputCode)
+        public DataTable GetProductOutputLog(string _outputCode, int _productId)
         {
-            return m_dalStore.GetProductOutputLogByOutputCode(_outputCode);
+            return m_dalStore.GetProductOutputLog(_outputCode, _productId);
         }
     }
 }

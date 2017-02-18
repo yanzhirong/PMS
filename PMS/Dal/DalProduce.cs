@@ -12,7 +12,6 @@ namespace Dal
 {
     public class DalProduce
     {
-        string sql;
         StringBuilder sbSql = new StringBuilder();
 
         public int AddProduceApply(List<ModelProduceApply> _listProduceApply)
@@ -278,7 +277,7 @@ namespace Dal
             sbSql.Append("       b.name factoryName, ");
             sbSql.Append("       a.productId, ");
             sbSql.Append("       c.name productName, ");
-            sbSql.Append("       concat(a.num, d.value1) numDisplay, ");
+            sbSql.Append("       a.num, ");
             sbSql.Append("       date_format(a.deliveryDate, '%Y-%m-%d') deliveryDate, ");
             sbSql.Append("       e.value1 status, ");
             sbSql.Append("       '编辑' modifyBtn, ");
@@ -290,9 +289,6 @@ namespace Dal
             sbSql.Append("         on a.factoryId = b.id ");
             sbSql.Append("  left join p_product c ");
             sbSql.Append("         on a.productId = c.id ");
-            sbSql.Append("  left join m_code d ");
-            sbSql.Append("         on a.unit = d.subCode ");
-            sbSql.Append("        and d.code = 3 ");
             sbSql.Append("  left join m_code e ");
             sbSql.Append("         on a.status = e.subCode ");
             sbSql.Append("        and e.code = 11 ");

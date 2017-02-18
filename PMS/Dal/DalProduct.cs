@@ -35,7 +35,42 @@ namespace Dal
             sbSql.Append("where a.isDelete = 0 ");
             if(Common.Tools.StringUtils.IsNotBlank(_name))
             {
-                sbSql.Append("  and a.name like '%").Append(_name).Append("%' ");
+                sbSql.Append("   and a.id in (");
+                sbSql.Append("                     select productId ");
+                sbSql.Append("                       from r_product_search ");
+                sbSql.Append("                      where productName like '%").Append(_name).Append("%' or upper(searchKey) like '%").Append(_name.ToUpper()).Append("%') ");
+            }
+
+            sbSql.Append("order by a.modifyTime desc");
+
+            return Dal.DBHelper.Select(sbSql.ToString());
+        }
+
+        public DataTable GetProductsQuery(string _name)
+        {
+            sbSql.Clear();
+            sbSql.Append("select a.id, ");
+            sbSql.Append("       a.name, ");
+            sbSql.Append("       a.subName, ");
+            sbSql.Append("       b.value1 packingType, ");
+            sbSql.Append("       a.weight + c.value1 weight, ");
+            sbSql.Append("       b.value1 morphology, ");
+            sbSql.Append("       a.shelfLife, ");
+            sbSql.Append("       '查看' queryStore ");
+            sbSql.Append("from p_product a ");
+            sbSql.Append("left join m_code b ");
+            sbSql.Append("  on a.packingType = b.subCode and b.code = 1 ");
+            sbSql.Append("left join m_code c ");
+            sbSql.Append("  on a.weightUnit = c.subCode and c.code = 3 ");
+            sbSql.Append("left join m_code d ");
+            sbSql.Append("  on a.morphology = d.subCode and d.code = 2 ");
+            sbSql.Append("where a.isDelete = 0 ");
+            if (Common.Tools.StringUtils.IsNotBlank(_name))
+            {
+                sbSql.Append("   and a.id in (");
+                sbSql.Append("                     select productId ");
+                sbSql.Append("                       from r_product_search ");
+                sbSql.Append("                      where productName like '%").Append(_name).Append("%' or upper(searchKey) like '%").Append(_name.ToUpper()).Append("%') ");
             }
 
             sbSql.Append("order by a.modifyTime desc");

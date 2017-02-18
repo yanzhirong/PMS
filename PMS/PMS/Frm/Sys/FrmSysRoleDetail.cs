@@ -156,17 +156,19 @@ namespace PMS.Frm.Sys
             {
                 this.chk_store_product_in.Checked = false;
                 this.chk_store_product_out.Checked = false;
-                this.chk_store_product_transfer.Checked = false;
                 this.chk_store_materials_in.Checked = false;
                 this.chk_store_materials_out.Checked = false;
+                this.chk_store_transfer.Checked = false;
+                this.chk_store_nventory.Checked = false;
             }
             else
             {
                 this.chk_store_product_in.Checked = true;
                 this.chk_store_product_out.Checked = true;
-                this.chk_store_product_transfer.Checked = true;
                 this.chk_store_materials_in.Checked = true;
                 this.chk_store_materials_out.Checked = true;
+                this.chk_store_transfer.Checked = true;
+                this.chk_store_nventory.Checked = true;
             }
         }
 
@@ -330,6 +332,8 @@ namespace PMS.Frm.Sys
                         return;
                     }
                     MsgUtils.ShowInfoMsg("更新角色成功！");
+                    this.Hide();
+                    return;
                 }
                 else
                 {

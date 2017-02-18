@@ -12,7 +12,6 @@ namespace Dal
 {
     public class DalPurchase
     {
-        string sql;
         StringBuilder sbSql = new StringBuilder();
 
         public int AddPurchaseApply(List<ModelPurchaseApply> _listPurchaseApply)

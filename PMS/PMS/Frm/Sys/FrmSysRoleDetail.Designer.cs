@@ -49,7 +49,7 @@
             this.grb_factory = new System.Windows.Forms.GroupBox();
             this.chk_store_materials_out = new System.Windows.Forms.CheckBox();
             this.chk_store_materials_in = new System.Windows.Forms.CheckBox();
-            this.chk_store_product_transfer = new System.Windows.Forms.CheckBox();
+            this.chk_store_transfer = new System.Windows.Forms.CheckBox();
             this.chk_store_product_out = new System.Windows.Forms.CheckBox();
             this.chk_store_product_in = new System.Windows.Forms.CheckBox();
             this.chk_store = new System.Windows.Forms.CheckBox();
@@ -75,6 +75,7 @@
             this.lbl_tile = new System.Windows.Forms.Label();
             this.cmb_type = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.chk_store_nventory = new System.Windows.Forms.CheckBox();
             this.grb_role.SuspendLayout();
             this.grb_finance.SuspendLayout();
             this.grb_purchase.SuspendLayout();
@@ -278,13 +279,14 @@
             // 
             // grb_factory
             // 
+            this.grb_factory.Controls.Add(this.chk_store_nventory);
             this.grb_factory.Controls.Add(this.chk_store_materials_out);
             this.grb_factory.Controls.Add(this.chk_store_materials_in);
-            this.grb_factory.Controls.Add(this.chk_store_product_transfer);
+            this.grb_factory.Controls.Add(this.chk_store_transfer);
             this.grb_factory.Controls.Add(this.chk_store_product_out);
             this.grb_factory.Controls.Add(this.chk_store_product_in);
             this.grb_factory.Enabled = false;
-            this.grb_factory.Location = new System.Drawing.Point(33, 237);
+            this.grb_factory.Location = new System.Drawing.Point(34, 237);
             this.grb_factory.Name = "grb_factory";
             this.grb_factory.Size = new System.Drawing.Size(800, 40);
             this.grb_factory.TabIndex = 7;
@@ -293,32 +295,32 @@
             // chk_store_materials_out
             // 
             this.chk_store_materials_out.AutoSize = true;
-            this.chk_store_materials_out.Location = new System.Drawing.Point(481, 15);
+            this.chk_store_materials_out.Location = new System.Drawing.Point(367, 18);
             this.chk_store_materials_out.Name = "chk_store_materials_out";
             this.chk_store_materials_out.Size = new System.Drawing.Size(72, 16);
             this.chk_store_materials_out.TabIndex = 18;
-            this.chk_store_materials_out.Text = "原来出库";
+            this.chk_store_materials_out.Text = "物料出库";
             this.chk_store_materials_out.UseVisualStyleBackColor = true;
             // 
             // chk_store_materials_in
             // 
             this.chk_store_materials_in.AutoSize = true;
-            this.chk_store_materials_in.Location = new System.Drawing.Point(368, 15);
+            this.chk_store_materials_in.Location = new System.Drawing.Point(249, 15);
             this.chk_store_materials_in.Name = "chk_store_materials_in";
             this.chk_store_materials_in.Size = new System.Drawing.Size(72, 16);
             this.chk_store_materials_in.TabIndex = 17;
             this.chk_store_materials_in.Text = "物料入库";
             this.chk_store_materials_in.UseVisualStyleBackColor = true;
             // 
-            // chk_store_product_transfer
+            // chk_store_transfer
             // 
-            this.chk_store_product_transfer.AutoSize = true;
-            this.chk_store_product_transfer.Location = new System.Drawing.Point(250, 15);
-            this.chk_store_product_transfer.Name = "chk_store_product_transfer";
-            this.chk_store_product_transfer.Size = new System.Drawing.Size(72, 16);
-            this.chk_store_product_transfer.TabIndex = 16;
-            this.chk_store_product_transfer.Text = "产品调拨";
-            this.chk_store_product_transfer.UseVisualStyleBackColor = true;
+            this.chk_store_transfer.AutoSize = true;
+            this.chk_store_transfer.Location = new System.Drawing.Point(480, 15);
+            this.chk_store_transfer.Name = "chk_store_transfer";
+            this.chk_store_transfer.Size = new System.Drawing.Size(72, 16);
+            this.chk_store_transfer.TabIndex = 16;
+            this.chk_store_transfer.Text = "调拨管理";
+            this.chk_store_transfer.UseVisualStyleBackColor = true;
             // 
             // chk_store_product_out
             // 
@@ -577,6 +579,16 @@
             this.label1.TabIndex = 72;
             this.label1.Text = "角色类型：";
             // 
+            // chk_store_nventory
+            // 
+            this.chk_store_nventory.AutoSize = true;
+            this.chk_store_nventory.Location = new System.Drawing.Point(597, 15);
+            this.chk_store_nventory.Name = "chk_store_nventory";
+            this.chk_store_nventory.Size = new System.Drawing.Size(72, 16);
+            this.chk_store_nventory.TabIndex = 19;
+            this.chk_store_nventory.Text = "盘点管理";
+            this.chk_store_nventory.UseVisualStyleBackColor = true;
+            // 
             // FrmSysRoleDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -640,7 +652,7 @@
         private System.Windows.Forms.GroupBox grb_factory;
         private System.Windows.Forms.CheckBox chk_store_materials_out;
         private System.Windows.Forms.CheckBox chk_store_materials_in;
-        private System.Windows.Forms.CheckBox chk_store_product_transfer;
+        private System.Windows.Forms.CheckBox chk_store_transfer;
         private System.Windows.Forms.CheckBox chk_store_product_out;
         private System.Windows.Forms.CheckBox chk_store_product_in;
         private System.Windows.Forms.CheckBox chk_store;
@@ -668,6 +680,7 @@
         private System.Windows.Forms.ComboBox cmb_type;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chk_produce_manage;
+        private System.Windows.Forms.CheckBox chk_store_nventory;
 
     }
 }

@@ -12,7 +12,6 @@ namespace Dal
 {
     public class DalProductIn
     {
-        string sql;
         StringBuilder sbSql = new StringBuilder();
 
         public DataTable GetProductIn(String _productName, int _factoryId, DateTime _beginTime, DateTime _endTime, int _inputStatus)
@@ -42,6 +41,8 @@ namespace Dal
             sbSql.Append("            where isDelete = 0 ");
             sbSql.Append("            group by inputCode) f ");
             sbSql.Append("  on a.inputCode = f.inputCode ");
+            sbSql.Append("left join p_produce d ");
+            sbSql.Append("  on a.produceCode = d.produceCode ");
             sbSql.Append("where a.isDelete = 0 ");
             if (Common.Tools.StringUtils.IsNotBlank(_productName))
             {
@@ -58,6 +59,7 @@ namespace Dal
             {
                 sbSql.Append("  and a.status = ").Append(_inputStatus).Append(" ");
             }
+            sbSql.Append("  and (d.status is null or d.status = " + (int)Enum.EnumProduceOrderStatus.Produced + " or d.status = " + (int)Enum.EnumProduceOrderStatus.Complete + ") ");
             sbSql.Append("  and (a.status = 0 or ( a.status = 1 ");
             sbSql.Append("  and a.inputDate >= '").Append(_beginTime).Append("' ");
             sbSql.Append("  and a.inputDate <= '").Append(_endTime).Append("')) ");

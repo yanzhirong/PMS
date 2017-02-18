@@ -268,7 +268,7 @@ namespace PMS.Frm.Store
             Boolean rtn = false;
 
             //检查
-            if (doCheck() == false)
+            if (doCheck(showMsg) == false)
             {
                 return false;
             }
@@ -282,8 +282,10 @@ namespace PMS.Frm.Store
             modelProductOutput.orderCode = this.txt_orderCode.Text.Trim();
             modelProductOutput.applyMemberId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_apply.SelectedItem).itemKey);
             modelProductOutput.customerId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_customer.SelectedItem).itemKey);
-            modelProductOutput.salerId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_saler.SelectedItem).itemKey);
-
+            if (this.cmb_saler.SelectedIndex > -1)
+            {
+                modelProductOutput.salerId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_saler.SelectedItem).itemKey);
+            }
             modelProductOutput.province = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_province.SelectedItem).itemKey);
             modelProductOutput.city = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_city.SelectedItem).itemKey);
             modelProductOutput.district = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_district.SelectedItem).itemKey);
@@ -381,8 +383,8 @@ namespace PMS.Frm.Store
                     if (showMsg == true)
                     {
                         MsgUtils.ShowInfoMsg("修改出库单成功！");
+                        this.Hide();
                     }
-                    this.Hide();
                     return true;
                 }
             }
@@ -419,12 +421,12 @@ namespace PMS.Frm.Store
         /// 检查
         /// </summary>
         /// <returns></returns>
-        private Boolean doCheck()
+        private Boolean doCheck(bool showMsg)
         {
             if (StringUtils.IsNotBlank(this.txt_outputCode.Text))
             {
                 //修改
-                if (m_mode == 1)
+                if (m_mode == 1 && showMsg == true)
                 {
                     if (m_bllProductOut.CheckUpdateDelete(this.txt_outputCode.Text) == false)
                     {
@@ -471,13 +473,13 @@ namespace PMS.Frm.Store
                     return false;
                 }
 
-                //销售
-                if(this.cmb_saler.SelectedIndex < 0)
-                {
-                    MsgUtils.ShowErrorMsg("请选择销售！");
-                    this.cmb_saler.Focus();
-                    return false;
-                }
+                ////销售
+                //if(this.cmb_saler.SelectedIndex < 0)
+                //{
+                //    MsgUtils.ShowErrorMsg("请选择销售！");
+                //    this.cmb_saler.Focus();
+                //    return false;
+                //}
 
                 //省
                 if (this.cmb_province.SelectedIndex < 0)
@@ -751,7 +753,7 @@ namespace PMS.Frm.Store
                     int factoryId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_factory.SelectedItem).itemKey);
                     Form form = new FrmProductOutSelect(this.txt_outputCode.Text, outputDetailId, productId, factoryId, ConvertUtils.ConvertToInt(((ModelItem)this.cmb_apply.SelectedItem).itemKey));
                     form.ShowDialog();
-
+                    //init();
                     dataGridView1.DataSource = m_bllProductOut.GetProductOutDetailByOutputCode(this.txt_outputCode.Text);
                     dataGridView1.Refresh();
 

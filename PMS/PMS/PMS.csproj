@@ -98,6 +98,12 @@
     <Compile Include="Frm\Product\FrmProductDetail.Designer.cs">
       <DependentUpon>FrmProductDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm\Product\FrmProductQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Product\FrmProductQuery.Designer.cs">
+      <DependentUpon>FrmProductQuery.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\Purchase\FrmPurchaseDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +224,18 @@
     <Compile Include="Frm\Store\FrmProductInDetail.Designer.cs">
       <DependentUpon>FrmProductInDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm\Store\FrmTransfer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Store\FrmTransfer.Designer.cs">
+      <DependentUpon>FrmTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Store\FrmTransferDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Store\FrmTransferDetail.Designer.cs">
+      <DependentUpon>FrmTransferDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\Sys\FrmSysUserDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,6 +318,9 @@
     <EmbeddedResource Include="Frm\Product\FrmProductDetail.resx">
       <DependentUpon>FrmProductDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Product\FrmProductQuery.resx">
+      <DependentUpon>FrmProductQuery.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm\Purchase\FrmPurchaseDetail.resx">
       <DependentUpon>FrmPurchaseDetail.cs</DependentUpon>
     </EmbeddedResource>
@@ -359,6 +380,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\Store\FrmProductInDetail.resx">
       <DependentUpon>FrmProductInDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Store\FrmTransfer.resx">
+      <DependentUpon>FrmTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Store\FrmTransferDetail.resx">
+      <DependentUpon>FrmTransferDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\Sys\FrmSysUser.resx">
       <DependentUpon>FrmSysUser.cs</DependentUpon>

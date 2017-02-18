@@ -37,7 +37,6 @@
             this.cmb_factory = new System.Windows.Forms.ComboBox();
             this.cmb_outputType = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.cmb_orderStatus = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dtp_end = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -60,7 +59,6 @@
             this.customerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.outputStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifyBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.deleteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -77,7 +75,6 @@
             this.groupBox1.Controls.Add(this.cmb_factory);
             this.groupBox1.Controls.Add(this.cmb_outputType);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.cmb_orderStatus);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.dtp_end);
             this.groupBox1.Controls.Add(this.label4);
@@ -123,7 +120,7 @@
             this.cmb_factory.FormattingEnabled = true;
             this.cmb_factory.Location = new System.Drawing.Point(84, 49);
             this.cmb_factory.Name = "cmb_factory";
-            this.cmb_factory.Size = new System.Drawing.Size(118, 20);
+            this.cmb_factory.Size = new System.Drawing.Size(302, 20);
             this.cmb_factory.TabIndex = 3;
             // 
             // cmb_outputType
@@ -149,24 +146,14 @@
             this.label6.TabIndex = 92;
             this.label6.Text = "出库类别：";
             // 
-            // cmb_orderStatus
-            // 
-            this.cmb_orderStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_orderStatus.FormattingEnabled = true;
-            this.cmb_orderStatus.Location = new System.Drawing.Point(267, 49);
-            this.cmb_orderStatus.Name = "cmb_orderStatus";
-            this.cmb_orderStatus.Size = new System.Drawing.Size(118, 20);
-            this.cmb_orderStatus.TabIndex = 6;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(208, 52);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 12);
+            this.label5.Size = new System.Drawing.Size(0, 12);
             this.label5.TabIndex = 90;
-            this.label5.Text = "订单状态：";
             // 
             // dtp_end
             // 
@@ -274,7 +261,6 @@
             this.customerName,
             this.orderAddress,
             this.deliveryDate,
-            this.orderStatus,
             this.outputStatus,
             this.modifyBtn,
             this.deleteBtn,
@@ -368,13 +354,6 @@
             this.deliveryDate.Name = "deliveryDate";
             this.deliveryDate.ReadOnly = true;
             // 
-            // orderStatus
-            // 
-            this.orderStatus.DataPropertyName = "orderStatus";
-            this.orderStatus.HeaderText = "订单状态";
-            this.orderStatus.Name = "orderStatus";
-            this.orderStatus.ReadOnly = true;
-            // 
             // outputStatus
             // 
             this.outputStatus.DataPropertyName = "outputStatus";
@@ -402,14 +381,14 @@
             // outputStatusCode
             // 
             this.outputStatusCode.DataPropertyName = "outputStatusCode";
-            this.outputStatusCode.HeaderText = "出库单状态";
+            this.outputStatusCode.HeaderText = "出库状态";
             this.outputStatusCode.Name = "outputStatusCode";
             this.outputStatusCode.Visible = false;
             // 
             // outputType
             // 
             this.outputType.DataPropertyName = "outputType";
-            this.outputType.HeaderText = "出库单类型";
+            this.outputType.HeaderText = "出库类型";
             this.outputType.Name = "outputType";
             this.outputType.Visible = false;
             // 
@@ -458,7 +437,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtp_begin;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cmb_orderStatus;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dtp_end;
         private System.Windows.Forms.ComboBox cmb_outputType;
@@ -473,7 +451,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn customerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn deliveryDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn orderStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn outputStatus;
         private System.Windows.Forms.DataGridViewButtonColumn modifyBtn;
         private System.Windows.Forms.DataGridViewButtonColumn deleteBtn;

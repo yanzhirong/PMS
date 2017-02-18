@@ -1,6 +1,6 @@
 ﻿namespace PMS.Frm.Store
 {
-    partial class FrmProductInDetail
+    partial class FrmTransferDetail
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProductInDetail));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTransferDetail));
             this.btn_submit = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.lbl_title = new System.Windows.Forms.Label();
-            this.grb_productIn = new System.Windows.Forms.GroupBox();
+            this.grb_transfer = new System.Windows.Forms.GroupBox();
             this.txt_produceNum = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_remark = new System.Windows.Forms.TextBox();
@@ -56,7 +56,7 @@
             this.txt_produceCode = new System.Windows.Forms.TextBox();
             this.lbl_orderCode = new System.Windows.Forms.Label();
             this.btn_close = new System.Windows.Forms.Button();
-            this.grb_productIn.SuspendLayout();
+            this.grb_transfer.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_submit
@@ -86,39 +86,39 @@
             this.lbl_title.ForeColor = System.Drawing.Color.Black;
             this.lbl_title.Location = new System.Drawing.Point(272, 38);
             this.lbl_title.Name = "lbl_title";
-            this.lbl_title.Size = new System.Drawing.Size(152, 27);
+            this.lbl_title.Size = new System.Drawing.Size(96, 27);
             this.lbl_title.TabIndex = 24;
-            this.lbl_title.Text = "产品入库单";
+            this.lbl_title.Text = "调拨单";
             // 
-            // grb_productIn
+            // grb_transfer
             // 
-            this.grb_productIn.Controls.Add(this.txt_produceNum);
-            this.grb_productIn.Controls.Add(this.label6);
-            this.grb_productIn.Controls.Add(this.txt_remark);
-            this.grb_productIn.Controls.Add(this.label5);
-            this.grb_productIn.Controls.Add(this.txt_inputNum);
-            this.grb_productIn.Controls.Add(this.label4);
-            this.grb_productIn.Controls.Add(this.dtp_expiresDate);
-            this.grb_productIn.Controls.Add(this.label3);
-            this.grb_productIn.Controls.Add(this.cmb_product);
-            this.grb_productIn.Controls.Add(this.dtp_produceDate);
-            this.grb_productIn.Controls.Add(this.label2);
-            this.grb_productIn.Controls.Add(this.label1);
-            this.grb_productIn.Controls.Add(this.cmb_factory);
-            this.grb_productIn.Controls.Add(this.dtp_inputDate);
-            this.grb_productIn.Controls.Add(this.label11);
-            this.grb_productIn.Controls.Add(this.cmb_inputStatus);
-            this.grb_productIn.Controls.Add(this.cmb_inputType);
-            this.grb_productIn.Controls.Add(this.lbl_outputStatus);
-            this.grb_productIn.Controls.Add(this.lbl_outputType);
-            this.grb_productIn.Controls.Add(this.lbl_saler);
-            this.grb_productIn.Controls.Add(this.txt_produceCode);
-            this.grb_productIn.Controls.Add(this.lbl_orderCode);
-            this.grb_productIn.Location = new System.Drawing.Point(31, 85);
-            this.grb_productIn.Name = "grb_productIn";
-            this.grb_productIn.Size = new System.Drawing.Size(638, 316);
-            this.grb_productIn.TabIndex = 103;
-            this.grb_productIn.TabStop = false;
+            this.grb_transfer.Controls.Add(this.txt_produceNum);
+            this.grb_transfer.Controls.Add(this.label6);
+            this.grb_transfer.Controls.Add(this.txt_remark);
+            this.grb_transfer.Controls.Add(this.label5);
+            this.grb_transfer.Controls.Add(this.txt_inputNum);
+            this.grb_transfer.Controls.Add(this.label4);
+            this.grb_transfer.Controls.Add(this.dtp_expiresDate);
+            this.grb_transfer.Controls.Add(this.label3);
+            this.grb_transfer.Controls.Add(this.cmb_product);
+            this.grb_transfer.Controls.Add(this.dtp_produceDate);
+            this.grb_transfer.Controls.Add(this.label2);
+            this.grb_transfer.Controls.Add(this.label1);
+            this.grb_transfer.Controls.Add(this.cmb_factory);
+            this.grb_transfer.Controls.Add(this.dtp_inputDate);
+            this.grb_transfer.Controls.Add(this.label11);
+            this.grb_transfer.Controls.Add(this.cmb_inputStatus);
+            this.grb_transfer.Controls.Add(this.cmb_inputType);
+            this.grb_transfer.Controls.Add(this.lbl_outputStatus);
+            this.grb_transfer.Controls.Add(this.lbl_outputType);
+            this.grb_transfer.Controls.Add(this.lbl_saler);
+            this.grb_transfer.Controls.Add(this.txt_produceCode);
+            this.grb_transfer.Controls.Add(this.lbl_orderCode);
+            this.grb_transfer.Location = new System.Drawing.Point(31, 85);
+            this.grb_transfer.Name = "grb_transfer";
+            this.grb_transfer.Size = new System.Drawing.Size(638, 316);
+            this.grb_transfer.TabIndex = 103;
+            this.grb_transfer.TabStop = false;
             // 
             // txt_produceNum
             // 
@@ -344,14 +344,14 @@
             this.btn_close.UseVisualStyleBackColor = true;
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
-            // FrmProductInDetail
+            // FrmTransferDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(699, 476);
             this.Controls.Add(this.btn_close);
-            this.Controls.Add(this.grb_productIn);
+            this.Controls.Add(this.grb_transfer);
             this.Controls.Add(this.lbl_title);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_submit);
@@ -359,13 +359,13 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FrmProductInDetail";
+            this.Name = "FrmTransferDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "产品入库管理";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmProductInDetail_FormClosed);
-            this.Load += new System.EventHandler(this.FrmProductInDetail_Load);
-            this.grb_productIn.ResumeLayout(false);
-            this.grb_productIn.PerformLayout();
+            this.Text = "调拨管理";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmTransferDetail_FormClosed);
+            this.Load += new System.EventHandler(this.FrmTransferDetail_Load);
+            this.grb_transfer.ResumeLayout(false);
+            this.grb_transfer.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -376,7 +376,7 @@
         private System.Windows.Forms.Button btn_submit;
         private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.Label lbl_title;
-        private System.Windows.Forms.GroupBox grb_productIn;
+        private System.Windows.Forms.GroupBox grb_transfer;
         private System.Windows.Forms.TextBox txt_produceCode;
         private System.Windows.Forms.Label lbl_orderCode;
         private System.Windows.Forms.Label lbl_saler;

@@ -11,7 +11,6 @@ namespace Dal
 {
     public class DalStore
     {
-        string sql;
         StringBuilder sbSql = new StringBuilder();
 
         public DataTable GetStoreProductNum(int _factoryId, int _productId, DateTime _expiresDate)
@@ -61,7 +60,10 @@ namespace Dal
             sbSql.Append("left join m_factory d ");
             sbSql.Append("  on a.factoryId = d.id ");
             sbSql.Append("where a.isDelete = 0 ");
-            sbSql.Append("  and a.factoryId = ").Append(_factoryId).Append(" ");
+            if (_factoryId > 0)
+            {
+                sbSql.Append("  and a.factoryId = ").Append(_factoryId).Append(" ");
+            }
             if (Common.Tools.StringUtils.IsNotBlank(_productName))
             {
                 sbSql.Append("   and a.productId in (");
@@ -91,7 +93,10 @@ namespace Dal
             sbSql.Append("left join m_factory d ");
             sbSql.Append("  on a.factoryId = d.id ");
             sbSql.Append("where a.isDelete = 0 ");
-            sbSql.Append("  and a.factoryId = ").Append(_factoryId).Append(" ");
+            if (_factoryId > 0)
+            {
+                sbSql.Append("  and a.factoryId = ").Append(_factoryId).Append(" ");
+            }
             if (Common.Tools.StringUtils.IsNotBlank(_materialsName))
             {
                 sbSql.Append("   and a.materialsId in (");
@@ -154,12 +159,12 @@ namespace Dal
             return Dal.DBHelper.Select(sbSql.ToString());
         }
 
-        public DataTable GetProductOutputLogByOutputCode(string _outputCode)
+        public DataTable GetProductOutputLog(string _outputCode, int _productId)
         {
             sbSql.Clear();
             sbSql.Append("select b.name factoryName, ");
             sbSql.Append("       c.name ProductName, ");
-            sbSql.Append("       a.outputNum, ");
+            sbSql.Append("       a.outputNum num, ");
             sbSql.Append("       date_format(a.outputDate, '%Y-%m-%d') outputDate, ");
             sbSql.Append("       d.userName applyMember ");
             sbSql.Append("  from h_product_output_log a ");
@@ -171,6 +176,7 @@ namespace Dal
             sbSql.Append("    on a.applyMemberId = d.userId ");
             sbSql.Append(" where a.isDelete = 0 ");
             sbSql.Append("   and a.outputCode = '").Append(_outputCode).Append("' ");
+            sbSql.Append("   and a.productId = ").Append(_productId).Append(" ");
             sbSql.Append(" order by a.id ");
 
             return Dal.DBHelper.Select(sbSql.ToString());

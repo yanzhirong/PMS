@@ -14,9 +14,9 @@ namespace Bll
     {
         private DalProductOut m_dalProductOut = new DalProductOut();
 
-        public DataTable GetProductOut(String _productName, String _customerName, int _factoryId, DateTime _beginTime, DateTime _endTime, int _orderStatus, int _outputType, int _outputStatus)
+        public DataTable GetProductOut(String _productName, String _customerName, int _factoryId, DateTime _beginTime, DateTime _endTime, int _outputType, int _outputStatus)
         {
-            DataTable dt = m_dalProductOut.GetProductOut(_productName, _customerName, _factoryId, _beginTime, _endTime, _orderStatus, _outputType, _outputStatus);
+            DataTable dt = m_dalProductOut.GetProductOut(_productName, _customerName, _factoryId, _beginTime, _endTime, _outputType, _outputStatus);
 
             return dt;
         }

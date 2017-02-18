@@ -139,7 +139,6 @@
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 121;
             this.label1.Text = "工    厂：";
-            this.label1.Visible = false;
             // 
             // cmb_factory
             // 
@@ -187,9 +186,9 @@
             this.cmb_outputType.Items.AddRange(new object[] {
             "销售订单",
             "特殊申请"});
-            this.cmb_outputType.Location = new System.Drawing.Point(99, 25);
+            this.cmb_outputType.Location = new System.Drawing.Point(76, 25);
             this.cmb_outputType.Name = "cmb_outputType";
-            this.cmb_outputType.Size = new System.Drawing.Size(198, 20);
+            this.cmb_outputType.Size = new System.Drawing.Size(221, 20);
             this.cmb_outputType.TabIndex = 116;
             // 
             // cmb_customer
@@ -208,9 +207,9 @@
             this.lbl_outputStatus.ForeColor = System.Drawing.Color.Black;
             this.lbl_outputStatus.Location = new System.Drawing.Point(320, 29);
             this.lbl_outputStatus.Name = "lbl_outputStatus";
-            this.lbl_outputStatus.Size = new System.Drawing.Size(77, 12);
+            this.lbl_outputStatus.Size = new System.Drawing.Size(65, 12);
             this.lbl_outputStatus.TabIndex = 115;
-            this.lbl_outputStatus.Text = "出库单状态：";
+            this.lbl_outputStatus.Text = "出库状态：";
             // 
             // lbl_outputType
             // 
@@ -218,15 +217,15 @@
             this.lbl_outputType.ForeColor = System.Drawing.Color.Black;
             this.lbl_outputType.Location = new System.Drawing.Point(16, 28);
             this.lbl_outputType.Name = "lbl_outputType";
-            this.lbl_outputType.Size = new System.Drawing.Size(77, 12);
+            this.lbl_outputType.Size = new System.Drawing.Size(65, 12);
             this.lbl_outputType.TabIndex = 113;
-            this.lbl_outputType.Text = "出库单种类：";
+            this.lbl_outputType.Text = "出库种类：";
             // 
             // lbl_applyMember
             // 
             this.lbl_applyMember.AutoSize = true;
             this.lbl_applyMember.ForeColor = System.Drawing.Color.Red;
-            this.lbl_applyMember.Location = new System.Drawing.Point(320, 59);
+            this.lbl_applyMember.Location = new System.Drawing.Point(320, 92);
             this.lbl_applyMember.Name = "lbl_applyMember";
             this.lbl_applyMember.Size = new System.Drawing.Size(65, 12);
             this.lbl_applyMember.TabIndex = 112;
@@ -236,7 +235,7 @@
             // 
             this.cmb_apply.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_apply.FormattingEnabled = true;
-            this.cmb_apply.Location = new System.Drawing.Point(394, 56);
+            this.cmb_apply.Location = new System.Drawing.Point(394, 89);
             this.cmb_apply.Name = "cmb_apply";
             this.cmb_apply.Size = new System.Drawing.Size(222, 20);
             this.cmb_apply.TabIndex = 111;
@@ -275,8 +274,8 @@
             // lbl_saler
             // 
             this.lbl_saler.AutoSize = true;
-            this.lbl_saler.ForeColor = System.Drawing.Color.Red;
-            this.lbl_saler.Location = new System.Drawing.Point(320, 92);
+            this.lbl_saler.ForeColor = System.Drawing.Color.Black;
+            this.lbl_saler.Location = new System.Drawing.Point(320, 60);
             this.lbl_saler.Name = "lbl_saler";
             this.lbl_saler.Size = new System.Drawing.Size(65, 12);
             this.lbl_saler.TabIndex = 86;
@@ -286,7 +285,7 @@
             // 
             this.cmb_saler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_saler.FormattingEnabled = true;
-            this.cmb_saler.Location = new System.Drawing.Point(394, 89);
+            this.cmb_saler.Location = new System.Drawing.Point(394, 57);
             this.cmb_saler.Name = "cmb_saler";
             this.cmb_saler.Size = new System.Drawing.Size(222, 20);
             this.cmb_saler.TabIndex = 2;

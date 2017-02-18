@@ -12,7 +12,6 @@ namespace Dal
 {
     public class DalMaterialsOut
     {
-        string sql;
         StringBuilder sbSql = new StringBuilder();
 
         public DataTable GetMaterialsOut(String _materialsName, int _applyMemberId, int _factoryId, DateTime _beginTime, DateTime _endTime, int _outputStatus)

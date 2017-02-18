@@ -75,7 +75,11 @@ namespace PMS.Frm.Store
         private void doSelect()
         {
             string productName = this.txt_productName.Text.Trim();
-            int factoryId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_factory.SelectedItem).itemKey);
+            int factoryId = 0;
+            if (this.cmb_factory.SelectedIndex > -1)
+            {
+                factoryId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_factory.SelectedItem).itemKey);
+            }
             this.dataGridView1.DataSource = m_bllStore.GetProductStore(productName, factoryId);
             this.dataGridView1.Refresh();
         }

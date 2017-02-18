@@ -107,6 +107,15 @@ namespace PMS.Frm.Store
                     this.btn_close.Visible = false;
                 }
             }
+            else
+            {
+                this.grb_productOut.Enabled = true;
+                this.lbl_selectOutput.Visible = true;
+                this.dataGridView1.Visible = true;
+                this.btn_submit.Visible = true;
+                this.btn_cancel.Visible = true;
+                this.btn_close.Visible = false;
+            }
 
             //设置列表信息
             SetDataGridViewStyle();
@@ -121,7 +130,7 @@ namespace PMS.Frm.Store
             this.dataGridView1.DataSource = m_bllProductOut.GetProductOutSelect(m_factoryId, m_productId);
             this.dataGridView1.Refresh();
 
-            this.dataGridView2.DataSource = m_bllStore.GetProductOutputLogByOutputCode(m_outputCode);
+            this.dataGridView2.DataSource = m_bllStore.GetProductOutputLog(m_outputCode, m_productId);
             this.dataGridView2.Refresh();
         }
 
@@ -175,7 +184,7 @@ namespace PMS.Frm.Store
             if (rtn == true)
             {
                 MsgUtils.ShowInfoMsg("出库成功！");
-                this.Close();
+                this.Hide();
                 return;
             }
             else
@@ -378,23 +387,7 @@ namespace PMS.Frm.Store
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
         {
             //仅限数字
-            e.Handled = WinCommon.IsOnlyDouble(e.KeyChar);
-        }
-
-        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex < 0 )
-            {
-                return;
-            }
-            if (this.dataGridView1.Columns[e.ColumnIndex].Name == "outputNum")
-            {
-                DataGridViewComboBoxCell column = (DataGridViewComboBoxCell)this.dataGridView1.Rows[e.RowIndex].Cells["outputUnit"];
-
-                column.DataSource = m_bllCode.GetCodeList(3);
-                column.DisplayMember = "value1";
-                column.ValueMember = "subCode";
-            }
+            e.Handled = WinCommon.IsOnlyInt(e.KeyChar);
         }
 
     }

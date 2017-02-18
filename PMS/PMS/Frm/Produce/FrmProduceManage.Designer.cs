@@ -51,7 +51,7 @@
             this.produceCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.factoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productName = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.numDisplay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifyBtn = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -229,7 +229,7 @@
             this.produceCode,
             this.factoryName,
             this.productName,
-            this.numDisplay,
+            this.num,
             this.deliveryDate,
             this.status,
             this.modifyBtn,
@@ -279,13 +279,13 @@
             this.productName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.productName.Width = 140;
             // 
-            // numDisplay
+            // num
             // 
-            this.numDisplay.DataPropertyName = "numDisplay";
-            this.numDisplay.HeaderText = "数量";
-            this.numDisplay.Name = "numDisplay";
-            this.numDisplay.ReadOnly = true;
-            this.numDisplay.Width = 80;
+            this.num.DataPropertyName = "num";
+            this.num.HeaderText = "数量";
+            this.num.Name = "num";
+            this.num.ReadOnly = true;
+            this.num.Width = 80;
             // 
             // deliveryDate
             // 
@@ -398,7 +398,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn produceCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn factoryName;
         private System.Windows.Forms.DataGridViewLinkColumn productName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numDisplay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn num;
         private System.Windows.Forms.DataGridViewTextBoxColumn deliveryDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private System.Windows.Forms.DataGridViewButtonColumn modifyBtn;
