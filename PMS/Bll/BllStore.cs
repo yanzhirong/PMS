@@ -66,5 +66,24 @@ namespace Bll
         {
             return m_dalStore.GetProductOutputLog(_outputCode, _productId);
         }
+
+        public DataTable GetTransfer(string _name, int _factoryId, int _type, DateTime _beginTime, DateTime _endTime)
+        {
+            return m_dalStore.GetTransfer(_name, _factoryId, _type, _beginTime, _endTime);
+        }
+
+        public ModelTransfer GetTransferById(int _transferId)
+        {
+            //TODO
+            return new ModelTransfer();
+        }
+        public Boolean AddTransfer(ModelTransfer _model, List<Dictionary<string, object>> _listTransferDetail)
+        {
+            int rtn = 0;
+
+            //TODO
+
+            return rtn > 0 ? true : false;
+        }
     }
 }

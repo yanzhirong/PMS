@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using Model;
 using Enum;
+using Common.Tools;
 
 namespace Dal
 {
@@ -180,6 +181,66 @@ namespace Dal
             sbSql.Append(" order by a.id ");
 
             return Dal.DBHelper.Select(sbSql.ToString());
+        }
+
+        public DataTable GetTransfer(string _name, int _factoryId, int _type, DateTime _beginTime, DateTime _endTime)
+        {
+            sbSql.Clear();
+            sbSql.Append("select a.id, ");
+            sbSql.Append("       case a.type when 0 then '产品调拨' else '物料调拨' end type, ");
+            sbSql.Append("       case a.type when 0 then d.name else e.name end name, ");
+            sbSql.Append("       b.name fromFactoryName, ");
+            sbSql.Append("       e.name toFactoryName, ");
+            sbSql.Append("       case a.type when 0 then a.num else concat(a.num, h.value1) end transferNum, ");
+            sbSql.Append("       f.userName applyMember, ");
+            sbSql.Append("       date_format(a.applyDate, '%Y-%m-%d') applyDate, ");
+            sbSql.Append("       g.userName transferBy, ");
+            sbSql.Append("       date_format(a.transferDate, '%Y-%m-%d') transferDate, ");
+            sbSql.Append("       '查看' detailBtn ");
+            sbSql.Append("  from h_transfer_log a ");
+            sbSql.Append("  left join m_factory b ");
+            sbSql.Append("    on a.fromFactoryId = b.id ");
+            sbSql.Append("  left join m_factory c ");
+            sbSql.Append("    on a.toFactoryId = c.id ");
+            sbSql.Append("  left join p_product d ");
+            sbSql.Append("    on a.productId = d.id ");
+            sbSql.Append("  left join p_materials e ");
+            sbSql.Append("    on a.materialsId = e.id ");
+            sbSql.Append("  left join m_user f ");
+            sbSql.Append("    on a.applyMemberId = f.userId ");
+            sbSql.Append("  left join m_user g ");
+            sbSql.Append("    on a.transferMemberId = g.userId ");
+            sbSql.Append("  left join m_code h ");
+            sbSql.Append("    on a.unit = h.subCode ");
+            sbSql.Append("   and h.subCode = 3 ");
+            sbSql.Append(" where a.isDelete = 0 ");
+            sbSql.Append("   and a.type = ").Append(_type).Append(" ");
+            if (_factoryId > 0)
+            {
+                sbSql.Append("   and a.toFactoryId = ").Append(_factoryId).Append(" ");
+            }
+            if (StringUtils.IsNotBlank(_name))
+            {
+                if (_type == 0)
+                {
+                    sbSql.Append("   and a.productId in (");
+                    sbSql.Append("                     select productId ");
+                    sbSql.Append("                       from r_product_search ");
+                    sbSql.Append("                      where productName like '%").Append(_name).Append("%' or upper(searchKey) like '%").Append(_name.ToUpper()).Append("%') ");
+                }
+                else
+                {
+                    sbSql.Append("   and a.materialsId in (");
+                    sbSql.Append("                     select materialsId ");
+                    sbSql.Append("                       from r_materials_search ");
+                    sbSql.Append("                      where materialsName like '%").Append(_name).Append("%' or upper(searchKey) like '%").Append(_name.ToUpper()).Append("%') ");
+                }
+            }
+            sbSql.Append("  and a.transferDate >= '").Append(_beginTime).Append("' ");
+            sbSql.Append("  and a.transferDate <= '").Append(_endTime).Append("' ");
+            sbSql.Append(" order by a.id desc");
+
+            return Dal.DBHelper.Select(sbSql.ToString()); 
         }
     }
 }

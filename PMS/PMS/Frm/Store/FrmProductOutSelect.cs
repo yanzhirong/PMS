@@ -281,9 +281,9 @@ namespace PMS.Frm.Store
             this.dataGridView1.Columns.Add(colSelect);
 
             DataGridViewTextBoxColumn colProduct = new DataGridViewTextBoxColumn();
-            colProduct.Name = "productName";
+            colProduct.Name = "name";
             colProduct.HeaderText = "产品";
-            colProduct.DataPropertyName = "productName";
+            colProduct.DataPropertyName = "name";
             colProduct.Width = 160;
             colProduct.ReadOnly = true;
             this.dataGridView1.Columns.Add(colProduct);
@@ -297,9 +297,9 @@ namespace PMS.Frm.Store
             this.dataGridView1.Columns.Add(colExpiresDate);
 
             DataGridViewTextBoxColumn colNumDisplay = new DataGridViewTextBoxColumn();
-            colNumDisplay.Name = "num";
-            colNumDisplay.HeaderText = "库存数量";
-            colNumDisplay.DataPropertyName = "num";
+            colNumDisplay.Name = "numDisplay";
+            colNumDisplay.HeaderText = "库存数";
+            colNumDisplay.DataPropertyName = "numDisplay";
             colNumDisplay.Width = 80;
             colNumDisplay.ReadOnly = true;
             this.dataGridView1.Columns.Add(colNumDisplay);
@@ -311,6 +311,19 @@ namespace PMS.Frm.Store
             colOutputNum.ReadOnly = false;
             this.dataGridView1.Columns.Add(colOutputNum);
 
+            DataGridViewTextBoxColumn colNum = new DataGridViewTextBoxColumn();
+            colNum.Name = "num";
+            colNum.HeaderText = "库存数";
+            colNum.DataPropertyName = "num";
+            colNum.Visible = false;
+            this.dataGridView1.Columns.Add(colNum);
+
+            DataGridViewTextBoxColumn colUnit = new DataGridViewTextBoxColumn();
+            colUnit.Name = "unit";
+            colUnit.HeaderText = "库存单位";
+            colUnit.DataPropertyName = "unit";
+            colUnit.Visible = false;
+            this.dataGridView1.Columns.Add(colUnit);
         }
         #endregion
 

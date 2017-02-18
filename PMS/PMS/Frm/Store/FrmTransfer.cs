@@ -17,7 +17,7 @@ namespace PMS.Frm.Store
     public partial class FrmTransfer : Form
     {
         private BllFactory m_bllFactory = new BllFactory();
-        private BllProductIn m_bllProductIn = new BllProductIn();
+        private BllStore m_bllStore = new BllStore();
 
         public FrmTransfer()
         {
@@ -36,10 +36,10 @@ namespace PMS.Frm.Store
             this.dtp_begin.Value = DateTime.Now;
             this.dtp_end.Value = DateTime.Now.AddMonths(1);
 
-            this.cmb_type.SelectedIndex = 1;
-            this.txt_name.Focus();
-
+            this.cmb_type.SelectedIndex = 0;
             doSelect();
+
+            this.txt_name.Focus();
 
         }
 
@@ -50,23 +50,20 @@ namespace PMS.Frm.Store
 
         private void doSelect()
         {
-            string productName = this.txt_name.Text.Trim();
+            string name = this.txt_name.Text.Trim();
             int factoryId = 0;
             if (this.cmb_factory.SelectedIndex > 0)
             {
                 factoryId = (int)((ModelItem)this.cmb_factory.SelectedItem).itemKey;
             }
-            int inputStatus = -1;
-            if (this.cmb_type.SelectedIndex > -1)
-            {
-                inputStatus = this.cmb_type.SelectedIndex - 1;
-            }
+            int type = this.cmb_type.SelectedIndex;
+
             DateTime beginTime = new DateTime(this.dtp_begin.Value.Year, this.dtp_begin.Value.Month, this.dtp_begin.Value.Day);
 
             DateTime endTime = new DateTime(this.dtp_end.Value.Year, this.dtp_end.Value.Month, this.dtp_end.Value.Day);
             endTime = endTime.AddDays(1).AddSeconds(-1);
 
-            DataTable dt = m_bllProductIn.GetProductIn(productName, factoryId, beginTime, endTime, inputStatus);
+            DataTable dt = m_bllStore.GetTransfer(name, factoryId, type, beginTime, endTime);
 
             this.dataGridView1.DataSource = dt;
             this.dataGridView1.Refresh();
@@ -74,42 +71,12 @@ namespace PMS.Frm.Store
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //修改
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "modifyBtn")
+            //查看详细
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "detailBtn")
             {
 
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
-                int outputCnt = ConvertUtils.ConvertToInt(dataGridView1.Rows[e.RowIndex].Cells["outputCnt"].Value);
-                Form form;
-                
-                if (outputCnt == 0)
-                {
-                    form = new FrmProductInDetail(1, id);
-                }
-                else
-                {
-                    form = new FrmProductInDetail(3, id);
-                }
-                //this.Hide();
-                form.ShowDialog();
-                doSelect();
-
-            }
-
-            //删除
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "deleteBtn")
-            {
-                int outputCnt = ConvertUtils.ConvertToInt(dataGridView1.Rows[e.RowIndex].Cells["outputCnt"].Value);
-
-                if (outputCnt > 0)
-                {
-                    Common.Tools.MsgUtils.ShowInfoMsg("此产品已出库，不可删除！");
-                    return;
-                }
-
-                int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
-                Form form = new FrmProductInDetail(2, id);
-                //this.Hide();
+                Form form = new FrmTransferDetail(3, id);
                 form.ShowDialog();
                 doSelect();
 
@@ -123,8 +90,7 @@ namespace PMS.Frm.Store
 
         private void btn_addNew_Click(object sender, EventArgs e)
         {
-            Form form = new FrmProductInDetail(0, 0);
-            //this.Hide();
+            Form form = new FrmTransferDetail(0, 0);
             form.ShowDialog();
             doSelect();
 

@@ -175,11 +175,11 @@ namespace PMS.Frm.Store
                     curOutPutNum = curOutPutNum * m_bllCode.GetWeightUnit(outputUnit);
 
                     //出库后剩余在库数
-                    decimal stockNum = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells["inputNum"].Value);
+                    decimal stockNum = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells["num"].Value);
                     //转为克
-                    stockNum = stockNum * m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["inputUnit"].Value));
+                    stockNum = stockNum * m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["unit"].Value));
                     stockNum = stockNum - curOutPutNum;
-                    stockNum = stockNum / m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["inputUnit"].Value));
+                    stockNum = stockNum / m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["unit"].Value));
                     dc.Add("stockNum", stockNum);
 
                     listOutput.Add(dc);
@@ -237,8 +237,8 @@ namespace PMS.Frm.Store
                     curOutPutNum = curOutPutNum * m_bllCode.GetWeightUnit(outputUnit);
 
                     //库存数量（克）
-                    decimal curStockNum = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells["inputNum"].Value);
-                    curStockNum = curStockNum * m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["inputUnit"].Value));
+                    decimal curStockNum = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells["num"].Value);
+                    curStockNum = curStockNum * m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["unit"].Value));
 
                     if (curOutPutNum > curStockNum)
                     {
@@ -301,9 +301,9 @@ namespace PMS.Frm.Store
             this.dataGridView1.Columns.Add(colSelect);
 
             DataGridViewTextBoxColumn colMaterials = new DataGridViewTextBoxColumn();
-            colMaterials.Name = "materialsName";
+            colMaterials.Name = "name";
             colMaterials.HeaderText = "物料";
-            colMaterials.DataPropertyName = "materialsName";
+            colMaterials.DataPropertyName = "name";
             colMaterials.Width = 160;
             colMaterials.ReadOnly = true;
             this.dataGridView1.Columns.Add(colMaterials);
@@ -325,16 +325,16 @@ namespace PMS.Frm.Store
             this.dataGridView1.Columns.Add(colNumDisplay);
 
             DataGridViewTextBoxColumn colNum = new DataGridViewTextBoxColumn();
-            colNum.Name = "inputNum";
+            colNum.Name = "num";
             colNum.HeaderText = "库存数量";
-            colNum.DataPropertyName = "inputNum";
+            colNum.DataPropertyName = "num";
             colNum.Visible = false;
             this.dataGridView1.Columns.Add(colNum);
 
             DataGridViewTextBoxColumn colUnit = new DataGridViewTextBoxColumn();
-            colUnit.Name = "inputUnit";
+            colUnit.Name = "unit";
             colUnit.HeaderText = "库存单位";
-            colUnit.DataPropertyName = "inputUnit";
+            colUnit.DataPropertyName = "unit";
             colUnit.Visible = false;
             this.dataGridView1.Columns.Add(colUnit);
 

@@ -287,8 +287,10 @@ namespace Dal
             sbSql.Clear();
             sbSql.Append("select a.id, ");
             sbSql.Append("       a.inputCode, ");
-            sbSql.Append("       b.name productName, ");
+            sbSql.Append("       b.name, ");
+            sbSql.Append("       a.num numDisplay, ");
             sbSql.Append("       a.num, ");
+            sbSql.Append("       0 unit, ");
             sbSql.Append("       date_format(a.expiresDate, '%Y-%m-%d') expiresDate ");
             sbSql.Append("from p_product_input a ");
             sbSql.Append("join p_product b ");

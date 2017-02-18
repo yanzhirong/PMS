@@ -195,10 +195,10 @@ namespace Dal
             sbSql.Clear();
             sbSql.Append("select a.id, ");
             sbSql.Append("       a.inputCode, ");
-            sbSql.Append("       b.name materialsName, ");
+            sbSql.Append("       b.name, ");
             sbSql.Append("       concat(a.inputNum, c.value1) numDisplay, ");
-            sbSql.Append("       a.inputNum, ");
-            sbSql.Append("       a.inputUnit, ");
+            sbSql.Append("       a.inputNum num, ");
+            sbSql.Append("       a.inputUnit unit, ");
             sbSql.Append("       date_format(a.expiresDate, '%Y-%m-%d') expiresDate ");
             sbSql.Append("from p_materials_input a ");
             sbSql.Append("join p_materials b ");

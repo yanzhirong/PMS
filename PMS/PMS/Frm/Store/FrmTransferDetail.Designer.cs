@@ -33,35 +33,34 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.lbl_title = new System.Windows.Forms.Label();
             this.grb_transfer = new System.Windows.Forms.GroupBox();
-            this.txt_produceNum = new System.Windows.Forms.TextBox();
+            this.cmb_transferBy = new System.Windows.Forms.ComboBox();
+            this.cmb_applyBy = new System.Windows.Forms.ComboBox();
+            this.cmb_fromFactory = new System.Windows.Forms.ComboBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_remark = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txt_inputNum = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.dtp_expiresDate = new System.Windows.Forms.DateTimePicker();
+            this.dtp_applyDate = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.cmb_product = new System.Windows.Forms.ComboBox();
-            this.dtp_produceDate = new System.Windows.Forms.DateTimePicker();
+            this.cmb_transferObject = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cmb_factory = new System.Windows.Forms.ComboBox();
-            this.dtp_inputDate = new System.Windows.Forms.DateTimePicker();
+            this.cmb_toFactory = new System.Windows.Forms.ComboBox();
+            this.dtp_transferDate = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
-            this.cmb_inputStatus = new System.Windows.Forms.ComboBox();
-            this.cmb_inputType = new System.Windows.Forms.ComboBox();
-            this.lbl_outputStatus = new System.Windows.Forms.Label();
+            this.cmb_type = new System.Windows.Forms.ComboBox();
             this.lbl_outputType = new System.Windows.Forms.Label();
-            this.lbl_saler = new System.Windows.Forms.Label();
-            this.txt_produceCode = new System.Windows.Forms.TextBox();
-            this.lbl_orderCode = new System.Windows.Forms.Label();
+            this.lbl_transferObject = new System.Windows.Forms.Label();
             this.btn_close = new System.Windows.Forms.Button();
             this.grb_transfer.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_submit
             // 
-            this.btn_submit.Location = new System.Drawing.Point(237, 424);
+            this.btn_submit.Location = new System.Drawing.Point(237, 545);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(75, 23);
             this.btn_submit.TabIndex = 101;
@@ -71,7 +70,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(383, 424);
+            this.btn_cancel.Location = new System.Drawing.Point(383, 545);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 102;
@@ -84,7 +83,7 @@
             this.lbl_title.AutoSize = true;
             this.lbl_title.Font = new System.Drawing.Font("宋体", 20F, System.Drawing.FontStyle.Bold);
             this.lbl_title.ForeColor = System.Drawing.Color.Black;
-            this.lbl_title.Location = new System.Drawing.Point(272, 38);
+            this.lbl_title.Location = new System.Drawing.Point(312, 44);
             this.lbl_title.Name = "lbl_title";
             this.lbl_title.Size = new System.Drawing.Size(96, 27);
             this.lbl_title.TabIndex = 24;
@@ -92,206 +91,214 @@
             // 
             // grb_transfer
             // 
-            this.grb_transfer.Controls.Add(this.txt_produceNum);
+            this.grb_transfer.Controls.Add(this.cmb_transferBy);
+            this.grb_transfer.Controls.Add(this.cmb_applyBy);
+            this.grb_transfer.Controls.Add(this.cmb_fromFactory);
+            this.grb_transfer.Controls.Add(this.dataGridView1);
+            this.grb_transfer.Controls.Add(this.label7);
             this.grb_transfer.Controls.Add(this.label6);
             this.grb_transfer.Controls.Add(this.txt_remark);
             this.grb_transfer.Controls.Add(this.label5);
-            this.grb_transfer.Controls.Add(this.txt_inputNum);
             this.grb_transfer.Controls.Add(this.label4);
-            this.grb_transfer.Controls.Add(this.dtp_expiresDate);
+            this.grb_transfer.Controls.Add(this.dtp_applyDate);
             this.grb_transfer.Controls.Add(this.label3);
-            this.grb_transfer.Controls.Add(this.cmb_product);
-            this.grb_transfer.Controls.Add(this.dtp_produceDate);
+            this.grb_transfer.Controls.Add(this.cmb_transferObject);
             this.grb_transfer.Controls.Add(this.label2);
             this.grb_transfer.Controls.Add(this.label1);
-            this.grb_transfer.Controls.Add(this.cmb_factory);
-            this.grb_transfer.Controls.Add(this.dtp_inputDate);
+            this.grb_transfer.Controls.Add(this.cmb_toFactory);
+            this.grb_transfer.Controls.Add(this.dtp_transferDate);
             this.grb_transfer.Controls.Add(this.label11);
-            this.grb_transfer.Controls.Add(this.cmb_inputStatus);
-            this.grb_transfer.Controls.Add(this.cmb_inputType);
-            this.grb_transfer.Controls.Add(this.lbl_outputStatus);
+            this.grb_transfer.Controls.Add(this.cmb_type);
             this.grb_transfer.Controls.Add(this.lbl_outputType);
-            this.grb_transfer.Controls.Add(this.lbl_saler);
-            this.grb_transfer.Controls.Add(this.txt_produceCode);
-            this.grb_transfer.Controls.Add(this.lbl_orderCode);
+            this.grb_transfer.Controls.Add(this.lbl_transferObject);
             this.grb_transfer.Location = new System.Drawing.Point(31, 85);
             this.grb_transfer.Name = "grb_transfer";
-            this.grb_transfer.Size = new System.Drawing.Size(638, 316);
+            this.grb_transfer.Size = new System.Drawing.Size(638, 437);
             this.grb_transfer.TabIndex = 103;
             this.grb_transfer.TabStop = false;
             // 
-            // txt_produceNum
+            // cmb_transferBy
             // 
-            this.txt_produceNum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txt_produceNum.Enabled = false;
-            this.txt_produceNum.Location = new System.Drawing.Point(394, 69);
-            this.txt_produceNum.Name = "txt_produceNum";
-            this.txt_produceNum.Size = new System.Drawing.Size(222, 21);
-            this.txt_produceNum.TabIndex = 5;
+            this.cmb_transferBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_transferBy.Enabled = false;
+            this.cmb_transferBy.FormattingEnabled = true;
+            this.cmb_transferBy.Items.AddRange(new object[] {
+            "请求入库",
+            "完成入库"});
+            this.cmb_transferBy.Location = new System.Drawing.Point(80, 300);
+            this.cmb_transferBy.Name = "cmb_transferBy";
+            this.cmb_transferBy.Size = new System.Drawing.Size(222, 20);
+            this.cmb_transferBy.TabIndex = 9;
+            // 
+            // cmb_applyBy
+            // 
+            this.cmb_applyBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_applyBy.Enabled = false;
+            this.cmb_applyBy.FormattingEnabled = true;
+            this.cmb_applyBy.Items.AddRange(new object[] {
+            "请求入库",
+            "完成入库"});
+            this.cmb_applyBy.Location = new System.Drawing.Point(81, 348);
+            this.cmb_applyBy.Name = "cmb_applyBy";
+            this.cmb_applyBy.Size = new System.Drawing.Size(222, 20);
+            this.cmb_applyBy.TabIndex = 5;
+            // 
+            // cmb_fromFactory
+            // 
+            this.cmb_fromFactory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_fromFactory.FormattingEnabled = true;
+            this.cmb_fromFactory.Location = new System.Drawing.Point(79, 72);
+            this.cmb_fromFactory.Name = "cmb_fromFactory";
+            this.cmb_fromFactory.Size = new System.Drawing.Size(222, 20);
+            this.cmb_fromFactory.TabIndex = 7;
+            this.cmb_fromFactory.SelectedIndexChanged += new System.EventHandler(this.cmb_fromFactory_SelectedIndexChanged);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(18, 138);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(598, 136);
+            this.dataGridView1.TabIndex = 145;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(16, 305);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 144;
+            this.label7.Text = "调 拨 人：";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(329, 73);
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(16, 75);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 12);
-            this.label6.TabIndex = 141;
-            this.label6.Text = "生产数量：";
+            this.label6.TabIndex = 142;
+            this.label6.Text = "来源工厂：";
             // 
             // txt_remark
             // 
-            this.txt_remark.Location = new System.Drawing.Point(79, 256);
+            this.txt_remark.Location = new System.Drawing.Point(79, 392);
             this.txt_remark.MaxLength = 100;
             this.txt_remark.Name = "txt_remark";
             this.txt_remark.Size = new System.Drawing.Size(537, 21);
-            this.txt_remark.TabIndex = 15;
+            this.txt_remark.TabIndex = 11;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(16, 259);
+            this.label5.Location = new System.Drawing.Point(16, 395);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 139;
             this.label5.Text = "备    注：";
             // 
-            // txt_inputNum
-            // 
-            this.txt_inputNum.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txt_inputNum.Location = new System.Drawing.Point(79, 212);
-            this.txt_inputNum.MaxLength = 10;
-            this.txt_inputNum.Name = "txt_inputNum";
-            this.txt_inputNum.Size = new System.Drawing.Size(222, 21);
-            this.txt_inputNum.TabIndex = 12;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(16, 215);
+            this.label4.Location = new System.Drawing.Point(16, 121);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 12);
             this.label4.TabIndex = 126;
-            this.label4.Text = "入库数量：";
+            this.label4.Text = "调拨数量：";
             // 
-            // dtp_expiresDate
+            // dtp_applyDate
             // 
-            this.dtp_expiresDate.Enabled = false;
-            this.dtp_expiresDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_expiresDate.Location = new System.Drawing.Point(394, 114);
-            this.dtp_expiresDate.Name = "dtp_expiresDate";
-            this.dtp_expiresDate.Size = new System.Drawing.Size(222, 21);
-            this.dtp_expiresDate.TabIndex = 7;
+            this.dtp_applyDate.Enabled = false;
+            this.dtp_applyDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_applyDate.Location = new System.Drawing.Point(395, 347);
+            this.dtp_applyDate.Name = "dtp_applyDate";
+            this.dtp_applyDate.Size = new System.Drawing.Size(222, 21);
+            this.dtp_applyDate.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(328, 118);
+            this.label3.Location = new System.Drawing.Point(329, 351);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 125;
-            this.label3.Text = "过 期 日：";
+            this.label3.Text = "申请日期：";
             // 
-            // cmb_product
+            // cmb_transferObject
             // 
-            this.cmb_product.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_product.FormattingEnabled = true;
-            this.cmb_product.Location = new System.Drawing.Point(79, 167);
-            this.cmb_product.Name = "cmb_product";
-            this.cmb_product.Size = new System.Drawing.Size(222, 20);
-            this.cmb_product.TabIndex = 10;
-            this.cmb_product.SelectedIndexChanged += new System.EventHandler(this.cmb_product_SelectedIndexChanged);
-            // 
-            // dtp_produceDate
-            // 
-            this.dtp_produceDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_produceDate.Location = new System.Drawing.Point(82, 117);
-            this.dtp_produceDate.Name = "dtp_produceDate";
-            this.dtp_produceDate.Size = new System.Drawing.Size(222, 21);
-            this.dtp_produceDate.TabIndex = 9;
-            this.dtp_produceDate.ValueChanged += new System.EventHandler(this.dtp_produceDate_ValueChanged);
+            this.cmb_transferObject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_transferObject.FormattingEnabled = true;
+            this.cmb_transferObject.Location = new System.Drawing.Point(394, 25);
+            this.cmb_transferObject.Name = "cmb_transferObject";
+            this.cmb_transferObject.Size = new System.Drawing.Size(222, 20);
+            this.cmb_transferObject.TabIndex = 2;
+            this.cmb_transferObject.SelectedIndexChanged += new System.EventHandler(this.cmb_transferObject_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(16, 120);
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(17, 353);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 123;
-            this.label2.Text = "生产日期：";
+            this.label2.Text = "申 请 人：";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(328, 170);
+            this.label1.Location = new System.Drawing.Point(328, 75);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 121;
-            this.label1.Text = "工    厂：";
+            this.label1.Text = "目标工厂：";
             // 
-            // cmb_factory
+            // cmb_toFactory
             // 
-            this.cmb_factory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_factory.FormattingEnabled = true;
-            this.cmb_factory.Location = new System.Drawing.Point(394, 167);
-            this.cmb_factory.Name = "cmb_factory";
-            this.cmb_factory.Size = new System.Drawing.Size(222, 20);
-            this.cmb_factory.TabIndex = 11;
+            this.cmb_toFactory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_toFactory.FormattingEnabled = true;
+            this.cmb_toFactory.Location = new System.Drawing.Point(394, 72);
+            this.cmb_toFactory.Name = "cmb_toFactory";
+            this.cmb_toFactory.Size = new System.Drawing.Size(222, 20);
+            this.cmb_toFactory.TabIndex = 8;
             // 
-            // dtp_inputDate
+            // dtp_transferDate
             // 
-            this.dtp_inputDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_inputDate.Location = new System.Drawing.Point(394, 212);
-            this.dtp_inputDate.Name = "dtp_inputDate";
-            this.dtp_inputDate.Size = new System.Drawing.Size(222, 21);
-            this.dtp_inputDate.TabIndex = 14;
+            this.dtp_transferDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_transferDate.Location = new System.Drawing.Point(394, 302);
+            this.dtp_transferDate.Name = "dtp_transferDate";
+            this.dtp_transferDate.Size = new System.Drawing.Size(222, 21);
+            this.dtp_transferDate.TabIndex = 10;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(328, 215);
+            this.label11.Location = new System.Drawing.Point(328, 305);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(65, 12);
             this.label11.TabIndex = 119;
-            this.label11.Text = "入库日期：";
+            this.label11.Text = "调拨日期：";
             // 
-            // cmb_inputStatus
+            // cmb_type
             // 
-            this.cmb_inputStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_inputStatus.Enabled = false;
-            this.cmb_inputStatus.FormattingEnabled = true;
-            this.cmb_inputStatus.Items.AddRange(new object[] {
-            "请求入库",
-            "完成入库"});
-            this.cmb_inputStatus.Location = new System.Drawing.Point(394, 25);
-            this.cmb_inputStatus.Name = "cmb_inputStatus";
-            this.cmb_inputStatus.Size = new System.Drawing.Size(222, 20);
-            this.cmb_inputStatus.TabIndex = 2;
-            // 
-            // cmb_inputType
-            // 
-            this.cmb_inputType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_inputType.FormattingEnabled = true;
-            this.cmb_inputType.Location = new System.Drawing.Point(80, 25);
-            this.cmb_inputType.Name = "cmb_inputType";
-            this.cmb_inputType.Size = new System.Drawing.Size(221, 20);
-            this.cmb_inputType.TabIndex = 1;
-            // 
-            // lbl_outputStatus
-            // 
-            this.lbl_outputStatus.AutoSize = true;
-            this.lbl_outputStatus.ForeColor = System.Drawing.Color.Black;
-            this.lbl_outputStatus.Location = new System.Drawing.Point(328, 29);
-            this.lbl_outputStatus.Name = "lbl_outputStatus";
-            this.lbl_outputStatus.Size = new System.Drawing.Size(65, 12);
-            this.lbl_outputStatus.TabIndex = 115;
-            this.lbl_outputStatus.Text = "入库状态：";
+            this.cmb_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_type.FormattingEnabled = true;
+            this.cmb_type.Items.AddRange(new object[] {
+            "",
+            "产品调拨",
+            "物料调拨"});
+            this.cmb_type.Location = new System.Drawing.Point(80, 25);
+            this.cmb_type.Name = "cmb_type";
+            this.cmb_type.Size = new System.Drawing.Size(221, 20);
+            this.cmb_type.TabIndex = 1;
+            this.cmb_type.SelectedIndexChanged += new System.EventHandler(this.cmb_type_SelectedIndexChanged);
             // 
             // lbl_outputType
             // 
@@ -301,42 +308,21 @@
             this.lbl_outputType.Name = "lbl_outputType";
             this.lbl_outputType.Size = new System.Drawing.Size(65, 12);
             this.lbl_outputType.TabIndex = 113;
-            this.lbl_outputType.Text = "入库类型：";
+            this.lbl_outputType.Text = "调拨类型：";
             // 
-            // lbl_saler
+            // lbl_transferObject
             // 
-            this.lbl_saler.AutoSize = true;
-            this.lbl_saler.ForeColor = System.Drawing.Color.Red;
-            this.lbl_saler.Location = new System.Drawing.Point(16, 170);
-            this.lbl_saler.Name = "lbl_saler";
-            this.lbl_saler.Size = new System.Drawing.Size(65, 12);
-            this.lbl_saler.TabIndex = 86;
-            this.lbl_saler.Text = "入库产品：";
-            // 
-            // txt_produceCode
-            // 
-            this.txt_produceCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txt_produceCode.Enabled = false;
-            this.txt_produceCode.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txt_produceCode.Location = new System.Drawing.Point(79, 69);
-            this.txt_produceCode.MaxLength = 20;
-            this.txt_produceCode.Name = "txt_produceCode";
-            this.txt_produceCode.Size = new System.Drawing.Size(222, 21);
-            this.txt_produceCode.TabIndex = 3;
-            // 
-            // lbl_orderCode
-            // 
-            this.lbl_orderCode.AutoSize = true;
-            this.lbl_orderCode.ForeColor = System.Drawing.Color.Black;
-            this.lbl_orderCode.Location = new System.Drawing.Point(16, 72);
-            this.lbl_orderCode.Name = "lbl_orderCode";
-            this.lbl_orderCode.Size = new System.Drawing.Size(65, 12);
-            this.lbl_orderCode.TabIndex = 42;
-            this.lbl_orderCode.Text = "生产单号：";
+            this.lbl_transferObject.AutoSize = true;
+            this.lbl_transferObject.ForeColor = System.Drawing.Color.Red;
+            this.lbl_transferObject.Location = new System.Drawing.Point(328, 28);
+            this.lbl_transferObject.Name = "lbl_transferObject";
+            this.lbl_transferObject.Size = new System.Drawing.Size(65, 12);
+            this.lbl_transferObject.TabIndex = 86;
+            this.lbl_transferObject.Text = "调拨产品：";
             // 
             // btn_close
             // 
-            this.btn_close.Location = new System.Drawing.Point(572, 424);
+            this.btn_close.Location = new System.Drawing.Point(572, 545);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(75, 23);
             this.btn_close.TabIndex = 103;
@@ -349,7 +335,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(699, 476);
+            this.ClientSize = new System.Drawing.Size(717, 593);
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.grb_transfer);
             this.Controls.Add(this.lbl_title);
@@ -366,6 +352,7 @@
             this.Load += new System.EventHandler(this.FrmTransferDetail_Load);
             this.grb_transfer.ResumeLayout(false);
             this.grb_transfer.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -377,28 +364,26 @@
         private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.Label lbl_title;
         private System.Windows.Forms.GroupBox grb_transfer;
-        private System.Windows.Forms.TextBox txt_produceCode;
-        private System.Windows.Forms.Label lbl_orderCode;
-        private System.Windows.Forms.Label lbl_saler;
-        private System.Windows.Forms.ComboBox cmb_product;
-        private System.Windows.Forms.Label lbl_outputStatus;
+        private System.Windows.Forms.Label lbl_transferObject;
+        private System.Windows.Forms.ComboBox cmb_transferObject;
         private System.Windows.Forms.Label lbl_outputType;
         private System.Windows.Forms.Button btn_close;
-        private System.Windows.Forms.ComboBox cmb_inputStatus;
-        private System.Windows.Forms.ComboBox cmb_inputType;
-        private System.Windows.Forms.DateTimePicker dtp_inputDate;
+        private System.Windows.Forms.ComboBox cmb_applyBy;
+        private System.Windows.Forms.ComboBox cmb_type;
+        private System.Windows.Forms.DateTimePicker dtp_transferDate;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmb_factory;
-        private System.Windows.Forms.DateTimePicker dtp_produceDate;
+        private System.Windows.Forms.ComboBox cmb_toFactory;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dtp_expiresDate;
+        private System.Windows.Forms.DateTimePicker dtp_applyDate;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txt_produceNum;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txt_remark;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txt_inputNum;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cmb_transferBy;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmb_fromFactory;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

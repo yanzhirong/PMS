@@ -17,21 +17,22 @@ namespace PMS.Frm.Store
     {
         //处理模式（0：新建；1：修改；2：删除；3：查看）
         private int m_mode;
-        private int m_productInId;
-        private string m_inputCode;
+        private int m_transferId;
 
-        private BllCustomer m_bllCustomer = new BllCustomer();
-        private BllProduce m_bllProduce = new BllProduce();
+        private BllStore m_bllStore = new BllStore();
+        private BllUser m_bllUser = new BllUser();
         private BllProduct m_bllProduct = new BllProduct();
-        private BllProductIn m_bllProductIn = new BllProductIn();
+        private BllMaterials m_bllMaterials = new BllMaterials();
         private BllFactory m_bllFactory = new BllFactory();
         private BllCode m_bllCode = new BllCode();
+        private BllProductOut m_bllProductOut = new BllProductOut();
+        private BllMaterialsOut m_bllMaterialsOut = new BllMaterialsOut();
 
-        public FrmTransferDetail(int _mode, int _productInId)
+        public FrmTransferDetail(int _mode, int _transferId)
         {
             InitializeComponent();
             m_mode = _mode;
-            m_productInId = _productInId;
+            m_transferId = _transferId;
         }
 
         private void FrmTransferDetail_Load(object sender, EventArgs e)
@@ -63,79 +64,96 @@ namespace PMS.Frm.Store
         {      
 
             //下拉框
-            //入库类型
-            List<ModelItem> listItem = m_bllCode.GetCodeItem((int)Enum.EnumCode.ProductInputType, false);
-            WinCommon.BindComboBox(ref this.cmb_inputType, listItem, false);
-            //入库产品
-            listItem = m_bllProduct.GetProductItem("");
-            WinCommon.BindComboBox(ref this.cmb_product, listItem);
-            //入库工厂
+            //来源工厂
+            List<ModelItem> listItem = m_bllFactory.GetFactoryItem();
+            WinCommon.BindComboBox(ref this.cmb_fromFactory, listItem);
+            //目标工厂
             listItem = m_bllFactory.GetFactoryItem();
-            WinCommon.BindComboBox(ref this.cmb_factory, listItem);
+            WinCommon.BindComboBox(ref this.cmb_toFactory, listItem);
+            //申请人
+            listItem = m_bllUser.GetUsersWithItem();
+            WinCommon.BindComboBox(ref this.cmb_applyBy, listItem);
+            //调拨人
+            listItem = m_bllUser.GetUsersWithItem();
+            WinCommon.BindComboBox(ref this.cmb_transferBy, listItem);
+
+            //调拨人
+            for (int i = 0; i < this.cmb_transferBy.Items.Count; i++)
+            {
+                ModelItem modelItem = (ModelItem)this.cmb_transferBy.Items[i];
+                if (LoginUserInfo.LoginUser.loginUser.userId == (int)modelItem.itemKey)
+                {
+                    this.cmb_transferBy.SelectedIndex = i;
+                    break;
+                }
+            }
 
             //初始化数据
-            if (m_mode != 0 && m_productInId > 0)
+            if (m_mode != 0 && m_transferId > 0)
             {
 
-                ModelProductIn model = m_bllProductIn.GetProductInById(m_productInId);
+                ModelTransfer model = m_bllStore.GetTransferById(m_transferId);
 
-                //入库单号
-                m_inputCode = model.inputCode;
-
-                //入库类型
-                for (int i = 0; i < this.cmb_inputType.Items.Count; i++)
+                //类型
+                for (int i = 0; i < this.cmb_type.Items.Count; i++)
                 {
-                    ModelItem modelItem = (ModelItem)this.cmb_inputType.Items[i];
+                    ModelItem modelItem = (ModelItem)this.cmb_type.Items[i];
                     if (model.type == (int)modelItem.itemKey)
                     {
-                        this.cmb_inputType.SelectedIndex = i;
+                        this.cmb_type.SelectedIndex = i;
                         break;
                     }
                 }
 
-                //入库状态
-                this.cmb_inputStatus.SelectedIndex = model.status;
-
-                //生产单号
-                this.txt_produceCode.Text = model.produceCode;
-
-                ModelProduce modelProduce = m_bllProduce.GetProduceyByProduceCode(model.produceCode);
-                //生产数量
-                this.txt_produceNum.Text = modelProduce.num.ToString();
-
-                //生产日期
-                this.dtp_produceDate.Value = ConvertUtils.ConvertToDate(model.produceDate, "yyyy-MM-dd");
-
-                //过期日
-                this.dtp_expiresDate.Value = ConvertUtils.ConvertToDate(model.expiresDate, "yyyy-MM-dd");
-
-                //入库产品
-                for (int i = 0; i < this.cmb_product.Items.Count; i++)
+                //调拨对象
+                for (int i = 0; i < this.cmb_transferObject.Items.Count; i++)
                 {
-                    ModelItem modelItem = (ModelItem)this.cmb_product.Items[i];
-                    if (model.productId == (int)modelItem.itemKey)
+                    ModelItem modelItem = (ModelItem)this.cmb_transferObject.Items[i];
+                    if (model.type == 0)
                     {
-                        this.cmb_product.SelectedIndex = i;
-                        break;
+                        if (model.productId == (int)modelItem.itemKey)
+                        {
+                            this.cmb_transferObject.SelectedIndex = i;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        if (model.materialsId == (int)modelItem.itemKey)
+                        {
+                            this.cmb_transferObject.SelectedIndex = i;
+                            break;
+                        }
                     }
                 }
 
-                //工厂
-                for (int i = 0; i < this.cmb_factory.Items.Count; i++)
+                //申请人
+                for (int i = 0; i < this.cmb_applyBy.Items.Count; i++)
                 {
-                    ModelItem modelItem = (ModelItem)this.cmb_factory.Items[i];
-                    if (model.factoryId == (int)modelItem.itemKey)
+                    ModelItem modelItem = (ModelItem)this.cmb_applyBy.Items[i];
+                    if (model.applyMemberId == (int)modelItem.itemKey)
                     {
-                        this.cmb_factory.SelectedIndex = i;
+                        this.cmb_applyBy.SelectedIndex = i;
                         break;
                     }
                 }
 
-                //入库数量
-                this.txt_inputNum.Text = model.num.ToString();
+                //申请日
+                this.dtp_applyDate.Value = ConvertUtils.ConvertToDate(model.applyDate, "yyyy-MM-dd");
 
-                //入库日期
-                this.dtp_inputDate.Value = ConvertUtils.ConvertToDate(model.inputDate, "yyyy-MM-dd");
+                //调拨人
+                for (int i = 0; i < this.cmb_transferBy.Items.Count; i++)
+                {
+                    ModelItem modelItem = (ModelItem)this.cmb_transferBy.Items[i];
+                    if (model.transferMemberId == (int)modelItem.itemKey)
+                    {
+                        this.cmb_transferBy.SelectedIndex = i;
+                        break;
+                    }
+                }
+
+                //调拨日
+                this.dtp_transferDate.Value = ConvertUtils.ConvertToDate(model.transferDate, "yyyy-MM-dd");
 
                 //备注
                 this.txt_remark.Text = model.remark;
@@ -189,21 +207,84 @@ namespace PMS.Frm.Store
                 return false;
             }
 
-            ModelProductIn model = new ModelProductIn();
-            model.id = m_productInId;
-            model.inputCode = m_inputCode;
-            model.type = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_inputType.SelectedItem).itemKey);
-            model.status = this.cmb_inputStatus.SelectedIndex;
+            ModelTransfer model = new ModelTransfer();
+            model.id = m_transferId;
+            model.type = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_type.SelectedItem).itemKey);
 
-            model.produceCode = this.txt_produceCode.Text.Trim();
-            model.produceDate = this.dtp_produceDate.Value;
-            model.expiresDate = this.dtp_expiresDate.Value;
+            model.fromFactoryId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_fromFactory.SelectedItem).itemKey);
+            model.toFactoryId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_toFactory.SelectedItem).itemKey);
 
-            model.factoryId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_factory.SelectedItem).itemKey);
-            model.productId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_product.SelectedItem).itemKey);
+            if (this.cmb_type.SelectedIndex == 0)
+            {
+                model.productId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_transferObject.SelectedItem).itemKey);
+            }
+            else
+            {
+                model.materialsId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_transferObject.SelectedItem).itemKey);
+            }
 
-            model.num = ConvertUtils.ConvertToInt(this.txt_inputNum.Text.Trim());
-            model.inputDate = this.dtp_inputDate.Value;
+            //调拨数
+            decimal selectedAllTransferNum = 0;
+            int transferUnit = 0;
+            List<Dictionary<string, object>> listTransferDetail = new List<Dictionary<string, object>>();
+
+            for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+            {
+                //选择的行
+                if (this.dataGridView1.Rows[i].Cells["selected"].EditedFormattedValue.ToString() == "True")
+                {
+
+                    Dictionary<string, object> dc = new Dictionary<string, object>();
+
+                    //入库单号
+                    string inputCode = ConvertUtils.ConvertToString(this.dataGridView1.Rows[i].Cells["inputCode"].Value);
+                    dc.Add("inputCode", inputCode);
+
+                    //输入的调拨数
+                    decimal curTransferNum = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells["transferNum"].Value);
+                    dc.Add("transferNum", curTransferNum);
+
+                    int unit = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["unit"].Value);
+                    dc.Add("transferUnit", unit);
+
+                    if (this.cmb_type.SelectedIndex == 1)
+                    {
+                        if (transferUnit <= 0)
+                        {
+                            transferUnit = unit;
+                        }
+
+                        curTransferNum = curTransferNum * m_bllCode.GetWeightUnit(unit);
+                        selectedAllTransferNum = selectedAllTransferNum + curTransferNum;
+                    }
+                    else
+                    {
+                        selectedAllTransferNum = selectedAllTransferNum + curTransferNum;
+                    }
+
+                    listTransferDetail.Add(dc);
+                }
+            }
+
+            if (this.cmb_type.SelectedIndex == 1)
+            {
+                selectedAllTransferNum = selectedAllTransferNum / m_bllCode.GetWeightUnit(transferUnit);
+                model.num = selectedAllTransferNum;
+                model.unit = transferUnit;
+            }
+            else
+            {
+                model.num = selectedAllTransferNum;
+            }
+
+            model.transferMemberId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_transferBy.SelectedItem).itemKey);
+            model.transferDate = this.dtp_transferDate.Value;
+
+            if (this.cmb_applyBy.SelectedIndex >= 0)
+            {
+                model.applyMemberId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_applyBy.SelectedItem).itemKey);
+            }
+            model.applyDate = this.dtp_applyDate.Value;
 
             model.remark = this.txt_remark.Text.Trim();
 
@@ -216,13 +297,13 @@ namespace PMS.Frm.Store
             //新增
             if (m_mode == 0) 
             {
-                rtn = m_bllProductIn.AddProductIn(model);
+                rtn = m_bllStore.AddTransfer(model, listTransferDetail);
 
                 if (rtn == false)
                 {
                     if (showMsg == true)
                     {
-                        MsgUtils.ShowErrorMsg("新增入库单失败！");
+                        MsgUtils.ShowErrorMsg("新增调拨单失败！");
                     }
                     return false;
                 }
@@ -230,7 +311,7 @@ namespace PMS.Frm.Store
                 {
                     if (showMsg == true)
                     {
-                        MsgUtils.ShowInfoMsg("新增入库单成功！");
+                        MsgUtils.ShowInfoMsg("新增调拨单成功！");
                     }
                 }
 
@@ -238,56 +319,6 @@ namespace PMS.Frm.Store
                 this.Hide();
 
                 return true;
-            }
-
-            //修改
-            if (m_mode == 1)
-            {
-                rtn = m_bllProductIn.UpdateProductIn(model);
-
-                if (rtn == false)
-                {
-                    if (showMsg == true)
-                    {
-                        MsgUtils.ShowErrorMsg("修改入库单失败！");
-                    }
-                    return false;
-                }
-                else
-                {
-                    if (showMsg == true)
-                    {
-                        MsgUtils.ShowInfoMsg("修改入库单成功！");
-                        //返回列表
-                        this.Hide();
-                    }
-                    return true;
-                }
-            }
-
-            //删除
-            if(m_mode == 2)
-            {
-                rtn = m_bllProductIn.DeleteProductIn(model);
-
-                if (rtn == false)
-                {
-                    if (showMsg == true)
-                    {
-                        MsgUtils.ShowErrorMsg("删除入库单失败！");
-                    }
-                    return false;
-                }
-                else
-                {
-                    if (showMsg == true)
-                    {
-                        MsgUtils.ShowInfoMsg("删除入库单成功！");
-                    }
-                    //返回列表
-                    this.Hide();
-                    return true;
-                }
             }
 
             return true;
@@ -299,62 +330,90 @@ namespace PMS.Frm.Store
         /// <returns></returns>
         private Boolean doCheck()
         {
-            if (StringUtils.IsNotBlank(m_inputCode))
-            {
-                //修改
-                if (m_mode == 1)
-                {
-                    if (m_bllProductIn.CheckUpdateDelete(m_inputCode) == false)
-                    {
-                        MsgUtils.ShowErrorMsg("已有部分产品出库，不可修改！");
-                        return false;
-                    }
-                }
-
-                //删除
-                if (m_mode == 2)
-                {
-                    if (m_bllProductIn.CheckUpdateDelete(m_inputCode) == false)
-                    {
-                        MsgUtils.ShowErrorMsg("已有部分产品出库，不可删除！");
-                        return false;
-                    }
-                }
-            }
-
+            
             // 新增或修改
             if (m_mode == 0 || m_mode == 1)
             {
-                //入库类型
-                if (this.cmb_inputType.SelectedIndex < 0)
+                //调拨类型
+                if (this.cmb_type.SelectedIndex < 0)
                 {
-                    MsgUtils.ShowErrorMsg("请选择入库类型！");
-                    this.cmb_inputType.Focus();
+                    MsgUtils.ShowErrorMsg("请选择调拨类型！");
+                    this.cmb_type.Focus();
                     return false;
                 }
 
-                //入库产品
-                if(this.cmb_product.SelectedIndex < 0)
+                //调拨对象
+                if(this.cmb_transferObject.SelectedIndex < 0)
                 {
-                    MsgUtils.ShowErrorMsg("请选择入库产品！");
-                    this.cmb_product.Focus();
-                    return false;
-                }
-                
-                //工厂
-                if (this.cmb_factory.SelectedIndex < 0)
-                {
-                    MsgUtils.ShowErrorMsg("请选择入库工厂！");
-                    this.cmb_factory.Focus();
+                    if (this.cmb_type.SelectedIndex == 0)
+                    {
+                        MsgUtils.ShowErrorMsg("请选择调拨产品！");
+                    }
+                    else
+                    {
+                        MsgUtils.ShowErrorMsg("请选择调拨物料！");
+                    }
+                    this.cmb_transferObject.Focus();
                     return false;
                 }
 
-                //入库数量
-                decimal inputNum = ConvertUtils.ConvertToDecimal(this.txt_inputNum.Text.Trim());
-                if (inputNum <= 0)
+                //来源工厂
+                if (this.cmb_fromFactory.SelectedIndex < 0)
                 {
-                    MsgUtils.ShowErrorMsg("请输入合适的入库数量！");
-                    this.txt_inputNum.Focus();
+                    MsgUtils.ShowErrorMsg("请选择来源工厂！");
+                    this.cmb_fromFactory.Focus();
+                    return false;
+                }
+
+                //目标工厂
+                if (this.cmb_toFactory.SelectedIndex < 0)
+                {
+                    MsgUtils.ShowErrorMsg("请选择目标工厂！");
+                    this.cmb_toFactory.Focus();
+                    return false;
+                }
+
+                //调拨数
+                decimal selectedAllTransferNum = 0;
+
+                for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                {
+                    //选择的行
+                    if (this.dataGridView1.Rows[i].Cells["selected"].EditedFormattedValue.ToString() == "True")
+                    {
+
+                        //输入的调拨数
+                        decimal curTransferNum = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells["transferNum"].Value);
+                        if (curTransferNum <= 0)
+                        {
+                            MsgUtils.ShowErrorMsg("请输入调拨数！");
+                            return false;
+                        }
+
+                        //库存数量
+                        decimal curStockNum = ConvertUtils.ConvertToDecimal(this.dataGridView1.Rows[i].Cells["num"].Value);
+
+                        if (curTransferNum > curStockNum)
+                        {
+                            MsgUtils.ShowErrorMsg("调拨数量大于在库数量，请输入适当的调拨数！");
+                            return false;
+                        }
+
+                        selectedAllTransferNum = selectedAllTransferNum + curTransferNum;
+                    }
+                }
+
+                if (selectedAllTransferNum <= 0)
+                {
+                    MsgUtils.ShowErrorMsg("调拨数不可为空！");
+                    return false;
+                }
+
+                //调拨人
+                if (this.cmb_transferBy.SelectedIndex < 0)
+                {
+                    MsgUtils.ShowErrorMsg("请选择调拨人！");
+                    this.cmb_transferBy.Focus();
                     return false;
                 }
             }
@@ -368,26 +427,137 @@ namespace PMS.Frm.Store
             this.Hide();
         }
 
-        private void dtp_produceDate_ValueChanged(object sender, EventArgs e)
+        private void txt_num_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (this.cmb_product.SelectedIndex >= 0)
-            {
-                int productId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_product.SelectedItem).itemKey);
-                ModelProduct modelProduct = m_bllProduct.GetProductById(productId);
+            //仅限数字
+            e.Handled = WinCommon.IsOnlyDouble(e.KeyChar);
+        }
 
-                this.dtp_expiresDate.Value = this.dtp_produceDate.Value.AddDays(modelProduct.expiredDays);
+        private void cmb_type_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.cmb_type.SelectedIndex == 0)
+            {
+                this.lbl_transferObject.Text = "调拨产品";
+                //调拨产品
+                List<ModelItem> listItem = m_bllProduct.GetProductItem("");
+                WinCommon.BindComboBox(ref this.cmb_transferObject, listItem, false);
+
+            }
+            else
+            {
+                this.lbl_transferObject.Text = "调拨物料";
+                //调拨物料
+                List<ModelItem> listItem = m_bllMaterials.GetMaterialsItem("");
+                WinCommon.BindComboBox(ref this.cmb_transferObject, listItem, false);
             }
         }
 
-        private void cmb_product_SelectedIndexChanged(object sender, EventArgs e)
+        #region 设置DataGridView列
+        /// <summary>
+        /// 设置DataGridView列
+        /// </summary>
+        private void SetDataGridViewStyle()
         {
-            if (this.cmb_product.SelectedIndex >= 0)
-            {
-                int productId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_product.SelectedItem).itemKey);
-                ModelProduct modelProduct = m_bllProduct.GetProductById(productId);
+            this.dataGridView1.Columns.Clear();
 
-                this.dtp_expiresDate.Value = this.dtp_produceDate.Value.AddDays(modelProduct.expiredDays);
+            if (this.cmb_transferObject.SelectedIndex < 0)
+            {
+                return;
             }
+
+            if (this.cmb_fromFactory.SelectedIndex < 0)
+            {
+                return;
+            } 
+            
+            DataGridViewTextBoxColumn colId = new DataGridViewTextBoxColumn();
+            colId.Name = "id";
+            colId.HeaderText = "id";
+            colId.DataPropertyName = "id";
+            colId.Visible = false;
+            this.dataGridView1.Columns.Add(colId);
+
+            DataGridViewTextBoxColumn colInputId = new DataGridViewTextBoxColumn();
+            colInputId.Name = "inputCode";
+            colInputId.HeaderText = "inputCode";
+            colInputId.DataPropertyName = "inputCode";
+            colInputId.Visible = false;
+            this.dataGridView1.Columns.Add(colInputId);
+
+            DataGridViewCheckBoxColumn colSelect = new DataGridViewCheckBoxColumn();
+            colSelect.Name = "selected";
+            colSelect.HeaderText = "选择";
+            colSelect.Width = 40;
+            this.dataGridView1.Columns.Add(colSelect);
+
+            DataGridViewTextBoxColumn colProduct = new DataGridViewTextBoxColumn();
+            colProduct.Name = "name";
+            colProduct.HeaderText = "名称";
+            colProduct.DataPropertyName = "name";
+            colProduct.Width = 160;
+            colProduct.ReadOnly = true;
+            this.dataGridView1.Columns.Add(colProduct);
+
+            DataGridViewTextBoxColumn colExpiresDate = new DataGridViewTextBoxColumn();
+            colExpiresDate.Name = "expiresDate";
+            colExpiresDate.HeaderText = "过期日";
+            colExpiresDate.DataPropertyName = "expiresDate";
+            colExpiresDate.Width = 100;
+            colExpiresDate.ReadOnly = true;
+            this.dataGridView1.Columns.Add(colExpiresDate);
+
+            DataGridViewTextBoxColumn colNumDisplay = new DataGridViewTextBoxColumn();
+            colNumDisplay.Name = "numDisplay";
+            colNumDisplay.HeaderText = "库存数";
+            colNumDisplay.DataPropertyName = "numDisplay";
+            colNumDisplay.Width = 80;
+            colNumDisplay.ReadOnly = true;
+            this.dataGridView1.Columns.Add(colNumDisplay);
+
+            DataGridViewTextBoxColumn colOutputNum = new DataGridViewTextBoxColumn();
+            colOutputNum.Name = "transferNum";
+            colOutputNum.HeaderText = "出库数量";
+            colOutputNum.Width = 80;
+            colOutputNum.ReadOnly = false;
+            this.dataGridView1.Columns.Add(colOutputNum);
+
+            DataGridViewTextBoxColumn colNum = new DataGridViewTextBoxColumn();
+            colNum.Name = "num";
+            colNum.HeaderText = "库存数";
+            colNum.DataPropertyName = "num";
+            colNum.Visible = false;
+            this.dataGridView1.Columns.Add(colNum);
+
+            DataGridViewTextBoxColumn colUnit = new DataGridViewTextBoxColumn();
+            colUnit.Name = "unit";
+            colUnit.HeaderText = "库存单位";
+            colUnit.DataPropertyName = "unit";
+            colUnit.Visible = false;
+            this.dataGridView1.Columns.Add(colUnit);
+
+            int factoryId =  ConvertUtils.ConvertToInt(((ModelItem)this.cmb_toFactory.SelectedItem).itemKey);
+            int transferObjectId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_transferObject.SelectedItem).itemKey);
+            if (this.cmb_type.SelectedIndex == 0)
+            {
+                this.dataGridView1.DataSource = m_bllProductOut.GetProductOutSelect(factoryId, transferObjectId);
+            }
+            else
+            {
+                this.dataGridView1.DataSource = m_bllMaterialsOut.GetMaterialsOutSelect(factoryId, transferObjectId);
+            }
+            this.dataGridView1.Refresh();
+
+        }
+        #endregion
+
+        private void cmb_transferObject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetDataGridViewStyle();
+        }
+
+        private void cmb_fromFactory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetDataGridViewStyle();
         }
 
     }

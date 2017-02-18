@@ -47,6 +47,7 @@
             this.chk_produce_plan = new System.Windows.Forms.CheckBox();
             this.chk_produce = new System.Windows.Forms.CheckBox();
             this.grb_factory = new System.Windows.Forms.GroupBox();
+            this.chk_store_nventory = new System.Windows.Forms.CheckBox();
             this.chk_store_materials_out = new System.Windows.Forms.CheckBox();
             this.chk_store_materials_in = new System.Windows.Forms.CheckBox();
             this.chk_store_transfer = new System.Windows.Forms.CheckBox();
@@ -75,7 +76,6 @@
             this.lbl_tile = new System.Windows.Forms.Label();
             this.cmb_type = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.chk_store_nventory = new System.Windows.Forms.CheckBox();
             this.grb_role.SuspendLayout();
             this.grb_finance.SuspendLayout();
             this.grb_purchase.SuspendLayout();
@@ -292,10 +292,20 @@
             this.grb_factory.TabIndex = 7;
             this.grb_factory.TabStop = false;
             // 
+            // chk_store_nventory
+            // 
+            this.chk_store_nventory.AutoSize = true;
+            this.chk_store_nventory.Location = new System.Drawing.Point(480, 15);
+            this.chk_store_nventory.Name = "chk_store_nventory";
+            this.chk_store_nventory.Size = new System.Drawing.Size(72, 16);
+            this.chk_store_nventory.TabIndex = 19;
+            this.chk_store_nventory.Text = "盘点管理";
+            this.chk_store_nventory.UseVisualStyleBackColor = true;
+            // 
             // chk_store_materials_out
             // 
             this.chk_store_materials_out.AutoSize = true;
-            this.chk_store_materials_out.Location = new System.Drawing.Point(367, 18);
+            this.chk_store_materials_out.Location = new System.Drawing.Point(367, 15);
             this.chk_store_materials_out.Name = "chk_store_materials_out";
             this.chk_store_materials_out.Size = new System.Drawing.Size(72, 16);
             this.chk_store_materials_out.TabIndex = 18;
@@ -315,12 +325,13 @@
             // chk_store_transfer
             // 
             this.chk_store_transfer.AutoSize = true;
-            this.chk_store_transfer.Location = new System.Drawing.Point(480, 15);
+            this.chk_store_transfer.Location = new System.Drawing.Point(610, 15);
             this.chk_store_transfer.Name = "chk_store_transfer";
             this.chk_store_transfer.Size = new System.Drawing.Size(72, 16);
             this.chk_store_transfer.TabIndex = 16;
             this.chk_store_transfer.Text = "调拨管理";
             this.chk_store_transfer.UseVisualStyleBackColor = true;
+            this.chk_store_transfer.Visible = false;
             // 
             // chk_store_product_out
             // 
@@ -556,7 +567,7 @@
             // 
             this.lbl_tile.AutoSize = true;
             this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
-            this.lbl_tile.Location = new System.Drawing.Point(367, 26);
+            this.lbl_tile.Location = new System.Drawing.Point(383, 29);
             this.lbl_tile.Name = "lbl_tile";
             this.lbl_tile.Size = new System.Drawing.Size(174, 27);
             this.lbl_tile.TabIndex = 69;
@@ -579,21 +590,11 @@
             this.label1.TabIndex = 72;
             this.label1.Text = "角色类型：";
             // 
-            // chk_store_nventory
-            // 
-            this.chk_store_nventory.AutoSize = true;
-            this.chk_store_nventory.Location = new System.Drawing.Point(597, 15);
-            this.chk_store_nventory.Name = "chk_store_nventory";
-            this.chk_store_nventory.Size = new System.Drawing.Size(72, 16);
-            this.chk_store_nventory.TabIndex = 19;
-            this.chk_store_nventory.Text = "盘点管理";
-            this.chk_store_nventory.UseVisualStyleBackColor = true;
-            // 
             // FrmSysRoleDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 667);
+            this.ClientSize = new System.Drawing.Size(928, 667);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmb_type);
             this.Controls.Add(this.lbl_tile);
