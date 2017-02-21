@@ -109,6 +109,7 @@ namespace Dal
             sbSql.Append("       factoryId, ");
             sbSql.Append("       materialsId, ");
             sbSql.Append("       inputNum, ");
+            sbSql.Append("       stockNum, ");
             sbSql.Append("       inputUnit, ");
             sbSql.Append("       produceDate, ");
             sbSql.Append("       expiresDate, ");
@@ -130,6 +131,7 @@ namespace Dal
             sbSql.Append("       " + _model.factoryId + ", ");
             sbSql.Append("       " + _model.materialsId + ", ");
             sbSql.Append("       " + _model.inputNum + ", ");
+            sbSql.Append("       " + _model.stockNum + ", ");
             sbSql.Append("       " + _model.inputUnit + ", ");
             sbSql.Append("      '" + _model.produceDate + "', ");
             sbSql.Append("      '" + _model.expiresDate + "', ");
@@ -196,6 +198,7 @@ namespace Dal
             sbSql.Append("    factoryId = " + _model.factoryId + ",");
             sbSql.Append("    materialsId = " + _model.materialsId + ",");
             sbSql.Append("    inputNum = " + _model.inputNum + ",");
+            sbSql.Append("    stockNum = " + _model.stockNum + ",");
             sbSql.Append("    inputUnit = " + _model.inputUnit + ",");
             sbSql.Append("    produceDate = '" + _model.produceDate + "',");
             sbSql.Append("    expiresDate = '" + _model.expiresDate + "',");

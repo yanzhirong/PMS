@@ -77,6 +77,8 @@
     <Compile Include="ModelFinancePaid.cs" />
     <Compile Include="ModelProductIn.cs" />
     <Compile Include="ModelTransfer.cs" />
+    <Compile Include="ModelInventoryProductLog.cs" />
+    <Compile Include="ModelInventoryMaterialsLog.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Enum\Enum.csproj">

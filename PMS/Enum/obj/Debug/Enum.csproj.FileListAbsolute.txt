@@ -6,3 +6,4 @@ C:\Work\project\NET\PMS\PMS\Enum\bin\Debug\Enum.dll
 C:\Work\project\NET\PMS\PMS\Enum\bin\Debug\Enum.pdb
 C:\Work\project\NET\PMS\PMS\Enum\obj\Debug\Enum.dll
 C:\Work\project\NET\PMS\PMS\Enum\obj\Debug\Enum.pdb
+D:\p\yd\PMS\source\PMS\PMS\Enum\obj\Debug\Enum.csprojResolveAssemblyReference.cache

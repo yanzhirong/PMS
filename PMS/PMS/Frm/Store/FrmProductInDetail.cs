@@ -86,7 +86,7 @@ namespace PMS.Frm.Store
                 for (int i = 0; i < this.cmb_inputType.Items.Count; i++)
                 {
                     ModelItem modelItem = (ModelItem)this.cmb_inputType.Items[i];
-                    if (model.type == (int)modelItem.itemKey)
+                    if (model.inputType == (int)modelItem.itemKey)
                     {
                         this.cmb_inputType.SelectedIndex = i;
                         break;
@@ -94,7 +94,7 @@ namespace PMS.Frm.Store
                 }
 
                 //入库状态
-                this.cmb_inputStatus.SelectedIndex = model.status;
+                this.cmb_inputStatus.SelectedIndex = model.inputStatus;
 
                 //生产单号
                 this.txt_produceCode.Text = model.produceCode;
@@ -132,7 +132,7 @@ namespace PMS.Frm.Store
                 }
 
                 //入库数量
-                this.txt_inputNum.Text = model.num.ToString();
+                this.txt_inputNum.Text = model.inputNum.ToString();
 
                 //入库日期
                 this.dtp_inputDate.Value = ConvertUtils.ConvertToDate(model.inputDate, "yyyy-MM-dd");
@@ -192,8 +192,8 @@ namespace PMS.Frm.Store
             ModelProductIn model = new ModelProductIn();
             model.id = m_productInId;
             model.inputCode = m_inputCode;
-            model.type = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_inputType.SelectedItem).itemKey);
-            model.status = this.cmb_inputStatus.SelectedIndex;
+            model.inputType = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_inputType.SelectedItem).itemKey);
+            model.inputStatus = this.cmb_inputStatus.SelectedIndex;
 
             model.produceCode = this.txt_produceCode.Text.Trim();
             model.produceDate = this.dtp_produceDate.Value;
@@ -202,7 +202,8 @@ namespace PMS.Frm.Store
             model.factoryId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_factory.SelectedItem).itemKey);
             model.productId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_product.SelectedItem).itemKey);
 
-            model.num = ConvertUtils.ConvertToInt(this.txt_inputNum.Text.Trim());
+            model.inputNum = ConvertUtils.ConvertToInt(this.txt_inputNum.Text.Trim());
+            model.stockNum = ConvertUtils.ConvertToInt(this.txt_inputNum.Text.Trim());
             model.inputDate = this.dtp_inputDate.Value;
 
             model.remark = this.txt_remark.Text.Trim();

@@ -51,7 +51,7 @@ namespace Bll
         {
             return m_dalStore.GetProductStore(_productName, _factoryId);
         }
-        
+
         public DataTable GetMaterialsStore(string _materialsName, int _factoryId)
         {
             return m_dalStore.GetMaterialsStore(_materialsName, _factoryId);
@@ -82,6 +82,30 @@ namespace Bll
             int rtn = 0;
 
             //TODO
+
+            return rtn > 0 ? true : false;
+        }
+
+        public DataTable GetStore(int _type, string _name, int _factoryId, DateTime _expiresDate, DateTime _inputDate_begin, DateTime _inputDate_end, decimal _stockNum)
+        {
+            return m_dalStore.GetStore(_type, _name, _factoryId, _expiresDate, _inputDate_begin, _inputDate_end, _stockNum);
+        }
+
+        public DataTable GetStoreExport(int _type, string _name, int _factoryId, DateTime _expiresDate, DateTime _inputDate_begin, DateTime _inputDate_end, decimal _stockNum)
+        {
+            return m_dalStore.GetStoreExport(_type, _name, _factoryId, _expiresDate, _inputDate_begin, _inputDate_end, _stockNum);
+        }
+
+        public Boolean UpdateInventoryProduct(ModelProductIn _modelProductIn, ModelInventoryProductLog _modelInventoryProductLog)
+        {
+            int rtn = m_dalStore.UpdateInventoryProduct(_modelProductIn, _modelInventoryProductLog);
+
+            return rtn > 0 ? true : false;
+        }
+
+        public Boolean UpdateInventoryMaterials(ModelMaterialsIn _modelMaterialsIn, ModelInventoryMaterialsLog _modelInventoryMaterialsLog)
+        {
+            int rtn = m_dalStore.UpdateInventoryMaterials(_modelMaterialsIn, _modelInventoryMaterialsLog);
 
             return rtn > 0 ? true : false;
         }

@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Frm\Finance\FrmReportSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Finance\FrmReportSale.Designer.cs">
+      <DependentUpon>FrmReportSale.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\Login\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +242,18 @@
     <Compile Include="Frm\Store\FrmTransferDetail.Designer.cs">
       <DependentUpon>FrmTransferDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm\Store\FrmInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Store\FrmInventory.Designer.cs">
+      <DependentUpon>FrmInventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Store\FrmInventoryDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Store\FrmInventoryDetail.Designer.cs">
+      <DependentUpon>FrmInventoryDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\Sys\FrmSysUserDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -294,6 +312,9 @@
     <Compile Include="Frm\Sys\FrmSysConfig.Designer.cs">
       <DependentUpon>FrmSysConfig.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Frm\Finance\FrmReportSale.resx">
+      <DependentUpon>FrmReportSale.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm\Login\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -387,6 +408,12 @@
     <EmbeddedResource Include="Frm\Store\FrmTransferDetail.resx">
       <DependentUpon>FrmTransferDetail.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Store\FrmInventory.resx">
+      <DependentUpon>FrmInventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Store\FrmInventoryDetail.resx">
+      <DependentUpon>FrmInventoryDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm\Sys\FrmSysUser.resx">
       <DependentUpon>FrmSysUser.cs</DependentUpon>
     </EmbeddedResource>
@@ -462,9 +489,7 @@
   <ItemGroup>
     <Content Include="PMS.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Frm\Finance\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -39,7 +39,7 @@ namespace Bll
         {
             int rtn = 0;
             _model.inputCode = BllSeq.GetCode("productInCode");
-            _model.status = 1;
+            _model.inputStatus = 1;
             rtn = m_dalProductIn.AddProductIn(_model);
 
             return rtn == 0 ? false : true;
@@ -52,7 +52,7 @@ namespace Bll
             {
                 _model.inputCode = BllSeq.GetCode("productInCode");
             }
-            _model.status = 1;
+            _model.inputStatus = 1;
             rtn = m_dalProductIn.UpdateProductIn(_model);
 
             return rtn == 0 ? false : true;

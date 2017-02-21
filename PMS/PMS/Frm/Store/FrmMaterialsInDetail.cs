@@ -271,6 +271,7 @@ namespace PMS.Frm.Store
             modelMaterialsIn.expiresDate = this.dtp_produceDate.Value.AddDays(materials.expiredDays);
 
             modelMaterialsIn.inputNum = ConvertUtils.ConvertToDecimal(this.txt_inputNum.Text.Trim());
+            modelMaterialsIn.stockNum = ConvertUtils.ConvertToDecimal(this.txt_inputNum.Text.Trim());
             modelMaterialsIn.inputUnit = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_inputUint.SelectedItem).itemKey);
             modelMaterialsIn.inputDate = this.dtp_inputDate.Value;
 

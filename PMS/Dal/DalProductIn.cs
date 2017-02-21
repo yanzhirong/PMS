@@ -21,12 +21,12 @@ namespace Dal
             sbSql.Append("       a.inputCode, ");
             sbSql.Append("       b.name factoryName, ");
             sbSql.Append("       c.name productName, ");
-            sbSql.Append("       a.num inputNum, ");
+            sbSql.Append("       a.inputNum, ");
             sbSql.Append("       a.produceCode, ");
             sbSql.Append("       date_format(a.produceDate, '%Y-%m-%d') produceDate, ");
             sbSql.Append("       date_format(a.expiresDate, '%Y-%m-%d') expiresDate, ");
-            sbSql.Append("       case a.status when 0 then '请求入库' else '完成入库' end inputStatus, ");
-            sbSql.Append("       a.status inputStatusCode, ");
+            sbSql.Append("       case a.inputStatus when 0 then '请求入库' else '完成入库' end inputStatus, ");
+            sbSql.Append("       a.inputStatus inputStatusCode, ");
             sbSql.Append("       date_format(a.inputDate, '%Y-%m-%d') inputDate, ");
             sbSql.Append("       ifnull(f.cnt,0) outputCnt, ");
             sbSql.Append("       case ifnull(f.cnt,0) when 0 then '修改' else '查看' end modifyBtn, ");
@@ -57,10 +57,10 @@ namespace Dal
             }
             if (_inputStatus > -1)
             {
-                sbSql.Append("  and a.status = ").Append(_inputStatus).Append(" ");
+                sbSql.Append("  and a.inputStatus = ").Append(_inputStatus).Append(" ");
             }
             sbSql.Append("  and (d.status is null or d.status = " + (int)Enum.EnumProduceOrderStatus.Produced + " or d.status = " + (int)Enum.EnumProduceOrderStatus.Complete + ") ");
-            sbSql.Append("  and (a.status = 0 or ( a.status = 1 ");
+            sbSql.Append("  and (a.inputStatus = 0 or ( a.inputStatus = 1 ");
             sbSql.Append("  and a.inputDate >= '").Append(_beginTime).Append("' ");
             sbSql.Append("  and a.inputDate <= '").Append(_endTime).Append("')) ");
             sbSql.Append("order by a.modifyTime desc");
@@ -89,12 +89,13 @@ namespace Dal
             sbSql.Append("       inputCode, ");
             sbSql.Append("       factoryId, ");
             sbSql.Append("       productId, ");
-            sbSql.Append("       num, ");
+            sbSql.Append("       inputNum, ");
+            sbSql.Append("       stockNum, ");
             sbSql.Append("       produceDate, ");
             sbSql.Append("       expiresDate, ");
             sbSql.Append("       produceCode, ");
-            sbSql.Append("       type, ");
-            sbSql.Append("       status, ");
+            sbSql.Append("       inputType, ");
+            sbSql.Append("       inputStatus, ");
             sbSql.Append("       inputDate, ");
             sbSql.Append("       remark, ");
             sbSql.Append("       isDelete, ");
@@ -104,12 +105,13 @@ namespace Dal
             sbSql.Append("      '" + _model.inputCode + "', ");
             sbSql.Append("       " + _model.factoryId + ", ");
             sbSql.Append("       " + _model.productId + ", ");
-            sbSql.Append("       " + _model.num + ", ");
+            sbSql.Append("       " + _model.inputNum + ", ");
+            sbSql.Append("       " + _model.stockNum + ", ");
             sbSql.Append("      '" + _model.produceDate + "', ");
             sbSql.Append("      '" + _model.expiresDate + "', ");
             sbSql.Append("      '" + _model.produceCode + "', ");
-            sbSql.Append("       " + _model.type + ", ");
-            sbSql.Append("       " + _model.status + ", ");
+            sbSql.Append("       " + _model.inputType + ", ");
+            sbSql.Append("       " + _model.inputStatus + ", ");
             sbSql.Append("      '" + _model.inputDate + "', ");
             sbSql.Append("      '" + _model.remark + "', ");
             sbSql.Append("       " + _model.isDelete + ", ");
@@ -127,7 +129,7 @@ namespace Dal
                 sbSql.Append("       modifyBy = '" + _model.modifyBy + "',");
                 sbSql.Append("       modifyTime = '" + _model.modifyTime + "' ");
                 sbSql.Append(" where isDelete = 0 ");
-                sbSql.Append("   and (select min(status) ");
+                sbSql.Append("   and (select min(inputStatus) ");
                 sbSql.Append("          from p_product_input ");
                 sbSql.Append("         where produceCode = '" + _model.produceCode + "' ");
                 sbSql.Append("           and isDelete = 0) = 1 ");
@@ -146,12 +148,13 @@ namespace Dal
             sbSql.Append("set inputCode = '" + _model.inputCode + "',");
             sbSql.Append("    factoryId = " + _model.factoryId + ",");
             sbSql.Append("    productId = " + _model.productId + ",");
-            sbSql.Append("    num = " + _model.num + ",");
+            sbSql.Append("    inputNum = " + _model.inputNum + ",");
+            sbSql.Append("    stockNum = " + _model.stockNum + ",");
             sbSql.Append("    produceDate = '" + _model.produceDate + "',");
             sbSql.Append("    expiresDate = '" + _model.expiresDate + "',");
             sbSql.Append("    produceCode = '" + _model.produceCode + "',");
-            sbSql.Append("    type = " + _model.type + ",");
-            sbSql.Append("    status = " + _model.status + ",");
+            sbSql.Append("    inputType = " + _model.inputType + ",");
+            sbSql.Append("    inputStatus = " + _model.inputStatus + ",");
             sbSql.Append("    inputDate = '" + _model.inputDate + "',");
             sbSql.Append("    remark = '" + _model.remark + "',");
             sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
@@ -169,7 +172,7 @@ namespace Dal
                 sbSql.Append("       modifyBy = '" + _model.modifyBy + "',");
                 sbSql.Append("       modifyTime = '" + _model.modifyTime + "' ");
                 sbSql.Append(" where isDelete = 0 ");
-                sbSql.Append("   and (select min(status) ");
+                sbSql.Append("   and (select min(inputStatus) ");
                 sbSql.Append("          from p_product_input ");
                 sbSql.Append("         where produceCode = '" + _model.produceCode + "' ");
                 sbSql.Append("           and isDelete = 0) = 1 ");

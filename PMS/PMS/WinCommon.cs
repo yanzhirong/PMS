@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
+using System.Diagnostics;
 
 namespace PMS
 {
@@ -46,8 +47,8 @@ namespace PMS
                 if (menu.parentId == parentId)
                 {
                     ToolStripMenuItem mitem = new ToolStripMenuItem();
-                    mitem.Text = menu.menuName;
-                    mitem.Tag = menu.formName;
+                    mitem.Text = menu.menuName.Trim();
+                    mitem.Tag = menu.formName.Trim();
                     mi.DropDownItems.Add(mitem);
                     mitem.Click += new EventHandler(BindClickToInstinse);
                 }
@@ -154,6 +155,15 @@ namespace PMS
         /// </summary>
         public static void Exit()
         {
+            //关闭Excel
+            foreach (Process p in Process.GetProcessesByName("Excel"))
+            {
+                if (string.IsNullOrEmpty(p.MainWindowTitle))
+                {
+                    p.Kill();
+                }
+            }
+
             System.Environment.Exit(0);
         }
 

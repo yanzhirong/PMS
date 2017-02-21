@@ -14,6 +14,7 @@ namespace Model
         public int materialsId { set; get; }
         public decimal inputNum { set; get; }
         public int inputUnit { set; get; }
+        public decimal stockNum { set; get; }
         public DateTime produceDate { set; get; }
         public DateTime expiresDate { set; get; }
         public string purchaseCode { set; get; }

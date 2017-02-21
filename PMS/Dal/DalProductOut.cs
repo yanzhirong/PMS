@@ -288,8 +288,8 @@ namespace Dal
             sbSql.Append("select a.id, ");
             sbSql.Append("       a.inputCode, ");
             sbSql.Append("       b.name, ");
-            sbSql.Append("       a.num numDisplay, ");
-            sbSql.Append("       a.num, ");
+            sbSql.Append("       a.inputNum numDisplay, ");
+            sbSql.Append("       a.inputNum num, ");
             sbSql.Append("       0 unit, ");
             sbSql.Append("       date_format(a.expiresDate, '%Y-%m-%d') expiresDate ");
             sbSql.Append("from p_product_input a ");
@@ -298,8 +298,8 @@ namespace Dal
             sbSql.Append("where a.isDelete = 0 ");
             sbSql.Append("  and a.factoryId = ").Append(_factoryId).Append(" ");
             sbSql.Append("  and a.productId = ").Append(_productId).Append(" ");
-            sbSql.Append("  and a.num > 0 ");
-            sbSql.Append("  and a.status = 1 ");
+            sbSql.Append("  and a.inputNum > 0 ");
+            sbSql.Append("  and a.inputStatus = 1 ");
             sbSql.Append("order by a.expiresDate ");
 
             return Dal.DBHelper.Select(sbSql.ToString());
@@ -342,7 +342,7 @@ namespace Dal
                 //减少库存
                 sbSql.Clear();
                 sbSql.Append("update p_product_input ");
-                sbSql.Append("set num = ").Append(ConvertUtils.ConvertToDecimal(dc["stockNum"])).Append(",");
+                sbSql.Append("set stockNum = ").Append(ConvertUtils.ConvertToDecimal(dc["stockNum"])).Append(",");
                 sbSql.Append("    modifyBy = '" + userName + "',");
                 sbSql.Append("    modifyTime = '" + DateTime.Now + "' ");
                 sbSql.Append("where id = " + ConvertUtils.ConvertToInt(dc["inputId"]));
