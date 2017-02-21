@@ -20,5 +20,6 @@ namespace Enum
         MaterialsInputType = 10,
         ProduceStatus = 11,
         PurchaseStatus = 12,
+        ReceiveStatus = 13,
     }
 }

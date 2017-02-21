@@ -31,6 +31,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReportSale));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmb_orderStatus = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cmb_saler = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmb_customer = new System.Windows.Forms.ComboBox();
             this.lbl_stockNum = new System.Windows.Forms.Label();
             this.dtp_begin = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
@@ -45,11 +50,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.lbl_tile = new System.Windows.Forms.Label();
             this.btn_export = new System.Windows.Forms.Button();
-            this.cmb_customer = new System.Windows.Forms.ComboBox();
-            this.cmb_saler = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmb_orderStatus = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.factoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerName = new System.Windows.Forms.DataGridViewLinkColumn();
@@ -58,9 +58,11 @@
             this.orderPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paidStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paidMoney = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReceivedStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receivedPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.excuteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.customerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderStatusCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -86,6 +88,53 @@
             this.groupBox1.Size = new System.Drawing.Size(1131, 83);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
+            // 
+            // cmb_orderStatus
+            // 
+            this.cmb_orderStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_orderStatus.FormattingEnabled = true;
+            this.cmb_orderStatus.Location = new System.Drawing.Point(350, 48);
+            this.cmb_orderStatus.Name = "cmb_orderStatus";
+            this.cmb_orderStatus.Size = new System.Drawing.Size(120, 20);
+            this.cmb_orderStatus.TabIndex = 109;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(288, 52);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 12);
+            this.label3.TabIndex = 108;
+            this.label3.Text = "订单状态：";
+            // 
+            // cmb_saler
+            // 
+            this.cmb_saler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_saler.FormattingEnabled = true;
+            this.cmb_saler.Location = new System.Drawing.Point(558, 16);
+            this.cmb_saler.Name = "cmb_saler";
+            this.cmb_saler.Size = new System.Drawing.Size(120, 20);
+            this.cmb_saler.TabIndex = 107;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(496, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 106;
+            this.label1.Text = "销    售：";
+            // 
+            // cmb_customer
+            // 
+            this.cmb_customer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_customer.FormattingEnabled = true;
+            this.cmb_customer.Location = new System.Drawing.Point(350, 16);
+            this.cmb_customer.Name = "cmb_customer";
+            this.cmb_customer.Size = new System.Drawing.Size(120, 20);
+            this.cmb_customer.TabIndex = 105;
             // 
             // lbl_stockNum
             // 
@@ -197,9 +246,11 @@
             this.orderPrice,
             this.orderStatus,
             this.deliveryDate,
-            this.paidStatus,
-            this.paidMoney,
-            this.excuteBtn});
+            this.ReceivedStatus,
+            this.receivedPrice,
+            this.excuteBtn,
+            this.customerId,
+            this.orderStatusCode});
             this.dataGridView1.Location = new System.Drawing.Point(30, 208);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 20;
@@ -235,53 +286,6 @@
             this.btn_export.Text = "导出";
             this.btn_export.UseVisualStyleBackColor = true;
             this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
-            // 
-            // cmb_customer
-            // 
-            this.cmb_customer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_customer.FormattingEnabled = true;
-            this.cmb_customer.Location = new System.Drawing.Point(350, 16);
-            this.cmb_customer.Name = "cmb_customer";
-            this.cmb_customer.Size = new System.Drawing.Size(120, 20);
-            this.cmb_customer.TabIndex = 105;
-            // 
-            // cmb_saler
-            // 
-            this.cmb_saler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_saler.FormattingEnabled = true;
-            this.cmb_saler.Location = new System.Drawing.Point(558, 16);
-            this.cmb_saler.Name = "cmb_saler";
-            this.cmb_saler.Size = new System.Drawing.Size(120, 20);
-            this.cmb_saler.TabIndex = 107;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(496, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
-            this.label1.TabIndex = 106;
-            this.label1.Text = "销    售：";
-            // 
-            // cmb_orderStatus
-            // 
-            this.cmb_orderStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_orderStatus.FormattingEnabled = true;
-            this.cmb_orderStatus.Location = new System.Drawing.Point(350, 48);
-            this.cmb_orderStatus.Name = "cmb_orderStatus";
-            this.cmb_orderStatus.Size = new System.Drawing.Size(120, 20);
-            this.cmb_orderStatus.TabIndex = 109;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(288, 52);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 12);
-            this.label3.TabIndex = 108;
-            this.label3.Text = "订单状态：";
             // 
             // id
             // 
@@ -349,18 +353,19 @@
             this.deliveryDate.ReadOnly = true;
             this.deliveryDate.Width = 80;
             // 
-            // paidStatus
+            // ReceivedStatus
             // 
-            this.paidStatus.HeaderText = "支付状态";
-            this.paidStatus.Name = "paidStatus";
-            this.paidStatus.ReadOnly = true;
+            this.ReceivedStatus.DataPropertyName = "receivedStatus";
+            this.ReceivedStatus.HeaderText = "收款状态";
+            this.ReceivedStatus.Name = "ReceivedStatus";
+            this.ReceivedStatus.ReadOnly = true;
             // 
-            // paidMoney
+            // receivedPrice
             // 
-            this.paidMoney.DataPropertyName = "paidMoney";
-            this.paidMoney.HeaderText = "支付金额";
-            this.paidMoney.Name = "paidMoney";
-            this.paidMoney.ReadOnly = true;
+            this.receivedPrice.DataPropertyName = "receivedPrice";
+            this.receivedPrice.HeaderText = "收款金额";
+            this.receivedPrice.Name = "receivedPrice";
+            this.receivedPrice.ReadOnly = true;
             // 
             // excuteBtn
             // 
@@ -369,6 +374,20 @@
             this.excuteBtn.Name = "excuteBtn";
             this.excuteBtn.Text = "";
             this.excuteBtn.Width = 80;
+            // 
+            // customerId
+            // 
+            this.customerId.DataPropertyName = "customerId";
+            this.customerId.HeaderText = "customerId";
+            this.customerId.Name = "customerId";
+            this.customerId.Visible = false;
+            // 
+            // orderStatusCode
+            // 
+            this.orderStatusCode.DataPropertyName = "orderStatusCode";
+            this.orderStatusCode.HeaderText = "orderStatusCode";
+            this.orderStatusCode.Name = "orderStatusCode";
+            this.orderStatusCode.Visible = false;
             // 
             // FrmReportSale
             // 
@@ -429,9 +448,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn orderPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn deliveryDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn paidStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn paidMoney;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ReceivedStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn receivedPrice;
         private System.Windows.Forms.DataGridViewButtonColumn excuteBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customerId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderStatusCode;
 
     }
 }

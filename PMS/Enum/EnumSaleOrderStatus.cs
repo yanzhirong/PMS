@@ -12,5 +12,6 @@ namespace Enum
         Producing = 2,
         WaitTransport = 3,
         Complete = 4,
+        Cancel = 5,
     }
 }

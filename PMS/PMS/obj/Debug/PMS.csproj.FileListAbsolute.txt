@@ -165,10 +165,6 @@ C:\Work\project\NET\PMS\PMS\PMS\obj\Debug\PMS.Frm.Sys.FrmSysFactoryDetail.resour
 C:\Work\project\NET\PMS\PMS\PMS\obj\Debug\PMS.Frm.Sys.FrmSysConfig.resources
 C:\Work\project\NET\PMS\PMS\PMS\obj\Debug\PMS.csproj.GenerateResource.Cache
 C:\Work\project\NET\PMS\PMS\PMS\obj\Debug\PMS.Frm.Product.FrmProductQuery.resources
-C:\Work\project\NET\PMS\PMS\PMS\bin\Debug\Dal.dll
-C:\Work\project\NET\PMS\PMS\PMS\bin\Debug\Bll.pdb
-C:\Work\project\NET\PMS\PMS\PMS\bin\Debug\Model.pdb
-C:\Work\project\NET\PMS\PMS\PMS\bin\Debug\Dal.pdb
 C:\Work\project\NET\PMS\PMS\PMS\obj\Debug\PMS.Frm.Store.FrmTransfer.resources
 C:\Work\project\NET\PMS\PMS\PMS\obj\Debug\PMS.Frm.Store.FrmTransferDetail.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Product.FrmProductQuery.resources
@@ -180,3 +176,10 @@ D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Model.pdb
 D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Dal.pdb
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Store.FrmInventory.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Store.FrmInventoryDetail.resources
+C:\Work\project\NET\PMS\PMS\PMS\obj\Debug\PMS.Frm.Finance.FrmReportSale.resources
+C:\Work\project\NET\PMS\PMS\PMS\obj\Debug\PMS.Frm.Store.FrmInventory.resources
+C:\Work\project\NET\PMS\PMS\PMS\obj\Debug\PMS.Frm.Store.FrmInventoryDetail.resources
+C:\Work\project\NET\PMS\PMS\PMS\bin\Debug\Dal.dll
+C:\Work\project\NET\PMS\PMS\PMS\bin\Debug\Bll.pdb
+C:\Work\project\NET\PMS\PMS\PMS\bin\Debug\Model.pdb
+C:\Work\project\NET\PMS\PMS\PMS\bin\Debug\Dal.pdb

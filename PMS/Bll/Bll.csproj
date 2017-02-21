@@ -60,6 +60,7 @@
     <Compile Include="BllMaterialsIn.cs" />
     <Compile Include="BllMaterialsOut.cs" />
     <Compile Include="BllProductIn.cs" />
+    <Compile Include="BllFinance.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
