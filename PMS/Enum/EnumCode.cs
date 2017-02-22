@@ -12,7 +12,7 @@ namespace Enum
         ProductForm = 2,
         WeightUnit = 3,
         RoleType = 4,
-        PayType = 5,
+        Settlement = 5,
         PayStatus = 6,
         SaleOrderStatus = 7,
         OutputType = 8,

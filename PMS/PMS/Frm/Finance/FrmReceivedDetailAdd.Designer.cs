@@ -34,7 +34,7 @@
             this.lbl_title = new System.Windows.Forms.Label();
             this.grb_productOut = new System.Windows.Forms.GroupBox();
             this.txt_remark = new System.Windows.Forms.TextBox();
-            this.ttx_otherType = new System.Windows.Forms.TextBox();
+            this.txt_otherType = new System.Windows.Forms.TextBox();
             this.cmb_receiveType = new System.Windows.Forms.ComboBox();
             this.dtp_receiveDate = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
@@ -80,7 +80,7 @@
             // grb_productOut
             // 
             this.grb_productOut.Controls.Add(this.txt_remark);
-            this.grb_productOut.Controls.Add(this.ttx_otherType);
+            this.grb_productOut.Controls.Add(this.txt_otherType);
             this.grb_productOut.Controls.Add(this.cmb_receiveType);
             this.grb_productOut.Controls.Add(this.dtp_receiveDate);
             this.grb_productOut.Controls.Add(this.label5);
@@ -105,15 +105,15 @@
             this.txt_remark.Size = new System.Drawing.Size(525, 21);
             this.txt_remark.TabIndex = 5;
             // 
-            // ttx_otherType
+            // txt_otherType
             // 
-            this.ttx_otherType.BackColor = System.Drawing.Color.White;
-            this.ttx_otherType.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.ttx_otherType.Location = new System.Drawing.Point(380, 87);
-            this.ttx_otherType.MaxLength = 30;
-            this.ttx_otherType.Name = "ttx_otherType";
-            this.ttx_otherType.Size = new System.Drawing.Size(222, 21);
-            this.ttx_otherType.TabIndex = 4;
+            this.txt_otherType.BackColor = System.Drawing.Color.White;
+            this.txt_otherType.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_otherType.Location = new System.Drawing.Point(380, 87);
+            this.txt_otherType.MaxLength = 30;
+            this.txt_otherType.Name = "txt_otherType";
+            this.txt_otherType.Size = new System.Drawing.Size(222, 21);
+            this.txt_otherType.TabIndex = 4;
             // 
             // cmb_receiveType
             // 
@@ -233,7 +233,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker dtp_receiveDate;
         private System.Windows.Forms.TextBox txt_remark;
-        private System.Windows.Forms.TextBox ttx_otherType;
+        private System.Windows.Forms.TextBox txt_otherType;
         private System.Windows.Forms.ComboBox cmb_receiveType;
     }
 }

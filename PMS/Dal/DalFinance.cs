@@ -254,5 +254,84 @@ namespace Dal
 
             return Dal.DBHelper.Select(sbSql.ToString());
         }
+
+        public int AddReceivedDetail(ModelFinanceReceivedDetail _model)
+        {
+            List<string> listSql = new List<string>();
+
+            sbSql.Clear();
+            sbSql.Append("insert into ");
+            sbSql.Append("       r_finance_receive_detail ( ");
+            sbSql.Append("       orderCode, ");
+            sbSql.Append("       receivedMoney, ");
+            sbSql.Append("       receivedDate, ");
+            sbSql.Append("       receivedType, ");
+            sbSql.Append("       otherType, ");
+            sbSql.Append("       remark, ");
+            sbSql.Append("       isDelete, ");
+            sbSql.Append("       createBy, ");
+            sbSql.Append("       createTime");
+            sbSql.Append("       ) value ( ");
+            sbSql.Append("       " + _model.orderCode + ", ");
+            sbSql.Append("       " + _model.receivedMoney + ", ");
+            sbSql.Append("       " + _model.receivedDate + ", ");
+            sbSql.Append("       " + _model.receivedType + ", ");
+            sbSql.Append("      '" + _model.otherType + "', ");
+            sbSql.Append("      '" + _model.remark + "', ");
+            sbSql.Append("       " + _model.isDelete + ", ");
+            sbSql.Append("      '" + _model.createBy + "', ");
+            sbSql.Append("      '" + _model.createTime + "')");
+            listSql.Add(sbSql.ToString());
+
+            sbSql.Clear();
+            sbSql.Append("update p_finance_receive ");
+            sbSql.Append("set receivedPrice = ifnull(receivedPrice,0) + " + _model.receivedMoney + ",");
+            sbSql.Append("    receivedStatus = " + (int)Enum.EnumReceiveStatus.Receiving + ",");
+            sbSql.Append("    modifyBy = '" + _model.createBy + "',");
+            sbSql.Append("    modifyTime = '" + _model.createTime + "' ");
+            sbSql.Append("where orderCode = '" + _model.orderCode + "' ");
+            listSql.Add(sbSql.ToString());
+
+            sbSql.Clear();
+            sbSql.Append("update p_finance_receive ");
+            sbSql.Append("set receivedStatus = " + (int)Enum.EnumReceiveStatus.Complete + ",");
+            sbSql.Append("    modifyBy = '" + _model.createBy + "',");
+            sbSql.Append("    modifyTime = '" + _model.createTime + "' ");
+            sbSql.Append("where orderCode = '" + _model.orderCode + "' ");
+            sbSql.Append("  and receivedPrice >= orderPrice ");
+            listSql.Add(sbSql.ToString());
+
+            return Dal.DBHelper.ExcuteTransaction(listSql);
+        }
+
+        public DataTable GetReceiveById(int _receiveId)
+        {
+            sbSql.Clear();
+            sbSql.Append("select * ");
+            sbSql.Append("  from p_finance_receive ");
+            sbSql.Append(" where isDelete = 0 ");
+            sbSql.Append("   and id = ").Append(_receiveId).Append(" ");
+
+            return Dal.DBHelper.Select(sbSql.ToString());
+        }
+
+        public DataTable GetReceivedDetailByOrderCode(string _orderCode)
+        {
+            sbSql.Clear();
+            sbSql.Append("select ");
+            sbSql.Append("       a.receivedMoney, ");
+            sbSql.Append("       a.receivedDate, ");
+            sbSql.Append("       case a.receivedType when a.otherType else b.value end receivedType, ");
+            sbSql.Append("       a.remark ");
+            sbSql.Append("  from r_finance_receive_detail a");
+            sbSql.Append("  left join m_code b ");
+            sbSql.Append("    on a.receivedType = b.subCode ");
+            sbSql.Append("   and b.code = 5 ");
+            sbSql.Append(" where a.isDelete = 0 ");
+            sbSql.Append("   and a.orderCode = '").Append(_orderCode).Append("' ");
+            sbSql.Append(" order by a.receivedDate ");
+
+            return Dal.DBHelper.Select(sbSql.ToString());
+        }
     }
 }

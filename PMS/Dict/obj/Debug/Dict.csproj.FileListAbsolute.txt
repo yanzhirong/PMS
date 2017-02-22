@@ -11,4 +11,3 @@ C:\Work\project\NET\PMS\PMS\PMS\bin\Debug\Dict.pdb
 C:\Work\project\NET\PMS\PMS\DICT\obj\Debug\Dict.dll
 C:\Work\project\NET\PMS\PMS\DICT\obj\Debug\Dict.pdb
 D:\p\yd\PMS\source\PMS\PMS\DICT\obj\Debug\Dict.csprojResolveAssemblyReference.cache
-C:\Work\project\NET\PMS\PMS\DICT\obj\Debug\Dict.csprojResolveAssemblyReference.cache

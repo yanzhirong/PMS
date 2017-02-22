@@ -18,13 +18,7 @@ namespace PMS.Frm.Finance
         private string m_orderCode;
         private decimal m_maxReceiveMoney;
 
-        private BllCustomer m_bllCustomer = new BllCustomer();
-        private BllProduct m_bllProduct = new BllProduct();
-        private BllProductOut m_bllProductOut = new BllProductOut();
-        private BllStore m_bllStore = new BllStore();
-        private BllProduce m_bllProduce = new BllProduce();
-        private BllFactory m_bllFactory = new BllFactory();
-        private BllUser m_bllUser = new BllUser();
+        private BllFinance m_bllFinance = new BllFinance();
         private BllCode m_bllCode = new BllCode();
 
         public FrmReceivedDetailAdd(string _orderCode, decimal _maxReceiveMoney)
@@ -35,9 +29,7 @@ namespace PMS.Frm.Finance
         }
 
         private void FrmReceivedDetailAdd_Load(object sender, EventArgs e)
-        {
-            LoginUserInfo.LoginUser.currentFrom = this;
-            
+        {            
             //初始化
             init();
         }
@@ -62,71 +54,9 @@ namespace PMS.Frm.Finance
         /// </summary>
         private void init()
         {
-            //出库单号
-            this.txt_receiveMoney.Text = m_outputCode;
-            //工厂
-            this.txt_customer.Text = m_bllFactory.GetFactoryById(m_factoryId).name;
-            //出库产品
-            this.txt_orderStatus.Text = m_bllProduct.GetProductById(m_productId).name;
-
-            if (m_outputDetailId > 0)
-            {
-                ModelProductOutputDetail modelProductOutputDetail = m_bllProductOut.GetProductOutDetailById(m_outputDetailId);
-                //出库数量
-                this.txt_receiveStatus.Text = modelProductOutputDetail.productNum.ToString();
-
-                //生产申请数
-                this.txt_produceNum.Text = modelProductOutputDetail.productNum.ToString();
-
-                //实际已出库数
-                m_realityOutputNum = modelProductOutputDetail.realityOutputNum;
-
-                if (modelProductOutputDetail.outputStatus == 1)
-                {
-                    this.grb_productOut.Enabled = false;
-                    this.lbl_selectOutput.Visible = false;
-                    this.dataGridView1.Visible = false;
-                    this.btn_submit.Visible = false;
-                    this.btn_cancel.Visible = false;
-                    this.btn_close.Visible = true;
-                }
-                else
-                {
-                    this.grb_productOut.Enabled = true;
-                    this.lbl_selectOutput.Visible = true;
-                    this.dataGridView1.Visible = true;
-                    this.btn_submit.Visible = true;
-                    this.btn_cancel.Visible = true;
-                    this.btn_close.Visible = false;
-                }
-            }
-            else
-            {
-                this.grb_productOut.Enabled = true;
-                this.lbl_selectOutput.Visible = true;
-                this.dataGridView1.Visible = true;
-                this.btn_submit.Visible = true;
-                this.btn_cancel.Visible = true;
-                this.btn_close.Visible = false;
-            }
-
-            //设置列表信息
-            SetDataGridViewStyle();
-
-            //初始化列表
-            doSelect();
+            List<ModelItem> listItem = m_bllCode.GetCodeItem((int)Enum.EnumCode.Settlement, false);
+            WinCommon.BindComboBox(ref this.cmb_receiveType, listItem);
         }
-
-        //查询
-        private void doSelect()
-        {
-            this.dataGridView1.DataSource = m_bllProductOut.GetProductOutSelect(m_factoryId, m_productId);
-            this.dataGridView1.Refresh();
-
-            this.dataGridView1.DataSource = m_bllStore.GetProductOutputLog(m_outputCode, m_productId);
-            this.dataGridView1.Refresh();
-        }
-
         #endregion
 
         #region 提交
@@ -144,45 +74,30 @@ namespace PMS.Frm.Finance
                 return ;
             }
 
-            //输入的出库数合计
-            int selectedAllOutputNum = 0;
+            ModelFinanceReceivedDetail model = new ModelFinanceReceivedDetail();
 
-            List<Dictionary<string, object>> listOutput = new List<Dictionary<string, object>>();
-            for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
-            {
-                //选择的行
-                if (this.dataGridView1.Rows[i].Cells["selected"].EditedFormattedValue.ToString() == "True")
-                {
-                    Dictionary<string, object> dc = new Dictionary<string, object>();
-                    dc.Add("inputId", ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["id"].Value));
-                    dc.Add("inputCode", ConvertUtils.ConvertToString(this.dataGridView1.Rows[i].Cells["inputCode"].Value));
+            model.orderCode = m_orderCode;
+            model.receivedMoney = ConvertUtils.ConvertToDecimal(this.txt_receiveMoney.Text.Trim());
+            model.receivedDate = this.dtp_receiveDate.Value;
+            model.receivedType = (int)(((ModelItem)this.cmb_receiveType.SelectedItem).itemKey);
+            model.otherType = this.txt_otherType.Text.Trim();
+            model.remark = this.txt_remark.Text.Trim();
 
-                    //出库数
-                    int curOutPutNum = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["outputNum"].Value);
-                    dc.Add("outputNum", curOutPutNum);
+            model.isDelete = 0;
+            model.createBy = LoginUserInfo.LoginUser.loginUser.userName;
+            model.createTime = DateTime.Now;
 
-                    //出库后剩余在库数
-                    int stockNum = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["num"].Value);
-                    stockNum = stockNum - curOutPutNum;
-                    dc.Add("stockNum", stockNum);
-
-                    listOutput.Add(dc);
-
-                    selectedAllOutputNum = selectedAllOutputNum + curOutPutNum;
-                }
-            }
-
-            rtn = m_bllProductOut.doOutPut(m_outputCode, m_outputDetailId, m_factoryId, m_productId, m_applyMemberId, selectedAllOutputNum, listOutput, LoginUserInfo.LoginUser.loginUser.userName);
+            rtn = m_bllFinance.AddReceivedDetail(model);
 
             if (rtn == true)
             {
-                MsgUtils.ShowInfoMsg("出库成功！");
+                MsgUtils.ShowInfoMsg("新增收款明细成功！");
                 this.Hide();
                 return;
             }
             else
             {
-                MsgUtils.ShowInfoMsg("出库失败！");
+                MsgUtils.ShowInfoMsg("新增收款明细失败！");
                 return;
             }
 
@@ -194,49 +109,42 @@ namespace PMS.Frm.Finance
         /// <returns></returns>
         private Boolean doCheck()
         {
-            //输入的出库数合计（克）
-            decimal selectedAllOutputNum = 0;
-
-            for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+            //收款金额
+            decimal receiveMoney = ConvertUtils.ConvertToDecimal(this.txt_receiveMoney.Text.Trim());
+            if (receiveMoney <= 0)
             {
-                //选择的行
-                if (this.dataGridView1.Rows[i].Cells["selected"].EditedFormattedValue.ToString() == "True")
-                {
-
-                    //输入的出库数
-                    int curOutPutNum = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["outputNum"].Value);
-                    if (curOutPutNum <= 0)
-                    {
-                        MsgUtils.ShowErrorMsg("请输入出库数量！");
-                        return false;
-                    }
-
-                    //库存数量
-                    int curStockNum = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells["num"].Value);
-
-                    if (curOutPutNum > curStockNum)
-                    {
-                        MsgUtils.ShowErrorMsg("出库数量大于在库数量，请输入适当的出库数！");
-                        return false;
-                    }
-
-                    selectedAllOutputNum = selectedAllOutputNum + curOutPutNum;
-                }
+                MsgUtils.ShowErrorMsg("请输入正确的收款金额！");
+                this.txt_receiveMoney.Focus();
+                return false;
             }
-
-            if (selectedAllOutputNum <= 0)
+            if (receiveMoney > m_maxReceiveMoney)
             {
-                MsgUtils.ShowErrorMsg("出库数量不可为空！");
+                MsgUtils.ShowErrorMsg("收款金额大于余款（" + m_maxReceiveMoney + ")！");
+                this.txt_receiveMoney.Focus();
                 return false;
             }
 
-            //要求的出库数
-            int requestOutputNum = ConvertUtils.ConvertToInt(this.txt_receiveStatus.Text.Trim());
-
-            if (requestOutputNum > 0 && (selectedAllOutputNum + m_realityOutputNum) < requestOutputNum)
+            //收款日期
+            if (this.dtp_receiveDate.Value > DateTime.Now)
             {
-                if (MsgUtils.ShowQustMsg("出库数量低于申请数量，确认出库么？", MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                MsgUtils.ShowErrorMsg("收款日不得晚于今日！");
+                this.dtp_receiveDate.Focus();
+                return false;
+            }
+
+            //收款方式
+            if (this.cmb_receiveType.SelectedIndex < 0)
+            {
+                MsgUtils.ShowErrorMsg("请选择收款方式！");
+                this.cmb_receiveType.Focus();
+                return false;
+            }
+            if ((int)(((ModelItem)this.cmb_receiveType.SelectedItem).itemKey) == (int)Enum.EnumSettlementType.Other)
+            {
+                if(StringUtils.IsBlank(this.txt_otherType.Text.Trim()))
                 {
+                    MsgUtils.ShowErrorMsg("请输入其他收款方式！");
+                    this.txt_otherType.Focus();
                     return false;
                 }
             }

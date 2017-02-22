@@ -30,10 +30,17 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReceivedDetail));
-            this.btn_submit = new System.Windows.Forms.Button();
-            this.btn_cancel = new System.Windows.Forms.Button();
             this.lbl_title = new System.Windows.Forms.Label();
             this.grb_productOut = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.receivedMoney = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receivedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receivedType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txt_receivedMoney = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txt_orderPrice = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.lbl_selectOutput = new System.Windows.Forms.Label();
             this.btn_add = new System.Windows.Forms.Button();
             this.txt_customer = new System.Windows.Forms.TextBox();
@@ -45,38 +52,9 @@
             this.txt_orderCode = new System.Windows.Forms.TextBox();
             this.lbl_orderCode = new System.Windows.Forms.Label();
             this.btn_close = new System.Windows.Forms.Button();
-            this.txt_receivedMoney = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txt_orderPrice = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.receivedMoney = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receivedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.receivedType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grb_productOut.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btn_submit
-            // 
-            this.btn_submit.Location = new System.Drawing.Point(225, 458);
-            this.btn_submit.Name = "btn_submit";
-            this.btn_submit.Size = new System.Drawing.Size(75, 23);
-            this.btn_submit.TabIndex = 101;
-            this.btn_submit.Text = "确认";
-            this.btn_submit.UseVisualStyleBackColor = true;
-            this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
-            // 
-            // btn_cancel
-            // 
-            this.btn_cancel.Location = new System.Drawing.Point(418, 458);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_cancel.TabIndex = 102;
-            this.btn_cancel.Text = "取消";
-            this.btn_cancel.UseVisualStyleBackColor = true;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // lbl_title
             // 
@@ -112,6 +90,103 @@
             this.grb_productOut.TabIndex = 103;
             this.grb_productOut.TabStop = false;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.receivedMoney,
+            this.receivedDate,
+            this.receivedType,
+            this.remark});
+            this.dataGridView1.Location = new System.Drawing.Point(18, 159);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 20;
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(600, 144);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // receivedMoney
+            // 
+            this.receivedMoney.DataPropertyName = "receivedMoney";
+            this.receivedMoney.HeaderText = "收款金额";
+            this.receivedMoney.Name = "receivedMoney";
+            this.receivedMoney.ReadOnly = true;
+            this.receivedMoney.Width = 120;
+            // 
+            // receivedDate
+            // 
+            this.receivedDate.DataPropertyName = "receivedDate";
+            this.receivedDate.HeaderText = "收款日期";
+            this.receivedDate.Name = "receivedDate";
+            this.receivedDate.ReadOnly = true;
+            this.receivedDate.Width = 120;
+            // 
+            // receivedType
+            // 
+            this.receivedType.DataPropertyName = "receivedType";
+            this.receivedType.HeaderText = "收款方式";
+            this.receivedType.Name = "receivedType";
+            this.receivedType.ReadOnly = true;
+            this.receivedType.Width = 120;
+            // 
+            // remark
+            // 
+            this.remark.DataPropertyName = "remark";
+            this.remark.HeaderText = "收款备注";
+            this.remark.Name = "remark";
+            this.remark.Width = 200;
+            // 
+            // txt_receivedMoney
+            // 
+            this.txt_receivedMoney.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txt_receivedMoney.Enabled = false;
+            this.txt_receivedMoney.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_receivedMoney.Location = new System.Drawing.Point(380, 102);
+            this.txt_receivedMoney.MaxLength = 20;
+            this.txt_receivedMoney.Name = "txt_receivedMoney";
+            this.txt_receivedMoney.Size = new System.Drawing.Size(222, 21);
+            this.txt_receivedMoney.TabIndex = 141;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(319, 105);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 12);
+            this.label4.TabIndex = 140;
+            this.label4.Text = "已收金额：";
+            // 
+            // txt_orderPrice
+            // 
+            this.txt_orderPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txt_orderPrice.Enabled = false;
+            this.txt_orderPrice.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_orderPrice.Location = new System.Drawing.Point(77, 102);
+            this.txt_orderPrice.MaxLength = 20;
+            this.txt_orderPrice.Name = "txt_orderPrice";
+            this.txt_orderPrice.Size = new System.Drawing.Size(222, 21);
+            this.txt_orderPrice.TabIndex = 139;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(16, 105);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 12);
+            this.label5.TabIndex = 138;
+            this.label5.Text = "应收金额：";
+            // 
             // lbl_selectOutput
             // 
             this.lbl_selectOutput.AutoSize = true;
@@ -130,7 +205,7 @@
             this.btn_add.TabIndex = 2;
             this.btn_add.Text = "新增收款";
             this.btn_add.UseVisualStyleBackColor = true;
-            this.btn_add.Click += new System.EventHandler(this.btn_select_Click);
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // txt_customer
             // 
@@ -225,103 +300,7 @@
             this.btn_close.TabIndex = 105;
             this.btn_close.Text = "关闭";
             this.btn_close.UseVisualStyleBackColor = true;
-            // 
-            // txt_receivedMoney
-            // 
-            this.txt_receivedMoney.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txt_receivedMoney.Enabled = false;
-            this.txt_receivedMoney.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txt_receivedMoney.Location = new System.Drawing.Point(380, 102);
-            this.txt_receivedMoney.MaxLength = 20;
-            this.txt_receivedMoney.Name = "txt_receivedMoney";
-            this.txt_receivedMoney.Size = new System.Drawing.Size(222, 21);
-            this.txt_receivedMoney.TabIndex = 141;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(319, 105);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 12);
-            this.label4.TabIndex = 140;
-            this.label4.Text = "已收金额：";
-            // 
-            // txt_orderPrice
-            // 
-            this.txt_orderPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txt_orderPrice.Enabled = false;
-            this.txt_orderPrice.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txt_orderPrice.Location = new System.Drawing.Point(77, 102);
-            this.txt_orderPrice.MaxLength = 20;
-            this.txt_orderPrice.Name = "txt_orderPrice";
-            this.txt_orderPrice.Size = new System.Drawing.Size(222, 21);
-            this.txt_orderPrice.TabIndex = 139;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(16, 105);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 12);
-            this.label5.TabIndex = 138;
-            this.label5.Text = "应收金额：";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.receivedMoney,
-            this.receivedDate,
-            this.receivedType,
-            this.remark});
-            this.dataGridView1.Location = new System.Drawing.Point(18, 159);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 20;
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(600, 144);
-            this.dataGridView1.TabIndex = 1;
-            // 
-            // receivedMoney
-            // 
-            this.receivedMoney.DataPropertyName = "receivedMoney";
-            this.receivedMoney.HeaderText = "收款金额";
-            this.receivedMoney.Name = "receivedMoney";
-            this.receivedMoney.ReadOnly = true;
-            this.receivedMoney.Width = 120;
-            // 
-            // receivedDate
-            // 
-            this.receivedDate.DataPropertyName = "receivedDate";
-            this.receivedDate.HeaderText = "收款日期";
-            this.receivedDate.Name = "receivedDate";
-            this.receivedDate.ReadOnly = true;
-            this.receivedDate.Width = 120;
-            // 
-            // receivedType
-            // 
-            this.receivedType.DataPropertyName = "receivedType";
-            this.receivedType.HeaderText = "收款方式";
-            this.receivedType.Name = "receivedType";
-            this.receivedType.ReadOnly = true;
-            this.receivedType.Width = 120;
-            // 
-            // remark
-            // 
-            this.remark.DataPropertyName = "remark";
-            this.remark.HeaderText = "收款备注";
-            this.remark.Name = "remark";
-            this.remark.Width = 200;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
             // FrmReceivedDetail
             // 
@@ -332,8 +311,6 @@
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.grb_productOut);
             this.Controls.Add(this.lbl_title);
-            this.Controls.Add(this.btn_cancel);
-            this.Controls.Add(this.btn_submit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -353,8 +330,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btn_submit;
-        private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.Label lbl_title;
         private System.Windows.Forms.GroupBox grb_productOut;
         private System.Windows.Forms.TextBox txt_orderCode;

@@ -51,6 +51,7 @@
     <Compile Include="EnumProductInType.cs" />
     <Compile Include="EnumPayStatus.cs" />
     <Compile Include="EnumReceiveStatus.cs" />
+    <Compile Include="EnumSettlementType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
