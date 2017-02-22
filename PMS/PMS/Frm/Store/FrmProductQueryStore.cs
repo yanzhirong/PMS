@@ -120,9 +120,9 @@ namespace PMS.Frm.Store
             this.dataGridView1.Columns.Add(colExpiresDate);
 
             DataGridViewTextBoxColumn colNumDisplay = new DataGridViewTextBoxColumn();
-            colNumDisplay.Name = "num";
+            colNumDisplay.Name = "stockNum";
             colNumDisplay.HeaderText = "库存数量";
-            colNumDisplay.DataPropertyName = "num";
+            colNumDisplay.DataPropertyName = "stockNum";
             colNumDisplay.Width = 80;
             colNumDisplay.ReadOnly = true;
             this.dataGridView1.Columns.Add(colNumDisplay);

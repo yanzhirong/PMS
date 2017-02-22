@@ -79,6 +79,7 @@
     <Compile Include="ModelTransfer.cs" />
     <Compile Include="ModelInventoryProductLog.cs" />
     <Compile Include="ModelInventoryMaterialsLog.cs" />
+    <Compile Include="ModelFinanceReceivedDetail.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Enum\Enum.csproj">

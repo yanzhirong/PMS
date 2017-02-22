@@ -72,14 +72,18 @@
             this.label14 = new System.Windows.Forms.Label();
             this.txt_price = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.grb_cancel = new System.Windows.Forms.GroupBox();
+            this.txt_cancelReason = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.grb_purchase.SuspendLayout();
             this.grb_address.SuspendLayout();
             this.grb_finance.SuspendLayout();
+            this.grb_cancel.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_submit
             // 
-            this.btn_submit.Location = new System.Drawing.Point(256, 512);
+            this.btn_submit.Location = new System.Drawing.Point(256, 573);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(75, 23);
             this.btn_submit.TabIndex = 101;
@@ -89,7 +93,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(383, 512);
+            this.btn_cancel.Location = new System.Drawing.Point(383, 573);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 102;
@@ -491,7 +495,7 @@
             // 
             // btn_close
             // 
-            this.btn_close.Location = new System.Drawing.Point(562, 512);
+            this.btn_close.Location = new System.Drawing.Point(562, 573);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(75, 23);
             this.btn_close.TabIndex = 106;
@@ -539,12 +543,42 @@
             this.label12.TabIndex = 116;
             this.label12.Text = "采购价格：";
             // 
+            // grb_cancel
+            // 
+            this.grb_cancel.Controls.Add(this.txt_cancelReason);
+            this.grb_cancel.Controls.Add(this.label16);
+            this.grb_cancel.Location = new System.Drawing.Point(31, 495);
+            this.grb_cancel.Name = "grb_cancel";
+            this.grb_cancel.Size = new System.Drawing.Size(634, 53);
+            this.grb_cancel.TabIndex = 118;
+            this.grb_cancel.TabStop = false;
+            // 
+            // txt_cancelReason
+            // 
+            this.txt_cancelReason.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_cancelReason.Location = new System.Drawing.Point(77, 18);
+            this.txt_cancelReason.MaxLength = 10;
+            this.txt_cancelReason.Name = "txt_cancelReason";
+            this.txt_cancelReason.Size = new System.Drawing.Size(529, 21);
+            this.txt_cancelReason.TabIndex = 115;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.ForeColor = System.Drawing.Color.Red;
+            this.label16.Location = new System.Drawing.Point(10, 21);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(65, 12);
+            this.label16.TabIndex = 116;
+            this.label16.Text = "取消原因：";
+            // 
             // FrmPurchaseDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(702, 550);
+            this.ClientSize = new System.Drawing.Size(702, 626);
+            this.Controls.Add(this.grb_cancel);
             this.Controls.Add(this.grb_finance);
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.grb_purchase);
@@ -566,6 +600,8 @@
             this.grb_address.PerformLayout();
             this.grb_finance.ResumeLayout(false);
             this.grb_finance.PerformLayout();
+            this.grb_cancel.ResumeLayout(false);
+            this.grb_cancel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -616,5 +652,8 @@
         private System.Windows.Forms.ComboBox cmb_materials;
         private System.Windows.Forms.DateTimePicker dtp_applyDate;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.GroupBox grb_cancel;
+        private System.Windows.Forms.TextBox txt_cancelReason;
+        private System.Windows.Forms.Label label16;
     }
 }

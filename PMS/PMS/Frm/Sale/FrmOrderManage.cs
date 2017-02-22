@@ -153,7 +153,7 @@ namespace PMS.Frm.Sale
             if (dataGridView1.Columns[e.ColumnIndex].Name == "deleteBtn")
             {
                 int orderStatus = (int)dataGridView1.Rows[e.RowIndex].Cells["orderStatusCode"].Value;
-                if (orderStatus == (int)Enum.EnumSaleOrderStatus.WaitConfirm)
+                if (orderStatus == (int)Enum.EnumSaleOrderStatus.WaitConfirm || orderStatus == (int)Enum.EnumSaleOrderStatus.Cancel)
                 {
                     int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
                     Form form = new FrmOrderDetail(2, id);

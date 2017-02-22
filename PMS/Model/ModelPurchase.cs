@@ -32,6 +32,8 @@ namespace Model
         public int applyType { set; get; }
         public string applyBy { set; get; }
         public DateTime applyDate { set; get; }
+        public int purchaserId { set; get; }
+        public string cancelReason { set; get; }
         public string remark { set; get; }
         public decimal price { set; get; }
     }

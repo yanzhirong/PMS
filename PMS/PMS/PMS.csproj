@@ -50,11 +50,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Frm\Finance\FrmReportSale.cs">
+    <Compile Include="Frm\Finance\FrmReceivedDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm\Finance\FrmReportSale.Designer.cs">
-      <DependentUpon>FrmReportSale.cs</DependentUpon>
+    <Compile Include="Frm\Finance\FrmReceivedDetail.Designer.cs">
+      <DependentUpon>FrmReceivedDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Finance\FrmSaleOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Finance\FrmSaleOrder.Designer.cs">
+      <DependentUpon>FrmSaleOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Finance\FrmPurchaseOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Finance\FrmPurchaseOrder.Designer.cs">
+      <DependentUpon>FrmPurchaseOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Finance\FrmReceived.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Finance\FrmReceived.Designer.cs">
+      <DependentUpon>FrmReceived.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Finance\FrmReceivedDetailAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Finance\FrmReceivedDetailAdd.Designer.cs">
+      <DependentUpon>FrmReceivedDetailAdd.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm\Login\FrmLogin.cs">
       <SubType>Form</SubType>
@@ -312,8 +336,20 @@
     <Compile Include="Frm\Sys\FrmSysConfig.Designer.cs">
       <DependentUpon>FrmSysConfig.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Frm\Finance\FrmReportSale.resx">
-      <DependentUpon>FrmReportSale.cs</DependentUpon>
+    <EmbeddedResource Include="Frm\Finance\FrmReceivedDetail.resx">
+      <DependentUpon>FrmReceivedDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Finance\FrmSaleOrder.resx">
+      <DependentUpon>FrmSaleOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Finance\FrmPurchaseOrder.resx">
+      <DependentUpon>FrmPurchaseOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Finance\FrmReceived.resx">
+      <DependentUpon>FrmReceived.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Finance\FrmReceivedDetailAdd.resx">
+      <DependentUpon>FrmReceivedDetailAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\Login\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

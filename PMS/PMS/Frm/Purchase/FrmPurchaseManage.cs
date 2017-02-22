@@ -87,8 +87,9 @@ namespace PMS.Frm.Purchase
             if (dataGridView1.Columns[e.ColumnIndex].Name == "modifyBtn")
             {
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
+                int status = (int)dataGridView1.Rows[e.RowIndex].Cells["statusCode"].Value;
                 Form form;
-                if (m_bllPurchase.CheckUpdateDelete(id) == 0)
+                if (status == (int)Enum.EnumPurchaseOrderStatus.WaitConfirm)
                 {
                     form = new FrmPurchaseDetail(1, id);
                 }
@@ -104,9 +105,10 @@ namespace PMS.Frm.Purchase
             if (dataGridView1.Columns[e.ColumnIndex].Name == "deleteBtn")
             {
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
-                if(m_bllPurchase.CheckUpdateDelete(id) > 0)
+                int status = (int)dataGridView1.Rows[e.RowIndex].Cells["statusCode"].Value;
+                if (status != (int)Enum.EnumPurchaseOrderStatus.WaitConfirm)
                 {
-                    Common.Tools.MsgUtils.ShowInfoMsg("已开始采购，不可删除！");
+                    Common.Tools.MsgUtils.ShowInfoMsg("财务已确认，不可删除！");
                     return;
                 }
 
@@ -135,6 +137,7 @@ namespace PMS.Frm.Purchase
         {
             Form form = new FrmPurchaseDetail(0, 0);
             form.ShowDialog();
+            doSelect();
         }
         
     }

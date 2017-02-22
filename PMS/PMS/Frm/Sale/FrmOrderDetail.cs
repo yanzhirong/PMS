@@ -15,7 +15,7 @@ namespace PMS.Frm.Sale
 {
     public partial class FrmOrderDetail : Form
     {
-        //处理模式（0：新建；1：修改；2：删除；3：查看；4:财务确认）
+        //处理模式（0：新建；1：修改；2：删除；3：查看；4:财务确认；5:财务取消）
         private int m_mode;
         //原来ID
         private int m_saleOrderId;
@@ -245,6 +245,9 @@ namespace PMS.Frm.Sale
                         break;
                     }
                 }
+
+                //取消理由
+                this.txt_cancelReason.Text = model.cancelReason;
             }
 
             //按钮处理
@@ -258,24 +261,39 @@ namespace PMS.Frm.Sale
                 this.btn_close.Visible = true;
             }
 
-
             //新增时
             if (m_mode <= 1)
             {
                 grb_saleOrder.Enabled = true;
                 grb_price.Enabled = true;
+                grb_cancel.Visible = false;
             }
+
             //查看/删除时，各输入项不能修改
             if (m_mode == 2 || m_mode == 3)
             {
                 grb_saleOrder.Enabled = false;
                 grb_price.Enabled = false;
+                grb_cancel.Enabled = false;
+                grb_cancel.Visible = true;
             }
+
             //财务确认时
             if (m_mode == 4)
             {
                 grb_saleOrder.Enabled = false;
                 grb_price.Enabled = true;
+                grb_cancel.Visible = false;
+            }
+
+            //财务取消时
+            if (m_mode == 5)
+            {
+                this.btn_submit.Text = "确认取消";
+                grb_saleOrder.Enabled = false;
+                grb_price.Enabled = false;
+                grb_cancel.Visible = true;
+                grb_cancel.Enabled = true;
             }
 
         }
@@ -337,11 +355,15 @@ namespace PMS.Frm.Sale
 
             modelSaleOrder.deliveryDate = this.dtp_deliveryDate.Value;
             modelSaleOrder.remark = this.txt_remark.Text.Trim();
+            modelSaleOrder.cancelReason = this.txt_cancelReason.Text.Trim();
 
             if (grb_price.Visible == true)
             {
                 modelSaleOrder.price = ConvertUtils.ConvertToDecimal(this.txt_price.Text.Trim());
-                modelSaleOrder.factoryId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_factory.SelectedItem).itemKey);
+                if (this.cmb_factory.SelectedIndex >= 0)
+                {
+                    modelSaleOrder.factoryId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_factory.SelectedItem).itemKey);
+                }
                 modelSaleOrder.priceRemark = this.txt_priceRemark.Text.Trim();
             }
 
@@ -452,7 +474,27 @@ namespace PMS.Frm.Sale
                     //返回列表
                     this.Hide();
                     return;
+                }                
+            }
+
+            //财务取消
+            if (m_mode == 5)
+            {
+                rtn = m_bllSaleOrder.CancelSaleOrder(modelSaleOrder);
+
+                if (rtn == false)
+                {
+                    MsgUtils.ShowErrorMsg("取消订单失败！");
+                    return;
                 }
+                else
+                {
+                    MsgUtils.ShowInfoMsg("取消订单成功！");
+                }
+
+                //返回列表
+                this.Hide();
+                return;
             }
         }
 
@@ -580,6 +622,16 @@ namespace PMS.Frm.Sale
                 {
                     MsgUtils.ShowErrorMsg("请选择出货工厂！");
                     this.txt_price.Focus();
+                    return false;
+                }
+            }
+
+            if (m_mode == 5)
+            {
+                if(StringUtils.IsBlank(this.txt_cancelReason.Text.Trim()))
+                {
+                    MsgUtils.ShowErrorMsg("请输入取消原因！");
+                    this.txt_cancelReason.Focus();
                     return false;
                 }
             }

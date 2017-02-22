@@ -115,7 +115,7 @@ namespace PMS.Frm.Purchase
                 return;
             }
 
-            Result rtnResult = m_bllPurchase.SubmitPurchaseApply(listApply, LoginUserInfo.LoginUser.loginUser.userName);
+            Result rtnResult = m_bllPurchase.SubmitPurchaseApply(listApply, LoginUserInfo.LoginUser.loginUser.userId, LoginUserInfo.LoginUser.loginUser.userName);
 
             if (rtnResult.resultCode == Enum.EnumResultCode.Success)
             {
@@ -187,6 +187,20 @@ namespace PMS.Frm.Purchase
 
                 Form form = new Store.FrmMaterialsQueryStore(materialsName, factoryId);
                 form.ShowDialog();
+            }
+        }
+
+        private void cmb_applyStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.cmb_applyStatus.SelectedIndex == 0)
+            {
+                this.btn_submit.Visible = true;
+                this.btn_cancel.Visible = true;
+            }
+            else
+            {
+                this.btn_submit.Visible = false;
+                this.btn_cancel.Visible = false;
             }
         }
     }

@@ -230,5 +230,19 @@ namespace PMS.Frm.Produce
                 form.ShowDialog();
             }
         }
+
+        private void cmb_applyStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.cmb_applyStatus.SelectedIndex == 0)
+            {
+                this.btn_submit.Visible = true;
+                this.btn_cancel.Visible = true;
+            }
+            else
+            {
+                this.btn_submit.Visible = false;
+                this.btn_cancel.Visible = false;
+            }
+        }
     }
 }

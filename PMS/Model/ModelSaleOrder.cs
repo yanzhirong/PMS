@@ -28,6 +28,7 @@ namespace Model
         public string telephone { set; get; }
         public DateTime deliveryDate { set; get; }
         public int orderStatus { set; get; }
+        public string cancelReason { set; get; }
         public string remark { set; get; }
 
         public ModelSaleOrderPay modelSaleOrderPay { set; get; }

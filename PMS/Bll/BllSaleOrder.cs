@@ -233,6 +233,14 @@ namespace Bll
 
             return rtn == 0 ? false : true;
         }
+
+        public Boolean CancelSaleOrder(ModelSaleOrder _model)
+        {
+            int rtn = 0;
+            rtn = m_dalSaleOrder.CancelSaleOrder(_model);
+
+            return rtn == 0 ? false : true;
+        }
     }
 
 }

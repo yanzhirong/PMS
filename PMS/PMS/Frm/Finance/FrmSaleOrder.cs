@@ -14,7 +14,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Finance
 {
-    public partial class FrmReportSale : Form
+    public partial class FrmSaleOrder : Form
     {
         private BllFinance m_bllFinance = new BllFinance();
         private BllFactory m_bllFactory = new BllFactory();
@@ -23,12 +23,12 @@ namespace PMS.Frm.Finance
         private BllCode m_bllCode = new BllCode();
         private BllCustomer m_bllCusyomer = new BllCustomer();
 
-        public FrmReportSale()
+        public FrmSaleOrder()
         {
             InitializeComponent();
         }
 
-        private void FrmReportSale_Load(object sender, EventArgs e)
+        private void FrmSaleOrder_Load(object sender, EventArgs e)
         {
             LoginUserInfo.LoginUser.currentFrom = this;
             WinCommon.CreateMenu(ref this.menuStrip1);
@@ -133,16 +133,34 @@ namespace PMS.Frm.Finance
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             //确认订单
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "excuteBtn")
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "confirmBtn")
             {
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
                 int orderStatus = (int)dataGridView1.Rows[e.RowIndex].Cells["orderStatusCode"].Value;
-                if(orderStatus == (int)Enum.EnumSaleOrderStatus.Complete || orderStatus == (int)Enum.EnumSaleOrderStatus.Cancel)
+                if(orderStatus == (int)Enum.EnumSaleOrderStatus.WaitConfirm)
                 {
-                    Form form = new Sale.FrmOrderDetail(3, id);
+                    Form form = new Sale.FrmOrderDetail(4, id);
                     form.ShowDialog();
                 } else {
-                    Form form = new Sale.FrmOrderDetail(4, id);
+                    Form form = new Sale.FrmOrderDetail(3, id);
+                    form.ShowDialog();
+                }
+                doSelect();
+            }
+
+            //取消订单
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "cancelBtn")
+            {
+                int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
+                int orderStatus = (int)dataGridView1.Rows[e.RowIndex].Cells["orderStatusCode"].Value;
+                if (orderStatus == (int)Enum.EnumSaleOrderStatus.WaitConfirm)
+                {
+                    Form form = new Sale.FrmOrderDetail(5, id);
+                    form.ShowDialog();
+                }
+                else
+                {
+                    Form form = new Sale.FrmOrderDetail(3, id);
                     form.ShowDialog();
                 }
                 doSelect();
@@ -156,19 +174,9 @@ namespace PMS.Frm.Finance
                 form.ShowDialog();
                 doSelect();
             }
-
-            //订单
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "orderCode")
-            {
-                int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
-                Form form = new Sale.FrmOrderDetail(3, id);
-                form.ShowDialog();
-                doSelect();
-            }
-            
         }
 
-        private void FrmReportSale_FormClosed(object sender, FormClosedEventArgs e)
+        private void FrmSaleOrder_FormClosed(object sender, FormClosedEventArgs e)
         {
             WinCommon.Exit();
         }

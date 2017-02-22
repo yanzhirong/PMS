@@ -70,15 +70,19 @@
             this.txt_price = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btn_close = new System.Windows.Forms.Button();
+            this.grb_cancel = new System.Windows.Forms.GroupBox();
+            this.txt_cancelReason = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.grb_saleOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.grb_address.SuspendLayout();
             this.grb_price.SuspendLayout();
+            this.grb_cancel.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_submit
             // 
-            this.btn_submit.Location = new System.Drawing.Point(235, 636);
+            this.btn_submit.Location = new System.Drawing.Point(233, 688);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(75, 23);
             this.btn_submit.TabIndex = 101;
@@ -88,7 +92,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(408, 636);
+            this.btn_cancel.Location = new System.Drawing.Point(406, 688);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 102;
@@ -498,7 +502,7 @@
             // 
             // btn_close
             // 
-            this.btn_close.Location = new System.Drawing.Point(323, 636);
+            this.btn_close.Location = new System.Drawing.Point(321, 688);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(75, 23);
             this.btn_close.TabIndex = 103;
@@ -506,12 +510,43 @@
             this.btn_close.UseVisualStyleBackColor = true;
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
+            // grb_cancel
+            // 
+            this.grb_cancel.Controls.Add(this.txt_cancelReason);
+            this.grb_cancel.Controls.Add(this.label18);
+            this.grb_cancel.Enabled = false;
+            this.grb_cancel.Location = new System.Drawing.Point(31, 610);
+            this.grb_cancel.Name = "grb_cancel";
+            this.grb_cancel.Size = new System.Drawing.Size(641, 59);
+            this.grb_cancel.TabIndex = 115;
+            this.grb_cancel.TabStop = false;
+            // 
+            // txt_cancelReason
+            // 
+            this.txt_cancelReason.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_cancelReason.Location = new System.Drawing.Point(68, 20);
+            this.txt_cancelReason.MaxLength = 100;
+            this.txt_cancelReason.Name = "txt_cancelReason";
+            this.txt_cancelReason.Size = new System.Drawing.Size(556, 21);
+            this.txt_cancelReason.TabIndex = 21;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.ForeColor = System.Drawing.Color.Red;
+            this.label18.Location = new System.Drawing.Point(6, 23);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(65, 12);
+            this.label18.TabIndex = 112;
+            this.label18.Text = "取消原因：";
+            // 
             // FrmOrderDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(702, 681);
+            this.ClientSize = new System.Drawing.Size(702, 729);
+            this.Controls.Add(this.grb_cancel);
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.grb_price);
             this.Controls.Add(this.grb_saleOrder);
@@ -534,6 +569,8 @@
             this.grb_address.PerformLayout();
             this.grb_price.ResumeLayout(false);
             this.grb_price.PerformLayout();
+            this.grb_cancel.ResumeLayout(false);
+            this.grb_cancel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -581,5 +618,8 @@
         private System.Windows.Forms.ComboBox cmb_factory;
         private System.Windows.Forms.Button btn_close;
         private System.Windows.Forms.TextBox txt_orderStatusCode;
+        private System.Windows.Forms.GroupBox grb_cancel;
+        private System.Windows.Forms.TextBox txt_cancelReason;
+        private System.Windows.Forms.Label label18;
     }
 }

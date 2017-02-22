@@ -25,14 +25,7 @@ namespace Dal
             sbSql.Append("       date_format(a.createTime, '%Y-%m-%d') orderDate, ");
             sbSql.Append("       a.orderStatus orderStatusCode, ");
             sbSql.Append("       d.value1 orderStatus, ");
-            if (_roleType == (int)Enum.EnumRoleType.Finance)
-            {
-                sbSql.Append("       case a.orderStatus when 1 then '确认' else '查看' end modifyBtn, ");
-            }
-            else
-            {
-                sbSql.Append("       case a.orderStatus when 1 then '修改' else '查看' end modifyBtn, ");
-            }
+            sbSql.Append("       case a.orderStatus when 1 then '编辑' else '查看' end modifyBtn, ");
             sbSql.Append("       '删除' deleteBtn ");
             sbSql.Append("from p_saleOrder a ");
             sbSql.Append("left join m_user b ");
@@ -414,7 +407,7 @@ namespace Dal
             sbSql.Append("set isDelete = 1,");
             sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
             sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
-            sbSql.Append("where orderCode = " + _model.orderCode);
+            sbSql.Append("where orderCode = '" + _model.orderCode + "' ");
             sbSql.Append("  and isDelete = 0 ");
             listSql.Add(sbSql.ToString());
 
@@ -429,5 +422,40 @@ namespace Dal
 
             return Dal.DBHelper.ExcuteTransaction(listSql);
         }
+
+        public int CancelSaleOrder(ModelSaleOrder _model)
+        {
+            List<string> listSql = new List<string>();
+
+            sbSql.Clear();
+            sbSql.Append("update p_saleOrder ");
+            sbSql.Append("set orderStatus = " + (int)Enum.EnumSaleOrderStatus.Cancel + ",");
+            sbSql.Append("    cancelReason = '" + _model.cancelReason + "',");
+            sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
+            sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
+            sbSql.Append("where id = " + _model.id);
+            listSql.Add(sbSql.ToString());
+
+            sbSql.Clear();
+            sbSql.Append("update r_saleOrder_Pay ");
+            sbSql.Append("set isDelete = 1,");
+            sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
+            sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
+            sbSql.Append("where orderCode = '" + _model.orderCode + "' ");
+            sbSql.Append("  and isDelete = 0 ");
+            listSql.Add(sbSql.ToString());
+
+            sbSql.Clear();
+            sbSql.Append("update r_saleOrder_Detail ");
+            sbSql.Append("set isDelete = 1,");
+            sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
+            sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
+            sbSql.Append("where orderCode = '" + _model.orderCode + "' ");
+            sbSql.Append("  and isDelete = 0 ");
+            listSql.Add(sbSql.ToString());
+
+            return Dal.DBHelper.ExcuteTransaction(listSql);
+        }
+
     }
 }

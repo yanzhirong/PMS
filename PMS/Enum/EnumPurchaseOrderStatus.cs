@@ -11,5 +11,6 @@ namespace Enum
         WaitConfirm = 1,
         Purchasing = 2,
         Complete = 3,
+        Cancel = 4,
     }
 }

@@ -95,13 +95,25 @@ namespace PMS.Frm.Sale
 
                 this.cmb_saler.Enabled = false;
             }
-            else if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Purchase)  //登录者是采购
+
+            //登录者是采购
+            if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Purchase)  
             {
                 this.cmb_type.SelectedIndex = 2;
                 this.cmb_type.Enabled = false;
 
                 this.lbl_saler.Visible = false;
                 this.cmb_saler.Visible = false;
+            }
+
+            //登录者是财务
+            if (LoginUserInfo.LoginUser.loginRole.roleType == (int)Enum.EnumRoleType.Finance)
+            {
+                this.btn_paid.Visible = true;
+            }
+            else
+            {
+                this.btn_paid.Visible = false;
             }
 
             //初始化(修改或者删除时)

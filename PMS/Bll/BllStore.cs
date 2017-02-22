@@ -24,7 +24,7 @@ namespace Bll
                 int storeNum = 0;
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    storeNum = storeNum + ConvertUtils.ConvertToInt(dt.Rows[i]["num"]);
+                    storeNum = storeNum + ConvertUtils.ConvertToInt(dt.Rows[i]["stockNum"]);
                 }
                 return storeNum;
             }
@@ -40,7 +40,7 @@ namespace Bll
                 decimal storeNum = 0;
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    storeNum = storeNum + ConvertUtils.ConvertToDecimal(dt.Rows[i]["num"]) * m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(dt.Rows[i]["unit"]));
+                    storeNum = storeNum + ConvertUtils.ConvertToDecimal(dt.Rows[i]["stockNum"]) * m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(dt.Rows[i]["unit"]));
                 }
                 return storeNum;
             }

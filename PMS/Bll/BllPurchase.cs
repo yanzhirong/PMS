@@ -47,7 +47,7 @@ namespace Bll
             return m_dalPurchase.GetPurchase(_materialsName, _factoryId, _beginTime, _endTime, _status, _type);
         }
 
-        public Result SubmitPurchaseApply(List<Dictionary<string, object>> _listApply, string _loginName)
+        public Result SubmitPurchaseApply(List<Dictionary<string, object>> _listApply,int _purchaserid, string _loginName)
         {
 
             Result returnResult = new Result();
@@ -111,6 +111,7 @@ namespace Bll
                         modelPurchase.applyBy = applyBy;
                         modelPurchase.applyDate = applyDate;
                         modelPurchase.deliveryDate = deliveryDate;
+                        modelPurchase.purchaserId = _purchaserid;
                         modelPurchase.isDelete = 0;
                         modelPurchase.createBy = _loginName;
                         modelPurchase.createTime = DateTime.Now;
@@ -136,6 +137,7 @@ namespace Bll
                     modelPurchase.applyBy = applyBy;
                     modelPurchase.applyDate = applyDate;
                     modelPurchase.deliveryDate = deliveryDate;
+                    modelPurchase.purchaserId = _purchaserid;
                     modelPurchase.isDelete = 0;
                     modelPurchase.createBy = _loginName;
                     modelPurchase.createTime = DateTime.Now;
@@ -201,6 +203,20 @@ namespace Bll
         public Boolean UpdatePurchase(ModelPurchase _model)
         {
             int rtn = m_dalPurchase.UpdatePurchase(_model);
+
+            return rtn > 0 ? true : false;
+        }
+
+        public Boolean ConfirmPurchase(ModelPurchase _model)
+        {
+            int rtn = m_dalPurchase.ConfirmPurchase(_model);
+
+            return rtn > 0 ? true : false;
+        }
+
+        public Boolean CancelPurchase(ModelPurchase _model)
+        {
+            int rtn = m_dalPurchase.CancelPurchase(_model);
 
             return rtn > 0 ? true : false;
         }

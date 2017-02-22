@@ -15,7 +15,7 @@ namespace PMS.Frm.Purchase
 {
     public partial class FrmPurchaseDetail : Form
     {
-        //处理模式（0：新建；1：修改；2：删除；3：查看）
+        //处理模式（0：新建；1：修改；2：删除；3：查看；4:财务确认；5:财务取消）
         private int m_mode;
         private int m_purchaseId;
         private string m_produceCode;
@@ -94,56 +94,56 @@ namespace PMS.Frm.Purchase
                 this.dtp_deliveryDate.Value = DateTime.Now.AddMonths(1);
             }
             
-            //修改删除时，检查是否已经入库或者已支付
-            if (m_mode == 1 || m_mode == 2)
-            {
-                int rtn = m_bllPurchase.CheckUpdateDelete(m_purchaseId);
-                if (rtn == 1)
-                {
-                    if (m_mode == 1)
-                    {
-                        MsgUtils.ShowErrorMsg("物料已入库，不可修改！");
-                        m_mode = 3;
-                    }
-                    else
-                    {
-                        MsgUtils.ShowErrorMsg("物料已入库，不可修改！");
-                        m_mode = 3;
-                    }
-                }
+            ////修改删除时，检查是否已经入库或者已支付
+            //if (m_mode == 1 || m_mode == 2)
+            //{
+            //    int rtn = m_bllPurchase.CheckUpdateDelete(m_purchaseId);
+            //    if (rtn == 1)
+            //    {
+            //        if (m_mode == 1)
+            //        {
+            //            MsgUtils.ShowErrorMsg("物料已入库，不可修改！");
+            //            m_mode = 3;
+            //        }
+            //        else
+            //        {
+            //            MsgUtils.ShowErrorMsg("物料已入库，不可修改！");
+            //            m_mode = 3;
+            //        }
+            //    }
 
-                if (rtn == 2)
-                {
-                    if (m_mode == 1)
-                    {
-                        MsgUtils.ShowErrorMsg("采购单已支付，不可删除！");
-                        m_mode = 3;
-                    }
-                    else
-                    {
-                        MsgUtils.ShowErrorMsg("采购单已支付，不可删除！");
-                        m_mode = 3;
-                    }
-                }
-            }
+            //    if (rtn == 2)
+            //    {
+            //        if (m_mode == 1)
+            //        {
+            //            MsgUtils.ShowErrorMsg("采购单已支付，不可删除！");
+            //            m_mode = 3;
+            //        }
+            //        else
+            //        {
+            //            MsgUtils.ShowErrorMsg("采购单已支付，不可删除！");
+            //            m_mode = 3;
+            //        }
+            //    }
+            //}
 
-            //标题
-            if (m_mode == 0)
-            {
-                this.lbl_title.Text = "采购单-新增";
-            }
-            else if (m_mode == 1)
-            {
-                this.lbl_title.Text = "采购单-修改";
-            }
-            else if (m_mode == 2)
-            {
-                this.lbl_title.Text = "采购单-删除";
-            }
-            else if (m_mode == 3)
-            {
-                this.lbl_title.Text = "采购单-查看";
-            }
+            ////标题
+            //if (m_mode == 0)
+            //{
+            //    this.lbl_title.Text = "采购单-新增";
+            //}
+            //else if (m_mode == 1)
+            //{
+            //    this.lbl_title.Text = "采购单-修改";
+            //}
+            //else if (m_mode == 2)
+            //{
+            //    this.lbl_title.Text = "采购单-删除";
+            //}
+            //else if (m_mode == 3)
+            //{
+            //    this.lbl_title.Text = "采购单-查看";
+            //}
 
             //初始化数据
             if (m_mode != 0 && m_purchaseId > 0)
@@ -297,6 +297,9 @@ namespace PMS.Frm.Purchase
 
                 // 备注
                 this.txt_remark.Text = model.remark;
+
+                //取消原因
+                this.txt_cancelReason.Text = model.cancelReason;
             }
 
             //按钮处理
@@ -313,12 +316,35 @@ namespace PMS.Frm.Purchase
             //新增修改时
             if (m_mode == 0 || m_mode == 1)
             {
-                grb_purchase.Enabled = true;
+                this.grb_purchase.Enabled = true;
+                this.grb_finance.Enabled = false;
+                this.grb_cancel.Visible = false;
             }
+
             //查看/删除时，各输入项不能修改
             if (m_mode == 2 || m_mode == 3)
             {
-                grb_purchase.Enabled = false;
+                this.grb_purchase.Enabled = false;
+                this.grb_finance.Enabled = false;
+                this.grb_cancel.Enabled = false;
+                this.grb_cancel.Visible = true;
+            }
+
+            //财务确认
+            if (m_mode == 4)
+            {
+                this.grb_purchase.Enabled = false;
+                this.grb_finance.Enabled = true;
+                this.grb_cancel.Visible = false;
+            }
+
+            //财务取消
+            if (m_mode == 5)
+            {
+                this.btn_submit.Text = "确认取消";
+                this.grb_purchase.Enabled = false;
+                this.grb_finance.Enabled = false;
+                this.grb_cancel.Visible = true;
             }
 
             //采购单状态不可修改
@@ -380,18 +406,24 @@ namespace PMS.Frm.Purchase
             modelPurchase.telephone = this.txt_telephone.Text.Trim();
 
             modelPurchase.remark = this.txt_remark.Text.Trim();
-
             modelPurchase.price = ConvertUtils.ConvertToDecimal(this.txt_price.Text.Trim());
+            modelPurchase.cancelReason = this.txt_cancelReason.Text.Trim();
 
-            if (WinCommon.IsFinance(LoginUserInfo.LoginUser.loginRole.roleType))
-            {
-                modelPurchase.status = (int)Enum.EnumPurchaseOrderStatus.Purchasing;
-            }
-            else
+            if (m_mode == 0 || m_mode == 1)
             {
                 modelPurchase.status = (int)Enum.EnumPurchaseOrderStatus.WaitConfirm;
             }
 
+            if (m_mode == 4)
+            {
+                modelPurchase.status = (int)Enum.EnumPurchaseOrderStatus.Purchasing;
+            }
+
+            if (m_mode == 5)
+            {
+                modelPurchase.status = (int)Enum.EnumPurchaseOrderStatus.Cancel;
+            }
+            modelPurchase.purchaserId = LoginUserInfo.LoginUser.loginUser.userId;
             modelPurchase.isDelete = 0;
             modelPurchase.createBy = LoginUserInfo.LoginUser.loginUser.userName;
             modelPurchase.createTime = DateTime.Now;
@@ -419,11 +451,6 @@ namespace PMS.Frm.Purchase
                     }
                 }
 
-                //处理模式变为修改
-                m_mode = 1;
-                ModelPurchase newPurchase = m_bllPurchase.GetPurchaseByPurchaseCode(modelPurchase.purchaseCode);
-                m_purchaseId = modelPurchase.id;
-                //this.lbl_title.Text = "采购单-修改";
                 this.Hide();
                 return true;
             }
@@ -477,6 +504,56 @@ namespace PMS.Frm.Purchase
                 }
             }
 
+            //财务确认
+            if (m_mode == 4)
+            {
+                rtn = m_bllPurchase.ConfirmPurchase(modelPurchase);
+
+                if (rtn == false)
+                {
+                    if (showMsg == true)
+                    {
+                        MsgUtils.ShowErrorMsg("确认采购单失败！");
+                    }
+                    return false;
+                }
+                else
+                {
+                    if (showMsg == true)
+                    {
+                        MsgUtils.ShowInfoMsg("确认采购单成功！");
+                    }
+                    //返回列表
+                    this.Hide();
+                    return true;
+                }
+            }
+
+            //财务取消
+            if (m_mode == 5)
+            {
+                rtn = m_bllPurchase.CancelPurchase(modelPurchase);
+
+                if (rtn == false)
+                {
+                    if (showMsg == true)
+                    {
+                        MsgUtils.ShowErrorMsg("取消采购单失败！");
+                    }
+                    return false;
+                }
+                else
+                {
+                    if (showMsg == true)
+                    {
+                        MsgUtils.ShowInfoMsg("取消采购单成功！");
+                    }
+                    //返回列表
+                    this.Hide();
+                    return true;
+                }
+            } 
+            
             return true;
         }
 
@@ -486,39 +563,39 @@ namespace PMS.Frm.Purchase
         /// <returns></returns>
         private Boolean doCheck()
         {
-            //检查是否已入库或已支付
-            if (m_mode == 1 || m_mode == 2)
-            {
-                int rtn = m_bllPurchase.CheckUpdateDelete(m_purchaseId);
+            ////检查是否已入库或已支付
+            //if (m_mode == 1 || m_mode == 2)
+            //{
+            //    int rtn = m_bllPurchase.CheckUpdateDelete(m_purchaseId);
 
-                if (rtn == 1)
-                {
-                    if (m_mode == 1)
-                    {
-                        MsgUtils.ShowErrorMsg("物料已入库，不可修改！");
-                        return false;
-                    }
-                    else
-                    {
-                        MsgUtils.ShowErrorMsg("物料已入库，不可修改！");
-                        return false;
-                    }
-                }
+            //    if (rtn == 1)
+            //    {
+            //        if (m_mode == 1)
+            //        {
+            //            MsgUtils.ShowErrorMsg("物料已入库，不可修改！");
+            //            return false;
+            //        }
+            //        else
+            //        {
+            //            MsgUtils.ShowErrorMsg("物料已入库，不可修改！");
+            //            return false;
+            //        }
+            //    }
 
-                if (rtn == 2)
-                {
-                    if (m_mode == 1)
-                    {
-                        MsgUtils.ShowErrorMsg("采购单已支付，不可删除！");
-                        return false;
-                    }
-                    else
-                    {
-                        MsgUtils.ShowErrorMsg("采购单已支付，不可删除！");
-                        return false;
-                    }
-                }
-            }           
+            //    if (rtn == 2)
+            //    {
+            //        if (m_mode == 1)
+            //        {
+            //            MsgUtils.ShowErrorMsg("采购单已支付，不可删除！");
+            //            return false;
+            //        }
+            //        else
+            //        {
+            //            MsgUtils.ShowErrorMsg("采购单已支付，不可删除！");
+            //            return false;
+            //        }
+            //    }
+            //}           
              
             // 新增或修改
             if (m_mode == 0 || m_mode == 1)
@@ -568,15 +645,6 @@ namespace PMS.Frm.Purchase
                     return false;
                 }
 
-                ////交货日期
-                //DateTime deliverDate = this.dtp_deliveryDate.Value;
-                //if (deliverDate <= DateTime.Now)
-                //{
-                //    MsgUtils.ShowErrorMsg("请选择合适的交货日期！");
-                //    this.txt_address.Focus();
-                //    return false;
-                //}
-
                 //供应商
                 if (this.cmb_supplier.SelectedIndex < 0)
                 {
@@ -614,21 +682,32 @@ namespace PMS.Frm.Purchase
                     this.txt_address.Focus();
                     return false;
                 }
-
-                //采购金额
-                if (WinCommon.IsFinance(LoginUserInfo.LoginUser.loginRole.roleType))
-                {
-                    decimal price = ConvertUtils.ConvertToDecimal(this.txt_price.Text.Trim());
-                    if (price <= 0)
-                    {
-                        MsgUtils.ShowErrorMsg("请输入合适的采购金额！");
-                        this.txt_price.Focus();
-                        return false;
-                    }
-                }
-
             }
 
+            //财务确认
+            if (m_mode == 4)
+            {
+                //采购金额
+                decimal price = ConvertUtils.ConvertToDecimal(this.txt_price.Text.Trim());
+                if (price <= 0)
+                {
+                    MsgUtils.ShowErrorMsg("请输入合适的采购金额！");
+                    this.txt_price.Focus();
+                    return false;
+                }
+            }
+
+            //财务取笑
+            if (m_mode == 5)
+            {
+                //取消原因
+                if (StringUtils.IsBlank(this.txt_cancelReason.Text.Trim()))
+                {
+                    MsgUtils.ShowErrorMsg("请输入取消原因！");
+                    this.txt_cancelReason.Focus();
+                    return false;
+                }
+            }
             return true;
         }
         #endregion

@@ -1,6 +1,6 @@
 ﻿namespace PMS.Frm.Finance
 {
-    partial class FrmReportSale
+    partial class FrmPurchaseOrder
     {
         /// <summary>
         /// Required designer variable.
@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReportSale));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPurchaseOrder));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmb_orderStatus = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.cmb_saler = new System.Windows.Forms.ComboBox();
+            this.cmb_purchaser = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmb_customer = new System.Windows.Forms.ComboBox();
             this.lbl_stockNum = new System.Windows.Forms.Label();
@@ -53,14 +53,15 @@
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.factoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerName = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.salerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderCode = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.purchaserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.produceCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ReceivedStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.receivedPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.excuteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.confirmBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cancelBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.customerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderStatusCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
@@ -71,7 +72,7 @@
             // 
             this.groupBox1.Controls.Add(this.cmb_orderStatus);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.cmb_saler);
+            this.groupBox1.Controls.Add(this.cmb_purchaser);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.cmb_customer);
             this.groupBox1.Controls.Add(this.lbl_stockNum);
@@ -85,7 +86,7 @@
             this.groupBox1.Controls.Add(this.lbl_saler);
             this.groupBox1.Location = new System.Drawing.Point(36, 79);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1131, 83);
+            this.groupBox1.Size = new System.Drawing.Size(1226, 83);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
@@ -108,14 +109,14 @@
             this.label3.TabIndex = 108;
             this.label3.Text = "订单状态：";
             // 
-            // cmb_saler
+            // cmb_purchaser
             // 
-            this.cmb_saler.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_saler.FormattingEnabled = true;
-            this.cmb_saler.Location = new System.Drawing.Point(558, 16);
-            this.cmb_saler.Name = "cmb_saler";
-            this.cmb_saler.Size = new System.Drawing.Size(120, 20);
-            this.cmb_saler.TabIndex = 107;
+            this.cmb_purchaser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_purchaser.FormattingEnabled = true;
+            this.cmb_purchaser.Location = new System.Drawing.Point(558, 16);
+            this.cmb_purchaser.Name = "cmb_purchaser";
+            this.cmb_purchaser.Size = new System.Drawing.Size(120, 20);
+            this.cmb_purchaser.TabIndex = 107;
             // 
             // label1
             // 
@@ -125,7 +126,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 106;
-            this.label1.Text = "销    售：";
+            this.label1.Text = "采    购：";
             // 
             // cmb_customer
             // 
@@ -187,7 +188,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 98;
-            this.label2.Text = "产品名称：";
+            this.label2.Text = "物料名称：";
             // 
             // dtp_end
             // 
@@ -241,21 +242,22 @@
             this.id,
             this.factoryName,
             this.customerName,
-            this.salerName,
-            this.orderCode,
+            this.purchaserName,
+            this.produceCode,
             this.orderPrice,
             this.orderStatus,
             this.deliveryDate,
             this.ReceivedStatus,
             this.receivedPrice,
-            this.excuteBtn,
+            this.confirmBtn,
+            this.cancelBtn,
             this.customerId,
             this.orderStatusCode});
             this.dataGridView1.Location = new System.Drawing.Point(30, 208);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(1137, 476);
+            this.dataGridView1.Size = new System.Drawing.Size(1232, 476);
             this.dataGridView1.TabIndex = 11;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -263,7 +265,7 @@
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1188, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1286, 24);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -271,11 +273,11 @@
             // 
             this.lbl_tile.AutoSize = true;
             this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
-            this.lbl_tile.Location = new System.Drawing.Point(443, 41);
+            this.lbl_tile.Location = new System.Drawing.Point(539, 40);
             this.lbl_tile.Name = "lbl_tile";
             this.lbl_tile.Size = new System.Drawing.Size(174, 27);
             this.lbl_tile.TabIndex = 67;
-            this.lbl_tile.Text = "销售订单列表";
+            this.lbl_tile.Text = "采购订单列表";
             // 
             // btn_export
             // 
@@ -312,23 +314,22 @@
             this.customerName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.customerName.Width = 160;
             // 
-            // salerName
+            // purchaserName
             // 
-            this.salerName.DataPropertyName = "salerName";
-            this.salerName.HeaderText = "销售";
-            this.salerName.Name = "salerName";
-            this.salerName.ReadOnly = true;
-            this.salerName.Width = 80;
+            this.purchaserName.DataPropertyName = "purchaserName";
+            this.purchaserName.HeaderText = "采购";
+            this.purchaserName.Name = "purchaserName";
+            this.purchaserName.ReadOnly = true;
+            this.purchaserName.Width = 80;
             // 
-            // orderCode
+            // produceCode
             // 
-            this.orderCode.DataPropertyName = "orderCode";
-            this.orderCode.HeaderText = "订单编号";
-            this.orderCode.Name = "orderCode";
-            this.orderCode.ReadOnly = true;
-            this.orderCode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.orderCode.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.orderCode.Width = 160;
+            this.produceCode.DataPropertyName = "produceCode";
+            this.produceCode.HeaderText = "订单编号";
+            this.produceCode.Name = "produceCode";
+            this.produceCode.ReadOnly = true;
+            this.produceCode.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.produceCode.Width = 160;
             // 
             // orderPrice
             // 
@@ -355,25 +356,31 @@
             // 
             // ReceivedStatus
             // 
-            this.ReceivedStatus.DataPropertyName = "receivedStatus";
-            this.ReceivedStatus.HeaderText = "收款状态";
+            this.ReceivedStatus.DataPropertyName = "paidStatus";
+            this.ReceivedStatus.HeaderText = "支付状态";
             this.ReceivedStatus.Name = "ReceivedStatus";
             this.ReceivedStatus.ReadOnly = true;
             // 
             // receivedPrice
             // 
-            this.receivedPrice.DataPropertyName = "receivedPrice";
-            this.receivedPrice.HeaderText = "收款金额";
+            this.receivedPrice.DataPropertyName = "paidPrice";
+            this.receivedPrice.HeaderText = "支付金额";
             this.receivedPrice.Name = "receivedPrice";
             this.receivedPrice.ReadOnly = true;
             // 
-            // excuteBtn
+            // confirmBtn
             // 
-            this.excuteBtn.DataPropertyName = "excuteBtn";
-            this.excuteBtn.HeaderText = "操作";
-            this.excuteBtn.Name = "excuteBtn";
-            this.excuteBtn.Text = "";
-            this.excuteBtn.Width = 80;
+            this.confirmBtn.DataPropertyName = "confirmBtn";
+            this.confirmBtn.HeaderText = "确认";
+            this.confirmBtn.Name = "confirmBtn";
+            this.confirmBtn.Text = "";
+            this.confirmBtn.Width = 80;
+            // 
+            // cancelBtn
+            // 
+            this.cancelBtn.DataPropertyName = "cancelBtn";
+            this.cancelBtn.HeaderText = "取消";
+            this.cancelBtn.Name = "cancelBtn";
             // 
             // customerId
             // 
@@ -389,11 +396,11 @@
             this.orderStatusCode.Name = "orderStatusCode";
             this.orderStatusCode.Visible = false;
             // 
-            // FrmReportSale
+            // FrmPurchaseOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1188, 696);
+            this.ClientSize = new System.Drawing.Size(1286, 696);
             this.Controls.Add(this.btn_export);
             this.Controls.Add(this.lbl_tile);
             this.Controls.Add(this.dataGridView1);
@@ -405,11 +412,11 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FrmReportSale";
+            this.Name = "FrmPurchaseOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "销售报表";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmReportSale_FormClosed);
-            this.Load += new System.EventHandler(this.FrmReportSale_Load);
+            this.Text = "采购订单";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPurchaseOrder_FormClosed);
+            this.Load += new System.EventHandler(this.FrmPurchaseOrder_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -438,19 +445,20 @@
         private System.Windows.Forms.ComboBox cmb_customer;
         private System.Windows.Forms.ComboBox cmb_orderStatus;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cmb_saler;
+        private System.Windows.Forms.ComboBox cmb_purchaser;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn factoryName;
         private System.Windows.Forms.DataGridViewLinkColumn customerName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn salerName;
-        private System.Windows.Forms.DataGridViewLinkColumn orderCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn purchaserName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn produceCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn deliveryDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ReceivedStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn receivedPrice;
-        private System.Windows.Forms.DataGridViewButtonColumn excuteBtn;
+        private System.Windows.Forms.DataGridViewButtonColumn confirmBtn;
+        private System.Windows.Forms.DataGridViewButtonColumn cancelBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerId;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderStatusCode;
 
