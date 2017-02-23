@@ -76,7 +76,8 @@ namespace PMS.Frm.Finance
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            Form form = new FrmReceivedDetailAdd(m_orderCode, 0);
+            decimal maxReceiveMoney = ConvertUtils.ConvertToDecimal(this.txt_orderPrice.Text) - ConvertUtils.ConvertToDecimal(this.txt_receivedMoney.Text);
+            Form form = new FrmReceivedDetailAdd(m_orderCode, maxReceiveMoney);
             form.ShowDialog();
             init();
         }

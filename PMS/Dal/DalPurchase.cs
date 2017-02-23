@@ -494,6 +494,7 @@ namespace Dal
             sbSql.Append("       materialsId, ");
             sbSql.Append("       num, ");
             sbSql.Append("       unit, ");
+            sbSql.Append("       paidStatus, ");
             sbSql.Append("       orderPrice, ");
             sbSql.Append("       purchaseBy, ");
             sbSql.Append("       purchaseDate, ");
@@ -507,6 +508,7 @@ namespace Dal
             sbSql.Append("       " + _model.materialsId + ", ");
             sbSql.Append("       " + _model.num + ", ");
             sbSql.Append("       " + _model.unit + ", ");
+            sbSql.Append("       " + (int)Enum.EnumPayStatus.NoPay + ", ");
             sbSql.Append("       " + _model.price + ", ");
             sbSql.Append("      '" + _model.modifyBy + "', ");
             sbSql.Append("      '" + _model.modifyTime + "', ");

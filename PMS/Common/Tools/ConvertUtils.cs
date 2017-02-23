@@ -140,6 +140,34 @@ namespace Common.Tools
             return value;
         }
 
+        public static Boolean isNumberical(object _object)
+        {
+            if (_object == null)
+            {
+                return false;
+            }
+
+            if (_object is DBNull)
+            {
+                return false;
+            }
+
+            try
+            {
+                _object = Convert.ToDecimal(_object);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+
+        public static Boolean isNotNumberical(object _object)
+        {
+            return !isNumberical(_object);
+        }
+
         public static Boolean isDate(object _object)
         {
              if (_object == null)

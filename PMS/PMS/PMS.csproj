@@ -80,6 +80,24 @@
     <Compile Include="Frm\Finance\FrmReceivedDetailAdd.Designer.cs">
       <DependentUpon>FrmReceivedDetailAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm\Finance\FrmPaid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Finance\FrmPaid.Designer.cs">
+      <DependentUpon>FrmPaid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Finance\FrmPaidDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Finance\FrmPaidDetail.Designer.cs">
+      <DependentUpon>FrmPaidDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Finance\FrmPaidDetailAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Finance\FrmPaidDetailAdd.Designer.cs">
+      <DependentUpon>FrmPaidDetailAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\Login\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -350,6 +368,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\Finance\FrmReceivedDetailAdd.resx">
       <DependentUpon>FrmReceivedDetailAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Finance\FrmPaid.resx">
+      <DependentUpon>FrmPaid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Finance\FrmPaidDetail.resx">
+      <DependentUpon>FrmPaidDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Finance\FrmPaidDetailAdd.resx">
+      <DependentUpon>FrmPaidDetailAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\Login\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

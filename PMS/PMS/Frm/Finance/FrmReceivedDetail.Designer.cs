@@ -269,7 +269,6 @@
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 121;
             this.label1.Text = "客    户：";
-            this.label1.Visible = false;
             // 
             // txt_orderCode
             // 

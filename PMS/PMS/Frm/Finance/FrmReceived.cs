@@ -45,14 +45,31 @@ namespace PMS.Frm.Finance
             listItem = m_bllUser.GetUserGroupByRoleType((int)Enum.EnumRoleType.Saler);
             WinCommon.BindComboBox(ref this.cmb_saler, listItem, true);
 
+            //订单状态
+            listItem = m_bllCode.GetCodeItem((int)Enum.EnumCode.SaleOrderStatus);
+            WinCommon.BindComboBox(ref this.cmb_orderStatus, listItem);
+
             //收款状态
             listItem = m_bllCode.GetCodeItem((int)Enum.EnumCode.ReceiveStatus);
             WinCommon.BindComboBox(ref this.cmb_receiveStatus, listItem);
 
-            this.dtp_begin.Value = DateTime.Now;
-            this.dtp_end.Value = DateTime.Now.AddMonths(1);
+            for(int i = 1; i < this.cmb_orderStatus.Items.Count; i++)
+            {
+                if((int)((ModelItem)this.cmb_orderStatus.Items[i]).itemKey == (int)Enum.EnumSaleOrderStatus.Complete)
+                {
+                    this.cmb_orderStatus.SelectedIndex = i;
+                    break;
+                }
+            }
+            for (int i = 1; i < this.cmb_receiveStatus.Items.Count; i++)
+            {
+                if ((int)((ModelItem)this.cmb_receiveStatus.Items[i]).itemKey == (int)Enum.EnumReceiveStatus.NoReceive)
+                {
+                    this.cmb_receiveStatus.SelectedIndex = i;
+                    break;
+                }
+            }
 
-            cmb_receiveStatus.SelectedIndex = 1;
             doSelect();
 
             this.cmb_factory.Focus();
@@ -86,16 +103,18 @@ namespace PMS.Frm.Finance
                 salerId = (int)((ModelItem)this.cmb_saler.SelectedItem).itemKey;
             }
             string name = this.txt_name.Text.Trim();
-            int status = 0;
+            int orderStatus = 0;
+            if (this.cmb_orderStatus.SelectedIndex > 0)
+            {
+                orderStatus = (int)((ModelItem)this.cmb_orderStatus.SelectedItem).itemKey;
+            }
+            int receiveStatus = 0;
             if (this.cmb_receiveStatus.SelectedIndex > 0)
             {
-                status = (int)((ModelItem)this.cmb_receiveStatus.SelectedItem).itemKey;
+                receiveStatus = (int)((ModelItem)this.cmb_receiveStatus.SelectedItem).itemKey;
             }
-            DateTime beginTime = new DateTime(this.dtp_begin.Value.Year, this.dtp_begin.Value.Month, this.dtp_begin.Value.Day);
-            DateTime endTime = new DateTime(this.dtp_end.Value.Year, this.dtp_end.Value.Month, this.dtp_end.Value.Day);
-            endTime = endTime.AddDays(1).AddSeconds(-1);
 
-            DataTable dt = m_bllFinance.GetReceiveExport(factoryId, customerId, salerId, name, status, beginTime, endTime);
+            DataTable dt = m_bllFinance.GetReceiveExport(factoryId, customerId, salerId, name, orderStatus, receiveStatus);
 
             if (ExportUtils.DataTableToExcel(dt, true) == false)
             {
@@ -122,16 +141,18 @@ namespace PMS.Frm.Finance
                 salerId = (int)((ModelItem)this.cmb_saler.SelectedItem).itemKey;
             }
             string name = this.txt_name.Text.Trim();
-            int status = 0;
+            int orderStatus = 0;
+            if (this.cmb_orderStatus.SelectedIndex > 0)
+            {
+                orderStatus = (int)((ModelItem)this.cmb_orderStatus.SelectedItem).itemKey;
+            }
+            int receiveStatus = 0;
             if (this.cmb_receiveStatus.SelectedIndex > 0)
             {
-                status = (int)((ModelItem)this.cmb_receiveStatus.SelectedItem).itemKey;
+                receiveStatus = (int)((ModelItem)this.cmb_receiveStatus.SelectedItem).itemKey;
             }
-            DateTime beginTime = new DateTime(this.dtp_begin.Value.Year, this.dtp_begin.Value.Month, this.dtp_begin.Value.Day);
-            DateTime endTime = new DateTime(this.dtp_end.Value.Year, this.dtp_end.Value.Month, this.dtp_end.Value.Day);
-            endTime = endTime.AddDays(1).AddSeconds(-1);
 
-            this.dataGridView1.DataSource = m_bllFinance.GetReceive(factoryId, customerId, salerId, name, status, beginTime, endTime);
+            this.dataGridView1.DataSource = m_bllFinance.GetReceive(factoryId, customerId, salerId, name, orderStatus, receiveStatus);
             this.dataGridView1.Refresh();
         }
 

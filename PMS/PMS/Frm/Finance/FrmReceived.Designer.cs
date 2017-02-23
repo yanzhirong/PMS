@@ -31,22 +31,23 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReceived));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cmb_receiveStatus = new System.Windows.Forms.ComboBox();
+            this.cmb_orderStatus = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cmb_saler = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmb_customer = new System.Windows.Forms.ComboBox();
             this.lbl_stockNum = new System.Windows.Forms.Label();
-            this.dtp_begin = new System.Windows.Forms.DateTimePicker();
-            this.label5 = new System.Windows.Forms.Label();
             this.txt_name = new System.Windows.Forms.TextBox();
             this.cmb_factory = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dtp_end = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
             this.lbl_saler = new System.Windows.Forms.Label();
             this.btn_query = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.lbl_tile = new System.Windows.Forms.Label();
+            this.btn_export = new System.Windows.Forms.Button();
+            this.cmb_receiveStatus = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.factoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerName = new System.Windows.Forms.DataGridViewLinkColumn();
@@ -55,13 +56,10 @@
             this.orderPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.deliveryDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReceivedStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.receivedStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.receivedPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.receiveDetail = new System.Windows.Forms.DataGridViewButtonColumn();
             this.customerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.lbl_tile = new System.Windows.Forms.Label();
-            this.btn_export = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -69,18 +67,16 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.cmb_receiveStatus);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.cmb_orderStatus);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.cmb_saler);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.cmb_customer);
             this.groupBox1.Controls.Add(this.lbl_stockNum);
-            this.groupBox1.Controls.Add(this.dtp_begin);
-            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txt_name);
             this.groupBox1.Controls.Add(this.cmb_factory);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.dtp_end);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.lbl_saler);
             this.groupBox1.Location = new System.Drawing.Point(36, 79);
             this.groupBox1.Name = "groupBox1";
@@ -88,14 +84,14 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
-            // cmb_receiveStatus
+            // cmb_orderStatus
             // 
-            this.cmb_receiveStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_receiveStatus.FormattingEnabled = true;
-            this.cmb_receiveStatus.Location = new System.Drawing.Point(350, 48);
-            this.cmb_receiveStatus.Name = "cmb_receiveStatus";
-            this.cmb_receiveStatus.Size = new System.Drawing.Size(120, 20);
-            this.cmb_receiveStatus.TabIndex = 109;
+            this.cmb_orderStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_orderStatus.FormattingEnabled = true;
+            this.cmb_orderStatus.Location = new System.Drawing.Point(350, 48);
+            this.cmb_orderStatus.Name = "cmb_orderStatus";
+            this.cmb_orderStatus.Size = new System.Drawing.Size(120, 20);
+            this.cmb_orderStatus.TabIndex = 109;
             // 
             // label3
             // 
@@ -105,7 +101,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 108;
-            this.label3.Text = "收款状态：";
+            this.label3.Text = "订单状态：";
             // 
             // cmb_saler
             // 
@@ -145,22 +141,6 @@
             this.lbl_stockNum.TabIndex = 104;
             this.lbl_stockNum.Text = "客    户：";
             // 
-            // dtp_begin
-            // 
-            this.dtp_begin.Location = new System.Drawing.Point(558, 46);
-            this.dtp_begin.Name = "dtp_begin";
-            this.dtp_begin.Size = new System.Drawing.Size(119, 21);
-            this.dtp_begin.TabIndex = 6;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(496, 51);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 12);
-            this.label5.TabIndex = 102;
-            this.label5.Text = "交货日期：";
-            // 
             // txt_name
             // 
             this.txt_name.Location = new System.Drawing.Point(89, 48);
@@ -187,22 +167,6 @@
             this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 98;
             this.label2.Text = "产品名称：";
-            // 
-            // dtp_end
-            // 
-            this.dtp_end.Location = new System.Drawing.Point(701, 46);
-            this.dtp_end.Name = "dtp_end";
-            this.dtp_end.Size = new System.Drawing.Size(119, 21);
-            this.dtp_end.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(683, 51);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 12);
-            this.label4.TabIndex = 88;
-            this.label4.Text = "：";
             // 
             // lbl_saler
             // 
@@ -245,7 +209,7 @@
             this.orderPrice,
             this.orderStatus,
             this.deliveryDate,
-            this.ReceivedStatus,
+            this.receivedStatus,
             this.receivedPrice,
             this.receiveDetail,
             this.customerId});
@@ -256,6 +220,53 @@
             this.dataGridView1.Size = new System.Drawing.Size(1138, 476);
             this.dataGridView1.TabIndex = 11;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1200, 24);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // lbl_tile
+            // 
+            this.lbl_tile.AutoSize = true;
+            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
+            this.lbl_tile.Location = new System.Drawing.Point(539, 40);
+            this.lbl_tile.Name = "lbl_tile";
+            this.lbl_tile.Size = new System.Drawing.Size(120, 27);
+            this.lbl_tile.TabIndex = 67;
+            this.lbl_tile.Text = "收款列表";
+            // 
+            // btn_export
+            // 
+            this.btn_export.Location = new System.Drawing.Point(155, 174);
+            this.btn_export.Name = "btn_export";
+            this.btn_export.Size = new System.Drawing.Size(75, 23);
+            this.btn_export.TabIndex = 10;
+            this.btn_export.Text = "导出";
+            this.btn_export.UseVisualStyleBackColor = true;
+            this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
+            // 
+            // cmb_receiveStatus
+            // 
+            this.cmb_receiveStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_receiveStatus.FormattingEnabled = true;
+            this.cmb_receiveStatus.Location = new System.Drawing.Point(558, 48);
+            this.cmb_receiveStatus.Name = "cmb_receiveStatus";
+            this.cmb_receiveStatus.Size = new System.Drawing.Size(120, 20);
+            this.cmb_receiveStatus.TabIndex = 111;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(496, 52);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 12);
+            this.label5.TabIndex = 110;
+            this.label5.Text = "收款状态：";
             // 
             // id
             // 
@@ -322,12 +333,12 @@
             this.deliveryDate.ReadOnly = true;
             this.deliveryDate.Width = 80;
             // 
-            // ReceivedStatus
+            // receivedStatus
             // 
-            this.ReceivedStatus.DataPropertyName = "receivedStatus";
-            this.ReceivedStatus.HeaderText = "收款状态";
-            this.ReceivedStatus.Name = "ReceivedStatus";
-            this.ReceivedStatus.ReadOnly = true;
+            this.receivedStatus.DataPropertyName = "receivedStatus";
+            this.receivedStatus.HeaderText = "收款状态";
+            this.receivedStatus.Name = "receivedStatus";
+            this.receivedStatus.ReadOnly = true;
             // 
             // receivedPrice
             // 
@@ -350,34 +361,6 @@
             this.customerId.HeaderText = "customerId";
             this.customerId.Name = "customerId";
             this.customerId.Visible = false;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1200, 24);
-            this.menuStrip1.TabIndex = 9;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // lbl_tile
-            // 
-            this.lbl_tile.AutoSize = true;
-            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
-            this.lbl_tile.Location = new System.Drawing.Point(539, 40);
-            this.lbl_tile.Name = "lbl_tile";
-            this.lbl_tile.Size = new System.Drawing.Size(120, 27);
-            this.lbl_tile.TabIndex = 67;
-            this.lbl_tile.Text = "收款列表";
-            // 
-            // btn_export
-            // 
-            this.btn_export.Location = new System.Drawing.Point(155, 174);
-            this.btn_export.Name = "btn_export";
-            this.btn_export.Size = new System.Drawing.Size(75, 23);
-            this.btn_export.TabIndex = 10;
-            this.btn_export.Text = "导出";
-            this.btn_export.UseVisualStyleBackColor = true;
-            this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
             // 
             // FrmReceived
             // 
@@ -418,18 +401,16 @@
         private System.Windows.Forms.Label lbl_tile;
         private System.Windows.Forms.Label lbl_saler;
         private System.Windows.Forms.ComboBox cmb_factory;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dtp_end;
         private System.Windows.Forms.Label lbl_stockNum;
-        private System.Windows.Forms.DateTimePicker dtp_begin;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_export;
         private System.Windows.Forms.ComboBox cmb_customer;
-        private System.Windows.Forms.ComboBox cmb_receiveStatus;
+        private System.Windows.Forms.ComboBox cmb_orderStatus;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmb_saler;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmb_receiveStatus;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn factoryName;
         private System.Windows.Forms.DataGridViewLinkColumn customerName;
@@ -438,7 +419,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn orderPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn deliveryDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ReceivedStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn receivedStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn receivedPrice;
         private System.Windows.Forms.DataGridViewButtonColumn receiveDetail;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerId;

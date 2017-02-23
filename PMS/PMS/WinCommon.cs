@@ -176,7 +176,7 @@ namespace PMS
         /// <returns></returns>
         public static Boolean IsOnlyInt(char _char)
         {
-            if (!((_char >= 48 && _char <= 57) || _char == 8))
+            if (!((_char >= 48 && _char <= 57) || _char == 8 || _char == 45))
             {
                 return true;
             }
@@ -193,7 +193,7 @@ namespace PMS
         /// <returns></returns>
         public static Boolean IsOnlyDouble(char _char)
         {
-            if (!((_char >= 48 && _char <= 57) || _char == '.' || _char == 8))
+            if (!((_char >= 48 && _char <= 57) || _char == 8 || _char ==45 || _char == 46))
             {
                 return true;
             }

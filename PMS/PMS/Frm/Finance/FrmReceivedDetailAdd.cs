@@ -56,6 +56,8 @@ namespace PMS.Frm.Finance
         {
             List<ModelItem> listItem = m_bllCode.GetCodeItem((int)Enum.EnumCode.Settlement, false);
             WinCommon.BindComboBox(ref this.cmb_receiveType, listItem);
+
+            this.txt_receiveMoney.Text = m_maxReceiveMoney.ToString();
         }
         #endregion
 
@@ -110,13 +112,13 @@ namespace PMS.Frm.Finance
         private Boolean doCheck()
         {
             //收款金额
-            decimal receiveMoney = ConvertUtils.ConvertToDecimal(this.txt_receiveMoney.Text.Trim());
-            if (receiveMoney <= 0)
+            if (ConvertUtils.isNotNumberical(this.txt_receiveMoney.Text.Trim()))
             {
                 MsgUtils.ShowErrorMsg("请输入正确的收款金额！");
                 this.txt_receiveMoney.Focus();
                 return false;
             }
+            decimal receiveMoney = ConvertUtils.ConvertToDecimal(this.txt_receiveMoney.Text.Trim());
             if (receiveMoney > m_maxReceiveMoney)
             {
                 MsgUtils.ShowErrorMsg("收款金额大于余款（" + m_maxReceiveMoney + ")！");
@@ -149,6 +151,13 @@ namespace PMS.Frm.Finance
                 }
             }
 
+            if (m_maxReceiveMoney <= 0)
+            {
+                if (MsgUtils.ShowQustMsg("已完成收款，是否确认继续！", MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                {
+                    return false;
+                }
+            }
             return true;
         }
         #endregion
@@ -156,7 +165,7 @@ namespace PMS.Frm.Finance
         private void txt_receiveMoney_KeyPress(object sender, KeyPressEventArgs e)
         {
             //仅限数字
-            e.Handled = WinCommon.IsOnlyInt(e.KeyChar);
+            e.Handled = WinCommon.IsOnlyDouble(e.KeyChar);
         }
 
     }

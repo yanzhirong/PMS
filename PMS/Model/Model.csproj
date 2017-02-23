@@ -80,6 +80,7 @@
     <Compile Include="ModelInventoryProductLog.cs" />
     <Compile Include="ModelInventoryMaterialsLog.cs" />
     <Compile Include="ModelFinanceReceivedDetail.cs" />
+    <Compile Include="ModelFinancePaidDetail.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Enum\Enum.csproj">

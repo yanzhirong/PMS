@@ -494,6 +494,7 @@
             this.chk_sys_config.TabIndex = 5;
             this.chk_sys_config.Text = "系统设置";
             this.chk_sys_config.UseVisualStyleBackColor = true;
+            this.chk_sys_config.Visible = false;
             // 
             // chk_sys_role
             // 

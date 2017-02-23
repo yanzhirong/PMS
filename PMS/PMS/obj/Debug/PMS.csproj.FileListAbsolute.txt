@@ -174,10 +174,6 @@ D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Store.FrmInventory.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Store.FrmInventoryDetail.resources
 C:\Work\project\NET\PMS\PMS\PMS\obj\Debug\PMS.Frm.Store.FrmInventory.resources
 C:\Work\project\NET\PMS\PMS\PMS\obj\Debug\PMS.Frm.Store.FrmInventoryDetail.resources
-D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Dal.dll
-D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Bll.pdb
-D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Model.pdb
-D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Dal.pdb
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Finance.FrmSaleOrder.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Finance.FrmPurchaseOrder.resources
 C:\Work\project\NET\PMS\PMS\PMS\obj\Debug\PMS.Frm.Finance.FrmReceivedDetail.resources
@@ -185,3 +181,13 @@ C:\Work\project\NET\PMS\PMS\PMS\obj\Debug\PMS.Frm.Finance.FrmSaleOrder.resources
 C:\Work\project\NET\PMS\PMS\PMS\obj\Debug\PMS.Frm.Finance.FrmPurchaseOrder.resources
 C:\Work\project\NET\PMS\PMS\PMS\obj\Debug\PMS.Frm.Finance.FrmReceived.resources
 C:\Work\project\NET\PMS\PMS\PMS\obj\Debug\PMS.Frm.Finance.FrmReceivedDetailAdd.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Finance.FrmReceivedDetail.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Finance.FrmReceived.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Finance.FrmReceivedDetailAdd.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Finance.FrmPaid.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Finance.FrmPaidDetail.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Finance.FrmPaidDetailAdd.resources
+D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Dal.dll
+D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Bll.pdb
+D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Model.pdb
+D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Dal.pdb

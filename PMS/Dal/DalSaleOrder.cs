@@ -365,6 +365,7 @@ namespace Dal
             sbSql.Append("       customerId, ");
             sbSql.Append("       factoryId, ");
             sbSql.Append("       orderCode, ");
+            sbSql.Append("       receivedStatus, ");
             sbSql.Append("       orderPrice, ");
             sbSql.Append("       salerId, ");
             sbSql.Append("       financeId, ");
@@ -377,6 +378,7 @@ namespace Dal
             sbSql.Append("       " + _modelFinanceReceive.customerId + ", ");
             sbSql.Append("       " + _modelFinanceReceive.factoryId + ", ");
             sbSql.Append("      '" + _modelFinanceReceive.orderCode + "', ");
+            sbSql.Append("       " + (int)Enum.EnumReceiveStatus.NoReceive + ", ");
             sbSql.Append("       " + _modelFinanceReceive.orderPrice + ", ");
             sbSql.Append("       " + _modelFinanceReceive.salerId + ", ");
             sbSql.Append("       " + _modelFinanceReceive.financeId + ", ");

@@ -8,11 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
+using Common.Tools;
 
 namespace PMS.Frm.Main
 {
     public partial class FrmMain : Form
     {
+        int x_start = 0;
+        int y_start = 0;
+        int x_count = 0;
+        int y_count = 0;
+        int x_max_count = 5;
+        //int y_max_count = 5;
+
         public FrmMain()
         {
             InitializeComponent();
@@ -21,70 +29,67 @@ namespace PMS.Frm.Main
         private void FrmMain_Load(object sender, EventArgs e)
         {
             //显示登录者信息
-            //lbl_loginInfo.Text = LoginUserInfo.LoginUser.loginUser.userName + "/" + LoginUserInfo.LoginUser.loginRole.roleName;
-            //lbl_loginInfo.Left = btn_logout.Left -  lbl_loginInfo.Width - 10;
             this.Text = "生产管理系统      (" + LoginUserInfo.LoginUser.loginUser.userName + "/" + LoginUserInfo.LoginUser.loginRole.roleName + ")";
             //动态生成菜单
-            // CreateMenu();
+            CreateMenu();
             LoginUserInfo.LoginUser.currentFrom = this;
             WinCommon.CreateMenu(ref this.menuStrip1);
-            LoginUserInfo.LoginUser.mainPanel = this.pnl_main;
 
+            this.pnl_main.Left = (this.Width - this.pnl_main.Width) / 2;
+            this.pnl_main.Top = (this.Height - this.pnl_main.Height) / 2;
         }
 
-        private void FrmMain_Activated(object sender, EventArgs e)
-        {
-
-        }
-
+        #region 生成菜单 已废弃
         private void CreateMenu()
         {
-            menuStrip1.Items.Clear();
 
             if (LoginUserInfo.LoginUser.loginMenu != null && LoginUserInfo.LoginUser.loginMenu.Count > 0)
             {
                 foreach (ModelMenu menu in LoginUserInfo.LoginUser.loginMenu)
                 {
                     // 一级菜单
-                    if (menu.parentId == 0)
+                    if (menu.parentId == 0 && StringUtils.IsNotBlank(menu.checkBoxName))
                     {
-                        ToolStripMenuItem mi = new ToolStripMenuItem();
-                        mi.Text = menu.menuName;
-                        CreateMenuItem(mi, menu.menuId);
-                        menuStrip1.Items.Add((ToolStripItem)mi);
+                        Label label = new Label();
+                        label.AutoSize = true;
+                        label.Font = new Font(label.Font.FontFamily, 13, label.Font.Style);
+                        label.Text = menu.menuName;
+                        label.Location = GetPoint(true);
+                        this.pnl_main.Controls.Add(label);
+                        CreateMenuItem(menu.menuId);
                     }
                 }
             }
         }
-        private void CreateMenuItem(ToolStripMenuItem mi, int parentId)
+        private void CreateMenuItem(int parentId)
         {
             foreach (ModelMenu menu in LoginUserInfo.LoginUser.loginMenu)
             {
                 // 二级菜单
                 if (menu.parentId == parentId)
                 {
-                    ToolStripMenuItem mitem = new ToolStripMenuItem();
-                    mitem.Text = menu.menuName;
-                    mitem.Tag = menu.formName;
-                    mi.DropDownItems.Add(mitem);
-                    mitem.Click += new EventHandler(BindClickToInstinse);
+                    LinkLabel linkLabel = new LinkLabel();
+                    linkLabel.AutoSize = true;
+                    linkLabel.LinkBehavior = LinkBehavior.NeverUnderline;
+                    linkLabel.Text = "•" + menu.menuName.Trim();
+                    linkLabel.Tag = menu.formName.Trim();
+                    linkLabel.Click += new EventHandler(BindClickToInstinse);
+                    linkLabel.Location = GetPoint(false);
+                    this.pnl_main.Controls.Add(linkLabel);
                 }
             }
         }
 
         private void BindClickToInstinse(object sender, EventArgs e)
         {
-            ToolStripMenuItem mi = sender as ToolStripMenuItem;
-            if (mi.HasDropDownItems)//如果有下一级目录就不实例化
-            {
-                return;
-            }
-            string formName = mi.Tag as string;
+            LinkLabel linkLabel = sender as LinkLabel;
+
+            string formName = linkLabel.Tag as string;
             try
             {
-                Form form = System.AppDomain.CurrentDomain.CreateInstanceFromAndUnwrap(Application.ExecutablePath, formName) as Form;
-                WinCommon.ShowInMain(ref form);
-                form.ShowDialog();
+                LoginUserInfo.LoginUser.currentFrom.Hide();
+                Form f = System.AppDomain.CurrentDomain.CreateInstanceFromAndUnwrap(Application.ExecutablePath, formName) as Form;
+                f.Show();
             }
             catch (Exception ex)
             {
@@ -92,17 +97,62 @@ namespace PMS.Frm.Main
             }
         }
 
+        private Point GetPoint(bool _isFather)
+        {
+            Point point = new Point();
+
+            //换列
+            if (_isFather)
+            {
+                x_count = x_count + 1;
+
+                if (x_count % x_max_count == 0)
+                {
+                    x_start = 80;
+                }
+                else
+                {
+                    if (x_count / x_max_count == 0)
+                    {
+                        x_start = ((x_count -1) % x_max_count) * 150 + 80; ;
+                    }
+                    else
+                    {
+                        x_start = (x_count % x_max_count) * 150 + 80;
+                    }
+                }
+
+                y_start = (x_count / x_max_count) * 200 + 30;
+
+                this.pnl_main.Height = (x_count / x_max_count) * 200 + 220;
+
+                if (x_count < x_max_count)
+                {
+                    this.pnl_main.Width = x_count * 150 + 100;
+                }
+            }
+            else
+            {
+                y_start = y_start + 30;
+            }
+
+            if (_isFather)
+            {
+                point.X = x_start;
+            }
+            else
+            {
+                point.X = x_start + 5;
+            }
+            point.Y = y_start;
+
+            return point;
+        }
+        #endregion
+
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             WinCommon.Exit();
-        }
-
-
-        private void lnk_logout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            this.Hide();
-            Form frmLogin = new Frm.Login.FrmLogin();
-            frmLogin.Show();
         }
 
     }
