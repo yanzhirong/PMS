@@ -45,11 +45,10 @@
             // pnl_main
             // 
             this.pnl_main.BackColor = System.Drawing.SystemColors.Control;
-            this.pnl_main.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnl_main.BackgroundImage")));
             this.pnl_main.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnl_main.Location = new System.Drawing.Point(0, 27);
+            this.pnl_main.Location = new System.Drawing.Point(26, 48);
             this.pnl_main.Name = "pnl_main";
-            this.pnl_main.Size = new System.Drawing.Size(780, 538);
+            this.pnl_main.Size = new System.Drawing.Size(763, 514);
             this.pnl_main.TabIndex = 3;
             // 
             // FrmMain

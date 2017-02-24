@@ -550,6 +550,7 @@
     <None Include="pic\bg.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="bin\Debug\pic\config.png" />
     <Content Include="PMS.ico" />
   </ItemGroup>
   <ItemGroup />

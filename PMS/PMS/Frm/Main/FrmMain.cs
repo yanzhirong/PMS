@@ -20,6 +20,7 @@ namespace PMS.Frm.Main
         int y_count = 0;
         int x_max_count = 5;
         //int y_max_count = 5;
+        string iconFolder = "";
 
         public FrmMain()
         {
@@ -28,6 +29,8 @@ namespace PMS.Frm.Main
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
+            iconFolder = Application.ExecutablePath.Substring(0, Application.ExecutablePath.LastIndexOf("\\")) + "\\";
+
             //显示登录者信息
             this.Text = "生产管理系统      (" + LoginUserInfo.LoginUser.loginUser.userName + "/" + LoginUserInfo.LoginUser.loginRole.roleName + ")";
             //动态生成菜单
@@ -35,8 +38,8 @@ namespace PMS.Frm.Main
             LoginUserInfo.LoginUser.currentFrom = this;
             WinCommon.CreateMenu(ref this.menuStrip1);
 
-            this.pnl_main.Left = (this.Width - this.pnl_main.Width) / 2;
-            this.pnl_main.Top = (this.Height - this.pnl_main.Height) / 2;
+            //this.pnl_main.Left = (this.Width - this.pnl_main.Width) / 2;
+            //this.pnl_main.Top = (this.Height - this.pnl_main.Height) / 2;
         }
 
         #region 生成菜单 已废弃
@@ -50,11 +53,23 @@ namespace PMS.Frm.Main
                     // 一级菜单
                     if (menu.parentId == 0 && StringUtils.IsNotBlank(menu.checkBoxName))
                     {
+                        Point point = GetPoint(true);
+                        if (StringUtils.IsNotBlank(menu.iconPath))
+                        {
+                            PictureBox pb = new PictureBox();
+                            pb.Width = 35;
+                            pb.Height = 35;
+                            pb.SizeMode = PictureBoxSizeMode.Zoom;
+                            pb.Image = new Bitmap(iconFolder + menu.iconPath); ;
+                            pb.Location = new Point(point.X, point.Y);
+                            this.pnl_main.Controls.Add(pb);
+                        }
                         Label label = new Label();
                         label.AutoSize = true;
                         label.Font = new Font(label.Font.FontFamily, 13, label.Font.Style);
                         label.Text = menu.menuName;
-                        label.Location = GetPoint(true);
+                        label.Location = new Point(point.X + 40, point.Y+5);
+                        //label.Location = GetPoint(true);
                         this.pnl_main.Controls.Add(label);
                         CreateMenuItem(menu.menuId);
                     }
@@ -68,13 +83,27 @@ namespace PMS.Frm.Main
                 // 二级菜单
                 if (menu.parentId == parentId)
                 {
+                    Point point = GetPoint(false);
+                    if (StringUtils.IsNotBlank(menu.iconPath))
+                    {
+                        PictureBox pb = new PictureBox();
+                        pb.Width = 25;
+                        pb.Height = 25;
+                        pb.SizeMode = PictureBoxSizeMode.Zoom;
+                        pb.Image = new Bitmap(iconFolder + menu.iconPath); ;
+                        pb.Location = new Point(point.X, point.Y);
+                        this.pnl_main.Controls.Add(pb);
+                    }
                     LinkLabel linkLabel = new LinkLabel();
                     linkLabel.AutoSize = true;
                     linkLabel.LinkBehavior = LinkBehavior.NeverUnderline;
-                    linkLabel.Text = "•" + menu.menuName.Trim();
+                    //linkLabel.Text = "•" + menu.menuName.Trim();
+                    linkLabel.Text = menu.menuName.Trim();
+                    linkLabel.Font = new Font(linkLabel.Font.FontFamily, 11, linkLabel.Font.Style);
                     linkLabel.Tag = menu.formName.Trim();
                     linkLabel.Click += new EventHandler(BindClickToInstinse);
-                    linkLabel.Location = GetPoint(false);
+                    linkLabel.Location = new Point(point.X + 25, point.Y+8);
+                    //linkLabel.Location = GetPoint(false);
                     this.pnl_main.Controls.Add(linkLabel);
                 }
             }
@@ -108,32 +137,32 @@ namespace PMS.Frm.Main
 
                 if (x_count % x_max_count == 0)
                 {
-                    x_start = 80;
+                    x_start = 20;
                 }
                 else
                 {
                     if (x_count / x_max_count == 0)
                     {
-                        x_start = ((x_count -1) % x_max_count) * 150 + 80; ;
+                        x_start = ((x_count -1) % x_max_count) * 180 + 20;
                     }
                     else
                     {
-                        x_start = (x_count % x_max_count) * 150 + 80;
+                        x_start = (x_count % x_max_count) * 180 + 20;
                     }
                 }
 
-                y_start = (x_count / x_max_count) * 200 + 30;
+                y_start = (x_count / x_max_count) * 250 + 30;
 
-                this.pnl_main.Height = (x_count / x_max_count) * 200 + 220;
+                //this.pnl_main.Height = (x_count / x_max_count) * 200 + 220;
 
-                if (x_count < x_max_count)
-                {
-                    this.pnl_main.Width = x_count * 150 + 100;
-                }
+                //if (x_count < x_max_count)
+                //{
+                //    this.pnl_main.Width = x_count * 180 + 100;
+                //}
             }
             else
             {
-                y_start = y_start + 30;
+                y_start = y_start + 38;
             }
 
             if (_isFather)
@@ -142,7 +171,7 @@ namespace PMS.Frm.Main
             }
             else
             {
-                point.X = x_start + 5;
+                point.X = x_start + 20;
             }
             point.Y = y_start;
 

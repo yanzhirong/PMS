@@ -14,6 +14,7 @@ namespace Model
         public string formName { set; get; }
         public string checkBoxName { set; get; }
         public int isChecked { set; get; }
+        public string iconPath { set; get; }
 
     }
 }
