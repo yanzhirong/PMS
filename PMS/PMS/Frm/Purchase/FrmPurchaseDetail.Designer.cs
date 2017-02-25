@@ -520,9 +520,9 @@
             this.label14.ForeColor = System.Drawing.Color.Black;
             this.label14.Location = new System.Drawing.Point(177, 23);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(23, 12);
+            this.label14.Size = new System.Drawing.Size(17, 12);
             this.label14.TabIndex = 117;
-            this.label14.Text = "RMB";
+            this.label14.Text = "元";
             // 
             // txt_price
             // 

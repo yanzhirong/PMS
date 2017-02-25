@@ -54,8 +54,8 @@ namespace PMS.Frm.Product
         {
 
             Form form = new FrmMaterialsDetail(0, 0);
-            this.Hide();
             form.ShowDialog();
+            doSelect();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -419,7 +419,7 @@ namespace PMS.Frm.Sale
 
         private void FrmCustomerDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
-            WinCommon.Exit();
+            this.Hide();
         }
 
         private void txt_creditLimit_KeyPress(object sender, KeyPressEventArgs e)

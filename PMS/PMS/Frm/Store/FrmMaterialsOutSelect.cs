@@ -260,6 +260,13 @@ namespace PMS.Frm.Store
             decimal requestOutputNum = ConvertUtils.ConvertToDecimal(this.txt_num.Text.Trim());
             requestOutputNum = requestOutputNum * m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(this.txt_unitCode.Text));
 
+            if (requestOutputNum > 0 && (selectedAllOutputNum + m_realityOutputNum * m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(this.txt_unitCode.Text))) > requestOutputNum)
+            {
+                if (MsgUtils.ShowQustMsg("出库数量大于申请数量，确认出库么？", MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                {
+                    return false;
+                }
+            }
             if (requestOutputNum > 0 && (selectedAllOutputNum + m_realityOutputNum * m_bllCode.GetWeightUnit(ConvertUtils.ConvertToInt(this.txt_unitCode.Text))) < requestOutputNum)
             {
                 if (MsgUtils.ShowQustMsg("出库数量低于申请数量，确认出库么？", MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
@@ -342,14 +349,14 @@ namespace PMS.Frm.Store
             colOutputNum.Name = "outputNum";
             colOutputNum.HeaderText = "出库数量";
             colOutputNum.Width = 80;
-            colOutputNum.ReadOnly = false;
+            colOutputNum.ReadOnly = true;
             this.dataGridView1.Columns.Add(colOutputNum);
 
             DataGridViewComboBoxColumn cmbColumn = new DataGridViewComboBoxColumn();
             cmbColumn.Name = "outputUnit";
             cmbColumn.HeaderText = "出库单位";
             cmbColumn.Width = 80;
-            cmbColumn.ReadOnly = false;
+            cmbColumn.ReadOnly = true;
             this.dataGridView1.Columns.Add(cmbColumn);
             cmbColumn.DataSource = m_bllCode.GetCodeList(3);
             cmbColumn.DisplayMember = "value1";
@@ -464,9 +471,13 @@ namespace PMS.Frm.Store
             //选择
             if (this.dataGridView1.Rows[e.RowIndex].Cells["selected"].EditedFormattedValue.ToString() == "True")
             {
-                this.dataGridView1.Rows[e.RowIndex].Cells["outputNum"].Value = this.dataGridView1.Rows[e.RowIndex].Cells["inputNum"].Value;
-                this.dataGridView1.Rows[e.RowIndex].Cells["outputUnit"].Value = this.dataGridView1.Rows[e.RowIndex].Cells["inputUnit"].Value;
+                this.dataGridView1.Rows[e.RowIndex].Cells["outputNum"].ReadOnly = false;
+                this.dataGridView1.Rows[e.RowIndex].Cells["outputNum"].Value = this.dataGridView1.Rows[e.RowIndex].Cells["num"].Value;
+                this.dataGridView1.Rows[e.RowIndex].Cells["outputUnit"].ReadOnly = false;
+                this.dataGridView1.Rows[e.RowIndex].Cells["outputUnit"].Value = this.dataGridView1.Rows[e.RowIndex].Cells["unit"].Value;
             } else {
+                this.dataGridView1.Rows[e.RowIndex].Cells["outputNum"].ReadOnly = true;
+                this.dataGridView1.Rows[e.RowIndex].Cells["outputUnit"].ReadOnly = true;
                 this.dataGridView1.Rows[e.RowIndex].Cells["outputNum"].Value = "";
             }
         }

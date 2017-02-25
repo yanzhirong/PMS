@@ -59,7 +59,7 @@
             this.outputStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifyBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.deleteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.inputStatusCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.outputStatusCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.outputCnt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -228,7 +228,7 @@
             this.outputStatus,
             this.modifyBtn,
             this.deleteBtn,
-            this.inputStatusCode,
+            this.outputStatusCode,
             this.outputCnt});
             this.dataGridView1.Location = new System.Drawing.Point(30, 208);
             this.dataGridView1.Name = "dataGridView1";
@@ -347,12 +347,12 @@
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Width = 80;
             // 
-            // inputStatusCode
+            // outputStatusCode
             // 
-            this.inputStatusCode.DataPropertyName = "outputStatusCode";
-            this.inputStatusCode.HeaderText = "outputStatusCode";
-            this.inputStatusCode.Name = "inputStatusCode";
-            this.inputStatusCode.Visible = false;
+            this.outputStatusCode.DataPropertyName = "outputStatusCode";
+            this.outputStatusCode.HeaderText = "outputStatusCode";
+            this.outputStatusCode.Name = "outputStatusCode";
+            this.outputStatusCode.Visible = false;
             // 
             // outputCnt
             // 
@@ -421,7 +421,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn outputStatus;
         private System.Windows.Forms.DataGridViewButtonColumn modifyBtn;
         private System.Windows.Forms.DataGridViewButtonColumn deleteBtn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn inputStatusCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn outputStatusCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn outputCnt;
 
     }

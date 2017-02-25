@@ -159,7 +159,7 @@ namespace PMS.Frm.Sys
 
         private void FrmSysFactoryDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
-            WinCommon.Exit();
+            this.Hide();
         }
     }
 }

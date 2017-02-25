@@ -215,12 +215,10 @@ namespace Dal
                 sbSql.Append("       r_product_price ( ");
                 sbSql.Append("       productId, ");
                 sbSql.Append("       minPrice, ");
-                sbSql.Append("       advisePrice, ");
-                sbSql.Append("       priceUnit) ");
+                sbSql.Append("       advisePrice) ");
                 sbSql.Append("select id, ");
                 sbSql.Append("        " + _modelProduct.modelProductPrice.minPrice + ", ");
-                sbSql.Append("        " + _modelProduct.modelProductPrice.advisePrice + ", ");
-                sbSql.Append("        " + _modelProduct.modelProductPrice.priceUnit + " ");
+                sbSql.Append("        " + _modelProduct.modelProductPrice.advisePrice + " ");
                 sbSql.Append("  from p_product ");
                 sbSql.Append(" where name = '" + _modelProduct.name + "'");
                 sbSql.Append(" order by id desc ");
@@ -305,12 +303,23 @@ namespace Dal
             {
                 sbSql.Clear();
                 sbSql.Append("update r_product_price ");
-                sbSql.Append("set minPrice = " + _modelProduct.modelProductPrice.minPrice + ", ");
-                sbSql.Append("    advisePrice = " + _modelProduct.modelProductPrice.advisePrice + ",");
-                sbSql.Append("    priceUnit = " + _modelProduct.modelProductPrice.priceUnit + ",");
+                sbSql.Append("set isDelete = 1,");
                 sbSql.Append("    modifyBy = '" + _modelProduct.modifyBy + "',");
                 sbSql.Append("    modifyTime = '" + _modelProduct.modifyTime + "' ");
                 sbSql.Append("where productId = " + _modelProduct.modelProductPrice.productId);
+
+                listSql.Add(sbSql.ToString());
+
+                sbSql.Clear();
+                sbSql.Append("insert into ");
+                sbSql.Append("       r_product_price ( ");
+                sbSql.Append("       productId, ");
+                sbSql.Append("       minPrice, ");
+                sbSql.Append("       advisePrice) ");
+                sbSql.Append("values ( ");
+                sbSql.Append("        " + _modelProduct.id + ", ");
+                sbSql.Append("        " + _modelProduct.modelProductPrice.minPrice + ", ");
+                sbSql.Append("        " + _modelProduct.modelProductPrice.advisePrice + ") ");
 
                 listSql.Add(sbSql.ToString());
             }

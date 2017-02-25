@@ -410,6 +410,7 @@
             this.label27.Size = new System.Drawing.Size(41, 12);
             this.label27.TabIndex = 78;
             this.label27.Text = "单位：";
+            this.label27.Visible = false;
             // 
             // label25
             // 
@@ -418,9 +419,9 @@
             this.label25.ForeColor = System.Drawing.Color.Black;
             this.label25.Location = new System.Drawing.Point(390, 21);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(18, 12);
+            this.label25.Size = new System.Drawing.Size(38, 12);
             this.label25.TabIndex = 77;
-            this.label25.Text = "元";
+            this.label25.Text = "元/份";
             // 
             // txt_advisePrice
             // 
@@ -439,7 +440,7 @@
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(65, 12);
             this.label26.TabIndex = 75;
-            this.label26.Text = "最低价格：";
+            this.label26.Text = "建议售价：";
             // 
             // label23
             // 
@@ -448,9 +449,9 @@
             this.label23.ForeColor = System.Drawing.Color.Black;
             this.label23.Location = new System.Drawing.Point(174, 21);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(18, 12);
+            this.label23.Size = new System.Drawing.Size(38, 12);
             this.label23.TabIndex = 73;
-            this.label23.Text = "元";
+            this.label23.Text = "元/份";
             // 
             // cmb_priceUnit
             // 
@@ -460,6 +461,7 @@
             this.cmb_priceUnit.Name = "cmb_priceUnit";
             this.cmb_priceUnit.Size = new System.Drawing.Size(49, 20);
             this.cmb_priceUnit.TabIndex = 65;
+            this.cmb_priceUnit.Visible = false;
             // 
             // txt_minPrice
             // 
@@ -478,7 +480,7 @@
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(65, 12);
             this.label21.TabIndex = 47;
-            this.label21.Text = "最低价格：";
+            this.label21.Text = "最低售价：";
             // 
             // dataGridView1
             // 

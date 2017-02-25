@@ -89,7 +89,7 @@ namespace PMS.Frm.Purchase
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
                 int status = (int)dataGridView1.Rows[e.RowIndex].Cells["statusCode"].Value;
                 Form form;
-                if (status == (int)Enum.EnumPurchaseOrderStatus.WaitConfirm)
+                if (status == (int)Enum.EnumPurchaseOrderStatus.WaitPurchaseConfirm)
                 {
                     form = new FrmPurchaseDetail(1, id);
                 }
@@ -106,7 +106,7 @@ namespace PMS.Frm.Purchase
             {
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
                 int status = (int)dataGridView1.Rows[e.RowIndex].Cells["statusCode"].Value;
-                if (status != (int)Enum.EnumPurchaseOrderStatus.WaitConfirm)
+                if (status != (int)Enum.EnumPurchaseOrderStatus.WaitFinanceConfirm)
                 {
                     Common.Tools.MsgUtils.ShowInfoMsg("财务已确认，不可删除！");
                     return;

@@ -234,7 +234,7 @@ namespace PMS.Frm.Product
                 modelProductPrice.productId = modelProduct.id;
                 modelProductPrice.minPrice = ConvertUtils.ConvertToDecimal(this.txt_minPrice.Text);
                 modelProductPrice.advisePrice = ConvertUtils.ConvertToDecimal(this.txt_advisePrice.Text);
-                modelProductPrice.priceUnit = (int)((ModelItem)this.cmb_priceUnit.SelectedItem).itemKey;
+                //modelProductPrice.priceUnit = (int)((ModelItem)this.cmb_priceUnit.SelectedItem).itemKey;
                 modelProduct.modelProductPrice = modelProductPrice;
             }
             else
@@ -516,12 +516,12 @@ namespace PMS.Frm.Product
                         return false;
                     }
 
-                    if (this.cmb_priceUnit.SelectedIndex < 0)
-                    {
-                        MsgUtils.ShowErrorMsg("请选择重量价格单位！");
-                        this.cmb_weightUnit.Focus();
-                        return false;
-                    }
+                    //if (this.cmb_priceUnit.SelectedIndex < 0)
+                    //{
+                    //    MsgUtils.ShowErrorMsg("请选择重量价格单位！");
+                    //    this.cmb_weightUnit.Focus();
+                    //    return false;
+                    //}
                 }
             }
             return true;
@@ -566,7 +566,7 @@ namespace PMS.Frm.Product
 
         private void FrmProductDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
-            WinCommon.Exit();
+            this.Hide();
         }
 
         /// <summary>

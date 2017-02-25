@@ -42,7 +42,7 @@ namespace PMS.Frm.Store
 
         private void FrmMaterialsInDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
-            WinCommon.Exit();
+            this.Hide();
         }
 
         private void btn_submit_Click(object sender, EventArgs e)

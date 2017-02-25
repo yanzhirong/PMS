@@ -36,14 +36,14 @@
             this.txt_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.lbl_tile = new System.Windows.Forms.Label();
             this.roleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.role = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roleType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modify = new System.Windows.Forms.DataGridViewButtonColumn();
             this.delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.lbl_tile = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -54,9 +54,9 @@
             this.groupBox1.Controls.Add(this.btn_query);
             this.groupBox1.Controls.Add(this.txt_name);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(30, 62);
+            this.groupBox1.Location = new System.Drawing.Point(30, 82);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(531, 95);
+            this.groupBox1.Size = new System.Drawing.Size(652, 94);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
@@ -116,31 +116,13 @@
             this.createTime,
             this.modify,
             this.delete});
-            this.dataGridView1.Location = new System.Drawing.Point(30, 174);
+            this.dataGridView1.Location = new System.Drawing.Point(30, 199);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 35;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(531, 310);
+            this.dataGridView1.Size = new System.Drawing.Size(652, 285);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(589, 24);
-            this.menuStrip1.TabIndex = 9;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // lbl_tile
-            // 
-            this.lbl_tile.AutoSize = true;
-            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
-            this.lbl_tile.Location = new System.Drawing.Point(233, 33);
-            this.lbl_tile.Name = "lbl_tile";
-            this.lbl_tile.Size = new System.Drawing.Size(120, 27);
-            this.lbl_tile.TabIndex = 68;
-            this.lbl_tile.Text = "角色列表";
             // 
             // roleId
             // 
@@ -186,11 +168,29 @@
             this.delete.Name = "delete";
             this.delete.Width = 80;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(715, 24);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // lbl_tile
+            // 
+            this.lbl_tile.AutoSize = true;
+            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
+            this.lbl_tile.Location = new System.Drawing.Point(299, 44);
+            this.lbl_tile.Name = "lbl_tile";
+            this.lbl_tile.Size = new System.Drawing.Size(120, 27);
+            this.lbl_tile.TabIndex = 68;
+            this.lbl_tile.Text = "角色列表";
+            // 
             // FrmSysRole
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(589, 512);
+            this.ClientSize = new System.Drawing.Size(715, 512);
             this.Controls.Add(this.lbl_tile);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);

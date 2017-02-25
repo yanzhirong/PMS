@@ -42,7 +42,7 @@ namespace PMS.Frm.Sale
 
         private void FrmOrderDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
-            WinCommon.Exit();
+            this.Hide();
         }
 
         private void btn_submit_Click(object sender, EventArgs e)
@@ -248,6 +248,24 @@ namespace PMS.Frm.Sale
 
                 //取消理由
                 this.txt_cancelReason.Text = model.cancelReason;
+
+                decimal adviseSalePrice = 0;
+                decimal minSalePrice = 0;
+                for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                {
+
+                    int productId = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[2].Value);
+
+                    ModelProduct modelProduct = m_bllProduct.GetProductById(productId);
+                    if (modelProduct.modelProductPrice != null)
+                    {
+                        adviseSalePrice = minSalePrice + ConvertUtils.ConvertToDecimal(modelProduct.modelProductPrice.advisePrice) *
+                            ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[3].Value);
+                        minSalePrice = minSalePrice + ConvertUtils.ConvertToDecimal(modelProduct.modelProductPrice.minPrice) *
+                            ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[3].Value);
+                    }
+                }
+                this.lbl_price.Text = "建议价格：" + adviseSalePrice + "；最低价格：" + minSalePrice;
             }
 
             //按钮处理
@@ -296,6 +314,22 @@ namespace PMS.Frm.Sale
                 grb_cancel.Enabled = true;
             }
 
+            if (this.grb_price.Visible == false)
+            {
+                this.grb_cancel.Top = this.grb_cancel.Top - this.grb_cancel.Height;
+                this.btn_submit.Top = this.btn_submit.Top - this.grb_price.Height;
+                this.btn_cancel.Top = this.btn_cancel.Top - this.grb_price.Height;
+                this.btn_close.Top = this.btn_close.Top - this.grb_price.Height;
+                this.Height = this.Height - this.grb_price.Height;
+            }
+
+            if (this.grb_cancel.Visible == false)
+            {
+                this.btn_submit.Top = this.btn_submit.Top - this.grb_cancel.Height;
+                this.btn_cancel.Top = this.btn_cancel.Top - this.grb_cancel.Height;
+                this.btn_close.Top = this.btn_close.Top - this.grb_cancel.Height;
+                this.Height = this.Height - this.grb_cancel.Height;
+            }
         }
         #endregion
 
@@ -576,14 +610,14 @@ namespace PMS.Frm.Sale
                     return false;
                 }
 
-                //交货日期
-                DateTime deliverDate = this.dtp_deliveryDate.Value;
-                if (deliverDate <= DateTime.Now)
-                {
-                    MsgUtils.ShowErrorMsg("请选择合适的交货日期！");
-                    this.txt_address.Focus();
-                    return false;
-                }
+                ////交货日期
+                //DateTime deliverDate = this.dtp_deliveryDate.Value;
+                //if (deliverDate <= DateTime.Now)
+                //{
+                //    MsgUtils.ShowErrorMsg("请选择合适的交货日期！");
+                //    this.txt_address.Focus();
+                //    return false;
+                //}
 
                 if (WinCommon.IsFinance(LoginUserInfo.LoginUser.loginRole.roleType))
                 {
@@ -623,6 +657,41 @@ namespace PMS.Frm.Sale
                     MsgUtils.ShowErrorMsg("请选择出货工厂！");
                     this.txt_price.Focus();
                     return false;
+                }
+
+                decimal adviseSalePrice = 0;
+                decimal minSalePrice = 0;
+                for (int i = 0; i < this.dataGridView1.Rows.Count; i++)
+                {
+
+                    int productId = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[2].Value);
+
+                    ModelProduct modelProduct = m_bllProduct.GetProductById(productId);
+                    if (modelProduct.modelProductPrice != null)
+                    {
+                        adviseSalePrice = minSalePrice + ConvertUtils.ConvertToDecimal(modelProduct.modelProductPrice.advisePrice) *
+                            ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[3].Value);
+                        minSalePrice = minSalePrice + ConvertUtils.ConvertToDecimal(modelProduct.modelProductPrice.minPrice) *
+                            ConvertUtils.ConvertToInt(this.dataGridView1.Rows[i].Cells[3].Value);
+                    }
+                }
+
+                if (price < adviseSalePrice)
+                {
+                    if (MsgUtils.ShowQustMsg("销售价格低于建议销售价（" + adviseSalePrice + "），是否确认订单？", MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                    {
+                        this.txt_price.Focus();
+                        return false;
+                    }
+                }
+
+                if (price < minSalePrice)
+                {
+                    if (MsgUtils.ShowQustMsg("销售价格低于最低销售价（" + minSalePrice + "），是否确认订单？", MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                    {
+                        this.txt_price.Focus();
+                        return false;
+                    }
                 }
             }
 

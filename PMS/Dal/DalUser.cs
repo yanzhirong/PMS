@@ -15,10 +15,13 @@ namespace Dal
 
         public DataTable GetUser(string _name)
         {
-            sql = @"select * 
-                      from m_user
-                     where userName = '{0}' 
-                       and isDelete = 0";
+            sql = @"select a.* 
+                      from m_user a
+                     inner join m_role b
+                        on a.roleId = b.roleId   
+                       and b.isDelete = 0    
+                     where a.userName = '{0}' 
+                       and a.isDelete = 0";
             sql = string.Format(sql, _name);
 
             return Dal.DBHelper.Select(sql);

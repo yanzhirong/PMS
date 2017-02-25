@@ -288,8 +288,8 @@ namespace Dal
             sbSql.Append("select a.id, ");
             sbSql.Append("       a.inputCode, ");
             sbSql.Append("       b.name, ");
-            sbSql.Append("       a.inputNum numDisplay, ");
-            sbSql.Append("       a.inputNum num, ");
+            sbSql.Append("       a.stockNum numDisplay, ");
+            sbSql.Append("       a.stockNum num, ");
             sbSql.Append("       0 unit, ");
             sbSql.Append("       date_format(a.expiresDate, '%Y-%m-%d') expiresDate ");
             sbSql.Append("from p_product_input a ");

@@ -85,12 +85,10 @@ namespace PMS.Frm.Store
             //修改
             if (dataGridView1.Columns[e.ColumnIndex].Name == "modifyBtn")
             {
-
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
-                int outputCnt = ConvertUtils.ConvertToInt(dataGridView1.Rows[e.RowIndex].Cells["outputCnt"].Value);
+                int outputStatus = (int)dataGridView1.Rows[e.RowIndex].Cells["outputStatusCode"].Value;
                 Form form;
-                
-                if (outputCnt == 0)
+                if (outputStatus == 0)
                 {
                     form = new FrmMaterialsOutDetail(1, id);
                 }

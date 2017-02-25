@@ -51,7 +51,7 @@ namespace Bll
                     {
                         if (unit == 0)
                         {
-                            unit = ConvertUtils.ConvertToInt(dr["uint"]);
+                            unit = ConvertUtils.ConvertToInt(dr["unit"]);
                         }
 
                         decimal curNum = ConvertUtils.ConvertToDecimal(dr["num"]);

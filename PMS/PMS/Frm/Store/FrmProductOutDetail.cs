@@ -42,7 +42,7 @@ namespace PMS.Frm.Store
 
         private void FrmProductOutDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
-            WinCommon.Exit();
+            this.Hide();
         }
 
         private void btn_submit_Click(object sender, EventArgs e)
@@ -615,7 +615,7 @@ namespace PMS.Frm.Store
 
             textColumn = new DataGridViewTextBoxColumn();
             textColumn.Name = "outputNum";
-            textColumn.HeaderText = "出库数量";
+            textColumn.HeaderText = "请求数量";
             textColumn.DataPropertyName = "outputNum";
             textColumn.ReadOnly = true;
             textColumn.Width = 100;

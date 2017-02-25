@@ -73,6 +73,7 @@
             this.grb_cancel = new System.Windows.Forms.GroupBox();
             this.txt_cancelReason = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.lbl_price = new System.Windows.Forms.Label();
             this.grb_saleOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.grb_address.SuspendLayout();
@@ -82,7 +83,7 @@
             // 
             // btn_submit
             // 
-            this.btn_submit.Location = new System.Drawing.Point(233, 688);
+            this.btn_submit.Location = new System.Drawing.Point(233, 696);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(75, 23);
             this.btn_submit.TabIndex = 101;
@@ -92,7 +93,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(406, 688);
+            this.btn_cancel.Location = new System.Drawing.Point(406, 695);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 102;
@@ -129,7 +130,7 @@
             this.grb_saleOrder.Controls.Add(this.grb_address);
             this.grb_saleOrder.Controls.Add(this.txt_orderCode);
             this.grb_saleOrder.Controls.Add(this.label1);
-            this.grb_saleOrder.Location = new System.Drawing.Point(31, 84);
+            this.grb_saleOrder.Location = new System.Drawing.Point(31, 72);
             this.grb_saleOrder.Name = "grb_saleOrder";
             this.grb_saleOrder.Size = new System.Drawing.Size(641, 426);
             this.grb_saleOrder.TabIndex = 103;
@@ -430,15 +431,16 @@
             // 
             // grb_price
             // 
+            this.grb_price.Controls.Add(this.lbl_price);
             this.grb_price.Controls.Add(this.label12);
             this.grb_price.Controls.Add(this.txt_priceRemark);
             this.grb_price.Controls.Add(this.cmb_factory);
             this.grb_price.Controls.Add(this.label8);
             this.grb_price.Controls.Add(this.txt_price);
             this.grb_price.Controls.Add(this.label9);
-            this.grb_price.Location = new System.Drawing.Point(31, 516);
+            this.grb_price.Location = new System.Drawing.Point(31, 502);
             this.grb_price.Name = "grb_price";
-            this.grb_price.Size = new System.Drawing.Size(641, 88);
+            this.grb_price.Size = new System.Drawing.Size(641, 119);
             this.grb_price.TabIndex = 111;
             this.grb_price.TabStop = false;
             // 
@@ -446,7 +448,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.ForeColor = System.Drawing.Color.Red;
-            this.label12.Location = new System.Drawing.Point(173, 24);
+            this.label12.Location = new System.Drawing.Point(4, 57);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(65, 12);
             this.label12.TabIndex = 111;
@@ -455,7 +457,7 @@
             // txt_priceRemark
             // 
             this.txt_priceRemark.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txt_priceRemark.Location = new System.Drawing.Point(68, 56);
+            this.txt_priceRemark.Location = new System.Drawing.Point(68, 87);
             this.txt_priceRemark.MaxLength = 100;
             this.txt_priceRemark.Name = "txt_priceRemark";
             this.txt_priceRemark.Size = new System.Drawing.Size(556, 21);
@@ -465,7 +467,7 @@
             // 
             this.cmb_factory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_factory.FormattingEnabled = true;
-            this.cmb_factory.Location = new System.Drawing.Point(238, 21);
+            this.cmb_factory.Location = new System.Drawing.Point(69, 54);
             this.cmb_factory.Name = "cmb_factory";
             this.cmb_factory.Size = new System.Drawing.Size(222, 20);
             this.cmb_factory.TabIndex = 22;
@@ -474,7 +476,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(7, 59);
+            this.label8.Location = new System.Drawing.Point(7, 90);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 12);
             this.label8.TabIndex = 114;
@@ -486,7 +488,7 @@
             this.txt_price.Location = new System.Drawing.Point(68, 20);
             this.txt_price.MaxLength = 10;
             this.txt_price.Name = "txt_price";
-            this.txt_price.Size = new System.Drawing.Size(95, 21);
+            this.txt_price.Size = new System.Drawing.Size(223, 21);
             this.txt_price.TabIndex = 21;
             this.txt_price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_price_KeyPress);
             // 
@@ -502,7 +504,7 @@
             // 
             // btn_close
             // 
-            this.btn_close.Location = new System.Drawing.Point(321, 688);
+            this.btn_close.Location = new System.Drawing.Point(321, 695);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(75, 23);
             this.btn_close.TabIndex = 103;
@@ -515,7 +517,7 @@
             this.grb_cancel.Controls.Add(this.txt_cancelReason);
             this.grb_cancel.Controls.Add(this.label18);
             this.grb_cancel.Enabled = false;
-            this.grb_cancel.Location = new System.Drawing.Point(31, 610);
+            this.grb_cancel.Location = new System.Drawing.Point(31, 622);
             this.grb_cancel.Name = "grb_cancel";
             this.grb_cancel.Size = new System.Drawing.Size(641, 59);
             this.grb_cancel.TabIndex = 115;
@@ -540,12 +542,22 @@
             this.label18.TabIndex = 112;
             this.label18.Text = "取消原因：";
             // 
+            // lbl_price
+            // 
+            this.lbl_price.AutoSize = true;
+            this.lbl_price.ForeColor = System.Drawing.Color.Black;
+            this.lbl_price.Location = new System.Drawing.Point(297, 24);
+            this.lbl_price.Name = "lbl_price";
+            this.lbl_price.Size = new System.Drawing.Size(65, 12);
+            this.lbl_price.TabIndex = 115;
+            this.lbl_price.Text = "销售价格：";
+            // 
             // FrmOrderDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(702, 729);
+            this.ClientSize = new System.Drawing.Size(701, 729);
             this.Controls.Add(this.grb_cancel);
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.grb_price);
@@ -558,6 +570,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmOrderDetail";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "订单管理";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmOrderDetail_FormClosed);
@@ -621,5 +634,6 @@
         private System.Windows.Forms.GroupBox grb_cancel;
         private System.Windows.Forms.TextBox txt_cancelReason;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label lbl_price;
     }
 }

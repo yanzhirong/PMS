@@ -40,7 +40,7 @@ namespace PMS.Frm.Produce
 
         private void FrmProduceDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
-            WinCommon.Exit();
+            this.Hide();
         }
 
         private void btn_submit_Click(object sender, EventArgs e)

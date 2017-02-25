@@ -240,6 +240,13 @@ namespace PMS.Frm.Store
             //要求的出库数
             int requestOutputNum = ConvertUtils.ConvertToInt(this.txt_num.Text.Trim());
 
+            if (requestOutputNum > 0 && (selectedAllOutputNum + m_realityOutputNum) > requestOutputNum)
+            {
+                if (MsgUtils.ShowQustMsg("出库数量大于申请数量，确认出库么？", MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                {
+                    return false;
+                }
+            }
             if (requestOutputNum > 0 && (selectedAllOutputNum + m_realityOutputNum) < requestOutputNum)
             {
                 if (MsgUtils.ShowQustMsg("出库数量低于申请数量，确认出库么？", MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
@@ -308,7 +315,7 @@ namespace PMS.Frm.Store
             colOutputNum.Name = "outputNum";
             colOutputNum.HeaderText = "出库数量";
             colOutputNum.Width = 80;
-            colOutputNum.ReadOnly = false;
+            colOutputNum.ReadOnly = true;
             this.dataGridView1.Columns.Add(colOutputNum);
 
             DataGridViewTextBoxColumn colNum = new DataGridViewTextBoxColumn();
@@ -401,6 +408,21 @@ namespace PMS.Frm.Store
         {
             //仅限数字
             e.Handled = WinCommon.IsOnlyInt(e.KeyChar);
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //选择
+            if (this.dataGridView1.Rows[e.RowIndex].Cells["selected"].EditedFormattedValue.ToString() == "True")
+            {
+                this.dataGridView1.Rows[e.RowIndex].Cells["outputNum"].ReadOnly = false;
+                this.dataGridView1.Rows[e.RowIndex].Cells["outputNum"].Value = this.dataGridView1.Rows[e.RowIndex].Cells["num"].Value;
+            }
+            else
+            {
+                this.dataGridView1.Rows[e.RowIndex].Cells["outputNum"].ReadOnly = true;
+                this.dataGridView1.Rows[e.RowIndex].Cells["outputNum"].Value = "";
+            }
         }
 
     }

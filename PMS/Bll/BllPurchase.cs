@@ -107,7 +107,7 @@ namespace Bll
                         modelPurchase.produceCode = produceCode;
                         modelPurchase.num = applyNum;
                         modelPurchase.unit = applyUnit;
-                        modelPurchase.status = (int)Enum.EnumPurchaseOrderStatus.WaitConfirm;
+                        modelPurchase.status = (int)Enum.EnumPurchaseOrderStatus.WaitPurchaseConfirm;
                         modelPurchase.applyBy = applyBy;
                         modelPurchase.applyDate = applyDate;
                         modelPurchase.deliveryDate = deliveryDate;
@@ -133,7 +133,7 @@ namespace Bll
                     modelPurchase.produceCode = produceCode;
                     modelPurchase.num = applyNum;
                     modelPurchase.unit = applyUnit;
-                    modelPurchase.status = (int)Enum.EnumPurchaseOrderStatus.WaitConfirm;
+                    modelPurchase.status = (int)Enum.EnumPurchaseOrderStatus.WaitPurchaseConfirm;
                     modelPurchase.applyBy = applyBy;
                     modelPurchase.applyDate = applyDate;
                     modelPurchase.deliveryDate = deliveryDate;

@@ -474,19 +474,19 @@ namespace PMS.Frm.Product
 
         private void FrmMaterialsDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
-            WinCommon.Exit();
+            this.Hide();
         }
 
         private void cmb_materialsType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.cmb_materialsType.SelectedIndex == 2)
-            {
-                this.cmb_priceUnit.Visible = false;
-            }
-            else
-            {
-                this.cmb_priceUnit.Visible = true;
-            }
+            //if (this.cmb_materialsType.SelectedIndex == 2)
+            //{
+            //    this.cmb_priceUnit.Visible = false;
+            //}
+            //else
+            //{
+            //    this.cmb_priceUnit.Visible = true;
+            //}
         }
     }
 }

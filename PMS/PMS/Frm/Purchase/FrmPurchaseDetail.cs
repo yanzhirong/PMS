@@ -43,7 +43,7 @@ namespace PMS.Frm.Purchase
 
         private void FrmPurchaseDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
-            WinCommon.Exit();
+            this.Hide();
         }
 
         private void btn_submit_Click(object sender, EventArgs e)
@@ -411,7 +411,7 @@ namespace PMS.Frm.Purchase
 
             if (m_mode == 0 || m_mode == 1)
             {
-                modelPurchase.status = (int)Enum.EnumPurchaseOrderStatus.WaitConfirm;
+                modelPurchase.status = (int)Enum.EnumPurchaseOrderStatus.WaitFinanceConfirm;
             }
 
             if (m_mode == 4)

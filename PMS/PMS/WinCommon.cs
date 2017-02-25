@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace PMS
 {
@@ -18,6 +19,7 @@ namespace PMS
         {
             // LoginUserInfo.LoginUser.currentFrom = (Form)currentForm;
 
+            menuStrip.Font = new Font(menuStrip.Font.FontFamily, 10, menuStrip.Font.Style);
             menuStrip.Items.Clear();
 
             if (LoginUserInfo.LoginUser.loginMenu != null && LoginUserInfo.LoginUser.loginMenu.Count > 0)

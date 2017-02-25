@@ -17,7 +17,7 @@ namespace PMS.Frm.Main
         int x_start = 0;
         int y_start = 0;
         int x_count = 0;
-        int y_count = 0;
+        //int y_count = 0;
         int x_max_count = 5;
         //int y_max_count = 5;
         string iconFolder = "";
@@ -42,7 +42,7 @@ namespace PMS.Frm.Main
             //this.pnl_main.Top = (this.Height - this.pnl_main.Height) / 2;
         }
 
-        #region 生成菜单 已废弃
+        #region 生成菜单 
         private void CreateMenu()
         {
 

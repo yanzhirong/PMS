@@ -28,13 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmProductOutSelect));
             this.btn_submit = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.lbl_title = new System.Windows.Forms.Label();
             this.grb_productOut = new System.Windows.Forms.GroupBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.factoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.outputDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.applyMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbl_selectOutput = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.grb_applyProduce = new System.Windows.Forms.GroupBox();
             this.txt_produceNum = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -49,19 +57,11 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txt_outputCode = new System.Windows.Forms.TextBox();
             this.lbl_orderCode = new System.Windows.Forms.Label();
-            this.lbl_selectOutput = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.factoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.outputDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.applyMember = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_close = new System.Windows.Forms.Button();
             this.grb_productOut.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.grb_applyProduce.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_submit
@@ -116,6 +116,91 @@
             this.grb_productOut.Size = new System.Drawing.Size(641, 474);
             this.grb_productOut.TabIndex = 103;
             this.grb_productOut.TabStop = false;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.factoryName,
+            this.productName,
+            this.num,
+            this.outputDate,
+            this.applyMember});
+            this.dataGridView2.Location = new System.Drawing.Point(20, 155);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersWidth = 20;
+            this.dataGridView2.RowTemplate.Height = 23;
+            this.dataGridView2.Size = new System.Drawing.Size(600, 117);
+            this.dataGridView2.TabIndex = 138;
+            // 
+            // factoryName
+            // 
+            this.factoryName.DataPropertyName = "factoryName";
+            this.factoryName.HeaderText = "工厂";
+            this.factoryName.Name = "factoryName";
+            this.factoryName.ReadOnly = true;
+            this.factoryName.Width = 170;
+            // 
+            // productName
+            // 
+            this.productName.DataPropertyName = "productName";
+            this.productName.HeaderText = "产品";
+            this.productName.Name = "productName";
+            this.productName.ReadOnly = true;
+            this.productName.Width = 160;
+            // 
+            // num
+            // 
+            this.num.DataPropertyName = "num";
+            this.num.HeaderText = "出库数量";
+            this.num.Name = "num";
+            this.num.ReadOnly = true;
+            this.num.Width = 80;
+            // 
+            // outputDate
+            // 
+            this.outputDate.DataPropertyName = "outputDate";
+            this.outputDate.HeaderText = "出库日期";
+            this.outputDate.Name = "outputDate";
+            this.outputDate.ReadOnly = true;
+            this.outputDate.Width = 80;
+            // 
+            // applyMember
+            // 
+            this.applyMember.DataPropertyName = "applyMember";
+            this.applyMember.HeaderText = "申请人";
+            this.applyMember.Name = "applyMember";
+            this.applyMember.ReadOnly = true;
+            this.applyMember.Width = 80;
+            // 
+            // lbl_selectOutput
+            // 
+            this.lbl_selectOutput.AutoSize = true;
+            this.lbl_selectOutput.ForeColor = System.Drawing.Color.Black;
+            this.lbl_selectOutput.Location = new System.Drawing.Point(16, 284);
+            this.lbl_selectOutput.Name = "lbl_selectOutput";
+            this.lbl_selectOutput.Size = new System.Drawing.Size(77, 12);
+            this.lbl_selectOutput.TabIndex = 137;
+            this.lbl_selectOutput.Text = "可出库明细：";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(16, 137);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 12);
+            this.label6.TabIndex = 136;
+            this.label6.Text = "已出库明细：";
             // 
             // grb_applyProduce
             // 
@@ -247,6 +332,7 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(600, 156);
             this.dataGridView1.TabIndex = 9;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 
             // txt_outputCode
@@ -269,91 +355,6 @@
             this.lbl_orderCode.Size = new System.Drawing.Size(65, 12);
             this.lbl_orderCode.TabIndex = 42;
             this.lbl_orderCode.Text = "出库单号：";
-            // 
-            // lbl_selectOutput
-            // 
-            this.lbl_selectOutput.AutoSize = true;
-            this.lbl_selectOutput.ForeColor = System.Drawing.Color.Black;
-            this.lbl_selectOutput.Location = new System.Drawing.Point(16, 284);
-            this.lbl_selectOutput.Name = "lbl_selectOutput";
-            this.lbl_selectOutput.Size = new System.Drawing.Size(77, 12);
-            this.lbl_selectOutput.TabIndex = 137;
-            this.lbl_selectOutput.Text = "可出库明细：";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(16, 137);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 12);
-            this.label6.TabIndex = 136;
-            this.label6.Text = "已出库明细：";
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.factoryName,
-            this.productName,
-            this.num,
-            this.outputDate,
-            this.applyMember});
-            this.dataGridView2.Location = new System.Drawing.Point(20, 155);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 20;
-            this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(600, 117);
-            this.dataGridView2.TabIndex = 138;
-            // 
-            // factoryName
-            // 
-            this.factoryName.DataPropertyName = "factoryName";
-            this.factoryName.HeaderText = "工厂";
-            this.factoryName.Name = "factoryName";
-            this.factoryName.ReadOnly = true;
-            this.factoryName.Width = 170;
-            // 
-            // productName
-            // 
-            this.productName.DataPropertyName = "productName";
-            this.productName.HeaderText = "产品";
-            this.productName.Name = "productName";
-            this.productName.ReadOnly = true;
-            this.productName.Width = 160;
-            // 
-            // num
-            // 
-            this.num.DataPropertyName = "num";
-            this.num.HeaderText = "出库数量";
-            this.num.Name = "num";
-            this.num.ReadOnly = true;
-            this.num.Width = 80;
-            // 
-            // outputDate
-            // 
-            this.outputDate.DataPropertyName = "outputDate";
-            this.outputDate.HeaderText = "出库日期";
-            this.outputDate.Name = "outputDate";
-            this.outputDate.ReadOnly = true;
-            this.outputDate.Width = 80;
-            // 
-            // applyMember
-            // 
-            this.applyMember.DataPropertyName = "applyMember";
-            this.applyMember.HeaderText = "申请人";
-            this.applyMember.Name = "applyMember";
-            this.applyMember.ReadOnly = true;
-            this.applyMember.Width = 80;
             // 
             // btn_close
             // 
@@ -386,10 +387,10 @@
             this.Load += new System.EventHandler(this.FrmOrderDetail_Load);
             this.grb_productOut.ResumeLayout(false);
             this.grb_productOut.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.grb_applyProduce.ResumeLayout(false);
             this.grb_applyProduce.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

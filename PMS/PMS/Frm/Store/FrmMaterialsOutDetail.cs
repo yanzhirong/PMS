@@ -41,7 +41,7 @@ namespace PMS.Frm.Store
 
         private void FrmMaterialsOutDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
-            WinCommon.Exit();
+            this.Hide();
         }
 
         private void btn_submit_Click(object sender, EventArgs e)
@@ -154,13 +154,13 @@ namespace PMS.Frm.Store
             }           
 
             //按钮处理
-            this.btn_submit.Visible = true;
+            this.btn_output.Visible = true;
             this.btn_cancel.Visible = true;
             this.btn_close.Visible = false;
 
             if (m_mode == 3)
             {
-                this.btn_submit.Visible = false;
+                this.btn_output.Visible = false;
                 this.btn_cancel.Visible = false;
                 this.btn_close.Visible = true;
             }
@@ -173,11 +173,16 @@ namespace PMS.Frm.Store
 
             if (m_mode == 2)
             {
-                this.btn_submit.Text = "确认删除";
+                this.btn_output.Text = "确认删除";
             }
 
             //查看/删除时，各输入项不能修改
             if (m_mode == 2 || m_mode == 3)
+            {
+                grb_materialsIn.Enabled = false;
+            }
+
+            if (StringUtils.IsNotBlank(m_bllMaterialsOut.GetOutputNum(m_outputCode)))
             {
                 grb_materialsIn.Enabled = false;
             }

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMaterialsOutDetail));
-            this.btn_submit = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.lbl_title = new System.Windows.Forms.Label();
             this.grb_materialsIn = new System.Windows.Forms.GroupBox();
@@ -61,16 +60,6 @@
             this.grb_materialsIn.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btn_submit
-            // 
-            this.btn_submit.Location = new System.Drawing.Point(227, 420);
-            this.btn_submit.Name = "btn_submit";
-            this.btn_submit.Size = new System.Drawing.Size(75, 23);
-            this.btn_submit.TabIndex = 101;
-            this.btn_submit.Text = "确认";
-            this.btn_submit.UseVisualStyleBackColor = true;
-            this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
-            // 
             // btn_cancel
             // 
             this.btn_cancel.Location = new System.Drawing.Point(387, 420);
@@ -94,7 +83,6 @@
             // 
             // grb_materialsIn
             // 
-            this.grb_materialsIn.Controls.Add(this.btn_output);
             this.grb_materialsIn.Controls.Add(this.txt_applyNum);
             this.grb_materialsIn.Controls.Add(this.cmb_applyUnit);
             this.grb_materialsIn.Controls.Add(this.label6);
@@ -126,9 +114,9 @@
             // 
             // btn_output
             // 
-            this.btn_output.Location = new System.Drawing.Point(247, 200);
+            this.btn_output.Location = new System.Drawing.Point(245, 420);
             this.btn_output.Name = "btn_output";
-            this.btn_output.Size = new System.Drawing.Size(54, 23);
+            this.btn_output.Size = new System.Drawing.Size(71, 23);
             this.btn_output.TabIndex = 106;
             this.btn_output.Text = "出库";
             this.btn_output.UseVisualStyleBackColor = true;
@@ -182,11 +170,12 @@
             // txt_outputNum
             // 
             this.txt_outputNum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txt_outputNum.Enabled = false;
             this.txt_outputNum.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_outputNum.Location = new System.Drawing.Point(79, 202);
             this.txt_outputNum.MaxLength = 10;
             this.txt_outputNum.Name = "txt_outputNum";
-            this.txt_outputNum.Size = new System.Drawing.Size(162, 21);
+            this.txt_outputNum.Size = new System.Drawing.Size(222, 21);
             this.txt_outputNum.TabIndex = 12;
             // 
             // label4
@@ -374,11 +363,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(699, 471);
+            this.Controls.Add(this.btn_output);
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.grb_materialsIn);
             this.Controls.Add(this.lbl_title);
             this.Controls.Add(this.btn_cancel);
-            this.Controls.Add(this.btn_submit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -397,7 +386,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btn_submit;
         private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.Label lbl_title;
         private System.Windows.Forms.GroupBox grb_materialsIn;

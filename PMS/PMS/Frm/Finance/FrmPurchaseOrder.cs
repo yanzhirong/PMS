@@ -52,7 +52,15 @@ namespace PMS.Frm.Finance
             this.dtp_begin.Value = DateTime.Now;
             this.dtp_end.Value = DateTime.Now.AddMonths(1);
 
-            cmb_orderStatus.SelectedIndex = 1;
+            for (int i = 1; i < this.cmb_orderStatus.Items.Count; i++)
+            {
+                ModelItem item = (ModelItem)this.cmb_orderStatus.Items[i];
+                if ((int)item.itemKey == (int)Enum.EnumPurchaseOrderStatus.WaitFinanceConfirm)
+                {
+                    this.cmb_orderStatus.SelectedIndex = i;
+                    break;
+                }
+            }
             doSelect();
 
             this.cmb_factory.Focus();
@@ -142,7 +150,7 @@ namespace PMS.Frm.Finance
             {
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
                 int orderStatus = (int)dataGridView1.Rows[e.RowIndex].Cells["orderStatusCode"].Value;
-                if(orderStatus == (int)Enum.EnumPurchaseOrderStatus.WaitConfirm)
+                if(orderStatus == (int)Enum.EnumPurchaseOrderStatus.WaitFinanceConfirm)
                 {
                     Form form = new Purchase.FrmPurchaseDetail(4, id);
                     form.ShowDialog();
@@ -158,7 +166,7 @@ namespace PMS.Frm.Finance
             {
                 int id = (int)dataGridView1.Rows[e.RowIndex].Cells["id"].Value;
                 int orderStatus = (int)dataGridView1.Rows[e.RowIndex].Cells["orderStatusCode"].Value;
-                if (orderStatus == (int)Enum.EnumPurchaseOrderStatus.WaitConfirm)
+                if (orderStatus == (int)Enum.EnumPurchaseOrderStatus.WaitFinanceConfirm)
                 {
                     Form form = new Purchase.FrmPurchaseDetail(5, id);
                     form.ShowDialog();

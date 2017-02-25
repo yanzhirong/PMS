@@ -331,7 +331,7 @@ namespace PMS.Frm.Sys
 
         private void FrmSysUserDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
-            WinCommon.Exit();
+            this.Hide();
         }
 
     }

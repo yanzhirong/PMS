@@ -274,7 +274,7 @@ namespace PMS.Frm.Sys
             ModelRole modelRole = new ModelRole();
             modelRole.roleId = m_roleId;
             modelRole.roleName = this.txt_name.Text.Trim();
-            if (this.cmb_type.SelectedIndex > 0)
+            if (this.cmb_type.SelectedIndex >= 0)
             {
                 modelRole.roleType = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_type.SelectedItem).itemKey);
             }
@@ -375,7 +375,7 @@ namespace PMS.Frm.Sys
 
         private void FrmSysRoleDetail_FormClosed(object sender, FormClosedEventArgs e)
         {
-            WinCommon.Exit();
+            this.Hide();
         }
     }
 }
