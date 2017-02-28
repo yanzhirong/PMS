@@ -436,6 +436,7 @@ namespace Dal
             sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
             sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
             sbSql.Append("where id = " + _model.id);
+            sbSql.Append("  and isDelete = 0 ");
             listSql.Add(sbSql.ToString());
 
             sbSql.Clear();
@@ -459,5 +460,23 @@ namespace Dal
             return Dal.DBHelper.ExcuteTransaction(listSql);
         }
 
+        public int UpdateSaleOrderStatus(List<ModelSaleOrder> _listSaleOrder)
+        {
+            List<string> listSql = new List<string>();
+
+            foreach (ModelSaleOrder modelSaleOrder in _listSaleOrder)
+            {
+                sbSql.Clear();
+                sbSql.Append("update p_saleOrder ");
+                sbSql.Append("set orderStatus = " + modelSaleOrder.orderStatus + ",");
+                sbSql.Append("    modifyBy = '" + modelSaleOrder.modifyBy + "',");
+                sbSql.Append("    modifyTime = '" + modelSaleOrder.modifyTime + "' ");
+                sbSql.Append("where orderCode = '" + modelSaleOrder.orderCode + "' ");
+                sbSql.Append("  and isDelete = 0 ");
+                listSql.Add(sbSql.ToString());
+            }
+            return Dal.DBHelper.ExcuteTransaction(listSql);
+
+        }
     }
 }

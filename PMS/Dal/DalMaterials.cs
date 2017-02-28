@@ -223,25 +223,58 @@ namespace Dal
 
             listSql.Add(sbSql.ToString());
 
+
+            sbSql.Clear();
+            sbSql.Append("delete from r_materials_search ");
+            sbSql.Append("where materialsId = " + _modelMaterials.id);
+
+            listSql.Add(sbSql.ToString());
+
+  
             if (_modelMaterials.modelMaterialsSearch != null)
             {
                 sbSql.Clear();
-                sbSql.Append("update r_materials_search ");
-                sbSql.Append("set searchKey = '" + _modelMaterials.modelMaterialsSearch.searchKey + "',");
-                sbSql.Append("    materialsName = '" + _modelMaterials.modelMaterialsSearch.materialsName + "' ");
-                sbSql.Append("where materialsId = " + _modelMaterials.modelMaterialsSearch.materialsId);
+                sbSql.Append("insert into ");
+                sbSql.Append("       r_materials_search ( ");
+                sbSql.Append("       materialsId, ");
+                sbSql.Append("       materialsName, ");
+                sbSql.Append("       searchKey) ");
+                sbSql.Append("select id, ");
+                sbSql.Append("       '" + _modelMaterials.modelMaterialsSearch.materialsName + "', ");
+                sbSql.Append("       '" + _modelMaterials.modelMaterialsSearch.searchKey + "' ");
+                sbSql.Append("  from p_materials ");
+                sbSql.Append(" where name = '" + _modelMaterials.name + "'");
+                sbSql.Append(" order by id desc ");
+                sbSql.Append(" limit 0,1 ");
 
                 listSql.Add(sbSql.ToString());
             }
 
+
+            sbSql.Clear();
+            sbSql.Append("update r_materials_price ");
+            sbSql.Append("set isDelete = 1,");
+            sbSql.Append("    modifyBy = '" + _modelMaterials.modifyBy + "',");
+            sbSql.Append("    modifyTime = '" + _modelMaterials.modifyTime + "' ");
+            sbSql.Append("where materialsId = " + _modelMaterials.id);
+
+            listSql.Add(sbSql.ToString());
+
             if (_modelMaterials.modelMaterialsPrice != null)
             {
                 sbSql.Clear();
-                sbSql.Append("update r_materials_price ");
-                sbSql.Append("set priceUnit = " + _modelMaterials.modelMaterialsPrice.priceUnit + ", ");
-                sbSql.Append("    modifyBy = '" + _modelMaterials.modelMaterialsPrice.modifyBy + "',");
-                sbSql.Append("    modifyTime = '" + _modelMaterials.modelMaterialsPrice.modifyTime + "' ");
-                sbSql.Append("where materialsId = " + _modelMaterials.modelMaterialsPrice.materialsId);
+                sbSql.Append("insert into ");
+                sbSql.Append("       r_materials_price ( ");
+                sbSql.Append("       materialsId, ");
+                sbSql.Append("       price, ");
+                sbSql.Append("       priceUnit) ");
+                sbSql.Append("select id, ");
+                sbSql.Append("        " + _modelMaterials.modelMaterialsPrice.price + ", ");
+                sbSql.Append("        " + _modelMaterials.modelMaterialsPrice.priceUnit + " ");
+                sbSql.Append("  from p_materials ");
+                sbSql.Append(" where name = '" + _modelMaterials.name + "'");
+                sbSql.Append(" order by id desc ");
+                sbSql.Append(" limit 0,1 ");
 
                 listSql.Add(sbSql.ToString());
             }

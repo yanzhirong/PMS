@@ -241,6 +241,14 @@ namespace Bll
 
             return rtn == 0 ? false : true;
         }
+
+        public Boolean UpdateSaleOrderStatus(List<ModelSaleOrder> _listSaleOrder)
+        {
+            int rtn = 0;
+            rtn = m_dalSaleOrder.UpdateSaleOrderStatus(_listSaleOrder);
+
+            return rtn == 0 ? false : true;
+        }
     }
 
 }

@@ -110,7 +110,12 @@ namespace Common.Tools
 
             try
             {
-                value = DateTime.ParseExact(ConvertToString(_object), _format, System.Globalization.CultureInfo.CurrentCulture);
+                DateTime dt = Convert.ToDateTime(_object);
+                if (dt.Year < 1900)
+                {
+                    dt = DateTime.Now;
+                }
+                value = DateTime.ParseExact(dt.ToString(_format), _format, System.Globalization.CultureInfo.CurrentCulture);
             }
             catch (Exception e)
             {

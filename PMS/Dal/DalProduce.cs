@@ -78,6 +78,30 @@ namespace Dal
 
         }
 
+        public DataTable GetProduceApplyByProduceCode(string _produceCode)
+        {
+            sbSql.Clear();
+            sbSql.Append("select * ");
+            sbSql.Append("  from p_produce_apply ");
+            sbSql.Append(" where isDelete = 0 ");
+            sbSql.Append("   and produceCode = '").Append(_produceCode).Append("' ");
+
+            return Dal.DBHelper.Select(sbSql.ToString());
+
+        }
+
+        public DataTable GetProduceApplyBySaleOrderCode(string _saleOrderCode)
+        {
+            sbSql.Clear();
+            sbSql.Append("select * ");
+            sbSql.Append("  from p_produce_apply ");
+            sbSql.Append(" where isDelete = 0 ");
+            sbSql.Append("   and saleOrderCode = '").Append(_saleOrderCode).Append("' ");
+
+            return Dal.DBHelper.Select(sbSql.ToString());
+
+        }
+
         public DataTable GetProduceyByProduceCode(string _produceCode)
         {
             sbSql.Clear();

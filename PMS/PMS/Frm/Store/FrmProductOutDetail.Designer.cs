@@ -116,8 +116,6 @@
             this.grb_productOut.Controls.Add(this.lbl_outputType);
             this.grb_productOut.Controls.Add(this.lbl_applyMember);
             this.grb_productOut.Controls.Add(this.cmb_apply);
-            this.grb_productOut.Controls.Add(this.label7);
-            this.grb_productOut.Controls.Add(this.dataGridView1);
             this.grb_productOut.Controls.Add(this.lbl_saler);
             this.grb_productOut.Controls.Add(this.cmb_saler);
             this.grb_productOut.Controls.Add(this.label10);
@@ -126,7 +124,7 @@
             this.grb_productOut.Controls.Add(this.lbl_orderCode);
             this.grb_productOut.Location = new System.Drawing.Point(31, 85);
             this.grb_productOut.Name = "grb_productOut";
-            this.grb_productOut.Size = new System.Drawing.Size(645, 474);
+            this.grb_productOut.Size = new System.Drawing.Size(645, 295);
             this.grb_productOut.TabIndex = 103;
             this.grb_productOut.TabStop = false;
             // 
@@ -244,7 +242,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(10, 285);
+            this.label7.Location = new System.Drawing.Point(38, 393);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 12);
             this.label7.TabIndex = 108;
@@ -261,11 +259,11 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 303);
+            this.dataGridView1.Location = new System.Drawing.Point(33, 408);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(616, 158);
+            this.dataGridView1.Size = new System.Drawing.Size(643, 145);
             this.dataGridView1.TabIndex = 9;
             this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -489,6 +487,8 @@
             this.Controls.Add(this.lbl_title);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_submit);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.label7);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;

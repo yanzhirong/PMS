@@ -65,7 +65,9 @@ namespace Dal
             {
                 sbSql.Append("  and a.outputStatus = ").Append(_outputStatus).Append(" ");
             }
-            sbSql.Append("  and (d.orderStatus is null or d.orderStatus = " + (int)Enum.EnumSaleOrderStatus.WaitTransport +  ") ");
+            sbSql.Append("  and (d.orderStatus is null ");
+            sbSql.Append("       or d.orderStatus = " + (int)Enum.EnumSaleOrderStatus.WaitTransport + " ");
+            sbSql.Append("       or d.orderStatus = " + (int)Enum.EnumSaleOrderStatus.Complete + ") ");
             sbSql.Append("  and a.deliveryDate >= '").Append(_beginTime).Append("' ");
             sbSql.Append("  and a.deliveryDate <= '").Append(_endTime).Append("' ");
             sbSql.Append("order by a.modifyTime desc");
@@ -298,7 +300,7 @@ namespace Dal
             sbSql.Append("where a.isDelete = 0 ");
             sbSql.Append("  and a.factoryId = ").Append(_factoryId).Append(" ");
             sbSql.Append("  and a.productId = ").Append(_productId).Append(" ");
-            sbSql.Append("  and a.inputNum > 0 ");
+            sbSql.Append("  and a.stockNum > 0 ");
             sbSql.Append("  and a.inputStatus = 1 ");
             sbSql.Append("order by a.expiresDate ");
 
@@ -306,7 +308,7 @@ namespace Dal
 
         }
 
-        public int doOutPut(string _outputCode, int _outputDetailId, int _factoryId, int _productId, int _applyMemberId, int _outputNum, List<Dictionary<string, object>> listOutput, string userName)
+        public int doOutPut(string _orderCode, string _outputCode, int _outputDetailId, int _factoryId, int _productId, int _applyMemberId, int _outputNum, List<Dictionary<string, object>> listOutput, string userName)
         {
             List<string> listSql = new List<string>();
 
@@ -413,6 +415,19 @@ namespace Dal
             sbSql.Append("           and outputCode = '" + _outputCode + "' ");
             sbSql.Append("           and outputStatus = 0) = 0  ");
             listSql.Add(sbSql.ToString());
+
+            if (StringUtils.IsNotBlank(_orderCode))
+            {
+                sbSql.Clear();
+                sbSql.Append("update p_saleOrder ");
+                sbSql.Append("set orderStatus = " + (int)Enum.EnumSaleOrderStatus.Complete + ",");
+                sbSql.Append("    modifyBy = '" + userName + "',");
+                sbSql.Append("    modifyTime = '" + DateTime.Now + "' ");
+                sbSql.Append("where orderCode = '" + _orderCode + "' ");
+                sbSql.Append("  and isDelete = 0 ");
+                sbSql.Append("  and (select count(*) from p_product_output where isDelete = 0 and orderCode = '" + _orderCode + "' and outputStatus = 0 ) = 0");
+                listSql.Add(sbSql.ToString());
+            }
 
             return Dal.DBHelper.ExcuteTransaction(listSql);
 

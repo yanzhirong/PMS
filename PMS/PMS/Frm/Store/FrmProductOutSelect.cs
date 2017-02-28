@@ -179,7 +179,8 @@ namespace PMS.Frm.Store
                 }
             }
 
-            rtn = m_bllProductOut.doOutPut(m_outputCode, m_outputDetailId, m_factoryId, m_productId, m_applyMemberId, selectedAllOutputNum, listOutput, LoginUserInfo.LoginUser.loginUser.userName);
+            ModelProductOutput modelProductOutput = m_bllProductOut.GetProductOutByOutputCode(m_outputCode);
+            rtn = m_bllProductOut.doOutPut(modelProductOutput.orderCode, m_outputCode, m_outputDetailId, m_factoryId, m_productId, m_applyMemberId, selectedAllOutputNum, listOutput, LoginUserInfo.LoginUser.loginUser.userName);
 
             if (rtn == true)
             {

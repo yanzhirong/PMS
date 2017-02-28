@@ -28,8 +28,8 @@ namespace Dal
             sbSql.Append("       date_format(a.deliveryDate, '%Y-%m-%d') deliveryDate, ");
             sbSql.Append("       g.value1 receivedStatus, ");
             sbSql.Append("       f.receivedPrice receivedPrice, ");
-            sbSql.Append("       case a.orderStatus when 1 then '确认' else '查看' end confirmBtn, ");
-            sbSql.Append("       case a.orderStatus when 1 then '取消' else '查看' end cancelBtn ");
+            sbSql.Append("       case a.orderStatus when " + (int)Enum.EnumSaleOrderStatus.WaitConfirm + " then '确认' else '查看' end confirmBtn, ");
+            sbSql.Append("       case a.orderStatus when " + (int)Enum.EnumSaleOrderStatus.WaitConfirm + " then '取消' else '查看' end cancelBtn ");
             sbSql.Append("from p_saleOrder a ");
             sbSql.Append("left join m_user b ");
             sbSql.Append("  on a.salerId = b.userId ");
@@ -149,8 +149,8 @@ namespace Dal
             sbSql.Append("       date_format(a.deliveryDate, '%Y-%m-%d') deliveryDate, ");
             sbSql.Append("       g.value1 paidStatus, ");
             sbSql.Append("       f.paidPrice paidPrice, ");
-            sbSql.Append("       case a.status when 1 then '确认' else '查看' end confirmBtn, ");
-            sbSql.Append("       case a.status when 1 then '取消' else '查看' end cancelBtn ");
+            sbSql.Append("       case a.status when " + (int)Enum.EnumPurchaseOrderStatus.WaitFinanceConfirm + " then '确认' else '查看' end confirmBtn, ");
+            sbSql.Append("       case a.status when " + (int)Enum.EnumPurchaseOrderStatus.WaitFinanceConfirm + " then '取消' else '查看' end cancelBtn ");
             sbSql.Append("from p_purchase a ");
             sbSql.Append("left join m_user b ");
             sbSql.Append("  on a.purchaserId = b.userId ");

@@ -177,8 +177,9 @@ namespace Dal
                 sbSql.Append("         where produceCode = '" + _model.produceCode + "' ");
                 sbSql.Append("           and isDelete = 0) = 1 ");
                 listSql.Add(sbSql.ToString());
-            } 
-            
+
+            }
+
             return Dal.DBHelper.ExcuteTransaction(listSql);
         }
 

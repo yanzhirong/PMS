@@ -54,7 +54,7 @@ namespace Dal
                           from m_code
                          where code = {0}
                            and isDelete = 0
-                         order by id";
+                         order by code,subCode";
 
                 sql = string.Format(sql, _code);
             }
@@ -71,7 +71,7 @@ namespace Dal
                          where code = {0}
                            and ifnull(subCode, 0) > 0
                            and isDelete = 0
-                         order by id";
+                         order by code,subCode";
 
                 sql = string.Format(sql, _code);
             }

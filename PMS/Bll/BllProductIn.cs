@@ -12,6 +12,8 @@ namespace Bll
 {
     public class BllProductIn : Bll.BllBase
     {
+        private BllSaleOrder m_bllSaleOrder = new BllSaleOrder();
+        private BllProduce m_bllProduce = new BllProduce();
         private DalProductIn m_dalProductIn = new DalProductIn();
         private DalStore m_dalStore = new DalStore();
 
@@ -40,7 +42,71 @@ namespace Bll
             int rtn = 0;
             _model.inputCode = BllSeq.GetCode("productInCode");
             _model.inputStatus = 1;
+
             rtn = m_dalProductIn.AddProductIn(_model);
+
+            if (rtn > 0)
+            {
+                //更新销售订单状态
+                List<ModelSaleOrder> listSaleOrder = new List<ModelSaleOrder>();
+
+                DataTable dt = m_bllProduce.GetProduceApplyByProduceCode(_model.produceCode);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        string saleOrderCode = ConvertUtils.ConvertToString(dr["saleOrderCode"]);
+
+                        if (StringUtils.IsNotBlank(saleOrderCode))
+                        {
+                            bool isNeedUpdate = true;
+                            DataTable dt2 = m_bllProduce.GetProduceApplyBySaleOrderCode(saleOrderCode);
+
+                            if (dt2 != null && dt2.Rows.Count > 0)
+                            {
+                                foreach (DataRow dr2 in dt2.Rows)
+                                {
+                                    int status = ConvertUtils.ConvertToInt(dr2["status"]);
+                                    if (status == 0)
+                                    {
+                                        isNeedUpdate = false;
+                                        break;
+                                    }
+
+                                    string produceCode = ConvertUtils.ConvertToString(dr2["produceCode"]);
+                                    if (StringUtils.IsBlank(produceCode))
+                                    {
+                                        isNeedUpdate = false;
+                                        break;
+                                    }
+
+                                    ModelProduce modelProduce = m_bllProduce.GetProduceyByProduceCode(produceCode);
+                                    if (modelProduce.status != (int)Enum.EnumProduceOrderStatus.Complete)
+                                    {
+                                        isNeedUpdate = false;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            if (isNeedUpdate)
+                            {
+                                ModelSaleOrder modelSaleOrder = new ModelSaleOrder();
+                                modelSaleOrder.orderCode = saleOrderCode;
+                                modelSaleOrder.orderStatus = (int)Enum.EnumSaleOrderStatus.WaitTransport;
+                                modelSaleOrder.modifyBy = _model.createBy;
+                                modelSaleOrder.modifyTime = _model.createTime;
+                                listSaleOrder.Add(modelSaleOrder);
+                            }
+                        }
+                    }
+                }
+
+                if (listSaleOrder.Count > 0)
+                {
+                    return m_bllSaleOrder.UpdateSaleOrderStatus(listSaleOrder);
+                }
+            }
 
             return rtn == 0 ? false : true;
         }
@@ -54,6 +120,69 @@ namespace Bll
             }
             _model.inputStatus = 1;
             rtn = m_dalProductIn.UpdateProductIn(_model);
+
+            if (rtn > 0)
+            {
+                //更新销售订单状态
+                List<ModelSaleOrder> listSaleOrder = new List<ModelSaleOrder>();
+
+                DataTable dt = m_bllProduce.GetProduceApplyByProduceCode(_model.produceCode);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        string saleOrderCode = ConvertUtils.ConvertToString(dr["saleOrderCode"]);
+
+                        if (StringUtils.IsNotBlank(saleOrderCode))
+                        {
+                            bool isNeedUpdate = true;
+                            DataTable dt2 = m_bllProduce.GetProduceApplyBySaleOrderCode(saleOrderCode);
+
+                            if (dt2 != null && dt2.Rows.Count > 0)
+                            {
+                                foreach (DataRow dr2 in dt2.Rows)
+                                {
+                                    int status = ConvertUtils.ConvertToInt(dr2["status"]);
+                                    if (status == 0)
+                                    {
+                                        isNeedUpdate = false;
+                                        break;
+                                    }
+
+                                    string produceCode = ConvertUtils.ConvertToString(dr2["produceCode"]);
+                                    if (StringUtils.IsBlank(produceCode))
+                                    {
+                                        isNeedUpdate = false;
+                                        break;
+                                    }
+
+                                    ModelProduce modelProduce = m_bllProduce.GetProduceyByProduceCode(produceCode);
+                                    if (modelProduce.status != (int)Enum.EnumProduceOrderStatus.Complete)
+                                    {
+                                        isNeedUpdate = false;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            if (isNeedUpdate)
+                            {
+                                ModelSaleOrder modelSaleOrder = new ModelSaleOrder();
+                                modelSaleOrder.orderCode = saleOrderCode;
+                                modelSaleOrder.orderStatus = (int)Enum.EnumSaleOrderStatus.WaitTransport;
+                                modelSaleOrder.modifyBy = _model.createBy;
+                                modelSaleOrder.modifyTime = _model.createTime;
+                                listSaleOrder.Add(modelSaleOrder);
+                            }
+                        }
+                    }
+                }
+
+                if (listSaleOrder.Count > 0)
+                {
+                    return m_bllSaleOrder.UpdateSaleOrderStatus(listSaleOrder);
+                }
+            }
 
             return rtn == 0 ? false : true;
         }

@@ -37,7 +37,7 @@ namespace PMS.Frm.Store
         {
            
             //初始化
-            init();
+            init(true);
         }
 
         private void FrmProductOutDetail_FormClosed(object sender, FormClosedEventArgs e)
@@ -59,7 +59,7 @@ namespace PMS.Frm.Store
         /// <summary>
         /// 画面初始化
         /// </summary>
-        private void init()
+        private void init(bool _setGrid)
         {           
             //标题
             //if (m_mode == 0)
@@ -212,7 +212,10 @@ namespace PMS.Frm.Store
                 }
 
                 // 设置datagrid
-                SetDataGridViewStyle();
+                if (_setGrid)
+                {
+                    SetDataGridViewStyle();
+                }
 
                 //明细
                 dataGridView1.DataSource = m_bllProductOut.GetProductOutDetailByOutputCode(model.outputCode);
@@ -240,12 +243,14 @@ namespace PMS.Frm.Store
             //新增修改时
             if (m_mode == 0 || m_mode == 1)
             {
-                grb_productOut.Enabled = true;
+                this.grb_productOut.Enabled = true;
+                this.dataGridView1.Enabled = true;
             }
             //查看/删除时，各输入项不能修改
             if (m_mode == 2 || m_mode == 3)
             {
-                grb_productOut.Enabled = false;
+                this.grb_productOut.Enabled = false;
+                this.dataGridView1.Enabled = false;
             }
 
             //出库单类型不可修改
@@ -253,6 +258,16 @@ namespace PMS.Frm.Store
             if (cmb_outputType.SelectedIndex == 0)
             {
                 this.cmb_apply.Enabled = false;
+            }
+
+            //修改
+            if (m_mode == 1)
+            {
+                if (m_bllProductOut.CheckUpdateDelete(this.txt_outputCode.Text) == false)
+                {
+                    this.grb_productOut.Enabled = false;
+                    this.dataGridView1.Enabled = true;
+                }
             }
 
         }
@@ -753,9 +768,9 @@ namespace PMS.Frm.Store
                     int factoryId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_factory.SelectedItem).itemKey);
                     Form form = new FrmProductOutSelect(this.txt_outputCode.Text, outputDetailId, productId, factoryId, ConvertUtils.ConvertToInt(((ModelItem)this.cmb_apply.SelectedItem).itemKey));
                     form.ShowDialog();
-                    //init();
-                    dataGridView1.DataSource = m_bllProductOut.GetProductOutDetailByOutputCode(this.txt_outputCode.Text);
-                    dataGridView1.Refresh();
+                    init(false);
+                    //dataGridView1.DataSource = m_bllProductOut.GetProductOutDetailByOutputCode(this.txt_outputCode.Text);
+                    //dataGridView1.Refresh();
 
                 }
             }

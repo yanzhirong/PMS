@@ -37,6 +37,16 @@ namespace Bll
             return new ModelProduceApply();
         }
 
+        public DataTable GetProduceApplyByProduceCode(string _produceCode)
+        {
+            return m_dalProduce.GetProduceApplyByProduceCode(_produceCode);
+        }
+
+        public DataTable GetProduceApplyBySaleOrderCode(string _saleOrderCode)
+        {
+            return m_dalProduce.GetProduceApplyBySaleOrderCode(_saleOrderCode);
+        }
+
         public DataTable GetProduceApply(string _productName, int _factoryId, int _applyType, int _applyStatus, DateTime _beginTime, DateTime _endTime)
         {
             return m_dalProduce.GetProduceApply(_productName, _factoryId, _applyType, _applyStatus, _beginTime, _endTime);

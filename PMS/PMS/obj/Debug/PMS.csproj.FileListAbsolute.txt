@@ -187,10 +187,6 @@ D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Finance.FrmReceivedDetailAdd.re
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Finance.FrmPaid.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Finance.FrmPaidDetail.resources
 D:\p\yd\PMS\source\PMS\PMS\PMS\obj\Debug\PMS.Frm.Finance.FrmPaidDetailAdd.resources
-D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Dal.dll
-D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Bll.pdb
-D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Model.pdb
-D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Dal.pdb
 C:\Work\project\NET\PMS\PMS\PMS\bin\Debug\Dal.dll
 C:\Work\project\NET\PMS\PMS\PMS\bin\Debug\Bll.pdb
 C:\Work\project\NET\PMS\PMS\PMS\bin\Debug\Model.pdb
