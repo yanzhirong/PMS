@@ -13,7 +13,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Finance
 {
-    public partial class FrmReceivedDetailAdd : Form
+    public partial class FrmReceivedDetailAdd : Main.BaseForm
     {
         private string m_orderCode;
         private decimal m_maxReceiveMoney;

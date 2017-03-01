@@ -104,6 +104,18 @@
     <Compile Include="Frm\Login\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm\Login\FrmLoginOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Login\FrmLoginOut.Designer.cs">
+      <DependentUpon>FrmLoginOut.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Main\BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Main\BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\Produce\FrmProducePlan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -380,6 +392,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\Login\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Login\FrmLoginOut.resx">
+      <DependentUpon>FrmLoginOut.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Main\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\Produce\FrmProducePlan.resx">
       <DependentUpon>FrmProducePlan.cs</DependentUpon>

@@ -13,7 +13,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Purchase
 {
-    public partial class FrmPurchaseDetail : Form
+    public partial class FrmPurchaseDetail : Main.BaseForm
     {
         //处理模式（0：新建；1：修改；2：删除；3：查看；4:财务确认；5:财务取消）
         private int m_mode;

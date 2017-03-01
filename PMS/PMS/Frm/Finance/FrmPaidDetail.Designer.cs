@@ -33,6 +33,10 @@
             this.lbl_title = new System.Windows.Forms.Label();
             this.grb_productOut = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.paidMoney = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paidDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.paidType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_paidPrice = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txt_orderPrice = new System.Windows.Forms.TextBox();
@@ -48,10 +52,6 @@
             this.txt_purchaseCode = new System.Windows.Forms.TextBox();
             this.lbl_orderCode = new System.Windows.Forms.Label();
             this.btn_close = new System.Windows.Forms.Button();
-            this.paidMoney = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paidDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.paidType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grb_productOut.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -112,163 +112,7 @@
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(600, 144);
-            this.dataGridView1.TabIndex = 1;
-            // 
-            // txt_paidPrice
-            // 
-            this.txt_paidPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txt_paidPrice.Enabled = false;
-            this.txt_paidPrice.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txt_paidPrice.Location = new System.Drawing.Point(380, 102);
-            this.txt_paidPrice.MaxLength = 20;
-            this.txt_paidPrice.Name = "txt_paidPrice";
-            this.txt_paidPrice.Size = new System.Drawing.Size(222, 21);
-            this.txt_paidPrice.TabIndex = 141;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(319, 105);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 12);
-            this.label4.TabIndex = 140;
-            this.label4.Text = "已付金额：";
-            // 
-            // txt_orderPrice
-            // 
-            this.txt_orderPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txt_orderPrice.Enabled = false;
-            this.txt_orderPrice.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txt_orderPrice.Location = new System.Drawing.Point(77, 102);
-            this.txt_orderPrice.MaxLength = 20;
-            this.txt_orderPrice.Name = "txt_orderPrice";
-            this.txt_orderPrice.Size = new System.Drawing.Size(222, 21);
-            this.txt_orderPrice.TabIndex = 139;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(16, 105);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 12);
-            this.label5.TabIndex = 138;
-            this.label5.Text = "应付金额：";
-            // 
-            // lbl_selectOutput
-            // 
-            this.lbl_selectOutput.AutoSize = true;
-            this.lbl_selectOutput.ForeColor = System.Drawing.Color.Black;
-            this.lbl_selectOutput.Location = new System.Drawing.Point(16, 144);
-            this.lbl_selectOutput.Name = "lbl_selectOutput";
-            this.lbl_selectOutput.Size = new System.Drawing.Size(65, 12);
-            this.lbl_selectOutput.TabIndex = 137;
-            this.lbl_selectOutput.Text = "付款明细：";
-            // 
-            // btn_add
-            // 
-            this.btn_add.Location = new System.Drawing.Point(18, 324);
-            this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(75, 23);
-            this.btn_add.TabIndex = 2;
-            this.btn_add.Text = "新增付款";
-            this.btn_add.UseVisualStyleBackColor = true;
-            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
-            // 
-            // txt_customer
-            // 
-            this.txt_customer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txt_customer.Enabled = false;
-            this.txt_customer.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txt_customer.Location = new System.Drawing.Point(380, 24);
-            this.txt_customer.MaxLength = 20;
-            this.txt_customer.Name = "txt_customer";
-            this.txt_customer.Size = new System.Drawing.Size(222, 21);
-            this.txt_customer.TabIndex = 126;
-            // 
-            // txt_paidStatus
-            // 
-            this.txt_paidStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txt_paidStatus.Enabled = false;
-            this.txt_paidStatus.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txt_paidStatus.Location = new System.Drawing.Point(380, 62);
-            this.txt_paidStatus.MaxLength = 20;
-            this.txt_paidStatus.Name = "txt_paidStatus";
-            this.txt_paidStatus.Size = new System.Drawing.Size(222, 21);
-            this.txt_paidStatus.TabIndex = 125;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(319, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 12);
-            this.label3.TabIndex = 124;
-            this.label3.Text = "付款状态：";
-            // 
-            // txt_purchaseStatus
-            // 
-            this.txt_purchaseStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txt_purchaseStatus.Enabled = false;
-            this.txt_purchaseStatus.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txt_purchaseStatus.Location = new System.Drawing.Point(77, 62);
-            this.txt_purchaseStatus.MaxLength = 20;
-            this.txt_purchaseStatus.Name = "txt_purchaseStatus";
-            this.txt_purchaseStatus.Size = new System.Drawing.Size(222, 21);
-            this.txt_purchaseStatus.TabIndex = 123;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(16, 65);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 12);
-            this.label2.TabIndex = 122;
-            this.label2.Text = "订单状态：";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(319, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
-            this.label1.TabIndex = 121;
-            this.label1.Text = "客    户：";
-            // 
-            // txt_purchaseCode
-            // 
-            this.txt_purchaseCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txt_purchaseCode.Enabled = false;
-            this.txt_purchaseCode.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txt_purchaseCode.Location = new System.Drawing.Point(77, 24);
-            this.txt_purchaseCode.MaxLength = 20;
-            this.txt_purchaseCode.Name = "txt_purchaseCode";
-            this.txt_purchaseCode.Size = new System.Drawing.Size(222, 21);
-            this.txt_purchaseCode.TabIndex = 43;
-            // 
-            // lbl_orderCode
-            // 
-            this.lbl_orderCode.AutoSize = true;
-            this.lbl_orderCode.ForeColor = System.Drawing.Color.Black;
-            this.lbl_orderCode.Location = new System.Drawing.Point(16, 27);
-            this.lbl_orderCode.Name = "lbl_orderCode";
-            this.lbl_orderCode.Size = new System.Drawing.Size(65, 12);
-            this.lbl_orderCode.TabIndex = 42;
-            this.lbl_orderCode.Text = "采购单号：";
-            // 
-            // btn_close
-            // 
-            this.btn_close.Location = new System.Drawing.Point(578, 458);
-            this.btn_close.Name = "btn_close";
-            this.btn_close.Size = new System.Drawing.Size(75, 23);
-            this.btn_close.TabIndex = 105;
-            this.btn_close.Text = "关闭";
-            this.btn_close.UseVisualStyleBackColor = true;
-            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
+            this.dataGridView1.TabIndex = 7;
             // 
             // paidMoney
             // 
@@ -300,6 +144,162 @@
             this.remark.HeaderText = "付款备注";
             this.remark.Name = "remark";
             this.remark.Width = 200;
+            // 
+            // txt_paidPrice
+            // 
+            this.txt_paidPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txt_paidPrice.Enabled = false;
+            this.txt_paidPrice.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_paidPrice.Location = new System.Drawing.Point(380, 102);
+            this.txt_paidPrice.MaxLength = 20;
+            this.txt_paidPrice.Name = "txt_paidPrice";
+            this.txt_paidPrice.Size = new System.Drawing.Size(222, 21);
+            this.txt_paidPrice.TabIndex = 6;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(319, 105);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 12);
+            this.label4.TabIndex = 140;
+            this.label4.Text = "已付金额：";
+            // 
+            // txt_orderPrice
+            // 
+            this.txt_orderPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txt_orderPrice.Enabled = false;
+            this.txt_orderPrice.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_orderPrice.Location = new System.Drawing.Point(77, 102);
+            this.txt_orderPrice.MaxLength = 20;
+            this.txt_orderPrice.Name = "txt_orderPrice";
+            this.txt_orderPrice.Size = new System.Drawing.Size(222, 21);
+            this.txt_orderPrice.TabIndex = 5;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(16, 105);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 12);
+            this.label5.TabIndex = 138;
+            this.label5.Text = "应付金额：";
+            // 
+            // lbl_selectOutput
+            // 
+            this.lbl_selectOutput.AutoSize = true;
+            this.lbl_selectOutput.ForeColor = System.Drawing.Color.Black;
+            this.lbl_selectOutput.Location = new System.Drawing.Point(16, 144);
+            this.lbl_selectOutput.Name = "lbl_selectOutput";
+            this.lbl_selectOutput.Size = new System.Drawing.Size(65, 12);
+            this.lbl_selectOutput.TabIndex = 137;
+            this.lbl_selectOutput.Text = "付款明细：";
+            // 
+            // btn_add
+            // 
+            this.btn_add.Location = new System.Drawing.Point(18, 324);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(75, 23);
+            this.btn_add.TabIndex = 8;
+            this.btn_add.Text = "新增付款";
+            this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
+            // 
+            // txt_customer
+            // 
+            this.txt_customer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txt_customer.Enabled = false;
+            this.txt_customer.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_customer.Location = new System.Drawing.Point(380, 24);
+            this.txt_customer.MaxLength = 20;
+            this.txt_customer.Name = "txt_customer";
+            this.txt_customer.Size = new System.Drawing.Size(222, 21);
+            this.txt_customer.TabIndex = 2;
+            // 
+            // txt_paidStatus
+            // 
+            this.txt_paidStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txt_paidStatus.Enabled = false;
+            this.txt_paidStatus.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_paidStatus.Location = new System.Drawing.Point(380, 62);
+            this.txt_paidStatus.MaxLength = 20;
+            this.txt_paidStatus.Name = "txt_paidStatus";
+            this.txt_paidStatus.Size = new System.Drawing.Size(222, 21);
+            this.txt_paidStatus.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(319, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 12);
+            this.label3.TabIndex = 124;
+            this.label3.Text = "付款状态：";
+            // 
+            // txt_purchaseStatus
+            // 
+            this.txt_purchaseStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txt_purchaseStatus.Enabled = false;
+            this.txt_purchaseStatus.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_purchaseStatus.Location = new System.Drawing.Point(77, 62);
+            this.txt_purchaseStatus.MaxLength = 20;
+            this.txt_purchaseStatus.Name = "txt_purchaseStatus";
+            this.txt_purchaseStatus.Size = new System.Drawing.Size(222, 21);
+            this.txt_purchaseStatus.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(16, 65);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 12);
+            this.label2.TabIndex = 122;
+            this.label2.Text = "订单状态：";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(319, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 121;
+            this.label1.Text = "客    户：";
+            // 
+            // txt_purchaseCode
+            // 
+            this.txt_purchaseCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txt_purchaseCode.Enabled = false;
+            this.txt_purchaseCode.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_purchaseCode.Location = new System.Drawing.Point(77, 24);
+            this.txt_purchaseCode.MaxLength = 20;
+            this.txt_purchaseCode.Name = "txt_purchaseCode";
+            this.txt_purchaseCode.Size = new System.Drawing.Size(222, 21);
+            this.txt_purchaseCode.TabIndex = 1;
+            // 
+            // lbl_orderCode
+            // 
+            this.lbl_orderCode.AutoSize = true;
+            this.lbl_orderCode.ForeColor = System.Drawing.Color.Black;
+            this.lbl_orderCode.Location = new System.Drawing.Point(16, 27);
+            this.lbl_orderCode.Name = "lbl_orderCode";
+            this.lbl_orderCode.Size = new System.Drawing.Size(65, 12);
+            this.lbl_orderCode.TabIndex = 42;
+            this.lbl_orderCode.Text = "采购单号：";
+            // 
+            // btn_close
+            // 
+            this.btn_close.Location = new System.Drawing.Point(578, 458);
+            this.btn_close.Name = "btn_close";
+            this.btn_close.Size = new System.Drawing.Size(75, 23);
+            this.btn_close.TabIndex = 105;
+            this.btn_close.Text = "关闭";
+            this.btn_close.UseVisualStyleBackColor = true;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
             // FrmPaidDetail
             // 

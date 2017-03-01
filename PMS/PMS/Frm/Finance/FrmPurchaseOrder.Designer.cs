@@ -47,9 +47,6 @@
             this.lbl_saler = new System.Windows.Forms.Label();
             this.btn_query = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.lbl_tile = new System.Windows.Forms.Label();
-            this.btn_export = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.factoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerName = new System.Windows.Forms.DataGridViewLinkColumn();
@@ -64,6 +61,9 @@
             this.cancelBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.customerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderStatusCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.lbl_tile = new System.Windows.Forms.Label();
+            this.btn_export = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -97,7 +97,7 @@
             this.cmb_orderStatus.Location = new System.Drawing.Point(350, 48);
             this.cmb_orderStatus.Name = "cmb_orderStatus";
             this.cmb_orderStatus.Size = new System.Drawing.Size(120, 20);
-            this.cmb_orderStatus.TabIndex = 109;
+            this.cmb_orderStatus.TabIndex = 5;
             // 
             // label3
             // 
@@ -116,7 +116,7 @@
             this.cmb_purchaser.Location = new System.Drawing.Point(558, 16);
             this.cmb_purchaser.Name = "cmb_purchaser";
             this.cmb_purchaser.Size = new System.Drawing.Size(120, 20);
-            this.cmb_purchaser.TabIndex = 107;
+            this.cmb_purchaser.TabIndex = 3;
             // 
             // label1
             // 
@@ -135,7 +135,7 @@
             this.cmb_customer.Location = new System.Drawing.Point(350, 16);
             this.cmb_customer.Name = "cmb_customer";
             this.cmb_customer.Size = new System.Drawing.Size(120, 20);
-            this.cmb_customer.TabIndex = 105;
+            this.cmb_customer.TabIndex = 2;
             // 
             // lbl_stockNum
             // 
@@ -178,7 +178,7 @@
             this.cmb_factory.Location = new System.Drawing.Point(89, 16);
             this.cmb_factory.Name = "cmb_factory";
             this.cmb_factory.Size = new System.Drawing.Size(178, 20);
-            this.cmb_factory.TabIndex = 3;
+            this.cmb_factory.TabIndex = 1;
             // 
             // label2
             // 
@@ -221,7 +221,7 @@
             this.btn_query.Location = new System.Drawing.Point(45, 174);
             this.btn_query.Name = "btn_query";
             this.btn_query.Size = new System.Drawing.Size(75, 23);
-            this.btn_query.TabIndex = 9;
+            this.btn_query.TabIndex = 8;
             this.btn_query.Text = "查询";
             this.btn_query.UseVisualStyleBackColor = true;
             this.btn_query.Click += new System.EventHandler(this.btn_query_Click);
@@ -258,36 +258,8 @@
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(1232, 476);
-            this.dataGridView1.TabIndex = 11;
+            this.dataGridView1.TabIndex = 10;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1286, 24);
-            this.menuStrip1.TabIndex = 9;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // lbl_tile
-            // 
-            this.lbl_tile.AutoSize = true;
-            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
-            this.lbl_tile.Location = new System.Drawing.Point(539, 40);
-            this.lbl_tile.Name = "lbl_tile";
-            this.lbl_tile.Size = new System.Drawing.Size(174, 27);
-            this.lbl_tile.TabIndex = 67;
-            this.lbl_tile.Text = "采购订单列表";
-            // 
-            // btn_export
-            // 
-            this.btn_export.Location = new System.Drawing.Point(155, 174);
-            this.btn_export.Name = "btn_export";
-            this.btn_export.Size = new System.Drawing.Size(75, 23);
-            this.btn_export.TabIndex = 10;
-            this.btn_export.Text = "导出";
-            this.btn_export.UseVisualStyleBackColor = true;
-            this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
             // 
             // id
             // 
@@ -395,6 +367,34 @@
             this.orderStatusCode.HeaderText = "orderStatusCode";
             this.orderStatusCode.Name = "orderStatusCode";
             this.orderStatusCode.Visible = false;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1286, 24);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // lbl_tile
+            // 
+            this.lbl_tile.AutoSize = true;
+            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
+            this.lbl_tile.Location = new System.Drawing.Point(539, 40);
+            this.lbl_tile.Name = "lbl_tile";
+            this.lbl_tile.Size = new System.Drawing.Size(174, 27);
+            this.lbl_tile.TabIndex = 67;
+            this.lbl_tile.Text = "采购订单列表";
+            // 
+            // btn_export
+            // 
+            this.btn_export.Location = new System.Drawing.Point(155, 174);
+            this.btn_export.Name = "btn_export";
+            this.btn_export.Size = new System.Drawing.Size(75, 23);
+            this.btn_export.TabIndex = 9;
+            this.btn_export.Text = "导出";
+            this.btn_export.UseVisualStyleBackColor = true;
+            this.btn_export.Click += new System.EventHandler(this.btn_export_Click);
             // 
             // FrmPurchaseOrder
             // 

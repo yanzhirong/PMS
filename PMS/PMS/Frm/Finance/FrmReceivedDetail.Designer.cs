@@ -112,7 +112,7 @@
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(600, 144);
-            this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.TabIndex = 7;
             // 
             // receivedMoney
             // 
@@ -154,7 +154,7 @@
             this.txt_receivedMoney.MaxLength = 20;
             this.txt_receivedMoney.Name = "txt_receivedMoney";
             this.txt_receivedMoney.Size = new System.Drawing.Size(222, 21);
-            this.txt_receivedMoney.TabIndex = 141;
+            this.txt_receivedMoney.TabIndex = 6;
             // 
             // label4
             // 
@@ -175,7 +175,7 @@
             this.txt_orderPrice.MaxLength = 20;
             this.txt_orderPrice.Name = "txt_orderPrice";
             this.txt_orderPrice.Size = new System.Drawing.Size(222, 21);
-            this.txt_orderPrice.TabIndex = 139;
+            this.txt_orderPrice.TabIndex = 5;
             // 
             // label5
             // 
@@ -202,7 +202,7 @@
             this.btn_add.Location = new System.Drawing.Point(18, 324);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(75, 23);
-            this.btn_add.TabIndex = 2;
+            this.btn_add.TabIndex = 8;
             this.btn_add.Text = "新增收款";
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
@@ -216,7 +216,7 @@
             this.txt_customer.MaxLength = 20;
             this.txt_customer.Name = "txt_customer";
             this.txt_customer.Size = new System.Drawing.Size(222, 21);
-            this.txt_customer.TabIndex = 126;
+            this.txt_customer.TabIndex = 2;
             // 
             // txt_receiveStatus
             // 
@@ -227,7 +227,7 @@
             this.txt_receiveStatus.MaxLength = 20;
             this.txt_receiveStatus.Name = "txt_receiveStatus";
             this.txt_receiveStatus.Size = new System.Drawing.Size(222, 21);
-            this.txt_receiveStatus.TabIndex = 125;
+            this.txt_receiveStatus.TabIndex = 4;
             // 
             // label3
             // 
@@ -248,7 +248,7 @@
             this.txt_orderStatus.MaxLength = 20;
             this.txt_orderStatus.Name = "txt_orderStatus";
             this.txt_orderStatus.Size = new System.Drawing.Size(222, 21);
-            this.txt_orderStatus.TabIndex = 123;
+            this.txt_orderStatus.TabIndex = 3;
             // 
             // label2
             // 
@@ -279,7 +279,7 @@
             this.txt_orderCode.MaxLength = 20;
             this.txt_orderCode.Name = "txt_orderCode";
             this.txt_orderCode.Size = new System.Drawing.Size(222, 21);
-            this.txt_orderCode.TabIndex = 43;
+            this.txt_orderCode.TabIndex = 1;
             // 
             // lbl_orderCode
             // 

@@ -177,7 +177,7 @@
             this.chk_finance.Location = new System.Drawing.Point(33, 438);
             this.chk_finance.Name = "chk_finance";
             this.chk_finance.Size = new System.Drawing.Size(72, 16);
-            this.chk_finance.TabIndex = 26;
+            this.chk_finance.TabIndex = 9;
             this.chk_finance.Text = "财务管理";
             this.chk_finance.UseVisualStyleBackColor = true;
             this.chk_finance.CheckedChanged += new System.EventHandler(this.chk_finance_CheckedChanged);
@@ -230,7 +230,7 @@
             this.chk_purchase.Location = new System.Drawing.Point(33, 365);
             this.chk_purchase.Name = "chk_purchase";
             this.chk_purchase.Size = new System.Drawing.Size(72, 16);
-            this.chk_purchase.TabIndex = 21;
+            this.chk_purchase.TabIndex = 8;
             this.chk_purchase.Text = "采购管理";
             this.chk_purchase.UseVisualStyleBackColor = true;
             this.chk_purchase.CheckedChanged += new System.EventHandler(this.chk_purchase_CheckedChanged);
@@ -272,7 +272,7 @@
             this.chk_produce.Location = new System.Drawing.Point(33, 294);
             this.chk_produce.Name = "chk_produce";
             this.chk_produce.Size = new System.Drawing.Size(72, 16);
-            this.chk_produce.TabIndex = 19;
+            this.chk_produce.TabIndex = 7;
             this.chk_produce.Text = "生产管理";
             this.chk_produce.UseVisualStyleBackColor = true;
             this.chk_produce.CheckedChanged += new System.EventHandler(this.chk_produce_CheckedChanged);
@@ -359,7 +359,7 @@
             this.chk_store.Location = new System.Drawing.Point(33, 222);
             this.chk_store.Name = "chk_store";
             this.chk_store.Size = new System.Drawing.Size(72, 16);
-            this.chk_store.TabIndex = 13;
+            this.chk_store.TabIndex = 6;
             this.chk_store.Text = "库存管理";
             this.chk_store.UseVisualStyleBackColor = true;
             this.chk_store.CheckedChanged += new System.EventHandler(this.chk_factory_CheckedChanged);
@@ -401,7 +401,7 @@
             this.chk_sale.Location = new System.Drawing.Point(33, 154);
             this.chk_sale.Name = "chk_sale";
             this.chk_sale.Size = new System.Drawing.Size(72, 16);
-            this.chk_sale.TabIndex = 10;
+            this.chk_sale.TabIndex = 5;
             this.chk_sale.Text = "销售管理";
             this.chk_sale.UseVisualStyleBackColor = true;
             this.chk_sale.CheckedChanged += new System.EventHandler(this.chk_sale_CheckedChanged);
@@ -412,7 +412,7 @@
             this.chk_product.Location = new System.Drawing.Point(33, 86);
             this.chk_product.Name = "chk_product";
             this.chk_product.Size = new System.Drawing.Size(72, 16);
-            this.chk_product.TabIndex = 7;
+            this.chk_product.TabIndex = 4;
             this.chk_product.Text = "产品管理";
             this.chk_product.UseVisualStyleBackColor = true;
             this.chk_product.CheckedChanged += new System.EventHandler(this.chk_product_CheckedChanged);
@@ -465,7 +465,7 @@
             this.chk_sys.Location = new System.Drawing.Point(34, 20);
             this.chk_sys.Name = "chk_sys";
             this.chk_sys.Size = new System.Drawing.Size(72, 16);
-            this.chk_sys.TabIndex = 2;
+            this.chk_sys.TabIndex = 3;
             this.chk_sys.Tag = "1";
             this.chk_sys.Text = "系统设置";
             this.chk_sys.UseVisualStyleBackColor = true;

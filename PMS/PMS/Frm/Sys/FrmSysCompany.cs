@@ -13,7 +13,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Sys
 {
-    public partial class FrmSysCompany : Form
+    public partial class FrmSysCompany : Main.BaseForm
     {
         private BllCompany m_bllCompany = new BllCompany();
 
@@ -78,7 +78,9 @@ namespace PMS.Frm.Sys
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             //返回
-            WinCommon.ReturnMain();
+            this.Hide();
+            Form form = new Main.FrmMain();
+            form.ShowDialog();
         }
 
         private void FrmSysCompany_FormClosed(object sender, FormClosedEventArgs e)

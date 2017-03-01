@@ -50,32 +50,30 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btn_addNew);
-            this.groupBox1.Controls.Add(this.btn_query);
             this.groupBox1.Controls.Add(this.txt_name);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(30, 82);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(652, 94);
+            this.groupBox1.Size = new System.Drawing.Size(855, 63);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
             // btn_addNew
             // 
-            this.btn_addNew.Location = new System.Drawing.Point(113, 57);
+            this.btn_addNew.Location = new System.Drawing.Point(145, 160);
             this.btn_addNew.Name = "btn_addNew";
             this.btn_addNew.Size = new System.Drawing.Size(75, 23);
-            this.btn_addNew.TabIndex = 4;
+            this.btn_addNew.TabIndex = 3;
             this.btn_addNew.Text = "新增";
             this.btn_addNew.UseVisualStyleBackColor = true;
             this.btn_addNew.Click += new System.EventHandler(this.btn_addNew_Click);
             // 
             // btn_query
             // 
-            this.btn_query.Location = new System.Drawing.Point(27, 57);
+            this.btn_query.Location = new System.Drawing.Point(39, 160);
             this.btn_query.Name = "btn_query";
             this.btn_query.Size = new System.Drawing.Size(75, 23);
-            this.btn_query.TabIndex = 3;
+            this.btn_query.TabIndex = 2;
             this.btn_query.Text = "查询";
             this.btn_query.UseVisualStyleBackColor = true;
             this.btn_query.Click += new System.EventHandler(this.btn_query_Click);
@@ -120,7 +118,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 35;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(652, 285);
+            this.dataGridView1.Size = new System.Drawing.Size(855, 285);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -172,7 +170,7 @@
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(715, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(917, 24);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -180,7 +178,7 @@
             // 
             this.lbl_tile.AutoSize = true;
             this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
-            this.lbl_tile.Location = new System.Drawing.Point(299, 44);
+            this.lbl_tile.Location = new System.Drawing.Point(395, 43);
             this.lbl_tile.Name = "lbl_tile";
             this.lbl_tile.Size = new System.Drawing.Size(120, 27);
             this.lbl_tile.TabIndex = 68;
@@ -190,8 +188,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(715, 512);
+            this.ClientSize = new System.Drawing.Size(917, 512);
+            this.Controls.Add(this.btn_addNew);
             this.Controls.Add(this.lbl_tile);
+            this.Controls.Add(this.btn_query);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);

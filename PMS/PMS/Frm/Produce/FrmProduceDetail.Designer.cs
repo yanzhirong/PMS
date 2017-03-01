@@ -119,7 +119,7 @@
             this.txt_produceCode.Location = new System.Drawing.Point(78, 25);
             this.txt_produceCode.Name = "txt_produceCode";
             this.txt_produceCode.Size = new System.Drawing.Size(220, 21);
-            this.txt_produceCode.TabIndex = 134;
+            this.txt_produceCode.TabIndex = 1;
             // 
             // cmb_factory
             // 
@@ -131,7 +131,7 @@
             this.cmb_factory.Location = new System.Drawing.Point(385, 116);
             this.cmb_factory.Name = "cmb_factory";
             this.cmb_factory.Size = new System.Drawing.Size(221, 20);
-            this.cmb_factory.TabIndex = 133;
+            this.cmb_factory.TabIndex = 6;
             // 
             // cmb_product
             // 
@@ -143,7 +143,7 @@
             this.cmb_product.Location = new System.Drawing.Point(77, 116);
             this.cmb_product.Name = "cmb_product";
             this.cmb_product.Size = new System.Drawing.Size(221, 20);
-            this.cmb_product.TabIndex = 132;
+            this.cmb_product.TabIndex = 5;
             // 
             // dtp_applyDate
             // 
@@ -151,7 +151,7 @@
             this.dtp_applyDate.Location = new System.Drawing.Point(384, 69);
             this.dtp_applyDate.Name = "dtp_applyDate";
             this.dtp_applyDate.Size = new System.Drawing.Size(222, 21);
-            this.dtp_applyDate.TabIndex = 131;
+            this.dtp_applyDate.TabIndex = 4;
             // 
             // cmb_applyBy
             // 
@@ -163,7 +163,7 @@
             this.cmb_applyBy.Location = new System.Drawing.Point(77, 70);
             this.cmb_applyBy.Name = "cmb_applyBy";
             this.cmb_applyBy.Size = new System.Drawing.Size(221, 20);
-            this.cmb_applyBy.TabIndex = 130;
+            this.cmb_applyBy.TabIndex = 3;
             // 
             // txt_remark
             // 
@@ -172,7 +172,7 @@
             this.txt_remark.MaxLength = 20;
             this.txt_remark.Name = "txt_remark";
             this.txt_remark.Size = new System.Drawing.Size(529, 21);
-            this.txt_remark.TabIndex = 121;
+            this.txt_remark.TabIndex = 9;
             // 
             // label9
             // 
@@ -191,7 +191,7 @@
             this.txt_num.MaxLength = 20;
             this.txt_num.Name = "txt_num";
             this.txt_num.Size = new System.Drawing.Size(220, 21);
-            this.txt_num.TabIndex = 127;
+            this.txt_num.TabIndex = 7;
             // 
             // label1
             // 
@@ -229,7 +229,7 @@
             this.dtp_deliveryDate.Location = new System.Drawing.Point(384, 164);
             this.dtp_deliveryDate.Name = "dtp_deliveryDate";
             this.dtp_deliveryDate.Size = new System.Drawing.Size(222, 21);
-            this.dtp_deliveryDate.TabIndex = 118;
+            this.dtp_deliveryDate.TabIndex = 8;
             // 
             // label11
             // 
@@ -252,7 +252,7 @@
             this.cmb_status.Location = new System.Drawing.Point(384, 25);
             this.cmb_status.Name = "cmb_status";
             this.cmb_status.Size = new System.Drawing.Size(222, 20);
-            this.cmb_status.TabIndex = 117;
+            this.cmb_status.TabIndex = 2;
             // 
             // lbl_outputStatus
             // 

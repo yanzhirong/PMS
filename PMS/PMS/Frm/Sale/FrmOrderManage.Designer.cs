@@ -47,8 +47,6 @@
             this.btn_addNew = new System.Windows.Forms.Button();
             this.btn_query = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.lbl_tile = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.salerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +57,8 @@
             this.modifyBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.deleteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.orderStatusCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.lbl_tile = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -192,7 +192,7 @@
             this.btn_addNew.Location = new System.Drawing.Point(147, 174);
             this.btn_addNew.Name = "btn_addNew";
             this.btn_addNew.Size = new System.Drawing.Size(75, 23);
-            this.btn_addNew.TabIndex = 4;
+            this.btn_addNew.TabIndex = 8;
             this.btn_addNew.Text = "新增";
             this.btn_addNew.UseVisualStyleBackColor = true;
             this.btn_addNew.Click += new System.EventHandler(this.btn_addNew_Click);
@@ -202,7 +202,7 @@
             this.btn_query.Location = new System.Drawing.Point(45, 174);
             this.btn_query.Name = "btn_query";
             this.btn_query.Size = new System.Drawing.Size(75, 23);
-            this.btn_query.TabIndex = 3;
+            this.btn_query.TabIndex = 7;
             this.btn_query.Text = "查询";
             this.btn_query.UseVisualStyleBackColor = true;
             this.btn_query.Click += new System.EventHandler(this.btn_query_Click);
@@ -235,26 +235,8 @@
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(994, 380);
-            this.dataGridView1.TabIndex = 8;
+            this.dataGridView1.TabIndex = 9;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1051, 24);
-            this.menuStrip1.TabIndex = 9;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // lbl_tile
-            // 
-            this.lbl_tile.AutoSize = true;
-            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
-            this.lbl_tile.Location = new System.Drawing.Point(458, 40);
-            this.lbl_tile.Name = "lbl_tile";
-            this.lbl_tile.Size = new System.Drawing.Size(120, 27);
-            this.lbl_tile.TabIndex = 67;
-            this.lbl_tile.Text = "订单列表";
             // 
             // id
             // 
@@ -332,6 +314,24 @@
             this.orderStatusCode.HeaderText = "订单状态";
             this.orderStatusCode.Name = "orderStatusCode";
             this.orderStatusCode.Visible = false;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1051, 24);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // lbl_tile
+            // 
+            this.lbl_tile.AutoSize = true;
+            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
+            this.lbl_tile.Location = new System.Drawing.Point(458, 40);
+            this.lbl_tile.Name = "lbl_tile";
+            this.lbl_tile.Size = new System.Drawing.Size(120, 27);
+            this.lbl_tile.TabIndex = 67;
+            this.lbl_tile.Text = "订单列表";
             // 
             // FrmOrderManage
             // 

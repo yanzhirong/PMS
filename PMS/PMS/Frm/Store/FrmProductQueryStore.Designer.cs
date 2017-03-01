@@ -85,7 +85,7 @@
             this.txt_productName.MaxLength = 20;
             this.txt_productName.Name = "txt_productName";
             this.txt_productName.Size = new System.Drawing.Size(223, 21);
-            this.txt_productName.TabIndex = 131;
+            this.txt_productName.TabIndex = 1;
             // 
             // label2
             // 
@@ -104,14 +104,14 @@
             this.cmb_factory.Location = new System.Drawing.Point(85, 55);
             this.cmb_factory.Name = "cmb_factory";
             this.cmb_factory.Size = new System.Drawing.Size(222, 20);
-            this.cmb_factory.TabIndex = 129;
+            this.cmb_factory.TabIndex = 2;
             // 
             // btn_select
             // 
             this.btn_select.Location = new System.Drawing.Point(18, 99);
             this.btn_select.Name = "btn_select";
             this.btn_select.Size = new System.Drawing.Size(75, 23);
-            this.btn_select.TabIndex = 128;
+            this.btn_select.TabIndex = 3;
             this.btn_select.Text = "刷新库存";
             this.btn_select.UseVisualStyleBackColor = true;
             this.btn_select.Click += new System.EventHandler(this.btn_select_Click);
@@ -143,7 +143,7 @@
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(577, 311);
-            this.dataGridView1.TabIndex = 9;
+            this.dataGridView1.TabIndex = 4;
             // 
             // FrmProductQueryStore
             // 

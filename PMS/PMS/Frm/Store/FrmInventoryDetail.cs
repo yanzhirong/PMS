@@ -13,7 +13,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Store
 {
-    public partial class FrmInventoryDetail : Form
+    public partial class FrmInventoryDetail : Main.BaseForm
     {
         //类型（0：产品；1：物料）
         private int m_type;

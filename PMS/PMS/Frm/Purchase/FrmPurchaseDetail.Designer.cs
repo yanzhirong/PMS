@@ -152,7 +152,7 @@
             this.cmb_factory.Location = new System.Drawing.Point(385, 84);
             this.cmb_factory.Name = "cmb_factory";
             this.cmb_factory.Size = new System.Drawing.Size(221, 20);
-            this.cmb_factory.TabIndex = 133;
+            this.cmb_factory.TabIndex = 6;
             // 
             // cmb_materials
             // 
@@ -164,7 +164,7 @@
             this.cmb_materials.Location = new System.Drawing.Point(77, 84);
             this.cmb_materials.Name = "cmb_materials";
             this.cmb_materials.Size = new System.Drawing.Size(221, 20);
-            this.cmb_materials.TabIndex = 132;
+            this.cmb_materials.TabIndex = 5;
             // 
             // dtp_applyDate
             // 
@@ -172,7 +172,7 @@
             this.dtp_applyDate.Location = new System.Drawing.Point(384, 54);
             this.dtp_applyDate.Name = "dtp_applyDate";
             this.dtp_applyDate.Size = new System.Drawing.Size(222, 21);
-            this.dtp_applyDate.TabIndex = 131;
+            this.dtp_applyDate.TabIndex = 4;
             // 
             // cmb_applyBy
             // 
@@ -184,7 +184,7 @@
             this.cmb_applyBy.Location = new System.Drawing.Point(77, 55);
             this.cmb_applyBy.Name = "cmb_applyBy";
             this.cmb_applyBy.Size = new System.Drawing.Size(221, 20);
-            this.cmb_applyBy.TabIndex = 130;
+            this.cmb_applyBy.TabIndex = 3;
             // 
             // txt_remark
             // 
@@ -193,7 +193,7 @@
             this.txt_remark.MaxLength = 20;
             this.txt_remark.Name = "txt_remark";
             this.txt_remark.Size = new System.Drawing.Size(529, 21);
-            this.txt_remark.TabIndex = 121;
+            this.txt_remark.TabIndex = 17;
             // 
             // label9
             // 
@@ -212,7 +212,7 @@
             this.cmb_unit.Location = new System.Drawing.Point(245, 115);
             this.cmb_unit.Name = "cmb_unit";
             this.cmb_unit.Size = new System.Drawing.Size(55, 20);
-            this.cmb_unit.TabIndex = 129;
+            this.cmb_unit.TabIndex = 8;
             // 
             // txt_num
             // 
@@ -221,7 +221,7 @@
             this.txt_num.MaxLength = 20;
             this.txt_num.Name = "txt_num";
             this.txt_num.Size = new System.Drawing.Size(164, 21);
-            this.txt_num.TabIndex = 127;
+            this.txt_num.TabIndex = 7;
             // 
             // label1
             // 
@@ -259,7 +259,7 @@
             this.dtp_deliveryDate.Location = new System.Drawing.Point(384, 114);
             this.dtp_deliveryDate.Name = "dtp_deliveryDate";
             this.dtp_deliveryDate.Size = new System.Drawing.Size(222, 21);
-            this.dtp_deliveryDate.TabIndex = 118;
+            this.dtp_deliveryDate.TabIndex = 9;
             // 
             // label11
             // 
@@ -283,7 +283,7 @@
             this.cmb_status.Location = new System.Drawing.Point(384, 25);
             this.cmb_status.Name = "cmb_status";
             this.cmb_status.Size = new System.Drawing.Size(222, 20);
-            this.cmb_status.TabIndex = 117;
+            this.cmb_status.TabIndex = 2;
             // 
             // cmb_type
             // 
@@ -296,7 +296,7 @@
             this.cmb_type.Location = new System.Drawing.Point(77, 25);
             this.cmb_type.Name = "cmb_type";
             this.cmb_type.Size = new System.Drawing.Size(221, 20);
-            this.cmb_type.TabIndex = 116;
+            this.cmb_type.TabIndex = 1;
             this.cmb_type.SelectedIndexChanged += new System.EventHandler(this.cmb_type_SelectedIndexChanged);
             // 
             // cmb_supplier
@@ -306,7 +306,7 @@
             this.cmb_supplier.Location = new System.Drawing.Point(76, 145);
             this.cmb_supplier.Name = "cmb_supplier";
             this.cmb_supplier.Size = new System.Drawing.Size(221, 20);
-            this.cmb_supplier.TabIndex = 1;
+            this.cmb_supplier.TabIndex = 10;
             this.cmb_supplier.SelectedIndexChanged += new System.EventHandler(this.cmb_supplier_SelectedIndexChanged);
             // 
             // lbl_outputStatus
@@ -378,7 +378,7 @@
             this.txt_telephone.MaxLength = 20;
             this.txt_telephone.Name = "txt_telephone";
             this.txt_telephone.Size = new System.Drawing.Size(212, 21);
-            this.txt_telephone.TabIndex = 8;
+            this.txt_telephone.TabIndex = 16;
             // 
             // label2
             // 
@@ -397,7 +397,7 @@
             this.txt_manager.MaxLength = 20;
             this.txt_manager.Name = "txt_manager";
             this.txt_manager.Size = new System.Drawing.Size(223, 21);
-            this.txt_manager.TabIndex = 7;
+            this.txt_manager.TabIndex = 15;
             // 
             // label5
             // 
@@ -434,7 +434,7 @@
             this.cmb_province.Location = new System.Drawing.Point(68, 23);
             this.cmb_province.Name = "cmb_province";
             this.cmb_province.Size = new System.Drawing.Size(115, 20);
-            this.cmb_province.TabIndex = 3;
+            this.cmb_province.TabIndex = 11;
             this.cmb_province.SelectedIndexChanged += new System.EventHandler(this.cmb_province_SelectedIndexChanged);
             // 
             // label4
@@ -453,7 +453,7 @@
             this.cmb_city.Location = new System.Drawing.Point(244, 23);
             this.cmb_city.Name = "cmb_city";
             this.cmb_city.Size = new System.Drawing.Size(115, 20);
-            this.cmb_city.TabIndex = 4;
+            this.cmb_city.TabIndex = 12;
             this.cmb_city.SelectedIndexChanged += new System.EventHandler(this.cmb_city_SelectedIndexChanged);
             // 
             // txt_address
@@ -463,7 +463,7 @@
             this.txt_address.MaxLength = 20;
             this.txt_address.Name = "txt_address";
             this.txt_address.Size = new System.Drawing.Size(531, 21);
-            this.txt_address.TabIndex = 6;
+            this.txt_address.TabIndex = 4;
             // 
             // label3
             // 
@@ -481,7 +481,7 @@
             this.cmb_district.Location = new System.Drawing.Point(443, 23);
             this.cmb_district.Name = "cmb_district";
             this.cmb_district.Size = new System.Drawing.Size(115, 20);
-            this.cmb_district.TabIndex = 4;
+            this.cmb_district.TabIndex = 1;
             // 
             // lbl_orderCode
             // 
@@ -531,7 +531,7 @@
             this.txt_price.MaxLength = 10;
             this.txt_price.Name = "txt_price";
             this.txt_price.Size = new System.Drawing.Size(95, 21);
-            this.txt_price.TabIndex = 115;
+            this.txt_price.TabIndex = 18;
             // 
             // label12
             // 
@@ -560,7 +560,7 @@
             this.txt_cancelReason.MaxLength = 10;
             this.txt_cancelReason.Name = "txt_cancelReason";
             this.txt_cancelReason.Size = new System.Drawing.Size(529, 21);
-            this.txt_cancelReason.TabIndex = 115;
+            this.txt_cancelReason.TabIndex = 19;
             // 
             // label16
             // 

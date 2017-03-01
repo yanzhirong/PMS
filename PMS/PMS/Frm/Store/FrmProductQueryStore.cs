@@ -13,7 +13,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Store
 {
-    public partial class FrmProductQueryStore : Form
+    public partial class FrmProductQueryStore : Main.BaseForm
     {
         private string m_productName;
         private int m_factoryId;

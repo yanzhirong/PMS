@@ -68,8 +68,9 @@ namespace PMS
             try
             {
                 LoginUserInfo.LoginUser.currentFrom.Hide();
-                Form f = System.AppDomain.CurrentDomain.CreateInstanceFromAndUnwrap(Application.ExecutablePath, formName) as Form;
-                f.Show();
+                Form form = System.AppDomain.CurrentDomain.CreateInstanceFromAndUnwrap(Application.ExecutablePath, formName) as Form;
+                form.Text = "生产管理系统 --> " + form.Text + "     (" + LoginUserInfo.LoginUser.loginUser.userName + "/" + LoginUserInfo.LoginUser.loginRole.roleName + ")";
+                form.ShowDialog();
             }
             catch (Exception ex)
             {

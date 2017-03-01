@@ -13,7 +13,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Sys
 {
-    public partial class FrmSysUserDetail : Form
+    public partial class FrmSysUserDetail : Main.BaseForm
     {
         //处理模式（0：新建；1：修改；2：删除）
         private int m_mode;

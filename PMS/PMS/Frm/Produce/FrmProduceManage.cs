@@ -13,7 +13,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Produce
 {
-    public partial class FrmProduceManage : Form
+    public partial class FrmProduceManage : Main.BaseForm
     {
         private BllCode m_bllCode = new BllCode();
         private BllFactory m_bllFactory = new BllFactory();

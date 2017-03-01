@@ -14,7 +14,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Store
 {
-    public partial class FrmMaterialsIn : Form
+    public partial class FrmMaterialsIn : Main.BaseForm
     {
         private BllFactory m_bllFactory = new BllFactory();
         private BllMaterialsIn m_bllMaterialsIn = new BllMaterialsIn();

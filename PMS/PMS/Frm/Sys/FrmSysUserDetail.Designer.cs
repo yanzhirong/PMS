@@ -127,7 +127,7 @@
             this.cmb_sex.Items.AddRange(new object[] {
             "男",
             "女"});
-            this.cmb_sex.Location = new System.Drawing.Point(398, 187);
+            this.cmb_sex.Location = new System.Drawing.Point(399, 192);
             this.cmb_sex.Name = "cmb_sex";
             this.cmb_sex.Size = new System.Drawing.Size(163, 20);
             this.cmb_sex.TabIndex = 5;

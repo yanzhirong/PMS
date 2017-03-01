@@ -95,7 +95,7 @@
             this.cmb_factory.Location = new System.Drawing.Point(269, 14);
             this.cmb_factory.Name = "cmb_factory";
             this.cmb_factory.Size = new System.Drawing.Size(118, 20);
-            this.cmb_factory.TabIndex = 3;
+            this.cmb_factory.TabIndex = 2;
             // 
             // cmb_applyType
             // 
@@ -108,7 +108,7 @@
             this.cmb_applyType.Location = new System.Drawing.Point(463, 15);
             this.cmb_applyType.Name = "cmb_applyType";
             this.cmb_applyType.Size = new System.Drawing.Size(118, 20);
-            this.cmb_applyType.TabIndex = 91;
+            this.cmb_applyType.TabIndex = 3;
             // 
             // label2
             // 
@@ -131,7 +131,7 @@
             this.cmb_applyStatus.Location = new System.Drawing.Point(650, 14);
             this.cmb_applyStatus.Name = "cmb_applyStatus";
             this.cmb_applyStatus.Size = new System.Drawing.Size(118, 20);
-            this.cmb_applyStatus.TabIndex = 6;
+            this.cmb_applyStatus.TabIndex = 4;
             this.cmb_applyStatus.SelectedIndexChanged += new System.EventHandler(this.cmb_applyStatus_SelectedIndexChanged);
             // 
             // label5
@@ -149,7 +149,7 @@
             this.dtp_end.Location = new System.Drawing.Point(221, 49);
             this.dtp_end.Name = "dtp_end";
             this.dtp_end.Size = new System.Drawing.Size(119, 21);
-            this.dtp_end.TabIndex = 5;
+            this.dtp_end.TabIndex = 6;
             // 
             // label4
             // 
@@ -165,7 +165,7 @@
             this.dtp_begin.Location = new System.Drawing.Point(83, 49);
             this.dtp_begin.Name = "dtp_begin";
             this.dtp_begin.Size = new System.Drawing.Size(119, 21);
-            this.dtp_begin.TabIndex = 4;
+            this.dtp_begin.TabIndex = 5;
             // 
             // label3
             // 
@@ -208,7 +208,7 @@
             this.btn_query.Location = new System.Drawing.Point(30, 175);
             this.btn_query.Name = "btn_query";
             this.btn_query.Size = new System.Drawing.Size(75, 23);
-            this.btn_query.TabIndex = 3;
+            this.btn_query.TabIndex = 7;
             this.btn_query.Text = "查询";
             this.btn_query.UseVisualStyleBackColor = true;
             this.btn_query.Click += new System.EventHandler(this.btn_query_Click);
@@ -378,7 +378,7 @@
             this.btn_submit.Location = new System.Drawing.Point(30, 673);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(75, 23);
-            this.btn_submit.TabIndex = 68;
+            this.btn_submit.TabIndex = 9;
             this.btn_submit.Text = "确认生产";
             this.btn_submit.UseVisualStyleBackColor = true;
             this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
@@ -388,7 +388,7 @@
             this.btn_cancel.Location = new System.Drawing.Point(135, 673);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_cancel.TabIndex = 69;
+            this.btn_cancel.TabIndex = 10;
             this.btn_cancel.Text = "取消申请";
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);

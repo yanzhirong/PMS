@@ -13,7 +13,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Store
 {
-    public partial class FrmMaterialsOutSelect : Form
+    public partial class FrmMaterialsOutSelect : Main.BaseForm
     {
         private string m_outputCode;
         private int m_materialsId;

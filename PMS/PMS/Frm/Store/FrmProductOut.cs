@@ -13,7 +13,7 @@ using Common;
 
 namespace PMS.Frm.Store
 {
-    public partial class FrmProductOut : Form
+    public partial class FrmProductOut : Main.BaseForm
     {
 
         private BllCode m_bllCode = new BllCode();

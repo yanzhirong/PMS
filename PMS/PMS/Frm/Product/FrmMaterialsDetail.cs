@@ -13,7 +13,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Product
 {
-    public partial class FrmMaterialsDetail : Form
+    public partial class FrmMaterialsDetail : Main.BaseForm
     {
         //处理模式（0：新建；1：修改；2：删除）
         private int m_mode;

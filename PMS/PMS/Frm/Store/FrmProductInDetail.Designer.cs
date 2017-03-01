@@ -127,7 +127,7 @@
             this.txt_produceNum.Location = new System.Drawing.Point(394, 69);
             this.txt_produceNum.Name = "txt_produceNum";
             this.txt_produceNum.Size = new System.Drawing.Size(222, 21);
-            this.txt_produceNum.TabIndex = 5;
+            this.txt_produceNum.TabIndex = 4;
             // 
             // label6
             // 
@@ -145,7 +145,7 @@
             this.txt_remark.MaxLength = 100;
             this.txt_remark.Name = "txt_remark";
             this.txt_remark.Size = new System.Drawing.Size(537, 21);
-            this.txt_remark.TabIndex = 15;
+            this.txt_remark.TabIndex = 11;
             // 
             // label5
             // 
@@ -164,7 +164,7 @@
             this.txt_inputNum.MaxLength = 10;
             this.txt_inputNum.Name = "txt_inputNum";
             this.txt_inputNum.Size = new System.Drawing.Size(222, 21);
-            this.txt_inputNum.TabIndex = 12;
+            this.txt_inputNum.TabIndex = 9;
             // 
             // label4
             // 
@@ -183,7 +183,7 @@
             this.dtp_expiresDate.Location = new System.Drawing.Point(394, 114);
             this.dtp_expiresDate.Name = "dtp_expiresDate";
             this.dtp_expiresDate.Size = new System.Drawing.Size(222, 21);
-            this.dtp_expiresDate.TabIndex = 7;
+            this.dtp_expiresDate.TabIndex = 6;
             // 
             // label3
             // 
@@ -202,7 +202,7 @@
             this.cmb_product.Location = new System.Drawing.Point(79, 167);
             this.cmb_product.Name = "cmb_product";
             this.cmb_product.Size = new System.Drawing.Size(222, 20);
-            this.cmb_product.TabIndex = 10;
+            this.cmb_product.TabIndex = 7;
             this.cmb_product.SelectedIndexChanged += new System.EventHandler(this.cmb_product_SelectedIndexChanged);
             // 
             // dtp_produceDate
@@ -211,7 +211,7 @@
             this.dtp_produceDate.Location = new System.Drawing.Point(82, 117);
             this.dtp_produceDate.Name = "dtp_produceDate";
             this.dtp_produceDate.Size = new System.Drawing.Size(222, 21);
-            this.dtp_produceDate.TabIndex = 9;
+            this.dtp_produceDate.TabIndex = 5;
             this.dtp_produceDate.ValueChanged += new System.EventHandler(this.dtp_produceDate_ValueChanged);
             // 
             // label2
@@ -241,7 +241,7 @@
             this.cmb_factory.Location = new System.Drawing.Point(394, 167);
             this.cmb_factory.Name = "cmb_factory";
             this.cmb_factory.Size = new System.Drawing.Size(222, 20);
-            this.cmb_factory.TabIndex = 11;
+            this.cmb_factory.TabIndex = 8;
             // 
             // dtp_inputDate
             // 
@@ -249,7 +249,7 @@
             this.dtp_inputDate.Location = new System.Drawing.Point(394, 212);
             this.dtp_inputDate.Name = "dtp_inputDate";
             this.dtp_inputDate.Size = new System.Drawing.Size(222, 21);
-            this.dtp_inputDate.TabIndex = 14;
+            this.dtp_inputDate.TabIndex = 10;
             // 
             // label11
             // 

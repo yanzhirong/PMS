@@ -2,11 +2,11 @@ D:\p\yd\PMS\PMS\bin\Debug\Dict.dll
 D:\p\yd\PMS\PMS\bin\Debug\Dict.pdb
 D:\p\yd\PMS\DICT\obj\Debug\Dict.dll
 D:\p\yd\PMS\DICT\obj\Debug\Dict.pdb
-D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Dict.dll
-D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Dict.pdb
-D:\p\yd\PMS\source\PMS\PMS\DICT\obj\Debug\Dict.dll
-D:\p\yd\PMS\source\PMS\PMS\DICT\obj\Debug\Dict.pdb
 C:\Work\project\NET\PMS\PMS\PMS\bin\Debug\Dict.dll
 C:\Work\project\NET\PMS\PMS\PMS\bin\Debug\Dict.pdb
 C:\Work\project\NET\PMS\PMS\DICT\obj\Debug\Dict.dll
 C:\Work\project\NET\PMS\PMS\DICT\obj\Debug\Dict.pdb
+D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Dict.dll
+D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Dict.pdb
+D:\p\yd\PMS\source\PMS\PMS\DICT\obj\Debug\Dict.dll
+D:\p\yd\PMS\source\PMS\PMS\DICT\obj\Debug\Dict.pdb

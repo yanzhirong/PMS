@@ -138,7 +138,7 @@
             this.btn_paid.Location = new System.Drawing.Point(8, 397);
             this.btn_paid.Name = "btn_paid";
             this.btn_paid.Size = new System.Drawing.Size(96, 23);
-            this.btn_paid.TabIndex = 102;
+            this.btn_paid.TabIndex = 16;
             this.btn_paid.Text = "设定支付信息";
             this.btn_paid.UseVisualStyleBackColor = true;
             this.btn_paid.Click += new System.EventHandler(this.btn_paid_Click);
@@ -150,7 +150,7 @@
             this.txt_remark.MaxLength = 20;
             this.txt_remark.Name = "txt_remark";
             this.txt_remark.Size = new System.Drawing.Size(556, 21);
-            this.txt_remark.TabIndex = 84;
+            this.txt_remark.TabIndex = 17;
             // 
             // label17
             // 
@@ -179,7 +179,7 @@
             this.cmb_saler.Location = new System.Drawing.Point(403, 20);
             this.cmb_saler.Name = "cmb_saler";
             this.cmb_saler.Size = new System.Drawing.Size(222, 20);
-            this.cmb_saler.TabIndex = 83;
+            this.cmb_saler.TabIndex = 2;
             this.cmb_saler.Visible = false;
             // 
             // label10
@@ -203,7 +203,7 @@
             this.cmb_type.Location = new System.Drawing.Point(77, 20);
             this.cmb_type.Name = "cmb_type";
             this.cmb_type.Size = new System.Drawing.Size(221, 20);
-            this.cmb_type.TabIndex = 78;
+            this.cmb_type.TabIndex = 1;
             this.cmb_type.SelectedIndexChanged += new System.EventHandler(this.cmb_type_SelectedIndexChanged);
             // 
             // grb_manager
@@ -228,7 +228,7 @@
             this.txt_mobile.MaxLength = 20;
             this.txt_mobile.Name = "txt_mobile";
             this.txt_mobile.Size = new System.Drawing.Size(139, 21);
-            this.txt_mobile.TabIndex = 66;
+            this.txt_mobile.TabIndex = 15;
             // 
             // label9
             // 
@@ -246,7 +246,7 @@
             this.txt_position.MaxLength = 20;
             this.txt_position.Name = "txt_position";
             this.txt_position.Size = new System.Drawing.Size(127, 21);
-            this.txt_position.TabIndex = 64;
+            this.txt_position.TabIndex = 14;
             // 
             // label8
             // 
@@ -264,7 +264,7 @@
             this.txt_manager.MaxLength = 20;
             this.txt_manager.Name = "txt_manager";
             this.txt_manager.Size = new System.Drawing.Size(138, 21);
-            this.txt_manager.TabIndex = 48;
+            this.txt_manager.TabIndex = 13;
             // 
             // label11
             // 
@@ -282,7 +282,7 @@
             this.txt_zip.MaxLength = 20;
             this.txt_zip.Name = "txt_zip";
             this.txt_zip.Size = new System.Drawing.Size(223, 21);
-            this.txt_zip.TabIndex = 76;
+            this.txt_zip.TabIndex = 12;
             // 
             // label7
             // 
@@ -300,7 +300,7 @@
             this.txt_telephone2.MaxLength = 20;
             this.txt_telephone2.Name = "txt_telephone2";
             this.txt_telephone2.Size = new System.Drawing.Size(222, 21);
-            this.txt_telephone2.TabIndex = 74;
+            this.txt_telephone2.TabIndex = 10;
             // 
             // label2
             // 
@@ -354,7 +354,7 @@
             this.cmb_province.Location = new System.Drawing.Point(69, 23);
             this.cmb_province.Name = "cmb_province";
             this.cmb_province.Size = new System.Drawing.Size(115, 20);
-            this.cmb_province.TabIndex = 47;
+            this.cmb_province.TabIndex = 5;
             this.cmb_province.SelectedIndexChanged += new System.EventHandler(this.cmb_province_SelectedIndexChanged);
             // 
             // label4
@@ -373,7 +373,7 @@
             this.cmb_city.Location = new System.Drawing.Point(244, 23);
             this.cmb_city.Name = "cmb_city";
             this.cmb_city.Size = new System.Drawing.Size(115, 20);
-            this.cmb_city.TabIndex = 50;
+            this.cmb_city.TabIndex = 6;
             this.cmb_city.SelectedIndexChanged += new System.EventHandler(this.cmb_city_SelectedIndexChanged);
             // 
             // txt_address
@@ -383,7 +383,7 @@
             this.txt_address.MaxLength = 20;
             this.txt_address.Name = "txt_address";
             this.txt_address.Size = new System.Drawing.Size(551, 21);
-            this.txt_address.TabIndex = 48;
+            this.txt_address.TabIndex = 8;
             // 
             // label3
             // 
@@ -401,7 +401,7 @@
             this.cmb_district.Location = new System.Drawing.Point(443, 23);
             this.cmb_district.Name = "cmb_district";
             this.cmb_district.Size = new System.Drawing.Size(115, 20);
-            this.cmb_district.TabIndex = 53;
+            this.cmb_district.TabIndex = 7;
             // 
             // txt_fax
             // 
@@ -410,7 +410,7 @@
             this.txt_fax.MaxLength = 20;
             this.txt_fax.Name = "txt_fax";
             this.txt_fax.Size = new System.Drawing.Size(223, 21);
-            this.txt_fax.TabIndex = 55;
+            this.txt_fax.TabIndex = 11;
             // 
             // label16
             // 
@@ -428,7 +428,7 @@
             this.txt_name.MaxLength = 20;
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(551, 21);
-            this.txt_name.TabIndex = 45;
+            this.txt_name.TabIndex = 4;
             // 
             // label15
             // 
@@ -447,7 +447,7 @@
             this.txt_telephone1.MaxLength = 20;
             this.txt_telephone1.Name = "txt_telephone1";
             this.txt_telephone1.Size = new System.Drawing.Size(222, 21);
-            this.txt_telephone1.TabIndex = 51;
+            this.txt_telephone1.TabIndex = 9;
             // 
             // label5
             // 
@@ -465,7 +465,7 @@
             this.txt_code.MaxLength = 20;
             this.txt_code.Name = "txt_code";
             this.txt_code.Size = new System.Drawing.Size(222, 21);
-            this.txt_code.TabIndex = 43;
+            this.txt_code.TabIndex = 3;
             // 
             // label1
             // 

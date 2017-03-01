@@ -13,7 +13,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Finance
 {
-    public partial class FrmPaidDetail : Form
+    public partial class FrmPaidDetail : Main.BaseForm
     {
         private string m_purchaseCode;
         private string m_purchaseStatus;

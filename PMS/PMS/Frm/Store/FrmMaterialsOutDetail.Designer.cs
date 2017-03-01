@@ -32,7 +32,6 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.lbl_title = new System.Windows.Forms.Label();
             this.grb_materialsIn = new System.Windows.Forms.GroupBox();
-            this.btn_output = new System.Windows.Forms.Button();
             this.txt_applyNum = new System.Windows.Forms.TextBox();
             this.cmb_applyUnit = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -56,6 +55,7 @@
             this.lbl_saler = new System.Windows.Forms.Label();
             this.txt_produceCode = new System.Windows.Forms.TextBox();
             this.lbl_orderCode = new System.Windows.Forms.Label();
+            this.btn_output = new System.Windows.Forms.Button();
             this.btn_close = new System.Windows.Forms.Button();
             this.grb_materialsIn.SuspendLayout();
             this.SuspendLayout();
@@ -112,16 +112,6 @@
             this.grb_materialsIn.TabIndex = 103;
             this.grb_materialsIn.TabStop = false;
             // 
-            // btn_output
-            // 
-            this.btn_output.Location = new System.Drawing.Point(245, 420);
-            this.btn_output.Name = "btn_output";
-            this.btn_output.Size = new System.Drawing.Size(71, 23);
-            this.btn_output.TabIndex = 106;
-            this.btn_output.Text = "出库";
-            this.btn_output.UseVisualStyleBackColor = true;
-            this.btn_output.Click += new System.EventHandler(this.btn_output_Click);
-            // 
             // txt_applyNum
             // 
             this.txt_applyNum.BackColor = System.Drawing.Color.White;
@@ -155,7 +145,7 @@
             this.txt_remark.MaxLength = 100;
             this.txt_remark.Name = "txt_remark";
             this.txt_remark.Size = new System.Drawing.Size(537, 21);
-            this.txt_remark.TabIndex = 15;
+            this.txt_remark.TabIndex = 12;
             // 
             // label5
             // 
@@ -176,7 +166,7 @@
             this.txt_outputNum.MaxLength = 10;
             this.txt_outputNum.Name = "txt_outputNum";
             this.txt_outputNum.Size = new System.Drawing.Size(222, 21);
-            this.txt_outputNum.TabIndex = 12;
+            this.txt_outputNum.TabIndex = 10;
             // 
             // label4
             // 
@@ -213,7 +203,7 @@
             this.cmb_materials.Location = new System.Drawing.Point(79, 155);
             this.cmb_materials.Name = "cmb_materials";
             this.cmb_materials.Size = new System.Drawing.Size(222, 20);
-            this.cmb_materials.TabIndex = 10;
+            this.cmb_materials.TabIndex = 8;
             // 
             // label1
             // 
@@ -232,7 +222,7 @@
             this.cmb_factory.Location = new System.Drawing.Point(394, 155);
             this.cmb_factory.Name = "cmb_factory";
             this.cmb_factory.Size = new System.Drawing.Size(222, 20);
-            this.cmb_factory.TabIndex = 11;
+            this.cmb_factory.TabIndex = 9;
             // 
             // dtp_outputDate
             // 
@@ -240,7 +230,7 @@
             this.dtp_outputDate.Location = new System.Drawing.Point(394, 202);
             this.dtp_outputDate.Name = "dtp_outputDate";
             this.dtp_outputDate.Size = new System.Drawing.Size(222, 21);
-            this.dtp_outputDate.TabIndex = 14;
+            this.dtp_outputDate.TabIndex = 11;
             // 
             // label11
             // 
@@ -346,6 +336,16 @@
             this.lbl_orderCode.Size = new System.Drawing.Size(65, 12);
             this.lbl_orderCode.TabIndex = 42;
             this.lbl_orderCode.Text = "生产单号：";
+            // 
+            // btn_output
+            // 
+            this.btn_output.Location = new System.Drawing.Point(245, 420);
+            this.btn_output.Name = "btn_output";
+            this.btn_output.Size = new System.Drawing.Size(71, 23);
+            this.btn_output.TabIndex = 106;
+            this.btn_output.Text = "出库";
+            this.btn_output.UseVisualStyleBackColor = true;
+            this.btn_output.Click += new System.EventHandler(this.btn_output_Click);
             // 
             // btn_close
             // 

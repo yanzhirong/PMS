@@ -45,8 +45,6 @@
             this.lbl_outputType = new System.Windows.Forms.Label();
             this.lbl_applyMember = new System.Windows.Forms.Label();
             this.cmb_apply = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.lbl_saler = new System.Windows.Forms.Label();
             this.cmb_saler = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -66,10 +64,12 @@
             this.cmb_district = new System.Windows.Forms.ComboBox();
             this.txt_orderCode = new System.Windows.Forms.TextBox();
             this.lbl_orderCode = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btn_close = new System.Windows.Forms.Button();
             this.grb_productOut.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.grb_address.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_submit
@@ -145,7 +145,7 @@
             this.cmb_factory.Location = new System.Drawing.Point(394, 254);
             this.cmb_factory.Name = "cmb_factory";
             this.cmb_factory.Size = new System.Drawing.Size(222, 20);
-            this.cmb_factory.TabIndex = 120;
+            this.cmb_factory.TabIndex = 14;
             // 
             // dtp_deliveryDate
             // 
@@ -153,7 +153,7 @@
             this.dtp_deliveryDate.Location = new System.Drawing.Point(75, 251);
             this.dtp_deliveryDate.Name = "dtp_deliveryDate";
             this.dtp_deliveryDate.Size = new System.Drawing.Size(93, 21);
-            this.dtp_deliveryDate.TabIndex = 118;
+            this.dtp_deliveryDate.TabIndex = 13;
             // 
             // label11
             // 
@@ -175,7 +175,7 @@
             this.cmb_outputStatus.Location = new System.Drawing.Point(394, 25);
             this.cmb_outputStatus.Name = "cmb_outputStatus";
             this.cmb_outputStatus.Size = new System.Drawing.Size(222, 20);
-            this.cmb_outputStatus.TabIndex = 117;
+            this.cmb_outputStatus.TabIndex = 2;
             // 
             // cmb_outputType
             // 
@@ -187,7 +187,7 @@
             this.cmb_outputType.Location = new System.Drawing.Point(76, 25);
             this.cmb_outputType.Name = "cmb_outputType";
             this.cmb_outputType.Size = new System.Drawing.Size(221, 20);
-            this.cmb_outputType.TabIndex = 116;
+            this.cmb_outputType.TabIndex = 1;
             // 
             // cmb_customer
             // 
@@ -196,7 +196,7 @@
             this.cmb_customer.Location = new System.Drawing.Point(76, 89);
             this.cmb_customer.Name = "cmb_customer";
             this.cmb_customer.Size = new System.Drawing.Size(221, 20);
-            this.cmb_customer.TabIndex = 1;
+            this.cmb_customer.TabIndex = 5;
             this.cmb_customer.SelectedIndexChanged += new System.EventHandler(this.cmb_customer_SelectedIndexChanged);
             // 
             // lbl_outputStatus
@@ -236,38 +236,7 @@
             this.cmb_apply.Location = new System.Drawing.Point(394, 89);
             this.cmb_apply.Name = "cmb_apply";
             this.cmb_apply.Size = new System.Drawing.Size(222, 20);
-            this.cmb_apply.TabIndex = 111;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(38, 393);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 12);
-            this.label7.TabIndex = 108;
-            this.label7.Text = "出库产品：";
-            // 
-            // dataGridView1
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(33, 408);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 20;
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(643, 145);
-            this.dataGridView1.TabIndex = 9;
-            this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
+            this.cmb_apply.TabIndex = 6;
             // 
             // lbl_saler
             // 
@@ -286,7 +255,7 @@
             this.cmb_saler.Location = new System.Drawing.Point(394, 57);
             this.cmb_saler.Name = "cmb_saler";
             this.cmb_saler.Size = new System.Drawing.Size(222, 20);
-            this.cmb_saler.TabIndex = 2;
+            this.cmb_saler.TabIndex = 4;
             // 
             // label10
             // 
@@ -340,7 +309,7 @@
             this.txt_telephone.MaxLength = 20;
             this.txt_telephone.Name = "txt_telephone";
             this.txt_telephone.Size = new System.Drawing.Size(222, 21);
-            this.txt_telephone.TabIndex = 8;
+            this.txt_telephone.TabIndex = 12;
             // 
             // label2
             // 
@@ -359,7 +328,7 @@
             this.txt_manager.MaxLength = 20;
             this.txt_manager.Name = "txt_manager";
             this.txt_manager.Size = new System.Drawing.Size(223, 21);
-            this.txt_manager.TabIndex = 7;
+            this.txt_manager.TabIndex = 11;
             // 
             // label5
             // 
@@ -396,7 +365,7 @@
             this.cmb_province.Location = new System.Drawing.Point(66, 23);
             this.cmb_province.Name = "cmb_province";
             this.cmb_province.Size = new System.Drawing.Size(115, 20);
-            this.cmb_province.TabIndex = 3;
+            this.cmb_province.TabIndex = 7;
             this.cmb_province.SelectedIndexChanged += new System.EventHandler(this.cmb_province_SelectedIndexChanged);
             // 
             // label4
@@ -415,7 +384,7 @@
             this.cmb_city.Location = new System.Drawing.Point(244, 23);
             this.cmb_city.Name = "cmb_city";
             this.cmb_city.Size = new System.Drawing.Size(115, 20);
-            this.cmb_city.TabIndex = 4;
+            this.cmb_city.TabIndex = 8;
             this.cmb_city.SelectedIndexChanged += new System.EventHandler(this.cmb_city_SelectedIndexChanged);
             // 
             // txt_address
@@ -425,7 +394,7 @@
             this.txt_address.MaxLength = 20;
             this.txt_address.Name = "txt_address";
             this.txt_address.Size = new System.Drawing.Size(539, 21);
-            this.txt_address.TabIndex = 6;
+            this.txt_address.TabIndex = 10;
             // 
             // label3
             // 
@@ -443,7 +412,7 @@
             this.cmb_district.Location = new System.Drawing.Point(443, 23);
             this.cmb_district.Name = "cmb_district";
             this.cmb_district.Size = new System.Drawing.Size(115, 20);
-            this.cmb_district.TabIndex = 4;
+            this.cmb_district.TabIndex = 9;
             // 
             // txt_orderCode
             // 
@@ -454,7 +423,7 @@
             this.txt_orderCode.MaxLength = 20;
             this.txt_orderCode.Name = "txt_orderCode";
             this.txt_orderCode.Size = new System.Drawing.Size(222, 21);
-            this.txt_orderCode.TabIndex = 43;
+            this.txt_orderCode.TabIndex = 3;
             // 
             // lbl_orderCode
             // 
@@ -465,6 +434,37 @@
             this.lbl_orderCode.Size = new System.Drawing.Size(65, 12);
             this.lbl_orderCode.TabIndex = 42;
             this.lbl_orderCode.Text = "订单编号：";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(38, 393);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 108;
+            this.label7.Text = "出库产品：";
+            // 
+            // dataGridView1
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(33, 408);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 20;
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(643, 145);
+            this.dataGridView1.TabIndex = 15;
+            this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
             // 
             // btn_close
             // 
@@ -500,9 +500,9 @@
             this.Load += new System.EventHandler(this.FrmProductOutDetail_Load);
             this.grb_productOut.ResumeLayout(false);
             this.grb_productOut.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.grb_address.ResumeLayout(false);
             this.grb_address.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -61,7 +61,7 @@
             // 
             // btn_submit
             // 
-            this.btn_submit.Location = new System.Drawing.Point(253, 438);
+            this.btn_submit.Location = new System.Drawing.Point(303, 438);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(75, 23);
             this.btn_submit.TabIndex = 8;
@@ -71,7 +71,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(430, 438);
+            this.btn_cancel.Location = new System.Drawing.Point(480, 438);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 9;
@@ -82,7 +82,7 @@
             // lbl_name
             // 
             this.lbl_name.AutoSize = true;
-            this.lbl_name.Location = new System.Drawing.Point(82, 100);
+            this.lbl_name.Location = new System.Drawing.Point(68, 100);
             this.lbl_name.Name = "lbl_name";
             this.lbl_name.Size = new System.Drawing.Size(65, 12);
             this.lbl_name.TabIndex = 52;
@@ -90,24 +90,24 @@
             // 
             // txt_name
             // 
-            this.txt_name.Location = new System.Drawing.Point(173, 97);
+            this.txt_name.Location = new System.Drawing.Point(159, 97);
             this.txt_name.MaxLength = 200;
             this.txt_name.Name = "txt_name";
-            this.txt_name.Size = new System.Drawing.Size(400, 21);
+            this.txt_name.Size = new System.Drawing.Size(595, 21);
             this.txt_name.TabIndex = 1;
             // 
             // txt_address
             // 
-            this.txt_address.Location = new System.Drawing.Point(173, 145);
+            this.txt_address.Location = new System.Drawing.Point(159, 145);
             this.txt_address.MaxLength = 200;
             this.txt_address.Name = "txt_address";
-            this.txt_address.Size = new System.Drawing.Size(400, 21);
+            this.txt_address.Size = new System.Drawing.Size(595, 21);
             this.txt_address.TabIndex = 2;
             // 
             // lbl_address
             // 
             this.lbl_address.AutoSize = true;
-            this.lbl_address.Location = new System.Drawing.Point(82, 148);
+            this.lbl_address.Location = new System.Drawing.Point(68, 148);
             this.lbl_address.Name = "lbl_address";
             this.lbl_address.Size = new System.Drawing.Size(65, 12);
             this.lbl_address.TabIndex = 54;
@@ -115,16 +115,16 @@
             // 
             // txt_telphone
             // 
-            this.txt_telphone.Location = new System.Drawing.Point(173, 191);
+            this.txt_telphone.Location = new System.Drawing.Point(159, 191);
             this.txt_telphone.MaxLength = 50;
             this.txt_telphone.Name = "txt_telphone";
-            this.txt_telphone.Size = new System.Drawing.Size(400, 21);
+            this.txt_telphone.Size = new System.Drawing.Size(595, 21);
             this.txt_telphone.TabIndex = 3;
             // 
             // lbl_telphone
             // 
             this.lbl_telphone.AutoSize = true;
-            this.lbl_telphone.Location = new System.Drawing.Point(82, 194);
+            this.lbl_telphone.Location = new System.Drawing.Point(68, 194);
             this.lbl_telphone.Name = "lbl_telphone";
             this.lbl_telphone.Size = new System.Drawing.Size(65, 12);
             this.lbl_telphone.TabIndex = 56;
@@ -132,16 +132,16 @@
             // 
             // txt_fax
             // 
-            this.txt_fax.Location = new System.Drawing.Point(173, 236);
+            this.txt_fax.Location = new System.Drawing.Point(159, 236);
             this.txt_fax.MaxLength = 50;
             this.txt_fax.Name = "txt_fax";
-            this.txt_fax.Size = new System.Drawing.Size(400, 21);
+            this.txt_fax.Size = new System.Drawing.Size(595, 21);
             this.txt_fax.TabIndex = 4;
             // 
             // lbl_fax
             // 
             this.lbl_fax.AutoSize = true;
-            this.lbl_fax.Location = new System.Drawing.Point(82, 239);
+            this.lbl_fax.Location = new System.Drawing.Point(68, 239);
             this.lbl_fax.Name = "lbl_fax";
             this.lbl_fax.Size = new System.Drawing.Size(65, 12);
             this.lbl_fax.TabIndex = 58;
@@ -149,16 +149,16 @@
             // 
             // txt_homepage
             // 
-            this.txt_homepage.Location = new System.Drawing.Point(173, 284);
+            this.txt_homepage.Location = new System.Drawing.Point(159, 284);
             this.txt_homepage.MaxLength = 200;
             this.txt_homepage.Name = "txt_homepage";
-            this.txt_homepage.Size = new System.Drawing.Size(400, 21);
+            this.txt_homepage.Size = new System.Drawing.Size(595, 21);
             this.txt_homepage.TabIndex = 5;
             // 
             // lbl_homepage
             // 
             this.lbl_homepage.AutoSize = true;
-            this.lbl_homepage.Location = new System.Drawing.Point(82, 287);
+            this.lbl_homepage.Location = new System.Drawing.Point(68, 287);
             this.lbl_homepage.Name = "lbl_homepage";
             this.lbl_homepage.Size = new System.Drawing.Size(65, 12);
             this.lbl_homepage.TabIndex = 60;
@@ -166,16 +166,16 @@
             // 
             // txt_email
             // 
-            this.txt_email.Location = new System.Drawing.Point(173, 332);
+            this.txt_email.Location = new System.Drawing.Point(159, 332);
             this.txt_email.MaxLength = 100;
             this.txt_email.Name = "txt_email";
-            this.txt_email.Size = new System.Drawing.Size(400, 21);
+            this.txt_email.Size = new System.Drawing.Size(595, 21);
             this.txt_email.TabIndex = 6;
             // 
             // lbl_email
             // 
             this.lbl_email.AutoSize = true;
-            this.lbl_email.Location = new System.Drawing.Point(82, 335);
+            this.lbl_email.Location = new System.Drawing.Point(68, 335);
             this.lbl_email.Name = "lbl_email";
             this.lbl_email.Size = new System.Drawing.Size(65, 12);
             this.lbl_email.TabIndex = 62;
@@ -183,16 +183,16 @@
             // 
             // txt_zip
             // 
-            this.txt_zip.Location = new System.Drawing.Point(173, 377);
+            this.txt_zip.Location = new System.Drawing.Point(159, 377);
             this.txt_zip.MaxLength = 50;
             this.txt_zip.Name = "txt_zip";
-            this.txt_zip.Size = new System.Drawing.Size(400, 21);
+            this.txt_zip.Size = new System.Drawing.Size(595, 21);
             this.txt_zip.TabIndex = 7;
             // 
             // lbl_zip
             // 
             this.lbl_zip.AutoSize = true;
-            this.lbl_zip.Location = new System.Drawing.Point(82, 379);
+            this.lbl_zip.Location = new System.Drawing.Point(68, 379);
             this.lbl_zip.Name = "lbl_zip";
             this.lbl_zip.Size = new System.Drawing.Size(65, 12);
             this.lbl_zip.TabIndex = 64;
@@ -202,7 +202,7 @@
             // 
             this.lbl_tile.AutoSize = true;
             this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
-            this.lbl_tile.Location = new System.Drawing.Point(237, 45);
+            this.lbl_tile.Location = new System.Drawing.Point(327, 45);
             this.lbl_tile.Name = "lbl_tile";
             this.lbl_tile.Size = new System.Drawing.Size(174, 27);
             this.lbl_tile.TabIndex = 66;
@@ -210,7 +210,7 @@
             // 
             // txt_id
             // 
-            this.txt_id.Location = new System.Drawing.Point(473, 404);
+            this.txt_id.Location = new System.Drawing.Point(712, 404);
             this.txt_id.Name = "txt_id";
             this.txt_id.Size = new System.Drawing.Size(100, 21);
             this.txt_id.TabIndex = 67;
@@ -220,7 +220,7 @@
             // 
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(654, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(841, 24);
             this.menuStrip1.TabIndex = 68;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -228,7 +228,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(654, 482);
+            this.ClientSize = new System.Drawing.Size(841, 482);
             this.Controls.Add(this.txt_id);
             this.Controls.Add(this.lbl_tile);
             this.Controls.Add(this.txt_zip);

@@ -13,7 +13,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Produce
 {
-    public partial class FrmProducePlan : Form
+    public partial class FrmProducePlan : Main.BaseForm
     {
         private BllProduce m_bllProduce = new BllProduce();
         private BllPurchase m_bllPurchase = new BllPurchase();

@@ -13,7 +13,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Sys
 {
-    public partial class FrmSysFactory : Form
+    public partial class FrmSysFactory : Main.BaseForm
     {
         private BllFactory m_bllFactory = new BllFactory();
 

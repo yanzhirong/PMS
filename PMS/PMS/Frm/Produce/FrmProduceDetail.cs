@@ -13,7 +13,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Produce
 {
-    public partial class FrmProduceDetail : Form
+    public partial class FrmProduceDetail : Main.BaseForm
     {
         //处理模式（0：新建；1：修改；2：删除；3：查看）
         private int m_mode;

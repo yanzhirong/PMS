@@ -77,7 +77,7 @@
             this.dataGridView1.RowHeadersWidth = 35;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(869, 388);
-            this.dataGridView1.TabIndex = 10;
+            this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // id
@@ -145,7 +145,7 @@
             this.btn_addNew.Location = new System.Drawing.Point(155, 57);
             this.btn_addNew.Name = "btn_addNew";
             this.btn_addNew.Size = new System.Drawing.Size(75, 23);
-            this.btn_addNew.TabIndex = 4;
+            this.btn_addNew.TabIndex = 3;
             this.btn_addNew.Text = "新增";
             this.btn_addNew.UseVisualStyleBackColor = true;
             this.btn_addNew.Click += new System.EventHandler(this.btn_addNew_Click);
@@ -155,7 +155,7 @@
             this.btn_query.Location = new System.Drawing.Point(27, 57);
             this.btn_query.Name = "btn_query";
             this.btn_query.Size = new System.Drawing.Size(75, 23);
-            this.btn_query.TabIndex = 3;
+            this.btn_query.TabIndex = 2;
             this.btn_query.Text = "查询";
             this.btn_query.UseVisualStyleBackColor = true;
             this.btn_query.Click += new System.EventHandler(this.btn_query_Click);

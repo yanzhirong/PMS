@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace PMS.Frm.Sys
 {
-    public partial class FrmSysRole : Form
+    public partial class FrmSysRole : Main.BaseForm
     {
         private BllRole m_bllRole = new BllRole();
 

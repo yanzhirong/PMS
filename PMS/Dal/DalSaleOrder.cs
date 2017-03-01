@@ -439,23 +439,23 @@ namespace Dal
             sbSql.Append("  and isDelete = 0 ");
             listSql.Add(sbSql.ToString());
 
-            sbSql.Clear();
-            sbSql.Append("update r_saleOrder_Pay ");
-            sbSql.Append("set isDelete = 1,");
-            sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
-            sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
-            sbSql.Append("where orderCode = '" + _model.orderCode + "' ");
-            sbSql.Append("  and isDelete = 0 ");
-            listSql.Add(sbSql.ToString());
+            //sbSql.Clear();
+            //sbSql.Append("update r_saleOrder_Pay ");
+            //sbSql.Append("set isDelete = 1,");
+            //sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
+            //sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
+            //sbSql.Append("where orderCode = '" + _model.orderCode + "' ");
+            //sbSql.Append("  and isDelete = 0 ");
+            //listSql.Add(sbSql.ToString());
 
-            sbSql.Clear();
-            sbSql.Append("update r_saleOrder_Detail ");
-            sbSql.Append("set isDelete = 1,");
-            sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
-            sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
-            sbSql.Append("where orderCode = '" + _model.orderCode + "' ");
-            sbSql.Append("  and isDelete = 0 ");
-            listSql.Add(sbSql.ToString());
+            //sbSql.Clear();
+            //sbSql.Append("update r_saleOrder_Detail ");
+            //sbSql.Append("set isDelete = 1,");
+            //sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
+            //sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
+            //sbSql.Append("where orderCode = '" + _model.orderCode + "' ");
+            //sbSql.Append("  and isDelete = 0 ");
+            //listSql.Add(sbSql.ToString());
 
             return Dal.DBHelper.ExcuteTransaction(listSql);
         }

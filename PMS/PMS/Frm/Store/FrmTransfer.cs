@@ -14,7 +14,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Store
 {
-    public partial class FrmTransfer : Form
+    public partial class FrmTransfer : Main.BaseForm
     {
         private BllFactory m_bllFactory = new BllFactory();
         private BllStore m_bllStore = new BllStore();

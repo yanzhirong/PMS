@@ -31,15 +31,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMaterialsManage));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_addNew = new System.Windows.Forms.Button();
-            this.btn_query = new System.Windows.Forms.Button();
-            this.txt_name = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.lbl_tile = new System.Windows.Forms.Label();
             this.cmb_materialsType = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.txt_name = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btn_addNew = new System.Windows.Forms.Button();
+            this.btn_query = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +48,8 @@
             this.type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modifyBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.deleteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.lbl_tile = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -65,6 +65,47 @@
             this.groupBox1.Size = new System.Drawing.Size(885, 42);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
+            // 
+            // cmb_materialsType
+            // 
+            this.cmb_materialsType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_materialsType.FormattingEnabled = true;
+            this.cmb_materialsType.Items.AddRange(new object[] {
+            "",
+            "一般物料",
+            "自制物料",
+            "其它"});
+            this.cmb_materialsType.Location = new System.Drawing.Point(272, 14);
+            this.cmb_materialsType.Name = "cmb_materialsType";
+            this.cmb_materialsType.Size = new System.Drawing.Size(129, 20);
+            this.cmb_materialsType.TabIndex = 2;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(200, 17);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(65, 12);
+            this.label7.TabIndex = 72;
+            this.label7.Text = "物料类型：";
+            // 
+            // txt_name
+            // 
+            this.txt_name.Location = new System.Drawing.Point(84, 14);
+            this.txt_name.MaxLength = 20;
+            this.txt_name.Name = "txt_name";
+            this.txt_name.Size = new System.Drawing.Size(100, 21);
+            this.txt_name.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(25, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "物料名：";
             // 
             // btn_addNew
             // 
@@ -85,23 +126,6 @@
             this.btn_query.Text = "查询";
             this.btn_query.UseVisualStyleBackColor = true;
             this.btn_query.Click += new System.EventHandler(this.btn_query_Click);
-            // 
-            // txt_name
-            // 
-            this.txt_name.Location = new System.Drawing.Point(84, 14);
-            this.txt_name.MaxLength = 20;
-            this.txt_name.Name = "txt_name";
-            this.txt_name.Size = new System.Drawing.Size(100, 21);
-            this.txt_name.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "物料名：";
             // 
             // dataGridView1
             // 
@@ -131,50 +155,8 @@
             this.dataGridView1.RowHeadersWidth = 35;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(962, 407);
-            this.dataGridView1.TabIndex = 8;
+            this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1018, 24);
-            this.menuStrip1.TabIndex = 9;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // lbl_tile
-            // 
-            this.lbl_tile.AutoSize = true;
-            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
-            this.lbl_tile.Location = new System.Drawing.Point(431, 34);
-            this.lbl_tile.Name = "lbl_tile";
-            this.lbl_tile.Size = new System.Drawing.Size(120, 27);
-            this.lbl_tile.TabIndex = 67;
-            this.lbl_tile.Text = "物料列表";
-            // 
-            // cmb_materialsType
-            // 
-            this.cmb_materialsType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_materialsType.FormattingEnabled = true;
-            this.cmb_materialsType.Items.AddRange(new object[] {
-            "",
-            "一般物料",
-            "自制物料",
-            "其它"});
-            this.cmb_materialsType.Location = new System.Drawing.Point(272, 14);
-            this.cmb_materialsType.Name = "cmb_materialsType";
-            this.cmb_materialsType.Size = new System.Drawing.Size(129, 20);
-            this.cmb_materialsType.TabIndex = 73;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(200, 17);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(65, 12);
-            this.label7.TabIndex = 72;
-            this.label7.Text = "物料类型：";
             // 
             // id
             // 
@@ -247,6 +229,24 @@
             this.deleteBtn.DataPropertyName = "deleteBtn";
             this.deleteBtn.HeaderText = "删除";
             this.deleteBtn.Name = "deleteBtn";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1018, 24);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // lbl_tile
+            // 
+            this.lbl_tile.AutoSize = true;
+            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
+            this.lbl_tile.Location = new System.Drawing.Point(431, 34);
+            this.lbl_tile.Name = "lbl_tile";
+            this.lbl_tile.Size = new System.Drawing.Size(120, 27);
+            this.lbl_tile.TabIndex = 67;
+            this.lbl_tile.Text = "物料列表";
             // 
             // FrmMaterialsManage
             // 

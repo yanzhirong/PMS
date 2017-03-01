@@ -14,7 +14,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Finance
 {
-    public partial class FrmSaleOrder : Form
+    public partial class FrmSaleOrder : Main.BaseForm
     {
         private BllFinance m_bllFinance = new BllFinance();
         private BllFactory m_bllFactory = new BllFactory();

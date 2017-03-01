@@ -92,7 +92,7 @@
             this.cmb_factory.Location = new System.Drawing.Point(269, 14);
             this.cmb_factory.Name = "cmb_factory";
             this.cmb_factory.Size = new System.Drawing.Size(118, 20);
-            this.cmb_factory.TabIndex = 3;
+            this.cmb_factory.TabIndex = 2;
             // 
             // cmb_applyStatus
             // 
@@ -105,7 +105,7 @@
             this.cmb_applyStatus.Location = new System.Drawing.Point(461, 14);
             this.cmb_applyStatus.Name = "cmb_applyStatus";
             this.cmb_applyStatus.Size = new System.Drawing.Size(118, 20);
-            this.cmb_applyStatus.TabIndex = 6;
+            this.cmb_applyStatus.TabIndex = 3;
             this.cmb_applyStatus.SelectedIndexChanged += new System.EventHandler(this.cmb_applyStatus_SelectedIndexChanged);
             // 
             // label5
@@ -182,7 +182,7 @@
             this.btn_query.Location = new System.Drawing.Point(30, 175);
             this.btn_query.Name = "btn_query";
             this.btn_query.Size = new System.Drawing.Size(75, 23);
-            this.btn_query.TabIndex = 3;
+            this.btn_query.TabIndex = 6;
             this.btn_query.Text = "查询";
             this.btn_query.UseVisualStyleBackColor = true;
             this.btn_query.Click += new System.EventHandler(this.btn_query_Click);
@@ -220,7 +220,7 @@
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(934, 448);
-            this.dataGridView1.TabIndex = 8;
+            this.dataGridView1.TabIndex = 7;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // id
@@ -357,7 +357,7 @@
             this.btn_submit.Location = new System.Drawing.Point(30, 673);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(75, 23);
-            this.btn_submit.TabIndex = 68;
+            this.btn_submit.TabIndex = 8;
             this.btn_submit.Text = "确认采购";
             this.btn_submit.UseVisualStyleBackColor = true;
             this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
@@ -367,7 +367,7 @@
             this.btn_cancel.Location = new System.Drawing.Point(128, 673);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_cancel.TabIndex = 69;
+            this.btn_cancel.TabIndex = 9;
             this.btn_cancel.Text = "取消申请";
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);

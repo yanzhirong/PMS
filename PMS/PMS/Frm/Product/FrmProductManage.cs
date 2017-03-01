@@ -11,7 +11,7 @@ using Bll;
 
 namespace PMS.Frm.Product
 {
-    public partial class FrmProductManage : Form
+    public partial class FrmProductManage : Main.BaseForm
     {
         private BllProduct m_bllProduct = new BllProduct();
         

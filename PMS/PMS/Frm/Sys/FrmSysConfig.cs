@@ -13,7 +13,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Sys
 {
-    public partial class FrmSysConfig : Form
+    public partial class FrmSysConfig : Main.BaseForm
     {
         private BllCode m_bllCode = new BllCode();
 
@@ -115,8 +115,9 @@ namespace PMS.Frm.Sys
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             //返回
-            WinCommon.ReturnMain();
-
+            this.Hide();
+            Form form = new Main.FrmMain();
+            form.ShowDialog();
         }
 
         private void btn_submit_Click(object sender, EventArgs e)

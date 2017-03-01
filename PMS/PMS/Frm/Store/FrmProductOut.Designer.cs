@@ -49,9 +49,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_query = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.lbl_tile = new System.Windows.Forms.Label();
-            this.btn_addNew = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.factoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +61,9 @@
             this.deleteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.outputStatusCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.outputType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.lbl_tile = new System.Windows.Forms.Label();
+            this.btn_addNew = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -102,7 +102,7 @@
             this.cmb_outputStatus.Location = new System.Drawing.Point(638, 49);
             this.cmb_outputStatus.Name = "cmb_outputStatus";
             this.cmb_outputStatus.Size = new System.Drawing.Size(118, 20);
-            this.cmb_outputStatus.TabIndex = 93;
+            this.cmb_outputStatus.TabIndex = 7;
             // 
             // label7
             // 
@@ -121,7 +121,7 @@
             this.cmb_factory.Location = new System.Drawing.Point(84, 49);
             this.cmb_factory.Name = "cmb_factory";
             this.cmb_factory.Size = new System.Drawing.Size(302, 20);
-            this.cmb_factory.TabIndex = 3;
+            this.cmb_factory.TabIndex = 5;
             // 
             // cmb_outputType
             // 
@@ -134,7 +134,7 @@
             this.cmb_outputType.Location = new System.Drawing.Point(451, 49);
             this.cmb_outputType.Name = "cmb_outputType";
             this.cmb_outputType.Size = new System.Drawing.Size(118, 20);
-            this.cmb_outputType.TabIndex = 91;
+            this.cmb_outputType.TabIndex = 6;
             // 
             // label6
             // 
@@ -160,7 +160,7 @@
             this.dtp_end.Location = new System.Drawing.Point(638, 14);
             this.dtp_end.Name = "dtp_end";
             this.dtp_end.Size = new System.Drawing.Size(119, 21);
-            this.dtp_end.TabIndex = 5;
+            this.dtp_end.TabIndex = 4;
             // 
             // label4
             // 
@@ -176,7 +176,7 @@
             this.dtp_begin.Location = new System.Drawing.Point(451, 14);
             this.dtp_begin.Name = "dtp_begin";
             this.dtp_begin.Size = new System.Drawing.Size(119, 21);
-            this.dtp_begin.TabIndex = 4;
+            this.dtp_begin.TabIndex = 3;
             // 
             // label3
             // 
@@ -236,7 +236,7 @@
             this.btn_query.Location = new System.Drawing.Point(45, 174);
             this.btn_query.Name = "btn_query";
             this.btn_query.Size = new System.Drawing.Size(75, 23);
-            this.btn_query.TabIndex = 3;
+            this.btn_query.TabIndex = 8;
             this.btn_query.Text = "查询";
             this.btn_query.UseVisualStyleBackColor = true;
             this.btn_query.Click += new System.EventHandler(this.btn_query_Click);
@@ -271,36 +271,8 @@
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(1095, 380);
-            this.dataGridView1.TabIndex = 8;
+            this.dataGridView1.TabIndex = 10;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1153, 24);
-            this.menuStrip1.TabIndex = 9;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // lbl_tile
-            // 
-            this.lbl_tile.AutoSize = true;
-            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
-            this.lbl_tile.Location = new System.Drawing.Point(458, 40);
-            this.lbl_tile.Name = "lbl_tile";
-            this.lbl_tile.Size = new System.Drawing.Size(174, 27);
-            this.lbl_tile.TabIndex = 67;
-            this.lbl_tile.Text = "产品出库列表";
-            // 
-            // btn_addNew
-            // 
-            this.btn_addNew.Location = new System.Drawing.Point(141, 174);
-            this.btn_addNew.Name = "btn_addNew";
-            this.btn_addNew.Size = new System.Drawing.Size(75, 23);
-            this.btn_addNew.TabIndex = 68;
-            this.btn_addNew.Text = "新增";
-            this.btn_addNew.UseVisualStyleBackColor = true;
-            this.btn_addNew.Click += new System.EventHandler(this.btn_addNew_Click);
             // 
             // id
             // 
@@ -391,6 +363,34 @@
             this.outputType.HeaderText = "出库类型";
             this.outputType.Name = "outputType";
             this.outputType.Visible = false;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1153, 24);
+            this.menuStrip1.TabIndex = 9;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // lbl_tile
+            // 
+            this.lbl_tile.AutoSize = true;
+            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
+            this.lbl_tile.Location = new System.Drawing.Point(458, 40);
+            this.lbl_tile.Name = "lbl_tile";
+            this.lbl_tile.Size = new System.Drawing.Size(174, 27);
+            this.lbl_tile.TabIndex = 67;
+            this.lbl_tile.Text = "产品出库列表";
+            // 
+            // btn_addNew
+            // 
+            this.btn_addNew.Location = new System.Drawing.Point(141, 174);
+            this.btn_addNew.Name = "btn_addNew";
+            this.btn_addNew.Size = new System.Drawing.Size(75, 23);
+            this.btn_addNew.TabIndex = 9;
+            this.btn_addNew.Text = "新增";
+            this.btn_addNew.UseVisualStyleBackColor = true;
+            this.btn_addNew.Click += new System.EventHandler(this.btn_addNew_Click);
             // 
             // FrmProductOut
             // 

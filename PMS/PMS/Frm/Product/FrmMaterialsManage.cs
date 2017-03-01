@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace PMS.Frm.Product
 {
-    public partial class FrmMaterialsManage : Form
+    public partial class FrmMaterialsManage : Main.BaseForm
     {
         private BllMaterials m_bllMaterials = new BllMaterials();
 

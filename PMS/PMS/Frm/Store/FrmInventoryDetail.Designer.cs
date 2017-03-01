@@ -33,6 +33,7 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.lbl_title = new System.Windows.Forms.Label();
             this.grb_productIn = new System.Windows.Forms.GroupBox();
+            this.txt_inputUnit = new System.Windows.Forms.TextBox();
             this.cmb_uint = new System.Windows.Forms.ComboBox();
             this.txt_inputNum = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,7 +51,6 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txt_factory = new System.Windows.Forms.TextBox();
             this.lbl_orderCode = new System.Windows.Forms.Label();
-            this.txt_inputUnit = new System.Windows.Forms.TextBox();
             this.grb_productIn.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,6 +111,17 @@
             this.grb_productIn.TabIndex = 103;
             this.grb_productIn.TabStop = false;
             // 
+            // txt_inputUnit
+            // 
+            this.txt_inputUnit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txt_inputUnit.Enabled = false;
+            this.txt_inputUnit.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_inputUnit.Location = new System.Drawing.Point(251, 74);
+            this.txt_inputUnit.MaxLength = 20;
+            this.txt_inputUnit.Name = "txt_inputUnit";
+            this.txt_inputUnit.Size = new System.Drawing.Size(50, 21);
+            this.txt_inputUnit.TabIndex = 4;
+            // 
             // cmb_uint
             // 
             this.cmb_uint.Enabled = false;
@@ -118,7 +129,7 @@
             this.cmb_uint.Location = new System.Drawing.Point(250, 164);
             this.cmb_uint.Name = "cmb_uint";
             this.cmb_uint.Size = new System.Drawing.Size(54, 20);
-            this.cmb_uint.TabIndex = 8;
+            this.cmb_uint.TabIndex = 9;
             // 
             // txt_inputNum
             // 
@@ -167,7 +178,7 @@
             this.txt_remark.Multiline = true;
             this.txt_remark.Name = "txt_remark";
             this.txt_remark.Size = new System.Drawing.Size(537, 70);
-            this.txt_remark.TabIndex = 9;
+            this.txt_remark.TabIndex = 10;
             // 
             // label5
             // 
@@ -186,7 +197,7 @@
             this.txt_stockNum.MaxLength = 10;
             this.txt_stockNum.Name = "txt_stockNum";
             this.txt_stockNum.Size = new System.Drawing.Size(165, 21);
-            this.txt_stockNum.TabIndex = 7;
+            this.txt_stockNum.TabIndex = 8;
             // 
             // label4
             // 
@@ -204,7 +215,7 @@
             this.dtp_expiresDate.Location = new System.Drawing.Point(394, 114);
             this.dtp_expiresDate.Name = "dtp_expiresDate";
             this.dtp_expiresDate.Size = new System.Drawing.Size(222, 21);
-            this.dtp_expiresDate.TabIndex = 6;
+            this.dtp_expiresDate.TabIndex = 7;
             // 
             // label3
             // 
@@ -222,7 +233,7 @@
             this.dtp_produceDate.Location = new System.Drawing.Point(82, 117);
             this.dtp_produceDate.Name = "dtp_produceDate";
             this.dtp_produceDate.Size = new System.Drawing.Size(222, 21);
-            this.dtp_produceDate.TabIndex = 5;
+            this.dtp_produceDate.TabIndex = 6;
             // 
             // label2
             // 
@@ -241,7 +252,7 @@
             this.dtp_inputDate.Location = new System.Drawing.Point(395, 74);
             this.dtp_inputDate.Name = "dtp_inputDate";
             this.dtp_inputDate.Size = new System.Drawing.Size(222, 21);
-            this.dtp_inputDate.TabIndex = 4;
+            this.dtp_inputDate.TabIndex = 5;
             // 
             // label11
             // 
@@ -273,17 +284,6 @@
             this.lbl_orderCode.Size = new System.Drawing.Size(65, 12);
             this.lbl_orderCode.TabIndex = 42;
             this.lbl_orderCode.Text = "工    厂：";
-            // 
-            // txt_inputUnit
-            // 
-            this.txt_inputUnit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.txt_inputUnit.Enabled = false;
-            this.txt_inputUnit.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txt_inputUnit.Location = new System.Drawing.Point(251, 74);
-            this.txt_inputUnit.MaxLength = 20;
-            this.txt_inputUnit.Name = "txt_inputUnit";
-            this.txt_inputUnit.Size = new System.Drawing.Size(50, 21);
-            this.txt_inputUnit.TabIndex = 144;
             // 
             // FrmInventoryDetail
             // 

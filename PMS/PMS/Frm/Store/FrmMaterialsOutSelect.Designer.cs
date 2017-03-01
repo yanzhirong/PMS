@@ -49,6 +49,7 @@
             this.txt_purchaseNum = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btn_applyPurchase = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txt_unitCode = new System.Windows.Forms.TextBox();
             this.btn_select = new System.Windows.Forms.Button();
             this.txt_unit = new System.Windows.Forms.TextBox();
@@ -58,7 +59,6 @@
             this.txt_materials = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txt_outputCode = new System.Windows.Forms.TextBox();
             this.lbl_orderCode = new System.Windows.Forms.Label();
             this.btn_close = new System.Windows.Forms.Button();
@@ -166,7 +166,7 @@
             this.dataGridView2.RowHeadersWidth = 20;
             this.dataGridView2.RowTemplate.Height = 23;
             this.dataGridView2.Size = new System.Drawing.Size(600, 117);
-            this.dataGridView2.TabIndex = 133;
+            this.dataGridView2.TabIndex = 11;
             // 
             // factoryName
             // 
@@ -227,7 +227,7 @@
             this.cmb_purchaseUint.Location = new System.Drawing.Point(209, 12);
             this.cmb_purchaseUint.Name = "cmb_purchaseUint";
             this.cmb_purchaseUint.Size = new System.Drawing.Size(76, 20);
-            this.cmb_purchaseUint.TabIndex = 136;
+            this.cmb_purchaseUint.TabIndex = 9;
             // 
             // label5
             // 
@@ -244,7 +244,7 @@
             this.txt_purchaseNum.Location = new System.Drawing.Point(65, 12);
             this.txt_purchaseNum.Name = "txt_purchaseNum";
             this.txt_purchaseNum.Size = new System.Drawing.Size(100, 21);
-            this.txt_purchaseNum.TabIndex = 134;
+            this.txt_purchaseNum.TabIndex = 8;
             // 
             // label4
             // 
@@ -261,10 +261,32 @@
             this.btn_applyPurchase.Location = new System.Drawing.Point(302, 10);
             this.btn_applyPurchase.Name = "btn_applyPurchase";
             this.btn_applyPurchase.Size = new System.Drawing.Size(75, 23);
-            this.btn_applyPurchase.TabIndex = 130;
+            this.btn_applyPurchase.TabIndex = 10;
             this.btn_applyPurchase.Text = "申请购买";
             this.btn_applyPurchase.UseVisualStyleBackColor = true;
             this.btn_applyPurchase.Click += new System.EventHandler(this.btn_applyPurchase_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(18, 302);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 20;
+            this.dataGridView1.RowTemplate.Height = 23;
+            this.dataGridView1.Size = new System.Drawing.Size(600, 165);
+            this.dataGridView1.TabIndex = 12;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
             // 
             // txt_unitCode
             // 
@@ -275,7 +297,7 @@
             this.txt_unitCode.MaxLength = 20;
             this.txt_unitCode.Name = "txt_unitCode";
             this.txt_unitCode.Size = new System.Drawing.Size(37, 21);
-            this.txt_unitCode.TabIndex = 129;
+            this.txt_unitCode.TabIndex = 7;
             this.txt_unitCode.Visible = false;
             // 
             // btn_select
@@ -283,7 +305,7 @@
             this.btn_select.Location = new System.Drawing.Point(18, 99);
             this.btn_select.Name = "btn_select";
             this.btn_select.Size = new System.Drawing.Size(75, 23);
-            this.btn_select.TabIndex = 128;
+            this.btn_select.TabIndex = 6;
             this.btn_select.Text = "刷新库存";
             this.btn_select.UseVisualStyleBackColor = true;
             this.btn_select.Click += new System.EventHandler(this.btn_select_Click);
@@ -297,7 +319,7 @@
             this.txt_unit.MaxLength = 20;
             this.txt_unit.Name = "txt_unit";
             this.txt_unit.Size = new System.Drawing.Size(37, 21);
-            this.txt_unit.TabIndex = 127;
+            this.txt_unit.TabIndex = 5;
             // 
             // txt_factory
             // 
@@ -308,7 +330,7 @@
             this.txt_factory.MaxLength = 20;
             this.txt_factory.Name = "txt_factory";
             this.txt_factory.Size = new System.Drawing.Size(222, 21);
-            this.txt_factory.TabIndex = 126;
+            this.txt_factory.TabIndex = 2;
             // 
             // txt_num
             // 
@@ -319,7 +341,7 @@
             this.txt_num.MaxLength = 20;
             this.txt_num.Name = "txt_num";
             this.txt_num.Size = new System.Drawing.Size(179, 21);
-            this.txt_num.TabIndex = 125;
+            this.txt_num.TabIndex = 4;
             // 
             // label3
             // 
@@ -340,7 +362,7 @@
             this.txt_materials.MaxLength = 20;
             this.txt_materials.Name = "txt_materials";
             this.txt_materials.Size = new System.Drawing.Size(222, 21);
-            this.txt_materials.TabIndex = 123;
+            this.txt_materials.TabIndex = 3;
             // 
             // label2
             // 
@@ -363,28 +385,6 @@
             this.label1.Text = "工    厂：";
             this.label1.Visible = false;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(18, 302);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 20;
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(600, 165);
-            this.dataGridView1.TabIndex = 9;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-            this.dataGridView1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dataGridView1_KeyPress);
-            // 
             // txt_outputCode
             // 
             this.txt_outputCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -394,7 +394,7 @@
             this.txt_outputCode.MaxLength = 20;
             this.txt_outputCode.Name = "txt_outputCode";
             this.txt_outputCode.Size = new System.Drawing.Size(222, 21);
-            this.txt_outputCode.TabIndex = 43;
+            this.txt_outputCode.TabIndex = 1;
             // 
             // lbl_orderCode
             // 

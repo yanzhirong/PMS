@@ -94,7 +94,7 @@
             this.cmb_status.Location = new System.Drawing.Point(350, 51);
             this.cmb_status.Name = "cmb_status";
             this.cmb_status.Size = new System.Drawing.Size(228, 20);
-            this.cmb_status.TabIndex = 93;
+            this.cmb_status.TabIndex = 5;
             // 
             // label7
             // 
@@ -113,14 +113,14 @@
             this.cmb_factory.Location = new System.Drawing.Point(84, 49);
             this.cmb_factory.Name = "cmb_factory";
             this.cmb_factory.Size = new System.Drawing.Size(200, 20);
-            this.cmb_factory.TabIndex = 3;
+            this.cmb_factory.TabIndex = 4;
             // 
             // dtp_end
             // 
             this.dtp_end.Location = new System.Drawing.Point(475, 16);
             this.dtp_end.Name = "dtp_end";
             this.dtp_end.Size = new System.Drawing.Size(103, 21);
-            this.dtp_end.TabIndex = 5;
+            this.dtp_end.TabIndex = 3;
             // 
             // label4
             // 
@@ -136,7 +136,7 @@
             this.dtp_begin.Location = new System.Drawing.Point(350, 16);
             this.dtp_begin.Name = "dtp_begin";
             this.dtp_begin.Size = new System.Drawing.Size(108, 21);
-            this.dtp_begin.TabIndex = 4;
+            this.dtp_begin.TabIndex = 2;
             // 
             // label3
             // 
@@ -179,7 +179,7 @@
             this.btn_query.Location = new System.Drawing.Point(30, 172);
             this.btn_query.Name = "btn_query";
             this.btn_query.Size = new System.Drawing.Size(75, 23);
-            this.btn_query.TabIndex = 3;
+            this.btn_query.TabIndex = 6;
             this.btn_query.Text = "查询";
             this.btn_query.UseVisualStyleBackColor = true;
             this.btn_query.Click += new System.EventHandler(this.btn_query_Click);
@@ -207,7 +207,7 @@
             this.btn_addNew.Location = new System.Drawing.Point(136, 172);
             this.btn_addNew.Name = "btn_addNew";
             this.btn_addNew.Size = new System.Drawing.Size(75, 23);
-            this.btn_addNew.TabIndex = 68;
+            this.btn_addNew.TabIndex = 7;
             this.btn_addNew.Text = "新增";
             this.btn_addNew.UseVisualStyleBackColor = true;
             this.btn_addNew.Click += new System.EventHandler(this.btn_addNew_Click);
@@ -243,7 +243,7 @@
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(964, 439);
-            this.dataGridView1.TabIndex = 69;
+            this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // id

@@ -35,6 +35,9 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.lbl_title = new System.Windows.Forms.Label();
             this.grb_productOut = new System.Windows.Forms.GroupBox();
+            this.btn_select = new System.Windows.Forms.Button();
+            this.txt_outputStatus = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.factoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,7 +50,6 @@
             this.txt_produceNum = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btn_applyProduce = new System.Windows.Forms.Button();
-            this.btn_select = new System.Windows.Forms.Button();
             this.txt_factory = new System.Windows.Forms.TextBox();
             this.txt_num = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -66,7 +68,7 @@
             // 
             // btn_submit
             // 
-            this.btn_submit.Location = new System.Drawing.Point(223, 577);
+            this.btn_submit.Location = new System.Drawing.Point(223, 593);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(75, 23);
             this.btn_submit.TabIndex = 101;
@@ -76,7 +78,7 @@
             // 
             // btn_cancel
             // 
-            this.btn_cancel.Location = new System.Drawing.Point(416, 577);
+            this.btn_cancel.Location = new System.Drawing.Point(416, 593);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(75, 23);
             this.btn_cancel.TabIndex = 102;
@@ -97,11 +99,13 @@
             // 
             // grb_productOut
             // 
+            this.grb_productOut.Controls.Add(this.btn_select);
+            this.grb_productOut.Controls.Add(this.txt_outputStatus);
+            this.grb_productOut.Controls.Add(this.label5);
             this.grb_productOut.Controls.Add(this.dataGridView2);
             this.grb_productOut.Controls.Add(this.lbl_selectOutput);
             this.grb_productOut.Controls.Add(this.label6);
             this.grb_productOut.Controls.Add(this.grb_applyProduce);
-            this.grb_productOut.Controls.Add(this.btn_select);
             this.grb_productOut.Controls.Add(this.txt_factory);
             this.grb_productOut.Controls.Add(this.txt_num);
             this.grb_productOut.Controls.Add(this.label3);
@@ -113,9 +117,40 @@
             this.grb_productOut.Controls.Add(this.lbl_orderCode);
             this.grb_productOut.Location = new System.Drawing.Point(33, 66);
             this.grb_productOut.Name = "grb_productOut";
-            this.grb_productOut.Size = new System.Drawing.Size(641, 474);
+            this.grb_productOut.Size = new System.Drawing.Size(641, 508);
             this.grb_productOut.TabIndex = 103;
             this.grb_productOut.TabStop = false;
+            // 
+            // btn_select
+            // 
+            this.btn_select.Location = new System.Drawing.Point(90, 294);
+            this.btn_select.Name = "btn_select";
+            this.btn_select.Size = new System.Drawing.Size(75, 23);
+            this.btn_select.TabIndex = 5;
+            this.btn_select.Text = "刷新库存";
+            this.btn_select.UseVisualStyleBackColor = true;
+            this.btn_select.Click += new System.EventHandler(this.btn_select_Click);
+            // 
+            // txt_outputStatus
+            // 
+            this.txt_outputStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txt_outputStatus.Enabled = false;
+            this.txt_outputStatus.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_outputStatus.Location = new System.Drawing.Point(77, 99);
+            this.txt_outputStatus.MaxLength = 20;
+            this.txt_outputStatus.Name = "txt_outputStatus";
+            this.txt_outputStatus.Size = new System.Drawing.Size(222, 21);
+            this.txt_outputStatus.TabIndex = 138;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(16, 102);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 12);
+            this.label5.TabIndex = 139;
+            this.label5.Text = "出库状态：";
             // 
             // dataGridView2
             // 
@@ -135,12 +170,12 @@
             this.num,
             this.outputDate,
             this.applyMember});
-            this.dataGridView2.Location = new System.Drawing.Point(20, 155);
+            this.dataGridView2.Location = new System.Drawing.Point(20, 157);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 20;
             this.dataGridView2.RowTemplate.Height = 23;
             this.dataGridView2.Size = new System.Drawing.Size(600, 117);
-            this.dataGridView2.TabIndex = 138;
+            this.dataGridView2.TabIndex = 8;
             // 
             // factoryName
             // 
@@ -186,7 +221,7 @@
             // 
             this.lbl_selectOutput.AutoSize = true;
             this.lbl_selectOutput.ForeColor = System.Drawing.Color.Black;
-            this.lbl_selectOutput.Location = new System.Drawing.Point(16, 284);
+            this.lbl_selectOutput.Location = new System.Drawing.Point(16, 299);
             this.lbl_selectOutput.Name = "lbl_selectOutput";
             this.lbl_selectOutput.Size = new System.Drawing.Size(77, 12);
             this.lbl_selectOutput.TabIndex = 137;
@@ -196,7 +231,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(16, 137);
+            this.label6.Location = new System.Drawing.Point(16, 139);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(77, 12);
             this.label6.TabIndex = 136;
@@ -207,24 +242,24 @@
             this.grb_applyProduce.Controls.Add(this.txt_produceNum);
             this.grb_applyProduce.Controls.Add(this.label4);
             this.grb_applyProduce.Controls.Add(this.btn_applyProduce);
-            this.grb_applyProduce.Location = new System.Drawing.Point(326, 87);
+            this.grb_applyProduce.Location = new System.Drawing.Point(320, 89);
             this.grb_applyProduce.Name = "grb_applyProduce";
-            this.grb_applyProduce.Size = new System.Drawing.Size(276, 35);
+            this.grb_applyProduce.Size = new System.Drawing.Size(282, 39);
             this.grb_applyProduce.TabIndex = 131;
             this.grb_applyProduce.TabStop = false;
             // 
             // txt_produceNum
             // 
-            this.txt_produceNum.Location = new System.Drawing.Point(78, 12);
+            this.txt_produceNum.Location = new System.Drawing.Point(60, 12);
             this.txt_produceNum.Name = "txt_produceNum";
-            this.txt_produceNum.Size = new System.Drawing.Size(100, 21);
-            this.txt_produceNum.TabIndex = 134;
+            this.txt_produceNum.Size = new System.Drawing.Size(138, 21);
+            this.txt_produceNum.TabIndex = 6;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(7, 15);
+            this.label4.Location = new System.Drawing.Point(-1, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 12);
             this.label4.TabIndex = 133;
@@ -232,23 +267,13 @@
             // 
             // btn_applyProduce
             // 
-            this.btn_applyProduce.Location = new System.Drawing.Point(192, 10);
+            this.btn_applyProduce.Location = new System.Drawing.Point(204, 10);
             this.btn_applyProduce.Name = "btn_applyProduce";
             this.btn_applyProduce.Size = new System.Drawing.Size(75, 23);
-            this.btn_applyProduce.TabIndex = 130;
+            this.btn_applyProduce.TabIndex = 7;
             this.btn_applyProduce.Text = "申请生产";
             this.btn_applyProduce.UseVisualStyleBackColor = true;
             this.btn_applyProduce.Click += new System.EventHandler(this.btn_applyProduce_Click);
-            // 
-            // btn_select
-            // 
-            this.btn_select.Location = new System.Drawing.Point(18, 99);
-            this.btn_select.Name = "btn_select";
-            this.btn_select.Size = new System.Drawing.Size(75, 23);
-            this.btn_select.TabIndex = 128;
-            this.btn_select.Text = "刷新库存";
-            this.btn_select.UseVisualStyleBackColor = true;
-            this.btn_select.Click += new System.EventHandler(this.btn_select_Click);
             // 
             // txt_factory
             // 
@@ -259,7 +284,7 @@
             this.txt_factory.MaxLength = 20;
             this.txt_factory.Name = "txt_factory";
             this.txt_factory.Size = new System.Drawing.Size(222, 21);
-            this.txt_factory.TabIndex = 126;
+            this.txt_factory.TabIndex = 2;
             // 
             // txt_num
             // 
@@ -270,7 +295,7 @@
             this.txt_num.MaxLength = 20;
             this.txt_num.Name = "txt_num";
             this.txt_num.Size = new System.Drawing.Size(222, 21);
-            this.txt_num.TabIndex = 125;
+            this.txt_num.TabIndex = 4;
             // 
             // label3
             // 
@@ -291,7 +316,7 @@
             this.txt_product.MaxLength = 20;
             this.txt_product.Name = "txt_product";
             this.txt_product.Size = new System.Drawing.Size(222, 21);
-            this.txt_product.TabIndex = 123;
+            this.txt_product.TabIndex = 3;
             // 
             // label2
             // 
@@ -326,7 +351,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(18, 299);
+            this.dataGridView1.Location = new System.Drawing.Point(18, 324);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowTemplate.Height = 23;
@@ -344,7 +369,7 @@
             this.txt_outputCode.MaxLength = 20;
             this.txt_outputCode.Name = "txt_outputCode";
             this.txt_outputCode.Size = new System.Drawing.Size(222, 21);
-            this.txt_outputCode.TabIndex = 43;
+            this.txt_outputCode.TabIndex = 1;
             // 
             // lbl_orderCode
             // 
@@ -358,19 +383,20 @@
             // 
             // btn_close
             // 
-            this.btn_close.Location = new System.Drawing.Point(576, 577);
+            this.btn_close.Location = new System.Drawing.Point(576, 593);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(75, 23);
             this.btn_close.TabIndex = 105;
             this.btn_close.Text = "关闭";
             this.btn_close.UseVisualStyleBackColor = true;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
             // FrmProductOutSelect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(711, 632);
+            this.ClientSize = new System.Drawing.Size(711, 643);
             this.Controls.Add(this.btn_close);
             this.Controls.Add(this.grb_productOut);
             this.Controls.Add(this.lbl_title);
@@ -425,5 +451,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn outputDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn applyMember;
         private System.Windows.Forms.Button btn_close;
+        private System.Windows.Forms.TextBox txt_outputStatus;
+        private System.Windows.Forms.Label label5;
     }
 }

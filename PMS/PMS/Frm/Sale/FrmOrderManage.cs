@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace PMS.Frm.Sale
 {
-    public partial class FrmOrderManage : Form
+    public partial class FrmOrderManage : Main.BaseForm
     {
         //销售ID
         private int m_salerId;

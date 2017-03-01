@@ -13,7 +13,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Sale
 {
-    public partial class FrmCustomerPaid : Form
+    public partial class FrmCustomerPaid : Main.BaseForm
     {
         private int m_customerId;
         private string m_customerName;

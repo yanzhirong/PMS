@@ -13,7 +13,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Store
 {
-    public partial class FrmProductOutDetail : Form
+    public partial class FrmProductOutDetail : Main.BaseForm
     {
         //处理模式（0：新建；1：修改；2：删除；3：查看）
         private int m_mode;
@@ -118,6 +118,11 @@ namespace PMS.Frm.Store
 
                 //出库单状态
                 this.cmb_outputStatus.SelectedIndex = model.outputStatus;
+
+                if (model.outputStatus == 1)
+                {
+                    m_mode = 3;
+                }
 
                 //订单编号
                 this.txt_orderCode.Text = model.orderCode;
@@ -250,7 +255,7 @@ namespace PMS.Frm.Store
             if (m_mode == 2 || m_mode == 3)
             {
                 this.grb_productOut.Enabled = false;
-                this.dataGridView1.Enabled = false;
+                this.dataGridView1.Enabled = true;
             }
 
             //出库单类型不可修改
@@ -755,18 +760,18 @@ namespace PMS.Frm.Store
 
                 //状态
                 int outputStatus = ConvertUtils.ConvertToInt(this.dataGridView1.Rows[e.RowIndex].Cells["outputStatus"].Value);
-                //已完成出库
-                if (outputStatus > 0)
-                {
-                    MsgUtils.ShowInfoMsg("已完成出库，不可再出库！");
-                    return;
-                }
+                ////已完成出库
+                //if (outputStatus > 0)
+                //{
+                //    MsgUtils.ShowInfoMsg("已完成出库，不可再出库！");
+                //    return;
+                //}
 
                 //保存数据
                 if (doSubmit(false) == true)
                 {
                     int factoryId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_factory.SelectedItem).itemKey);
-                    Form form = new FrmProductOutSelect(this.txt_outputCode.Text, outputDetailId, productId, factoryId, ConvertUtils.ConvertToInt(((ModelItem)this.cmb_apply.SelectedItem).itemKey));
+                    Form form = new FrmProductOutSelect(outputStatus, this.txt_outputCode.Text, outputDetailId, productId, factoryId, ConvertUtils.ConvertToInt(((ModelItem)this.cmb_apply.SelectedItem).itemKey));
                     form.ShowDialog();
                     init(false);
                     //dataGridView1.DataSource = m_bllProductOut.GetProductOutDetailByOutputCode(this.txt_outputCode.Text);

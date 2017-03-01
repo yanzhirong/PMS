@@ -146,7 +146,7 @@
             this.cmb_materialsType.Location = new System.Drawing.Point(344, 174);
             this.cmb_materialsType.Name = "cmb_materialsType";
             this.cmb_materialsType.Size = new System.Drawing.Size(163, 20);
-            this.cmb_materialsType.TabIndex = 71;
+            this.cmb_materialsType.TabIndex = 7;
             this.cmb_materialsType.SelectedIndexChanged += new System.EventHandler(this.cmb_materialsType_SelectedIndexChanged);
             // 
             // label7
@@ -177,7 +177,7 @@
             this.txt_minStockNum.MaxLength = 20;
             this.txt_minStockNum.Name = "txt_minStockNum";
             this.txt_minStockNum.Size = new System.Drawing.Size(164, 21);
-            this.txt_minStockNum.TabIndex = 57;
+            this.txt_minStockNum.TabIndex = 10;
             this.txt_minStockNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_minStockNum_KeyPress);
             // 
             // label17
@@ -197,7 +197,7 @@
             this.txt_expiredDays.MaxLength = 20;
             this.txt_expiredDays.Name = "txt_expiredDays";
             this.txt_expiredDays.Size = new System.Drawing.Size(164, 21);
-            this.txt_expiredDays.TabIndex = 55;
+            this.txt_expiredDays.TabIndex = 9;
             this.txt_expiredDays.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_expiredDays_KeyPress);
             // 
             // label16
@@ -228,7 +228,7 @@
             this.cmb_weightUnit.Location = new System.Drawing.Point(345, 315);
             this.cmb_weightUnit.Name = "cmb_weightUnit";
             this.cmb_weightUnit.Size = new System.Drawing.Size(163, 20);
-            this.cmb_weightUnit.TabIndex = 53;
+            this.cmb_weightUnit.TabIndex = 12;
             this.cmb_weightUnit.Visible = false;
             // 
             // label12
@@ -249,7 +249,7 @@
             this.txt_packingRemark.MaxLength = 20;
             this.txt_packingRemark.Name = "txt_packingRemark";
             this.txt_packingRemark.Size = new System.Drawing.Size(164, 21);
-            this.txt_packingRemark.TabIndex = 48;
+            this.txt_packingRemark.TabIndex = 5;
             // 
             // label3
             // 
@@ -267,7 +267,7 @@
             this.txt_subName.MaxLength = 20;
             this.txt_subName.Name = "txt_subName";
             this.txt_subName.Size = new System.Drawing.Size(164, 21);
-            this.txt_subName.TabIndex = 45;
+            this.txt_subName.TabIndex = 2;
             // 
             // label15
             // 
@@ -296,7 +296,7 @@
             this.txt_shelfLife.MaxLength = 20;
             this.txt_shelfLife.Name = "txt_shelfLife";
             this.txt_shelfLife.Size = new System.Drawing.Size(164, 21);
-            this.txt_shelfLife.TabIndex = 54;
+            this.txt_shelfLife.TabIndex = 8;
             this.txt_shelfLife.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_shelfLife_KeyPress);
             // 
             // label8
@@ -316,7 +316,7 @@
             this.cmb_packingType.Location = new System.Drawing.Point(76, 130);
             this.cmb_packingType.Name = "cmb_packingType";
             this.cmb_packingType.Size = new System.Drawing.Size(163, 20);
-            this.cmb_packingType.TabIndex = 47;
+            this.cmb_packingType.TabIndex = 4;
             // 
             // label6
             // 
@@ -335,7 +335,7 @@
             this.txt_weight.MaxLength = 20;
             this.txt_weight.Name = "txt_weight";
             this.txt_weight.Size = new System.Drawing.Size(164, 21);
-            this.txt_weight.TabIndex = 51;
+            this.txt_weight.TabIndex = 11;
             this.txt_weight.Visible = false;
             this.txt_weight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_weight_KeyPress);
             // 
@@ -357,7 +357,7 @@
             this.cmb_morphology.Location = new System.Drawing.Point(77, 174);
             this.cmb_morphology.Name = "cmb_morphology";
             this.cmb_morphology.Size = new System.Drawing.Size(163, 20);
-            this.cmb_morphology.TabIndex = 50;
+            this.cmb_morphology.TabIndex = 6;
             // 
             // label4
             // 
@@ -376,7 +376,7 @@
             this.txt_searchKey.MaxLength = 20;
             this.txt_searchKey.Name = "txt_searchKey";
             this.txt_searchKey.Size = new System.Drawing.Size(164, 21);
-            this.txt_searchKey.TabIndex = 46;
+            this.txt_searchKey.TabIndex = 3;
             // 
             // label2
             // 
@@ -395,7 +395,7 @@
             this.txt_name.MaxLength = 20;
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(164, 21);
-            this.txt_name.TabIndex = 43;
+            this.txt_name.TabIndex = 1;
             // 
             // label1
             // 
@@ -439,7 +439,7 @@
             this.cmb_priceUnit.Location = new System.Drawing.Point(200, 18);
             this.cmb_priceUnit.Name = "cmb_priceUnit";
             this.cmb_priceUnit.Size = new System.Drawing.Size(49, 20);
-            this.cmb_priceUnit.TabIndex = 65;
+            this.cmb_priceUnit.TabIndex = 14;
             // 
             // txt_price
             // 
@@ -448,7 +448,7 @@
             this.txt_price.MaxLength = 20;
             this.txt_price.Name = "txt_price";
             this.txt_price.Size = new System.Drawing.Size(98, 21);
-            this.txt_price.TabIndex = 60;
+            this.txt_price.TabIndex = 13;
             this.txt_price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_price_KeyPress);
             // 
             // label21

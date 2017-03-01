@@ -13,7 +13,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Purchase
 {
-    public partial class FrmPurchaseManage : Form
+    public partial class FrmPurchaseManage : Main.BaseForm
     {
 
         private BllCode m_bllCode = new BllCode();

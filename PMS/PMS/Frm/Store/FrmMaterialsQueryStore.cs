@@ -13,7 +13,7 @@ using Common.Tools;
 
 namespace PMS.Frm.Store
 {
-    public partial class FrmMaterialsQueryStore : Form
+    public partial class FrmMaterialsQueryStore : Main.BaseForm
     {
         private string m_materialsName;
         private int m_factoryId;

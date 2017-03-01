@@ -33,10 +33,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.lbl_tile = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_query = new System.Windows.Forms.Button();
-            this.txt_name = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewLinkColumn();
             this.subName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,6 +41,10 @@
             this.morphology = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.shelfLife = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.queryStore = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txt_name = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btn_query = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -93,45 +93,8 @@
             this.dataGridView1.RowHeadersWidth = 35;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(853, 346);
-            this.dataGridView1.TabIndex = 69;
+            this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.txt_name);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(20, 94);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(853, 55);
-            this.groupBox1.TabIndex = 68;
-            this.groupBox1.TabStop = false;
-            // 
-            // btn_query
-            // 
-            this.btn_query.Location = new System.Drawing.Point(20, 164);
-            this.btn_query.Name = "btn_query";
-            this.btn_query.Size = new System.Drawing.Size(75, 23);
-            this.btn_query.TabIndex = 3;
-            this.btn_query.Text = "查询";
-            this.btn_query.UseVisualStyleBackColor = true;
-            this.btn_query.Click += new System.EventHandler(this.btn_query_Click);
-            // 
-            // txt_name
-            // 
-            this.txt_name.Location = new System.Drawing.Point(55, 18);
-            this.txt_name.MaxLength = 20;
-            this.txt_name.Name = "txt_name";
-            this.txt_name.Size = new System.Drawing.Size(229, 21);
-            this.txt_name.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "产品：";
             // 
             // id
             // 
@@ -192,6 +155,43 @@
             this.queryStore.DataPropertyName = "queryStore";
             this.queryStore.HeaderText = "库存";
             this.queryStore.Name = "queryStore";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txt_name);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(20, 94);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(853, 55);
+            this.groupBox1.TabIndex = 68;
+            this.groupBox1.TabStop = false;
+            // 
+            // txt_name
+            // 
+            this.txt_name.Location = new System.Drawing.Point(55, 18);
+            this.txt_name.MaxLength = 20;
+            this.txt_name.Name = "txt_name";
+            this.txt_name.Size = new System.Drawing.Size(229, 21);
+            this.txt_name.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "产品：";
+            // 
+            // btn_query
+            // 
+            this.btn_query.Location = new System.Drawing.Point(20, 164);
+            this.btn_query.Name = "btn_query";
+            this.btn_query.Size = new System.Drawing.Size(75, 23);
+            this.btn_query.TabIndex = 2;
+            this.btn_query.Text = "查询";
+            this.btn_query.UseVisualStyleBackColor = true;
+            this.btn_query.Click += new System.EventHandler(this.btn_query_Click);
             // 
             // FrmProductQuery
             // 

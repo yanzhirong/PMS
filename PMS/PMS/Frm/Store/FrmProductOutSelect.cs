@@ -13,8 +13,9 @@ using Common.Tools;
 
 namespace PMS.Frm.Store
 {
-    public partial class FrmProductOutSelect : Form
+    public partial class FrmProductOutSelect : Main.BaseForm
     {
+        private int m_outputStatus;
         private string m_outputCode;
         private int m_outputDetailId;
         private int m_productId;
@@ -31,9 +32,10 @@ namespace PMS.Frm.Store
         private BllUser m_bllUser = new BllUser();
         private BllCode m_bllCode = new BllCode();
 
-        public FrmProductOutSelect(string _outputCode, int _outputDetailId, int _productId, int _factoryId, int _applyMemberId)
+        public FrmProductOutSelect(int _outputStatus, string _outputCode, int _outputDetailId, int _productId, int _factoryId, int _applyMemberId)
         {
             InitializeComponent();
+            m_outputStatus = _outputStatus;
             m_outputCode = _outputCode;
             m_outputDetailId = _outputDetailId;
             m_productId = _productId;
@@ -69,10 +71,15 @@ namespace PMS.Frm.Store
         /// </summary>
         private void init()
         {
+            //出库状态
+            this.txt_outputStatus.Text = m_outputStatus == 0 ? "请求出库" : "完成出库";
+
             //出库单号
             this.txt_outputCode.Text = m_outputCode;
+
             //工厂
             this.txt_factory.Text = m_bllFactory.GetFactoryById(m_factoryId).name;
+
             //出库产品
             this.txt_product.Text = m_bllProduct.GetProductById(m_productId).name;
 
@@ -91,6 +98,7 @@ namespace PMS.Frm.Store
                 if (modelProductOutputDetail.outputStatus == 1)
                 {
                     this.grb_productOut.Enabled = false;
+                    this.btn_select.Visible = false;
                     this.lbl_selectOutput.Visible = false;
                     this.dataGridView1.Visible = false;
                     this.btn_submit.Visible = false;
@@ -100,6 +108,7 @@ namespace PMS.Frm.Store
                 else
                 {
                     this.grb_productOut.Enabled = true;
+                    this.btn_select.Visible = true;
                     this.lbl_selectOutput.Visible = true;
                     this.dataGridView1.Visible = true;
                     this.btn_submit.Visible = true;
@@ -110,6 +119,7 @@ namespace PMS.Frm.Store
             else
             {
                 this.grb_productOut.Enabled = true;
+                this.btn_select.Visible = true;
                 this.lbl_selectOutput.Visible = true;
                 this.dataGridView1.Visible = true;
                 this.btn_submit.Visible = true;
@@ -122,6 +132,11 @@ namespace PMS.Frm.Store
 
             //初始化列表
             doSelect();
+
+            //if (m_outputStatus == 1)
+            //{
+            //    grb_productOut.Enabled = false;
+            //}
         }
 
         //查询
@@ -424,6 +439,11 @@ namespace PMS.Frm.Store
                 this.dataGridView1.Rows[e.RowIndex].Cells["outputNum"].ReadOnly = true;
                 this.dataGridView1.Rows[e.RowIndex].Cells["outputNum"].Value = "";
             }
+        }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
 
     }

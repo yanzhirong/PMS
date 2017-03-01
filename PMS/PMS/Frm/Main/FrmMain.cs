@@ -9,10 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
 using Common.Tools;
+using System.Drawing.Drawing2D;
+using System.IO;
 
 namespace PMS.Frm.Main
 {
-    public partial class FrmMain : Form
+    public partial class FrmMain : Main.BaseForm
     {
         int x_start = 0;
         int y_start = 0;
@@ -54,21 +56,24 @@ namespace PMS.Frm.Main
                     if (menu.parentId == 0 && StringUtils.IsNotBlank(menu.checkBoxName))
                     {
                         Point point = GetPoint(true);
-                        if (StringUtils.IsNotBlank(menu.iconPath))
+                        if (StringUtils.IsNotBlank(menu.iconPath.Trim()))
                         {
-                            PictureBox pb = new PictureBox();
-                            pb.Width = 35;
-                            pb.Height = 35;
-                            pb.SizeMode = PictureBoxSizeMode.Zoom;
-                            pb.Image = new Bitmap(iconFolder + menu.iconPath); ;
-                            pb.Location = new Point(point.X, point.Y);
-                            this.pnl_main.Controls.Add(pb);
+                            if(File.Exists(menu.iconPath.Trim()))
+                            {
+                                PictureBox pb = new PictureBox();
+                                pb.Width = 35;
+                                pb.Height = 35;
+                                pb.SizeMode = PictureBoxSizeMode.Zoom;
+                                pb.Image = new Bitmap(iconFolder + menu.iconPath); ;
+                                pb.Location = new Point(point.X, point.Y);
+                                this.pnl_main.Controls.Add(pb);
+                            }
                         }
                         Label label = new Label();
                         label.AutoSize = true;
                         label.Font = new Font(label.Font.FontFamily, 13, label.Font.Style);
-                        label.Text = menu.menuName;
-                        label.Location = new Point(point.X + 40, point.Y+5);
+                        label.Text = menu.menuName.Substring(0,menu.menuName.IndexOf("("));
+                        label.Location = new Point(point.X + 40, point.Y + 8);
                         //label.Location = GetPoint(true);
                         this.pnl_main.Controls.Add(label);
                         CreateMenuItem(menu.menuId);
@@ -84,15 +89,20 @@ namespace PMS.Frm.Main
                 if (menu.parentId == parentId)
                 {
                     Point point = GetPoint(false);
-                    if (StringUtils.IsNotBlank(menu.iconPath))
+                    if (StringUtils.IsNotBlank(menu.iconPath.Trim()))
                     {
-                        PictureBox pb = new PictureBox();
-                        pb.Width = 25;
-                        pb.Height = 25;
-                        pb.SizeMode = PictureBoxSizeMode.Zoom;
-                        pb.Image = new Bitmap(iconFolder + menu.iconPath); ;
-                        pb.Location = new Point(point.X, point.Y);
-                        this.pnl_main.Controls.Add(pb);
+                        if (File.Exists(menu.iconPath.Trim()))
+                        {
+                            PictureBox pb = new PictureBox();
+                            pb.Width = 25;
+                            pb.Height = 25;
+                            pb.SizeMode = PictureBoxSizeMode.Zoom;
+                            pb.Image = new Bitmap(iconFolder + menu.iconPath); ;
+                            pb.Location = new Point(point.X, point.Y + 3);
+                            pb.Tag = menu.formName.Trim();
+                            pb.Click += new EventHandler(BindClickToInstinsePb);
+                            this.pnl_main.Controls.Add(pb);
+                        }
                     }
                     LinkLabel linkLabel = new LinkLabel();
                     linkLabel.AutoSize = true;
@@ -101,15 +111,32 @@ namespace PMS.Frm.Main
                     linkLabel.Text = menu.menuName.Trim();
                     linkLabel.Font = new Font(linkLabel.Font.FontFamily, 11, linkLabel.Font.Style);
                     linkLabel.Tag = menu.formName.Trim();
-                    linkLabel.Click += new EventHandler(BindClickToInstinse);
-                    linkLabel.Location = new Point(point.X + 25, point.Y+8);
-                    //linkLabel.Location = GetPoint(false);
+                     linkLabel.Location = new Point(point.X + 25, point.Y+8);
+                     linkLabel.Click += new EventHandler(BindClickToInstinsell);
+                     //linkLabel.Location = GetPoint(false);
                     this.pnl_main.Controls.Add(linkLabel);
                 }
             }
         }
 
-        private void BindClickToInstinse(object sender, EventArgs e)
+        private void BindClickToInstinsePb(object sender, EventArgs e)
+        {
+            PictureBox pb = sender as PictureBox;
+
+            string formName = pb.Tag as string;
+            try
+            {
+                LoginUserInfo.LoginUser.currentFrom.Hide();
+                Form form = System.AppDomain.CurrentDomain.CreateInstanceFromAndUnwrap(Application.ExecutablePath, formName) as Form;
+                form.Text = "生产管理系统 --> " + form.Text + "     (" + LoginUserInfo.LoginUser.loginUser.userName + "/" + LoginUserInfo.LoginUser.loginRole.roleName + ")";
+                form.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void BindClickToInstinsell(object sender, EventArgs e)
         {
             LinkLabel linkLabel = sender as LinkLabel;
 
@@ -117,8 +144,9 @@ namespace PMS.Frm.Main
             try
             {
                 LoginUserInfo.LoginUser.currentFrom.Hide();
-                Form f = System.AppDomain.CurrentDomain.CreateInstanceFromAndUnwrap(Application.ExecutablePath, formName) as Form;
-                f.Show();
+                Form form = System.AppDomain.CurrentDomain.CreateInstanceFromAndUnwrap(Application.ExecutablePath, formName) as Form;
+                form.Text = "生产管理系统 --> " + form.Text + "     (" + LoginUserInfo.LoginUser.loginUser.userName + "/" + LoginUserInfo.LoginUser.loginRole.roleName + ")";
+                form.Show();
             }
             catch (Exception ex)
             {
@@ -151,7 +179,7 @@ namespace PMS.Frm.Main
                     }
                 }
 
-                y_start = (x_count / x_max_count) * 250 + 30;
+                y_start = (x_count / x_max_count) * 220 + 30;
 
                 //this.pnl_main.Height = (x_count / x_max_count) * 200 + 220;
 
