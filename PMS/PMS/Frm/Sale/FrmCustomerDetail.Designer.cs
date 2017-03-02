@@ -135,7 +135,7 @@
             // 
             // btn_paid
             // 
-            this.btn_paid.Location = new System.Drawing.Point(8, 397);
+            this.btn_paid.Location = new System.Drawing.Point(8, 434);
             this.btn_paid.Name = "btn_paid";
             this.btn_paid.Size = new System.Drawing.Size(96, 23);
             this.btn_paid.TabIndex = 16;
@@ -146,7 +146,7 @@
             // txt_remark
             // 
             this.txt_remark.ImeMode = System.Windows.Forms.ImeMode.Hangul;
-            this.txt_remark.Location = new System.Drawing.Point(69, 434);
+            this.txt_remark.Location = new System.Drawing.Point(69, 400);
             this.txt_remark.MaxLength = 100;
             this.txt_remark.Name = "txt_remark";
             this.txt_remark.Size = new System.Drawing.Size(556, 21);
@@ -155,7 +155,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 437);
+            this.label17.Location = new System.Drawing.Point(6, 403);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(65, 12);
             this.label17.TabIndex = 85;

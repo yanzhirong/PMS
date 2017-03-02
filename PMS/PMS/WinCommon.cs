@@ -104,7 +104,7 @@ namespace PMS
         }
         #endregion
 
-        #region 废弃
+        #region 在主窗口中显示子窗口 废弃
         /// <summary>
         /// 在主窗口中显示子窗口
         /// </summary>
@@ -153,6 +153,7 @@ namespace PMS
         }
         #endregion
 
+        #region 退出程序
         /// <summary>
         /// 退出程序
         /// </summary>
@@ -169,7 +170,7 @@ namespace PMS
 
             System.Environment.Exit(0);
         }
-
+        #endregion
 
         #region 输入控制
         /// <summary>

@@ -89,7 +89,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "产销管理系统--登录";
+            this.Text = "生产管理系统--登录";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmLogin_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pic_bg)).EndInit();
             this.ResumeLayout(false);

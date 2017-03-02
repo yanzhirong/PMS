@@ -22,8 +22,8 @@ namespace PMS.Frm.Login
         {
             InitializeComponent();
 
-            this.txt_name.Text = "admin";
-            this.txt_pwd.Text = "admin";
+            //this.txt_name.Text = "admin";
+            //this.txt_pwd.Text = "admin";
         }
 
         private void btn_login_Click(object sender, EventArgs e)

@@ -203,6 +203,13 @@ namespace PMS.Frm.Sale
                 grb_customer.Enabled = true;
             }
 
+            if (this.btn_paid.Visible == false)
+            {
+                this.grb_customer.Height = this.grb_customer.Height - this.btn_paid.Height;
+                this.btn_submit.Top = this.btn_submit.Top - this.btn_paid.Height;
+                this.btn_cancel.Top = this.btn_cancel.Top - this.btn_paid.Height;
+                this.Height = this.Height - this.btn_paid.Height;
+            }
         }
         #endregion
 
