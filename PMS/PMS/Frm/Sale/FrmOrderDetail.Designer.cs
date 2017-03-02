@@ -94,7 +94,7 @@
             // 
             // txt_cancelReason
             // 
-            this.txt_cancelReason.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.txt_cancelReason.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_cancelReason.Location = new System.Drawing.Point(68, 20);
             this.txt_cancelReason.MaxLength = 100;
             this.txt_cancelReason.Name = "txt_cancelReason";
@@ -158,7 +158,7 @@
             // 
             // txt_priceRemark
             // 
-            this.txt_priceRemark.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txt_priceRemark.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_priceRemark.Location = new System.Drawing.Point(68, 87);
             this.txt_priceRemark.MaxLength = 100;
             this.txt_priceRemark.Name = "txt_priceRemark";
@@ -188,7 +188,7 @@
             // 
             this.txt_price.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_price.Location = new System.Drawing.Point(68, 20);
-            this.txt_price.MaxLength = 10;
+            this.txt_price.MaxLength = 12;
             this.txt_price.Name = "txt_price";
             this.txt_price.Size = new System.Drawing.Size(223, 21);
             this.txt_price.TabIndex = 14;
@@ -319,7 +319,7 @@
             // 
             // txt_remark
             // 
-            this.txt_remark.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txt_remark.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_remark.Location = new System.Drawing.Point(238, 390);
             this.txt_remark.MaxLength = 100;
             this.txt_remark.Name = "txt_remark";
@@ -408,7 +408,7 @@
             // 
             // txt_manager
             // 
-            this.txt_manager.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txt_manager.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_manager.Location = new System.Drawing.Point(68, 90);
             this.txt_manager.MaxLength = 10;
             this.txt_manager.Name = "txt_manager";
@@ -474,6 +474,7 @@
             // 
             // txt_address
             // 
+            this.txt_address.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_address.Location = new System.Drawing.Point(68, 53);
             this.txt_address.MaxLength = 100;
             this.txt_address.Name = "txt_address";

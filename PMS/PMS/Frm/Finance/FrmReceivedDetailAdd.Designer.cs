@@ -98,7 +98,7 @@
             // txt_remark
             // 
             this.txt_remark.BackColor = System.Drawing.Color.White;
-            this.txt_remark.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_remark.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_remark.Location = new System.Drawing.Point(77, 160);
             this.txt_remark.MaxLength = 100;
             this.txt_remark.Name = "txt_remark";
@@ -108,7 +108,7 @@
             // txt_otherType
             // 
             this.txt_otherType.BackColor = System.Drawing.Color.White;
-            this.txt_otherType.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_otherType.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_otherType.Location = new System.Drawing.Point(380, 87);
             this.txt_otherType.MaxLength = 30;
             this.txt_otherType.Name = "txt_otherType";

@@ -213,6 +213,7 @@ namespace PMS.Frm.Sys
                 this.chk_finance_purchase.Checked = false;
                 this.chk_finance_receive.Checked = false;
                 this.chk_finance_paid.Checked = false;
+                this.chk_customer.Checked = false;
             }
             else
             {
@@ -220,6 +221,7 @@ namespace PMS.Frm.Sys
                 this.chk_finance_purchase.Checked = true;
                 this.chk_finance_receive.Checked = true;
                 this.chk_finance_paid.Checked = true;
+                this.chk_customer.Checked = true;
             }
         }
         #endregion

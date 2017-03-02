@@ -172,9 +172,9 @@
             // 
             // txt_minStockNum
             // 
-            this.txt_minStockNum.ImeMode = System.Windows.Forms.ImeMode.Close;
+            this.txt_minStockNum.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_minStockNum.Location = new System.Drawing.Point(75, 269);
-            this.txt_minStockNum.MaxLength = 20;
+            this.txt_minStockNum.MaxLength = 3;
             this.txt_minStockNum.Name = "txt_minStockNum";
             this.txt_minStockNum.Size = new System.Drawing.Size(164, 21);
             this.txt_minStockNum.TabIndex = 10;
@@ -192,9 +192,9 @@
             // 
             // txt_expiredDays
             // 
-            this.txt_expiredDays.ImeMode = System.Windows.Forms.ImeMode.Close;
+            this.txt_expiredDays.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_expiredDays.Location = new System.Drawing.Point(345, 218);
-            this.txt_expiredDays.MaxLength = 20;
+            this.txt_expiredDays.MaxLength = 3;
             this.txt_expiredDays.Name = "txt_expiredDays";
             this.txt_expiredDays.Size = new System.Drawing.Size(164, 21);
             this.txt_expiredDays.TabIndex = 9;
@@ -244,9 +244,9 @@
             // 
             // txt_packingRemark
             // 
-            this.txt_packingRemark.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_packingRemark.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_packingRemark.Location = new System.Drawing.Point(344, 130);
-            this.txt_packingRemark.MaxLength = 20;
+            this.txt_packingRemark.MaxLength = 50;
             this.txt_packingRemark.Name = "txt_packingRemark";
             this.txt_packingRemark.Size = new System.Drawing.Size(164, 21);
             this.txt_packingRemark.TabIndex = 5;
@@ -262,9 +262,9 @@
             // 
             // txt_subName
             // 
-            this.txt_subName.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_subName.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_subName.Location = new System.Drawing.Point(344, 35);
-            this.txt_subName.MaxLength = 20;
+            this.txt_subName.MaxLength = 50;
             this.txt_subName.Name = "txt_subName";
             this.txt_subName.Size = new System.Drawing.Size(164, 21);
             this.txt_subName.TabIndex = 2;
@@ -291,9 +291,9 @@
             // 
             // txt_shelfLife
             // 
-            this.txt_shelfLife.ImeMode = System.Windows.Forms.ImeMode.Close;
+            this.txt_shelfLife.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_shelfLife.Location = new System.Drawing.Point(76, 221);
-            this.txt_shelfLife.MaxLength = 20;
+            this.txt_shelfLife.MaxLength = 4;
             this.txt_shelfLife.Name = "txt_shelfLife";
             this.txt_shelfLife.Size = new System.Drawing.Size(164, 21);
             this.txt_shelfLife.TabIndex = 8;
@@ -332,7 +332,7 @@
             // 
             this.txt_weight.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_weight.Location = new System.Drawing.Point(76, 315);
-            this.txt_weight.MaxLength = 20;
+            this.txt_weight.MaxLength = 12;
             this.txt_weight.Name = "txt_weight";
             this.txt_weight.Size = new System.Drawing.Size(164, 21);
             this.txt_weight.TabIndex = 11;
@@ -390,9 +390,9 @@
             // 
             // txt_name
             // 
-            this.txt_name.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_name.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_name.Location = new System.Drawing.Point(76, 35);
-            this.txt_name.MaxLength = 20;
+            this.txt_name.MaxLength = 50;
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(164, 21);
             this.txt_name.TabIndex = 1;
@@ -445,7 +445,7 @@
             // 
             this.txt_price.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_price.Location = new System.Drawing.Point(75, 18);
-            this.txt_price.MaxLength = 20;
+            this.txt_price.MaxLength = 12;
             this.txt_price.Name = "txt_price";
             this.txt_price.Size = new System.Drawing.Size(98, 21);
             this.txt_price.TabIndex = 13;

@@ -188,8 +188,9 @@
             // 
             // txt_product
             // 
+            this.txt_product.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_product.Location = new System.Drawing.Point(84, 14);
-            this.txt_product.MaxLength = 20;
+            this.txt_product.MaxLength = 30;
             this.txt_product.Name = "txt_product";
             this.txt_product.Size = new System.Drawing.Size(118, 21);
             this.txt_product.TabIndex = 1;

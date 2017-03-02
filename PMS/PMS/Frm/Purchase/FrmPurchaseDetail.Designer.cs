@@ -188,9 +188,9 @@
             // 
             // txt_remark
             // 
-            this.txt_remark.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_remark.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_remark.Location = new System.Drawing.Point(77, 313);
-            this.txt_remark.MaxLength = 20;
+            this.txt_remark.MaxLength = 100;
             this.txt_remark.Name = "txt_remark";
             this.txt_remark.Size = new System.Drawing.Size(529, 21);
             this.txt_remark.TabIndex = 17;
@@ -218,7 +218,7 @@
             // 
             this.txt_num.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_num.Location = new System.Drawing.Point(78, 114);
-            this.txt_num.MaxLength = 20;
+            this.txt_num.MaxLength = 12;
             this.txt_num.Name = "txt_num";
             this.txt_num.Size = new System.Drawing.Size(164, 21);
             this.txt_num.TabIndex = 7;
@@ -392,7 +392,7 @@
             // 
             // txt_manager
             // 
-            this.txt_manager.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_manager.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_manager.Location = new System.Drawing.Point(67, 90);
             this.txt_manager.MaxLength = 20;
             this.txt_manager.Name = "txt_manager";
@@ -458,9 +458,9 @@
             // 
             // txt_address
             // 
-            this.txt_address.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_address.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_address.Location = new System.Drawing.Point(66, 53);
-            this.txt_address.MaxLength = 20;
+            this.txt_address.MaxLength = 100;
             this.txt_address.Name = "txt_address";
             this.txt_address.Size = new System.Drawing.Size(531, 21);
             this.txt_address.TabIndex = 4;
@@ -528,7 +528,7 @@
             // 
             this.txt_price.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_price.Location = new System.Drawing.Point(77, 18);
-            this.txt_price.MaxLength = 10;
+            this.txt_price.MaxLength = 12;
             this.txt_price.Name = "txt_price";
             this.txt_price.Size = new System.Drawing.Size(95, 21);
             this.txt_price.TabIndex = 18;
@@ -555,9 +555,9 @@
             // 
             // txt_cancelReason
             // 
-            this.txt_cancelReason.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_cancelReason.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_cancelReason.Location = new System.Drawing.Point(77, 18);
-            this.txt_cancelReason.MaxLength = 10;
+            this.txt_cancelReason.MaxLength = 100;
             this.txt_cancelReason.Name = "txt_cancelReason";
             this.txt_cancelReason.Size = new System.Drawing.Size(529, 21);
             this.txt_cancelReason.TabIndex = 19;

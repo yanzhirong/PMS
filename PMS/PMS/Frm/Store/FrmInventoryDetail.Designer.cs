@@ -173,6 +173,7 @@
             // 
             // txt_remark
             // 
+            this.txt_remark.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_remark.Location = new System.Drawing.Point(79, 213);
             this.txt_remark.MaxLength = 100;
             this.txt_remark.Multiline = true;
@@ -194,7 +195,7 @@
             // 
             this.txt_stockNum.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_stockNum.Location = new System.Drawing.Point(79, 163);
-            this.txt_stockNum.MaxLength = 10;
+            this.txt_stockNum.MaxLength = 12;
             this.txt_stockNum.Name = "txt_stockNum";
             this.txt_stockNum.Size = new System.Drawing.Size(165, 21);
             this.txt_stockNum.TabIndex = 8;

@@ -43,10 +43,10 @@
             this.modifyBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.deleteBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_addNew = new System.Windows.Forms.Button();
-            this.btn_query = new System.Windows.Forms.Button();
             this.txt_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_addNew = new System.Windows.Forms.Button();
+            this.btn_query = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -173,6 +173,24 @@
             this.groupBox1.TabIndex = 68;
             this.groupBox1.TabStop = false;
             // 
+            // txt_name
+            // 
+            this.txt_name.ImeMode = System.Windows.Forms.ImeMode.Hangul;
+            this.txt_name.Location = new System.Drawing.Point(72, 18);
+            this.txt_name.MaxLength = 50;
+            this.txt_name.Name = "txt_name";
+            this.txt_name.Size = new System.Drawing.Size(287, 21);
+            this.txt_name.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "产品名：";
+            // 
             // btn_addNew
             // 
             this.btn_addNew.Location = new System.Drawing.Point(158, 165);
@@ -192,23 +210,6 @@
             this.btn_query.Text = "查询";
             this.btn_query.UseVisualStyleBackColor = true;
             this.btn_query.Click += new System.EventHandler(this.btn_query_Click);
-            // 
-            // txt_name
-            // 
-            this.txt_name.Location = new System.Drawing.Point(72, 18);
-            this.txt_name.MaxLength = 20;
-            this.txt_name.Name = "txt_name";
-            this.txt_name.Size = new System.Drawing.Size(287, 21);
-            this.txt_name.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "产品名：";
             // 
             // FrmProductManage
             // 

@@ -35,10 +35,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txt_name = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_addNew = new System.Windows.Forms.Button();
-            this.btn_query = new System.Windows.Forms.Button();
             this.txt_code = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_addNew = new System.Windows.Forms.Button();
+            this.btn_query = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,8 +96,9 @@
             // 
             // txt_name
             // 
+            this.txt_name.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_name.Location = new System.Drawing.Point(268, 14);
-            this.txt_name.MaxLength = 20;
+            this.txt_name.MaxLength = 30;
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(100, 21);
             this.txt_name.TabIndex = 2;
@@ -110,6 +111,24 @@
             this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 9;
             this.label2.Text = "客户名称：";
+            // 
+            // txt_code
+            // 
+            this.txt_code.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_code.Location = new System.Drawing.Point(84, 14);
+            this.txt_code.MaxLength = 20;
+            this.txt_code.Name = "txt_code";
+            this.txt_code.Size = new System.Drawing.Size(100, 21);
+            this.txt_code.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(25, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "客户代码：";
             // 
             // btn_addNew
             // 
@@ -130,23 +149,6 @@
             this.btn_query.Text = "查询";
             this.btn_query.UseVisualStyleBackColor = true;
             this.btn_query.Click += new System.EventHandler(this.btn_query_Click);
-            // 
-            // txt_code
-            // 
-            this.txt_code.Location = new System.Drawing.Point(84, 14);
-            this.txt_code.MaxLength = 20;
-            this.txt_code.Name = "txt_code";
-            this.txt_code.Size = new System.Drawing.Size(100, 21);
-            this.txt_code.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "客户代码：";
             // 
             // dataGridView1
             // 

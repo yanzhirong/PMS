@@ -115,5 +115,17 @@ namespace Bll
 
             return dt;
         }
+
+        public decimal GetReceivableMoneyByCustomerId(int _customerId)
+        {
+            decimal rtn = 0;
+            DataTable dt = m_dalFinance.GetReceivableMoneyByCustomerId(_customerId);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                rtn = ConvertUtils.ConvertToDecimal(dt.Rows[0][0]);
+            }
+
+            return rtn;
+        }
     }
 }

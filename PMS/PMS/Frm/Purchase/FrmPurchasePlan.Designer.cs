@@ -162,8 +162,9 @@
             // 
             // txt_materials
             // 
+            this.txt_materials.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_materials.Location = new System.Drawing.Point(84, 14);
-            this.txt_materials.MaxLength = 20;
+            this.txt_materials.MaxLength = 50;
             this.txt_materials.Name = "txt_materials";
             this.txt_materials.Size = new System.Drawing.Size(118, 21);
             this.txt_materials.TabIndex = 1;

@@ -4847,6 +4847,7 @@ INSERT INTO `m_menu` VALUES ('701', '7', '销售订单', 'PMS.Frm.Finance.FrmSal
 INSERT INTO `m_menu` VALUES ('702', '7', '采购订单', 'PMS.Frm.Finance.FrmPurchaseOrder', 'chk_finance_purchase', 'icon\\\\purchase-list.png', '702', '0', null, null, null, null);
 INSERT INTO `m_menu` VALUES ('703', '7', '应收款', 'PMS.Frm.Finance.FrmReceived', 'chk_finance_receive', 'icon\\\\finance-received.png', '703', '0', null, null, null, null);
 INSERT INTO `m_menu` VALUES ('704', '7', '应付款', 'PMS.Frm.Finance.FrmPaid', 'chk_finance_paid', 'icon\\\\finance-paid.png', '704', '0', null, null, null, null);
+INSERT INTO `m_menu` VALUES ('705', '7', '客户管理', 'PMS.Frm.Sale.FrmCustomerManage', 'chk_customer', 'icon\\\\sale-customer.png', '705', '0', null, null, null, null);
 INSERT INTO `m_menu` VALUES ('901', '9', '返回主菜单(F10)', 'PMS.Frm.Main.FrmMain', null, null, '901', '0', null, null, null, null);
 INSERT INTO `m_menu` VALUES ('902', '9', '返回登录页(F11)', 'PMS.Frm.Login.FrmLogin', null, null, '902', '0', null, null, null, null);
 INSERT INTO `m_menu` VALUES ('903', '9', '退出系统(F12)', 'PMS.Frm.Login.FrmLoginOut', null, null, '903', '0', null, null, null, null);

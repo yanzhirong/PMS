@@ -88,10 +88,10 @@ namespace Bll
 
             return rtn == 0 ? false : true;
         }
-        
-        public ModelCustomerPaid GetCustomerPaidById(int _id)
+
+        public ModelCustomerPaid GetCustomerPaidById(int _customerId)
         {
-            DataTable user = m_dalCustomer.GetCustomerPaidById(_id);
+            DataTable user = m_dalCustomer.GetCustomerPaidById(_customerId);
 
             if (user != null && user.Rows.Count > 0)
             {

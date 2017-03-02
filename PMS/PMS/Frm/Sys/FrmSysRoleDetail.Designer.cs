@@ -29,9 +29,15 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSysRoleDetail));
-            this.lbl_role = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmb_type = new System.Windows.Forms.ComboBox();
+            this.lbl_tile = new System.Windows.Forms.Label();
+            this.txt_name = new System.Windows.Forms.TextBox();
+            this.btn_cancel = new System.Windows.Forms.Button();
+            this.btn_submit = new System.Windows.Forms.Button();
             this.grb_role = new System.Windows.Forms.GroupBox();
             this.grb_finance = new System.Windows.Forms.GroupBox();
+            this.chk_customer = new System.Windows.Forms.CheckBox();
             this.chk_finance_paid = new System.Windows.Forms.CheckBox();
             this.chk_finance_receive = new System.Windows.Forms.CheckBox();
             this.chk_finance_purchase = new System.Windows.Forms.CheckBox();
@@ -70,12 +76,7 @@
             this.chk_sys_factory = new System.Windows.Forms.CheckBox();
             this.chk_sys_company = new System.Windows.Forms.CheckBox();
             this.chk_sys_user = new System.Windows.Forms.CheckBox();
-            this.btn_submit = new System.Windows.Forms.Button();
-            this.btn_cancel = new System.Windows.Forms.Button();
-            this.txt_name = new System.Windows.Forms.TextBox();
-            this.lbl_tile = new System.Windows.Forms.Label();
-            this.cmb_type = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_role = new System.Windows.Forms.Label();
             this.grb_role.SuspendLayout();
             this.grb_finance.SuspendLayout();
             this.grb_purchase.SuspendLayout();
@@ -86,14 +87,61 @@
             this.grb_sys.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lbl_role
+            // label1
             // 
-            this.lbl_role.AutoSize = true;
-            this.lbl_role.Location = new System.Drawing.Point(36, 83);
-            this.lbl_role.Name = "lbl_role";
-            this.lbl_role.Size = new System.Drawing.Size(53, 12);
-            this.lbl_role.TabIndex = 11;
-            this.lbl_role.Text = "角色名：";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(222, 83);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 72;
+            this.label1.Text = "角色类型：";
+            // 
+            // cmb_type
+            // 
+            this.cmb_type.FormattingEnabled = true;
+            this.cmb_type.Location = new System.Drawing.Point(288, 80);
+            this.cmb_type.Name = "cmb_type";
+            this.cmb_type.Size = new System.Drawing.Size(121, 20);
+            this.cmb_type.TabIndex = 2;
+            // 
+            // lbl_tile
+            // 
+            this.lbl_tile.AutoSize = true;
+            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
+            this.lbl_tile.Location = new System.Drawing.Point(383, 29);
+            this.lbl_tile.Name = "lbl_tile";
+            this.lbl_tile.Size = new System.Drawing.Size(174, 27);
+            this.lbl_tile.TabIndex = 69;
+            this.lbl_tile.Text = "角色权限设定";
+            // 
+            // txt_name
+            // 
+            this.txt_name.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_name.Location = new System.Drawing.Point(88, 80);
+            this.txt_name.MaxLength = 30;
+            this.txt_name.Name = "txt_name";
+            this.txt_name.Size = new System.Drawing.Size(111, 21);
+            this.txt_name.TabIndex = 1;
+            // 
+            // btn_cancel
+            // 
+            this.btn_cancel.Location = new System.Drawing.Point(526, 633);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
+            this.btn_cancel.TabIndex = 51;
+            this.btn_cancel.Text = "取消";
+            this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            // 
+            // btn_submit
+            // 
+            this.btn_submit.Location = new System.Drawing.Point(301, 633);
+            this.btn_submit.Name = "btn_submit";
+            this.btn_submit.Size = new System.Drawing.Size(75, 23);
+            this.btn_submit.TabIndex = 50;
+            this.btn_submit.Text = "确定";
+            this.btn_submit.UseVisualStyleBackColor = true;
+            this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
             // 
             // grb_role
             // 
@@ -120,6 +168,7 @@
             // 
             // grb_finance
             // 
+            this.grb_finance.Controls.Add(this.chk_customer);
             this.grb_finance.Controls.Add(this.chk_finance_paid);
             this.grb_finance.Controls.Add(this.chk_finance_receive);
             this.grb_finance.Controls.Add(this.chk_finance_purchase);
@@ -130,6 +179,16 @@
             this.grb_finance.Size = new System.Drawing.Size(800, 40);
             this.grb_finance.TabIndex = 13;
             this.grb_finance.TabStop = false;
+            // 
+            // chk_customer
+            // 
+            this.chk_customer.AutoSize = true;
+            this.chk_customer.Location = new System.Drawing.Point(481, 17);
+            this.chk_customer.Name = "chk_customer";
+            this.chk_customer.Size = new System.Drawing.Size(72, 16);
+            this.chk_customer.TabIndex = 31;
+            this.chk_customer.Text = "客户管理";
+            this.chk_customer.UseVisualStyleBackColor = true;
             // 
             // chk_finance_paid
             // 
@@ -537,59 +596,14 @@
             this.chk_sys_user.Text = "用户管理";
             this.chk_sys_user.UseVisualStyleBackColor = true;
             // 
-            // btn_submit
+            // lbl_role
             // 
-            this.btn_submit.Location = new System.Drawing.Point(301, 633);
-            this.btn_submit.Name = "btn_submit";
-            this.btn_submit.Size = new System.Drawing.Size(75, 23);
-            this.btn_submit.TabIndex = 50;
-            this.btn_submit.Text = "确定";
-            this.btn_submit.UseVisualStyleBackColor = true;
-            this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
-            // 
-            // btn_cancel
-            // 
-            this.btn_cancel.Location = new System.Drawing.Point(526, 633);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(75, 23);
-            this.btn_cancel.TabIndex = 51;
-            this.btn_cancel.Text = "取消";
-            this.btn_cancel.UseVisualStyleBackColor = true;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
-            // 
-            // txt_name
-            // 
-            this.txt_name.Location = new System.Drawing.Point(88, 80);
-            this.txt_name.Name = "txt_name";
-            this.txt_name.Size = new System.Drawing.Size(111, 21);
-            this.txt_name.TabIndex = 1;
-            // 
-            // lbl_tile
-            // 
-            this.lbl_tile.AutoSize = true;
-            this.lbl_tile.Font = new System.Drawing.Font("宋体", 20F);
-            this.lbl_tile.Location = new System.Drawing.Point(383, 29);
-            this.lbl_tile.Name = "lbl_tile";
-            this.lbl_tile.Size = new System.Drawing.Size(174, 27);
-            this.lbl_tile.TabIndex = 69;
-            this.lbl_tile.Text = "角色权限设定";
-            // 
-            // cmb_type
-            // 
-            this.cmb_type.FormattingEnabled = true;
-            this.cmb_type.Location = new System.Drawing.Point(288, 80);
-            this.cmb_type.Name = "cmb_type";
-            this.cmb_type.Size = new System.Drawing.Size(121, 20);
-            this.cmb_type.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(222, 83);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
-            this.label1.TabIndex = 72;
-            this.label1.Text = "角色类型：";
+            this.lbl_role.AutoSize = true;
+            this.lbl_role.Location = new System.Drawing.Point(36, 83);
+            this.lbl_role.Name = "lbl_role";
+            this.lbl_role.Size = new System.Drawing.Size(53, 12);
+            this.lbl_role.TabIndex = 11;
+            this.lbl_role.Text = "角色名：";
             // 
             // FrmSysRoleDetail
             // 
@@ -683,6 +697,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox chk_produce_manage;
         private System.Windows.Forms.CheckBox chk_store_nventory;
+        private System.Windows.Forms.CheckBox chk_customer;
 
     }
 }

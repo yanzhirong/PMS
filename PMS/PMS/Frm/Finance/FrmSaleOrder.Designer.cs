@@ -165,6 +165,7 @@
             // 
             // txt_name
             // 
+            this.txt_name.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_name.Location = new System.Drawing.Point(89, 48);
             this.txt_name.MaxLength = 20;
             this.txt_name.Name = "txt_name";

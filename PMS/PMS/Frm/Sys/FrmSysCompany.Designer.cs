@@ -90,6 +90,7 @@
             // 
             // txt_name
             // 
+            this.txt_name.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_name.Location = new System.Drawing.Point(159, 97);
             this.txt_name.MaxLength = 200;
             this.txt_name.Name = "txt_name";
@@ -98,6 +99,7 @@
             // 
             // txt_address
             // 
+            this.txt_address.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_address.Location = new System.Drawing.Point(159, 145);
             this.txt_address.MaxLength = 200;
             this.txt_address.Name = "txt_address";
@@ -115,6 +117,7 @@
             // 
             // txt_telphone
             // 
+            this.txt_telphone.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_telphone.Location = new System.Drawing.Point(159, 191);
             this.txt_telphone.MaxLength = 50;
             this.txt_telphone.Name = "txt_telphone";
@@ -132,6 +135,7 @@
             // 
             // txt_fax
             // 
+            this.txt_fax.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_fax.Location = new System.Drawing.Point(159, 236);
             this.txt_fax.MaxLength = 50;
             this.txt_fax.Name = "txt_fax";
@@ -149,6 +153,7 @@
             // 
             // txt_homepage
             // 
+            this.txt_homepage.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_homepage.Location = new System.Drawing.Point(159, 284);
             this.txt_homepage.MaxLength = 200;
             this.txt_homepage.Name = "txt_homepage";
@@ -166,6 +171,7 @@
             // 
             // txt_email
             // 
+            this.txt_email.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_email.Location = new System.Drawing.Point(159, 332);
             this.txt_email.MaxLength = 100;
             this.txt_email.Name = "txt_email";
@@ -183,6 +189,7 @@
             // 
             // txt_zip
             // 
+            this.txt_zip.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_zip.Location = new System.Drawing.Point(159, 377);
             this.txt_zip.MaxLength = 50;
             this.txt_zip.Name = "txt_zip";

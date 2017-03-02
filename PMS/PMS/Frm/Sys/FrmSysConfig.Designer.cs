@@ -91,7 +91,9 @@
             // 
             // txt_newParam
             // 
+            this.txt_newParam.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_newParam.Location = new System.Drawing.Point(111, 20);
+            this.txt_newParam.MaxLength = 20;
             this.txt_newParam.Name = "txt_newParam";
             this.txt_newParam.Size = new System.Drawing.Size(192, 21);
             this.txt_newParam.TabIndex = 11;

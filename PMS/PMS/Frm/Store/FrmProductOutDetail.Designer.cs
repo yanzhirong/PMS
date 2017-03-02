@@ -323,7 +323,7 @@
             // 
             // txt_manager
             // 
-            this.txt_manager.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_manager.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_manager.Location = new System.Drawing.Point(67, 90);
             this.txt_manager.MaxLength = 20;
             this.txt_manager.Name = "txt_manager";
@@ -389,9 +389,9 @@
             // 
             // txt_address
             // 
-            this.txt_address.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_address.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_address.Location = new System.Drawing.Point(66, 53);
-            this.txt_address.MaxLength = 20;
+            this.txt_address.MaxLength = 100;
             this.txt_address.Name = "txt_address";
             this.txt_address.Size = new System.Drawing.Size(539, 21);
             this.txt_address.TabIndex = 10;

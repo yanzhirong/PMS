@@ -167,9 +167,9 @@
             // 
             // txt_remark
             // 
-            this.txt_remark.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_remark.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_remark.Location = new System.Drawing.Point(77, 216);
-            this.txt_remark.MaxLength = 20;
+            this.txt_remark.MaxLength = 50;
             this.txt_remark.Name = "txt_remark";
             this.txt_remark.Size = new System.Drawing.Size(529, 21);
             this.txt_remark.TabIndex = 9;

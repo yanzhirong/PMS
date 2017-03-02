@@ -31,10 +31,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSysRole));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_addNew = new System.Windows.Forms.Button();
-            this.btn_query = new System.Windows.Forms.Button();
             this.txt_name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_addNew = new System.Windows.Forms.Button();
+            this.btn_query = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.roleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.role = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +58,24 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
+            // txt_name
+            // 
+            this.txt_name.ImeMode = System.Windows.Forms.ImeMode.Hangul;
+            this.txt_name.Location = new System.Drawing.Point(90, 23);
+            this.txt_name.MaxLength = 30;
+            this.txt_name.Name = "txt_name";
+            this.txt_name.Size = new System.Drawing.Size(301, 21);
+            this.txt_name.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(25, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 12);
+            this.label1.TabIndex = 7;
+            this.label1.Text = " 角色名：";
+            // 
             // btn_addNew
             // 
             this.btn_addNew.Location = new System.Drawing.Point(145, 160);
@@ -77,23 +95,6 @@
             this.btn_query.Text = "查询";
             this.btn_query.UseVisualStyleBackColor = true;
             this.btn_query.Click += new System.EventHandler(this.btn_query_Click);
-            // 
-            // txt_name
-            // 
-            this.txt_name.Location = new System.Drawing.Point(90, 23);
-            this.txt_name.MaxLength = 20;
-            this.txt_name.Name = "txt_name";
-            this.txt_name.Size = new System.Drawing.Size(100, 21);
-            this.txt_name.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(25, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 12);
-            this.label1.TabIndex = 7;
-            this.label1.Text = " 角色名：";
             // 
             // dataGridView1
             // 

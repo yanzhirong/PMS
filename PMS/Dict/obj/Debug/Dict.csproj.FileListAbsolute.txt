@@ -10,3 +10,7 @@ D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Dict.dll
 D:\p\yd\PMS\source\PMS\PMS\PMS\bin\Debug\Dict.pdb
 D:\p\yd\PMS\source\PMS\PMS\DICT\obj\Debug\Dict.dll
 D:\p\yd\PMS\source\PMS\PMS\DICT\obj\Debug\Dict.pdb
+D:\p\project\net\PMS\PMS\PMS\bin\Debug\Dict.dll
+D:\p\project\net\PMS\PMS\PMS\bin\Debug\Dict.pdb
+D:\p\project\net\PMS\PMS\DICT\obj\Debug\Dict.dll
+D:\p\project\net\PMS\PMS\DICT\obj\Debug\Dict.pdb

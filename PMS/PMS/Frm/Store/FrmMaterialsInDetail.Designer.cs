@@ -135,7 +135,9 @@
             // txt_purchaseNum
             // 
             this.txt_purchaseNum.BackColor = System.Drawing.Color.White;
+            this.txt_purchaseNum.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_purchaseNum.Location = new System.Drawing.Point(81, 114);
+            this.txt_purchaseNum.MaxLength = 12;
             this.txt_purchaseNum.Name = "txt_purchaseNum";
             this.txt_purchaseNum.Size = new System.Drawing.Size(160, 21);
             this.txt_purchaseNum.TabIndex = 5;
@@ -161,6 +163,7 @@
             // 
             // txt_remark
             // 
+            this.txt_remark.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_remark.Location = new System.Drawing.Point(79, 296);
             this.txt_remark.MaxLength = 100;
             this.txt_remark.Name = "txt_remark";
@@ -181,7 +184,7 @@
             // 
             this.txt_inputNum.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_inputNum.Location = new System.Drawing.Point(79, 252);
-            this.txt_inputNum.MaxLength = 10;
+            this.txt_inputNum.MaxLength = 12;
             this.txt_inputNum.Name = "txt_inputNum";
             this.txt_inputNum.Size = new System.Drawing.Size(162, 21);
             this.txt_inputNum.TabIndex = 12;

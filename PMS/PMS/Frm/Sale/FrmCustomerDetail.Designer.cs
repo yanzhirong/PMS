@@ -145,9 +145,9 @@
             // 
             // txt_remark
             // 
-            this.txt_remark.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_remark.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_remark.Location = new System.Drawing.Point(69, 434);
-            this.txt_remark.MaxLength = 20;
+            this.txt_remark.MaxLength = 100;
             this.txt_remark.Name = "txt_remark";
             this.txt_remark.Size = new System.Drawing.Size(556, 21);
             this.txt_remark.TabIndex = 17;
@@ -241,9 +241,9 @@
             // 
             // txt_position
             // 
-            this.txt_position.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_position.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_position.Location = new System.Drawing.Point(276, 26);
-            this.txt_position.MaxLength = 20;
+            this.txt_position.MaxLength = 10;
             this.txt_position.Name = "txt_position";
             this.txt_position.Size = new System.Drawing.Size(127, 21);
             this.txt_position.TabIndex = 14;
@@ -259,9 +259,9 @@
             // 
             // txt_manager
             // 
-            this.txt_manager.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_manager.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_manager.Location = new System.Drawing.Point(68, 26);
-            this.txt_manager.MaxLength = 20;
+            this.txt_manager.MaxLength = 10;
             this.txt_manager.Name = "txt_manager";
             this.txt_manager.Size = new System.Drawing.Size(138, 21);
             this.txt_manager.TabIndex = 13;
@@ -277,7 +277,7 @@
             // 
             // txt_zip
             // 
-            this.txt_zip.ImeMode = System.Windows.Forms.ImeMode.Close;
+            this.txt_zip.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_zip.Location = new System.Drawing.Point(402, 280);
             this.txt_zip.MaxLength = 20;
             this.txt_zip.Name = "txt_zip";
@@ -378,9 +378,9 @@
             // 
             // txt_address
             // 
-            this.txt_address.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_address.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_address.Location = new System.Drawing.Point(66, 63);
-            this.txt_address.MaxLength = 20;
+            this.txt_address.MaxLength = 100;
             this.txt_address.Name = "txt_address";
             this.txt_address.Size = new System.Drawing.Size(551, 21);
             this.txt_address.TabIndex = 8;
@@ -405,7 +405,7 @@
             // 
             // txt_fax
             // 
-            this.txt_fax.ImeMode = System.Windows.Forms.ImeMode.Close;
+            this.txt_fax.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_fax.Location = new System.Drawing.Point(75, 280);
             this.txt_fax.MaxLength = 20;
             this.txt_fax.Name = "txt_fax";
@@ -423,9 +423,9 @@
             // 
             // txt_name
             // 
-            this.txt_name.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_name.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_name.Location = new System.Drawing.Point(74, 91);
-            this.txt_name.MaxLength = 20;
+            this.txt_name.MaxLength = 100;
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(551, 21);
             this.txt_name.TabIndex = 4;

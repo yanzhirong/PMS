@@ -241,7 +241,9 @@
             // 
             // txt_purchaseNum
             // 
+            this.txt_purchaseNum.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_purchaseNum.Location = new System.Drawing.Point(65, 12);
+            this.txt_purchaseNum.MaxLength = 12;
             this.txt_purchaseNum.Name = "txt_purchaseNum";
             this.txt_purchaseNum.Size = new System.Drawing.Size(100, 21);
             this.txt_purchaseNum.TabIndex = 8;

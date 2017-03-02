@@ -155,7 +155,7 @@
             // 
             // txt_alipayName
             // 
-            this.txt_alipayName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txt_alipayName.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_alipayName.Location = new System.Drawing.Point(97, 60);
             this.txt_alipayName.MaxLength = 50;
             this.txt_alipayName.Name = "txt_alipayName";
@@ -191,7 +191,7 @@
             // 
             // txt_remark
             // 
-            this.txt_remark.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txt_remark.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_remark.Location = new System.Drawing.Point(107, 434);
             this.txt_remark.MaxLength = 100;
             this.txt_remark.Name = "txt_remark";
@@ -266,7 +266,7 @@
             // 
             // txt_bankName
             // 
-            this.txt_bankName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txt_bankName.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_bankName.Location = new System.Drawing.Point(97, 127);
             this.txt_bankName.MaxLength = 50;
             this.txt_bankName.Name = "txt_bankName";
@@ -302,7 +302,7 @@
             // 
             // txt_subBank
             // 
-            this.txt_subBank.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txt_subBank.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_subBank.Location = new System.Drawing.Point(97, 60);
             this.txt_subBank.MaxLength = 50;
             this.txt_subBank.Name = "txt_subBank";
@@ -320,7 +320,7 @@
             // 
             // txt_bank
             // 
-            this.txt_bank.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txt_bank.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_bank.Location = new System.Drawing.Point(97, 26);
             this.txt_bank.MaxLength = 50;
             this.txt_bank.Name = "txt_bank";
@@ -339,7 +339,7 @@
             // txt_name
             // 
             this.txt_name.Enabled = false;
-            this.txt_name.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_name.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_name.Location = new System.Drawing.Point(107, 20);
             this.txt_name.MaxLength = 50;
             this.txt_name.Name = "txt_name";

@@ -662,5 +662,17 @@ namespace Dal
 
             return Dal.DBHelper.Select(sbSql.ToString());
         }
+
+        public DataTable GetReceivableMoneyByCustomerId(int _customerId)
+        {
+            sbSql.Clear();
+            sbSql.Append("select sum(ifnull(orderPrice,0) - ifnull(receivedPrice,0)) ReceivablePrice ");
+            sbSql.Append("  from p_finance_receive ");
+            sbSql.Append(" where isDelete = 0 ");
+            sbSql.Append("   and customerId = ").Append(_customerId).Append(" ");
+            sbSql.Append("   and receivedStatus != " + (int)Enum.EnumReceiveStatus.Complete + " ");
+
+            return Dal.DBHelper.Select(sbSql.ToString());
+        }
     }
 }

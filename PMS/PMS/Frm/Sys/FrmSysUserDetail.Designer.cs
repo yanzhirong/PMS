@@ -64,7 +64,7 @@
             // 
             // txt_name
             // 
-            this.txt_name.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.txt_name.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_name.Location = new System.Drawing.Point(126, 97);
             this.txt_name.MaxLength = 20;
             this.txt_name.Name = "txt_name";
@@ -134,7 +134,7 @@
             // 
             // txt_position
             // 
-            this.txt_position.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txt_position.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_position.Location = new System.Drawing.Point(126, 240);
             this.txt_position.MaxLength = 20;
             this.txt_position.Name = "txt_position";
@@ -174,7 +174,7 @@
             // 
             // txt_email
             // 
-            this.txt_email.ImeMode = System.Windows.Forms.ImeMode.Close;
+            this.txt_email.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_email.Location = new System.Drawing.Point(126, 289);
             this.txt_email.MaxLength = 40;
             this.txt_email.Name = "txt_email";
@@ -192,7 +192,7 @@
             // 
             // txt_mobile
             // 
-            this.txt_mobile.ImeMode = System.Windows.Forms.ImeMode.Close;
+            this.txt_mobile.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_mobile.Location = new System.Drawing.Point(398, 240);
             this.txt_mobile.MaxLength = 20;
             this.txt_mobile.Name = "txt_mobile";

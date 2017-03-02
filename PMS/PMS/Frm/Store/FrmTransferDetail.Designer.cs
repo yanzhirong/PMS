@@ -184,6 +184,7 @@
             // 
             // txt_remark
             // 
+            this.txt_remark.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_remark.Location = new System.Drawing.Point(79, 392);
             this.txt_remark.MaxLength = 100;
             this.txt_remark.Name = "txt_remark";

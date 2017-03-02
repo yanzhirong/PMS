@@ -26,6 +26,7 @@ namespace PMS.Frm.Sale
         private BllFactory m_bllFactory = new BllFactory();
         private BllUser m_bllUser = new BllUser();
         private BllCode m_bllCode = new BllCode();
+        private BllFinance m_bllFinance = new BllFinance();
 
         public FrmOrderDetail(int _mode, int _saleOrderId)
         {
@@ -678,7 +679,7 @@ namespace PMS.Frm.Sale
 
                 if (price < adviseSalePrice)
                 {
-                    if (MsgUtils.ShowQustMsg("销售价格低于建议销售价（" + adviseSalePrice + "），是否确认订单？", MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                    if (MsgUtils.ShowQustMsg("销售价格低于建议销售价（" + adviseSalePrice + "￥），是否确认订单？", MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
                     {
                         this.txt_price.Focus();
                         return false;
@@ -687,12 +688,30 @@ namespace PMS.Frm.Sale
 
                 if (price < minSalePrice)
                 {
-                    if (MsgUtils.ShowQustMsg("销售价格低于最低销售价（" + minSalePrice + "），是否确认订单？", MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                    if (MsgUtils.ShowQustMsg("销售价格低于最低销售价（" + minSalePrice + "￥），是否确认订单？", MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
                     {
                         this.txt_price.Focus();
                         return false;
                     }
                 }
+
+                //客户ID
+                int customerId = ConvertUtils.ConvertToInt(((ModelItem)this.cmb_customer.SelectedItem).itemKey);
+                ModelCustomerPaid modelCustomerPaid = m_bllCustomer.GetCustomerPaidById(customerId);
+                if (modelCustomerPaid.creditLimit > 0)
+                {
+                    decimal receivableMoney = m_bllFinance.GetReceivableMoneyByCustomerId(customerId);
+
+                    if (modelCustomerPaid.creditLimit <= receivableMoney)
+                    {
+                        if (MsgUtils.ShowQustMsg("该客户的未收金额（" + receivableMoney + "￥）已超出其信用额度（" + modelCustomerPaid.creditLimit + "￥），是否确认订单？", MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+                        {
+                            this.txt_price.Focus();
+                            return false;
+                        }
+                    }
+                }
+
             }
 
             if (m_mode == 5)

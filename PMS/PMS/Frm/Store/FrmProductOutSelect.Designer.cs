@@ -250,7 +250,9 @@
             // 
             // txt_produceNum
             // 
+            this.txt_produceNum.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.txt_produceNum.Location = new System.Drawing.Point(60, 12);
+            this.txt_produceNum.MaxLength = 10;
             this.txt_produceNum.Name = "txt_produceNum";
             this.txt_produceNum.Size = new System.Drawing.Size(138, 21);
             this.txt_produceNum.TabIndex = 6;

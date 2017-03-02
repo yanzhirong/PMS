@@ -92,8 +92,9 @@
             // 
             // txt_name
             // 
+            this.txt_name.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_name.Location = new System.Drawing.Point(84, 14);
-            this.txt_name.MaxLength = 20;
+            this.txt_name.MaxLength = 50;
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(100, 21);
             this.txt_name.TabIndex = 1;

@@ -142,7 +142,7 @@
             // 
             // btn_addNew
             // 
-            this.btn_addNew.Location = new System.Drawing.Point(155, 57);
+            this.btn_addNew.Location = new System.Drawing.Point(170, 150);
             this.btn_addNew.Name = "btn_addNew";
             this.btn_addNew.Size = new System.Drawing.Size(75, 23);
             this.btn_addNew.TabIndex = 3;
@@ -152,7 +152,7 @@
             // 
             // btn_query
             // 
-            this.btn_query.Location = new System.Drawing.Point(27, 57);
+            this.btn_query.Location = new System.Drawing.Point(42, 150);
             this.btn_query.Name = "btn_query";
             this.btn_query.Size = new System.Drawing.Size(75, 23);
             this.btn_query.TabIndex = 2;
@@ -170,10 +170,11 @@
             // 
             // txt_name
             // 
+            this.txt_name.ImeMode = System.Windows.Forms.ImeMode.Hangul;
             this.txt_name.Location = new System.Drawing.Point(84, 14);
-            this.txt_name.MaxLength = 20;
+            this.txt_name.MaxLength = 50;
             this.txt_name.Name = "txt_name";
-            this.txt_name.Size = new System.Drawing.Size(100, 21);
+            this.txt_name.Size = new System.Drawing.Size(260, 21);
             this.txt_name.TabIndex = 1;
             // 
             // label1
@@ -187,14 +188,12 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btn_addNew);
-            this.groupBox1.Controls.Add(this.btn_query);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txt_name);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(30, 83);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(862, 95);
+            this.groupBox1.Size = new System.Drawing.Size(862, 47);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             // 
@@ -221,7 +220,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(926, 600);
+            this.Controls.Add(this.btn_addNew);
             this.Controls.Add(this.lbl_tile);
+            this.Controls.Add(this.btn_query);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
