@@ -1,0 +1,364 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using Model;
+using MySql.Data.MySqlClient;
+
+namespace Dal
+{
+    public class DalCustomer
+    {
+        string sql;
+        StringBuilder sbSql = new StringBuilder();
+
+        public DataTable GetCustomers(string _code, string _name, int _type, int _salerId)
+        {
+            sbSql.Clear();
+            sbSql.Append("select a.id, ");
+            sbSql.Append("       a.code, ");
+            sbSql.Append("       a.name, ");
+            sbSql.Append("       a.provinceName, ");
+            sbSql.Append("       a.cityName, ");
+            sbSql.Append("       a.telephone1, ");
+            sbSql.Append("       a.manager, ");
+            sbSql.Append("       a.mobile, ");
+            sbSql.Append("       case type when 1 then '销售客户' else '供应商' end type, ");
+            sbSql.Append("       b.userName, ");
+            sbSql.Append("       '修改' modifyBtn, ");
+            sbSql.Append("       '删除' deleteBtn ");
+            sbSql.Append("from p_customer a ");
+            sbSql.Append("left join m_user b ");
+            sbSql.Append("  on a.salerId = b.userId ");
+            sbSql.Append(" and b.isDelete = 0 ");
+            sbSql.Append("where a.isDelete = 0 ");
+            if (Common.Tools.StringUtils.IsNotBlank(_code))
+            {
+                sbSql.Append("  and a.code like '%").Append(_code).Append("%' ");
+            } 
+            if (Common.Tools.StringUtils.IsNotBlank(_name))
+            {
+                sbSql.Append("  and a.name like '%").Append(_name).Append("%' ");
+            }
+            if (_type > 0)
+            {
+                sbSql.Append("  and a.type = ").Append(_type).Append(" ");
+            }
+            if (_salerId > 0)
+            {
+                sbSql.Append("  and a.salerId = ").Append(_salerId).Append(" ");
+            }
+            sbSql.Append("order by a.modifyTime desc");
+
+            return Dal.DBHelper.Select(sbSql.ToString());
+        }
+
+        public DataTable GetCustomerById(int _customerId)
+        {
+            sql = @"select * 
+                      from p_customer
+                     where isDelete = 0
+                       and id = {0}";
+
+            sql = String.Format(sql, _customerId);
+
+            return Dal.DBHelper.Select(sql);
+        }
+
+        public DataTable GetCustomersBySalerId(int _salerId)
+        {
+            sbSql.Clear();
+            sbSql.Append("select ");
+            sbSql.Append("       id itemKey, ");
+            sbSql.Append("       name itemValue ");
+            sbSql.Append("  from p_customer");
+            sbSql.Append(" where isDelete = 0 ");
+            sbSql.Append("   and type = 1 ");
+            if (_salerId > 0)
+            {
+                sbSql.Append("   and salerId =  ").Append(_salerId).Append(" ");
+            }
+            sbSql.Append(" order by id ");
+
+            return Dal.DBHelper.Select(sbSql.ToString());
+        }
+
+        public DataTable GetSupplier()
+        {
+            sbSql.Clear();
+            sbSql.Append("select ");
+            sbSql.Append("       id itemKey, ");
+            sbSql.Append("       name itemValue ");
+            sbSql.Append("  from p_customer");
+            sbSql.Append(" where isDelete = 0 ");
+            sbSql.Append("   and type = 2 ");
+            sbSql.Append(" order by id ");
+
+            return Dal.DBHelper.Select(sbSql.ToString());
+        }
+
+        public DataTable GetCustomerByCode(string _code)
+        {
+            sql = @"select * 
+                      from p_customer
+                     where isDelete = 0
+                       and code = '{0}'";
+
+            sql = String.Format(sql, _code);
+
+            return Dal.DBHelper.Select(sql);
+        }
+
+        public int AddCustomer(ModelCustomer _model)
+        {
+            sbSql.Clear();
+            sbSql.Append("insert into ");
+            sbSql.Append("       p_customer ( ");
+            sbSql.Append("       code, ");
+            sbSql.Append("       name, ");
+            sbSql.Append("       country, ");
+            sbSql.Append("       province, ");
+            sbSql.Append("       provinceName, ");
+            sbSql.Append("       city, ");
+            sbSql.Append("       cityName, ");
+            sbSql.Append("       district, ");
+            sbSql.Append("       districtName, ");
+            sbSql.Append("       address, ");
+            sbSql.Append("       zip, ");
+            sbSql.Append("       fax, ");
+            sbSql.Append("       telephone1, ");
+            sbSql.Append("       telephone2, ");
+            sbSql.Append("       manager, ");
+            sbSql.Append("       position, ");
+            sbSql.Append("       mobile, ");
+            sbSql.Append("       type, ");
+            sbSql.Append("       salerId, ");
+            sbSql.Append("       remark, ");
+            sbSql.Append("       isDelete, ");
+            sbSql.Append("       createBy, ");
+            sbSql.Append("       createTime, ");
+            sbSql.Append("       modifyBy, ");
+            sbSql.Append("       modifyTime ");
+            sbSql.Append("       ) value ( ");
+            sbSql.Append("      '" + _model.code + "', ");
+            sbSql.Append("      '" + _model.name + "', ");
+            sbSql.Append("      '" + _model.country + "', ");
+            sbSql.Append("       " + _model.province + ", ");
+            sbSql.Append("      '" + _model.provinceName + "', ");
+            sbSql.Append("       " + _model.city + ", ");
+            sbSql.Append("      '" + _model.cityName + "', ");
+            sbSql.Append("       " + _model.district + ", ");
+            sbSql.Append("      '" + _model.districtName + "', ");
+            sbSql.Append("      '" + _model.address + "', ");
+            sbSql.Append("      '" + _model.zip + "', ");
+            sbSql.Append("      '" + _model.fax + "', ");
+            sbSql.Append("      '" + _model.telephone1 + "', ");
+            sbSql.Append("      '" + _model.telephone2 + "', ");
+            sbSql.Append("      '" + _model.manager + "', ");
+            sbSql.Append("      '" + _model.position + "', ");
+            sbSql.Append("      '" + _model.mobile + "', ");
+            sbSql.Append("       " + _model.type + ", ");
+            sbSql.Append("       " + _model.salerId + ", ");
+            sbSql.Append("      '" + _model.remark + "', ");
+            sbSql.Append("       " + _model.isDelete + ", ");
+            sbSql.Append("      '" + _model.createBy + "', ");
+            sbSql.Append("      '" + _model.createTime + "', ");
+            sbSql.Append("      '" + _model.modifyBy + "', ");
+            sbSql.Append("      '" + _model.modifyTime + "')");
+
+            return Dal.DBHelper.Excute(sbSql.ToString());
+        }
+
+        public int UpdateCustomer(ModelCustomer _model)
+        {
+            sbSql.Clear();
+            sbSql.Append("update p_customer ");
+            sbSql.Append("set code = '" + _model.code + "',");
+            sbSql.Append("    name = '" + _model.name + "',");
+            sbSql.Append("    country = '" + _model.country + "',");
+            sbSql.Append("    province = " + _model.province + ",");
+            sbSql.Append("    provinceName = '" + _model.provinceName + "',");
+            sbSql.Append("    city = " + _model.city + ",");
+            sbSql.Append("    cityName = '" + _model.cityName + "',");
+            sbSql.Append("    district = " + _model.district + ",");
+            sbSql.Append("    districtName = '" + _model.districtName + "',");
+            sbSql.Append("    address = '" + _model.address + "',");
+            sbSql.Append("    zip = '" + _model.zip + "',");
+            sbSql.Append("    fax = '" + _model.fax + "',");
+            sbSql.Append("    telephone1 = '" + _model.telephone1 + "',");
+            sbSql.Append("    telephone2 = '" + _model.telephone2 + "',");
+            sbSql.Append("    manager = '" + _model.manager + "',");
+            sbSql.Append("    position = '" + _model.position + "',");
+            sbSql.Append("    mobile = '" + _model.mobile + "',");
+            sbSql.Append("    type = " + _model.type + ",");
+            sbSql.Append("    salerId = " + _model.salerId + ",");
+            sbSql.Append("    remark = '" + _model.remark + "',");
+            sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
+            sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
+            sbSql.Append("where id = " + _model.id);
+
+            return Dal.DBHelper.Excute(sbSql.ToString());
+        }
+
+        public int DeleteCustomer(ModelCustomer _model)
+        {
+            sbSql.Clear();
+            sbSql.Append("update p_customer ");
+            sbSql.Append("set isDelete = 1,");
+            sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
+            sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
+            sbSql.Append("where id = " + _model.id);
+
+            return Dal.DBHelper.Excute(sbSql.ToString());
+        }
+
+        public DataTable GetCustomerPaidById(int _customerId)
+        {
+            sql = @"select * 
+                      from r_customer_paid
+                     where isDelete = 0
+                       and customerId = {0}";
+
+            sql = String.Format(sql, _customerId);
+
+            return Dal.DBHelper.Select(sql);
+        }
+
+        public int AddUpdateCustomerPaid(ModelCustomerPaid _model)
+        {
+            List<string> listSql = new List<string>();
+
+            sbSql.Clear();
+            sbSql.Append("update r_customer_paid ");
+            sbSql.Append("set isDelete = 1,");
+            sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
+            sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
+            sbSql.Append("where customerId = " + _model.customerId);
+            sbSql.Append("  and isDelete = 0");
+            listSql.Add(sbSql.ToString());
+
+            sbSql.Clear();
+            sbSql.Append("insert into ");
+            sbSql.Append("       r_customer_paid ( ");
+            sbSql.Append("       customerId, ");
+            sbSql.Append("       bank, ");
+            sbSql.Append("       subBank, ");
+            sbSql.Append("       bankAccount, ");
+            sbSql.Append("       bankAccountName, ");
+            sbSql.Append("       bankAccountMobile, ");
+            sbSql.Append("       alipayName, ");
+            sbSql.Append("       alipayAccount, ");
+            sbSql.Append("       alipayMobile, ");
+            sbSql.Append("       creditLimit, ");
+            sbSql.Append("       remark, ");
+            sbSql.Append("       isDelete, ");
+            sbSql.Append("       createBy, ");
+            sbSql.Append("       createTime ");
+            sbSql.Append("       ) value ( ");
+            sbSql.Append("       " + _model.customerId + ", ");
+            sbSql.Append("      '" + _model.bank + "', ");
+            sbSql.Append("      '" + _model.subBank + "', ");
+            sbSql.Append("      '" + _model.bankAccount + "', ");
+            sbSql.Append("      '" + _model.bankAccountName + "', ");
+            sbSql.Append("      '" + _model.bankAccountMobile + "', ");
+            sbSql.Append("      '" + _model.alipayName + "', ");
+            sbSql.Append("      '" + _model.alipayAccount + "', ");
+            sbSql.Append("      '" + _model.alipayMobile + "', ");
+            sbSql.Append("       " + _model.creditLimit + ", ");
+            sbSql.Append("      '" + _model.remark + "', ");
+            sbSql.Append("       " + _model.isDelete + ", ");
+            sbSql.Append("      '" + _model.createBy + "', ");
+            sbSql.Append("      '" + _model.createTime + "')");
+            listSql.Add(sbSql.ToString());
+
+            return Dal.DBHelper.ExcuteTransaction(listSql);
+        }
+
+        public int DeleteCustomerPaid(ModelCustomerPaid _model)
+        {
+            sbSql.Clear();
+            sbSql.Append("update r_customer_paid ");
+            sbSql.Append("set isDelete = 1,");
+            sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
+            sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
+            sbSql.Append("where customerId = " + _model.customerId);
+            sbSql.Append("  and isDelete = 0");
+
+            return Dal.DBHelper.Excute(sbSql.ToString());
+        }
+
+        public DataTable GetCustomerCertsByCustomerId(int _customerId)
+        {
+            sql = @"select id,
+                           certName,
+                           '参照' reviewBtn,
+                           '删除' deleteBtn  
+                      from r_customer_cert
+                     where isDelete = 0
+                       and customerId = {0}";
+
+            sql = String.Format(sql, _customerId);
+
+            return Dal.DBHelper.Select(sql);
+        }
+
+        public DataTable GetCustomerCertById(int _certId)
+        {
+            sql = @"select * 
+                      from r_customer_cert
+                     where isDelete = 0
+                       and id = {0}";
+
+            sql = String.Format(sql, _certId);
+
+            return Dal.DBHelper.Select(sql);
+        }
+
+        public int AddCustomerCert(ModelCustomerCert _model)
+        {
+
+            sbSql.Clear();
+            sbSql.Append("insert into ");
+            sbSql.Append("       r_customer_cert ( ");
+            sbSql.Append("       customerId, ");
+            sbSql.Append("       certName, ");
+            sbSql.Append("       certImage, ");
+            sbSql.Append("       isDelete, ");
+            sbSql.Append("       createBy, ");
+            sbSql.Append("       createTime ");
+            sbSql.Append("       ) value ( ");
+            sbSql.Append("       " + _model.customerId + ", ");
+            sbSql.Append("      '" + _model.certName + "', ");
+            sbSql.Append("       @certImage, ");
+            sbSql.Append("       " + _model.isDelete + ", ");
+            sbSql.Append("      '" + _model.createBy + "', ");
+            sbSql.Append("      '" + _model.createTime + "')");
+
+            List<MySqlParameter> listParam = new List<MySqlParameter>();
+
+            MySqlParameter paramIn = new MySqlParameter();
+            paramIn.ParameterName = "@certImage";
+            paramIn.MySqlDbType = MySqlDbType.LongBlob;
+            paramIn.Value = _model.certImage;
+            paramIn.Direction = ParameterDirection.Input;
+            listParam.Add(paramIn);
+
+            return Dal.DBHelper.ExcuteParam(sbSql.ToString(), listParam);
+        }
+
+        public int DeleteCustomerCert(ModelCustomerCert _model)
+        {
+            sbSql.Clear();
+            sbSql.Append("update r_customer_cert ");
+            sbSql.Append("set isDelete = 1,");
+            sbSql.Append("    modifyBy = '" + _model.modifyBy + "',");
+            sbSql.Append("    modifyTime = '" + _model.modifyTime + "' ");
+            sbSql.Append("where id = " + _model.id);
+            sbSql.Append("  and isDelete = 0");
+
+            return Dal.DBHelper.Excute(sbSql.ToString());
+        }
+    }
+}

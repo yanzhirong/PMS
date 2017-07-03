@@ -1,0 +1,154 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Dal;
+using System.Data;
+using Common.Tools;
+using Model;
+
+namespace Bll
+{
+    public class BllCustomer : Bll.BllBase
+    {
+        private DalCustomer m_dalCustomer = new DalCustomer();
+
+        public DataTable GetCustomers(string _code, string _name, int _type, int _salerId)
+        {
+            DataTable dt = m_dalCustomer.GetCustomers(_code, _name, _type, _salerId);
+
+            return dt;
+        }
+
+        public ModelCustomer GetCustomerById(int _id)
+        {
+            DataTable user = m_dalCustomer.GetCustomerById(_id);
+
+            if (user != null && user.Rows.Count > 0)
+            {
+                return ModelUtils<ModelCustomer>.FillModel(user.Rows[0]); ;
+            }
+            return new ModelCustomer();
+        }
+
+        public List<ModelItem> GetCustomersBySalerId(int _salerId)
+        {
+            DataTable dt = m_dalCustomer.GetCustomersBySalerId(_salerId);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                return ModelUtils<ModelItem>.FillModel(dt);
+            }
+            return null;
+        }
+
+        public List<ModelItem> GetSupplier()
+        {
+            DataTable dt = m_dalCustomer.GetSupplier();
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                return ModelUtils<ModelItem>.FillModel(dt);
+            }
+            return null;
+        }
+
+        public ModelCustomer GetCustomerByCode(string _code)
+        {
+            DataTable user = m_dalCustomer.GetCustomerByCode(_code);
+
+            if (user != null && user.Rows.Count > 0)
+            {
+                return ModelUtils<ModelCustomer>.FillModel(user.Rows[0]); ;
+            }
+            return new ModelCustomer();
+        }
+
+        public Boolean AddCustomer(ModelCustomer _modelCustomer)
+        {
+            int rtn = 0;
+            rtn = m_dalCustomer.AddCustomer(_modelCustomer);
+
+            return rtn == 0 ? false : true;
+        }
+
+        public Boolean UpdateCustomer(ModelCustomer _modelCustomer)
+        {
+            int rtn = 0;
+            rtn = m_dalCustomer.UpdateCustomer(_modelCustomer);
+
+            return rtn == 0 ? false : true;
+        }
+
+        public Boolean DeleteCustomer(ModelCustomer _modelCustomer)
+        {
+            int rtn = 0;
+            rtn = m_dalCustomer.DeleteCustomer(_modelCustomer);
+
+            return rtn == 0 ? false : true;
+        }
+
+        public ModelCustomerPaid GetCustomerPaidById(int _customerId)
+        {
+            DataTable user = m_dalCustomer.GetCustomerPaidById(_customerId);
+
+            if (user != null && user.Rows.Count > 0)
+            {
+                return ModelUtils<ModelCustomerPaid>.FillModel(user.Rows[0]); ;
+            }
+            return new ModelCustomerPaid();
+        }
+
+        public Boolean AddUpdateCustomerPaid(ModelCustomerPaid _model)
+        {
+            int rtn = 0;
+            rtn = m_dalCustomer.AddUpdateCustomerPaid(_model);
+
+            return rtn == 0 ? false : true;
+        }
+
+        public Boolean DeleteCustomerPaid(ModelCustomerPaid _model)
+        {
+            int rtn = 0;
+            rtn = m_dalCustomer.DeleteCustomerPaid(_model);
+
+            return rtn == 0 ? false : true;
+        }
+
+        public DataTable GetCustomerCertsByCustomerId(int _customerId)
+        {
+            DataTable dt = m_dalCustomer.GetCustomerCertsByCustomerId(_customerId);
+
+            return dt;
+        }
+
+        public ModelCustomerCert GetCustomerCertById(int _certId)
+        {
+            DataTable user = m_dalCustomer.GetCustomerCertById(_certId);
+
+            if (user != null && user.Rows.Count > 0)
+            {
+                return ModelUtils<ModelCustomerCert>.FillModel(user.Rows[0]); ;
+            }
+            return null;
+        }
+
+        public Boolean AddCustomerCert(ModelCustomerCert _model)
+        {
+            int rtn = 0;
+            rtn = m_dalCustomer.AddCustomerCert(_model);
+
+            return rtn == 0 ? false : true;
+        }
+
+        public Boolean DeleteCustomerCert(ModelCustomerCert _model)
+        {
+            int rtn = 0;
+            rtn = m_dalCustomer.DeleteCustomerCert(_model);
+
+            return rtn == 0 ? false : true;
+        }
+    }
+
+}
