@@ -12,7 +12,7 @@ AppVersion=1.0
 AppPublisher=beggar king
 DefaultDirName={pf}\PMS
 DisableProgramGroupPage=yes
-OutputDir=C:\Work\project\NET\PMS\setup
+OutputDir=D:\p\project\pms\setup
 OutputBaseFilename=PMS_setup
 Compression=lzma
 SolidCompression=yes
@@ -24,8 +24,8 @@ Name: "chinesesimp"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: checkablealone; OnlyBelowVersion: 0,8.1
 
 [Files]
-Source: "C:\Work\project\NET\PMS\setup\install file\PMS.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Work\project\NET\PMS\setup\install file\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "D:\p\project\pms\setup\install file\PMS.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\p\project\pms\setup\install file\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; 注意: 不要在任何共享系统文件上使用“Flags: ignoreversion”
 
 [Icons]
